@@ -5,3 +5,6 @@ __pycache__/
 data/cron.log
 
 .env
+data/*.db
+backups/*.db
+
