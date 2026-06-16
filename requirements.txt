@@ -4,3 +4,4 @@ matplotlib
 requests
 fastapi
 uvicorn
+pytest
