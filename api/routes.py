@@ -114,3 +114,8 @@ def alerts():
     return pd.read_csv(
         "data/alerts.csv"
     ).to_dict(orient="records")
+
+@router.get("/data-quality")
+def data_quality():
+    import pandas as pd
+    return pd.read_csv("data/data_quality.csv").to_dict(orient="records")
