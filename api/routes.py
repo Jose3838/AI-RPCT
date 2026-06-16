@@ -229,3 +229,13 @@ def provider_readiness():
         return []
 
     return pd.read_csv(path).to_dict(orient="records")
+
+@router.get("/logs")
+def logs():
+    from pathlib import Path
+
+    path = Path("data/system.log")
+    if not path.exists():
+        return []
+
+    return path.read_text().splitlines()[-50:]
