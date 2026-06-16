@@ -188,3 +188,11 @@ def providers_active():
     return {
         "providers": active_providers()
     }
+
+@router.get("/executive-status")
+def executive_status():
+    return {
+        "platform": "AI-RPCT",
+        "stage": "beta",
+        "version": "21.4"
+    }
