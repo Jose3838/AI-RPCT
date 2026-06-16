@@ -1,16 +1,26 @@
 # AI-RPCT Release Status
 
-Current Version: v28.1
+Current Stage: Public Beta Candidate
 
-Platform Status:
-- API operational
-- SQLite operational
-- Dashboard operational
-- Tests passing
-- Authentication working
+Deployment status:
+Ready for technical preview deployment.
 
-Remaining before production:
-- Real provider APIs
-- Cloud deployment
-- Billing
-- User management
+Commercial status:
+Not ready for paid production customers until live provider APIs are connected and validated.
+
+Current strengths:
+- API
+- Auth foundation
+- Dashboard
+- Analytics pipeline
+- SQLite
+- Docker
+- GitHub
+- Forecasting framework
+- Provider abstraction
+
+Current limitations:
+- GPU provider data still includes placeholders
+- Forecast accuracy not yet validated over long history
+- No real billing
+- No production-grade user accounts
