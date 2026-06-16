@@ -9,26 +9,20 @@ report = f"""
 AI-RPCT DAILY REPORT
 ====================
 
-Generated:
-{datetime.now()}
+Generated: {datetime.now()}
 
-Current RPCT Score:
-{rpct['score']}
+Current RPCT Score: {rpct['score']}
+Regime: {rpct['regime']}
+Drivers: {rpct['drivers']}
 
-Regime:
-{rpct['regime']}
-
-Forecast Score:
-{forecast['forecast_score']:.2f}
-
-Outlook:
-{forecast['outlook']}
+Forecast Score: {forecast['forecast_score']:.2f}
+Outlook: {forecast['outlook']}
 
 Top Providers:
 """
 
 for _, row in providers.head(5).iterrows():
-    report += f"\n{row['provider']} | Score={row['score']:.2f}"
+    report += f"\n{row['provider']} | Score={row['score']:.2f} | Price=${row['price_per_hour']:.2f}/hr | Availability={row['availability']:.0f}"
 
 filename = f"reports/report_{datetime.now().strftime('%Y%m%d')}.txt"
 
