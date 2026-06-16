@@ -134,3 +134,8 @@ def admin_summary():
 def usage():
     import pandas as pd
     return pd.read_csv("data/usage_metrics.csv").to_dict(orient="records")
+
+@router.get("/pricing")
+def pricing():
+    import pandas as pd
+    return pd.read_csv("data/pricing_tiers.csv").to_dict(orient="records")
