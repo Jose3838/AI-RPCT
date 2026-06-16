@@ -6,7 +6,15 @@ from collectors.providers.manual import ManualProvider
 from collectors.providers.runpod import RunPodProvider
 from collectors.providers.vast import VastProvider
 from collectors.providers.lambda_labs import LambdaLabsProvider
+from collectors.providers.coreweave import CoreWeaveProvider
 
+providers = [
+    ManualProvider(),
+    RunPodProvider(),
+    VastProvider(),
+    LambdaLabsProvider(),
+    CoreWeaveProvider()
+]
 providers = [
     ManualProvider(),
     RunPodProvider(),
