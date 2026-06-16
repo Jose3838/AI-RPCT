@@ -1,0 +1,4 @@
+tier,price_usd_month,features
+starter,49,"dashboard, daily report"
+pro,299,"dashboard, api, alerts, provider rankings"
+enterprise,2500,"api, custom reports, white label, priority support"
