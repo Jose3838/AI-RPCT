@@ -1,9 +1,16 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 rpct = pd.read_csv("data/rpct_scores.csv")
 gpu = pd.read_csv("data/gpu_data.csv")
 market = pd.read_csv("data/market_data.csv")
+
+provider_rankings_path = Path("data/provider_rankings.csv")
+if provider_rankings_path.exists():
+    rankings = pd.read_csv(provider_rankings_path)
+else:
+    rankings = pd.DataFrame(columns=["provider", "price_per_hour", "availability", "score"])
 
 latest = rpct.iloc[-1]
 score = int(latest["score"])
@@ -48,6 +55,17 @@ for _, row in latest_market.iterrows():
     <tr><td>{row['asset']}</td><td>{row['ticker']}</td><td>${row['price']:.4f}</td><td>{row['timestamp']}</td></tr>
     """
 
+ranking_rows = ""
+for _, row in rankings.iterrows():
+    ranking_rows += f"""
+    <tr>
+        <td>{row['provider']}</td>
+        <td>${row['price_per_hour']:.2f}</td>
+        <td>{row['availability']:.0f}</td>
+        <td>{row['score']:.2f}</td>
+    </tr>
+    """
+
 html = f"""
 <html>
 <head>
@@ -67,7 +85,7 @@ th {{ color:#9ca3af; }}
 </style>
 </head>
 <body>
-<h1>AI-RPCT Dashboard v1.2</h1>
+<h1>AI-RPCT Dashboard v1.9</h1>
 
 <div class="grid">
   <div class="card">
@@ -85,6 +103,12 @@ th {{ color:#9ca3af; }}
     <img src="data/rpct_chart.png">
   </div>
 </div>
+
+<h2>Provider Leaderboard</h2>
+<table>
+<tr><th>Provider</th><th>Avg Price / Hour</th><th>Avg Availability</th><th>Provider Score</th></tr>
+{ranking_rows}
+</table>
 
 <h2>Market Snapshot</h2>
 <table>
@@ -110,4 +134,4 @@ th {{ color:#9ca3af; }}
 with open("dashboard.html", "w") as f:
     f.write(html)
 
-print("Dashboard v1.2 created: dashboard.html")
+print("Dashboard v1.9 created: dashboard.html")
