@@ -1,6 +1,6 @@
 # AI-RPCT Research Snapshot
 
-Generated: 2026-06-16 19:39:27.983265
+Generated: 2026-06-16 19:51:34.772783
 
 ## Current Infrastructure Risk
 
