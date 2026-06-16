@@ -1,0 +1,4 @@
+user_id,email,plan,status
+1,demo@example.com,starter,active
+2,pro@example.com,pro,active
+3,enterprise@example.com,enterprise,active
