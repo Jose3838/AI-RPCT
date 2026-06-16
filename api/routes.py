@@ -207,3 +207,14 @@ def provider_errors():
         return []
 
     return pd.read_csv(path).to_dict(orient="records")
+
+@router.get("/provider-credentials")
+def provider_credentials():
+    import pandas as pd
+    from pathlib import Path
+
+    path = Path("data/provider_credentials.csv")
+    if not path.exists():
+        return []
+
+    return pd.read_csv(path).to_dict(orient="records")
