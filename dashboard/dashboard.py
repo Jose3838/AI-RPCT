@@ -6,14 +6,10 @@ rpct = pd.read_csv("data/rpct_scores.csv")
 gpu = pd.read_csv("data/gpu_data.csv")
 market = pd.read_csv("data/market_data.csv")
 
-provider_rankings_path = Path("data/provider_rankings.csv")
-rankings = pd.read_csv(provider_rankings_path) if provider_rankings_path.exists() else pd.DataFrame()
-
-shortage_path = Path("data/shortage_probability.csv")
-shortage = pd.read_csv(shortage_path).iloc[-1] if shortage_path.exists() else None
-
-forecast_path = Path("data/forecast_signal.csv")
-forecast = pd.read_csv(forecast_path).iloc[-1] if forecast_path.exists() else None
+rankings = pd.read_csv("data/provider_rankings.csv") if Path("data/provider_rankings.csv").exists() else pd.DataFrame()
+shortage = pd.read_csv("data/shortage_probability.csv").iloc[-1] if Path("data/shortage_probability.csv").exists() else None
+forecast = pd.read_csv("data/forecast_signal.csv").iloc[-1] if Path("data/forecast_signal.csv").exists() else None
+trend = pd.read_csv("data/trend_signal.csv").iloc[-1]["trend"] if Path("data/trend_signal.csv").exists() else "UNKNOWN"
 
 latest = rpct.iloc[-1]
 score = int(latest["score"])
@@ -40,9 +36,13 @@ plt.tight_layout()
 plt.savefig("data/rpct_chart.png")
 plt.close()
 
-score_rows = ""
-for _, row in last_rows.iterrows():
-    score_rows += f"<tr><td>{row['timestamp']}</td><td>{row['score']}</td><td>{row['regime']}</td><td>{row['drivers']}</td></tr>"
+def table_rows(df, cols):
+    html = ""
+    for _, row in df.iterrows():
+        html += "<tr>" + "".join([f"<td>{row[col]}</td>" for col in cols]) + "</tr>"
+    return html
+
+score_rows = table_rows(last_rows, ["timestamp", "score", "regime", "drivers"])
 
 gpu_rows = ""
 for _, row in latest_gpu.iterrows():
@@ -103,7 +103,7 @@ th {{ color:#9ca3af; }}
 </style>
 </head>
 <body>
-<h1>AI-RPCT Dashboard v2.4</h1>
+<h1>AI-RPCT Dashboard v3.4</h1>
 
 <div class="grid">
   <div>
@@ -112,6 +112,7 @@ th {{ color:#9ca3af; }}
       <div class="score">{latest["score"]}</div>
       <div class="regime">{latest["regime"]}</div>
       <div class="signal">Signal: {signal}</div>
+      <div class="drivers">Trend: {trend}</div>
       <div class="drivers">Drivers: {latest["drivers"]}</div>
       <br>
       <div>Last update: {latest["timestamp"]}</div>
@@ -156,4 +157,4 @@ th {{ color:#9ca3af; }}
 with open("dashboard.html", "w") as f:
     f.write(html)
 
-print("Dashboard v2.4 created: dashboard.html")
+print("Dashboard v3.4 created: dashboard.html")
