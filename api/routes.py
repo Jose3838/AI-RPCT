@@ -67,3 +67,14 @@ def db_forecasts():
     conn.close()
 
     return df.to_dict(orient="records")
+
+@router.get("/investor-dashboard")
+def investor_dashboard():
+    import pandas as pd
+    from pathlib import Path
+
+    path = Path("data/investor_dashboard.csv")
+    if not path.exists():
+        return {"error": "investor dashboard data not found"}
+
+    return pd.read_csv(path).to_dict(orient="records")
