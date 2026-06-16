@@ -12,6 +12,9 @@ rankings = pd.read_csv(provider_rankings_path) if provider_rankings_path.exists(
 shortage_path = Path("data/shortage_probability.csv")
 shortage = pd.read_csv(shortage_path).iloc[-1] if shortage_path.exists() else None
 
+forecast_path = Path("data/forecast_signal.csv")
+forecast = pd.read_csv(forecast_path).iloc[-1] if forecast_path.exists() else None
+
 latest = rpct.iloc[-1]
 score = int(latest["score"])
 
@@ -67,6 +70,20 @@ if shortage is not None:
     </div>
     """
 
+forecast_html = ""
+if forecast is not None:
+    forecast_html = f"""
+    <div class="card">
+        <div>Forecast Signal</div>
+        <div class="score">{forecast['forecast_score']:.0f}</div>
+        <div class="regime">{forecast['outlook']}</div>
+        <div class="drivers">
+            Latest RPCT: {forecast['latest_rpct']:.0f}<br>
+            Shortage Probability: {forecast['shortage_probability']:.0f}%
+        </div>
+    </div>
+    """
+
 html = f"""
 <html>
 <head>
@@ -86,7 +103,7 @@ th {{ color:#9ca3af; }}
 </style>
 </head>
 <body>
-<h1>AI-RPCT Dashboard v2.2</h1>
+<h1>AI-RPCT Dashboard v2.4</h1>
 
 <div class="grid">
   <div>
@@ -100,6 +117,7 @@ th {{ color:#9ca3af; }}
       <div>Last update: {latest["timestamp"]}</div>
     </div>
     {shortage_html}
+    {forecast_html}
   </div>
 
   <div class="card">
@@ -138,4 +156,4 @@ th {{ color:#9ca3af; }}
 with open("dashboard.html", "w") as f:
     f.write(html)
 
-print("Dashboard v2.2 created: dashboard.html")
+print("Dashboard v2.4 created: dashboard.html")
