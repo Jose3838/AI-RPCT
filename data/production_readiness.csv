@@ -1,0 +1,2 @@
+production_readiness_score,api,docker,compose,tests,docs,env_template,real_provider_docs
+100.0,True,True,True,True,True,True,True
