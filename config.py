@@ -1,4 +1,4 @@
-# AI-RPCT Configuration
+import os
 
 GPU_THRESHOLDS = {
     "H100_PRICE_HIGH": 2.0,
@@ -12,6 +12,12 @@ MARKET_THRESHOLDS = {
     "BTC_HIGH": 60000,
     "ETH_HIGH": 1800,
     "AKT_HIGH": 0.75
+}
+
+API_KEYS = {
+    "RUNPOD": os.getenv("RUNPOD_API_KEY"),
+    "VAST": os.getenv("VAST_API_KEY"),
+    "LAMBDA": os.getenv("LAMBDA_API_KEY")
 }
 
 DASHBOARD_TITLE = "AI-RPCT Dashboard"
