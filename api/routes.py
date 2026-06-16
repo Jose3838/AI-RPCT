@@ -245,3 +245,8 @@ def health():
     return {
         "status": "ok"
     }
+
+@router.get("/data-sources")
+def data_sources():
+    import pandas as pd
+    return pd.read_csv("data/data_source_status.csv").to_dict(orient="records")
