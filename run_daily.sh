@@ -28,3 +28,5 @@ python database/import_csv.py
 python analytics/daily_report.py
 python analytics/research_snapshot.py
 python dashboard/dashboard.py
+python analytics/alert_engine.py
+python analytics/data_quality.py
