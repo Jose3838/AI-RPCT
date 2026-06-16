@@ -151,3 +151,25 @@ def kpis():
     return pd.read_csv(
         "data/kpi_dashboard.csv"
     ).to_dict(orient="records")
+
+@router.get("/metrics")
+def metrics():
+    import pandas as pd
+
+    return {
+        "providers": len(
+            pd.read_csv(
+                "data/provider_rankings.csv"
+            )
+        ),
+        "alerts": len(
+            pd.read_csv(
+                "data/alerts.csv"
+            )
+        ),
+        "quality": float(
+            pd.read_csv(
+                "data/data_quality.csv"
+            )["data_quality_score"].iloc[0]
+        )
+    }
