@@ -61,3 +61,8 @@ def tracked(
 def users():
     from security.users import get_users
     return get_users()
+
+@router.get("/plan-limits")
+def plan_limits():
+    import pandas as pd
+    return pd.read_csv("data/plan_limits.csv").to_dict(orient="records")
