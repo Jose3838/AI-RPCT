@@ -196,3 +196,14 @@ def executive_status():
         "stage": "beta",
         "version": "21.4"
     }
+
+@router.get("/provider-errors")
+def provider_errors():
+    import pandas as pd
+    from pathlib import Path
+
+    path = Path("data/provider_errors.csv")
+    if not path.exists():
+        return []
+
+    return pd.read_csv(path).to_dict(orient="records")
