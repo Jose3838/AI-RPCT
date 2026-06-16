@@ -6,6 +6,15 @@ gpu = pd.read_csv("data/gpu_data.csv")
 market = pd.read_csv("data/market_data.csv")
 
 latest = rpct.iloc[-1]
+score = int(latest["score"])
+
+if score < 40:
+    signal = "BULLISH"
+elif score < 70:
+    signal = "WATCH"
+else:
+    signal = "CRITICAL"
+
 last_rows = rpct.tail(10)
 latest_gpu = gpu.groupby("gpu").last().reset_index()
 latest_market = market.groupby("asset").last().reset_index()
@@ -49,6 +58,7 @@ body {{ background:#0b0f19; color:white; font-family:Arial; padding:40px; }}
 .card {{ background:#111827; padding:30px; border-radius:16px; margin-bottom:30px; }}
 .score {{ font-size:72px; font-weight:bold; }}
 .regime {{ font-size:28px; margin-top:10px; }}
+.signal {{ font-size:22px; margin-top:12px; padding:10px 14px; background:#1f2937; border-radius:10px; display:inline-block; }}
 .drivers {{ margin-top:20px; color:#9ca3af; }}
 img {{ width:100%; border-radius:16px; background:white; }}
 table {{ width:100%; border-collapse:collapse; background:#111827; border-radius:16px; overflow:hidden; margin-top:20px; margin-bottom:35px; }}
@@ -57,13 +67,14 @@ th {{ color:#9ca3af; }}
 </style>
 </head>
 <body>
-<h1>AI-RPCT Dashboard v0.8</h1>
+<h1>AI-RPCT Dashboard v1.2</h1>
 
 <div class="grid">
   <div class="card">
     <div>Current AI Infrastructure Risk</div>
     <div class="score">{latest["score"]}</div>
     <div class="regime">{latest["regime"]}</div>
+    <div class="signal">Signal: {signal}</div>
     <div class="drivers">Drivers: {latest["drivers"]}</div>
     <br>
     <div>Last update: {latest["timestamp"]}</div>
@@ -99,4 +110,4 @@ th {{ color:#9ca3af; }}
 with open("dashboard.html", "w") as f:
     f.write(html)
 
-print("Dashboard v0.8 created: dashboard.html")
+print("Dashboard v1.2 created: dashboard.html")
