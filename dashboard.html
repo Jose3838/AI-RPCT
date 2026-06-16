@@ -1,146 +1,75 @@
 
 <html>
 <head>
-    <title>AI-RPCT Dashboard</title>
-    <style>
-        body {
-            background: #0b0f19;
-            color: white;
-            font-family: Arial;
-            padding: 40px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: 420px 1fr;
-            gap: 30px;
-            align-items: start;
-        }
-        .card {
-            background: #111827;
-            padding: 30px;
-            border-radius: 16px;
-            margin-bottom: 30px;
-        }
-        .score {
-            font-size: 72px;
-            font-weight: bold;
-        }
-        .regime {
-            font-size: 28px;
-            margin-top: 10px;
-        }
-        .drivers {
-            margin-top: 20px;
-            color: #9ca3af;
-        }
-        img {
-            width: 100%;
-            border-radius: 16px;
-            background: white;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #111827;
-            border-radius: 16px;
-            overflow: hidden;
-            margin-top: 20px;
-            margin-bottom: 35px;
-        }
-        th, td {
-            padding: 14px;
-            border-bottom: 1px solid #1f2937;
-            text-align: left;
-        }
-        th {
-            color: #9ca3af;
-        }
-    </style>
+<title>AI-RPCT Dashboard</title>
+<style>
+body { background:#0b0f19; color:white; font-family:Arial; padding:40px; }
+.grid { display:grid; grid-template-columns:420px 1fr; gap:30px; align-items:start; }
+.card { background:#111827; padding:30px; border-radius:16px; margin-bottom:30px; }
+.score { font-size:72px; font-weight:bold; }
+.regime { font-size:28px; margin-top:10px; }
+.drivers { margin-top:20px; color:#9ca3af; }
+img { width:100%; border-radius:16px; background:white; }
+table { width:100%; border-collapse:collapse; background:#111827; border-radius:16px; overflow:hidden; margin-top:20px; margin-bottom:35px; }
+th, td { padding:14px; border-bottom:1px solid #1f2937; text-align:left; }
+th { color:#9ca3af; }
+</style>
 </head>
 <body>
-    <h1>AI-RPCT Dashboard v0.7</h1>
+<h1>AI-RPCT Dashboard v0.8</h1>
 
-    <div class="grid">
-        <div class="card">
-            <div>Current AI Infrastructure Risk</div>
-            <div class="score">100</div>
-            <div class="regime">Critical</div>
-            <div class="drivers">Drivers: NVDA above 200, BTC above 60k, ETH above 1800, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained</div>
-            <br>
-            <div>Last update: 2026-06-16 15:58:20</div>
-        </div>
+<div class="grid">
+  <div class="card">
+    <div>Current AI Infrastructure Risk</div>
+    <div class="score">100</div>
+    <div class="regime">Critical</div>
+    <div class="drivers">Drivers: NVDA above 200, BTC above 60k, ETH above 1800, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained</div>
+    <br>
+    <div>Last update: 2026-06-16 15:58:20</div>
+  </div>
 
-        <div class="card">
-            <h2>RPCT History</h2>
-            <img src="data/rpct_chart.png">
-        </div>
-    </div>
+  <div class="card">
+    <h2>RPCT History</h2>
+    <img src="data/rpct_chart.png">
+  </div>
+</div>
 
-    <h2>Current GPU Market Snapshot</h2>
-    <table>
-        <tr>
-            <th>GPU</th>
-            <th>Provider</th>
-            <th>Price / Hour</th>
-            <th>Availability</th>
-            <th>Timestamp</th>
-        </tr>
-        
-    <tr>
-        <td>A100</td>
-        <td>manual</td>
-        <td>$1.05</td>
-        <td>2500</td>
-        <td>2026-06-16 15:41:29</td>
-    </tr>
-    
-    <tr>
-        <td>H100</td>
-        <td>manual</td>
-        <td>$2.15</td>
-        <td>1000</td>
-        <td>2026-06-16 15:41:29</td>
-    </tr>
-    
-    </table>
+<h2>Market Snapshot</h2>
+<table>
+<tr><th>Asset</th><th>Ticker</th><th>Price</th><th>Timestamp</th></tr>
 
-    <h2>Last 10 RPCT Scores</h2>
-    <table>
-        <tr>
-            <th>Timestamp</th>
-            <th>Score</th>
-            <th>Regime</th>
-            <th>Drivers</th>
-        </tr>
-        
-    <tr>
-        <td>2026-06-16 15:37:51</td>
-        <td>50</td>
-        <td>Watch</td>
-        <td>nan</td>
-    </tr>
+    <tr><td>AKT</td><td>AKT-USD</td><td>$0.7910</td><td>2026-06-16 15:41:29</td></tr>
     
-    <tr>
-        <td>2026-06-16 15:41:29</td>
-        <td>50</td>
-        <td>Watch</td>
-        <td>nan</td>
-    </tr>
+    <tr><td>BTC</td><td>BTC-USD</td><td>$66067.3984</td><td>2026-06-16 15:41:27</td></tr>
     
-    <tr>
-        <td>2026-06-16 15:42:06</td>
-        <td>50</td>
-        <td>Watch</td>
-        <td>No major stress drivers</td>
-    </tr>
+    <tr><td>ETH</td><td>ETH-USD</td><td>$1804.6600</td><td>2026-06-16 15:41:28</td></tr>
     
-    <tr>
-        <td>2026-06-16 15:58:20</td>
-        <td>100</td>
-        <td>Critical</td>
-        <td>NVDA above 200, BTC above 60k, ETH above 1800, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained</td>
-    </tr>
+    <tr><td>NVDA</td><td>NVDA</td><td>$209.3199</td><td>2026-06-16 15:41:27</td></tr>
     
-    </table>
+</table>
+
+<h2>GPU Market Snapshot</h2>
+<table>
+<tr><th>GPU</th><th>Provider</th><th>Price / Hour</th><th>Availability</th><th>Timestamp</th></tr>
+
+    <tr><td>A100</td><td>manual</td><td>$1.05</td><td>2500</td><td>2026-06-16 15:41:29</td></tr>
+    
+    <tr><td>H100</td><td>manual</td><td>$2.15</td><td>1000</td><td>2026-06-16 15:41:29</td></tr>
+    
+</table>
+
+<h2>Last 10 RPCT Scores</h2>
+<table>
+<tr><th>Timestamp</th><th>Score</th><th>Regime</th><th>Drivers</th></tr>
+
+    <tr><td>2026-06-16 15:37:51</td><td>50</td><td>Watch</td><td>nan</td></tr>
+    
+    <tr><td>2026-06-16 15:41:29</td><td>50</td><td>Watch</td><td>nan</td></tr>
+    
+    <tr><td>2026-06-16 15:42:06</td><td>50</td><td>Watch</td><td>No major stress drivers</td></tr>
+    
+    <tr><td>2026-06-16 15:58:20</td><td>100</td><td>Critical</td><td>NVDA above 200, BTC above 60k, ETH above 1800, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained</td></tr>
+    
+</table>
 </body>
 </html>
