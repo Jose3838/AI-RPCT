@@ -1,0 +1,8 @@
+endpoint,status
+/rpct,active
+/forecast,active
+/providers,active
+/marketshare,active
+/concentration,active
+/alerts,active
+/data-quality,active
