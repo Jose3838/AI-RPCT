@@ -106,3 +106,11 @@ def concentration():
     return pd.read_csv(
         "data/provider_concentration.csv"
     ).to_dict(orient="records")
+
+@router.get("/alerts")
+def alerts():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/alerts.csv"
+    ).to_dict(orient="records")
