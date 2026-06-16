@@ -2,10 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 rpct = pd.read_csv("data/rpct_scores.csv")
+gpu = pd.read_csv("data/gpu_data.csv")
+
 latest = rpct.iloc[-1]
 last_rows = rpct.tail(10)
+latest_gpu = gpu.groupby("gpu").last().reset_index()
 
-# Chart erzeugen
 plt.figure(figsize=(10, 4))
 plt.plot(rpct["score"], marker="o")
 plt.title("AI-RPCT Score History")
@@ -17,15 +19,26 @@ plt.tight_layout()
 plt.savefig("data/rpct_chart.png")
 plt.close()
 
-rows_html = ""
-
+score_rows = ""
 for _, row in last_rows.iterrows():
-    rows_html += f"""
+    score_rows += f"""
     <tr>
         <td>{row['timestamp']}</td>
         <td>{row['score']}</td>
         <td>{row['regime']}</td>
         <td>{row['drivers']}</td>
+    </tr>
+    """
+
+gpu_rows = ""
+for _, row in latest_gpu.iterrows():
+    gpu_rows += f"""
+    <tr>
+        <td>{row['gpu']}</td>
+        <td>{row['provider']}</td>
+        <td>${row['price_per_hour']}</td>
+        <td>{row['availability']}</td>
+        <td>{row['timestamp']}</td>
     </tr>
     """
 
@@ -75,7 +88,8 @@ html = f"""
             background: #111827;
             border-radius: 16px;
             overflow: hidden;
-            margin-top: 30px;
+            margin-top: 20px;
+            margin-bottom: 35px;
         }}
         th, td {{
             padding: 14px;
@@ -88,7 +102,7 @@ html = f"""
     </style>
 </head>
 <body>
-    <h1>AI-RPCT Dashboard v0.6</h1>
+    <h1>AI-RPCT Dashboard v0.7</h1>
 
     <div class="grid">
         <div class="card">
@@ -106,8 +120,19 @@ html = f"""
         </div>
     </div>
 
-    <h2>Last 10 RPCT Scores</h2>
+    <h2>Current GPU Market Snapshot</h2>
+    <table>
+        <tr>
+            <th>GPU</th>
+            <th>Provider</th>
+            <th>Price / Hour</th>
+            <th>Availability</th>
+            <th>Timestamp</th>
+        </tr>
+        {gpu_rows}
+    </table>
 
+    <h2>Last 10 RPCT Scores</h2>
     <table>
         <tr>
             <th>Timestamp</th>
@@ -115,7 +140,7 @@ html = f"""
             <th>Regime</th>
             <th>Drivers</th>
         </tr>
-        {rows_html}
+        {score_rows}
     </table>
 </body>
 </html>
@@ -124,4 +149,4 @@ html = f"""
 with open("dashboard.html", "w") as f:
     f.write(html)
 
-print("Dashboard v0.6 created: dashboard.html")
+print("Dashboard v0.7 created: dashboard.html")

@@ -44,7 +44,8 @@
             background: #111827;
             border-radius: 16px;
             overflow: hidden;
-            margin-top: 30px;
+            margin-top: 20px;
+            margin-bottom: 35px;
         }
         th, td {
             padding: 14px;
@@ -57,7 +58,7 @@
     </style>
 </head>
 <body>
-    <h1>AI-RPCT Dashboard v0.6</h1>
+    <h1>AI-RPCT Dashboard v0.7</h1>
 
     <div class="grid">
         <div class="card">
@@ -75,8 +76,35 @@
         </div>
     </div>
 
-    <h2>Last 10 RPCT Scores</h2>
+    <h2>Current GPU Market Snapshot</h2>
+    <table>
+        <tr>
+            <th>GPU</th>
+            <th>Provider</th>
+            <th>Price / Hour</th>
+            <th>Availability</th>
+            <th>Timestamp</th>
+        </tr>
+        
+    <tr>
+        <td>A100</td>
+        <td>manual</td>
+        <td>$1.05</td>
+        <td>2500</td>
+        <td>2026-06-16 15:41:29</td>
+    </tr>
+    
+    <tr>
+        <td>H100</td>
+        <td>manual</td>
+        <td>$2.15</td>
+        <td>1000</td>
+        <td>2026-06-16 15:41:29</td>
+    </tr>
+    
+    </table>
 
+    <h2>Last 10 RPCT Scores</h2>
     <table>
         <tr>
             <th>Timestamp</th>
