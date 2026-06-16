@@ -8,6 +8,8 @@ from collectors.providers.vast import VastProvider
 from collectors.providers.lambda_labs import LambdaLabsProvider
 from collectors.providers.coreweave import CoreWeaveProvider
 
+from integrations.provider_schema import validate_provider_rows
+
 providers = [
     ManualProvider(),
     RunPodProvider(),
@@ -15,18 +17,20 @@ providers = [
     LambdaLabsProvider(),
     CoreWeaveProvider()
 ]
-providers = [
-    ManualProvider(),
-    RunPodProvider(),
-    VastProvider(),
-    LambdaLabsProvider()
-]
 
 rows = []
 
 for provider in providers:
     try:
-        rows.extend(provider.fetch())
+        provider_rows = provider.fetch()
+        errors = validate_provider_rows(provider_rows)
+
+        if errors:
+            print(f"Schema errors for {provider.name}: {errors}")
+            continue
+
+        rows.extend(provider_rows)
+
     except Exception as e:
         print(f"Provider failed: {provider.name} | {e}")
 
