@@ -250,3 +250,11 @@ def health():
 def data_sources():
     import pandas as pd
     return pd.read_csv("data/data_source_status.csv").to_dict(orient="records")
+
+@router.get("/ai-index")
+def ai_index():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/ai_infrastructure_index.csv"
+    ).to_dict(orient="records")
