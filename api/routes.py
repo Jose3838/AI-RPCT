@@ -139,3 +139,8 @@ def usage():
 def pricing():
     import pandas as pd
     return pd.read_csv("data/pricing_tiers.csv").to_dict(orient="records")
+
+@router.get("/customer-value")
+def customer_value():
+    import pandas as pd
+    return pd.read_csv("data/customer_value.csv").to_dict(orient="records")
