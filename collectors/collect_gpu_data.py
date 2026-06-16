@@ -5,11 +5,13 @@ from datetime import datetime
 from collectors.providers.manual import ManualProvider
 from collectors.providers.runpod import RunPodProvider
 from collectors.providers.vast import VastProvider
+from collectors.providers.lambda_labs import LambdaLabsProvider
 
 providers = [
     ManualProvider(),
     RunPodProvider(),
-    VastProvider()
+    VastProvider(),
+    LambdaLabsProvider()
 ]
 
 rows = []
