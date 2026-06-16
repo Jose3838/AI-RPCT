@@ -1,0 +1,24 @@
+
+AI-RPCT DAILY REPORT
+====================
+
+Generated:
+2026-06-16 16:36:40.075757
+
+Current RPCT Score:
+100
+
+Regime:
+Critical
+
+Forecast Score:
+60.00
+
+Outlook:
+ELEVATED RISK
+
+Top Providers:
+
+vast | Score=75.58
+manual | Score=47.79
+runpod | Score=20.00
