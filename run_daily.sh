@@ -2,12 +2,21 @@
 cd ~/AI-RPCT
 source venv/bin/activate
 
+echo "=============================="
+echo "AI-RPCT DAILY RUN"
+echo "$(date)"
+echo "=============================="
+
 python collectors/collect_market_data.py
 python collectors/collect_gpu_data.py
 python engine/calculate_rpct.py
 
 python analytics/provider_rankings.py
 python analytics/provider_health.py
+python analytics/provider_marketshare.py
+python analytics/provider_concentration.py
+python analytics/provider_credentials.py
+python analytics/provider_readiness.py
 python analytics/shortage_probability.py
 python analytics/forecast_signal.py
 python analytics/trend_engine.py
@@ -20,6 +29,10 @@ python analytics/executive_dashboard.py
 python analytics/backtest.py
 python analytics/forecast_accuracy.py
 python analytics/provider_history.py
+python analytics/alert_engine.py
+python analytics/data_quality.py
+python analytics/production_readiness.py
+python analytics/operational_status.py
 python analytics/data_validator.py
 
 python api/metrics.py
@@ -28,5 +41,5 @@ python database/import_csv.py
 python analytics/daily_report.py
 python analytics/research_snapshot.py
 python dashboard/dashboard.py
-python analytics/alert_engine.py
-python analytics/data_quality.py
+
+echo "DONE"

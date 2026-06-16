@@ -1,0 +1,133 @@
+==============================
+AI-RPCT DAILY RUN
+Di. 16 Juni 2026 19:39:19 CEST
+==============================
+Collecting market data...
+
+NVDA | $208.9800
+BTC | $65675.4922
+ETH | $1781.2800
+AKT | $0.7940
+
+Saved to data/market_data.csv
+
+AI-RPCT v0.5
+============
+Score: 100
+Regime: Critical
+Drivers: NVDA above 200, BTC above 60k, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained
+
+Saved to data/rpct_scores.csv
+  provider  price_per_hour  availability      score
+2     vast            1.05        2500.0  75.581395
+0   manual            1.60        1750.0  47.790698
+1   runpod            2.15        1000.0  20.000000
+  provider  gpu  price_per_hour  availability status
+0   manual    6            1.60        1750.0     OK
+1   runpod    4            2.15        1000.0     OK
+2     vast    4            1.05        2500.0     OK
+  provider  market_share
+0     vast     52.716951
+1   manual     33.333333
+2   runpod     13.949716
+HHI: 4084.78
+    provider  configured
+0     runpod       False
+1       vast       False
+2     lambda       False
+3  coreweave       False
+Provider readiness: 100.0
+   shortage_probability  avg_price  avg_availability
+0                     0        1.6            1750.0
+   latest_rpct  shortage_probability  forecast_score        outlook
+0        100.0                   0.0            60.0  ELEVATED RISK
+    trend
+0  STABLE
+   forecast_score
+0           100.0
+GPU_BULL
+   prediction
+0         100
+   current_rpct  signal_strength  market_temperature
+0           100              1.0                 100
+   rpct_score    regime  ...  top_provider top_provider_score
+0         100  Critical  ...          vast          75.581395
+
+[1 rows x 7 columns]
+              timestamp  ...  risk_bucket
+2   2026-06-16 15:42:06  ...          LOW
+3   2026-06-16 15:58:20  ...         HIGH
+4   2026-06-16 16:04:24  ...         HIGH
+5   2026-06-16 16:10:41  ...         HIGH
+6   2026-06-16 16:36:04  ...         HIGH
+7   2026-06-16 16:41:04  ...         HIGH
+8   2026-06-16 16:48:36  ...         HIGH
+9   2026-06-16 16:55:55  ...         HIGH
+10  2026-06-16 17:02:08  ...         HIGH
+11  2026-06-16 19:39:22  ...         HIGH
+
+[10 rows x 5 columns]
+[Errno 2] No such file or directory: 'data/forecast.csv'
+          price_per_hour  availability      score
+provider                                         
+manual              1.60        1750.0  47.790698
+runpod              2.15        1000.0  20.000000
+vast                1.05        2500.0  75.581395
+['Provider concentration risk: vast']
+Data Quality: 100.0
+Production readiness: 100.0
+degraded
+DATA VALIDATION PASSED
+{
+  "rpct_score": 100.0,
+  "regime": "Critical",
+  "drivers": "NVDA above 200, BTC above 60k, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained",
+  "forecast_score": 60.0,
+  "outlook": "ELEVATED RISK",
+  "shortage_probability": 0.0
+}
+
+AI-RPCT DAILY REPORT
+====================
+
+Generated: 2026-06-16 19:39:27.784697
+
+Current RPCT Score: 100
+Regime: Critical
+Drivers: NVDA above 200, BTC above 60k, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained
+
+Forecast Score: 60.00
+Outlook: ELEVATED RISK
+
+Top Providers:
+
+vast | Score=75.58 | Price=$1.05/hr | Availability=2500
+manual | Score=47.79 | Price=$1.60/hr | Availability=1750
+runpod | Score=20.00 | Price=$2.15/hr | Availability=1000
+
+Saved: reports/report_20260616.txt
+# AI-RPCT Research Snapshot
+
+Generated: 2026-06-16 19:39:27.983265
+
+## Current Infrastructure Risk
+
+- RPCT Score: 100
+- Regime: Critical
+- Drivers: NVDA above 200, BTC above 60k, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained
+
+## Forecast
+
+- Forecast Score: 60.00
+- Outlook: ELEVATED RISK
+- Shortage Probability: 0%
+
+## Provider Leaderboard
+
+- vast: score 75.58, price $1.05/hr, availability 2500
+- manual: score 47.79, price $1.60/hr, availability 1750
+- runpod: score 20.00, price $2.15/hr, availability 1000
+
+Saved: reports/research_snapshot_20260616.md
+Dashboard v3.4 created: dashboard.html
+DONE
