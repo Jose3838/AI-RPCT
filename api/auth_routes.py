@@ -56,3 +56,8 @@ def tracked(
     return {
         "status": "tracked"
     }
+
+@router.get("/users")
+def users():
+    from security.users import get_users
+    return get_users()
