@@ -1,0 +1,6 @@
+source,type,status
+Yahoo Finance,market_data,live_external
+RunPod,gpu_provider,placeholder
+Vast.ai,gpu_provider,placeholder
+Lambda Labs,gpu_provider,placeholder
+CoreWeave,gpu_provider,placeholder
