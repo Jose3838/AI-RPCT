@@ -7,10 +7,10 @@ gpu = pd.read_csv("data/gpu_data.csv")
 market = pd.read_csv("data/market_data.csv")
 
 provider_rankings_path = Path("data/provider_rankings.csv")
-if provider_rankings_path.exists():
-    rankings = pd.read_csv(provider_rankings_path)
-else:
-    rankings = pd.DataFrame(columns=["provider", "price_per_hour", "availability", "score"])
+rankings = pd.read_csv(provider_rankings_path) if provider_rankings_path.exists() else pd.DataFrame()
+
+shortage_path = Path("data/shortage_probability.csv")
+shortage = pd.read_csv(shortage_path).iloc[-1] if shortage_path.exists() else None
 
 latest = rpct.iloc[-1]
 score = int(latest["score"])
@@ -39,31 +39,32 @@ plt.close()
 
 score_rows = ""
 for _, row in last_rows.iterrows():
-    score_rows += f"""
-    <tr><td>{row['timestamp']}</td><td>{row['score']}</td><td>{row['regime']}</td><td>{row['drivers']}</td></tr>
-    """
+    score_rows += f"<tr><td>{row['timestamp']}</td><td>{row['score']}</td><td>{row['regime']}</td><td>{row['drivers']}</td></tr>"
 
 gpu_rows = ""
 for _, row in latest_gpu.iterrows():
-    gpu_rows += f"""
-    <tr><td>{row['gpu']}</td><td>{row['provider']}</td><td>${row['price_per_hour']}</td><td>{row['availability']}</td><td>{row['timestamp']}</td></tr>
-    """
+    gpu_rows += f"<tr><td>{row['gpu']}</td><td>{row['provider']}</td><td>${row['price_per_hour']}</td><td>{row['availability']}</td><td>{row['timestamp']}</td></tr>"
 
 market_rows = ""
 for _, row in latest_market.iterrows():
-    market_rows += f"""
-    <tr><td>{row['asset']}</td><td>{row['ticker']}</td><td>${row['price']:.4f}</td><td>{row['timestamp']}</td></tr>
-    """
+    market_rows += f"<tr><td>{row['asset']}</td><td>{row['ticker']}</td><td>${row['price']:.4f}</td><td>{row['timestamp']}</td></tr>"
 
 ranking_rows = ""
-for _, row in rankings.iterrows():
-    ranking_rows += f"""
-    <tr>
-        <td>{row['provider']}</td>
-        <td>${row['price_per_hour']:.2f}</td>
-        <td>{row['availability']:.0f}</td>
-        <td>{row['score']:.2f}</td>
-    </tr>
+if not rankings.empty:
+    for _, row in rankings.iterrows():
+        ranking_rows += f"<tr><td>{row['provider']}</td><td>${row['price_per_hour']:.2f}</td><td>{row['availability']:.0f}</td><td>{row['score']:.2f}</td></tr>"
+
+shortage_html = ""
+if shortage is not None:
+    shortage_html = f"""
+    <div class="card">
+        <div>GPU Shortage Probability</div>
+        <div class="score">{shortage['shortage_probability']:.0f}%</div>
+        <div class="drivers">
+            Avg GPU price: ${shortage['avg_price']:.2f}/hr<br>
+            Avg availability: {shortage['avg_availability']:.0f}
+        </div>
+    </div>
     """
 
 html = f"""
@@ -85,17 +86,20 @@ th {{ color:#9ca3af; }}
 </style>
 </head>
 <body>
-<h1>AI-RPCT Dashboard v1.9</h1>
+<h1>AI-RPCT Dashboard v2.2</h1>
 
 <div class="grid">
-  <div class="card">
-    <div>Current AI Infrastructure Risk</div>
-    <div class="score">{latest["score"]}</div>
-    <div class="regime">{latest["regime"]}</div>
-    <div class="signal">Signal: {signal}</div>
-    <div class="drivers">Drivers: {latest["drivers"]}</div>
-    <br>
-    <div>Last update: {latest["timestamp"]}</div>
+  <div>
+    <div class="card">
+      <div>Current AI Infrastructure Risk</div>
+      <div class="score">{latest["score"]}</div>
+      <div class="regime">{latest["regime"]}</div>
+      <div class="signal">Signal: {signal}</div>
+      <div class="drivers">Drivers: {latest["drivers"]}</div>
+      <br>
+      <div>Last update: {latest["timestamp"]}</div>
+    </div>
+    {shortage_html}
   </div>
 
   <div class="card">
@@ -134,4 +138,4 @@ th {{ color:#9ca3af; }}
 with open("dashboard.html", "w") as f:
     f.write(html)
 
-print("Dashboard v1.9 created: dashboard.html")
+print("Dashboard v2.2 created: dashboard.html")
