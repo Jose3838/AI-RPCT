@@ -37,3 +37,22 @@ def my_plan(
     return {
         "plan": plan
     }
+
+@router.get("/tracked")
+def tracked(
+    x_api_key: str = Header(None)
+):
+    from security.api_keys import validate_api_key
+    from security.usage import log_usage
+
+    if not validate_api_key(x_api_key):
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid API key"
+        )
+
+    log_usage(x_api_key, "/tracked")
+
+    return {
+        "status": "tracked"
+    }
