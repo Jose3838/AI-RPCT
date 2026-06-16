@@ -27,3 +27,15 @@ AI-RPCT is a local AI infrastructure intelligence system that tracks market data
 ```bash
 ./run_daily.sh
 open dashboard.html
+
+## SQLite Database
+
+Initialize database:
+
+```bash
+python database/init_db.py
+python database/import_csv.py
+python database/db_status.py
+./backup_db.sh
+data/airpct.db
+
