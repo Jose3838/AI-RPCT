@@ -239,3 +239,9 @@ def logs():
         return []
 
     return path.read_text().splitlines()[-50:]
+
+@router.get("/health")
+def health():
+    return {
+        "status": "ok"
+    }
