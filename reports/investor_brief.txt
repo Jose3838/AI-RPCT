@@ -1,0 +1,9 @@
+
+AI-RPCT Investor Brief
+Date: 2026-06-16
+
+Key Metrics:
+- Providers tracked: 3
+- Active alerts: 1
+- Data quality score:
+  100.0%
