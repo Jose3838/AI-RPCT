@@ -144,3 +144,10 @@ def pricing():
 def customer_value():
     import pandas as pd
     return pd.read_csv("data/customer_value.csv").to_dict(orient="records")
+
+@router.get("/kpis")
+def kpis():
+    import pandas as pd
+    return pd.read_csv(
+        "data/kpi_dashboard.csv"
+    ).to_dict(orient="records")
