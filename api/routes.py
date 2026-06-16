@@ -180,3 +180,11 @@ def system_status():
         "status": "online",
         "version": "17.4"
     }
+
+@router.get("/providers-active")
+def providers_active():
+    from integrations.provider_registry import active_providers
+
+    return {
+        "providers": active_providers()
+    }
