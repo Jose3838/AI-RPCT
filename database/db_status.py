@@ -1,10 +1,20 @@
 import sqlite3
-from database.db import DB_FILE
+from pathlib import Path
+
+DB_FILE = "data/airpct.db"
+
+if not Path(DB_FILE).exists():
+    print("Database not found:", DB_FILE)
+    raise SystemExit(1)
 
 conn = sqlite3.connect(DB_FILE)
 cur = conn.cursor()
 
-tables = ["rpct_scores", "provider_rankings", "forecasts"]
+tables = [
+    "rpct_scores",
+    "provider_rankings",
+    "forecasts"
+]
 
 print("AI-RPCT DATABASE STATUS")
 print("=======================")
