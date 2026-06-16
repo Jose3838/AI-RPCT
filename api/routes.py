@@ -258,3 +258,11 @@ def ai_index():
     return pd.read_csv(
         "data/ai_infrastructure_index.csv"
     ).to_dict(orient="records")
+
+@router.get("/gpu-scarcity")
+def gpu_scarcity():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/gpu_scarcity_index.csv"
+    ).to_dict(orient="records")
