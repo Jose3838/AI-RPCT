@@ -2,37 +2,41 @@ import pandas as pd
 from pathlib import Path
 from datetime import datetime
 
-from providers.runpod import get_gpu_data as runpod_data
-from providers.vast import get_gpu_data as vast_data
+from collectors.providers.manual import ManualProvider
+from collectors.providers.runpod import RunPodProvider
+from collectors.providers.vast import VastProvider
 
+providers = [
+    ManualProvider(),
+    RunPodProvider(),
+    VastProvider()
+]
 
-def collect_all_gpu_data():
-    data = []
+rows = []
 
-    data.extend(runpod_data())
-    data.extend(vast_data())
+for provider in providers:
+    try:
+        rows.extend(provider.fetch())
+    except Exception as e:
+        print(f"Provider failed: {provider.name} | {e}")
 
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    for row in data:
-        row["timestamp"] = timestamp
+for row in rows:
+    row["timestamp"] = timestamp
 
-    return data
+Path("data").mkdir(exist_ok=True)
 
+new_data = pd.DataFrame(rows)
+file_path = "data/gpu_data.csv"
 
-if __name__ == "__main__":
-    Path("data").mkdir(exist_ok=True)
+if Path(file_path).exists():
+    old_data = pd.read_csv(file_path)
+    final_data = pd.concat([old_data, new_data], ignore_index=True)
+else:
+    final_data = new_data
 
-    new_data = pd.DataFrame(collect_all_gpu_data())
-    file_path = "data/gpu_data.csv"
+final_data.to_csv(file_path, index=False)
 
-    if Path(file_path).exists():
-        old_data = pd.read_csv(file_path)
-        final_data = pd.concat([old_data, new_data], ignore_index=True)
-    else:
-        final_data = new_data
-
-    final_data.to_csv(file_path, index=False)
-
-    print("GPU data saved to data/gpu_data.csv")
-    print(new_data)
+print("GPU data saved to data/gpu_data.csv")
+print(new_data)
