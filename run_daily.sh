@@ -17,4 +17,6 @@ python analytics/research_snapshot.py
 python analytics/predictor.py
 python analytics/investor_metrics.py
 python analytics/executive_dashboard.py
+python database/init_db.py
+python database/import_csv.py
 python dashboard/dashboard.py
