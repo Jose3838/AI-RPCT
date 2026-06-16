@@ -1,0 +1,2 @@
+status,api,dashboard,database,logs,pipeline
+degraded,True,True,True,False,True
