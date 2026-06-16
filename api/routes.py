@@ -24,3 +24,11 @@ def rpct():
 @router.get("/shortage")
 def shortage():
     return read_csv("data/shortage_probability.csv")
+
+@router.get("/investor")
+def investor():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/investor_metrics.csv"
+    ).to_dict(orient="records")
