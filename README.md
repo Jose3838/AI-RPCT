@@ -1,35 +1,29 @@
 # AI-RPCT
 
-AI Resource Pressure & Capacity Tracker
+AI Resource Pressure & Capacity Tracker.
 
-Tracks:
+AI-RPCT is a local AI infrastructure intelligence system that tracks market data, GPU supply indicators, provider rankings, shortage probability, forecast signals, and dashboard reporting.
 
-- NVDA
-- BTC
-- ETH
-- AKT
-- H100 Pricing
-- A100 Pricing
-- GPU Availability
+## Current Features
 
-Outputs:
+- Market data collector
+- GPU provider collector architecture
+- RPCT score engine
+- Provider ranking engine
+- GPU shortage probability engine
+- Forecast signal engine
+- Trend engine
+- Daily text reports
+- Markdown research snapshots
+- Local HTML dashboard
+- JSON metrics export
+- FastAPI service
+- Git versioning
+- Automated daily pipeline
+- Backup script
 
-- RPCT Score (0-100)
-- Regime Classification
-- Bullish / Watch / Critical Signal
-- Historical Dashboard
+## Run Pipeline
 
-## Daily Run
-
+```bash
 ./run_daily.sh
-
-## Dashboard
-
 open dashboard.html
-
-## Data Sources
-
-- Yahoo Finance
-- GPU Market Data
-- Internal RPCT Engine
-
