@@ -43,3 +43,7 @@ python analytics/research_snapshot.py
 python dashboard/dashboard.py
 
 echo "DONE"
+python analytics/ai_infrastructure_index.py
+python analytics/gpu_scarcity_index.py
+python analytics/index_history.py
+python analytics/archive_daily_snapshot.py
