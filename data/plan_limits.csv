@@ -1,0 +1,4 @@
+plan,requests_per_day,features
+starter,100,dashboard
+pro,10000,dashboard api alerts
+enterprise,1000000,custom api reports white-label
