@@ -89,3 +89,20 @@ def investor_dashboard():
         return {"error": "investor dashboard data not found"}
 
     return pd.read_csv(path).to_dict(orient="records")
+
+@router.get("/marketshare")
+def marketshare():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/provider_marketshare.csv"
+    ).to_dict(orient="records")
+
+
+@router.get("/concentration")
+def concentration():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/provider_concentration.csv"
+    ).to_dict(orient="records")
