@@ -173,3 +173,10 @@ def metrics():
             )["data_quality_score"].iloc[0]
         )
     }
+
+@router.get("/system-status")
+def system_status():
+    return {
+        "status": "online",
+        "version": "17.4"
+    }
