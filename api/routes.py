@@ -585,3 +585,8 @@ def terminal_kpis():
         "runpod_gpu_types": len(runpod),
         "top_provider": summary.get("top_provider")
     }
+
+@router.get("/api-inventory")
+def api_inventory():
+    import pandas as pd
+    return pd.read_csv("data/api_inventory_runtime.csv").to_dict(orient="records")
