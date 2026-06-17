@@ -431,3 +431,11 @@ def terminal():
         pass
 
     return result
+
+@router.get("/gpu-price-index")
+def gpu_price_index():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/live_gpu_price_index.csv"
+    ).to_dict(orient="records")
