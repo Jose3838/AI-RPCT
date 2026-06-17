@@ -721,3 +721,8 @@ def market_intelligence_snapshot():
 def gpu_price_volatility():
     import pandas as pd
     return pd.read_csv("data/gpu_price_volatility.csv").to_dict(orient="records")
+
+@router.get("/live-provider-dominance")
+def live_provider_dominance():
+    import pandas as pd
+    return pd.read_csv("data/live_provider_dominance.csv").to_dict(orient="records")
