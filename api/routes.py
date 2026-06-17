@@ -305,3 +305,13 @@ def daily_intelligence():
 def provider_intelligence_readiness():
     import pandas as pd
     return pd.read_csv("data/provider_intelligence_readiness.csv").to_dict(orient="records")
+
+@router.get("/raw-provider-archives")
+def raw_provider_archives():
+    from pathlib import Path
+
+    folder = Path("warehouse/raw_providers")
+    if not folder.exists():
+        return []
+
+    return [p.name for p in sorted(folder.glob("*.csv"))]
