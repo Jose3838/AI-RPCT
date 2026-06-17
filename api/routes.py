@@ -876,3 +876,79 @@ def entitlement_check(endpoint: str, x_api_key: str = Header(default=None)):
 def monetization_readiness():
     import pandas as pd
     return pd.read_csv("data/monetization_readiness.csv").to_dict(orient="records")
+
+@router.get("/provider-health-history")
+def provider_health_history(days: int = 30):
+    import pandas as pd
+    from pathlib import Path
+    from datetime import datetime, timedelta, timezone
+
+    path = Path("data/provider_health_history.csv")
+    if not path.exists():
+        return []
+
+    df = pd.read_csv(path)
+    if "timestamp" not in df.columns:
+        return df.to_dict(orient="records")
+
+    cutoff = datetime.now(timezone.utc) - timedelta(days=days)
+    df["timestamp"] = pd.to_datetime(df["timestamp"], errors="coerce", utc=True)
+    df = df[df["timestamp"] >= cutoff]
+
+    return df.to_dict(orient="records")
+
+
+@router.get("/provider-market-share-history")
+def provider_market_share_history(days: int = 30):
+    import pandas as pd
+    from pathlib import Path
+    from datetime import datetime, timedelta, timezone
+
+    path = Path("data/provider_market_share_history.csv")
+    if not path.exists():
+        return []
+
+    df = pd.read_csv(path)
+    if "timestamp" not in df.columns:
+        return df.to_dict(orient="records")
+
+    cutoff = datetime.now(timezone.utc) - timedelta(days=days)
+    df["timestamp"] = pd.to_datetime(df["timestamp"], errors="coerce", utc=True)
+    df = df[df["timestamp"] >= cutoff]
+
+    return df.to_dict(orient="records")
+
+
+@router.get("/history-moat-status")
+def history_moat_status():
+    import pandas as pd
+    from pathlib import Path
+
+    files = {
+        "gpu_price_history": Path("data/gpu_price_history.csv"),
+        "provider_health_history": Path("data/provider_health_history.csv"),
+        "provider_market_share_history": Path("data/provider_market_share_history.csv"),
+    }
+
+    result = {}
+    for name, path in files.items():
+        if path.exists():
+            df = pd.read_csv(path)
+            result[name] = {
+                "exists": True,
+                "rows": len(df),
+                "columns": list(df.columns)
+            }
+        else:
+            result[name] = {
+                "exists": False,
+                "rows": 0,
+                "columns": []
+            }
+
+    return {
+        "product": "AI-RPCT",
+        "data_moat": "historical_snapshots",
+        "status": "active",
+        "files": result
+    }
