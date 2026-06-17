@@ -12,3 +12,5 @@ timestamp,forecast_score,forecast_signal,risk_level,data_trust
 2026-06-17T14:52:06.047745,15,stable_market_expected,medium,institutional_grade
 2026-06-17T14:53:37.209497,15,stable_market_expected,medium,institutional_grade
 2026-06-17T17:40:37.355930,35,stable_market_expected,medium,institutional_grade
+2026-06-17T18:08:11.314972,35,stable_market_expected,medium,institutional_grade
+2026-06-17T18:08:48.294119,35,stable_market_expected,medium,institutional_grade
