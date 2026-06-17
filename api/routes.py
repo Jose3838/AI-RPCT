@@ -637,3 +637,8 @@ def daily_terminal_brief():
         "file": latest.name,
         "content": latest.read_text()
     }
+
+@router.get("/gpu-category-index")
+def gpu_category_index():
+    import pandas as pd
+    return pd.read_csv("data/gpu_category_index.csv").to_dict(orient="records")
