@@ -444,3 +444,8 @@ def gpu_price_index():
 def gpu_price_history():
     import pandas as pd
     return pd.read_csv("data/live_gpu_price_history.csv").to_dict(orient="records")
+
+@router.get("/live-offer-summary")
+def live_offer_summary():
+    import pandas as pd
+    return pd.read_csv("data/live_offer_summary.csv").to_dict(orient="records")
