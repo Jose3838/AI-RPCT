@@ -369,3 +369,8 @@ def commercial_readiness():
 def trust_status():
     import pandas as pd
     return pd.read_csv("data/trust_status.csv").to_dict(orient="records")
+
+@router.get("/launch-readiness")
+def launch_readiness():
+    import pandas as pd
+    return pd.read_csv("data/launch_readiness.csv").to_dict(orient="records")
