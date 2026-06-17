@@ -657,3 +657,19 @@ def scarcity_watchlist():
 def terminal_risk():
     import pandas as pd
     return pd.read_csv("data/terminal_risk_score.csv").to_dict(orient="records")
+
+@router.get("/executive-ai-memo")
+def executive_ai_memo():
+    from pathlib import Path
+
+    reports = sorted(Path("reports").glob("executive_ai_infrastructure_memo_*.txt"))
+
+    if not reports:
+        return {"error": "no executive memo found"}
+
+    latest = reports[-1]
+
+    return {
+        "file": latest.name,
+        "content": latest.read_text()
+    }
