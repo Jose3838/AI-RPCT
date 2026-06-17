@@ -757,3 +757,8 @@ def customer_value_score():
 def founder_summary():
     import pandas as pd
     return pd.read_csv("data/founder_dashboard_summary.csv").to_dict(orient="records")
+
+@router.get("/sales-readiness")
+def sales_readiness():
+    import pandas as pd
+    return pd.read_csv("data/sales_readiness.csv").to_dict(orient="records")
