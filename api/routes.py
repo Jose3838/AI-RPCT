@@ -806,3 +806,16 @@ def dashboard_version():
 def dashboard_health():
     import pandas as pd
     return pd.read_csv("data/dashboard_health.csv").to_dict(orient="records")
+
+@router.get("/dashboard-snapshot")
+def dashboard_snapshot():
+    import pandas as pd
+
+    return {
+        "terminal": pd.read_csv("data/terminal_summary.csv").iloc[-1].to_dict(),
+        "risk": pd.read_csv("data/terminal_risk_score.csv").iloc[-1].to_dict(),
+        "quality": pd.read_csv("data/live_data_quality_score.csv").iloc[-1].to_dict(),
+        "market_share": pd.read_csv("data/live_provider_market_share.csv").to_dict(orient="records"),
+        "gpu_rankings": pd.read_csv("data/live_gpu_most_expensive.csv").head(10).to_dict(orient="records"),
+        "provider_health": pd.read_csv("data/provider_health.csv").to_dict(orient="records")
+    }
