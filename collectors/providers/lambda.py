@@ -1,6 +1,6 @@
 def collect():
     return {
-        "provider": "coreweave",
+        "provider": "lambda",
         "status": "planned",
         "live": False
     }

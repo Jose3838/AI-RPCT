@@ -1560,3 +1560,13 @@ def sales_demo_bundle():
 
         "current_stage": "commercial_launch_ready"
     }
+
+@router.get("/provider-registry")
+def provider_registry():
+
+    from collectors.providers.provider_registry import PROVIDERS
+
+    return {
+        "providers": PROVIDERS,
+        "count": len(PROVIDERS)
+    }
