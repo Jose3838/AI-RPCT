@@ -590,3 +590,8 @@ def terminal_kpis():
 def api_inventory():
     import pandas as pd
     return pd.read_csv("data/api_inventory_runtime.csv").to_dict(orient="records")
+
+@router.get("/market-data-moat")
+def market_data_moat():
+    import pandas as pd
+    return pd.read_csv("data/market_data_moat_status.csv").to_dict(orient="records")
