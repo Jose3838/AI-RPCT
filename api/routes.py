@@ -485,3 +485,19 @@ def gpu_market_movers():
 def live_gpu_alerts():
     import pandas as pd
     return pd.read_csv("data/live_gpu_alerts.csv").to_dict(orient="records")
+
+@router.get("/weekly-infrastructure-report")
+def weekly_infrastructure_report():
+    from pathlib import Path
+
+    reports = sorted(Path("reports").glob("weekly_infrastructure_report_*.txt"))
+
+    if not reports:
+        return {"error": "no weekly infrastructure report found"}
+
+    latest = reports[-1]
+
+    return {
+        "file": latest.name,
+        "content": latest.read_text()
+    }
