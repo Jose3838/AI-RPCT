@@ -501,3 +501,14 @@ def weekly_infrastructure_report():
         "file": latest.name,
         "content": latest.read_text()
     }
+
+@router.get("/runpod-live-report")
+def runpod_live_report():
+    import pandas as pd
+    from pathlib import Path
+
+    path = Path("data/runpod_live_report.csv")
+    if not path.exists():
+        return []
+
+    return pd.read_csv(path).to_dict(orient="records")
