@@ -284,3 +284,19 @@ def cron_health():
 def data_moat():
     import pandas as pd
     return pd.read_csv("data/data_moat_score.csv").to_dict(orient="records")
+
+@router.get("/daily-intelligence")
+def daily_intelligence():
+    from pathlib import Path
+
+    reports = sorted(Path("reports").glob("daily_intelligence_summary_*.txt"))
+
+    if not reports:
+        return {"error": "no daily intelligence summary found"}
+
+    latest = reports[-1]
+
+    return {
+        "file": latest.name,
+        "content": latest.read_text()
+    }
