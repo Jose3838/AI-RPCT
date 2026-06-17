@@ -831,3 +831,8 @@ def public_roadmap():
     return {
         "content": Path("docs/PUBLIC_ROADMAP.md").read_text()
     }
+
+@router.get("/api-product-status")
+def api_product_status():
+    import pandas as pd
+    return pd.read_csv("data/api_product_status.csv").to_dict(orient="records")
