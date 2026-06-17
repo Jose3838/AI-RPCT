@@ -552,3 +552,17 @@ def terminal_summary():
     return pd.read_csv(
         "data/terminal_summary.csv"
     ).to_dict(orient="records")
+
+@router.get("/public-status")
+def public_status():
+    return {
+        "product": "AI-RPCT",
+        "stage": "public_beta",
+        "deployment": "railway",
+        "live_provider_feeds": 2,
+        "primary_data_sources": [
+            "Vast.ai",
+            "RunPod"
+        ],
+        "status": "online"
+    }
