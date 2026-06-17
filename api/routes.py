@@ -374,3 +374,10 @@ def trust_status():
 def launch_readiness():
     import pandas as pd
     return pd.read_csv("data/launch_readiness.csv").to_dict(orient="records")
+
+@router.get("/ai-index-history")
+def ai_index_history():
+    import pandas as pd
+    return pd.read_csv(
+        "data/ai_infrastructure_index_history.csv"
+    ).to_dict(orient="records")
