@@ -8,14 +8,15 @@ history_path = DATA / "gpu_price_history.csv"
 out_path = DATA / "gpu_price_forecast_signal.csv"
 
 def write_signal(signal, trend, volatility=0, latest=None, previous=None, change_pct=None):
-    pd.DataFrame([{
+    df = pd.DataFrame([{
         "signal": signal,
         "trend": trend,
         "volatility": volatility,
         "latest_price_index": latest,
         "previous_price_index": previous,
         "change_pct": change_pct
-    }]).to_csv(out_path, index=False)
+    }])
+    df.to_csv(out_path, index=False)
 
 if not history_path.exists():
     write_signal("no_data", "unknown")
@@ -40,7 +41,6 @@ if len(df) < 2:
 
 latest = float(df[price_col].iloc[-1])
 previous = float(df[price_col].iloc[-2])
-
 change_pct = round(((latest - previous) / previous) * 100, 2) if previous else 0
 volatility = round(float(df[price_col].tail(20).std()), 4)
 
@@ -55,6 +55,4 @@ else:
     signal = "normal"
 
 write_signal(signal, trend, volatility, latest, previous, change_pct)
-
 print("forecast signal generated")
-print(pd.read_csv(out_path).to_string(index=False))

@@ -1136,3 +1136,29 @@ def admin_run_forecasting_engine():
         "stdout": result.stdout,
         "stderr": result.stderr
     }
+
+@router.get("/gpu-forecast-signal-safe")
+def gpu_forecast_signal_safe():
+    import pandas as pd
+    from pathlib import Path
+
+    path = Path("data/gpu_price_forecast_signal.csv")
+
+    if not path.exists():
+        return [{
+            "signal": "no_file",
+            "trend": "unknown",
+            "volatility": 0,
+            "latest_price_index": None,
+            "previous_price_index": None,
+            "change_pct": None
+        }]
+
+    try:
+        return pd.read_csv(path).to_dict(orient="records")
+    except Exception as e:
+        return [{
+            "signal": "read_error",
+            "trend": "unknown",
+            "error": str(e)
+        }]
