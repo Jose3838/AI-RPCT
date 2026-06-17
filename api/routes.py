@@ -824,3 +824,10 @@ def dashboard_snapshot():
 def api_catalog():
     import pandas as pd
     return pd.read_csv("data/api_catalog.csv").to_dict(orient="records")
+
+@router.get("/public-roadmap")
+def public_roadmap():
+    from pathlib import Path
+    return {
+        "content": Path("docs/PUBLIC_ROADMAP.md").read_text()
+    }
