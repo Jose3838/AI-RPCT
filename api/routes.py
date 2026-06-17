@@ -695,3 +695,8 @@ def live_provider_market_share():
 def terminal_trend_history():
     import pandas as pd
     return pd.read_csv("data/terminal_trend_history.csv").to_dict(orient="records")
+
+@router.get("/live-provider-market-share-history")
+def live_provider_market_share_history():
+    import pandas as pd
+    return pd.read_csv("data/live_provider_market_share_history.csv").to_dict(orient="records")
