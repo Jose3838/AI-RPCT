@@ -50,3 +50,4 @@ python analytics/archive_daily_snapshot.py
 python analytics/provider_daily_metrics.py
 python analytics/provider_dominance_index.py
 python analytics/cron_health.py
+python analytics/data_moat_score.py
