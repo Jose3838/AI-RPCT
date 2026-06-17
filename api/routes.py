@@ -836,3 +836,8 @@ def public_roadmap():
 def api_product_status():
     import pandas as pd
     return pd.read_csv("data/api_product_status.csv").to_dict(orient="records")
+
+@router.get("/usage-plans")
+def usage_plans():
+    import pandas as pd
+    return pd.read_csv("data/usage_plan_matrix.csv").to_dict(orient="records")
