@@ -333,3 +333,14 @@ def provider_live_readiness():
     return pd.read_csv(
         "data/provider_live_readiness.csv"
     ).to_dict(orient="records")
+
+@router.get("/vast-live-report")
+def vast_live_report():
+    import pandas as pd
+    from pathlib import Path
+
+    path = Path("data/vast_live_report.csv")
+    if not path.exists():
+        return []
+
+    return pd.read_csv(path).to_dict(orient="records")
