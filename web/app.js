@@ -15,3 +15,5 @@ async function load(id, path) {
 load("summary", "/terminal-summary");
 load("providers", "/provider-reliability");
 load("rankings", "/gpu-rankings");
+load("brief", "/gpu-market-brief");
+load("alerts", "/live-gpu-alerts");
