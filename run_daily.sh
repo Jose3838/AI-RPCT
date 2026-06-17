@@ -47,3 +47,5 @@ python analytics/ai_infrastructure_index.py
 python analytics/gpu_scarcity_index.py
 python analytics/index_history.py
 python analytics/archive_daily_snapshot.py
+python analytics/provider_daily_metrics.py
+python analytics/provider_dominance_index.py
