@@ -1,2 +1,2 @@
 timestamp,status,cron_log_exists,manual_log_exists,snapshots_exist,provider_history_exists,index_history_exists
-2026-06-17 12:21:44,needs_attention,False,True,True,True,True
+2026-06-17 12:54:57,needs_attention,False,True,True,True,True
