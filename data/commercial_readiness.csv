@@ -1,0 +1,2 @@
+commercial_readiness_score,github_ready,api_ready,docker_ready,auth_foundation,data_moat_started,provider_mode_known,live_provider_connected,billing_ready,terms_ready
+66.67,True,True,True,True,True,True,False,False,False
