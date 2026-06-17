@@ -536,3 +536,11 @@ def provider_reliability():
     return pd.read_csv(
         "data/provider_reliability_ranking.csv"
     ).to_dict(orient="records")
+
+@router.get("/gpu-price-trend")
+def gpu_price_trend():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/gpu_price_trend_signal.csv"
+    ).to_dict(orient="records")
