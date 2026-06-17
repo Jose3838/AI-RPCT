@@ -1,8 +1,8 @@
 gpu,vast,runpod,providers_count
-A100 PCIE,True,False,1
 A100 PCIe,False,True,1
 A100 SXM,False,True,1
 A100 SXM 40GB,False,True,1
+A100 SXM4,True,False,1
 A40,False,True,1
 B200,True,True,2
 B300,True,True,2
@@ -27,6 +27,7 @@ RTX 3090 Ti,False,True,1
 RTX 4000 Ada,False,True,1
 RTX 4000 Ada SFF,False,True,1
 RTX 4070 Ti,False,True,1
+RTX 4070S Ti,True,False,1
 RTX 4080,False,True,1
 RTX 4080 SUPER,False,True,1
 RTX 4090,True,True,2
@@ -37,7 +38,6 @@ RTX 5070 Ti,True,False,1
 RTX 5080,True,True,2
 RTX 5090,True,True,2
 RTX 6000 Ada,False,True,1
-RTX 6000Ada,True,False,1
 RTX A2000,False,True,1
 RTX A4000,False,True,1
 RTX A4500,False,True,1

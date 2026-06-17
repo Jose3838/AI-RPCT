@@ -95,3 +95,6 @@ python analytics/investor_snapshot.py
 python analytics/customer_value_score.py
 python analytics/founder_dashboard_summary.py
 python analytics/sales_readiness.py
+python analytics/history_summary.py
+python analytics/feedback_summary.py
+python analytics/public_usage_snapshot.py
