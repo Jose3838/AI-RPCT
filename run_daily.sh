@@ -54,3 +54,5 @@ python analytics/data_moat_score.py
 python analytics/daily_intelligence_summary.py
 python analytics/archive_raw_provider_data.py
 python analytics/data_freshness.py
+python analytics/live_provider_status.py
+python analytics/provider_data_mode.py
