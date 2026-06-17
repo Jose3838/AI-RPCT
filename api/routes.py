@@ -611,3 +611,8 @@ def executive_snapshot():
 def gpu_watchlist():
     import pandas as pd
     return pd.read_csv("data/gpu_watchlist_intelligence.csv").to_dict(orient="records")
+
+@router.get("/frontier-gpu-index")
+def frontier_gpu_index():
+    import pandas as pd
+    return pd.read_csv("data/frontier_gpu_index.csv").to_dict(orient="records")
