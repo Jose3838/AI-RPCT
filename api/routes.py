@@ -988,3 +988,21 @@ def usage_analytics():
         return []
 
     return pd.read_csv(path).to_dict(orient="records")
+
+@router.post("/admin/run-history-snapshot")
+def admin_run_history_snapshot():
+    import subprocess
+    import sys
+
+    result = subprocess.run(
+        [sys.executable, "jobs/history_snapshot.py"],
+        capture_output=True,
+        text=True
+    )
+
+    return {
+        "status": "success" if result.returncode == 0 else "error",
+        "returncode": result.returncode,
+        "stdout": result.stdout,
+        "stderr": result.stderr
+    }
