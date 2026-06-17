@@ -678,3 +678,8 @@ def executive_ai_memo():
 def live_data_quality():
     import pandas as pd
     return pd.read_csv("data/live_data_quality_score.csv").to_dict(orient="records")
+
+@router.get("/live-provider-market-share")
+def live_provider_market_share():
+    import pandas as pd
+    return pd.read_csv("data/live_provider_market_share.csv").to_dict(orient="records")
