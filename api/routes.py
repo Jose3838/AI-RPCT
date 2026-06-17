@@ -747,3 +747,8 @@ def investor_snapshot():
         "file": latest.name,
         "content": latest.read_text()
     }
+
+@router.get("/customer-value-score")
+def customer_value_score():
+    import pandas as pd
+    return pd.read_csv("data/customer_value_score.csv").to_dict(orient="records")
