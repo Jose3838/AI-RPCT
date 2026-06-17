@@ -642,3 +642,8 @@ def daily_terminal_brief():
 def gpu_category_index():
     import pandas as pd
     return pd.read_csv("data/gpu_category_index.csv").to_dict(orient="records")
+
+@router.get("/provider-coverage")
+def provider_coverage():
+    import pandas as pd
+    return pd.read_csv("data/provider_coverage_score.csv").to_dict(orient="records")
