@@ -767,3 +767,8 @@ def sales_readiness():
 def history_summary():
     import pandas as pd
     return pd.read_csv("data/history_summary.csv").to_dict(orient="records")
+
+@router.get("/feedback-summary")
+def feedback_summary():
+    import pandas as pd
+    return pd.read_csv("data/feedback_summary.csv").to_dict(orient="records")
