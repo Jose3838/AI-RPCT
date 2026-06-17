@@ -762,3 +762,8 @@ def founder_summary():
 def sales_readiness():
     import pandas as pd
     return pd.read_csv("data/sales_readiness.csv").to_dict(orient="records")
+
+@router.get("/history-summary")
+def history_summary():
+    import pandas as pd
+    return pd.read_csv("data/history_summary.csv").to_dict(orient="records")
