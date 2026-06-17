@@ -544,3 +544,11 @@ def gpu_price_trend():
     return pd.read_csv(
         "data/gpu_price_trend_signal.csv"
     ).to_dict(orient="records")
+
+@router.get("/terminal-summary")
+def terminal_summary():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/terminal_summary.csv"
+    ).to_dict(orient="records")
