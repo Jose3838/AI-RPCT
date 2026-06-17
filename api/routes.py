@@ -315,3 +315,8 @@ def raw_provider_archives():
         return []
 
     return [p.name for p in sorted(folder.glob("*.csv"))]
+
+@router.get("/data-freshness")
+def data_freshness():
+    import pandas as pd
+    return pd.read_csv("data/data_freshness.csv").to_dict(orient="records")
