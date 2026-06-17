@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Header
 import pandas as pd
 from pathlib import Path
 
@@ -860,7 +860,7 @@ def plan_access_matrix():
     return pd.read_csv("data/plan_access_matrix.csv").to_dict(orient="records")
 
 @router.get("/entitlement-check")
-def entitlement_check(endpoint: str, x_api_key: str = None):
+def entitlement_check(endpoint: str, x_api_key: str = Header(default=None)):
     from security.plan_resolver import resolve_plan
     from security.entitlements import has_access
 
