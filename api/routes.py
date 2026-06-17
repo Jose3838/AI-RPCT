@@ -716,3 +716,8 @@ def market_intelligence_snapshot():
         "file": latest.name,
         "content": latest.read_text()
     }
+
+@router.get("/gpu-price-volatility")
+def gpu_price_volatility():
+    import pandas as pd
+    return pd.read_csv("data/gpu_price_volatility.csv").to_dict(orient="records")
