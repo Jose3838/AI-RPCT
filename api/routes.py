@@ -700,3 +700,19 @@ def terminal_trend_history():
 def live_provider_market_share_history():
     import pandas as pd
     return pd.read_csv("data/live_provider_market_share_history.csv").to_dict(orient="records")
+
+@router.get("/market-intelligence-snapshot")
+def market_intelligence_snapshot():
+    from pathlib import Path
+
+    reports = sorted(Path("reports").glob("market_intelligence_snapshot_*.txt"))
+
+    if not reports:
+        return {"error": "no market intelligence snapshot found"}
+
+    latest = reports[-1]
+
+    return {
+        "file": latest.name,
+        "content": latest.read_text()
+    }
