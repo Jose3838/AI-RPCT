@@ -325,3 +325,11 @@ def data_freshness():
 def real_provider_todo():
     import pandas as pd
     return pd.read_csv("data/real_provider_todo.csv").to_dict(orient="records")
+
+@router.get("/provider-live-readiness")
+def provider_live_readiness():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/provider_live_readiness.csv"
+    ).to_dict(orient="records")
