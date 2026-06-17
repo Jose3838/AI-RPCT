@@ -388,3 +388,10 @@ def provider_history():
     return pd.read_csv(
         "data/provider_daily_metrics.csv"
     ).to_dict(orient="records")
+
+@router.get("/index-history")
+def index_history():
+    import pandas as pd
+    return pd.read_csv(
+        "data/index_history.csv"
+    ).to_dict(orient="records")
