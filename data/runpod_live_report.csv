@@ -1,0 +1,48 @@
+provider,gpu,price_per_hour,availability,timestamp
+runpod_real,MI300X,0,1,2026-06-17 11:14:09
+runpod_real,A100 PCIe,0,1,2026-06-17 11:14:09
+runpod_real,A100 SXM 40GB,0,1,2026-06-17 11:14:09
+runpod_real,A100 SXM,0,1,2026-06-17 11:14:09
+runpod_real,A40,0,1,2026-06-17 11:14:09
+runpod_real,B200,0,1,2026-06-17 11:14:09
+runpod_real,B300,0,1,2026-06-17 11:14:09
+runpod_real,RTX 3070,0,1,2026-06-17 11:14:09
+runpod_real,RTX 3080,0,1,2026-06-17 11:14:09
+runpod_real,RTX 3080 Ti,0,1,2026-06-17 11:14:09
+runpod_real,RTX 3090,0,1,2026-06-17 11:14:09
+runpod_real,RTX 3090 Ti,0,1,2026-06-17 11:14:09
+runpod_real,RTX 4070 Ti,0,1,2026-06-17 11:14:09
+runpod_real,RTX 4080,0,1,2026-06-17 11:14:09
+runpod_real,RTX 4080 SUPER,0,1,2026-06-17 11:14:09
+runpod_real,RTX 4090,0,1,2026-06-17 11:14:09
+runpod_real,RTX 5080,0,1,2026-06-17 11:14:09
+runpod_real,RTX 5090,0,1,2026-06-17 11:14:09
+runpod_real,H100 SXM,0,1,2026-06-17 11:14:09
+runpod_real,H100 NVL,0,1,2026-06-17 11:14:09
+runpod_real,H100 PCIe,0,1,2026-06-17 11:14:09
+runpod_real,H200 SXM,0,1,2026-06-17 11:14:09
+runpod_real,H200 NVL,0,1,2026-06-17 11:14:09
+runpod_real,L4,0,1,2026-06-17 11:14:09
+runpod_real,L40,0,1,2026-06-17 11:14:09
+runpod_real,L40S,0,1,2026-06-17 11:14:09
+runpod_real,RTX 2000 Ada,0,1,2026-06-17 11:14:09
+runpod_real,RTX 4000 Ada,0,1,2026-06-17 11:14:09
+runpod_real,RTX 4000 Ada SFF,0,1,2026-06-17 11:14:09
+runpod_real,RTX 5000 Ada,0,1,2026-06-17 11:14:09
+runpod_real,RTX 6000 Ada,0,1,2026-06-17 11:14:09
+runpod_real,RTX A2000,0,1,2026-06-17 11:14:09
+runpod_real,RTX A4000,0,1,2026-06-17 11:14:09
+runpod_real,RTX A4500,0,1,2026-06-17 11:14:09
+runpod_real,RTX A5000,0,1,2026-06-17 11:14:09
+runpod_real,RTX A6000,0,1,2026-06-17 11:14:09
+runpod_real,RTX PRO 4000,0,1,2026-06-17 11:14:09
+runpod_real,RTX PRO 4500,0,1,2026-06-17 11:14:09
+runpod_real,RTX PRO 5000,0,1,2026-06-17 11:14:09
+runpod_real,RTX PRO 6000 MaxQ,0,1,2026-06-17 11:14:09
+runpod_real,RTX PRO 6000,0,1,2026-06-17 11:14:09
+runpod_real,PRO 6000 MIG 24GB,0,1,2026-06-17 11:14:09
+runpod_real,PRO 6000 MIG 48GB,0,1,2026-06-17 11:14:09
+runpod_real,RTX PRO 6000 WK,0,1,2026-06-17 11:14:09
+runpod_real,Tesla V100,0,1,2026-06-17 11:14:09
+runpod_real,V100 SXM2,0,1,2026-06-17 11:14:09
+runpod_real,unknown,0,1,2026-06-17 11:14:09
