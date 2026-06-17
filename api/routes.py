@@ -841,3 +841,10 @@ def api_product_status():
 def usage_plans():
     import pandas as pd
     return pd.read_csv("data/usage_plan_matrix.csv").to_dict(orient="records")
+
+@router.get("/value-proposition")
+def value_proposition():
+    from pathlib import Path
+    return {
+        "content": Path("docs/VALUE_PROPOSITION.md").read_text()
+    }
