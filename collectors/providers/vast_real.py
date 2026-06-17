@@ -8,7 +8,7 @@ class VastRealProvider:
     def fetch(self):
         api_key = os.getenv("VAST_API_KEY")
 
-        if not api_key or api_key == "DEIN_KEY_HIER":
+        if not api_key or api_key == "1576c9bfb8ff3cc2fa08a61af922421ae98211c896edcce9dafe25b9f561003f":
             print("VAST_API_KEY not configured")
             return []
 
