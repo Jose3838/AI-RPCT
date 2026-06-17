@@ -752,3 +752,8 @@ def investor_snapshot():
 def customer_value_score():
     import pandas as pd
     return pd.read_csv("data/customer_value_score.csv").to_dict(orient="records")
+
+@router.get("/founder-summary")
+def founder_summary():
+    import pandas as pd
+    return pd.read_csv("data/founder_dashboard_summary.csv").to_dict(orient="records")
