@@ -344,3 +344,8 @@ def vast_live_report():
         return []
 
     return pd.read_csv(path).to_dict(orient="records")
+
+@router.get("/live-provider-status")
+def live_provider_status():
+    import pandas as pd
+    return pd.read_csv("data/live_provider_status.csv").to_dict(orient="records")
