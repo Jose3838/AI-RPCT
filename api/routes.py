@@ -952,3 +952,39 @@ def history_moat_status():
         "status": "active",
         "files": result
     }
+
+@router.get("/history-health")
+def history_health():
+    import pandas as pd
+    from pathlib import Path
+
+    files = [
+        "data/gpu_price_history.csv",
+        "data/provider_health_history.csv",
+        "data/provider_market_share_history.csv"
+    ]
+
+    result = {}
+
+    for file in files:
+        p = Path(file)
+
+        if p.exists():
+            result[p.name] = len(pd.read_csv(p))
+        else:
+            result[p.name] = 0
+
+    return result
+
+
+@router.get("/usage-analytics")
+def usage_analytics():
+    import pandas as pd
+    from pathlib import Path
+
+    path = Path("data/usage_metrics.csv")
+
+    if not path.exists():
+        return []
+
+    return pd.read_csv(path).to_dict(orient="records")
