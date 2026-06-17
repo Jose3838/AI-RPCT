@@ -1,18 +1,17 @@
-async function loadMetrics() {
-    const response =
-        await fetch(
-            "http://127.0.0.1:8000/metrics"
-        );
+const API = "https://ai-rpct-production.up.railway.app";
 
-    const data =
-        await response.json();
+async function load(id, path) {
+  const el = document.getElementById(id);
 
-    console.log(data);
+  try {
+    const res = await fetch(API + path);
+    const data = await res.json();
+    el.textContent = JSON.stringify(data, null, 2);
+  } catch (e) {
+    el.textContent = "Failed to load " + path;
+  }
 }
 
-loadMetrics();
-
-setInterval(
-    loadMetrics,
-    30000
-);
+load("summary", "/terminal-summary");
+load("providers", "/provider-reliability");
+load("rankings", "/gpu-rankings");

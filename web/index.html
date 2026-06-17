@@ -1,30 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AI-RPCT Web Dashboard</title>
+  <title>AI-RPCT Terminal</title>
 </head>
 <body>
-  <h1>AI-RPCT Web Dashboard</h1>
+  <h1>AI-RPCT Terminal</h1>
+  <p>AI Infrastructure Risk & Provider Concentration Tracker</p>
 
-  <p>Status: MVP frontend initialized.</p>
+  <h2>Live Terminal Summary</h2>
+  <pre id="summary">Loading...</pre>
 
-  <ul>
-    <li>RPCT Score</li>
-    <li>Forecast Signal</li>
-    <li>Provider Rankings</li>
-    <li>Alerts</li>
-    <li>Data Quality</li>
-  </ul>
+  <h2>Provider Reliability</h2>
+  <pre id="providers">Loading...</pre>
+
+  <h2>GPU Rankings</h2>
+  <pre id="rankings">Loading...</pre>
+
+  <script src="app.js"></script>
 </body>
 </html>
-
-<hr>
-
-<h2>System Status</h2>
-
-<div id="status">
-Loading...
-</div>
-
-<script src="app.js"></script>
-
