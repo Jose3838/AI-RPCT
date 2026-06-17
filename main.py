@@ -930,3 +930,43 @@ def save_intelligence_snapshot_v4():
         "file": "intelligence_snapshot_v4_history.csv",
         "snapshot": snapshot
     }
+
+@app.get("/market-signal-trend")
+def market_signal_trend():
+    import csv
+    from pathlib import Path
+
+    file = Path("intelligence_snapshot_v4_history.csv")
+
+    if not file.exists():
+        return {"error": "history file not found"}
+
+    with file.open() as f:
+        rows = list(csv.DictReader(f))
+
+    if len(rows) < 2:
+        return {
+            "trend": "insufficient_data",
+            "snapshots": len(rows)
+        }
+
+    latest = float(rows[-1]["market_signal_score"])
+    previous = float(rows[-2]["market_signal_score"])
+
+    delta = round(latest - previous, 2)
+
+    if delta > 0:
+        trend = "improving"
+    elif delta < 0:
+        trend = "deteriorating"
+    else:
+        trend = "stable"
+
+    return {
+        "trend": trend,
+        "latest_score": latest,
+        "previous_score": previous,
+        "delta": delta,
+        "snapshots": len(rows)
+    }
+
