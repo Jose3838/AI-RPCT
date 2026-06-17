@@ -59,3 +59,8 @@ python analytics/provider_data_mode.py
 python analytics/public_beta_status.py
 python analytics/commercial_readiness.py
 python analytics/launch_readiness.py
+python analytics/live_provider_ingest.py
+python analytics/archive_live_provider_data.py
+python analytics/live_gpu_price_index.py
+python analytics/live_gpu_price_history.py
+python analytics/live_offer_summary.py

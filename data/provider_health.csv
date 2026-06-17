@@ -1,4 +1,6 @@
 provider,gpu,price_per_hour,availability,status
-manual,6,1.5999999999999999,1750.0,OK
-runpod,4,2.15,1000.0,OK
-vast,4,1.05,2500.0,OK
+coreweave,2,2.075,950.0,OK
+lambda_labs,2,1.875,1100.0,OK
+manual,8,1.6,1750.0,OK
+runpod,5,2.15,1000.0,OK
+vast,5,1.05,2500.0,OK
