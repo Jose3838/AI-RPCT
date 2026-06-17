@@ -682,4 +682,11 @@ def live_data_quality():
 @router.get("/live-provider-market-share")
 def live_provider_market_share():
     import pandas as pd
-    return pd.read_csv("data/live_provider_market_share.csv").to_dict(orient="records")
+    from pathlib import Path
+
+    path = Path("data/live_provider_market_share.csv")
+
+    if not path.exists():
+        return []
+
+    return pd.read_csv(path).to_dict(orient="records")
