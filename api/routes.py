@@ -1238,3 +1238,81 @@ def admin_generate_test_history(points: int = 50):
         "total_rows": len(combined),
         "note": "synthetic test history added for forecasting/demo readiness"
     }
+
+@router.get("/market-intelligence-report-v1")
+def market_intelligence_report_v1():
+    import pandas as pd
+    from pathlib import Path
+    from datetime import datetime, timezone
+
+    forecast_path = Path("data/gpu_price_forecast_signal.csv")
+    coverage_path = Path("data/provider_registry.csv")
+    history_path = Path("data/gpu_price_history.csv")
+
+    if forecast_path.exists():
+        forecast = pd.read_csv(forecast_path).iloc[-1].to_dict()
+    else:
+        forecast = {
+            "signal": "no_data",
+            "trend": "unknown",
+            "volatility": 0,
+            "change_pct": None
+        }
+
+    live_providers = 0
+    total_providers = 0
+
+    if coverage_path.exists():
+        providers = pd.read_csv(coverage_path)
+        total_providers = len(providers)
+        live_providers = len(providers[providers["live"] == True])
+
+    history_rows = 0
+    synthetic_rows = 0
+
+    if history_path.exists():
+        history = pd.read_csv(history_path)
+        history_rows = len(history)
+        if "synthetic" in history.columns:
+            synthetic_rows = len(history[history["synthetic"] == True])
+
+    signal = str(forecast.get("signal", "unknown"))
+    trend = str(forecast.get("trend", "unknown"))
+    change_pct = forecast.get("change_pct", None)
+    volatility = forecast.get("volatility", 0)
+
+    if signal == "watch":
+        headline = "GPU infrastructure market shows elevated price movement."
+        interpretation = "Recent GPU price index movement indicates a potential short-term price spike."
+    elif signal == "opportunity":
+        headline = "GPU infrastructure market shows potential buying opportunity."
+        interpretation = "Recent GPU price index movement indicates a short-term price drop."
+    elif signal == "normal":
+        headline = "GPU infrastructure market remains stable."
+        interpretation = "Recent GPU price index movement is within normal range."
+    else:
+        headline = "GPU infrastructure intelligence is collecting more data."
+        interpretation = "Forecast confidence is limited until more historical data is available."
+
+    return {
+        "product": "AI-RPCT",
+        "mission": "Bloomberg for AI Infrastructure",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "headline": headline,
+        "interpretation": interpretation,
+        "market_signal": signal,
+        "trend": trend,
+        "change_pct": change_pct,
+        "volatility": volatility,
+        "provider_coverage": {
+            "live_providers": live_providers,
+            "total_target_providers": total_providers,
+            "coverage_pct": round((live_providers / total_providers) * 100, 2) if total_providers else 0
+        },
+        "data_moat": {
+            "history_rows": history_rows,
+            "synthetic_rows": synthetic_rows,
+            "real_rows": history_rows - synthetic_rows
+        },
+        "recommended_action": "Monitor provider pricing and continue expanding historical snapshots."
+    }
