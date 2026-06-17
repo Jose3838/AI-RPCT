@@ -1,0 +1,13 @@
+timestamp,forecast_score,forecast_signal,risk_level,data_trust
+2026-06-17,15,stable_market_expected,medium,institutional_grade
+2026-06-17,15,stable_market_expected,medium,institutional_grade
+2026-06-17,15,stable_market_expected,medium,institutional_grade
+2026-06-17,15,stable_market_expected,medium,institutional_grade
+2026-06-17,15,stable_market_expected,medium,institutional_grade
+2026-06-17,15,stable_market_expected,medium,institutional_grade
+2026-06-17,15,stable_market_expected,medium,institutional_grade
+2026-06-17T14:35:51.925565,15,stable_market_expected,medium,institutional_grade
+2026-06-17T14:48:09.203478,15,stable_market_expected,medium,institutional_grade
+2026-06-17T14:50:35.733023,15,stable_market_expected,medium,institutional_grade
+2026-06-17T14:52:06.047745,15,stable_market_expected,medium,institutional_grade
+2026-06-17T14:53:37.209497,15,stable_market_expected,medium,institutional_grade
