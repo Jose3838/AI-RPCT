@@ -472,3 +472,11 @@ def gpu_market_brief():
     return pd.read_csv(
         "data/gpu_market_brief.csv"
     ).to_dict(orient="records")
+
+@router.get("/gpu-market-movers")
+def gpu_market_movers():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/gpu_market_movers.csv"
+    ).to_dict(orient="records")
