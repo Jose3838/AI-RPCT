@@ -1,0 +1,11 @@
+
+AI-RPCT Daily Intelligence Summary
+Generated: 2026-06-17 09:14:56.110631
+
+AI Infrastructure Index: 72.17
+GPU Scarcity Index: 40.0
+Provider Dominance Index: 52.72
+Data Moat Score: 100.0%
+
+Interpretation:
+This report summarizes the current AI infrastructure pressure, GPU scarcity, provider dominance, and historical data moat strength.
