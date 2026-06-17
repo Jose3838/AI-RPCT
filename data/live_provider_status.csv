@@ -1,5 +1,5 @@
 timestamp,provider,env_key,configured
-2026-06-17 11:52:54,vast,VAST_API_KEY,True
-2026-06-17 11:52:54,runpod,RUNPOD_API_KEY,True
-2026-06-17 11:52:54,lambda,LAMBDA_API_KEY,False
-2026-06-17 11:52:54,coreweave,COREWEAVE_API_KEY,False
+2026-06-17 12:08:27,vast,VAST_API_KEY,True
+2026-06-17 12:08:27,runpod,RUNPOD_API_KEY,True
+2026-06-17 12:08:27,lambda,LAMBDA_API_KEY,False
+2026-06-17 12:08:27,coreweave,COREWEAVE_API_KEY,False

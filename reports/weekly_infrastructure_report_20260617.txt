@@ -1,9 +1,9 @@
 
 AI-RPCT Weekly Infrastructure Report
-Generated: 2026-06-17 11:52:59.165681
+Generated: 2026-06-17 12:08:31.895246
 
 AI Infrastructure Index: 75.6
-GPU Price Index: 4.5359
+GPU Price Index: 4.2554
 Offers Tracked: 100.0
 
 Most Expensive GPU: B300
@@ -13,4 +13,4 @@ Highest Offer Count: 14
 
 Alerts:
       type severity                      message
-price_move     high GPU price index moved 10.13%
+price_move     high GPU price index moved -6.18%
