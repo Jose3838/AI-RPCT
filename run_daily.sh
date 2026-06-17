@@ -84,3 +84,4 @@ python analytics/provider_coverage_score.py
 python analytics/scarcity_watchlist.py
 python analytics/terminal_risk_score.py
 python analytics/executive_ai_infrastructure_memo.py
+python analytics/live_data_quality_score.py
