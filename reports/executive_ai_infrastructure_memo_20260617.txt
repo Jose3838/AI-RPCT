@@ -1,24 +1,24 @@
 
 AI-RPCT Executive AI Infrastructure Memo
-Generated: 2026-06-17 12:55:05.251117
+Generated: 2026-06-17 13:01:54.386584
 
 Overall Risk Level: high
 Terminal Risk Score: 75
 
 AI Infrastructure Index: 75.6
-GPU Price Index: 4.1226
-GPU Price Trend: price_pressure_down
+GPU Price Index: 4.4556
+GPU Price Trend: price_pressure_up
 Top Provider: vast
 
-Frontier GPU Index: 10.4176
-Frontier Offers: 25.0
+Frontier GPU Index: 11.4369
+Frontier Offers: 26.0
 
 GPU Category Index:
    category  gpu_count  tracked_gpus  total_offers  avg_price
  datacenter          2             0             0     0.0000
-   frontier          4             4            25    10.4176
-   prosumer          2             2            21     0.8478
-workstation          1             1            11     3.3773
+   frontier          4             4            26    11.4369
+   prosumer          2             2            19     0.7306
+workstation          1             1            12     3.1071
 
 Interpretation:
 AI-RPCT monitors live GPU market data, provider health, pricing signals, scarcity indicators and infrastructure risk signals.

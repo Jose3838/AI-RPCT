@@ -1,11 +1,11 @@
 
 AI-RPCT Investor Snapshot
-Generated: 2026-06-17 12:55:06.911548
+Generated: 2026-06-17 13:01:56.054741
 
 AI Infrastructure Pulse: 100
 Risk Level: high
 Dominant Provider: vast
-GPU Price Trend: price_pressure_down
+GPU Price Trend: price_pressure_up
 
 Live Data Quality: 100.0
 Market Data Moat Score: 100.0

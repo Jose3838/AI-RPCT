@@ -103,3 +103,4 @@ python analytics/product_readiness_score.py
 python analytics/founder_operating_dashboard.py
 python analytics/api_product_status.py
 python analytics/product_terminal_readiness.py
+python analytics/monetization_readiness.py
