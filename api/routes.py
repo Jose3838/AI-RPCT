@@ -595,3 +595,14 @@ def api_inventory():
 def market_data_moat():
     import pandas as pd
     return pd.read_csv("data/market_data_moat_status.csv").to_dict(orient="records")
+
+@router.get("/executive-snapshot")
+def executive_snapshot():
+    import pandas as pd
+
+    return {
+        "terminal_summary": pd.read_csv("data/terminal_summary.csv").iloc[-1].to_dict(),
+        "provider_reliability": pd.read_csv("data/provider_reliability_ranking.csv").to_dict(orient="records"),
+        "gpu_market_brief": pd.read_csv("data/gpu_market_brief.csv").iloc[-1].to_dict(),
+        "market_data_moat": pd.read_csv("data/market_data_moat_status.csv").iloc[-1].to_dict()
+    }
