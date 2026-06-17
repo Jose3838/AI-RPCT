@@ -2,39 +2,42 @@ from pathlib import Path
 import pandas as pd
 
 DATA = Path("data")
+DATA.mkdir(exist_ok=True)
 
 history_path = DATA / "gpu_price_history.csv"
 out_path = DATA / "gpu_price_forecast_signal.csv"
 
-if not history_path.exists():
+def write_signal(signal, trend, volatility=0, latest=None, previous=None, change_pct=None):
     pd.DataFrame([{
-        "signal": "no_data",
-        "trend": "unknown",
-        "volatility": 0,
-        "latest_price_index": None,
-        "previous_price_index": None,
-        "change_pct": None
+        "signal": signal,
+        "trend": trend,
+        "volatility": volatility,
+        "latest_price_index": latest,
+        "previous_price_index": previous,
+        "change_pct": change_pct
     }]).to_csv(out_path, index=False)
+
+if not history_path.exists():
+    write_signal("no_data", "unknown")
     print("no history data")
-    raise SystemExit
+    raise SystemExit(0)
 
 df = pd.read_csv(history_path)
-
 price_col = "gpu_price_index"
 
-if price_col not in df.columns or len(df) < 2:
-    pd.DataFrame([{
-        "signal": "insufficient_data",
-        "trend": "unknown",
-        "volatility": 0,
-        "latest_price_index": None,
-        "previous_price_index": None,
-        "change_pct": None
-    }]).to_csv(out_path, index=False)
-    print("insufficient data")
-    raise SystemExit
+if price_col not in df.columns:
+    write_signal("missing_price_column", "unknown")
+    print("missing gpu_price_index column")
+    raise SystemExit(0)
 
 df = df.dropna(subset=[price_col])
+
+if len(df) < 2:
+    latest = float(df[price_col].iloc[-1]) if len(df) == 1 else None
+    write_signal("insufficient_data", "unknown", latest=latest)
+    print("insufficient data")
+    raise SystemExit(0)
+
 latest = float(df[price_col].iloc[-1])
 previous = float(df[price_col].iloc[-2])
 
@@ -51,14 +54,7 @@ else:
     trend = "stable"
     signal = "normal"
 
-pd.DataFrame([{
-    "signal": signal,
-    "trend": trend,
-    "volatility": volatility,
-    "latest_price_index": latest,
-    "previous_price_index": previous,
-    "change_pct": change_pct
-}]).to_csv(out_path, index=False)
+write_signal(signal, trend, volatility, latest, previous, change_pct)
 
 print("forecast signal generated")
 print(pd.read_csv(out_path).to_string(index=False))
