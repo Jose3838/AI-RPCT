@@ -621,3 +621,19 @@ def frontier_gpu_index():
 def intelligence_signal():
     import pandas as pd
     return pd.read_csv("data/intelligence_signal_score.csv").to_dict(orient="records")
+
+@router.get("/daily-terminal-brief")
+def daily_terminal_brief():
+    from pathlib import Path
+
+    reports = sorted(Path("reports").glob("daily_terminal_brief_*.txt"))
+
+    if not reports:
+        return {"error": "no daily terminal brief found"}
+
+    latest = reports[-1]
+
+    return {
+        "file": latest.name,
+        "content": latest.read_text()
+    }
