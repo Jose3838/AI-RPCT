@@ -1,0 +1,2 @@
+launch_readiness_score,github_synced,dockerfile,railway_config,api,health_endpoint,trust_docs,beta_disclosure,tests,data_moat,provider_mode
+100.0,True,True,True,True,True,True,True,True,True,True
