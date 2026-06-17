@@ -449,3 +449,19 @@ def gpu_price_history():
 def live_offer_summary():
     import pandas as pd
     return pd.read_csv("data/live_offer_summary.csv").to_dict(orient="records")
+
+@router.get("/gpu-rankings")
+def gpu_rankings():
+    import pandas as pd
+
+    return {
+        "most_expensive": pd.read_csv(
+            "data/live_gpu_most_expensive.csv"
+        ).to_dict(orient="records"),
+        "cheapest": pd.read_csv(
+            "data/live_gpu_cheapest.csv"
+        ).to_dict(orient="records"),
+        "most_available": pd.read_csv(
+            "data/live_gpu_most_available.csv"
+        ).to_dict(orient="records")
+    }
