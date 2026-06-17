@@ -1,0 +1,11 @@
+endpoint,category,description,tier
+/terminal-summary,terminal,Main terminal summary,free
+/dashboard-snapshot,terminal,Dashboard data bundle,free
+/gpu-price-index,market,Live GPU price index,free
+/gpu-price-history,market,GPU price history,pro
+/gpu-rankings,market,GPU rankings,pro
+/provider-health,provider,Provider health status,pro
+/live-provider-market-share,provider,Live provider market share,pro
+/weekly-infrastructure-report,reports,Weekly infrastructure report,pro
+/investor-snapshot,reports,Investor snapshot,enterprise
+/executive-ai-memo,reports,Executive AI memo,enterprise
