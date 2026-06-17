@@ -10,16 +10,37 @@
       padding: 30px;
     }
     h1 {
-      font-size: 36px;
+      font-size: 38px;
       margin-bottom: 5px;
     }
     .subtitle {
       color: #9fb3c8;
       margin-bottom: 30px;
     }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi {
+      background: #11182b;
+      border: 1px solid #2e3a5c;
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .kpi-title {
+      color: #9fb3c8;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .kpi-value {
+      font-size: 26px;
+      font-weight: bold;
+    }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 20px;
     }
     .card {
@@ -32,12 +53,22 @@
       white-space: pre-wrap;
       word-wrap: break-word;
       color: #d7e3f4;
+      font-size: 13px;
     }
   </style>
 </head>
 <body>
   <h1>AI-RPCT Terminal</h1>
-  <div class="subtitle">AI Infrastructure Risk & Provider Concentration Tracker</div>
+  <div class="subtitle">Bloomberg-style intelligence for AI infrastructure risk</div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="kpi-title">AI Infra Index</div><div class="kpi-value" id="kpi-ai">...</div></div>
+    <div class="kpi"><div class="kpi-title">GPU Price Index</div><div class="kpi-value" id="kpi-price">...</div></div>
+    <div class="kpi"><div class="kpi-title">Trend</div><div class="kpi-value" id="kpi-trend">...</div></div>
+    <div class="kpi"><div class="kpi-title">Live Providers</div><div class="kpi-value" id="kpi-providers">...</div></div>
+    <div class="kpi"><div class="kpi-title">Vast Offers</div><div class="kpi-value" id="kpi-vast">...</div></div>
+    <div class="kpi"><div class="kpi-title">RunPod GPU Types</div><div class="kpi-value" id="kpi-runpod">...</div></div>
+  </div>
 
   <div class="grid">
     <div class="card">
