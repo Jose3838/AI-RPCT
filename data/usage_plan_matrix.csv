@@ -1,0 +1,4 @@
+plan,price_monthly,api_access,reports,history_days,target_user
+free,0,basic,weekly_public,7,curious_users
+pro,49,standard,daily_and_weekly,30,startups_and_engineers
+enterprise,custom,full,custom_reports,365,funds_and_enterprise
