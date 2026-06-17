@@ -858,3 +858,16 @@ def product_terminal_readiness():
 def plan_access_matrix():
     import pandas as pd
     return pd.read_csv("data/plan_access_matrix.csv").to_dict(orient="records")
+
+@router.get("/entitlement-check")
+def entitlement_check(endpoint: str, x_api_key: str = None):
+    from security.plan_resolver import resolve_plan
+    from security.entitlements import has_access
+
+    plan = resolve_plan(x_api_key)
+
+    return {
+        "endpoint": endpoint,
+        "plan": plan,
+        "allowed": has_access(plan, endpoint)
+    }
