@@ -1,0 +1,5 @@
+timestamp,date,metric,value
+2026-06-17 12:08:15,2026-06-17,ai_infrastructure_index,75.6
+2026-06-17 12:08:15,2026-06-17,gpu_price_index,4.5359
+2026-06-17 12:08:15,2026-06-17,terminal_risk_score,80.0
+2026-06-17 12:08:15,2026-06-17,live_data_quality_score,100.0
