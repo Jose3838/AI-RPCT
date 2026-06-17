@@ -726,3 +726,8 @@ def gpu_price_volatility():
 def live_provider_dominance():
     import pandas as pd
     return pd.read_csv("data/live_provider_dominance.csv").to_dict(orient="records")
+
+@router.get("/ai-infrastructure-pulse")
+def ai_infrastructure_pulse():
+    import pandas as pd
+    return pd.read_csv("data/ai_infrastructure_pulse.csv").to_dict(orient="records")
