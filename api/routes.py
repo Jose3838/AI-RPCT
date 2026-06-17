@@ -566,3 +566,22 @@ def public_status():
         ],
         "status": "online"
     }
+
+@router.get("/terminal-kpis")
+def terminal_kpis():
+    import pandas as pd
+
+    summary = pd.read_csv("data/terminal_summary.csv").iloc[-1].to_dict()
+    provider_health = pd.read_csv("data/provider_health.csv")
+    live_offers = pd.read_csv("data/live_provider_data.csv")
+    runpod = pd.read_csv("data/runpod_live_report.csv")
+
+    return {
+        "ai_infrastructure_index": summary.get("ai_infrastructure_index"),
+        "gpu_price_index": summary.get("gpu_price_index"),
+        "gpu_price_trend": summary.get("gpu_price_trend"),
+        "live_providers": len(provider_health[provider_health["status"] == "online"]),
+        "vast_offers": len(live_offers),
+        "runpod_gpu_types": len(runpod),
+        "top_provider": summary.get("top_provider")
+    }
