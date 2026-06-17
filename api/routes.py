@@ -520,3 +520,11 @@ def provider_comparison():
     return pd.read_csv(
         "data/provider_comparison.csv"
     ).to_dict(orient="records")
+
+@router.get("/provider-health")
+def provider_health():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/provider_health.csv"
+    ).to_dict(orient="records")
