@@ -1570,3 +1570,35 @@ def provider_registry():
         "providers": PROVIDERS,
         "count": len(PROVIDERS)
     }
+
+@router.get("/provider-coverage-engine-v2")
+def provider_coverage_engine_v2():
+    providers = [
+        {"provider": "vast", "status": "active", "live": True, "priority": 1},
+        {"provider": "runpod", "status": "active", "live": True, "priority": 1},
+        {"provider": "coreweave", "status": "planned", "live": False, "priority": 2},
+        {"provider": "lambda", "status": "planned", "live": False, "priority": 2},
+        {"provider": "nebius", "status": "planned", "live": False, "priority": 2},
+        {"provider": "crusoe", "status": "planned", "live": False, "priority": 2},
+    ]
+
+    total = len(providers)
+    live = len([p for p in providers if p["live"]])
+    planned = total - live
+
+    return {
+        "product": "AI-RPCT",
+        "coverage_engine": "v2",
+        "live_providers": live,
+        "planned_providers": planned,
+        "total_target_providers": total,
+        "coverage_pct": round((live / total) * 100, 2),
+        "status": "expanding",
+        "next_activation_targets": [
+            "coreweave",
+            "lambda",
+            "nebius",
+            "crusoe"
+        ],
+        "providers": providers
+    }
