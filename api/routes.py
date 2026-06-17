@@ -673,3 +673,8 @@ def executive_ai_memo():
         "file": latest.name,
         "content": latest.read_text()
     }
+
+@router.get("/live-data-quality")
+def live_data_quality():
+    import pandas as pd
+    return pd.read_csv("data/live_data_quality_score.csv").to_dict(orient="records")
