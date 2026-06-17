@@ -606,3 +606,8 @@ def executive_snapshot():
         "gpu_market_brief": pd.read_csv("data/gpu_market_brief.csv").iloc[-1].to_dict(),
         "market_data_moat": pd.read_csv("data/market_data_moat_status.csv").iloc[-1].to_dict()
     }
+
+@router.get("/gpu-watchlist")
+def gpu_watchlist():
+    import pandas as pd
+    return pd.read_csv("data/gpu_watchlist_intelligence.csv").to_dict(orient="records")
