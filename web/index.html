@@ -5,29 +5,46 @@
 <title>AI-RPCT Terminal</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-body{background:#0b1020;color:white;font-family:Arial;padding:20px}
-h1{font-size:40px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.card{background:#151b2e;padding:20px;border-radius:12px}
-.kpi{font-size:36px;font-weight:bold}
-canvas{background:white;border-radius:10px;padding:10px}
+body{background:#0b1020;color:#f4f7fb;font-family:Arial;padding:24px}
+h1{font-size:42px;margin-bottom:4px}
+.subtitle{color:#9fb3c8;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.card{background:#151b2e;border:1px solid #26324f;border-radius:14px;padding:18px}
+.kpi{font-size:34px;font-weight:bold}
+.label{color:#9fb3c8;font-size:13px}
+canvas{background:#fff;border-radius:10px;padding:10px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border-bottom:1px solid #26324f;padding:8px;text-align:left}
+th{color:#9fb3c8}
+.high{color:#ff7676}
+.good{color:#7CFFB2}
 </style>
 </head>
 <body>
 <h1>AI-RPCT Terminal</h1>
+<div class="subtitle">Bloomberg-style intelligence for AI infrastructure risk</div>
 
 <div class="grid">
-<div class="card"><h3>AI Infrastructure Index</h3><div id="aiIndex" class="kpi">...</div></div>
-<div class="card"><h3>GPU Price Index</h3><div id="gpuPrice" class="kpi">...</div></div>
-<div class="card"><h3>Risk Score</h3><div id="riskScore" class="kpi">...</div></div>
-<div class="card"><h3>Provider Count</h3><div id="providerCount" class="kpi">...</div></div>
+  <div class="card"><div class="label">AI Infrastructure Index</div><div id="aiIndex" class="kpi">...</div></div>
+  <div class="card"><div class="label">GPU Price Index</div><div id="gpuPrice" class="kpi">...</div></div>
+  <div class="card"><div class="label">Risk Score</div><div id="riskScore" class="kpi">...</div></div>
+  <div class="card"><div class="label">GPU Trend</div><div id="gpuTrend" class="kpi">...</div></div>
+  <div class="card"><div class="label">Live Providers</div><div id="providerCount" class="kpi">...</div></div>
+  <div class="card"><div class="label">Data Quality</div><div id="quality" class="kpi">...</div></div>
 </div>
 
 <br>
 
 <div class="grid">
-<div class="card"><h3>GPU Price History</h3><canvas id="priceChart"></canvas></div>
-<div class="card"><h3>Provider Market Share</h3><canvas id="marketShareChart"></canvas></div>
+  <div class="card"><h3>Provider Market Share</h3><canvas id="marketShareChart"></canvas></div>
+  <div class="card"><h3>Provider Health</h3><table id="providerHealth"></table></div>
+</div>
+
+<br>
+
+<div class="card">
+  <h3>Top Expensive GPUs</h3>
+  <table id="gpuTable"></table>
 </div>
 
 <script src="app.js"></script>
