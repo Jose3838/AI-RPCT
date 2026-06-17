@@ -747,3 +747,29 @@ from provider_api_key_readiness import build_provider_api_key_readiness
 @app.get("/provider-api-key-readiness")
 def provider_api_key_readiness():
     return build_provider_api_key_readiness()
+
+from connector_maturity_dashboard import (
+    build_connector_maturity_dashboard
+)
+
+@app.get("/connector-maturity-dashboard")
+def connector_maturity_dashboard():
+    return build_connector_maturity_dashboard()
+
+from connector_coverage_score import build_connector_coverage_score
+
+@app.get("/connector-coverage-score")
+def connector_coverage_score():
+    return build_connector_coverage_score()
+
+from live_data_migration_plan import build_live_data_migration_plan
+
+@app.get("/live-data-migration-plan")
+def live_data_migration_plan():
+    return build_live_data_migration_plan()
+
+from live_data_migration_dashboard import build_live_data_migration_dashboard
+
+@app.get("/live-data-migration-dashboard")
+def live_data_migration_dashboard():
+    return build_live_data_migration_dashboard()
