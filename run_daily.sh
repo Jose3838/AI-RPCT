@@ -52,3 +52,5 @@ python analytics/provider_dominance_index.py
 python analytics/cron_health.py
 python analytics/data_moat_score.py
 python analytics/daily_intelligence_summary.py
+python analytics/archive_raw_provider_data.py
+python analytics/data_freshness.py

@@ -1,6 +1,6 @@
 file,exists,age_hours,fresh
-data/gpu_data.csv,True,16.6,True
-data/market_data.csv,True,0.04,True
-data/rpct_scores.csv,True,0.04,True
-data/provider_rankings.csv,True,0.04,True
-data/ai_infrastructure_index.csv,True,0.04,True
+data/gpu_data.csv,True,16.61,True
+data/market_data.csv,True,0.0,True
+data/rpct_scores.csv,True,0.0,True
+data/provider_rankings.csv,True,0.0,True
+data/ai_infrastructure_index.csv,True,0.0,True
