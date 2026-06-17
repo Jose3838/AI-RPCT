@@ -787,3 +787,8 @@ def customer_pipeline_summary():
 def product_readiness():
     import pandas as pd
     return pd.read_csv("data/product_readiness_score.csv").to_dict(orient="records")
+
+@router.get("/founder-operating-dashboard")
+def founder_operating_dashboard():
+    import pandas as pd
+    return pd.read_csv("data/founder_operating_dashboard.csv").to_dict(orient="records")
