@@ -300,3 +300,8 @@ def daily_intelligence():
         "file": latest.name,
         "content": latest.read_text()
     }
+
+@router.get("/provider-intelligence-readiness")
+def provider_intelligence_readiness():
+    import pandas as pd
+    return pd.read_csv("data/provider_intelligence_readiness.csv").to_dict(orient="records")
