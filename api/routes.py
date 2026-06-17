@@ -792,3 +792,17 @@ def product_readiness():
 def founder_operating_dashboard():
     import pandas as pd
     return pd.read_csv("data/founder_operating_dashboard.csv").to_dict(orient="records")
+
+@router.get("/dashboard-version")
+def dashboard_version():
+    return {
+        "dashboard": "v2",
+        "charts": True,
+        "market_share": True,
+        "price_history": True
+    }
+
+@router.get("/dashboard-health")
+def dashboard_health():
+    import pandas as pd
+    return pd.read_csv("data/dashboard_health.csv").to_dict(orient="records")

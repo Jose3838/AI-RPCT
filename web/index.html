@@ -1,102 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AI-RPCT Terminal</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b1020;
-      color: #f4f7fb;
-      padding: 30px;
-    }
-    h1 {
-      font-size: 38px;
-      margin-bottom: 5px;
-    }
-    .subtitle {
-      color: #9fb3c8;
-      margin-bottom: 30px;
-    }
-    .kpis {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .kpi {
-      background: #11182b;
-      border: 1px solid #2e3a5c;
-      border-radius: 14px;
-      padding: 18px;
-    }
-    .kpi-title {
-      color: #9fb3c8;
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
-    .kpi-value {
-      font-size: 26px;
-      font-weight: bold;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #151b2e;
-      border: 1px solid #26324f;
-      border-radius: 12px;
-      padding: 20px;
-    }
-    pre {
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      color: #d7e3f4;
-      font-size: 13px;
-    }
-  </style>
+<meta charset="utf-8">
+<title>AI-RPCT Terminal</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body{background:#0b1020;color:white;font-family:Arial;padding:20px}
+h1{font-size:40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.card{background:#151b2e;padding:20px;border-radius:12px}
+.kpi{font-size:36px;font-weight:bold}
+canvas{background:white;border-radius:10px;padding:10px}
+</style>
 </head>
 <body>
-  <h1>AI-RPCT Terminal</h1>
-  <div class="subtitle">Bloomberg-style intelligence for AI infrastructure risk</div>
+<h1>AI-RPCT Terminal</h1>
 
-  <div class="kpis">
-    <div class="kpi"><div class="kpi-title">AI Infra Index</div><div class="kpi-value" id="kpi-ai">...</div></div>
-    <div class="kpi"><div class="kpi-title">GPU Price Index</div><div class="kpi-value" id="kpi-price">...</div></div>
-    <div class="kpi"><div class="kpi-title">Trend</div><div class="kpi-value" id="kpi-trend">...</div></div>
-    <div class="kpi"><div class="kpi-title">Live Providers</div><div class="kpi-value" id="kpi-providers">...</div></div>
-    <div class="kpi"><div class="kpi-title">Vast Offers</div><div class="kpi-value" id="kpi-vast">...</div></div>
-    <div class="kpi"><div class="kpi-title">RunPod GPU Types</div><div class="kpi-value" id="kpi-runpod">...</div></div>
-  </div>
+<div class="grid">
+<div class="card"><h3>AI Infrastructure Index</h3><div id="aiIndex" class="kpi">...</div></div>
+<div class="card"><h3>GPU Price Index</h3><div id="gpuPrice" class="kpi">...</div></div>
+<div class="card"><h3>Risk Score</h3><div id="riskScore" class="kpi">...</div></div>
+<div class="card"><h3>Provider Count</h3><div id="providerCount" class="kpi">...</div></div>
+</div>
 
-  <div class="grid">
-    <div class="card">
-      <h2>Terminal Summary</h2>
-      <pre id="summary">Loading...</pre>
-    </div>
+<br>
 
-    <div class="card">
-      <h2>Provider Reliability</h2>
-      <pre id="providers">Loading...</pre>
-    </div>
+<div class="grid">
+<div class="card"><h3>GPU Price History</h3><canvas id="priceChart"></canvas></div>
+<div class="card"><h3>Provider Market Share</h3><canvas id="marketShareChart"></canvas></div>
+</div>
 
-    <div class="card">
-      <h2>GPU Rankings</h2>
-      <pre id="rankings">Loading...</pre>
-    </div>
-
-    <div class="card">
-      <h2>GPU Market Brief</h2>
-      <pre id="brief">Loading...</pre>
-    </div>
-
-    <div class="card">
-      <h2>Live Alerts</h2>
-      <pre id="alerts">Loading...</pre>
-    </div>
-  </div>
-
-  <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

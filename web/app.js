@@ -1,45 +1,43 @@
-const API = "https://ai-rpct-production.up.railway.app";
+const API="https://ai-rpct-production.up.railway.app";
 
-async function load(id, path) {
-  const el = document.getElementById(id);
+async function loadDashboard(){
+  const summary=await fetch(API+"/terminal-summary").then(r=>r.json());
+  const risk=await fetch(API+"/terminal-risk").then(r=>r.json());
+  const market=await fetch(API+"/live-provider-market-share").then(r=>r.json());
+  const history=await fetch(API+"/gpu-price-history").then(r=>r.json());
 
-  try {
-    const res = await fetch(API + path);
-    const data = await res.json();
-    el.textContent = JSON.stringify(data, null, 2);
-  } catch (e) {
-    el.textContent = "Failed to load " + path;
-  }
+  document.getElementById("aiIndex").innerText=summary[0].ai_infrastructure_index;
+  document.getElementById("gpuPrice").innerText=summary[0].gpu_price_index;
+  document.getElementById("riskScore").innerText=risk[0].terminal_risk_score;
+  document.getElementById("providerCount").innerText=market.length;
+
+  buildPriceChart(history);
+  buildMarketShareChart(market);
 }
 
-async function loadKpis() {
-  try {
-    const res = await fetch(API + "/terminal-kpis");
-    const data = await res.json();
-
-    document.getElementById("kpi-ai").textContent = data.ai_infrastructure_index;
-    document.getElementById("kpi-price").textContent = data.gpu_price_index;
-    document.getElementById("kpi-trend").textContent = data.gpu_price_trend;
-    document.getElementById("kpi-providers").textContent = data.live_providers;
-    document.getElementById("kpi-vast").textContent = data.vast_offers;
-    document.getElementById("kpi-runpod").textContent = data.runpod_gpu_types;
-  } catch (e) {
-    console.log(e);
-  }
+function buildPriceChart(history){
+  new Chart(document.getElementById("priceChart"),{
+    type:"line",
+    data:{
+      labels:history.map(x=>x.timestamp),
+      datasets:[{
+        label:"GPU Price Index",
+        data:history.map(x=>x.gpu_price_index)
+      }]
+    }
+  });
 }
 
-loadKpis();
-load("summary", "/terminal-summary");
-load("providers", "/provider-reliability");
-load("rankings", "/gpu-rankings");
-load("brief", "/gpu-market-brief");
-load("alerts", "/live-gpu-alerts");
+function buildMarketShareChart(data){
+  new Chart(document.getElementById("marketShareChart"),{
+    type:"doughnut",
+    data:{
+      labels:data.map(x=>x.provider),
+      datasets:[{
+        data:data.map(x=>x.market_share_pct)
+      }]
+    }
+  });
+}
 
-setInterval(() => {
-  loadKpis();
-  load("summary", "/terminal-summary");
-  load("providers", "/provider-reliability");
-  load("rankings", "/gpu-rankings");
-  load("brief", "/gpu-market-brief");
-  load("alerts", "/live-gpu-alerts");
-}, 60000);
+loadDashboard();
