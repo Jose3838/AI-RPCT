@@ -1,0 +1,2 @@
+monetization_readiness_score,usage_plans,plan_access_matrix,api_key_registry,plan_resolver,entitlement_checker,pricing_doc
+100.0,True,True,True,True,True,True
