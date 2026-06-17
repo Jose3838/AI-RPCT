@@ -480,3 +480,8 @@ def gpu_market_movers():
     return pd.read_csv(
         "data/gpu_market_movers.csv"
     ).to_dict(orient="records")
+
+@router.get("/live-gpu-alerts")
+def live_gpu_alerts():
+    import pandas as pd
+    return pd.read_csv("data/live_gpu_alerts.csv").to_dict(orient="records")
