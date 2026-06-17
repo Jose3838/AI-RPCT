@@ -320,3 +320,8 @@ def raw_provider_archives():
 def data_freshness():
     import pandas as pd
     return pd.read_csv("data/data_freshness.csv").to_dict(orient="records")
+
+@router.get("/real-provider-todo")
+def real_provider_todo():
+    import pandas as pd
+    return pd.read_csv("data/real_provider_todo.csv").to_dict(orient="records")
