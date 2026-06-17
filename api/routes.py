@@ -647,3 +647,8 @@ def gpu_category_index():
 def provider_coverage():
     import pandas as pd
     return pd.read_csv("data/provider_coverage_score.csv").to_dict(orient="records")
+
+@router.get("/scarcity-watchlist")
+def scarcity_watchlist():
+    import pandas as pd
+    return pd.read_csv("data/scarcity_watchlist.csv").to_dict(orient="records")
