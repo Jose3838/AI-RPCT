@@ -279,3 +279,8 @@ def provider_dominance():
 def cron_health():
     import pandas as pd
     return pd.read_csv("data/cron_health.csv").to_dict(orient="records")
+
+@router.get("/data-moat")
+def data_moat():
+    import pandas as pd
+    return pd.read_csv("data/data_moat_score.csv").to_dict(orient="records")
