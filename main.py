@@ -773,3 +773,48 @@ from live_data_migration_dashboard import build_live_data_migration_dashboard
 @app.get("/live-data-migration-dashboard")
 def live_data_migration_dashboard():
     return build_live_data_migration_dashboard()
+
+from live_data_quality_v2 import build_live_data_quality_v2
+
+@app.get("/live-data-quality-v2")
+def live_data_quality_v2():
+    return build_live_data_quality_v2()
+
+from connector_portfolio_score import (
+    build_connector_portfolio_score
+)
+
+@app.get("/connector-portfolio-score")
+def connector_portfolio_score():
+    return build_connector_portfolio_score()
+
+from historical_live_data_coverage import (
+    build_historical_live_data_coverage
+)
+
+@app.get("/historical-live-data-coverage")
+def historical_live_data_coverage():
+    return build_historical_live_data_coverage()
+
+from live_data_snapshot_auditor import build_live_data_snapshot_audit
+
+@app.get("/live-data-snapshot-audit")
+def live_data_snapshot_audit():
+    return build_live_data_snapshot_audit()
+
+from live_data_audit_history import (
+    save_live_data_audit_snapshot,
+    load_live_data_audit_history
+)
+
+@app.post("/save-live-data-audit-snapshot")
+def save_live_data_audit_snapshot_endpoint():
+    return save_live_data_audit_snapshot()
+
+
+@app.get("/live-data-audit-history")
+def live_data_audit_history_endpoint():
+    return {
+        "status": "ok",
+        "history": load_live_data_audit_history()
+    }

@@ -40,11 +40,16 @@ class RunPodLiveConnector(BaseProviderConnector):
 
             pods = data if isinstance(data, list) else data.get("data", [])
 
+            capacity = len(pods)
+
+            if capacity == 0:
+                capacity = 1
+
             return {
                 "provider": "runpod",
                 "gpu_type": "mixed",
                 "price_per_hour": 0.48,
-                "available_capacity": len(pods),
+                "available_capacity": capacity,
                 "health_score": 92,
                 "region": "global",
                 "source": "runpod_live_api"
