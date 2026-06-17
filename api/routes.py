@@ -1518,3 +1518,45 @@ def enterprise_report_v2(x_api_key: str = Header(default=None)):
             "and continue building historical infrastructure data."
         )
     }
+
+@router.get("/sales-demo-bundle")
+def sales_demo_bundle():
+    return {
+        "product": "AI-RPCT",
+        "vision": "Bloomberg for AI Infrastructure",
+
+        "product_status": {
+            "dashboard": True,
+            "api_catalog": True,
+            "monetization": True,
+            "enterprise_reports": True
+        },
+
+        "market_coverage": {
+            "live_providers": 2,
+            "target_providers": 6,
+            "coverage_pct": 33.33
+        },
+
+        "data_moat": {
+            "historical_tracking": True,
+            "gpu_price_history": True,
+            "provider_health_history": True,
+            "market_share_history": True
+        },
+
+        "intelligence": {
+            "forecasting_engine": True,
+            "volatility_engine": True,
+            "market_intelligence": True
+        },
+
+        "commercial": {
+            "free_plan": True,
+            "pro_plan": True,
+            "enterprise_plan": True,
+            "api_key_gating": True
+        },
+
+        "current_stage": "commercial_launch_ready"
+    }
