@@ -359,3 +359,8 @@ def provider_data_mode():
 def public_beta_status():
     import pandas as pd
     return pd.read_csv("data/public_beta_status.csv").to_dict(orient="records")
+
+@router.get("/commercial-readiness")
+def commercial_readiness():
+    import pandas as pd
+    return pd.read_csv("data/commercial_readiness.csv").to_dict(orient="records")
