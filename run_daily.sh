@@ -58,3 +58,4 @@ python analytics/live_provider_status.py
 python analytics/provider_data_mode.py
 python analytics/public_beta_status.py
 python analytics/commercial_readiness.py
+python analytics/launch_readiness.py
