@@ -819,3 +819,8 @@ def dashboard_snapshot():
         "gpu_rankings": pd.read_csv("data/live_gpu_most_expensive.csv").head(10).to_dict(orient="records"),
         "provider_health": pd.read_csv("data/provider_health.csv").to_dict(orient="records")
     }
+
+@router.get("/api-catalog")
+def api_catalog():
+    import pandas as pd
+    return pd.read_csv("data/api_catalog.csv").to_dict(orient="records")
