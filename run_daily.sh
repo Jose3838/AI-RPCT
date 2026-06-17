@@ -68,3 +68,4 @@ python analytics/live_gpu_rankings.py
 python analytics/gpu_market_movers.py
 python analytics/live_gpu_alerts.py
 python analytics/weekly_infrastructure_report.py
+python analytics/provider_comparison.py

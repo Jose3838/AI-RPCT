@@ -512,3 +512,11 @@ def runpod_live_report():
         return []
 
     return pd.read_csv(path).to_dict(orient="records")
+
+@router.get("/provider-comparison")
+def provider_comparison():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/provider_comparison.csv"
+    ).to_dict(orient="records")
