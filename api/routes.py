@@ -1162,3 +1162,34 @@ def gpu_forecast_signal_safe():
             "trend": "unknown",
             "error": str(e)
         }]
+
+@router.get("/gpu-forecast-signal-v2")
+def gpu_forecast_signal_v2():
+    import csv
+    from pathlib import Path
+
+    path = Path("data/gpu_price_forecast_signal.csv")
+
+    if not path.exists():
+        return [{
+            "signal": "no_file",
+            "trend": "unknown",
+            "volatility": 0,
+            "latest_price_index": None,
+            "previous_price_index": None,
+            "change_pct": None
+        }]
+
+    rows = []
+    with path.open("r") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            clean = {}
+            for k, v in row.items():
+                if v == "" or v == "nan" or v == "NaN":
+                    clean[k] = None
+                else:
+                    clean[k] = v
+            rows.append(clean)
+
+    return rows
