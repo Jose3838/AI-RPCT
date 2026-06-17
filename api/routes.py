@@ -1105,3 +1105,34 @@ def provider_coverage_index():
             "Crusoe"
         ]
     }
+
+@router.get("/gpu-forecast-signal")
+def gpu_forecast_signal():
+    import pandas as pd
+    from pathlib import Path
+
+    path = Path("data/gpu_price_forecast_signal.csv")
+
+    if not path.exists():
+        return []
+
+    return pd.read_csv(path).to_dict(orient="records")
+
+
+@router.post("/admin/run-forecasting-engine")
+def admin_run_forecasting_engine():
+    import subprocess
+    import sys
+
+    result = subprocess.run(
+        [sys.executable, "analytics/forecasting_engine.py"],
+        capture_output=True,
+        text=True
+    )
+
+    return {
+        "status": "success" if result.returncode == 0 else "error",
+        "returncode": result.returncode,
+        "stdout": result.stdout,
+        "stderr": result.stderr
+    }
