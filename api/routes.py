@@ -853,3 +853,8 @@ def value_proposition():
 def product_terminal_readiness():
     import pandas as pd
     return pd.read_csv("data/product_terminal_readiness.csv").to_dict(orient="records")
+
+@router.get("/plan-access-matrix")
+def plan_access_matrix():
+    import pandas as pd
+    return pd.read_csv("data/plan_access_matrix.csv").to_dict(orient="records")
