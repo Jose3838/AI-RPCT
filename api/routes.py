@@ -1393,3 +1393,55 @@ def market_intelligence_report_v2():
         },
         "recommended_action": "Monitor provider pricing and continue expanding historical snapshots."
     }
+
+@router.get("/enterprise-report-v1")
+def enterprise_report_v1():
+    import csv
+    from pathlib import Path
+    from datetime import datetime, timezone
+
+    forecast = {}
+
+    fp = Path("data/gpu_price_forecast_signal.csv")
+    if fp.exists():
+        with fp.open() as f:
+            rows = list(csv.DictReader(f))
+            if rows:
+                forecast = rows[-1]
+
+    signal = forecast.get("signal", "unknown")
+    trend = forecast.get("trend", "unknown")
+    change_pct = forecast.get("change_pct")
+
+    if signal == "opportunity":
+        executive_summary = (
+            "GPU pricing weakened in the latest observation window. "
+            "Infrastructure buyers may find favorable purchasing conditions."
+        )
+    elif signal == "watch":
+        executive_summary = (
+            "GPU pricing accelerated in the latest observation window. "
+            "Infrastructure costs may increase if momentum continues."
+        )
+    else:
+        executive_summary = (
+            "GPU infrastructure pricing remains within expected ranges."
+        )
+
+    return {
+        "report_type": "enterprise_intelligence",
+        "product": "AI-RPCT",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "executive_summary": executive_summary,
+        "market_signal": signal,
+        "trend": trend,
+        "change_pct": change_pct,
+        "coverage": {
+            "live_providers": 2,
+            "target_providers": 6
+        },
+        "recommendation": (
+            "Continue monitoring GPU pricing, provider health and "
+            "market-share changes."
+        )
+    }
