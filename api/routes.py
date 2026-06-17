@@ -528,3 +528,11 @@ def provider_health():
     return pd.read_csv(
         "data/provider_health.csv"
     ).to_dict(orient="records")
+
+@router.get("/provider-reliability")
+def provider_reliability():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/provider_reliability_ranking.csv"
+    ).to_dict(orient="records")
