@@ -1006,3 +1006,66 @@ def admin_run_history_snapshot():
         "stdout": result.stdout,
         "stderr": result.stderr
     }
+
+@router.get("/dashboard-v5-readiness")
+def dashboard_v5_readiness():
+    import pandas as pd
+    from pathlib import Path
+
+    history_rows = 0
+
+    files = [
+        "data/gpu_price_history.csv",
+        "data/provider_health_history.csv",
+        "data/provider_market_share_history.csv"
+    ]
+
+    for f in files:
+        p = Path(f)
+
+        if p.exists():
+            history_rows += len(pd.read_csv(p))
+
+    return {
+        "product": "AI-RPCT",
+        "version": "5.0",
+        "status": "active",
+        "historical_data_rows": history_rows,
+        "live_providers": 2,
+        "data_moat_active": True,
+        "monetization_ready": True,
+        "sales_ready": True,
+        "api_catalog_active": True
+    }
+
+@router.get("/executive-dashboard")
+def executive_dashboard():
+    import pandas as pd
+    from pathlib import Path
+
+    history_rows = 0
+
+    history_files = [
+        "data/gpu_price_history.csv",
+        "data/provider_health_history.csv",
+        "data/provider_market_share_history.csv"
+    ]
+
+    for f in history_files:
+        p = Path(f)
+
+        if p.exists():
+            history_rows += len(pd.read_csv(p))
+
+    return {
+        "company": "AI-RPCT",
+        "mission": "Bloomberg for AI Infrastructure",
+        "live_providers": 2,
+        "historical_records": history_rows,
+        "market_share_tracking": True,
+        "health_tracking": True,
+        "price_tracking": True,
+        "monetization": "active",
+        "sales": "ready",
+        "stage": "data_moat_building"
+    }
