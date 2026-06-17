@@ -782,3 +782,8 @@ def public_usage_snapshot():
 def customer_pipeline_summary():
     import pandas as pd
     return pd.read_csv("data/customer_pipeline_summary.csv").to_dict(orient="records")
+
+@router.get("/product-readiness")
+def product_readiness():
+    import pandas as pd
+    return pd.read_csv("data/product_readiness_score.csv").to_dict(orient="records")
