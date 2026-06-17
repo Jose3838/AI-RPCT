@@ -1,4 +1,3 @@
 gpu,category,priority,offers,avg_price,min_price,max_price,tracked,scarcity_flag
-H100 SXM,frontier,1,0,0.0,0.0,0.0,False,True
 A100 SXM,datacenter,3,0,0.0,0.0,0.0,False,True
 MI300X,datacenter,3,0,0.0,0.0,0.0,False,True

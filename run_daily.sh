@@ -92,3 +92,6 @@ python analytics/gpu_price_volatility.py
 python analytics/live_provider_dominance.py
 python analytics/ai_infrastructure_pulse.py
 python analytics/investor_snapshot.py
+python analytics/customer_value_score.py
+python analytics/founder_dashboard_summary.py
+python analytics/sales_readiness.py
