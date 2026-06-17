@@ -1,0 +1,10 @@
+gpu,category,priority
+B200,frontier,1
+B300,frontier,1
+H200,frontier,1
+H100 SXM,frontier,1
+RTX 5090,prosumer,2
+RTX 4090,prosumer,2
+RTX PRO 6000 S,workstation,2
+A100 SXM,datacenter,3
+MI300X,datacenter,3
