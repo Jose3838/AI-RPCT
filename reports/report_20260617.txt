@@ -2,19 +2,19 @@
 AI-RPCT DAILY REPORT
 ====================
 
-Generated: 2026-06-17 10:53:38.208809
+Generated: 2026-06-17 10:55:28.984569
 
 Current RPCT Score: 100
 Regime: Critical
 Drivers: NVDA above 200, BTC above 60k, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained
 
-Forecast Score: 60.00
-Outlook: ELEVATED RISK
+Forecast Score: 76.00
+Outlook: HIGH RISK
 
 Top Providers:
 
 vast | Score=75.58 | Price=$1.05/hr | Availability=2500
 manual | Score=47.79 | Price=$1.60/hr | Availability=1750
 lambda_labs | Score=28.40 | Price=$1.88/hr | Availability=1100
-coreweave | Score=20.74 | Price=$2.07/hr | Availability=950
+coreweave | Score=20.74 | Price=$2.08/hr | Availability=950
 runpod | Score=20.00 | Price=$2.15/hr | Availability=1000

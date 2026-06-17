@@ -1,6 +1,6 @@
 # AI-RPCT Research Snapshot
 
-Generated: 2026-06-17 10:53:38.411282
+Generated: 2026-06-17 10:55:29.189012
 
 ## Current Infrastructure Risk
 
@@ -10,14 +10,14 @@ Generated: 2026-06-17 10:53:38.411282
 
 ## Forecast
 
-- Forecast Score: 60.00
-- Outlook: ELEVATED RISK
-- Shortage Probability: 0%
+- Forecast Score: 76.00
+- Outlook: HIGH RISK
+- Shortage Probability: 40%
 
 ## Provider Leaderboard
 
 - vast: score 75.58, price $1.05/hr, availability 2500
 - manual: score 47.79, price $1.60/hr, availability 1750
 - lambda_labs: score 28.40, price $1.88/hr, availability 1100
-- coreweave: score 20.74, price $2.07/hr, availability 950
+- coreweave: score 20.74, price $2.08/hr, availability 950
 - runpod: score 20.00, price $2.15/hr, availability 1000
