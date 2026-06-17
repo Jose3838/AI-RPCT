@@ -2,19 +2,69 @@
 <html>
 <head>
   <title>AI-RPCT Terminal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: #f4f7fb;
+      padding: 30px;
+    }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 5px;
+    }
+    .subtitle {
+      color: #9fb3c8;
+      margin-bottom: 30px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #151b2e;
+      border: 1px solid #26324f;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      color: #d7e3f4;
+    }
+  </style>
 </head>
 <body>
   <h1>AI-RPCT Terminal</h1>
-  <p>AI Infrastructure Risk & Provider Concentration Tracker</p>
+  <div class="subtitle">AI Infrastructure Risk & Provider Concentration Tracker</div>
 
-  <h2>Live Terminal Summary</h2>
-  <pre id="summary">Loading...</pre>
+  <div class="grid">
+    <div class="card">
+      <h2>Terminal Summary</h2>
+      <pre id="summary">Loading...</pre>
+    </div>
 
-  <h2>Provider Reliability</h2>
-  <pre id="providers">Loading...</pre>
+    <div class="card">
+      <h2>Provider Reliability</h2>
+      <pre id="providers">Loading...</pre>
+    </div>
 
-  <h2>GPU Rankings</h2>
-  <pre id="rankings">Loading...</pre>
+    <div class="card">
+      <h2>GPU Rankings</h2>
+      <pre id="rankings">Loading...</pre>
+    </div>
+
+    <div class="card">
+      <h2>GPU Market Brief</h2>
+      <pre id="brief">Loading...</pre>
+    </div>
+
+    <div class="card">
+      <h2>Live Alerts</h2>
+      <pre id="alerts">Loading...</pre>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>
