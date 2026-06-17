@@ -7,7 +7,7 @@ B200,True,True,2
 B300,True,True,2
 H100 NVL,True,True,2
 H100 PCIe,False,True,1
-H100 SXM,True,True,2
+H100 SXM,False,True,1
 H200,True,False,1
 H200 NVL,True,True,2
 H200 SXM,False,True,1
@@ -19,7 +19,7 @@ PRO 6000 MIG 24GB,False,True,1
 PRO 6000 MIG 48GB,False,True,1
 RTX 2000 Ada,False,True,1
 RTX 3070,False,True,1
-RTX 3080,False,True,1
+RTX 3080,True,True,2
 RTX 3080 Ti,True,True,2
 RTX 3090,True,True,2
 RTX 3090 Ti,False,True,1
@@ -43,7 +43,7 @@ RTX A4000,False,True,1
 RTX A4500,False,True,1
 RTX A5000,False,True,1
 RTX A6000,False,True,1
-RTX PRO 4000,True,True,2
+RTX PRO 4000,False,True,1
 RTX PRO 4500,True,True,2
 RTX PRO 5000,True,True,2
 RTX PRO 6000,False,True,1

@@ -88,3 +88,7 @@ python analytics/live_data_quality_score.py
 python analytics/terminal_trend_history.py
 python analytics/provider_market_share_history.py
 python analytics/market_intelligence_snapshot.py
+python analytics/gpu_price_volatility.py
+python analytics/live_provider_dominance.py
+python analytics/ai_infrastructure_pulse.py
+python analytics/investor_snapshot.py

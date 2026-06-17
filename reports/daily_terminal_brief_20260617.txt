@@ -1,22 +1,22 @@
 
 AI-RPCT Daily Terminal Brief
-Generated: 2026-06-17 12:08:34.178389
+Generated: 2026-06-17 12:11:13.623440
 
 AI Infrastructure Index: 75.6
-GPU Price Index: 4.2554
-GPU Price Trend: price_pressure_down
+GPU Price Index: 4.2322
+GPU Price Trend: stable
 Top Provider: vast
 
-Frontier GPU Index: 11.5316
+Frontier GPU Index: 13.4798
 Frontier Offers: 22.0
 
 Intelligence Signal: high_attention
-Signal Score: 100
+Signal Score: 80
 
 Top Watchlist GPUs:
            gpu    category  offers  avg_price  min_price  max_price
-          B200    frontier      10    16.0826     3.1021    45.0069
           B300    frontier       3    14.5854     6.2521    25.0021
-          H200    frontier       8    12.2471     3.2120    26.6570
-RTX PRO 6000 S workstation      12     3.5960     1.6556     6.9363
-      H100 SXM    frontier       1     3.2111     3.2111     3.2111
+          B200    frontier      12    14.5841     3.4444    32.5069
+          H200    frontier       7    11.2699     2.8304    29.4759
+RTX PRO 6000 S workstation      12     3.9472     1.6556     6.9363
+      RTX 5090    prosumer      13     1.0435     0.2129     2.6704

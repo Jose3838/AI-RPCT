@@ -1,13 +1,13 @@
 
 AI-RPCT Market Intelligence Snapshot
-Generated: 2026-06-17 12:08:36.047225
+Generated: 2026-06-17 12:11:15.602326
 
 AI Infrastructure Index: 75.6
-GPU Price Index: 4.2554
-GPU Price Trend: price_pressure_down
+GPU Price Index: 4.2322
+GPU Price Trend: stable
 
-Terminal Risk Score: 75
-Risk Level: high
+Terminal Risk Score: 55
+Risk Level: medium
 
 Live Data Quality Score: 100.0
 
