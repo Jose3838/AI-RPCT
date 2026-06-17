@@ -652,3 +652,8 @@ def provider_coverage():
 def scarcity_watchlist():
     import pandas as pd
     return pd.read_csv("data/scarcity_watchlist.csv").to_dict(orient="records")
+
+@router.get("/terminal-risk")
+def terminal_risk():
+    import pandas as pd
+    return pd.read_csv("data/terminal_risk_score.csv").to_dict(orient="records")
