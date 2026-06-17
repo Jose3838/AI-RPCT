@@ -848,3 +848,8 @@ def value_proposition():
     return {
         "content": Path("docs/VALUE_PROPOSITION.md").read_text()
     }
+
+@router.get("/product-terminal-readiness")
+def product_terminal_readiness():
+    import pandas as pd
+    return pd.read_csv("data/product_terminal_readiness.csv").to_dict(orient="records")
