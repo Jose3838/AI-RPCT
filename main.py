@@ -818,3 +818,115 @@ def live_data_audit_history_endpoint():
         "status": "ok",
         "history": load_live_data_audit_history()
     }
+
+from provider_stability_score import (
+    build_provider_stability_score
+)
+
+@app.get("/provider-stability-score")
+def provider_stability_score():
+    return build_provider_stability_score()
+
+from provider_market_leadership import (
+    build_provider_market_leadership
+)
+
+@app.get("/provider-market-leadership")
+def provider_market_leadership():
+    return build_provider_market_leadership()
+
+from provider_momentum import build_provider_momentum
+
+@app.get("/provider-momentum")
+def provider_momentum():
+    return build_provider_momentum()
+
+from provider_momentum_history import (
+    save_provider_momentum_snapshot,
+    load_provider_momentum_history
+)
+
+@app.post("/save-provider-momentum-snapshot")
+def save_provider_momentum_snapshot_endpoint():
+    return save_provider_momentum_snapshot()
+
+
+@app.get("/provider-momentum-history")
+def provider_momentum_history_endpoint():
+    return {
+        "status": "ok",
+        "history": load_provider_momentum_history()
+    }
+
+from automated_intelligence_snapshot_v3 import run_intelligence_snapshot_v3
+
+@app.post("/run-intelligence-snapshot-v3")
+def run_intelligence_snapshot_v3_endpoint():
+    return run_intelligence_snapshot_v3()
+
+from intelligence_core_v4 import (
+    market_regime,
+    provider_strength,
+    early_warning,
+    market_signal,
+    snapshot_v4,
+)
+
+@app.get("/market-regime-v4")
+def market_regime_v4():
+    return market_regime()
+
+@app.get("/provider-strength-v4")
+def provider_strength_v4():
+    return provider_strength()
+
+@app.get("/early-warning-v4")
+def early_warning_v4():
+    return early_warning()
+
+@app.get("/market-signal-v4")
+def market_signal_v4():
+    return market_signal()
+
+@app.get("/run-intelligence-snapshot-v4")
+def run_intelligence_snapshot_v4():
+    return snapshot_v4()
+
+import csv
+from pathlib import Path
+
+@app.post("/save-intelligence-snapshot-v4")
+def save_intelligence_snapshot_v4():
+    snapshot = snapshot_v4()
+    file = Path("intelligence_snapshot_v4_history.csv")
+    exists = file.exists()
+
+    with file.open("a", newline="") as f:
+        writer = csv.writer(f)
+
+        if not exists:
+            writer.writerow([
+                "timestamp",
+                "market_regime",
+                "market_signal_score",
+                "market_direction",
+                "top_provider",
+                "weakest_provider"
+            ])
+
+        providers = snapshot["provider_strength"]
+
+        writer.writerow([
+            snapshot["generated_at"],
+            snapshot["market_regime"]["market_regime"],
+            snapshot["market_signal"]["market_signal_score"],
+            snapshot["market_signal"]["market_direction"],
+            providers[0]["provider"] if providers else None,
+            providers[-1]["provider"] if providers else None
+        ])
+
+    return {
+        "status": "saved",
+        "file": "intelligence_snapshot_v4_history.csv",
+        "snapshot": snapshot
+    }
