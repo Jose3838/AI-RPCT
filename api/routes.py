@@ -777,3 +777,8 @@ def feedback_summary():
 def public_usage_snapshot():
     import pandas as pd
     return pd.read_csv("data/public_usage_snapshot.csv").to_dict(orient="records")
+
+@router.get("/customer-pipeline-summary")
+def customer_pipeline_summary():
+    import pandas as pd
+    return pd.read_csv("data/customer_pipeline_summary.csv").to_dict(orient="records")
