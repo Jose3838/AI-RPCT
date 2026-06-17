@@ -1,3 +1,3 @@
 provider,env_key,configured
-vast,VAST_API_KEY,False
+vast,VAST_API_KEY,True
 runpod,RUNPOD_API_KEY,False
