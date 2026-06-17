@@ -1,8 +1,8 @@
 #!/bin/bash
-cd ~/AI-RPCT 2>/dev/null || cd /app
-source venv/bin/activate 2>/dev/null || true
+cd /app 2>/dev/null || cd ~/AI-RPCT
+export PYTHONPATH="$PWD"
 
-python database/init_db.py
-python database/import_csv.py
+python database/init_db.py || true
+python database/import_csv.py || true
 
 uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}
