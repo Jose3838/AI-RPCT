@@ -1,2 +1,2 @@
-dashboard_status,version,kpi_cards,charts,tables
-healthy,v3,True,True,True
+dashboard_status,version,kpi_cards,charts,tables,report_links,auto_refresh
+healthy,v4,True,True,True,True,True

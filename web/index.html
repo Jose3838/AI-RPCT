@@ -5,9 +5,10 @@
 <title>AI-RPCT Terminal</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-body{background:#0b1020;color:#f4f7fb;font-family:Arial;padding:24px}
+body{background:#070b16;color:#f4f7fb;font-family:Arial;padding:24px}
 h1{font-size:42px;margin-bottom:4px}
-.subtitle{color:#9fb3c8;margin-bottom:24px}
+.subtitle{color:#9fb3c8;margin-bottom:18px}
+.status{color:#7CFFB2;margin-bottom:24px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
 .card{background:#151b2e;border:1px solid #26324f;border-radius:14px;padding:18px}
 .kpi{font-size:34px;font-weight:bold}
@@ -16,13 +17,13 @@ canvas{background:#fff;border-radius:10px;padding:10px}
 table{width:100%;border-collapse:collapse;font-size:13px}
 th,td{border-bottom:1px solid #26324f;padding:8px;text-align:left}
 th{color:#9fb3c8}
-.high{color:#ff7676}
-.good{color:#7CFFB2}
+a{color:#7cb7ff}
 </style>
 </head>
 <body>
 <h1>AI-RPCT Terminal</h1>
 <div class="subtitle">Bloomberg-style intelligence for AI infrastructure risk</div>
+<div class="status" id="refreshStatus">Loading live data...</div>
 
 <div class="grid">
   <div class="card"><div class="label">AI Infrastructure Index</div><div id="aiIndex" class="kpi">...</div></div>
@@ -42,9 +43,15 @@ th{color:#9fb3c8}
 
 <br>
 
-<div class="card">
-  <h3>Top Expensive GPUs</h3>
-  <table id="gpuTable"></table>
+<div class="grid">
+  <div class="card"><h3>Top Expensive GPUs</h3><table id="gpuTable"></table></div>
+  <div class="card">
+    <h3>Reports</h3>
+    <p><a href="/weekly-infrastructure-report" target="_blank">Weekly Infrastructure Report</a></p>
+    <p><a href="/investor-snapshot" target="_blank">Investor Snapshot</a></p>
+    <p><a href="/market-intelligence-snapshot" target="_blank">Market Intelligence Snapshot</a></p>
+    <p><a href="/executive-ai-memo" target="_blank">Executive AI Memo</a></p>
+  </div>
 </div>
 
 <script src="app.js"></script>

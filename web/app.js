@@ -1,4 +1,5 @@
 const API="https://ai-rpct-production.up.railway.app";
+let marketChart=null;
 
 async function get(path){
   const res=await fetch(API+path);
@@ -28,7 +29,9 @@ async function load(){
   document.getElementById("providerCount").innerText = snap.market_share.length;
   document.getElementById("quality").innerText = snap.quality.live_data_quality_score + "%";
 
-  new Chart(document.getElementById("marketShareChart"),{
+  if(marketChart){ marketChart.destroy(); }
+
+  marketChart = new Chart(document.getElementById("marketShareChart"),{
     type:"doughnut",
     data:{
       labels:snap.market_share.map(x=>x.provider),
@@ -36,17 +39,11 @@ async function load(){
     }
   });
 
-  table(
-    document.getElementById("providerHealth"),
-    snap.provider_health,
-    ["provider","status","rows","freshness_hours","health_score"]
-  );
+  table(document.getElementById("providerHealth"), snap.provider_health, ["provider","status","rows","freshness_hours","health_score"]);
+  table(document.getElementById("gpuTable"), snap.gpu_rankings, ["gpu","offers","avg_price","min_price","max_price"]);
 
-  table(
-    document.getElementById("gpuTable"),
-    snap.gpu_rankings,
-    ["gpu","offers","avg_price","min_price","max_price"]
-  );
+  document.getElementById("refreshStatus").innerText =
+    "Live data refreshed: " + new Date().toLocaleTimeString();
 }
 
 load();
