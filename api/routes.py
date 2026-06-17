@@ -1445,3 +1445,76 @@ def enterprise_report_v1():
             "market-share changes."
         )
     }
+
+@router.get("/enterprise-report-v2")
+def enterprise_report_v2(x_api_key: str = Header(default=None)):
+    import csv
+    from pathlib import Path
+    from datetime import datetime, timezone
+    from security.plan_resolver import resolve_plan
+
+    plan = resolve_plan(x_api_key)
+
+    if plan != "enterprise":
+        return {
+            "allowed": False,
+            "required_plan": "enterprise",
+            "current_plan": plan,
+            "message": "Enterprise report requires enterprise access."
+        }
+
+    forecast = {}
+    fp = Path("data/gpu_price_forecast_signal.csv")
+
+    if fp.exists():
+        with fp.open() as f:
+            rows = list(csv.DictReader(f))
+            if rows:
+                forecast = rows[-1]
+
+    signal = forecast.get("signal", "unknown")
+    trend = forecast.get("trend", "unknown")
+    change_pct = forecast.get("change_pct")
+    volatility = forecast.get("volatility")
+
+    if signal == "opportunity":
+        executive_summary = (
+            "GPU pricing weakened in the latest observation window. "
+            "Infrastructure buyers may find favorable purchasing conditions."
+        )
+    elif signal == "watch":
+        executive_summary = (
+            "GPU pricing accelerated in the latest observation window. "
+            "Infrastructure costs may increase if momentum continues."
+        )
+    elif signal == "normal":
+        executive_summary = (
+            "GPU infrastructure pricing remains stable in the latest observation window."
+        )
+    else:
+        executive_summary = (
+            "GPU infrastructure intelligence is collecting additional history "
+            "before issuing a stronger market view."
+        )
+
+    return {
+        "allowed": True,
+        "plan": plan,
+        "report_type": "enterprise_intelligence",
+        "product": "AI-RPCT",
+        "mission": "Bloomberg for AI Infrastructure",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "executive_summary": executive_summary,
+        "market_signal": signal,
+        "trend": trend,
+        "change_pct": change_pct,
+        "volatility": volatility,
+        "coverage": {
+            "live_providers": 2,
+            "target_providers": 6
+        },
+        "recommendation": (
+            "Monitor GPU pricing, provider health, market-share changes "
+            "and continue building historical infrastructure data."
+        )
+    }
