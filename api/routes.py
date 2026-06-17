@@ -871,3 +871,8 @@ def entitlement_check(endpoint: str, x_api_key: str = None):
         "plan": plan,
         "allowed": has_access(plan, endpoint)
     }
+
+@router.get("/monetization-readiness")
+def monetization_readiness():
+    import pandas as pd
+    return pd.read_csv("data/monetization_readiness.csv").to_dict(orient="records")
