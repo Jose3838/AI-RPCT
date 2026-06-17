@@ -1,29 +1,18 @@
-# AI-RPCT v20.4
+# AI-RPCT v66.0
 
-Status: SaaS Beta Preparation
+Status: Public Beta Terminal
 
-Current capabilities:
+Live capabilities:
 
-- Local data pipeline
-- GPU provider abstraction
-- RPCT score
-- Forecast signal
-- Alert engine
-- Provider rankings
-- Market share analytics
-- Concentration analytics
-- FastAPI service
-- API key foundation
-- User registry
-- Plan limits
-- SQLite database
-- Docker deployment files
-- Investor reports
-- Beta documentation
-
-Next:
-
-- Real GPU provider APIs
-- Hosted deployment
-- Real users
-- Billing
+- Railway deployment
+- Public API
+- Web terminal
+- Vast.ai live feed
+- RunPod live feed
+- GPU price index
+- GPU price history
+- GPU rankings
+- Provider reliability
+- Weekly infrastructure report
+- Live GPU alerts
+- Public beta status
