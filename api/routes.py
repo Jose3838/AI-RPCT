@@ -731,3 +731,19 @@ def live_provider_dominance():
 def ai_infrastructure_pulse():
     import pandas as pd
     return pd.read_csv("data/ai_infrastructure_pulse.csv").to_dict(orient="records")
+
+@router.get("/investor-snapshot")
+def investor_snapshot():
+    from pathlib import Path
+
+    reports = sorted(Path("reports").glob("investor_snapshot_*.txt"))
+
+    if not reports:
+        return {"error": "no investor snapshot found"}
+
+    latest = reports[-1]
+
+    return {
+        "file": latest.name,
+        "content": latest.read_text()
+    }
