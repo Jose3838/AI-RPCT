@@ -1,0 +1,7 @@
+provider,status,live,priority
+vast,active,true,1
+runpod,active,true,1
+coreweave,planned,false,2
+lambda,planned,false,2
+nebius,planned,false,2
+crusoe,planned,false,2

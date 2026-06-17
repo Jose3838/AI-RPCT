@@ -1069,3 +1069,39 @@ def executive_dashboard():
         "sales": "ready",
         "stage": "data_moat_building"
     }
+
+@router.get("/provider-expansion-status")
+def provider_expansion_status():
+    import pandas as pd
+
+    providers = pd.read_csv("data/provider_registry.csv")
+
+    return {
+        "total_providers": len(providers),
+        "live_providers": int(len(providers[providers["live"] == True])),
+        "planned_providers": int(len(providers[providers["live"] == False])),
+        "providers": providers.to_dict(orient="records")
+    }
+
+@router.get("/provider-coverage-index")
+def provider_coverage_index():
+    import pandas as pd
+
+    providers = pd.read_csv("data/provider_registry.csv")
+
+    total = len(providers)
+    live = len(providers[providers["live"] == True])
+
+    score = round((live / total) * 100, 2)
+
+    return {
+        "coverage_score": score,
+        "live_providers": live,
+        "total_target_providers": total,
+        "next_targets": [
+            "CoreWeave",
+            "Lambda",
+            "Nebius",
+            "Crusoe"
+        ]
+    }
