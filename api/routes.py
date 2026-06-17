@@ -616,3 +616,8 @@ def gpu_watchlist():
 def frontier_gpu_index():
     import pandas as pd
     return pd.read_csv("data/frontier_gpu_index.csv").to_dict(orient="records")
+
+@router.get("/intelligence-signal")
+def intelligence_signal():
+    import pandas as pd
+    return pd.read_csv("data/intelligence_signal_score.csv").to_dict(orient="records")
