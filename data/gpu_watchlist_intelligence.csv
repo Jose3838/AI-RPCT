@@ -1,10 +1,10 @@
 gpu,category,priority,offers,avg_price,min_price,max_price,tracked
-B200,frontier,1,12,13.9741,3.1021,31.8097,True
+B200,frontier,1,12,15.3035,3.4444,40.0069,True
 B300,frontier,1,3,14.5854,6.2521,25.0021,True
-H200,frontier,1,7,10.1905,3.212,22.636,True
-H100 SXM,frontier,1,1,10.6689,10.6689,10.6689,True
-RTX 5090,prosumer,2,13,0.9133,0.2129,2.0044,True
-RTX 4090,prosumer,2,5,0.4995,0.2978,0.8817,True
-RTX PRO 6000 S,workstation,2,12,3.3805,1.4689,6.9363,True
+H200,frontier,1,7,11.2483,3.212,29.4759,True
+H100 SXM,frontier,1,1,18.6681,18.6681,18.6681,True
+RTX 5090,prosumer,2,12,0.9393,0.2129,2.6704,True
+RTX 4090,prosumer,2,6,0.6012,0.3644,1.0741,True
+RTX PRO 6000 S,workstation,2,12,3.4902,1.4526,6.9363,True
 A100 SXM,datacenter,3,0,0.0,0.0,0.0,False
 MI300X,datacenter,3,0,0.0,0.0,0.0,False

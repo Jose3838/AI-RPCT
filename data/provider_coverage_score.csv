@@ -20,14 +20,13 @@ PRO 6000 MIG 24GB,False,True,1
 PRO 6000 MIG 48GB,False,True,1
 RTX 2000 Ada,False,True,1
 RTX 3070,False,True,1
-RTX 3080,False,True,1
+RTX 3080,True,True,2
 RTX 3080 Ti,True,True,2
 RTX 3090,True,True,2
 RTX 3090 Ti,False,True,1
 RTX 4000 Ada,False,True,1
 RTX 4000 Ada SFF,False,True,1
 RTX 4070 Ti,False,True,1
-RTX 4070S Ti,True,False,1
 RTX 4080,False,True,1
 RTX 4080 SUPER,False,True,1
 RTX 4090,True,True,2
@@ -38,12 +37,13 @@ RTX 5070 Ti,True,False,1
 RTX 5080,True,True,2
 RTX 5090,True,True,2
 RTX 6000 Ada,False,True,1
+RTX 6000Ada,True,False,1
 RTX A2000,False,True,1
 RTX A4000,False,True,1
 RTX A4500,False,True,1
 RTX A5000,False,True,1
 RTX A6000,False,True,1
-RTX PRO 4000,True,True,2
+RTX PRO 4000,False,True,1
 RTX PRO 4500,True,True,2
 RTX PRO 5000,True,True,2
 RTX PRO 6000,False,True,1

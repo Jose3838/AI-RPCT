@@ -98,3 +98,6 @@ python analytics/sales_readiness.py
 python analytics/history_summary.py
 python analytics/feedback_summary.py
 python analytics/public_usage_snapshot.py
+python analytics/customer_pipeline_summary.py
+python analytics/product_readiness_score.py
+python analytics/founder_operating_dashboard.py

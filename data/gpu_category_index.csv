@@ -1,5 +1,5 @@
 category,gpu_count,tracked_gpus,total_offers,avg_price
 datacenter,2,0,0,0.0
-frontier,4,4,23,12.3547
-prosumer,2,2,18,0.7064
-workstation,1,1,12,3.3805
+frontier,4,4,23,14.9513
+prosumer,2,2,18,0.7702
+workstation,1,1,12,3.4902
