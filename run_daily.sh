@@ -70,3 +70,6 @@ python analytics/live_gpu_alerts.py
 python analytics/weekly_infrastructure_report.py
 python analytics/provider_comparison.py
 python analytics/provider_health.py
+python analytics/provider_reliability_ranking.py
+python analytics/gpu_price_trend_signal.py
+python analytics/terminal_summary.py
