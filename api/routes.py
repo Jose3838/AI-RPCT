@@ -364,3 +364,8 @@ def public_beta_status():
 def commercial_readiness():
     import pandas as pd
     return pd.read_csv("data/commercial_readiness.csv").to_dict(orient="records")
+
+@router.get("/trust-status")
+def trust_status():
+    import pandas as pd
+    return pd.read_csv("data/trust_status.csv").to_dict(orient="records")
