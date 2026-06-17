@@ -1,6 +1,6 @@
 
 AI-RPCT Daily Intelligence Summary
-Generated: 2026-06-17 09:14:56.110631
+Generated: 2026-06-17 09:15:09.031818
 
 AI Infrastructure Index: 72.17
 GPU Scarcity Index: 40.0

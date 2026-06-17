@@ -14,3 +14,6 @@ ai_infrastructure_index,rpct_score,forecast_score,provider_hhi,index_name,date,g
 72.17,100.0,60.0,4084.782564367696,ai_infrastructure,2026-06-17,,,,
 ,,,,gpu_scarcity,2026-06-17,40.0,1.6,1750.0,
 ,,,,provider_concentration,2026-06-17,,,,4084.782564367696
+72.17,100.0,60.0,4084.782564367696,ai_infrastructure,2026-06-17,,,,
+,,,,gpu_scarcity,2026-06-17,40.0,1.6,1750.0,
+,,,,provider_concentration,2026-06-17,,,,4084.782564367696

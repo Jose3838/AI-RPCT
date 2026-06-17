@@ -16,3 +16,4 @@ timestamp,score,regime,drivers,risk_bucket
 2026-06-17 09:08:00,100,Critical,"NVDA above 200, BTC above 60k, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained",HIGH
 2026-06-17 09:12:27,100,Critical,"NVDA above 200, BTC above 60k, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained",HIGH
 2026-06-17 09:13:13,100,Critical,"NVDA above 200, BTC above 60k, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained",HIGH
+2026-06-17 09:15:01,100,Critical,"NVDA above 200, BTC above 60k, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained",HIGH
