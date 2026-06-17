@@ -274,3 +274,8 @@ def provider_dominance():
     return pd.read_csv(
         "data/provider_dominance_index.csv"
     ).to_dict(orient="records")
+
+@router.get("/cron-health")
+def cron_health():
+    import pandas as pd
+    return pd.read_csv("data/cron_health.csv").to_dict(orient="records")
