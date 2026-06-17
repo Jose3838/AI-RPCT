@@ -2,7 +2,7 @@
 AI-RPCT DAILY REPORT
 ====================
 
-Generated: 2026-06-17 11:31:16.277082
+Generated: 2026-06-17 11:41:38.651605
 
 Current RPCT Score: 100
 Regime: Critical
@@ -16,5 +16,5 @@ Top Providers:
 vast | Score=75.58 | Price=$1.05/hr | Availability=2500
 manual | Score=47.79 | Price=$1.60/hr | Availability=1750
 lambda_labs | Score=28.40 | Price=$1.88/hr | Availability=1100
-coreweave | Score=20.74 | Price=$2.08/hr | Availability=950
+coreweave | Score=20.74 | Price=$2.07/hr | Availability=950
 runpod | Score=20.00 | Price=$2.15/hr | Availability=1000
