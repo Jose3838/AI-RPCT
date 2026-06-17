@@ -1,0 +1,11 @@
+endpoint,free,pro,enterprise
+/terminal-summary,true,true,true
+/dashboard-snapshot,true,true,true
+/gpu-price-index,true,true,true
+/gpu-price-history,false,true,true
+/gpu-rankings,false,true,true
+/provider-health,false,true,true
+/live-provider-market-share,false,true,true
+/weekly-infrastructure-report,false,true,true
+/investor-snapshot,false,false,true
+/executive-ai-memo,false,false,true
