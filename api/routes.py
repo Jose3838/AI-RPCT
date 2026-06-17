@@ -465,3 +465,10 @@ def gpu_rankings():
             "data/live_gpu_most_available.csv"
         ).to_dict(orient="records")
     }
+
+@router.get("/gpu-market-brief")
+def gpu_market_brief():
+    import pandas as pd
+    return pd.read_csv(
+        "data/gpu_market_brief.csv"
+    ).to_dict(orient="records")
