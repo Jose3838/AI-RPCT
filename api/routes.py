@@ -266,3 +266,11 @@ def gpu_scarcity():
     return pd.read_csv(
         "data/gpu_scarcity_index.csv"
     ).to_dict(orient="records")
+
+@router.get("/provider-dominance")
+def provider_dominance():
+    import pandas as pd
+
+    return pd.read_csv(
+        "data/provider_dominance_index.csv"
+    ).to_dict(orient="records")
