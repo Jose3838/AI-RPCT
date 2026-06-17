@@ -395,3 +395,39 @@ def index_history():
     return pd.read_csv(
         "data/index_history.csv"
     ).to_dict(orient="records")
+
+@router.get("/terminal")
+def terminal():
+    import pandas as pd
+
+    result = {}
+
+    try:
+        result["ai_index"] = pd.read_csv(
+            "data/ai_infrastructure_index.csv"
+        ).iloc[-1].to_dict()
+    except:
+        pass
+
+    try:
+        result["gpu_scarcity"] = pd.read_csv(
+            "data/gpu_scarcity_index.csv"
+        ).iloc[-1].to_dict()
+    except:
+        pass
+
+    try:
+        result["data_moat"] = pd.read_csv(
+            "data/data_moat_score.csv"
+        ).iloc[-1].to_dict()
+    except:
+        pass
+
+    try:
+        result["provider_mode"] = pd.read_csv(
+            "data/provider_data_mode.csv"
+        ).iloc[-1].to_dict()
+    except:
+        pass
+
+    return result
