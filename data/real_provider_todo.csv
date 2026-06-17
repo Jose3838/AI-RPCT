@@ -1,0 +1,6 @@
+provider,account_needed,api_key_needed,status,priority
+Vast.ai,yes,yes,research,1
+RunPod,yes,yes,research,2
+Lambda Labs,yes,yes,research,3
+CoreWeave,yes,yes,research,4
+Akash,yes,maybe,research,5
