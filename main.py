@@ -729,3 +729,21 @@ from executive_risk_dashboard import (
 @app.get("/executive-risk-dashboard")
 def executive_risk_dashboard():
     return build_executive_risk_dashboard()
+
+from connector_health_dashboard import build_connector_health_dashboard
+
+@app.get("/connector-health-dashboard")
+def connector_health_dashboard():
+    return build_connector_health_dashboard()
+
+from live_data_readiness_score import build_live_data_readiness_score
+
+@app.get("/live-data-readiness-score")
+def live_data_readiness_score():
+    return build_live_data_readiness_score()
+
+from provider_api_key_readiness import build_provider_api_key_readiness
+
+@app.get("/provider-api-key-readiness")
+def provider_api_key_readiness():
+    return build_provider_api_key_readiness()

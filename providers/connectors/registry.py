@@ -1,4 +1,4 @@
-from providers.connectors.vast_connector import VastConnector
+from providers.connectors.vast_live_connector import VastLiveConnector
 from providers.connectors.runpod_connector import RunPodConnector
 from providers.connectors.coreweave_connector import CoreWeaveConnector
 from providers.connectors.lambda_connector import LambdaConnector
@@ -7,7 +7,7 @@ from providers.connectors.crusoe_connector import CrusoeConnector
 
 
 CONNECTORS = [
-    VastConnector(),
+    VastLiveConnector(),
     RunPodConnector(),
     CoreWeaveConnector(),
     LambdaConnector(),
