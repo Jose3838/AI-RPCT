@@ -1,5 +1,5 @@
 file,exists,age_hours,fresh
-data/gpu_data.csv,True,16.73,True
+data/gpu_data.csv,True,16.76,True
 data/market_data.csv,True,0.0,True
 data/rpct_scores.csv,True,0.0,True
 data/provider_rankings.csv,True,0.0,True
