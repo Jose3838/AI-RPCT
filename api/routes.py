@@ -1193,3 +1193,48 @@ def gpu_forecast_signal_v2():
             rows.append(clean)
 
     return rows
+
+@router.post("/admin/generate-test-history")
+def admin_generate_test_history(points: int = 50):
+    import pandas as pd
+    from pathlib import Path
+    from datetime import datetime, timedelta, timezone
+    import random
+
+    Path("data").mkdir(exist_ok=True)
+
+    now = datetime.now(timezone.utc)
+    rows = []
+
+    base_price = 4.45
+
+    for i in range(points):
+        ts = now - timedelta(hours=points - i)
+        price = round(base_price + random.uniform(-0.55, 0.55), 4)
+
+        rows.append({
+            "timestamp": ts.isoformat(),
+            "date": ts.date().isoformat(),
+            "gpu_price_index": price,
+            "offers": random.randint(80, 140),
+            "synthetic": True
+        })
+
+    df = pd.DataFrame(rows)
+    path = Path("data/gpu_price_history.csv")
+
+    if path.exists():
+        old = pd.read_csv(path)
+        combined = pd.concat([old, df], ignore_index=True)
+    else:
+        combined = df
+
+    combined.to_csv(path, index=False)
+
+    return {
+        "status": "success",
+        "generated_points": points,
+        "file": "data/gpu_price_history.csv",
+        "total_rows": len(combined),
+        "note": "synthetic test history added for forecasting/demo readiness"
+    }
