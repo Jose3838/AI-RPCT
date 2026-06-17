@@ -64,3 +64,4 @@ python analytics/archive_live_provider_data.py
 python analytics/live_gpu_price_index.py
 python analytics/live_gpu_price_history.py
 python analytics/live_offer_summary.py
+python analytics/live_gpu_rankings.py
