@@ -1,0 +1,17 @@
+
+AI-RPCT Market Intelligence Snapshot
+Generated: 2026-06-17 12:08:15.673482
+
+AI Infrastructure Index: 75.6
+GPU Price Index: 4.5359
+GPU Price Trend: price_pressure_up
+
+Terminal Risk Score: 80
+Risk Level: high
+
+Live Data Quality Score: 100.0
+
+Live Provider Market Share:
+provider  rows  market_share_pct
+    vast   100             68.03
+  runpod    47             31.97
