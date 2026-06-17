@@ -75,3 +75,7 @@ python analytics/gpu_price_trend_signal.py
 python analytics/terminal_summary.py
 python analytics/api_inventory_runtime.py
 python analytics/market_data_moat_status.py
+python analytics/gpu_watchlist_intelligence.py
+python analytics/frontier_gpu_index.py
+python analytics/intelligence_signal_score.py
+python analytics/daily_terminal_brief.py

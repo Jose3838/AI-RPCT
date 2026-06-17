@@ -1,6 +1,6 @@
 
 AI-RPCT Daily Terminal Brief
-Generated: 2026-06-17 11:45:52.751515
+Generated: 2026-06-17 11:45:53.683430
 
 AI Infrastructure Index: 75.6
 GPU Price Index: 3.8713
