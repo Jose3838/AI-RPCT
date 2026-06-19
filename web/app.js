@@ -524,3 +524,29 @@ async function renderDemoWarning() {
 }
 
 renderDemoWarning();
+
+function setTerminalLastUpdated() {
+  const el = document.getElementById("terminalLastUpdated");
+  if (!el) return;
+  el.innerText = "Last updated: " + new Date().toLocaleString();
+}
+
+setTerminalLastUpdated();
+
+setInterval(() => {
+  renderSystemHealthStrip?.();
+  renderSignalTape?.();
+  renderTerminalIntelligenceCards?.();
+  renderGpuMarketDepthTable?.();
+  renderGpuLeadersTable?.();
+  renderDailyAlphaFeed?.();
+  renderMarketNarrative?.();
+  renderInvestorSnapshot?.();
+  renderDataMoatPanel?.();
+  renderMarketMovers?.();
+  renderProviderRiskPanel?.();
+  renderForecastReadiness?.();
+  renderDemoWarning?.();
+  setTerminalLastUpdated();
+}, 60000);
+
