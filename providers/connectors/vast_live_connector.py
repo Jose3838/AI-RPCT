@@ -3,7 +3,7 @@ import requests
 from dotenv import load_dotenv
 
 from providers.connectors.base_connector import BaseProviderConnector
-
+from intelligence.schemas.provider_offer import ProviderOffer
 
 load_dotenv()
 
@@ -18,60 +18,82 @@ class VastLiveConnector(BaseProviderConnector):
         if not api_key:
             return {
                 "provider": "vast",
-                "gpu_type": "RTX 4090",
-                "price_per_hour": 0.42,
-                "available_capacity": 128,
-                "health_score": 95,
-                "region": "global",
-                "source": "vast_fallback_demo"
+                "live_ready": False,
+                "mode": "demo",
+                "offers": [
+                    ProviderOffer(
+                        provider="vast",
+                        gpu_model="RTX 4090",
+                        region="global",
+                        price_usd_per_gpu_hour=0.42,
+                        available=True,
+                        source="vast_fallback_demo",
+                        mode="demo",
+                        raw={},
+                        observed_at=ProviderOffer.now_iso(),
+                    ).to_dict()
+                ],
+                "error": "Missing VAST_API_KEY",
             }
 
         try:
             response = requests.get(
                 "https://console.vast.ai/api/v0/bundles/",
-                headers={
-                    "Authorization": f"Bearer {api_key}"
-                },
-                timeout=15
+                headers={"Authorization": f"Bearer {api_key}"},
+                timeout=20,
             )
-
             response.raise_for_status()
             data = response.json()
+            raw_offers = data.get("offers", [])
 
-            offers = data.get("offers", [])
+            offers = []
+            for offer in raw_offers:
+                gpu_model = (
+                    offer.get("gpu_name")
+                    or offer.get("gpu_name_display")
+                    or offer.get("gpu_type")
+                    or offer.get("machine_name")
+                    or "unknown"
+                )
 
-            if not offers:
-                raise ValueError("No Vast offers returned")
+                region = (
+                    offer.get("geolocation")
+                    or offer.get("country")
+                    or offer.get("location")
+                    or "global"
+                )
 
-            prices = [
-                float(offer.get("dph_total", 0))
-                for offer in offers
-                if offer.get("dph_total") is not None
-            ]
+                price = offer.get("dph_total")
+                if price is not None:
+                    price = float(price)
 
-            avg_price = round(
-                sum(prices) / len(prices),
-                4
-            ) if prices else 0
+                offers.append(
+                    ProviderOffer(
+                        provider="vast",
+                        gpu_model=gpu_model,
+                        region=region,
+                        price_usd_per_gpu_hour=price,
+                        available=True,
+                        source="vast_live_api",
+                        mode="live",
+                        raw=offer,
+                        observed_at=ProviderOffer.now_iso(),
+                    ).to_dict()
+                )
 
             return {
                 "provider": "vast",
-                "gpu_type": "mixed",
-                "price_per_hour": avg_price,
-                "available_capacity": len(offers),
-                "health_score": 95,
-                "region": "global",
-                "source": "vast_live_api"
+                "live_ready": True,
+                "mode": "live",
+                "offers": offers,
+                "error": None,
             }
 
         except Exception as error:
             return {
                 "provider": "vast",
-                "gpu_type": "RTX 4090",
-                "price_per_hour": 0.42,
-                "available_capacity": 128,
-                "health_score": 90,
-                "region": "global",
-                "source": "vast_live_error_fallback",
-                "error": str(error)
+                "live_ready": True,
+                "mode": "error",
+                "offers": [],
+                "error": str(error),
             }
