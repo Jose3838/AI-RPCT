@@ -2021,3 +2021,17 @@ def daily_intelligence_status():
         "institutional_readiness": readiness["readiness_level"]
     }
 
+
+@app.get("/provider-coverage")
+def provider_coverage():
+
+    providers = provider_strength()
+
+    return {
+        "providers_tracked": len(providers),
+        "providers": [
+            p["provider"]
+            for p in providers
+        ]
+    }
+
