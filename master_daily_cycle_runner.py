@@ -5,6 +5,11 @@ import traceback
 
 from main import run_master_daily_cycle_v2
 
+from intelligence.master_intelligence_collector import (
+    run_master_intelligence_collector
+)
+
+
 LOG_FILE = Path("logs/master_daily_cycle.log")
 JSON_FILE = Path("data/master_daily_cycle_latest.json")
 
@@ -16,12 +21,14 @@ def run():
 
     try:
         result = run_master_daily_cycle_v2()
+        intelligence_collection = run_master_intelligence_collector()
 
         payload = {
             "status": "success",
             "started_at": started_at,
             "finished_at": datetime.now(timezone.utc).isoformat(),
             "result": result,
+            "intelligence_collection": intelligence_collection,
         }
 
         JSON_FILE.write_text(json.dumps(payload, indent=2, default=str))

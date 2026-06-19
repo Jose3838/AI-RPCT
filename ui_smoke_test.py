@@ -1,3 +1,5 @@
+from intelligence.forecast.forecast_accuracy_calculation_v1 import forecast_accuracy_calculation_v1
+
 from main import (
     terminal_intelligence_summary_v1,
     terminal_market_narrative_v1,
@@ -30,6 +32,7 @@ CHECKS = {
     "terminal_market_regime_v1": terminal_market_regime_v1,
     "terminal_live_coverage_v1": terminal_live_coverage_v1,
     "terminal_forecast_signal_v1": terminal_forecast_signal_v1,
+    "forecast_accuracy_calculation_v1": forecast_accuracy_calculation_v1,
 }
 
 def run():
