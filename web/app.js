@@ -99,3 +99,39 @@ async function renderTerminalIntelligenceCards() {
 }
 
 renderTerminalIntelligenceCards();
+
+async function renderGpuMarketDepthTable() {
+  try {
+    const res = await fetch("/terminal-intelligence-summary-v1");
+    const data = await res.json();
+
+    const rows = data.gpu_market_depth || [];
+    const table = document.getElementById("gpuMarketDepthTable");
+
+    if (!table) return;
+
+    table.innerHTML = `
+      <tr>
+        <th>GPU</th>
+        <th>Offers</th>
+        <th>Min $/h</th>
+        <th>Avg $/h</th>
+        <th>Max $/h</th>
+      </tr>
+      ${rows.map(r => `
+        <tr>
+          <td>${r.gpu_model}</td>
+          <td>${r.offer_count}</td>
+          <td>${r.min_price}</td>
+          <td>${r.avg_price}</td>
+          <td>${r.max_price}</td>
+        </tr>
+      `).join("")}
+    `;
+
+  } catch (err) {
+    console.error("Failed to render GPU market depth", err);
+  }
+}
+
+renderGpuMarketDepthTable();
