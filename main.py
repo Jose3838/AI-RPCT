@@ -2383,3 +2383,60 @@ def run_master_daily_cycle():
         "data_inventory": inventory
     }
 
+
+@app.get("/cycle-health-v4")
+def cycle_health_v4():
+
+    import csv
+    from pathlib import Path
+
+    files = {
+        "intelligence_snapshot": "intelligence_snapshot_v4_history.csv",
+        "connector_readiness": "connector_readiness_audit_history.csv",
+        "market_regime": "market_regime_history.csv",
+        "provider_dominance": "provider_dominance_history.csv",
+        "executive_brief": "executive_intelligence_brief_history.csv"
+    }
+
+    health = {}
+
+    for name, file_name in files.items():
+
+        path = Path(file_name)
+
+        if not path.exists():
+            health[name] = {
+                "exists": False,
+                "rows": 0,
+                "status": "missing"
+            }
+            continue
+
+        with path.open() as f:
+            rows = list(csv.reader(f))
+
+        data_rows = max(0, len(rows) - 1)
+
+        if data_rows >= 1:
+            status = "active"
+        else:
+            status = "empty"
+
+        health[name] = {
+            "exists": True,
+            "rows": data_rows,
+            "status": status
+        }
+
+    active_count = len([
+        h for h in health.values()
+        if h["status"] == "active"
+    ])
+
+    return {
+        "cycle_health": "healthy" if active_count == len(files) else "incomplete",
+        "active_assets": active_count,
+        "total_assets": len(files),
+        "assets": health
+    }
+
