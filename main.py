@@ -1725,3 +1725,20 @@ def save_market_regime_history():
         "market_regime": regime["market_regime"]
     }
 
+
+@app.post("/run-daily-intelligence-cycle")
+def run_daily_intelligence_cycle():
+
+    snapshot = save_intelligence_snapshot_v4()
+    dominance = save_provider_dominance_history()
+    brief = save_executive_intelligence_brief()
+    regime = save_market_regime_history()
+
+    return {
+        "status": "completed",
+        "snapshot": snapshot["status"],
+        "dominance": dominance["status"],
+        "brief": brief["status"],
+        "regime": regime["status"]
+    }
+
