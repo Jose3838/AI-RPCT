@@ -1170,3 +1170,39 @@ def executive_intelligence_brief():
 
     return brief
 
+
+@app.post("/save-executive-intelligence-brief")
+def save_executive_intelligence_brief():
+
+    import csv
+    from pathlib import Path
+    from datetime import datetime
+
+    brief = executive_intelligence_brief()
+    file = Path("executive_intelligence_brief_history.csv")
+    exists = file.exists()
+
+    with file.open("a", newline="") as f:
+        writer = csv.writer(f)
+
+        if not exists:
+            writer.writerow([
+                "timestamp",
+                "headline",
+                "risk_level",
+                "recommended_action"
+            ])
+
+        writer.writerow([
+            datetime.utcnow().isoformat(),
+            brief["headline"],
+            brief["risk_level"],
+            brief["recommended_action"]
+        ])
+
+    return {
+        "status": "saved",
+        "file": "executive_intelligence_brief_history.csv",
+        "brief": brief
+    }
+
