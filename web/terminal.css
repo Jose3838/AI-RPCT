@@ -217,3 +217,29 @@ a:hover{text-decoration:underline}
   max-width:980px;
   margin:0;
 }
+
+.investor-card{
+  border-color:rgba(65,226,138,.35);
+  background:
+    linear-gradient(135deg, rgba(65,226,138,.08), transparent 35%),
+    linear-gradient(180deg, var(--panel), var(--panel2));
+}
+
+.investor-grid{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:24px;
+}
+
+.snapshot-title{
+  font-size:26px;
+  font-weight:850;
+  letter-spacing:-.04em;
+  line-height:1.15;
+}
+
+@media(max-width:900px){
+  .investor-grid{
+    grid-template-columns:1fr;
+  }
+}

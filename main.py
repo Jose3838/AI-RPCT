@@ -2844,3 +2844,39 @@ def terminal_market_narrative_v1():
         "market_breadth": breadth,
         "snapshot_integrity": integrity
     }
+
+@app.get("/terminal-investor-snapshot-v1")
+def terminal_investor_snapshot_v1():
+
+    from intelligence.assets.snapshot_integrity import snapshot_integrity
+    from intelligence.signals.provider_concentration_risk import provider_concentration_risk
+    from intelligence.signals.market_breadth_index import market_breadth_index
+
+    integrity = snapshot_integrity()
+    concentration = provider_concentration_risk()
+    breadth = market_breadth_index()
+
+    rows = integrity.get("rows", 0)
+    providers = integrity.get("providers", 0)
+    gpu_models = integrity.get("gpu_models", 0)
+    risk = concentration.get("risk", "unknown")
+
+    return {
+        "status": "ok",
+        "positioning": "Bloomberg-style GPU infrastructure intelligence terminal",
+        "data_asset": {
+            "historical_observations": rows,
+            "providers_tracked": providers,
+            "gpu_markets_tracked": gpu_models,
+            "market_breadth": breadth
+        },
+        "risk": {
+            "provider_concentration": risk,
+            "largest_provider_share": concentration.get("largest_provider_share")
+        },
+        "commercial_readout": (
+            f"AI-RPCT currently tracks {rows} historical GPU offer observations "
+            f"across {gpu_models} GPU markets and {providers} providers. "
+            f"The current commercial risk is provider concentration: {risk}."
+        )
+    }

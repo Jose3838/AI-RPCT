@@ -258,3 +258,21 @@ async function renderMarketNarrative() {
 }
 
 renderMarketNarrative();
+
+async function renderInvestorSnapshot() {
+  try {
+    const res = await fetch("/terminal-investor-snapshot-v1");
+    const data = await res.json();
+
+    const positioning = document.getElementById("investorPositioning");
+    const readout = document.getElementById("investorCommercialReadout");
+
+    if (positioning) positioning.innerText = data.positioning || "...";
+    if (readout) readout.innerText = data.commercial_readout || "...";
+
+  } catch (err) {
+    console.error("Failed to render investor snapshot", err);
+  }
+}
+
+renderInvestorSnapshot();
