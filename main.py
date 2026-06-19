@@ -3304,3 +3304,13 @@ def terminal_coverage_action_plan_v1():
         "gap": provider_coverage_gap(),
         "actions": coverage_action_plan()
     }
+
+
+@app.get("/terminal-historical-asset-health-v1")
+def terminal_historical_asset_health_v1():
+
+    from intelligence.assets.historical_asset_health import (
+        historical_asset_health
+    )
+
+    return historical_asset_health()
