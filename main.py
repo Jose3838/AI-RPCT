@@ -2488,3 +2488,20 @@ def save_master_cycle_summary():
         "file": "master_cycle_summary_history.csv"
     }
 
+
+@app.post("/run-master-daily-cycle-v2")
+def run_master_daily_cycle_v2():
+
+    master = run_master_daily_cycle()
+    summary = save_master_cycle_summary()
+    health = cycle_health_v4()
+
+    return {
+        "status": "completed",
+        "system": "AI-RPCT",
+        "cycle": "master_daily_cycle_v2",
+        "master_cycle": master,
+        "summary_saved": summary["status"],
+        "cycle_health": health
+    }
+
