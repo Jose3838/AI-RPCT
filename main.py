@@ -2341,3 +2341,24 @@ def environment_readiness_v4():
         "missing_keys": missing
     }
 
+
+@app.post("/run-daily-connector-cycle")
+def run_daily_connector_cycle():
+
+    status = live_connector_status_v4()
+    api_keys = provider_api_key_readiness_v4()
+    coverage = live_coverage_score_v4()
+    audit = save_connector_readiness_audit()
+    next_target = next_live_provider_target()
+    environment = environment_readiness_v4()
+
+    return {
+        "status": "completed",
+        "connector_status": status,
+        "api_key_readiness": api_keys,
+        "live_coverage": coverage,
+        "audit_saved": audit["status"],
+        "next_live_provider_target": next_target,
+        "environment": environment
+    }
+
