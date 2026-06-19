@@ -26,6 +26,10 @@ def root():
 import csv
 
 from intelligence.features.daily_feature_store import append_daily_features
+from intelligence.providers.save_provider_market_share import save_provider_market_share
+from intelligence.regime.provider_dominance_regime import provider_dominance_regime
+from intelligence.regime.save_provider_dominance_history import save_provider_dominance_history
+from intelligence.assets.historical_asset_health import historical_asset_health
 from intelligence.lifecycle.offer_lifecycle import detect_offer_changes
 from intelligence.signals.capacity_churn_index import calculate_capacity_churn
 
@@ -2504,6 +2508,10 @@ def run_master_daily_cycle_v2():
     feature_snapshot = append_daily_features()
     lifecycle = detect_offer_changes()
     capacity_churn = calculate_capacity_churn()
+    provider_market_share = save_provider_market_share()
+    provider_dominance = provider_dominance_regime()
+    provider_dominance_history = save_provider_dominance_history()
+    historical_assets = historical_asset_health()
 
     return {
         "status": "completed",
@@ -2514,7 +2522,11 @@ def run_master_daily_cycle_v2():
         "cycle_health": health,
         "feature_snapshot": feature_snapshot,
         "lifecycle": lifecycle,
-        "capacity_churn": capacity_churn
+        "capacity_churn": capacity_churn,
+        "provider_market_share": provider_market_share,
+        "provider_dominance": provider_dominance,
+        "provider_dominance_history": provider_dominance_history,
+        "historical_assets": historical_assets
     }
 
 
@@ -3066,6 +3078,7 @@ def terminal_system_health_v1():
     return {
         "status": "healthy" if healthy else "incomplete",
         "files": files,
+        "daily_runner_health": terminal_daily_runner_health_v1(),
         "rows": integrity.get("rows", 0),
         "providers": integrity.get("providers", 0),
         "gpu_models": integrity.get("gpu_models", 0)
@@ -3291,4 +3304,43 @@ def terminal_coverage_action_plan_v1():
         "status": "ok",
         "gap": provider_coverage_gap(),
         "actions": coverage_action_plan()
+    }
+
+
+@app.get("/terminal-historical-asset-health-v1")
+def terminal_historical_asset_health_v1():
+
+    from intelligence.assets.historical_asset_health import (
+        historical_asset_health
+    )
+
+    return historical_asset_health()
+
+
+@app.get("/terminal-daily-runner-health-v1")
+def terminal_daily_runner_health_v1():
+
+    import json
+    from pathlib import Path
+
+    latest_file = Path("data/master_daily_cycle_latest.json")
+    log_file = Path("logs/master_daily_cycle.log")
+
+    if not latest_file.exists():
+        return {
+            "status": "missing",
+            "latest_file_exists": False,
+            "log_file_exists": log_file.exists()
+        }
+
+    latest = json.loads(latest_file.read_text())
+
+    return {
+        "status": latest.get("status"),
+        "latest_file_exists": True,
+        "log_file_exists": log_file.exists(),
+        "started_at": latest.get("started_at"),
+        "finished_at": latest.get("finished_at"),
+        "cycle": latest.get("result", {}).get("cycle"),
+        "error": latest.get("error")
     }
