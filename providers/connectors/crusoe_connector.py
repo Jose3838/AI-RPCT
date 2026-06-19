@@ -1,42 +1,49 @@
 import os
+from dotenv import load_dotenv
 
-from providers.connectors.base_connector import (
-    BaseProviderConnector
-)
+from providers.connectors.base_connector import BaseProviderConnector
+from intelligence.schemas.provider_offer import ProviderOffer
 
 
-class CrusoeConnector(
-    BaseProviderConnector
-):
+load_dotenv(".env")
+
+
+class CrusoeConnector(BaseProviderConnector):
 
     provider_name = "crusoe"
 
     def fetch(self):
-
         api_key = os.getenv("CRUSOE_API_KEY")
 
         if not api_key:
             return {
                 "provider": "crusoe",
-                "mode": "demo",
                 "live_ready": False,
-                "reason": "missing CRUSOE_API_KEY",
-                "gpu_type": "H100",
-                "price_per_hour": 2.15,
-                "available_capacity": 41,
-                "health_score": 89,
-                "region": "us"
+                "mode": "demo",
+                "offers": [
+                    ProviderOffer(
+                        provider="crusoe",
+                        gpu_model="H100",
+                        region="us",
+                        price_usd_per_gpu_hour=2.15,
+                        available=True,
+                        source="crusoe_fallback_demo",
+                        mode="demo",
+                        raw={
+                            "reason": "missing CRUSOE_API_KEY",
+                            "available_capacity": 41,
+                            "health_score": 89
+                        },
+                        observed_at=ProviderOffer.now_iso(),
+                    ).to_dict()
+                ],
+                "error": "Missing CRUSOE_API_KEY"
             }
 
         return {
             "provider": "crusoe",
-            "mode": "live_ready",
             "live_ready": True,
-            "reason": "CRUSOE_API_KEY detected",
-            "gpu_type": None,
-            "price_per_hour": None,
-            "available_capacity": None,
-            "health_score": None,
-            "region": None
+            "mode": "live_ready",
+            "offers": [],
+            "error": "CRUSOE_API_KEY configured but live fetch not implemented"
         }
-
