@@ -1961,3 +1961,47 @@ def data_moat_score():
         "tracked_assets": health["assets"]
     }
 
+
+@app.get("/intelligence-data-inventory")
+def intelligence_data_inventory():
+
+    import csv
+    from pathlib import Path
+
+    files = [
+        "intelligence_snapshot_v4_history.csv",
+        "provider_dominance_history.csv",
+        "market_regime_history.csv",
+        "executive_intelligence_brief_history.csv",
+        "provider_momentum_history.csv"
+    ]
+
+    inventory = []
+    total_rows = 0
+
+    for file_name in files:
+
+        path = Path(file_name)
+
+        if not path.exists():
+            continue
+
+        with path.open() as f:
+            rows = list(csv.reader(f))
+
+        row_count = max(0, len(rows) - 1)
+
+        total_rows += row_count
+
+        inventory.append({
+            "file": file_name,
+            "rows": row_count,
+            "size_bytes": path.stat().st_size
+        })
+
+    return {
+        "total_assets": len(inventory),
+        "total_data_points": total_rows,
+        "inventory": inventory
+    }
+
