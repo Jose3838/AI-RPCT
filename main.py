@@ -1462,3 +1462,48 @@ def provider_allocation_brief():
 
     return brief
 
+
+@app.get("/provider-dominance-index")
+def provider_dominance_index():
+
+    providers = provider_strength()
+
+    if not providers:
+        return []
+
+    total_strength = sum(
+        p["strength_score"]
+        for p in providers
+    )
+
+    result = []
+
+    for p in providers:
+
+        dominance = round(
+            (p["strength_score"] / total_strength) * 100,
+            2
+        )
+
+        if dominance >= 25:
+            tier = "market_leader"
+        elif dominance >= 15:
+            tier = "major_player"
+        elif dominance >= 8:
+            tier = "competitive_player"
+        else:
+            tier = "emerging_player"
+
+        result.append({
+            "provider": p["provider"],
+            "dominance_index": dominance,
+            "tier": tier,
+            "strength_score": p["strength_score"]
+        })
+
+    return sorted(
+        result,
+        key=lambda x: x["dominance_index"],
+        reverse=True
+    )
+
