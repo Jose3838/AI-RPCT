@@ -1344,3 +1344,89 @@ def institutional_readiness_score():
         "system_stage": "gpu_market_intelligence_platform"
     }
 
+
+@app.get("/provider-alpha-signal")
+def provider_alpha_signal():
+
+    snapshot = snapshot_v4()
+
+    providers = snapshot["provider_strength"]
+
+    if not providers:
+        return {"error": "no provider data"}
+
+    avg_strength = (
+        sum(p["strength_score"] for p in providers)
+        / len(providers)
+    )
+
+    alpha_providers = []
+
+    for p in providers:
+
+        alpha = round(
+            p["strength_score"] - avg_strength,
+            2
+        )
+
+        if alpha > 0:
+            signal = "outperform"
+        elif alpha < 0:
+            signal = "underperform"
+        else:
+            signal = "neutral"
+
+        alpha_providers.append({
+            "provider": p["provider"],
+            "strength_score": p["strength_score"],
+            "alpha_score": alpha,
+            "signal": signal
+        })
+
+    return sorted(
+        alpha_providers,
+        key=lambda x: x["alpha_score"],
+        reverse=True
+    )
+
+
+@app.get("/provider-allocation-signal")
+def provider_allocation_signal():
+
+    alpha = provider_alpha_signal()
+    warnings = early_warning()
+
+    warning_map = {
+        w["provider"]: w["warning_level"]
+        for w in warnings
+    }
+
+    result = []
+
+    for p in alpha:
+
+        warning = warning_map.get(p["provider"], "unknown")
+
+        if p["signal"] == "outperform" and warning == "normal":
+            allocation = "prefer"
+        elif p["signal"] == "outperform" and warning in ["watch", "critical"]:
+            allocation = "monitor"
+        elif p["signal"] == "neutral":
+            allocation = "neutral"
+        else:
+            allocation = "avoid"
+
+        result.append({
+            "provider": p["provider"],
+            "allocation_signal": allocation,
+            "alpha_score": p["alpha_score"],
+            "strength_score": p["strength_score"],
+            "warning_level": warning
+        })
+
+    return sorted(
+        result,
+        key=lambda x: x["alpha_score"],
+        reverse=True
+    )
+
