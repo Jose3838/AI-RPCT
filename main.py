@@ -1052,3 +1052,40 @@ def provider_momentum_leaders():
         }
     }
 
+
+@app.get("/market-rotation-signal")
+def market_rotation_signal():
+
+    leaders = provider_momentum_leaders()
+
+    winners = leaders["summary"]["winner_count"]
+    losers = leaders["summary"]["loser_count"]
+    stable = leaders["summary"]["stable_count"]
+    total = leaders["summary"]["total_providers"]
+
+    if total == 0:
+        return {"error": "no provider momentum data"}
+
+    winner_ratio = round(winners / total, 2)
+    loser_ratio = round(losers / total, 2)
+    stable_ratio = round(stable / total, 2)
+
+    if winner_ratio >= 0.6:
+        rotation = "broad_positive_rotation"
+    elif loser_ratio >= 0.6:
+        rotation = "broad_negative_rotation"
+    elif winners > 0 and losers > 0:
+        rotation = "mixed_rotation"
+    else:
+        rotation = "flat_rotation"
+
+    return {
+        "rotation_signal": rotation,
+        "winner_ratio": winner_ratio,
+        "loser_ratio": loser_ratio,
+        "stable_ratio": stable_ratio,
+        "top_winner": leaders["top_winner"],
+        "top_loser": leaders["top_loser"],
+        "summary": leaders["summary"]
+    }
+
