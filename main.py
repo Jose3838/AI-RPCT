@@ -1430,3 +1430,35 @@ def provider_allocation_signal():
         reverse=True
     )
 
+
+@app.get("/provider-allocation-brief")
+def provider_allocation_brief():
+
+    allocation = provider_allocation_signal()
+
+    prefer = [p for p in allocation if p["allocation_signal"] == "prefer"]
+    monitor = [p for p in allocation if p["allocation_signal"] == "monitor"]
+    avoid = [p for p in allocation if p["allocation_signal"] == "avoid"]
+    neutral = [p for p in allocation if p["allocation_signal"] == "neutral"]
+
+    brief = {
+        "headline": "AI-RPCT provider allocation model generated current GPU infrastructure recommendations.",
+        "preferred_providers": prefer,
+        "monitor_providers": monitor,
+        "avoid_providers": avoid,
+        "neutral_providers": neutral,
+        "summary": {
+            "prefer_count": len(prefer),
+            "monitor_count": len(monitor),
+            "avoid_count": len(avoid),
+            "neutral_count": len(neutral),
+            "total_providers": len(allocation)
+        },
+        "recommended_action": (
+            "Prioritize providers marked as prefer, monitor providers with elevated warnings, "
+            "and avoid providers showing underperformance or critical weakness."
+        )
+    }
+
+    return brief
+
