@@ -1507,3 +1507,80 @@ def provider_dominance_index():
         reverse=True
     )
 
+
+@app.post("/save-provider-dominance-history")
+def save_provider_dominance_history():
+
+    import csv
+    from pathlib import Path
+    from datetime import datetime
+
+    dominance = provider_dominance_index()
+
+    file = Path("provider_dominance_history.csv")
+    exists = file.exists()
+
+    with file.open("a", newline="") as f:
+
+        writer = csv.writer(f)
+
+        if not exists:
+            writer.writerow([
+                "timestamp",
+                "provider",
+                "dominance_index",
+                "tier"
+            ])
+
+        for row in dominance:
+            writer.writerow([
+                datetime.utcnow().isoformat(),
+                row["provider"],
+                row["dominance_index"],
+                row["tier"]
+            ])
+
+    return {
+        "status": "saved",
+        "providers_saved": len(dominance)
+    }
+
+
+@app.post("/save-provider-dominance-history")
+def save_provider_dominance_history():
+
+    import csv
+    from pathlib import Path
+    from datetime import datetime
+
+    dominance = provider_dominance_index()
+
+    file = Path("provider_dominance_history.csv")
+    exists = file.exists()
+
+    with file.open("a", newline="") as f:
+
+        writer = csv.writer(f)
+
+        if not exists:
+            writer.writerow([
+                "timestamp",
+                "provider",
+                "dominance_index",
+                "tier"
+            ])
+
+        for row in dominance:
+
+            writer.writerow([
+                datetime.utcnow().isoformat(),
+                row["provider"],
+                row["dominance_index"],
+                row["tier"]
+            ])
+
+    return {
+        "status": "saved",
+        "providers_saved": len(dominance)
+    }
+
