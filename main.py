@@ -2266,3 +2266,43 @@ def next_live_provider_target():
         "recommended_action": "All priority providers are already live or no target found."
     }
 
+
+@app.get("/live-connector-status-v4")
+def live_connector_status_v4():
+
+    data = collect_provider_data()
+
+    return {
+        "system": "AI-RPCT",
+        "status": "active",
+        "connector_summary": data["summary"],
+        "providers": [
+            {
+                "provider": p["provider"],
+                "mode": p.get("mode", "unknown"),
+                "live_ready": p.get("live_ready", False),
+                "reason": p.get("reason", "")
+            }
+            for p in data["providers"]
+        ]
+    }
+
+
+@app.get("/live-provider-upgrade-plan")
+def live_provider_upgrade_plan():
+
+    target = next_live_provider_target()
+
+    return {
+        "next_provider": target["next_target"],
+        "recommended_action": target["recommended_action"],
+        "steps": [
+            "Add provider API key to local .env",
+            "Confirm connector returns live_ready=True",
+            "Implement real API fetch",
+            "Normalize response into AI-RPCT provider schema",
+            "Save live data into historical CSV",
+            "Recalculate live coverage score"
+        ]
+    }
+
