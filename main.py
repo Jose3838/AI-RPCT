@@ -1127,3 +1127,46 @@ def market_intelligence_summary():
         "momentum_leaders": leaders
     }
 
+
+@app.get("/executive-intelligence-brief")
+def executive_intelligence_brief():
+
+    summary = market_intelligence_summary()
+    snapshot = snapshot_v4()
+    rotation = market_rotation_signal()
+    leaders = provider_momentum_leaders()
+
+    top_provider = snapshot["provider_strength"][0]["provider"] if snapshot["provider_strength"] else None
+    weakest_provider = snapshot["provider_strength"][-1]["provider"] if snapshot["provider_strength"] else None
+
+    risk_level = "low"
+
+    if weakest_provider and rotation["rotation_signal"] == "broad_negative_rotation":
+        risk_level = "high"
+    elif rotation["rotation_signal"] in ["mixed_rotation", "flat_rotation"]:
+        risk_level = "moderate"
+
+    brief = {
+        "headline": f"GPU infrastructure market currently shows {summary['market_direction']} conditions.",
+        "executive_summary": summary["summary"],
+        "key_takeaways": [
+            f"Market regime is classified as {summary['market_regime']}.",
+            f"Current market signal score is {summary['market_signal_score']}.",
+            f"Provider momentum rotation is {rotation['rotation_signal']}.",
+            f"Top provider by strength is {top_provider}.",
+            f"Weakest provider by strength is {weakest_provider}."
+        ],
+        "risk_level": risk_level,
+        "watchlist": {
+            "top_winner": leaders["top_winner"],
+            "top_loser": leaders["top_loser"],
+            "weakest_provider": weakest_provider
+        },
+        "recommended_action": (
+            "Monitor provider momentum and market signal trend before making capacity allocation decisions."
+        ),
+        "system_stage": "institutional_market_intelligence"
+    }
+
+    return brief
+
