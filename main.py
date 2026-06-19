@@ -1918,3 +1918,46 @@ def intelligence_asset_maturity_score():
         "asset_health": assets
     }
 
+
+@app.get("/data-moat-score")
+def data_moat_score():
+
+    maturity = intelligence_asset_maturity_score()
+    health = intelligence_asset_health()
+    confidence = intelligence_confidence_score()
+
+    maturity_score = maturity["maturity_score"]
+    confidence_score = confidence["confidence_score"]
+
+    asset_coverage_score = round(
+        (health["healthy_assets"] / health["total_assets"]) * 100,
+        2
+    ) if health["total_assets"] else 0
+
+    moat_score = round(
+        (maturity_score * 0.4)
+        + (confidence_score * 0.35)
+        + (asset_coverage_score * 0.25),
+        2
+    )
+
+    if moat_score >= 80:
+        moat_level = "strong_data_moat"
+    elif moat_score >= 60:
+        moat_level = "growing_data_moat"
+    elif moat_score >= 35:
+        moat_level = "early_data_moat"
+    else:
+        moat_level = "weak_data_moat"
+
+    return {
+        "data_moat_score": moat_score,
+        "data_moat_level": moat_level,
+        "drivers": {
+            "maturity_score": maturity_score,
+            "confidence_score": confidence_score,
+            "asset_coverage_score": asset_coverage_score
+        },
+        "tracked_assets": health["assets"]
+    }
+
