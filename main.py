@@ -2306,3 +2306,38 @@ def live_provider_upgrade_plan():
         ]
     }
 
+
+@app.get("/environment-readiness-v4")
+def environment_readiness_v4():
+
+    import os
+    from pathlib import Path
+
+    env_file_exists = Path(".env").exists()
+
+    keys = [
+        "LAMBDA_API_KEY",
+        "NEBIUS_API_KEY",
+        "COREWEAVE_API_KEY",
+        "CRUSOE_API_KEY",
+        "VAST_API_KEY",
+        "RUNPOD_API_KEY"
+    ]
+
+    present = []
+    missing = []
+
+    for key in keys:
+        if os.getenv(key):
+            present.append(key)
+        else:
+            missing.append(key)
+
+    return {
+        "env_file_exists": env_file_exists,
+        "present_keys_count": len(present),
+        "missing_keys_count": len(missing),
+        "present_keys": present,
+        "missing_keys": missing
+    }
+
