@@ -3280,3 +3280,15 @@ def automation_health_v1():
     )
 
     return collection_health()
+
+@app.get("/terminal-coverage-action-plan-v1")
+def terminal_coverage_action_plan_v1():
+
+    from intelligence.coverage.coverage_action_plan import coverage_action_plan
+    from intelligence.coverage.provider_coverage_gap import provider_coverage_gap
+
+    return {
+        "status": "ok",
+        "gap": provider_coverage_gap(),
+        "actions": coverage_action_plan()
+    }
