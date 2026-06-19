@@ -29,6 +29,7 @@ from intelligence.features.daily_feature_store import append_daily_features
 from intelligence.providers.save_provider_market_share import save_provider_market_share
 from intelligence.regime.provider_dominance_regime import provider_dominance_regime
 from intelligence.regime.save_provider_dominance_history import save_provider_dominance_history
+from intelligence.assets.historical_asset_health import historical_asset_health
 from intelligence.lifecycle.offer_lifecycle import detect_offer_changes
 from intelligence.signals.capacity_churn_index import calculate_capacity_churn
 
@@ -2510,6 +2511,7 @@ def run_master_daily_cycle_v2():
     provider_market_share = save_provider_market_share()
     provider_dominance = provider_dominance_regime()
     provider_dominance_history = save_provider_dominance_history()
+    historical_assets = historical_asset_health()
 
     return {
         "status": "completed",
@@ -2523,7 +2525,8 @@ def run_master_daily_cycle_v2():
         "capacity_churn": capacity_churn,
         "provider_market_share": provider_market_share,
         "provider_dominance": provider_dominance,
-        "provider_dominance_history": provider_dominance_history
+        "provider_dominance_history": provider_dominance_history,
+        "historical_assets": historical_assets
     }
 
 
