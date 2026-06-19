@@ -3213,3 +3213,27 @@ def terminal_forecast_signal_v1():
         "gpu_price_index": price,
         "market_supply": supply
     }
+
+@app.get("/terminal-forecast-intelligence-v1")
+def terminal_forecast_intelligence_v1():
+
+    from intelligence.forecast.forecast_engine_v4 import forecast_engine_v4
+    from intelligence.forecast.gpu_opportunity_score import gpu_opportunity_score
+    from intelligence.forecast.forecast_backtest_summary import forecast_backtest_summary
+    from intelligence.forecast.supply_shock_forecast import supply_shock_forecast
+    from intelligence.forecast.provider_expansion_forecast import provider_expansion_forecast
+
+    forecasts = forecast_engine_v4()
+    opportunities = gpu_opportunity_score()[:10]
+    backtest = forecast_backtest_summary()
+    shock = supply_shock_forecast()
+    expansion = provider_expansion_forecast()
+
+    return {
+        "status": "ok",
+        "forecast_count": len(forecasts),
+        "top_opportunities": opportunities,
+        "backtest": backtest,
+        "supply_shock": shock,
+        "provider_expansion": expansion
+    }

@@ -454,3 +454,22 @@ a:hover{text-decoration:underline}
 .forecast-signal-card{
   border-color:rgba(245,197,66,.35);
 }
+
+.forecast-intelligence-card{
+  border-color:rgba(245,197,66,.42);
+  background:
+    linear-gradient(135deg, rgba(245,197,66,.09), transparent 42%),
+    linear-gradient(180deg, var(--panel), var(--panel2));
+}
+
+.forecast-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:24px;
+}
+
+@media(max-width:900px){
+  .forecast-grid{
+    grid-template-columns:1fr;
+  }
+}

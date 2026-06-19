@@ -76,6 +76,32 @@
 
   <section class="grid">
 
+    
+    <div class="card span-12">
+      <h3>Top Forecast Opportunities</h3>
+      <table id="forecastOpportunitiesTable"></table>
+    </div>
+
+    <div class="card span-12 forecast-intelligence-card">
+      <h3>Forecast Intelligence</h3>
+      <div class="forecast-grid">
+        <div>
+          <div class="label">Forecast Count</div>
+          <div id="forecastIntelCount" class="metric">...</div>
+        </div>
+        <div>
+          <div class="label">Supply Shock Risk</div>
+          <div id="forecastSupplyShock" class="snapshot-title">...</div>
+        </div>
+        <div>
+          <div class="label">Expansion Signal</div>
+          <div id="forecastExpansionSignal" class="snapshot-title">...</div>
+        </div>
+      </div>
+      <div class="panel-note" id="forecastBacktestSummary">Loading forecast backtest...</div>
+    </div>
+
+
     <div class="card span-4 regime-card">
       <h3>Market Regime</h3>
       <div id="marketRegime" class="snapshot-title">...</div>

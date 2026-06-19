@@ -641,3 +641,74 @@ async function renderFinalWidgets() {
 }
 
 renderFinalWidgets();
+
+async function renderForecastIntelligence() {
+  try {
+    const res = await fetch("/terminal-forecast-intelligence-v1");
+    const data = await res.json();
+
+    const count = document.getElementById("forecastIntelCount");
+    const shock = document.getElementById("forecastSupplyShock");
+    const expansion = document.getElementById("forecastExpansionSignal");
+    const backtest = document.getElementById("forecastBacktestSummary");
+
+    if (count) count.innerText = data.forecast_count ?? "...";
+
+    if (shock) {
+      shock.innerText = data.supply_shock?.supply_shock_risk || "...";
+    }
+
+    if (expansion) {
+      expansion.innerText = data.provider_expansion?.signal || "...";
+    }
+
+    if (backtest) {
+      backtest.innerText = data.backtest?.summary || "No forecast backtest available.";
+    }
+
+  } catch (err) {
+    console.error("Failed to render forecast intelligence", err);
+  }
+}
+
+renderForecastIntelligence();
+
+async function renderForecastOpportunities() {
+  try {
+    const res = await fetch("/terminal-forecast-intelligence-v1");
+    const data = await res.json();
+
+    const table = document.getElementById("forecastOpportunitiesTable");
+    if (!table) return;
+
+    const rows = data.top_opportunities || [];
+
+    table.innerHTML = `
+      <tr>
+        <th>GPU</th>
+        <th>Signal</th>
+        <th>Opportunity Score</th>
+        <th>Recent Price</th>
+        <th>Historical Price</th>
+      </tr>
+      ${
+        rows.length
+          ? rows.map(r => `
+            <tr>
+              <td>${r.gpu_model}</td>
+              <td>${r.signal}</td>
+              <td>${r.opportunity_score}</td>
+              <td>${r.recent_price}</td>
+              <td>${r.historical_price}</td>
+            </tr>
+          `).join("")
+          : `<tr><td colspan="5">No forecast opportunities detected yet</td></tr>`
+      }
+    `;
+
+  } catch (err) {
+    console.error("Failed to render forecast opportunities", err);
+  }
+}
+
+renderForecastOpportunities();
