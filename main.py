@@ -2800,5 +2800,9 @@ def terminal_intelligence_summary_v1():
         "gpu_market_leaders": __import__(
             "intelligence.market_depth.gpu_market_leaders",
             fromlist=["gpu_market_leaders"]
-        ).gpu_market_leaders()[:15]
+        ).gpu_market_leaders()[:15],
+        "daily_alpha_feed": __import__(
+            "intelligence.events.daily_alpha_feed",
+            fromlist=["daily_alpha_feed"]
+        ).daily_alpha_feed()
     }

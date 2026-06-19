@@ -179,3 +179,64 @@ async function renderGpuLeadersTable() {
 }
 
 renderGpuLeadersTable()
+
+async function renderDailyAlphaFeed() {
+  try {
+    const res = await fetch("/terminal-intelligence-summary-v1");
+    const data = await res.json();
+
+    const feed = data.daily_alpha_feed || {};
+    const opportunities = feed.opportunities || [];
+    const risks = feed.risks || [];
+
+    const oppTable = document.getElementById("opportunityFeedTable");
+    const riskTable = document.getElementById("riskFeedTable");
+
+    if (oppTable) {
+      oppTable.innerHTML = `
+        <tr>
+          <th>GPU</th>
+          <th>Latest Price</th>
+          <th>Historical Avg</th>
+        </tr>
+        ${
+          opportunities.length
+            ? opportunities.map(r => `
+              <tr>
+                <td>${r.gpu_model}</td>
+                <td>${r.latest_price}</td>
+                <td>${r.historical_avg}</td>
+              </tr>
+            `).join("")
+            : `<tr><td colspan="3">No current opportunities detected</td></tr>`
+        }
+      `;
+    }
+
+    if (riskTable) {
+      riskTable.innerHTML = `
+        <tr>
+          <th>GPU</th>
+          <th>Latest Supply</th>
+          <th>Historical Supply</th>
+        </tr>
+        ${
+          risks.length
+            ? risks.map(r => `
+              <tr>
+                <td>${r.gpu_model}</td>
+                <td>${r.latest_supply}</td>
+                <td>${r.historical_supply}</td>
+              </tr>
+            `).join("")
+            : `<tr><td colspan="3">No current risks detected</td></tr>`
+        }
+      `;
+    }
+
+  } catch (err) {
+    console.error("Failed to render daily alpha feed", err);
+  }
+}
+
+renderDailyAlphaFeed();
