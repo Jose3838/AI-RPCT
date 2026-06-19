@@ -2140,3 +2140,129 @@ def provider_api_key_readiness_v4():
         "providers": providers
     }
 
+
+@app.get("/connector-mode-summary-v4")
+def connector_mode_summary_v4():
+
+    data = collect_provider_data()
+    providers = data["providers"]
+
+    live = []
+    demo = []
+    live_ready = []
+
+    for p in providers:
+        item = {
+            "provider": p["provider"],
+            "mode": p.get("mode", "unknown"),
+            "live_ready": p.get("live_ready", False),
+            "reason": p.get("reason", "")
+        }
+
+        if p.get("mode") == "live":
+            live.append(item)
+        elif p.get("live_ready"):
+            live_ready.append(item)
+        else:
+            demo.append(item)
+
+    return {
+        "live_count": len(live),
+        "live_ready_count": len(live_ready),
+        "demo_count": len(demo),
+        "total": len(providers),
+        "live": live,
+        "live_ready": live_ready,
+        "demo": demo
+    }
+
+
+@app.get("/live-coverage-score-v4")
+def live_coverage_score_v4():
+
+    summary = connector_mode_summary_v4()
+    total = summary["total"]
+
+    if total == 0:
+        return {"live_coverage_score": 0}
+
+    score = round(
+        ((summary["live_count"] + summary["live_ready_count"] * 0.5) / total) * 100,
+        2
+    )
+
+    return {
+        "live_coverage_score": score,
+        "live_count": summary["live_count"],
+        "live_ready_count": summary["live_ready_count"],
+        "demo_count": summary["demo_count"],
+        "total_connectors": total
+    }
+
+
+@app.post("/save-connector-readiness-audit")
+def save_connector_readiness_audit():
+
+    import csv
+    from pathlib import Path
+    from datetime import datetime
+
+    coverage = live_coverage_score_v4()
+    summary = connector_mode_summary_v4()
+
+    file = Path("connector_readiness_audit_history.csv")
+    exists = file.exists()
+
+    with file.open("a", newline="") as f:
+        writer = csv.writer(f)
+
+        if not exists:
+            writer.writerow([
+                "timestamp",
+                "live_coverage_score",
+                "live_count",
+                "live_ready_count",
+                "demo_count",
+                "total_connectors"
+            ])
+
+        writer.writerow([
+            datetime.utcnow().isoformat(),
+            coverage["live_coverage_score"],
+            coverage["live_count"],
+            coverage["live_ready_count"],
+            coverage["demo_count"],
+            coverage["total_connectors"]
+        ])
+
+    return {
+        "status": "saved",
+        "file": "connector_readiness_audit_history.csv",
+        "coverage": coverage,
+        "summary": summary
+    }
+
+
+@app.get("/next-live-provider-target")
+def next_live_provider_target():
+
+    summary = connector_mode_summary_v4()
+
+    candidates = summary["demo"] + summary["live_ready"]
+
+    priority = ["lambda", "nebius", "coreweave", "crusoe"]
+
+    for target in priority:
+        for p in candidates:
+            if p["provider"] == target:
+                return {
+                    "next_target": target,
+                    "reason": p.get("reason", ""),
+                    "recommended_action": f"Add real API fetch implementation and API key for {target}."
+                }
+
+    return {
+        "next_target": None,
+        "recommended_action": "All priority providers are already live or no target found."
+    }
+
