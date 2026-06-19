@@ -2599,3 +2599,19 @@ def master_cycle_trend():
         "previous": previous
     }
 
+
+@app.get("/command-center-v4")
+def command_center_v4():
+
+    return {
+        "system": "AI-RPCT",
+        "stage": "gpu_market_intelligence_command_center",
+        "master_report": master_cycle_report(),
+        "master_trend": master_cycle_trend(),
+        "cycle_health": cycle_health_v4(),
+        "live_coverage": live_coverage_score_v4(),
+        "next_live_provider": next_live_provider_target(),
+        "data_moat": data_moat_score(),
+        "institutional_readiness": institutional_readiness_score()
+    }
+
