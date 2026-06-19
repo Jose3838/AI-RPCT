@@ -26,6 +26,10 @@ from intelligence.market_depth.save_market_depth_history import (
     save_market_depth_history
 )
 
+from intelligence.features.daily_feature_store import (
+    append_daily_features
+)
+
 def run_master_intelligence_collector():
 
     gpu = save_gpu_daily_state()
@@ -54,6 +58,10 @@ def run_master_intelligence_collector():
         save_market_depth_history()
     )
 
+    features = (
+        append_daily_features()
+    )
+
     return {
         "gpu_state": gpu,
         "providers": providers,
@@ -61,5 +69,6 @@ def run_master_intelligence_collector():
         "coverage": coverage,
         "regime": regime,
         "provider_dominance": provider_dominance,
-        "market_depth": market_depth
+        "market_depth": market_depth,
+        "features": features
     }
