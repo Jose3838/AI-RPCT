@@ -500,3 +500,27 @@ async function renderSystemHealthStrip() {
 }
 
 renderSystemHealthStrip();
+
+async function renderDemoWarning() {
+  try {
+    const res = await fetch("/terminal-demo-warning-v1");
+    const data = await res.json();
+
+    const el = document.getElementById("demoWarning");
+    if (!el) return;
+
+    el.innerText = data.readout || "...";
+
+    if (!data.demo_mode) {
+      el.innerText = "All configured providers are live-ready.";
+      el.style.color = "var(--green)";
+      el.style.borderColor = "rgba(65,226,138,.35)";
+      el.style.background = "rgba(65,226,138,.08)";
+    }
+
+  } catch (err) {
+    console.error("Failed to render demo warning", err);
+  }
+}
+
+renderDemoWarning();

@@ -3070,3 +3070,29 @@ def terminal_system_health_v1():
         "providers": integrity.get("providers", 0),
         "gpu_models": integrity.get("gpu_models", 0)
     }
+
+@app.get("/terminal-demo-warning-v1")
+def terminal_demo_warning_v1():
+
+    import os
+
+    missing = []
+
+    for key in [
+        "LAMBDA_API_KEY",
+        "NEBIUS_API_KEY",
+        "COREWEAVE_API_KEY",
+        "CRUSOE_API_KEY"
+    ]:
+        if not os.getenv(key):
+            missing.append(key)
+
+    return {
+        "status": "ok",
+        "missing_keys": missing,
+        "demo_mode": len(missing) > 0,
+        "readout": (
+            f"{len(missing)} provider API keys missing. "
+            "Some providers may run in demo mode."
+        )
+    }

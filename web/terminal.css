@@ -342,3 +342,14 @@ a:hover{text-decoration:underline}
 .refresh-button:hover{
   background:rgba(90,169,255,.22);
 }
+
+.demo-warning{
+  border:1px solid rgba(245,197,66,.35);
+  background:rgba(245,197,66,.08);
+  color:var(--yellow);
+  border-radius:14px;
+  padding:12px 16px;
+  margin-bottom:18px;
+  font-size:14px;
+  font-weight:700;
+}
