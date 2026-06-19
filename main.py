@@ -1871,3 +1871,50 @@ def intelligence_asset_health():
         "assets": assets
     }
 
+
+@app.get("/intelligence-asset-maturity-score")
+def intelligence_asset_maturity_score():
+
+    health = intelligence_asset_health()
+
+    assets = health["assets"]
+
+    if not assets:
+        return {"maturity_score": 0, "maturity_level": "no_assets"}
+
+    score = 0
+
+    for asset in assets:
+        rows = asset["rows"]
+
+        if rows >= 100:
+            asset_score = 100
+        elif rows >= 50:
+            asset_score = 75
+        elif rows >= 10:
+            asset_score = 50
+        elif rows >= 1:
+            asset_score = 25
+        else:
+            asset_score = 0
+
+        score += asset_score
+
+    maturity_score = round(score / len(assets), 2)
+
+    if maturity_score >= 80:
+        maturity_level = "institutional_data_maturity"
+    elif maturity_score >= 50:
+        maturity_level = "growing_data_moat"
+    elif maturity_score >= 25:
+        maturity_level = "early_data_moat"
+    else:
+        maturity_level = "insufficient_history"
+
+    return {
+        "maturity_score": maturity_score,
+        "maturity_level": maturity_level,
+        "assets_evaluated": len(assets),
+        "asset_health": assets
+    }
+
