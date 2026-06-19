@@ -970,3 +970,85 @@ def market_signal_trend():
         "snapshots": len(rows)
     }
 
+
+@app.get("/provider-momentum-trend")
+def provider_momentum_trend():
+
+    import csv
+
+    providers = {}
+
+    with open("provider_momentum_history.csv") as f:
+        reader = csv.reader(f)
+
+        for row in reader:
+
+            try:
+                provider = row[1]
+                score = float(row[2])
+
+                providers.setdefault(provider, []).append(score)
+
+            except:
+                pass
+
+    result = []
+
+    for provider, scores in providers.items():
+
+        if len(scores) < 2:
+            continue
+
+        latest = scores[-1]
+        previous = scores[-2]
+
+        delta = round(latest - previous, 2)
+
+        if delta > 0:
+            trend = "improving"
+        elif delta < 0:
+            trend = "declining"
+        else:
+            trend = "stable"
+
+        result.append({
+            "provider": provider,
+            "latest_score": latest,
+            "previous_score": previous,
+            "delta": delta,
+            "trend": trend
+        })
+
+    return sorted(
+        result,
+        key=lambda x: x["delta"],
+        reverse=True
+    )
+
+
+@app.get("/provider-momentum-leaders")
+def provider_momentum_leaders():
+
+    trends = provider_momentum_trend()
+
+    winners = [p for p in trends if p["delta"] > 0]
+    losers = [p for p in trends if p["delta"] < 0]
+    stable = [p for p in trends if p["delta"] == 0]
+
+    top_winner = winners[0] if winners else None
+    top_loser = losers[-1] if losers else None
+
+    return {
+        "top_winner": top_winner,
+        "top_loser": top_loser,
+        "winners": winners,
+        "losers": losers,
+        "stable": stable,
+        "summary": {
+            "winner_count": len(winners),
+            "loser_count": len(losers),
+            "stable_count": len(stable),
+            "total_providers": len(trends)
+        }
+    }
+
