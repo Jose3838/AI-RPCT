@@ -2005,3 +2005,19 @@ def intelligence_data_inventory():
         "inventory": inventory
     }
 
+
+@app.get("/daily-intelligence-status")
+def daily_intelligence_status():
+
+    inventory = intelligence_data_inventory()
+    moat = data_moat_score()
+    readiness = institutional_readiness_score()
+
+    return {
+        "system_status": "active",
+        "data_points": inventory["total_data_points"],
+        "tracked_assets": inventory["total_assets"],
+        "data_moat_score": moat["data_moat_score"],
+        "institutional_readiness": readiness["readiness_level"]
+    }
+
