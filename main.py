@@ -3271,3 +3271,12 @@ def terminal_data_health_v1():
     )
 
     return daily_data_health()
+
+@app.get("/automation-health-v1")
+def automation_health_v1():
+
+    from intelligence.operations.collection_health import (
+        collection_health
+    )
+
+    return collection_health()
