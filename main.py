@@ -1300,3 +1300,47 @@ def intelligence_confidence_score():
         "provider_count": provider_count
     }
 
+
+@app.get("/institutional-readiness-score")
+def institutional_readiness_score():
+
+    confidence = intelligence_confidence_score()
+    accuracy = intelligence_accuracy_score()
+    snapshot = snapshot_v4()
+
+    provider_count = len(snapshot["provider_strength"])
+    confidence_score = confidence["confidence_score"]
+    accuracy_score = accuracy["accuracy_score"]
+
+    live_data_score = min(100, provider_count * 15)
+
+    readiness_score = round(
+        (confidence_score * 0.35)
+        + (accuracy_score * 0.30)
+        + (live_data_score * 0.25)
+        + (100 * 0.10),
+        2
+    )
+
+    if readiness_score >= 85:
+        readiness_level = "institutional_ready"
+    elif readiness_score >= 70:
+        readiness_level = "enterprise_ready"
+    elif readiness_score >= 50:
+        readiness_level = "investor_preview_ready"
+    else:
+        readiness_level = "early_stage"
+
+    return {
+        "readiness_score": readiness_score,
+        "readiness_level": readiness_level,
+        "drivers": {
+            "confidence_score": confidence_score,
+            "accuracy_score": accuracy_score,
+            "live_data_score": live_data_score,
+            "product_completion_score": 100
+        },
+        "provider_count": provider_count,
+        "system_stage": "gpu_market_intelligence_platform"
+    }
+
