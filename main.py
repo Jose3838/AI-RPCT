@@ -3343,3 +3343,32 @@ def terminal_daily_runner_health_v1():
         "cycle": latest.get("result", {}).get("cycle"),
         "error": latest.get("error")
     }
+
+
+@app.get("/terminal-daily-runner-health-v1")
+def terminal_daily_runner_health_v1():
+
+    import json
+    from pathlib import Path
+
+    latest_file = Path("data/master_daily_cycle_latest.json")
+    log_file = Path("logs/master_daily_cycle.log")
+
+    if not latest_file.exists():
+        return {
+            "status": "missing",
+            "latest_file_exists": False,
+            "log_file_exists": log_file.exists()
+        }
+
+    latest = json.loads(latest_file.read_text())
+
+    return {
+        "status": latest.get("status"),
+        "latest_file_exists": True,
+        "log_file_exists": log_file.exists(),
+        "started_at": latest.get("started_at"),
+        "finished_at": latest.get("finished_at"),
+        "cycle": latest.get("result", {}).get("cycle"),
+        "error": latest.get("error")
+    }
