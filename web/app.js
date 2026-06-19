@@ -67,3 +67,35 @@ async function loadTerminalIntelligenceV1() {
 }
 
 loadTerminalIntelligenceV1();
+
+async function renderTerminalIntelligenceCards() {
+  try {
+    const res = await fetch("/terminal-intelligence-summary-v1");
+    const data = await res.json();
+
+    const breadth = data.market_breadth?.gpu_markets ?? "...";
+    const concentration = data.provider_concentration?.largest_provider_share;
+    const observations = data.snapshot_integrity?.rows ?? "...";
+    const gpuModels = data.snapshot_integrity?.gpu_models ?? "...";
+
+    const marketBreadthEl = document.getElementById("marketBreadth");
+    const providerConcentrationEl = document.getElementById("providerConcentration");
+    const historicalObservationsEl = document.getElementById("historicalObservations");
+    const gpuModelsEl = document.getElementById("gpuModels");
+
+    if (marketBreadthEl) marketBreadthEl.innerText = breadth;
+    if (providerConcentrationEl) {
+      providerConcentrationEl.innerText =
+        concentration !== undefined
+          ? Math.round(concentration * 100) + "%"
+          : "...";
+    }
+    if (historicalObservationsEl) historicalObservationsEl.innerText = observations;
+    if (gpuModelsEl) gpuModelsEl.innerText = gpuModels;
+
+  } catch (err) {
+    console.error("Failed to render intelligence cards", err);
+  }
+}
+
+renderTerminalIntelligenceCards();
