@@ -2440,3 +2440,51 @@ def cycle_health_v4():
         "assets": health
     }
 
+
+@app.post("/save-master-cycle-summary")
+def save_master_cycle_summary():
+
+    import csv
+    from pathlib import Path
+    from datetime import datetime
+
+    moat = data_moat_score()
+    readiness = institutional_readiness_score()
+    coverage = live_coverage_score_v4()
+    inventory = intelligence_data_inventory()
+    health = cycle_health_v4()
+
+    file = Path("master_cycle_summary_history.csv")
+    exists = file.exists()
+
+    with file.open("a", newline="") as f:
+        writer = csv.writer(f)
+
+        if not exists:
+            writer.writerow([
+                "timestamp",
+                "data_moat_score",
+                "data_moat_level",
+                "readiness_score",
+                "readiness_level",
+                "live_coverage_score",
+                "total_data_points",
+                "cycle_health"
+            ])
+
+        writer.writerow([
+            datetime.utcnow().isoformat(),
+            moat["data_moat_score"],
+            moat["data_moat_level"],
+            readiness["readiness_score"],
+            readiness["readiness_level"],
+            coverage["live_coverage_score"],
+            inventory["total_data_points"],
+            health["cycle_health"]
+        ])
+
+    return {
+        "status": "saved",
+        "file": "master_cycle_summary_history.csv"
+    }
+
