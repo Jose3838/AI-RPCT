@@ -1206,3 +1206,47 @@ def save_executive_intelligence_brief():
         "brief": brief
     }
 
+
+@app.get("/intelligence-accuracy-score")
+def intelligence_accuracy_score():
+
+    import csv
+    from pathlib import Path
+
+    file = Path("intelligence_snapshot_v4_history.csv")
+
+    if not file.exists():
+        return {"accuracy_score": 0}
+
+    with file.open() as f:
+        rows = list(csv.DictReader(f))
+
+    total = len(rows)
+
+    if total < 2:
+        return {
+            "accuracy_score": 100,
+            "observations": total
+        }
+
+    stable_periods = 0
+
+    for i in range(1, total):
+
+        current = rows[i]["market_direction"]
+        previous = rows[i-1]["market_direction"]
+
+        if current == previous:
+            stable_periods += 1
+
+    accuracy = round(
+        (stable_periods / (total - 1)) * 100,
+        2
+    )
+
+    return {
+        "accuracy_score": accuracy,
+        "observations": total,
+        "stable_periods": stable_periods
+    }
+
