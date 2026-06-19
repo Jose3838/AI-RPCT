@@ -1250,3 +1250,53 @@ def intelligence_accuracy_score():
         "stable_periods": stable_periods
     }
 
+
+@app.get("/intelligence-confidence-score")
+def intelligence_confidence_score():
+
+    snapshot = snapshot_v4()
+    accuracy = intelligence_accuracy_score()
+    trend = market_signal_trend()
+
+    provider_count = len(snapshot["provider_strength"])
+    accuracy_score = accuracy.get("accuracy_score", 0)
+    snapshots = accuracy.get("observations", 0)
+
+    data_depth_score = min(100, snapshots * 10)
+    provider_coverage_score = min(100, provider_count * 15)
+
+    if trend["trend"] == "stable":
+        trend_reliability_score = 90
+    elif trend["trend"] in ["improving", "deteriorating"]:
+        trend_reliability_score = 70
+    else:
+        trend_reliability_score = 50
+
+    confidence_score = round(
+        (accuracy_score * 0.4)
+        + (data_depth_score * 0.25)
+        + (provider_coverage_score * 0.25)
+        + (trend_reliability_score * 0.10),
+        2
+    )
+
+    if confidence_score >= 85:
+        confidence_level = "high"
+    elif confidence_score >= 65:
+        confidence_level = "medium"
+    else:
+        confidence_level = "early_stage"
+
+    return {
+        "confidence_score": confidence_score,
+        "confidence_level": confidence_level,
+        "drivers": {
+            "accuracy_score": accuracy_score,
+            "data_depth_score": data_depth_score,
+            "provider_coverage_score": provider_coverage_score,
+            "trend_reliability_score": trend_reliability_score
+        },
+        "observations": snapshots,
+        "provider_count": provider_count
+    }
+
