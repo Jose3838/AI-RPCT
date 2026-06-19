@@ -442,3 +442,15 @@ a:hover{text-decoration:underline}
   }
 
 }
+
+.regime-card{
+  border-color:rgba(90,169,255,.35);
+}
+
+.coverage-card{
+  border-color:rgba(65,226,138,.35);
+}
+
+.forecast-signal-card{
+  border-color:rgba(245,197,66,.35);
+}

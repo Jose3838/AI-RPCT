@@ -3127,3 +3127,89 @@ def terminal_executive_summary_v1():
                 0
             )
     }
+
+@app.get("/terminal-market-regime-v1")
+def terminal_market_regime_v1():
+
+    from intelligence.signals.provider_concentration_risk import (
+        provider_concentration_risk
+    )
+    from intelligence.signals.market_breadth_index import (
+        market_breadth_index
+    )
+    from intelligence.assets.snapshot_integrity import (
+        snapshot_integrity
+    )
+
+    concentration = provider_concentration_risk()
+    breadth = market_breadth_index()
+    integrity = snapshot_integrity()
+
+    risk = concentration.get("risk", "unknown")
+    gpu_markets = breadth.get("gpu_markets", 0)
+    observations = integrity.get("rows", 0)
+
+    if risk == "high":
+        regime = "Concentrated Market"
+    elif observations < 1000:
+        regime = "Early Data Accumulation"
+    elif gpu_markets >= 20:
+        regime = "Broad GPU Market Coverage"
+    else:
+        regime = "Developing Market Coverage"
+
+    return {
+        "status": "ok",
+        "regime": regime,
+        "risk": risk,
+        "gpu_markets": gpu_markets,
+        "observations": observations
+    }
+
+@app.get("/terminal-live-coverage-v1")
+def terminal_live_coverage_v1():
+
+    from providers.connectors.collector import collect_provider_data
+
+    data = collect_provider_data()
+    summary = data.get("summary", {})
+
+    return {
+        "status": "ok",
+        "total_connectors": summary.get("total_connectors", 0),
+        "live_ready": summary.get("live_ready", 0),
+        "demo_mode": summary.get("demo_mode", 0),
+        "total_normalized_offers": summary.get("total_normalized_offers", 0)
+    }
+
+@app.get("/terminal-forecast-signal-v1")
+def terminal_forecast_signal_v1():
+
+    from main import terminal_forecast_readiness_v1
+    from intelligence.signals.gpu_price_index import (
+        calculate_gpu_price_index
+    )
+    from intelligence.signals.market_supply_index import (
+        calculate_market_supply_index
+    )
+
+    readiness = terminal_forecast_readiness_v1()
+    price = calculate_gpu_price_index()
+    supply = calculate_market_supply_index()
+
+    score = readiness.get("forecast_readiness_score", 0)
+
+    if score >= 75:
+        signal = "Forecast Ready"
+    elif score >= 50:
+        signal = "Forecast Warming Up"
+    else:
+        signal = "Collect More History"
+
+    return {
+        "status": "ok",
+        "signal": signal,
+        "readiness": score,
+        "gpu_price_index": price,
+        "market_supply": supply
+    }

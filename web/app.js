@@ -593,3 +593,51 @@ async function renderExecutiveSummary() {
 }
 
 renderExecutiveSummary()
+
+async function renderFinalWidgets() {
+  try {
+    const [regimeRes, coverageRes, forecastRes] = await Promise.all([
+      fetch("/terminal-market-regime-v1"),
+      fetch("/terminal-live-coverage-v1"),
+      fetch("/terminal-forecast-signal-v1")
+    ]);
+
+    const regime = await regimeRes.json();
+    const coverage = await coverageRes.json();
+    const forecast = await forecastRes.json();
+
+    const marketRegime = document.getElementById("marketRegime");
+    const marketRegimeReadout = document.getElementById("marketRegimeReadout");
+    const liveCoverage = document.getElementById("liveCoverage");
+    const liveCoverageReadout = document.getElementById("liveCoverageReadout");
+    const forecastSignal = document.getElementById("forecastSignal");
+    const forecastSignalReadout = document.getElementById("forecastSignalReadout");
+
+    if (marketRegime) marketRegime.innerText = regime.regime || "...";
+    if (marketRegimeReadout) {
+      marketRegimeReadout.innerText =
+        `${regime.observations} observations across ${regime.gpu_markets} GPU markets. Risk: ${regime.risk}.`;
+    }
+
+    if (liveCoverage) {
+      liveCoverage.innerText =
+        `${coverage.live_ready}/${coverage.total_connectors}`;
+    }
+
+    if (liveCoverageReadout) {
+      liveCoverageReadout.innerText =
+        `${coverage.total_normalized_offers} normalized offers collected in the latest connector cycle.`;
+    }
+
+    if (forecastSignal) forecastSignal.innerText = forecast.signal || "...";
+    if (forecastSignalReadout) {
+      forecastSignalReadout.innerText =
+        `Forecast readiness: ${forecast.readiness}/100.`;
+    }
+
+  } catch (err) {
+    console.error("Failed to render final widgets", err);
+  }
+}
+
+renderFinalWidgets();
