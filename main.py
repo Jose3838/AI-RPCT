@@ -2615,3 +2615,156 @@ def command_center_v4():
         "institutional_readiness": institutional_readiness_score()
     }
 
+
+@app.post("/save-command-center-history")
+def save_command_center_history():
+
+    import csv
+    from pathlib import Path
+    from datetime import datetime
+
+    command = command_center_v4()
+
+    file = Path("command_center_history.csv")
+    exists = file.exists()
+
+    moat = command["data_moat"]
+    readiness = command["institutional_readiness"]
+    coverage = command["live_coverage"]
+    health = command["cycle_health"]
+
+    with file.open("a", newline="") as f:
+        writer = csv.writer(f)
+
+        if not exists:
+            writer.writerow([
+                "timestamp",
+                "data_moat_score",
+                "data_moat_level",
+                "readiness_score",
+                "readiness_level",
+                "live_coverage_score",
+                "cycle_health"
+            ])
+
+        writer.writerow([
+            datetime.utcnow().isoformat(),
+            moat["data_moat_score"],
+            moat["data_moat_level"],
+            readiness["readiness_score"],
+            readiness["readiness_level"],
+            coverage["live_coverage_score"],
+            health["cycle_health"]
+        ])
+
+    return {
+        "status": "saved",
+        "file": "command_center_history.csv"
+    }
+
+
+@app.get("/command-center-trend")
+def command_center_trend():
+
+    import csv
+    from pathlib import Path
+
+    file = Path("command_center_history.csv")
+
+    if not file.exists():
+        return {"error": "command center history not found"}
+
+    with file.open() as f:
+        rows = list(csv.DictReader(f))
+
+    if len(rows) < 2:
+        return {
+            "trend": "insufficient_data",
+            "history_points": len(rows)
+        }
+
+    latest = rows[-1]
+    previous = rows[-2]
+
+    moat_delta = round(
+        float(latest["data_moat_score"]) - float(previous["data_moat_score"]),
+        2
+    )
+
+    readiness_delta = round(
+        float(latest["readiness_score"]) - float(previous["readiness_score"]),
+        2
+    )
+
+    coverage_delta = round(
+        float(latest["live_coverage_score"]) - float(previous["live_coverage_score"]),
+        2
+    )
+
+    if moat_delta > 0 or readiness_delta > 0 or coverage_delta > 0:
+        trend = "improving"
+    elif moat_delta < 0 or readiness_delta < 0 or coverage_delta < 0:
+        trend = "deteriorating"
+    else:
+        trend = "stable"
+
+    return {
+        "trend": trend,
+        "history_points": len(rows),
+        "deltas": {
+            "data_moat_delta": moat_delta,
+            "readiness_delta": readiness_delta,
+            "live_coverage_delta": coverage_delta
+        },
+        "latest": latest,
+        "previous": previous
+    }
+
+
+@app.get("/startup-readiness-check")
+def startup_readiness_check():
+
+    command = command_center_v4()
+    env = environment_readiness_v4()
+    keys = provider_api_key_readiness_v4()
+    cycle = cycle_health_v4()
+    next_target = next_live_provider_target()
+
+    blockers = []
+
+    if env["missing_keys_count"] > 0:
+        blockers.append("missing_provider_api_keys")
+
+    if cycle["cycle_health"] != "healthy":
+        blockers.append("incomplete_cycle_assets")
+
+    if command["live_coverage"]["live_coverage_score"] < 50:
+        blockers.append("live_coverage_below_50")
+
+    if not blockers:
+        status = "ready_for_next_live_provider"
+    else:
+        status = "not_fully_ready"
+
+    return {
+        "status": status,
+        "blockers": blockers,
+        "missing_keys": env["missing_keys"],
+        "api_key_readiness": keys,
+        "cycle_health": cycle,
+        "next_live_provider": next_target
+    }
+
+
+@app.get("/final-operating-status")
+def final_operating_status():
+
+    return {
+        "system": "AI-RPCT",
+        "operating_status": "active",
+        "command_center": command_center_v4(),
+        "command_center_trend": command_center_trend(),
+        "startup_readiness": startup_readiness_check(),
+        "next_action": next_live_provider_target()
+    }
+
