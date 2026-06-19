@@ -1,0 +1,263 @@
+{
+  "status": "success",
+  "started_at": "2026-06-19T14:24:29.807959+00:00",
+  "finished_at": "2026-06-19T14:24:40.532949+00:00",
+  "result": {
+    "status": "completed",
+    "system": "AI-RPCT",
+    "cycle": "master_daily_cycle_v2",
+    "master_cycle": {
+      "status": "completed",
+      "system": "AI-RPCT",
+      "cycle": "master_daily_cycle",
+      "intelligence_cycle": {
+        "status": "completed",
+        "snapshot": "saved",
+        "dominance": "saved",
+        "brief": "saved",
+        "regime": "saved"
+      },
+      "connector_cycle": {
+        "status": "completed",
+        "connector_status": {
+          "system": "AI-RPCT",
+          "status": "active",
+          "connector_summary": {
+            "total_connectors": 6,
+            "live_ready": 2,
+            "demo_mode": 4,
+            "total_normalized_offers": 68
+          },
+          "providers": [
+            {
+              "provider": "vast",
+              "mode": "live",
+              "live_ready": true,
+              "reason": ""
+            },
+            {
+              "provider": "runpod",
+              "mode": "unknown",
+              "live_ready": false,
+              "reason": ""
+            },
+            {
+              "provider": "coreweave",
+              "mode": "demo",
+              "live_ready": false,
+              "reason": "missing COREWEAVE_API_KEY"
+            },
+            {
+              "provider": "lambda",
+              "mode": "demo",
+              "live_ready": false,
+              "reason": ""
+            },
+            {
+              "provider": "nebius",
+              "mode": "demo",
+              "live_ready": false,
+              "reason": "missing NEBIUS_API_KEY"
+            },
+            {
+              "provider": "crusoe",
+              "mode": "demo",
+              "live_ready": false,
+              "reason": "missing CRUSOE_API_KEY"
+            }
+          ]
+        },
+        "api_key_readiness": {
+          "api_key_readiness_score": 33.33,
+          "ready_count": 2,
+          "total_required": 6,
+          "providers": [
+            {
+              "provider": "lambda",
+              "env_key": "LAMBDA_API_KEY",
+              "api_key_present": false,
+              "status": "missing"
+            },
+            {
+              "provider": "nebius",
+              "env_key": "NEBIUS_API_KEY",
+              "api_key_present": false,
+              "status": "missing"
+            },
+            {
+              "provider": "coreweave",
+              "env_key": "COREWEAVE_API_KEY",
+              "api_key_present": false,
+              "status": "missing"
+            },
+            {
+              "provider": "crusoe",
+              "env_key": "CRUSOE_API_KEY",
+              "api_key_present": false,
+              "status": "missing"
+            },
+            {
+              "provider": "vast",
+              "env_key": "VAST_API_KEY",
+              "api_key_present": true,
+              "status": "ready"
+            },
+            {
+              "provider": "runpod",
+              "env_key": "RUNPOD_API_KEY",
+              "api_key_present": true,
+              "status": "ready"
+            }
+          ]
+        },
+        "live_coverage": {
+          "live_coverage_score": 16.67,
+          "live_count": 1,
+          "live_ready_count": 0,
+          "demo_count": 5,
+          "total_connectors": 6
+        },
+        "audit_saved": "saved",
+        "next_live_provider_target": {
+          "next_target": "lambda",
+          "reason": "",
+          "recommended_action": "Add real API fetch implementation and API key for lambda."
+        },
+        "environment": {
+          "env_file_exists": true,
+          "present_keys_count": 2,
+          "missing_keys_count": 4,
+          "present_keys": [
+            "VAST_API_KEY",
+            "RUNPOD_API_KEY"
+          ],
+          "missing_keys": [
+            "LAMBDA_API_KEY",
+            "NEBIUS_API_KEY",
+            "COREWEAVE_API_KEY",
+            "CRUSOE_API_KEY"
+          ]
+        }
+      },
+      "data_moat": {
+        "data_moat_score": 76.28,
+        "data_moat_level": "growing_data_moat",
+        "drivers": {
+          "maturity_score": 43.75,
+          "confidence_score": 96.5,
+          "asset_coverage_score": 100.0
+        },
+        "tracked_assets": [
+          {
+            "file": "intelligence_snapshot_v4_history.csv",
+            "status": "healthy",
+            "rows": 10
+          },
+          {
+            "file": "provider_dominance_history.csv",
+            "status": "healthy",
+            "rows": 54
+          },
+          {
+            "file": "market_regime_history.csv",
+            "status": "early_data",
+            "rows": 8
+          },
+          {
+            "file": "executive_intelligence_brief_history.csv",
+            "status": "early_data",
+            "rows": 8
+          }
+        ]
+      },
+      "institutional_readiness": {
+        "readiness_score": 96.28,
+        "readiness_level": "institutional_ready",
+        "drivers": {
+          "confidence_score": 96.5,
+          "accuracy_score": 100.0,
+          "live_data_score": 90,
+          "product_completion_score": 100
+        },
+        "provider_count": 6,
+        "system_stage": "gpu_market_intelligence_platform"
+      },
+      "data_inventory": {
+        "total_assets": 5,
+        "total_data_points": 104,
+        "inventory": [
+          {
+            "file": "intelligence_snapshot_v4_history.csv",
+            "rows": 10,
+            "size_bytes": 832
+          },
+          {
+            "file": "provider_dominance_history.csv",
+            "rows": 54,
+            "size_bytes": 3038
+          },
+          {
+            "file": "market_regime_history.csv",
+            "rows": 8,
+            "size_bytes": 467
+          },
+          {
+            "file": "executive_intelligence_brief_history.csv",
+            "rows": 8,
+            "size_bytes": 1602
+          },
+          {
+            "file": "provider_momentum_history.csv",
+            "rows": 24,
+            "size_bytes": 1505
+          }
+        ]
+      }
+    },
+    "summary_saved": "saved",
+    "cycle_health": {
+      "cycle_health": "healthy",
+      "active_assets": 5,
+      "total_assets": 5,
+      "assets": {
+        "intelligence_snapshot": {
+          "exists": true,
+          "rows": 10,
+          "status": "active"
+        },
+        "connector_readiness": {
+          "exists": true,
+          "rows": 6,
+          "status": "active"
+        },
+        "market_regime": {
+          "exists": true,
+          "rows": 8,
+          "status": "active"
+        },
+        "provider_dominance": {
+          "exists": true,
+          "rows": 54,
+          "status": "active"
+        },
+        "executive_brief": {
+          "exists": true,
+          "rows": 8,
+          "status": "active"
+        }
+      }
+    },
+    "feature_snapshot": {
+      "timestamp": "2026-06-19T14:24:40.523561+00:00",
+      "gpu_price_index": 2.15,
+      "market_supply_index": 1.0
+    },
+    "lifecycle": {
+      "new": 1,
+      "removed": 1
+    },
+    "capacity_churn": {
+      "capacity_churn": 2
+    }
+  }
+}
