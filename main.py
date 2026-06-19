@@ -2780,3 +2780,21 @@ def final_operating_status():
         "next_action": next_live_provider_target()
     }
 
+
+@app.get("/terminal-intelligence-summary-v1")
+def terminal_intelligence_summary_v1():
+
+    from intelligence.signals.provider_concentration_risk import provider_concentration_risk
+    from intelligence.signals.market_breadth_index import market_breadth_index
+    from intelligence.assets.asset_growth_tracker import asset_growth_tracker
+    from intelligence.assets.snapshot_integrity import snapshot_integrity
+    from intelligence.market_depth.gpu_market_depth import gpu_market_depth
+
+    return {
+        "status": "ok",
+        "provider_concentration": provider_concentration_risk(),
+        "market_breadth": market_breadth_index(),
+        "asset_growth": asset_growth_tracker(),
+        "snapshot_integrity": snapshot_integrity(),
+        "gpu_market_depth": gpu_market_depth()[:15]
+    }

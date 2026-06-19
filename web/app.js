@@ -48,3 +48,22 @@ async function load(){
 
 load();
 setInterval(load,60000);
+
+async function loadTerminalIntelligenceV1() {
+  try {
+    const res = await fetch("/terminal-intelligence-summary-v1");
+    const data = await res.json();
+
+    console.log("Terminal Intelligence V1", data);
+
+    const status = document.getElementById("refreshStatus");
+    if (status) {
+      status.innerText = "Live intelligence loaded";
+    }
+
+  } catch (err) {
+    console.error("Terminal Intelligence V1 failed", err);
+  }
+}
+
+loadTerminalIntelligenceV1();
