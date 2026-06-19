@@ -3079,6 +3079,7 @@ def terminal_system_health_v1():
         "status": "healthy" if healthy else "incomplete",
         "files": files,
         "daily_runner_health": terminal_daily_runner_health_v1(),
+        "collection_health": terminal_collection_health_v2(),
         "rows": integrity.get("rows", 0),
         "providers": integrity.get("providers", 0),
         "gpu_models": integrity.get("gpu_models", 0)
