@@ -14,6 +14,9 @@ fi
 echo "Running UI smoke test..."
 python ui_smoke_test.py
 
+echo "Running UI file check..."
+python ui_file_check.py
+
 echo "Checking data assets..."
 ls -lh data/live_offers || true
 ls -lh data/feature_store || true

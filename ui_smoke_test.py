@@ -9,6 +9,10 @@ from main import (
     terminal_forecast_readiness_v1,
     terminal_system_health_v1,
     terminal_demo_warning_v1,
+    terminal_executive_summary_v1,
+    terminal_market_regime_v1,
+    terminal_live_coverage_v1,
+    terminal_forecast_signal_v1,
 )
 
 CHECKS = {
@@ -22,6 +26,10 @@ CHECKS = {
     "terminal_forecast_readiness_v1": terminal_forecast_readiness_v1,
     "terminal_system_health_v1": terminal_system_health_v1,
     "terminal_demo_warning_v1": terminal_demo_warning_v1,
+    "terminal_executive_summary_v1": terminal_executive_summary_v1,
+    "terminal_market_regime_v1": terminal_market_regime_v1,
+    "terminal_live_coverage_v1": terminal_live_coverage_v1,
+    "terminal_forecast_signal_v1": terminal_forecast_signal_v1,
 }
 
 def run():
