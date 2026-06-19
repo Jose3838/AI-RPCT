@@ -1637,3 +1637,36 @@ def provider_dominance_trend():
 
     return sorted(result, key=lambda x: x["delta"], reverse=True)
 
+
+@app.get("/dominance-change-alert")
+def dominance_change_alert():
+
+    trends = provider_dominance_trend()
+
+    alerts = []
+
+    for p in trends:
+
+        delta = p["delta"]
+
+        if delta >= 5:
+            alert = "major_gain"
+        elif delta >= 2:
+            alert = "moderate_gain"
+        elif delta <= -5:
+            alert = "major_loss"
+        elif delta <= -2:
+            alert = "moderate_loss"
+        else:
+            alert = "no_material_change"
+
+        alerts.append({
+            "provider": p["provider"],
+            "alert": alert,
+            "delta": delta,
+            "latest_dominance": p["latest_dominance"],
+            "previous_dominance": p["previous_dominance"]
+        })
+
+    return alerts
+
