@@ -3344,3 +3344,24 @@ def terminal_daily_runner_health_v1():
         "cycle": latest.get("result", {}).get("cycle"),
         "error": latest.get("error")
     }
+
+
+@app.get("/terminal-collection-health-v2")
+def terminal_collection_health_v2():
+
+    from intelligence.operations.collection_health import (
+        collection_health
+    )
+
+    health = collection_health()
+
+    return {
+        "status": "ok",
+        "collection": health,
+        "headline": f"Collection status is {health.get('status')}",
+        "readout": (
+            f"{health.get('latest_snapshot_rows', 0)} offers observed "
+            f"from {health.get('providers_reporting', 0)} providers. "
+            f"Last collection was {health.get('minutes_since_last_collection')} minutes ago."
+        )
+    }
