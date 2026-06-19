@@ -2,58 +2,64 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>AI-RPCT Terminal</title>
+<title>AI-RPCT Command Terminal</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-body{background:#070b16;color:#f4f7fb;font-family:Arial;padding:24px}
-h1{font-size:42px;margin-bottom:4px}
-.subtitle{color:#9fb3c8;margin-bottom:18px}
-.status{color:#7CFFB2;margin-bottom:24px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-.card{background:#151b2e;border:1px solid #26324f;border-radius:14px;padding:18px}
-.kpi{font-size:34px;font-weight:bold}
-.label{color:#9fb3c8;font-size:13px}
-canvas{background:#fff;border-radius:10px;padding:10px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{border-bottom:1px solid #26324f;padding:8px;text-align:left}
-th{color:#9fb3c8}
-a{color:#7cb7ff}
-</style>
+<link rel="stylesheet" href="/web/terminal.css">
 </head>
 <body>
-<h1>AI-RPCT Terminal</h1>
-<div class="subtitle">Bloomberg-style intelligence for AI infrastructure risk</div>
-<div class="status" id="refreshStatus">Loading live data...</div>
+<div class="shell">
+  <header class="header">
+    <div class="brand">
+      <div class="eyebrow">AI Infrastructure Intelligence</div>
+      <h1>AI-RPCT Command Terminal</h1>
+      <p>Bloomberg-style market intelligence for GPU, AI and cloud infrastructure.</p>
+    </div>
+    <div class="badge" id="refreshStatus">Loading live data...</div>
+  </header>
 
-<div class="grid">
-  <div class="card"><div class="label">AI Infrastructure Index</div><div id="aiIndex" class="kpi">...</div></div>
-  <div class="card"><div class="label">GPU Price Index</div><div id="gpuPrice" class="kpi">...</div></div>
-  <div class="card"><div class="label">Risk Score</div><div id="riskScore" class="kpi">...</div></div>
-  <div class="card"><div class="label">GPU Trend</div><div id="gpuTrend" class="kpi">...</div></div>
-  <div class="card"><div class="label">Live Providers</div><div id="providerCount" class="kpi">...</div></div>
-  <div class="card"><div class="label">Data Quality</div><div id="quality" class="kpi">...</div></div>
+  <section class="hero">
+    <div>
+      <div class="hero-label">Operating Thesis</div>
+      <h2>GPU market structure, pricing pressure and provider concentration in one terminal.</h2>
+    </div>
+    <div class="hero-stat">
+      <span>LIVE</span>
+      <strong>Market Intel</strong>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card span-3"><div class="label">AI Infrastructure Index</div><div id="aiIndex" class="metric">...</div></div>
+    <div class="card span-3"><div class="label">GPU Price Index</div><div id="gpuPrice" class="metric">...</div></div>
+    <div class="card span-3"><div class="label">Risk Score</div><div id="riskScore" class="metric">...</div></div>
+    <div class="card span-3"><div class="label">GPU Trend</div><div id="gpuTrend" class="metric">...</div></div>
+    <div class="card span-3"><div class="label">Live Providers</div><div id="providerCount" class="metric">...</div></div>
+    <div class="card span-3"><div class="label">Data Quality</div><div id="quality" class="metric">...</div></div>
+    <div class="card span-6">
+      <h3>Provider Market Share</h3>
+      <canvas id="marketShareChart"></canvas>
+    </div>
+    <div class="card span-6">
+      <h3>Provider Health</h3>
+      <table id="providerHealth"></table>
+    </div>
+    <div class="card span-8">
+      <h3>Top Expensive GPUs</h3>
+      <table id="gpuTable"></table>
+    </div>
+    <div class="card span-4">
+      <h3>Intelligence Reports</h3>
+      <div class="links">
+        <a href="/weekly-infrastructure-report" target="_blank">Weekly Infrastructure Report</a>
+        <a href="/investor-snapshot" target="_blank">Investor Snapshot</a>
+        <a href="/market-intelligence-snapshot" target="_blank">Market Intelligence Snapshot</a>
+        <a href="/executive-ai-memo" target="_blank">Executive AI Memo</a>
+        <a href="/run-master-daily-cycle-v2" target="_blank">Run Master Cycle V2</a>
+      </div>
+    </div>
+  </section>
 </div>
 
-<br>
-
-<div class="grid">
-  <div class="card"><h3>Provider Market Share</h3><canvas id="marketShareChart"></canvas></div>
-  <div class="card"><h3>Provider Health</h3><table id="providerHealth"></table></div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="card"><h3>Top Expensive GPUs</h3><table id="gpuTable"></table></div>
-  <div class="card">
-    <h3>Reports</h3>
-    <p><a href="/weekly-infrastructure-report" target="_blank">Weekly Infrastructure Report</a></p>
-    <p><a href="/investor-snapshot" target="_blank">Investor Snapshot</a></p>
-    <p><a href="/market-intelligence-snapshot" target="_blank">Market Intelligence Snapshot</a></p>
-    <p><a href="/executive-ai-memo" target="_blank">Executive AI Memo</a></p>
-  </div>
-</div>
-
-<script src="app.js"></script>
+<script src="/web/app.js"></script>
 </body>
 </html>
