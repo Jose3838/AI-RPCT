@@ -1816,3 +1816,58 @@ def intelligence_audit_log():
         "tracked_asset_count": len(audit)
     }
 
+
+@app.get("/intelligence-asset-health")
+def intelligence_asset_health():
+
+    import csv
+    from pathlib import Path
+
+    files = [
+        "intelligence_snapshot_v4_history.csv",
+        "provider_dominance_history.csv",
+        "market_regime_history.csv",
+        "executive_intelligence_brief_history.csv"
+    ]
+
+    assets = []
+
+    for file_name in files:
+
+        path = Path(file_name)
+
+        if not path.exists():
+            assets.append({
+                "file": file_name,
+                "status": "missing",
+                "rows": 0
+            })
+            continue
+
+        with path.open() as f:
+            rows = list(csv.reader(f))
+
+        data_rows = max(0, len(rows) - 1)
+
+        if data_rows >= 10:
+            status = "healthy"
+        elif data_rows >= 1:
+            status = "early_data"
+        else:
+            status = "empty"
+
+        assets.append({
+            "file": file_name,
+            "status": status,
+            "rows": data_rows
+        })
+
+    healthy_count = len([a for a in assets if a["status"] in ["healthy", "early_data"]])
+
+    return {
+        "asset_health_status": "active",
+        "healthy_assets": healthy_count,
+        "total_assets": len(assets),
+        "assets": assets
+    }
+
