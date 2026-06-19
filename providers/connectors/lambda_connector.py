@@ -1,41 +1,69 @@
 import os
+import requests
+from intelligence.schemas.provider_offer import ProviderOffer
 
-from providers.connectors.base_connector import (
-    BaseProviderConnector
-)
-
-
-class LambdaConnector(
-    BaseProviderConnector
-):
-
-    provider_name = "lambda"
+class LambdaConnector:
+    name = "lambda"
 
     def fetch(self):
-
         api_key = os.getenv("LAMBDA_API_KEY")
 
         if not api_key:
             return {
-                "provider": "lambda",
-                "mode": "demo",
+                "provider": self.name,
                 "live_ready": False,
-                "reason": "missing LAMBDA_API_KEY",
-                "gpu_type": "H100",
-                "price_per_hour": 2.49,
-                "available_capacity": 72,
-                "health_score": 94,
-                "region": "us"
+                "mode": "demo",
+                "offers": [],
+                "error": "Missing LAMBDA_API_KEY"
             }
 
-        return {
-            "provider": "lambda",
-            "mode": "live_ready",
-            "live_ready": True,
-            "reason": "LAMBDA_API_KEY detected",
-            "gpu_type": None,
-            "price_per_hour": None,
-            "available_capacity": None,
-            "health_score": None,
-            "region": None
-        }
+        headers = {"Authorization": f"Bearer {api_key}"}
+
+        try:
+            r = requests.get(
+                "https://cloud.lambdalabs.com/api/v1/instance-types",
+                headers=headers,
+                timeout=20,
+            )
+            r.raise_for_status()
+            payload = r.json()
+
+            offers = []
+            for item in payload.get("data", {}).values():
+                instance_type = item.get("instance_type", {})
+                gpu_description = instance_type.get("gpu_description")
+                price = instance_type.get("price_cents_per_hour")
+
+                regions = item.get("regions_with_capacity_available", [])
+                available = bool(regions)
+
+                offers.append(
+                    ProviderOffer(
+                        provider=self.name,
+                        gpu_model=gpu_description or "unknown",
+                        region=",".join(regions) if regions else None,
+                        price_usd_per_gpu_hour=(price / 100) if price else None,
+                        available=available,
+                        source="lambda_cloud_api",
+                        mode="live",
+                        raw=item,
+                        observed_at=ProviderOffer.now_iso(),
+                    ).to_dict()
+                )
+
+            return {
+                "provider": self.name,
+                "live_ready": True,
+                "mode": "live",
+                "offers": offers,
+                "error": None,
+            }
+
+        except Exception as e:
+            return {
+                "provider": self.name,
+                "live_ready": True,
+                "mode": "error",
+                "offers": [],
+                "error": str(e),
+            }
