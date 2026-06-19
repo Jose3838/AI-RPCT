@@ -413,3 +413,32 @@ a:hover{text-decoration:underline}
   line-height:1.45;
 }
 
+
+.executive-strip{
+  display:grid;
+  grid-template-columns:
+    repeat(4,1fr);
+  gap:16px;
+  margin-bottom:18px;
+}
+
+.executive-item{
+  background:
+    linear-gradient(
+      180deg,
+      var(--panel),
+      var(--panel2)
+    );
+
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:16px;
+}
+
+@media(max-width:900px){
+
+  .executive-strip{
+    grid-template-columns:1fr;
+  }
+
+}

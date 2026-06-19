@@ -550,3 +550,46 @@ setInterval(() => {
   setTerminalLastUpdated();
 }, 60000);
 
+
+async function renderExecutiveSummary() {
+
+  try {
+
+    const res =
+      await fetch(
+        "/terminal-executive-summary-v1"
+      )
+
+    const data =
+      await res.json()
+
+    document.getElementById(
+      "execObservations"
+    ).innerText =
+      data.observations
+
+    document.getElementById(
+      "execProviders"
+    ).innerText =
+      data.providers
+
+    document.getElementById(
+      "execGpuMarkets"
+    ).innerText =
+      data.gpu_models
+
+    document.getElementById(
+      "execForecast"
+    ).innerText =
+      data.forecast_readiness +
+      "/100"
+
+  } catch(err){
+
+    console.error(err)
+
+  }
+
+}
+
+renderExecutiveSummary()

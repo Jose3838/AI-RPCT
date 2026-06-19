@@ -3096,3 +3096,34 @@ def terminal_demo_warning_v1():
             "Some providers may run in demo mode."
         )
     }
+
+@app.get("/terminal-executive-summary-v1")
+def terminal_executive_summary_v1():
+
+    from intelligence.assets.snapshot_integrity import (
+        snapshot_integrity
+    )
+
+    from main import (
+        terminal_forecast_readiness_v1
+    )
+
+    integrity = snapshot_integrity()
+    forecast = terminal_forecast_readiness_v1()
+
+    return {
+        "observations":
+            integrity.get("rows", 0),
+
+        "providers":
+            integrity.get("providers", 0),
+
+        "gpu_models":
+            integrity.get("gpu_models", 0),
+
+        "forecast_readiness":
+            forecast.get(
+                "forecast_readiness_score",
+                0
+            )
+    }
