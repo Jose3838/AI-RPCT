@@ -15,6 +15,8 @@ from main import (
     terminal_market_regime_v1,
     terminal_live_coverage_v1,
     terminal_forecast_signal_v1,
+    terminal_forecast_health_v1,
+    terminal_data_health_v1,
 )
 
 CHECKS = {
@@ -32,6 +34,8 @@ CHECKS = {
     "terminal_market_regime_v1": terminal_market_regime_v1,
     "terminal_live_coverage_v1": terminal_live_coverage_v1,
     "terminal_forecast_signal_v1": terminal_forecast_signal_v1,
+    "terminal_forecast_health_v1": terminal_forecast_health_v1,
+    "terminal_data_health_v1": terminal_data_health_v1,
     "forecast_accuracy_calculation_v1": forecast_accuracy_calculation_v1,
 }
 

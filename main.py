@@ -3237,3 +3237,37 @@ def terminal_forecast_intelligence_v1():
         "supply_shock": shock,
         "provider_expansion": expansion
     }
+
+@app.get("/terminal-forecast-health-v1")
+def terminal_forecast_health_v1():
+
+    from intelligence.forecast.forecast_accuracy_calculation_v1 import (
+        forecast_accuracy_calculation_v1
+    )
+
+    from intelligence.forecast.forecast_accuracy_dataset import (
+        forecast_accuracy_dataset
+    )
+
+    accuracy = forecast_accuracy_calculation_v1()
+    dataset = forecast_accuracy_dataset()
+
+    return {
+        "status": "ok",
+        "accuracy": accuracy,
+        "dataset": dataset,
+        "readout": (
+            f"Forecast audit contains {dataset.get('rows', 0)} rows "
+            f"across {dataset.get('gpu_models', 0)} GPU models. "
+            f"Alpha signal rate is {accuracy.get('alpha_signal_rate', 0)}%."
+        )
+    }
+
+@app.get("/terminal-data-health-v1")
+def terminal_data_health_v1():
+
+    from intelligence.assets.daily_data_health import (
+        daily_data_health
+    )
+
+    return daily_data_health()
