@@ -2904,3 +2904,42 @@ def terminal_data_moat_v1():
             f"across {integrity.get('gpu_models', 0)} GPU markets and {integrity.get('providers', 0)} providers."
         )
     }
+
+@app.get("/terminal-signal-tape-v1")
+def terminal_signal_tape_v1():
+
+    from intelligence.signals.provider_concentration_risk import provider_concentration_risk
+    from intelligence.assets.snapshot_integrity import snapshot_integrity
+    from intelligence.signals.market_breadth_index import market_breadth_index
+    from intelligence.assets.asset_growth_tracker import asset_growth_tracker
+
+    concentration = provider_concentration_risk()
+    integrity = snapshot_integrity()
+    breadth = market_breadth_index()
+    assets = asset_growth_tracker()
+
+    total_bytes = sum(assets.values())
+
+    signals = [
+        {
+            "type": "data_moat",
+            "label": f"{integrity.get('rows', 0)} historical observations tracked"
+        },
+        {
+            "type": "market_breadth",
+            "label": f"{breadth.get('gpu_markets', 0)} GPU markets tracked"
+        },
+        {
+            "type": "provider_concentration",
+            "label": f"Provider concentration risk: {concentration.get('risk', 'unknown')}"
+        },
+        {
+            "type": "asset_growth",
+            "label": f"Historical asset size: {round(total_bytes / 1024, 1)} KB"
+        }
+    ]
+
+    return {
+        "status": "ok",
+        "signals": signals
+    }

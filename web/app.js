@@ -301,3 +301,28 @@ async function renderDataMoatPanel() {
 }
 
 renderDataMoatPanel();
+
+async function renderSignalTape() {
+  try {
+    const res = await fetch("/terminal-signal-tape-v1");
+    const data = await res.json();
+
+    const tape = document.getElementById("signalTape");
+    if (!tape) return;
+
+    const signals = data.signals || [];
+
+    tape.innerHTML = `
+      <div class="signal-tape-inner">
+        ${signals.map(s => `
+          <span><strong>${s.type}</strong>${s.label}</span>
+        `).join("")}
+      </div>
+    `;
+
+  } catch (err) {
+    console.error("Failed to render signal tape", err);
+  }
+}
+
+renderSignalTape();
