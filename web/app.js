@@ -482,3 +482,21 @@ async function renderForecastReadiness() {
 }
 
 renderForecastReadiness();
+
+async function renderSystemHealthStrip() {
+  try {
+    const res = await fetch("/terminal-system-health-v1");
+    const data = await res.json();
+
+    const el = document.getElementById("systemHealthStrip");
+    if (!el) return;
+
+    el.innerText =
+      `System ${data.status.toUpperCase()} · ${data.rows} observations · ${data.providers} providers · ${data.gpu_models} GPU markets`;
+
+  } catch (err) {
+    console.error("Failed to render system health strip", err);
+  }
+}
+
+renderSystemHealthStrip();

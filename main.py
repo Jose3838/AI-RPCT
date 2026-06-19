@@ -3045,3 +3045,28 @@ def terminal_forecast_readiness_v1():
             f"{rows} observations and {gpu_models} GPU markets."
         )
     }
+
+@app.get("/terminal-system-health-v1")
+def terminal_system_health_v1():
+
+    from pathlib import Path
+    from intelligence.assets.snapshot_integrity import snapshot_integrity
+
+    integrity = snapshot_integrity()
+
+    files = {
+        "offer_history": Path("data/live_offers/provider_live_offer_history.csv").exists(),
+        "feature_store": Path("data/feature_store/daily_market_features.csv").exists(),
+        "market_depth_history": Path("data/feature_store/gpu_market_depth_history.csv").exists(),
+        "runner_log": Path("logs/master_daily_cycle.log").exists()
+    }
+
+    healthy = all(files.values())
+
+    return {
+        "status": "healthy" if healthy else "incomplete",
+        "files": files,
+        "rows": integrity.get("rows", 0),
+        "providers": integrity.get("providers", 0),
+        "gpu_models": integrity.get("gpu_models", 0)
+    }
