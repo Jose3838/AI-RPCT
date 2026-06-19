@@ -2541,3 +2541,61 @@ def master_cycle_report():
         "history_points": len(rows)
     }
 
+
+@app.get("/master-cycle-trend")
+def master_cycle_trend():
+
+    import csv
+    from pathlib import Path
+
+    file = Path("master_cycle_summary_history.csv")
+
+    if not file.exists():
+        return {"error": "master cycle summary history not found"}
+
+    with file.open() as f:
+        rows = list(csv.DictReader(f))
+
+    if len(rows) < 2:
+        return {
+            "trend": "insufficient_data",
+            "history_points": len(rows)
+        }
+
+    latest = rows[-1]
+    previous = rows[-2]
+
+    moat_delta = round(
+        float(latest["data_moat_score"]) - float(previous["data_moat_score"]),
+        2
+    )
+
+    readiness_delta = round(
+        float(latest["readiness_score"]) - float(previous["readiness_score"]),
+        2
+    )
+
+    live_coverage_delta = round(
+        float(latest["live_coverage_score"]) - float(previous["live_coverage_score"]),
+        2
+    )
+
+    if moat_delta > 0 or readiness_delta > 0 or live_coverage_delta > 0:
+        trend = "improving"
+    elif moat_delta < 0 or readiness_delta < 0 or live_coverage_delta < 0:
+        trend = "deteriorating"
+    else:
+        trend = "stable"
+
+    return {
+        "trend": trend,
+        "history_points": len(rows),
+        "deltas": {
+            "data_moat_delta": moat_delta,
+            "readiness_delta": readiness_delta,
+            "live_coverage_delta": live_coverage_delta
+        },
+        "latest": latest,
+        "previous": previous
+    }
+
