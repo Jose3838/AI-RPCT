@@ -1089,3 +1089,41 @@ def market_rotation_signal():
         "summary": leaders["summary"]
     }
 
+
+@app.get("/market-intelligence-summary")
+def market_intelligence_summary():
+
+    snapshot = snapshot_v4()
+    trend = market_signal_trend()
+    rotation = market_rotation_signal()
+    leaders = provider_momentum_leaders()
+
+    market_regime = snapshot["market_regime"]["market_regime"]
+    market_direction = snapshot["market_signal"]["market_direction"]
+    signal_score = snapshot["market_signal"]["market_signal_score"]
+
+    top_provider = None
+    weakest_provider = None
+
+    if snapshot["provider_strength"]:
+        top_provider = snapshot["provider_strength"][0]["provider"]
+        weakest_provider = snapshot["provider_strength"][-1]["provider"]
+
+    summary = (
+        f"AI-RPCT detects a {market_regime} with {market_direction} market conditions. "
+        f"The current market signal score is {signal_score}. "
+        f"Momentum trend is {trend['trend']} with delta {trend.get('delta')}. "
+        f"Market rotation is {rotation['rotation_signal']}. "
+        f"Top provider is {top_provider}; weakest provider is {weakest_provider}."
+    )
+
+    return {
+        "summary": summary,
+        "market_regime": market_regime,
+        "market_direction": market_direction,
+        "market_signal_score": signal_score,
+        "market_signal_trend": trend,
+        "market_rotation": rotation,
+        "momentum_leaders": leaders
+    }
+
