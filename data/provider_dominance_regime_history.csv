@@ -1,0 +1,2 @@
+timestamp,status,dominant_provider,market_share_pct,regime,trend,delta_pct,hours_observed,provider_count,source_timestamp
+2026-06-19T17:18:04.005514+00:00,ok,vast,93.3171,extreme_dominance,flat,-0.8005,53.91,6,2026-06-19T17:17:11.350476+00:00
