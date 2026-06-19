@@ -1742,3 +1742,40 @@ def run_daily_intelligence_cycle():
         "regime": regime["status"]
     }
 
+
+@app.get("/intelligence-audit-log")
+def intelligence_audit_log():
+
+    from pathlib import Path
+
+    files = [
+        "intelligence_snapshot_v4_history.csv",
+        "provider_dominance_history.csv",
+        "market_regime_history.csv",
+        "executive_intelligence_brief_history.csv"
+    ]
+
+    audit = []
+
+    for file_name in files:
+
+        path = Path(file_name)
+
+        if path.exists():
+            audit.append({
+                "file": file_name,
+                "size_bytes": path.stat().st_size,
+                "exists": True
+            })
+        else:
+            audit.append({
+                "file": file_name,
+                "exists": False
+            })
+
+    return {
+        "audit_status": "active",
+        "tracked_assets": audit,
+        "tracked_asset_count": len(audit)
+    }
+
