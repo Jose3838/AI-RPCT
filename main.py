@@ -2806,3 +2806,41 @@ def terminal_intelligence_summary_v1():
             fromlist=["daily_alpha_feed"]
         ).daily_alpha_feed()
     }
+
+@app.get("/terminal-market-narrative-v1")
+def terminal_market_narrative_v1():
+
+    from intelligence.signals.provider_concentration_risk import provider_concentration_risk
+    from intelligence.signals.market_breadth_index import market_breadth_index
+    from intelligence.assets.snapshot_integrity import snapshot_integrity
+
+    concentration = provider_concentration_risk()
+    breadth = market_breadth_index()
+    integrity = snapshot_integrity()
+
+    risk = concentration.get("risk", "unknown")
+    share = concentration.get("largest_provider_share", 0)
+    rows = integrity.get("rows", 0)
+    gpu_models = integrity.get("gpu_models", 0)
+
+    if risk == "high":
+        risk_text = "Provider concentration remains high. Market coverage is still heavily dependent on the leading data source."
+    elif risk == "medium":
+        risk_text = "Provider concentration is moderate. The platform is beginning to diversify its market coverage."
+    else:
+        risk_text = "Provider concentration is healthy. Market observations are reasonably diversified across providers."
+
+    return {
+        "status": "ok",
+        "headline": "AI-RPCT is building a historical GPU market intelligence asset.",
+        "summary": (
+            f"The system currently tracks {rows} historical offer observations "
+            f"across {gpu_models} GPU markets. "
+            f"The largest provider represents {round(share * 100, 1)}% of observed data. "
+            f"{risk_text}"
+        ),
+        "risk_level": risk,
+        "provider_concentration": concentration,
+        "market_breadth": breadth,
+        "snapshot_integrity": integrity
+    }

@@ -202,3 +202,18 @@ a:hover{text-decoration:underline}
   .span-3,.span-4,.span-6,.span-8{grid-column:span 12}
   .brand h1{font-size:32px}
 }
+
+.narrative-headline{
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:-.035em;
+  margin-bottom:10px;
+}
+
+.narrative-summary{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.6;
+  max-width:980px;
+  margin:0;
+}

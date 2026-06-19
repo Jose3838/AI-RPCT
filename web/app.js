@@ -240,3 +240,21 @@ async function renderDailyAlphaFeed() {
 }
 
 renderDailyAlphaFeed();
+
+async function renderMarketNarrative() {
+  try {
+    const res = await fetch("/terminal-market-narrative-v1");
+    const data = await res.json();
+
+    const headline = document.getElementById("marketNarrativeHeadline");
+    const summary = document.getElementById("marketNarrativeSummary");
+
+    if (headline) headline.innerText = data.headline || "...";
+    if (summary) summary.innerText = data.summary || "No narrative available.";
+
+  } catch (err) {
+    console.error("Failed to render market narrative", err);
+  }
+}
+
+renderMarketNarrative();
