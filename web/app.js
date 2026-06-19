@@ -276,3 +276,28 @@ async function renderInvestorSnapshot() {
 }
 
 renderInvestorSnapshot();
+
+async function renderDataMoatPanel() {
+  try {
+    const res = await fetch("/terminal-data-moat-v1");
+    const data = await res.json();
+
+    const observations = document.getElementById("moatObservations");
+    const assetSize = document.getElementById("moatAssetSize");
+    const readout = document.getElementById("moatReadout");
+
+    if (observations) observations.innerText = data.observations ?? "...";
+
+    if (assetSize) {
+      const kb = Math.round((data.total_asset_bytes || 0) / 1024);
+      assetSize.innerText = kb + " KB";
+    }
+
+    if (readout) readout.innerText = data.readout || "...";
+
+  } catch (err) {
+    console.error("Failed to render data moat panel", err);
+  }
+}
+
+renderDataMoatPanel();

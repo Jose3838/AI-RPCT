@@ -2880,3 +2880,27 @@ def terminal_investor_snapshot_v1():
             f"The current commercial risk is provider concentration: {risk}."
         )
     }
+
+@app.get("/terminal-data-moat-v1")
+def terminal_data_moat_v1():
+
+    from intelligence.assets.asset_growth_tracker import asset_growth_tracker
+    from intelligence.assets.snapshot_integrity import snapshot_integrity
+
+    assets = asset_growth_tracker()
+    integrity = snapshot_integrity()
+
+    total_bytes = sum(assets.values())
+
+    return {
+        "status": "ok",
+        "total_asset_bytes": total_bytes,
+        "assets": assets,
+        "observations": integrity.get("rows", 0),
+        "gpu_models": integrity.get("gpu_models", 0),
+        "providers": integrity.get("providers", 0),
+        "readout": (
+            f"AI-RPCT currently owns {integrity.get('rows', 0)} historical GPU market observations "
+            f"across {integrity.get('gpu_models', 0)} GPU markets and {integrity.get('providers', 0)} providers."
+        )
+    }
