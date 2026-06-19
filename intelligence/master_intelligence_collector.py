@@ -22,6 +22,10 @@ from intelligence.regime.save_provider_dominance_history import (
     save_provider_dominance_history
 )
 
+from intelligence.market_depth.save_market_depth_history import (
+    save_market_depth_history
+)
+
 def run_master_intelligence_collector():
 
     gpu = save_gpu_daily_state()
@@ -46,11 +50,16 @@ def run_master_intelligence_collector():
         save_provider_dominance_history()
     )
 
+    market_depth = (
+        save_market_depth_history()
+    )
+
     return {
         "gpu_state": gpu,
         "providers": providers,
         "forecast": forecast,
         "coverage": coverage,
         "regime": regime,
-        "provider_dominance": provider_dominance
+        "provider_dominance": provider_dominance,
+        "market_depth": market_depth
     }
