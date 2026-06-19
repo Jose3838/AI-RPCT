@@ -1584,3 +1584,56 @@ def save_provider_dominance_history():
         "providers_saved": len(dominance)
     }
 
+
+@app.get("/provider-dominance-trend")
+def provider_dominance_trend():
+
+    import csv
+    from pathlib import Path
+
+    file = Path("provider_dominance_history.csv")
+
+    if not file.exists():
+        return {"error": "provider dominance history not found"}
+
+    provider_rows = {}
+
+    with file.open() as f:
+        reader = csv.DictReader(f)
+
+        for row in reader:
+            provider = row["provider"]
+            dominance = float(row["dominance_index"])
+            provider_rows.setdefault(provider, []).append(dominance)
+
+    result = []
+
+    for provider, values in provider_rows.items():
+
+        if len(values) < 2:
+            trend = "insufficient_data"
+            delta = 0
+            latest = values[-1]
+            previous = None
+        else:
+            latest = values[-1]
+            previous = values[-2]
+            delta = round(latest - previous, 2)
+
+            if delta > 0:
+                trend = "gaining_dominance"
+            elif delta < 0:
+                trend = "losing_dominance"
+            else:
+                trend = "stable"
+
+        result.append({
+            "provider": provider,
+            "latest_dominance": latest,
+            "previous_dominance": previous,
+            "delta": delta,
+            "trend": trend
+        })
+
+    return sorted(result, key=lambda x: x["delta"], reverse=True)
+
