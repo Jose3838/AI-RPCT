@@ -2095,3 +2095,48 @@ def connector_live_readiness():
         "providers": readiness
     }
 
+
+@app.get("/provider-api-key-readiness-v4")
+def provider_api_key_readiness_v4():
+
+    import os
+
+    required_keys = {
+        "lambda": "LAMBDA_API_KEY",
+        "nebius": "NEBIUS_API_KEY",
+        "coreweave": "COREWEAVE_API_KEY",
+        "crusoe": "CRUSOE_API_KEY",
+        "vast": "VAST_API_KEY",
+        "runpod": "RUNPOD_API_KEY"
+    }
+
+    providers = []
+
+    ready_count = 0
+
+    for provider, env_key in required_keys.items():
+
+        exists = bool(os.getenv(env_key))
+
+        if exists:
+            ready_count += 1
+
+        providers.append({
+            "provider": provider,
+            "env_key": env_key,
+            "api_key_present": exists,
+            "status": "ready" if exists else "missing"
+        })
+
+    readiness_score = round(
+        (ready_count / len(required_keys)) * 100,
+        2
+    )
+
+    return {
+        "api_key_readiness_score": readiness_score,
+        "ready_count": ready_count,
+        "total_required": len(required_keys),
+        "providers": providers
+    }
+
