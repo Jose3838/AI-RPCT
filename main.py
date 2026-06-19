@@ -2992,3 +2992,22 @@ def terminal_market_movers_v1():
         "gainers": gainers,
         "losers": losers
     }
+
+@app.get("/terminal-provider-risk-v1")
+def terminal_provider_risk_v1():
+
+    from intelligence.signals.provider_concentration_risk import (
+        provider_concentration_risk
+    )
+
+    risk = provider_concentration_risk()
+
+    return {
+        "status": "ok",
+        "risk": risk,
+        "headline": f"Provider concentration risk is {risk.get('risk', 'unknown')}",
+        "readout": (
+            f"Largest provider share is "
+            f"{round(risk.get('largest_provider_share', 0) * 100, 1)}%."
+        )
+    }

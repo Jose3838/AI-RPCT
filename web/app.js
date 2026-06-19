@@ -446,3 +446,21 @@ async function renderMarketMovers() {
 }
 
 renderMarketMovers();
+
+async function renderProviderRiskPanel() {
+  try {
+    const res = await fetch("/terminal-provider-risk-v1");
+    const data = await res.json();
+
+    const headline = document.getElementById("providerRiskHeadline");
+    const readout = document.getElementById("providerRiskReadout");
+
+    if (headline) headline.innerText = data.headline || "...";
+    if (readout) readout.innerText = data.readout || "...";
+
+  } catch (err) {
+    console.error("Failed to render provider risk", err);
+  }
+}
+
+renderProviderRiskPanel();

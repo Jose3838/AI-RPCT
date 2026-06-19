@@ -303,3 +303,10 @@ a:hover{text-decoration:underline}
   color:var(--red);
   font-weight:700;
 }
+
+.risk-card{
+  border-color:rgba(255,92,122,.35);
+  background:
+    linear-gradient(135deg, rgba(255,92,122,.08), transparent 40%),
+    linear-gradient(180deg, var(--panel), var(--panel2));
+}
