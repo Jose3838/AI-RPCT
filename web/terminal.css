@@ -310,3 +310,10 @@ a:hover{text-decoration:underline}
     linear-gradient(135deg, rgba(255,92,122,.08), transparent 40%),
     linear-gradient(180deg, var(--panel), var(--panel2));
 }
+
+.forecast-card{
+  border-color:rgba(245,197,66,.35);
+  background:
+    linear-gradient(135deg, rgba(245,197,66,.08), transparent 40%),
+    linear-gradient(180deg, var(--panel), var(--panel2));
+}

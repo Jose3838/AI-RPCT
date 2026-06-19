@@ -464,3 +464,21 @@ async function renderProviderRiskPanel() {
 }
 
 renderProviderRiskPanel();
+
+async function renderForecastReadiness() {
+  try {
+    const res = await fetch("/terminal-forecast-readiness-v1");
+    const data = await res.json();
+
+    const score = document.getElementById("forecastReadinessScore");
+    const readout = document.getElementById("forecastReadinessReadout");
+
+    if (score) score.innerText = data.forecast_readiness_score + "/100";
+    if (readout) readout.innerText = data.readout || "...";
+
+  } catch (err) {
+    console.error("Failed to render forecast readiness", err);
+  }
+}
+
+renderForecastReadiness();

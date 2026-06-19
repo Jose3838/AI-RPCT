@@ -3011,3 +3011,37 @@ def terminal_provider_risk_v1():
             f"{round(risk.get('largest_provider_share', 0) * 100, 1)}%."
         )
     }
+
+@app.get("/terminal-forecast-readiness-v1")
+def terminal_forecast_readiness_v1():
+
+    from intelligence.assets.snapshot_integrity import snapshot_integrity
+    from intelligence.signals.market_breadth_index import market_breadth_index
+
+    integrity = snapshot_integrity()
+    breadth = market_breadth_index()
+
+    rows = integrity.get("rows", 0)
+    gpu_models = integrity.get("gpu_models", 0)
+
+    score = 0
+
+    if rows >= 500:
+        score += 35
+    if rows >= 5000:
+        score += 25
+    if gpu_models >= 10:
+        score += 25
+    if breadth.get("gpu_markets", 0) >= 10:
+        score += 15
+
+    return {
+        "status": "ok",
+        "forecast_readiness_score": min(score, 100),
+        "rows": rows,
+        "gpu_models": gpu_models,
+        "readout": (
+            f"Forecast readiness is {min(score, 100)}/100 based on "
+            f"{rows} observations and {gpu_models} GPU markets."
+        )
+    }
