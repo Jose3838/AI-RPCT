@@ -2796,5 +2796,9 @@ def terminal_intelligence_summary_v1():
         "market_breadth": market_breadth_index(),
         "asset_growth": asset_growth_tracker(),
         "snapshot_integrity": snapshot_integrity(),
-        "gpu_market_depth": gpu_market_depth()[:15]
+        "gpu_market_depth": gpu_market_depth()[:15],
+        "gpu_market_leaders": __import__(
+            "intelligence.market_depth.gpu_market_leaders",
+            fromlist=["gpu_market_leaders"]
+        ).gpu_market_leaders()[:15]
     }

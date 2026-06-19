@@ -135,3 +135,47 @@ async function renderGpuMarketDepthTable() {
 }
 
 renderGpuMarketDepthTable();
+
+async function renderGpuLeadersTable() {
+
+  try {
+
+    const res = await fetch(
+      "/terminal-intelligence-summary-v1"
+    )
+
+    const data = await res.json()
+
+    const rows =
+      data.gpu_market_leaders || []
+
+    const table =
+      document.getElementById(
+        "gpuLeadersTable"
+      )
+
+    if (!table) return
+
+    table.innerHTML = `
+      <tr>
+        <th>GPU</th>
+        <th>Leader</th>
+        <th>Observations</th>
+      </tr>
+      ${rows.map(r => `
+        <tr>
+          <td>${r.gpu_model}</td>
+          <td>${r.leader}</td>
+          <td>${r.observations}</td>
+        </tr>
+      `).join("")}
+    `
+
+  } catch(err) {
+
+    console.error(err)
+
+  }
+}
+
+renderGpuLeadersTable()
