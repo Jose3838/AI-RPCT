@@ -25,6 +25,11 @@ def root():
 
 import csv
 
+from intelligence.features.daily_feature_store import append_daily_features
+from intelligence.lifecycle.offer_lifecycle import detect_offer_changes
+from intelligence.signals.capacity_churn_index import calculate_capacity_churn
+
+
 @app.get("/history-provider-activation")
 def history_provider_activation():
     history = []
@@ -2496,13 +2501,20 @@ def run_master_daily_cycle_v2():
     summary = save_master_cycle_summary()
     health = cycle_health_v4()
 
+    feature_snapshot = append_daily_features()
+    lifecycle = detect_offer_changes()
+    capacity_churn = calculate_capacity_churn()
+
     return {
         "status": "completed",
         "system": "AI-RPCT",
         "cycle": "master_daily_cycle_v2",
         "master_cycle": master,
         "summary_saved": summary["status"],
-        "cycle_health": health
+        "cycle_health": health,
+        "feature_snapshot": feature_snapshot,
+        "lifecycle": lifecycle,
+        "capacity_churn": capacity_churn
     }
 
 
