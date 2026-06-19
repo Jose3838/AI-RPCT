@@ -2362,3 +2362,24 @@ def run_daily_connector_cycle():
         "environment": environment
     }
 
+
+@app.post("/run-master-daily-cycle")
+def run_master_daily_cycle():
+
+    intelligence = run_daily_intelligence_cycle()
+    connectors = run_daily_connector_cycle()
+    moat = data_moat_score()
+    readiness = institutional_readiness_score()
+    inventory = intelligence_data_inventory()
+
+    return {
+        "status": "completed",
+        "system": "AI-RPCT",
+        "cycle": "master_daily_cycle",
+        "intelligence_cycle": intelligence,
+        "connector_cycle": connectors,
+        "data_moat": moat,
+        "institutional_readiness": readiness,
+        "data_inventory": inventory
+    }
+
