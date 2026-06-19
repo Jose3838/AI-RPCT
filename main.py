@@ -2943,3 +2943,27 @@ def terminal_signal_tape_v1():
         "status": "ok",
         "signals": signals
     }
+
+@app.get("/terminal-market-movers-v1")
+def terminal_market_movers_v1():
+
+    from intelligence.signals.gpu_price_trend import (
+        gpu_price_trend
+    )
+
+    trends = gpu_price_trend()
+
+    gainers = [
+        x for x in trends
+        if x["price_change"] > 0
+    ][:10]
+
+    losers = [
+        x for x in trends
+        if x["price_change"] < 0
+    ][:10]
+
+    return {
+        "gainers": gainers,
+        "losers": losers
+    }
