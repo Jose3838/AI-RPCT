@@ -1670,3 +1670,23 @@ def dominance_change_alert():
 
     return alerts
 
+
+@app.get("/intelligence-master-snapshot")
+def intelligence_master_snapshot():
+
+    return {
+        "snapshot_v4": snapshot_v4(),
+        "market_signal_trend": market_signal_trend(),
+        "provider_momentum_trend": provider_momentum_trend(),
+        "provider_momentum_leaders": provider_momentum_leaders(),
+        "market_rotation_signal": market_rotation_signal(),
+        "provider_alpha_signal": provider_alpha_signal(),
+        "provider_allocation_signal": provider_allocation_signal(),
+        "provider_dominance_index": provider_dominance_index(),
+        "provider_dominance_trend": provider_dominance_trend(),
+        "dominance_change_alert": dominance_change_alert(),
+        "intelligence_confidence": intelligence_confidence_score(),
+        "institutional_readiness": institutional_readiness_score(),
+        "executive_brief": executive_intelligence_brief()
+    }
+
