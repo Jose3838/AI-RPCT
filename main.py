@@ -2505,3 +2505,39 @@ def run_master_daily_cycle_v2():
         "cycle_health": health
     }
 
+
+@app.get("/master-cycle-report")
+def master_cycle_report():
+
+    import csv
+    from pathlib import Path
+
+    file = Path("master_cycle_summary_history.csv")
+
+    if not file.exists():
+        return {"error": "master cycle summary history not found"}
+
+    with file.open() as f:
+        rows = list(csv.DictReader(f))
+
+    if not rows:
+        return {"error": "no master cycle summaries found"}
+
+    latest = rows[-1]
+
+    report = (
+        f"AI-RPCT master cycle is {latest['cycle_health']}. "
+        f"Data moat score is {latest['data_moat_score']} "
+        f"({latest['data_moat_level']}). "
+        f"Institutional readiness is {latest['readiness_level']} "
+        f"with score {latest['readiness_score']}. "
+        f"Live coverage score is {latest['live_coverage_score']}. "
+        f"Total intelligence data points: {latest['total_data_points']}."
+    )
+
+    return {
+        "report": report,
+        "latest": latest,
+        "history_points": len(rows)
+    }
+
