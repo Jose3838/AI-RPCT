@@ -393,3 +393,56 @@ async function renderMarketMovers() {
 }
 
 renderMarketMovers()
+
+async function renderMarketMovers() {
+  try {
+    const res = await fetch("/terminal-market-movers-v1");
+    const data = await res.json();
+
+    const gainers = document.getElementById("gpuGainersTable");
+    const losers = document.getElementById("gpuLosersTable");
+
+    if (gainers) {
+      gainers.innerHTML = `
+        <tr>
+          <th>GPU</th>
+          <th>Δ Price</th>
+        </tr>
+        ${
+          (data.gainers || []).length
+            ? data.gainers.map(x => `
+              <tr>
+                <td>${x.gpu_model}</td>
+                <td class="good">+${x.price_change}</td>
+              </tr>
+            `).join("")
+            : `<tr><td colspan="2">No price gainers detected yet</td></tr>`
+        }
+      `;
+    }
+
+    if (losers) {
+      losers.innerHTML = `
+        <tr>
+          <th>GPU</th>
+          <th>Δ Price</th>
+        </tr>
+        ${
+          (data.losers || []).length
+            ? data.losers.map(x => `
+              <tr>
+                <td>${x.gpu_model}</td>
+                <td class="bad">${x.price_change}</td>
+              </tr>
+            `).join("")
+            : `<tr><td colspan="2">No price losers detected yet</td></tr>`
+        }
+      `;
+    }
+
+  } catch (err) {
+    console.error("Failed to render market movers", err);
+  }
+}
+
+renderMarketMovers();

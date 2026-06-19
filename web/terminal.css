@@ -293,3 +293,13 @@ a:hover{text-decoration:underline}
   from{transform:translateX(0)}
   to{transform:translateX(-100%)}
 }
+
+.good{
+  color:var(--green);
+  font-weight:700;
+}
+
+.bad{
+  color:var(--red);
+  font-weight:700;
+}
