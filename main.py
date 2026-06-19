@@ -2035,3 +2035,26 @@ def provider_coverage():
         ]
     }
 
+
+@app.get("/intelligence-growth")
+def intelligence_growth():
+
+    inventory = intelligence_data_inventory()
+
+    total_points = inventory["total_data_points"]
+
+    if total_points >= 10000:
+        stage = "institutional_scale"
+    elif total_points >= 1000:
+        stage = "expanding_moat"
+    elif total_points >= 100:
+        stage = "building_moat"
+    else:
+        stage = "early_stage"
+
+    return {
+        "total_data_points": total_points,
+        "growth_stage": stage,
+        "tracked_assets": inventory["total_assets"]
+    }
+
