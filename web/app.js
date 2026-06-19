@@ -712,3 +712,40 @@ async function renderForecastOpportunities() {
 }
 
 renderForecastOpportunities();
+
+async function renderCoverageActionPlan() {
+  try {
+    const res = await fetch("/terminal-coverage-action-plan-v1");
+    const data = await res.json();
+
+    const table = document.getElementById("coverageActionPlanTable");
+    if (!table) return;
+
+    const rows = data.actions || [];
+
+    table.innerHTML = `
+      <tr>
+        <th>Priority</th>
+        <th>Provider</th>
+        <th>Current Mode</th>
+        <th>Recommended Action</th>
+      </tr>
+      ${
+        rows.length
+          ? rows.map(r => `
+            <tr>
+              <td>${r.priority}</td>
+              <td>${r.provider}</td>
+              <td>${r.current_mode}</td>
+              <td>${r.recommended_action}</td>
+            </tr>
+          `).join("")
+          : `<tr><td colspan="4">All providers are live.</td></tr>`
+      }
+    `;
+  } catch (err) {
+    console.error("Failed to render coverage action plan", err);
+  }
+}
+
+renderCoverageActionPlan();

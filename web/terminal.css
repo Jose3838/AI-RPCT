@@ -473,3 +473,10 @@ a:hover{text-decoration:underline}
     grid-template-columns:1fr;
   }
 }
+
+.coverage-action-card{
+  border-color:rgba(90,169,255,.35);
+  background:
+    linear-gradient(135deg, rgba(90,169,255,.08), transparent 42%),
+    linear-gradient(180deg, var(--panel), var(--panel2));
+}

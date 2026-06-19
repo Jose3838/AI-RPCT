@@ -14,6 +14,7 @@ required = {
         "gpuMarketDepthTable",
         "gpuGainersTable",
         "gpuLosersTable",
+        "coverageActionPlanTable",
     ],
     "web/app.js": [
         "renderExecutiveSummary",
@@ -35,6 +36,7 @@ required = {
         ".regime-card",
         ".coverage-card",
         ".forecast-signal-card",
+        ".coverage-action-card",
     ],
 }
 
