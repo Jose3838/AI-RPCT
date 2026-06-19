@@ -1690,3 +1690,38 @@ def intelligence_master_snapshot():
         "executive_brief": executive_intelligence_brief()
     }
 
+
+@app.post("/save-market-regime-history")
+def save_market_regime_history():
+
+    import csv
+    from pathlib import Path
+    from datetime import datetime
+
+    regime = market_regime()
+
+    file = Path("market_regime_history.csv")
+    exists = file.exists()
+
+    with file.open("a", newline="") as f:
+
+        writer = csv.writer(f)
+
+        if not exists:
+            writer.writerow([
+                "timestamp",
+                "market_regime",
+                "average_provider_momentum"
+            ])
+
+        writer.writerow([
+            datetime.utcnow().isoformat(),
+            regime["market_regime"],
+            regime["average_provider_momentum"]
+        ])
+
+    return {
+        "status": "saved",
+        "market_regime": regime["market_regime"]
+    }
+
