@@ -2058,3 +2058,40 @@ def intelligence_growth():
         "tracked_assets": inventory["total_assets"]
     }
 
+
+from providers.connectors.collector import (
+    collect_provider_data
+)
+
+@app.get("/connector-live-readiness")
+def connector_live_readiness():
+
+    data = collect_provider_data()
+
+    providers = data["providers"]
+
+    readiness = []
+
+    for p in providers:
+
+        readiness.append({
+            "provider": p["provider"],
+            "live_ready": p.get("live_ready", False),
+            "mode": p.get("mode", "unknown"),
+            "reason": p.get("reason", "")
+        })
+
+    summary = data["summary"]
+
+    readiness_score = round(
+        (summary["live_ready"] /
+         summary["total_connectors"]) * 100,
+        2
+    )
+
+    return {
+        "readiness_score": readiness_score,
+        "summary": summary,
+        "providers": readiness
+    }
+
