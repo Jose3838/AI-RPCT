@@ -3514,3 +3514,29 @@ def terminal_data_moat_v2():
             f"historical assets are active."
         )
     }
+
+
+@app.get("/terminal-investor-readiness-v1")
+def terminal_investor_readiness_v1():
+
+    from intelligence.investor.investor_readiness_score import (
+        investor_readiness_score
+    )
+
+    readiness = investor_readiness_score()
+
+    return {
+        "status": "ok",
+        "investor_readiness": readiness,
+        "headline": (
+            f"Investor readiness is "
+            f"{readiness.get('investor_readiness_score', 0)} "
+            f"({readiness.get('investor_readiness_level', 'unknown')})."
+        ),
+        "readout": (
+            f"Data moat contributes "
+            f"{readiness.get('components', {}).get('data_moat_score', 0)}, "
+            f"forecast quality contributes "
+            f"{readiness.get('components', {}).get('forecast_quality_score', 0)}."
+        )
+    }
