@@ -3432,3 +3432,39 @@ def terminal_forecast_backtesting_v2():
             f"{backtest.get('gpu_models', 0)} GPU models."
         )
     }
+
+
+@app.get("/terminal-forecast-accuracy-history-v1")
+def terminal_forecast_accuracy_history_v1():
+
+    import pandas as pd
+    from pathlib import Path
+
+    file = Path("data/forecast_accuracy_history.csv")
+
+    if not file.exists():
+        return {
+            "status": "missing",
+            "rows": 0
+        }
+
+    df = pd.read_csv(file)
+
+    if df.empty:
+        return {
+            "status": "empty",
+            "rows": 0
+        }
+
+    latest = df.iloc[-1]
+
+    return {
+        "status": "ok",
+        "rows": int(len(df)),
+        "latest": {
+            "timestamp": latest.get("timestamp"),
+            "accuracy_score": latest.get("accuracy_score"),
+            "forecast_rows": latest.get("forecast_rows"),
+            "correct_rows": latest.get("correct_rows")
+        }
+    }
