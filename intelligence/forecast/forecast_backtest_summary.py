@@ -12,7 +12,6 @@ from intelligence.forecast.forecast_accuracy_v2 import (
 
 
 def forecast_backtest_summary():
-
     accuracy = forecast_accuracy_engine_v4()
     outcome = forecast_outcome_tracker()
     accuracy_v2 = forecast_accuracy_v2()
