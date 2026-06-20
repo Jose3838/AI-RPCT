@@ -3720,3 +3720,25 @@ def terminal_strategy_dashboard_v1():
     strategy["history"] = save_strategy_dashboard_history(strategy)
 
     return strategy
+
+
+@app.get("/terminal-runbook-v1")
+def terminal_runbook_v1():
+
+    from pathlib import Path
+
+    file = Path(
+        "docs/runbook_v1.md"
+    )
+
+    if not file.exists():
+        return {
+            "status": "missing",
+            "file": str(file)
+        }
+
+    return {
+        "status": "ok",
+        "file": str(file),
+        "content": file.read_text()
+    }
