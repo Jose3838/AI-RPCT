@@ -3763,3 +3763,27 @@ def terminal_operations_dashboard_v1():
                 "Operations dashboard ready"
             )
     }
+
+
+@app.get("/terminal-ceo-command-center-v1")
+def terminal_ceo_command_center_v1():
+
+    strategy = (
+        terminal_strategy_dashboard_v1()
+    )
+
+    summary = (
+        terminal_intelligence_summary_v2()
+    )
+
+    operations = (
+        terminal_operations_dashboard_v1()
+    )
+
+    return {
+        "status": "ok",
+        "version": "v1",
+        "strategy": strategy,
+        "summary": summary,
+        "operations": operations
+    }
