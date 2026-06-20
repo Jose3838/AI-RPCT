@@ -3651,3 +3651,64 @@ def terminal_launchagent_health_v1():
         "err_log_exists": err_log.exists(),
         "collection": terminal_collection_health_v2().get("collection")
     }
+
+
+@app.get("/terminal-strategy-dashboard-v1")
+def terminal_strategy_dashboard_v1():
+
+    summary = terminal_intelligence_summary_v2()
+    launchagent = terminal_launchagent_health_v1()
+
+    product = summary.get("product_readiness", {}).get("product_readiness", {})
+    executive = summary.get("executive_scorecard", {}).get("scorecard", {})
+    investor = summary.get("investor_readiness", {}).get("investor_readiness", {})
+    moat = summary.get("data_moat", {}).get("data_moat", {})
+    collection = summary.get("collection_health", {}).get("collection", {})
+
+    product_score = product.get("product_readiness_score", 0)
+    executive_score = executive.get("executive_score", 0)
+    investor_score = investor.get("investor_readiness_score", 0)
+    moat_score = moat.get("data_moat_score", 0)
+
+    if product_score >= 80 and collection.get("healthy") and launchagent.get("installed"):
+        stage = "demo_ready"
+    elif product_score >= 60:
+        stage = "prototype_ready"
+    elif product_score >= 40:
+        stage = "internal_validation"
+    else:
+        stage = "early_build"
+
+    next_actions = []
+
+    if not collection.get("healthy"):
+        next_actions.append("Fix collection freshness")
+    if moat_score < 80:
+        next_actions.append("Grow historical data assets")
+    if investor_score < 70:
+        next_actions.append("Improve investor readiness score")
+    if executive_score < 80:
+        next_actions.append("Increase executive scorecard strength")
+
+    if not next_actions:
+        next_actions.append("Prepare demo narrative and customer discovery")
+
+    return {
+        "status": "ok",
+        "version": "v1",
+        "stage": stage,
+        "scores": {
+            "product_readiness": product_score,
+            "executive_score": executive_score,
+            "investor_readiness": investor_score,
+            "data_moat": moat_score
+        },
+        "health": {
+            "collection": collection.get("status"),
+            "launchagent_installed": launchagent.get("installed")
+        },
+        "next_actions": next_actions,
+        "headline": (
+            f"AI-RPCT is currently {stage} with product readiness {product_score}."
+        )
+    }
