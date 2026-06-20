@@ -3601,3 +3601,23 @@ def terminal_intelligence_summary_v2():
         "investor_readiness": terminal_investor_readiness_v1(),
         "executive_scorecard": terminal_executive_scorecard_v1(),
     }
+
+
+@app.get("/terminal-product-readiness-v1")
+def terminal_product_readiness_v1():
+
+    from intelligence.product.product_readiness_snapshot_v1 import (
+        product_readiness_snapshot_v1
+    )
+
+    readiness = product_readiness_snapshot_v1()
+
+    return {
+        "status": "ok",
+        "product_readiness": readiness,
+        "headline": (
+            f"Product readiness is "
+            f"{readiness.get('product_readiness_score', 0)} "
+            f"({readiness.get('product_readiness_level', 'unknown')})."
+        )
+    }
