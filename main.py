@@ -3586,3 +3586,18 @@ def terminal_executive_scorecard_v1():
         ),
         "readout": scorecard.get("readout")
     }
+
+
+@app.get("/terminal-intelligence-summary-v2")
+def terminal_intelligence_summary_v2():
+
+    return {
+        "status": "ok",
+        "version": "v2",
+        "system_health": terminal_system_health_v1(),
+        "collection_health": terminal_collection_health_v2(),
+        "data_moat": terminal_data_moat_v2(),
+        "forecast_accuracy_trend": terminal_forecast_accuracy_trend_v1(),
+        "investor_readiness": terminal_investor_readiness_v1(),
+        "executive_scorecard": terminal_executive_scorecard_v1(),
+    }
