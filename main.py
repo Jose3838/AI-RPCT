@@ -3491,3 +3491,26 @@ def terminal_forecast_accuracy_trend_v1():
             f"with trend {trend.get('trend', 'unknown')}."
         )
     }
+
+
+@app.get("/terminal-data-moat-v2")
+def terminal_data_moat_v2():
+
+    from intelligence.signals.data_moat_score_v2 import (
+        data_moat_score_v2
+    )
+
+    moat = data_moat_score_v2()
+
+    return {
+        "status": "ok",
+        "data_moat": moat,
+        "headline": (
+            f"Data moat score is {moat.get('data_moat_score', 0)} "
+            f"({moat.get('data_moat_level', 'unknown')})."
+        ),
+        "readout": (
+            f"{len([a for a in moat.get('assets', {}).values() if a.get('rows', 0) > 0])} "
+            f"historical assets are active."
+        )
+    }

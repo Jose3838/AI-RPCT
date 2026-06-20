@@ -1,0 +1,4 @@
+timestamp,status,accuracy_score,forecast_rows,correct_rows,signal_counts
+2026-06-20T11:25:05.515951+00:00,ok,100.0,46,46,"{'bearish': 20, 'neutral': 16, 'bullish': 10}"
+2026-06-20T11:25:19.395765+00:00,ok,100.0,69,69,"{'bearish': 29, 'neutral': 25, 'bullish': 15}"
+2026-06-20T11:26:10.821056+00:00,ok,100.0,69,69,"{'bearish': 29, 'neutral': 25, 'bullish': 15}"
