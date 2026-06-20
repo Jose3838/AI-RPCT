@@ -8,3 +8,4 @@ venv/
 # Local secrets
 .env
 logs/*.launchd*.log
+logs/*.launchd*.log
