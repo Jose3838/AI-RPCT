@@ -3622,3 +3622,32 @@ def terminal_product_readiness_v1():
             f"({readiness.get('product_readiness_level', 'unknown')})."
         )
     }
+
+
+@app.get("/terminal-launchagent-health-v1")
+def terminal_launchagent_health_v1():
+
+    import subprocess
+    from pathlib import Path
+
+    label = "com.airpct.hourly.collection"
+
+    result = subprocess.run(
+        ["launchctl", "list"],
+        capture_output=True,
+        text=True
+    )
+
+    installed = label in result.stdout
+
+    out_log = Path("logs/hourly_collection.launchd.out.log")
+    err_log = Path("logs/hourly_collection.launchd.err.log")
+
+    return {
+        "status": "ok",
+        "label": label,
+        "installed": installed,
+        "out_log_exists": out_log.exists(),
+        "err_log_exists": err_log.exists(),
+        "collection": terminal_collection_health_v2().get("collection")
+    }
