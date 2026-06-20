@@ -3600,6 +3600,7 @@ def terminal_intelligence_summary_v2():
         "forecast_accuracy_trend": terminal_forecast_accuracy_trend_v1(),
         "investor_readiness": terminal_investor_readiness_v1(),
         "executive_scorecard": terminal_executive_scorecard_v1(),
+        "product_readiness": terminal_product_readiness_v1(),
     }
 
 
