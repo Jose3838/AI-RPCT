@@ -3693,7 +3693,7 @@ def terminal_strategy_dashboard_v1():
     if not next_actions:
         next_actions.append("Prepare demo narrative and customer discovery")
 
-    return {
+    strategy = {
         "status": "ok",
         "version": "v1",
         "stage": stage,
@@ -3712,3 +3712,11 @@ def terminal_strategy_dashboard_v1():
             f"AI-RPCT is currently {stage} with product readiness {product_score}."
         )
     }
+
+    from intelligence.strategy.save_strategy_dashboard_history import (
+        save_strategy_dashboard_history
+    )
+
+    strategy["history"] = save_strategy_dashboard_history(strategy)
+
+    return strategy
