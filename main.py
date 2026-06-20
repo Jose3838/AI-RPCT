@@ -3566,3 +3566,23 @@ def terminal_investor_readiness_v1():
             f"{readiness.get('components', {}).get('forecast_quality_score', 0)}."
         )
     }
+
+
+@app.get("/terminal-executive-scorecard-v1")
+def terminal_executive_scorecard_v1():
+
+    from intelligence.executive.executive_scorecard_v1 import (
+        executive_scorecard_v1
+    )
+
+    scorecard = executive_scorecard_v1()
+
+    return {
+        "status": "ok",
+        "scorecard": scorecard,
+        "headline": (
+            f"Executive score is {scorecard.get('executive_score', 0)} "
+            f"({scorecard.get('executive_level', 'unknown')})."
+        ),
+        "readout": scorecard.get("readout")
+    }
