@@ -3409,3 +3409,26 @@ def terminal_forecast_backtesting_v2():
             f"{backtest.get('gpu_models', 0)} GPU models."
         )
     }
+
+
+@app.get("/terminal-forecast-backtesting-v2")
+def terminal_forecast_backtesting_v2():
+
+    from intelligence.forecast.forecast_backtesting_v2 import (
+        forecast_backtesting_v2
+    )
+
+    backtest = forecast_backtesting_v2()
+
+    return {
+        "status": "ok",
+        "backtest": backtest,
+        "headline": (
+            f"Forecast backtest readiness is "
+            f"{backtest.get('backtest_readiness_score', 0)}"
+        ),
+        "readout": (
+            f"{backtest.get('forecast_rows', 0)} forecast audit rows across "
+            f"{backtest.get('gpu_models', 0)} GPU models."
+        )
+    }
