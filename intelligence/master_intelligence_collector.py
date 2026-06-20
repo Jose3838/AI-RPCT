@@ -14,6 +14,10 @@ from intelligence.forecast.save_forecast_snapshot import (
     save_forecast_snapshot
 )
 
+from intelligence.forecast.save_forecast_accuracy_history import (
+    save_forecast_accuracy_history
+)
+
 from intelligence.coverage.save_live_coverage_history import (
     save_live_coverage_history
 )
@@ -50,6 +54,10 @@ def run_master_intelligence_collector():
         save_forecast_snapshot()
     )
 
+    forecast_accuracy = (
+        save_forecast_accuracy_history()
+    )
+
     coverage = (
         save_live_coverage_history()
     )
@@ -75,6 +83,7 @@ def run_master_intelligence_collector():
         "providers": providers,
         "forecast": forecast,
         "forecast_snapshot": forecast_snapshot,
+        "forecast_accuracy": forecast_accuracy,
         "coverage": coverage,
         "regime": regime,
         "provider_dominance": provider_dominance,
