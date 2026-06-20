@@ -3468,3 +3468,26 @@ def terminal_forecast_accuracy_history_v1():
             "correct_rows": latest.get("correct_rows")
         }
     }
+
+
+@app.get("/terminal-forecast-accuracy-trend-v1")
+def terminal_forecast_accuracy_trend_v1():
+
+    from intelligence.forecast.forecast_accuracy_trend import (
+        forecast_accuracy_trend
+    )
+
+    trend = forecast_accuracy_trend()
+
+    return {
+        "status": "ok",
+        "trend": trend,
+        "headline": (
+            f"Forecast quality score is "
+            f"{trend.get('forecast_quality_score', 0)}"
+        ),
+        "readout": (
+            f"Latest accuracy is {trend.get('latest_accuracy', 0)} "
+            f"with trend {trend.get('trend', 'unknown')}."
+        )
+    }
