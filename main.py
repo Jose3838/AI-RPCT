@@ -3742,3 +3742,24 @@ def terminal_runbook_v1():
         "file": str(file),
         "content": file.read_text()
     }
+
+
+@app.get("/terminal-operations-dashboard-v1")
+def terminal_operations_dashboard_v1():
+
+    from intelligence.operations.operations_dashboard_v1 import (
+        operations_dashboard_v1
+    )
+
+    dashboard = (
+        operations_dashboard_v1()
+    )
+
+    return {
+        "status": "ok",
+        "dashboard": dashboard,
+        "headline":
+            (
+                "Operations dashboard ready"
+            )
+    }
