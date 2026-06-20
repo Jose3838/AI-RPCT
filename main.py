@@ -3366,3 +3366,23 @@ def terminal_collection_health_v2():
             f"Last collection was {health.get('minutes_since_last_collection')} minutes ago."
         )
     }
+
+
+@app.get("/terminal-forecast-accuracy-v2")
+def terminal_forecast_accuracy_v2():
+
+    from intelligence.forecast.forecast_accuracy_v2 import (
+        forecast_accuracy_v2
+    )
+
+    accuracy = forecast_accuracy_v2()
+
+    return {
+        "status": "ok",
+        "accuracy": accuracy,
+        "headline": f"Forecast Accuracy V2 is {accuracy.get('accuracy_score', 0)}",
+        "readout": (
+            f"{accuracy.get('correct_rows', 0)} of "
+            f"{accuracy.get('forecast_rows', 0)} forecast audit rows match expected signal direction."
+        )
+    }
