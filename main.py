@@ -1,5 +1,12 @@
-from fastapi import FastAPI
+import time
+from collections import defaultdict
+
+from fastapi import FastAPI, Header, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse, RedirectResponse
+from starlette.middleware.base import BaseHTTPMiddleware
+
+from security.api_keys import validate_api_key
 
 from api.routes import router
 from api.auth_routes import router as auth_router
@@ -9,10 +16,71 @@ app = FastAPI(
     version="63.0"
 )
 
+START_TIME = time.time()
+
+
+class RateLimiterMiddleware(BaseHTTPMiddleware):
+    def __init__(self, app, max_requests: int = 10, window_seconds: int = 60):
+        super().__init__(app)
+        self.max_requests = max_requests
+        self.window_seconds = window_seconds
+        self.calls = defaultdict(list)
+
+    async def dispatch(self, request: Request, call_next):
+        if request.url.path not in {
+            "/terminal-customer-report-pdf-export-v1",
+            "/terminal-customer-report-pdf-ready-v1",
+            "/download/customer-report"
+        }:
+            return await call_next(request)
+
+        client_host = request.client.host if request.client else "unknown"
+        now = time.time()
+        window_start = now - self.window_seconds
+        calls = [ts for ts in self.calls[client_host] if ts > window_start]
+        calls.append(now)
+        self.calls[client_host] = calls
+
+        if len(calls) > self.max_requests:
+            raise HTTPException(status_code=429, detail="Rate limit exceeded")
+
+        return await call_next(request)
+
+
+app.add_middleware(RateLimiterMiddleware)
+
 app.include_router(router)
 app.include_router(auth_router)
+from api.health import router as health_router
+from api.reports import router as reports_router
+
+app.include_router(health_router)
+app.include_router(reports_router)
 
 app.mount("/web", StaticFiles(directory="web", html=True), name="web")
+
+
+
+
+
+@app.get("/dashboard")
+def dashboard_redirect():
+    return RedirectResponse(url="/web/dashboard.html")
+
+
+@app.get("/customers")
+def customers_redirect():
+    return RedirectResponse(url="/web/customers.html")
+
+
+@app.get("/reports")
+def reports_redirect():
+    return RedirectResponse(url="/web/reports.html")
+
+
+@app.get("/market")
+def market_redirect():
+    return RedirectResponse(url="/web/market.html")
 
 @app.get("/")
 def root():
@@ -21,6 +89,22 @@ def root():
         "status": "online",
         "version": "63.0",
         "terminal": "/web"
+    }
+
+
+@app.get("/health")
+def health():
+    return {
+        "status": "ok",
+        "uptime_seconds": int(time.time() - START_TIME)
+    }
+
+
+@app.get("/ready")
+def ready():
+    return {
+        "status": "ok",
+        "ready": True
     }
 
 import csv
@@ -577,21 +661,6 @@ from forecast_accuracy_engine import (
 def forecast_accuracy():
     return build_forecast_accuracy()
 
-from forecast_accuracy_engine import (
-    build_forecast_accuracy
-)
-
-@app.get("/forecast-accuracy")
-def forecast_accuracy():
-    return build_forecast_accuracy()
-
-from forecast_validation_engine import (
-    build_forecast_validation
-)
-
-@app.get("/forecast-validation")
-def forecast_validation():
-    return build_forecast_validation()
 
 from capacity_pressure_history import (
     save_capacity_pressure_snapshot,
@@ -672,12 +741,6 @@ from data_moat_dashboard import (
 @app.get("/data-moat-dashboard")
 def data_moat_dashboard():
     return build_data_moat_dashboard()
-
-from forecast_weight_optimization import build_forecast_weight_optimization
-
-@app.get("/forecast-weight-optimization")
-def forecast_weight_optimization():
-    return build_forecast_weight_optimization()
 
 from forecast_weight_optimization import build_forecast_weight_optimization
 
@@ -1749,43 +1812,6 @@ def run_daily_intelligence_cycle():
         "dominance": dominance["status"],
         "brief": brief["status"],
         "regime": regime["status"]
-    }
-
-
-@app.get("/intelligence-audit-log")
-def intelligence_audit_log():
-
-    from pathlib import Path
-
-    files = [
-        "intelligence_snapshot_v4_history.csv",
-        "provider_dominance_history.csv",
-        "market_regime_history.csv",
-        "executive_intelligence_brief_history.csv"
-    ]
-
-    audit = []
-
-    for file_name in files:
-
-        path = Path(file_name)
-
-        if path.exists():
-            audit.append({
-                "file": file_name,
-                "size_bytes": path.stat().st_size,
-                "exists": True
-            })
-        else:
-            audit.append({
-                "file": file_name,
-                "exists": False
-            })
-
-    return {
-        "audit_status": "active",
-        "tracked_assets": audit,
-        "tracked_asset_count": len(audit)
     }
 
 
@@ -2980,31 +3006,6 @@ def terminal_market_movers_v1():
         "losers": losers
     }
 
-@app.get("/terminal-market-movers-v1")
-def terminal_market_movers_v1():
-
-    from intelligence.signals.gpu_price_trend import (
-        gpu_price_trend
-    )
-
-    trends = gpu_price_trend()
-
-    gainers = [
-        x for x in trends
-        if x["price_change"] > 0
-    ][:10]
-
-    losers = [
-        x for x in trends
-        if x["price_change"] < 0
-    ][:10]
-
-    return {
-        "status": "ok",
-        "gainers": gainers,
-        "losers": losers
-    }
-
 @app.get("/terminal-provider-risk-v1")
 def terminal_provider_risk_v1():
 
@@ -3411,29 +3412,6 @@ def terminal_forecast_backtesting_v2():
     }
 
 
-@app.get("/terminal-forecast-backtesting-v2")
-def terminal_forecast_backtesting_v2():
-
-    from intelligence.forecast.forecast_backtesting_v2 import (
-        forecast_backtesting_v2
-    )
-
-    backtest = forecast_backtesting_v2()
-
-    return {
-        "status": "ok",
-        "backtest": backtest,
-        "headline": (
-            f"Forecast backtest readiness is "
-            f"{backtest.get('backtest_readiness_score', 0)}"
-        ),
-        "readout": (
-            f"{backtest.get('forecast_rows', 0)} forecast audit rows across "
-            f"{backtest.get('gpu_models', 0)} GPU models."
-        )
-    }
-
-
 @app.get("/terminal-forecast-accuracy-history-v1")
 def terminal_forecast_accuracy_history_v1():
 
@@ -3542,32 +3520,6 @@ def terminal_investor_readiness_v1():
     }
 
 
-@app.get("/terminal-investor-readiness-v1")
-def terminal_investor_readiness_v1():
-
-    from intelligence.investor.investor_readiness_score import (
-        investor_readiness_score
-    )
-
-    readiness = investor_readiness_score()
-
-    return {
-        "status": "ok",
-        "investor_readiness": readiness,
-        "headline": (
-            f"Investor readiness is "
-            f"{readiness.get('investor_readiness_score', 0)} "
-            f"({readiness.get('investor_readiness_level', 'unknown')})."
-        ),
-        "readout": (
-            f"Data moat contributes "
-            f"{readiness.get('components', {}).get('data_moat_score', 0)}, "
-            f"forecast quality contributes "
-            f"{readiness.get('components', {}).get('forecast_quality_score', 0)}."
-        )
-    }
-
-
 @app.get("/terminal-executive-scorecard-v1")
 def terminal_executive_scorecard_v1():
 
@@ -3601,6 +3553,29 @@ def terminal_intelligence_summary_v2():
         "investor_readiness": terminal_investor_readiness_v1(),
         "executive_scorecard": terminal_executive_scorecard_v1(),
         "product_readiness": terminal_product_readiness_v1(),
+    }
+
+
+@app.get("/dashboard-metrics")
+def dashboard_metrics():
+    intelligence = terminal_intelligence_summary_v2()
+    data_moat = intelligence.get("data_moat", {})
+    executive = intelligence.get("executive_scorecard", {})
+    product = intelligence.get("product_readiness", {})
+    collection = intelligence.get("collection_health", {})
+    investor = intelligence.get("investor_readiness", {})
+
+    return {
+        "status": "ok",
+        "data_moat_score": data_moat.get("data_moat_score"),
+        "executive_score": executive.get("executive_score"),
+        "product_readiness_score": product.get("product_readiness_score"),
+        "collection_health": {
+            "healthy": collection.get("collection", {}).get("healthy"),
+            "status": collection.get("collection", {}).get("status")
+        },
+        "investor_readiness_score": investor.get("investor_readiness", {}).get("investor_readiness_score"),
+        "headline": intelligence.get("headline") if intelligence.get("headline") else "Dashboard metrics"
     }
 
 
@@ -3968,30 +3943,6 @@ def terminal_customer_decision_center_v1():
     }
 
 
-@app.get("/terminal-customer-decision-center-v1")
-def terminal_customer_decision_center_v1():
-
-    customer_value = terminal_customer_value_v1()
-    budget = terminal_gpu_budget_advisor_v1()
-    provider = terminal_provider_switching_advisor_v1()
-    risk = terminal_gpu_risk_advisor_v1()
-
-    return {
-        "status": "ok",
-        "version": "v1",
-        "customer_value": customer_value,
-        "budget_advisor": budget,
-        "provider_switching": provider,
-        "gpu_risk": risk,
-        "headline": (
-            f"Budget decision: "
-            f"{budget.get('advisor', {}).get('decision', 'unknown')}. "
-            f"Provider decision: "
-            f"{provider.get('advisor', {}).get('decision', 'unknown')}."
-        )
-    }
-
-
 @app.get("/terminal-customer-demo-snapshot-v1")
 def terminal_customer_demo_snapshot_v1():
 
@@ -4025,24 +3976,6 @@ def terminal_daily_intelligence_brief_v1():
         "headline":
             brief.get("headline")
     }
-
-
-@app.get("/terminal-daily-intelligence-brief-v1")
-def terminal_daily_intelligence_brief_v1():
-
-    from intelligence.reports.daily_intelligence_brief_v1 import (
-        daily_intelligence_brief_v1
-    )
-
-    brief = daily_intelligence_brief_v1()
-
-    return {
-        "status": "ok",
-        "brief": brief,
-        "headline": brief.get("headline")
-    }
-
-
 @app.get("/terminal-weekly-market-report-v1")
 def terminal_weekly_market_report_v1():
 
@@ -4077,7 +4010,9 @@ def terminal_customer_report_export_v1():
 
 
 @app.get("/terminal-customer-report-pdf-ready-v1")
-def terminal_customer_report_pdf_ready_v1():
+def terminal_customer_report_pdf_ready_v1(x_api_key: str | None = Header(None)):
+    if not x_api_key or not validate_api_key(x_api_key):
+        raise HTTPException(status_code=401, detail="Unauthorized")
 
     from intelligence.reports.customer_report_pdf_ready_v1 import (
         customer_report_pdf_ready_v1
@@ -4093,7 +4028,10 @@ def terminal_customer_report_pdf_ready_v1():
 
 
 @app.get("/terminal-customer-report-pdf-export-v1")
-def terminal_customer_report_pdf_export_v1():
+def terminal_customer_report_pdf_export_v1(x_api_key: str | None = Header(None)):
+    # require API key for triggering PDF export
+    if not x_api_key or not validate_api_key(x_api_key):
+        raise HTTPException(status_code=401, detail="Unauthorized")
 
     from intelligence.reports.customer_report_pdf_export_v1 import (
         customer_report_pdf_export_v1
@@ -4163,18 +4101,3 @@ def api_v1_health():
     }
 
 
-@app.get("/")
-def root():
-
-    return {
-        "product": "AI-RPCT",
-        "version": "product-v1",
-        "status": "live",
-        "docs": "/docs",
-        "apis": [
-            "/api/v1/product",
-            "/api/v1/customer-intelligence",
-            "/api/v1/demo",
-            "/api/v1/health"
-        ]
-    }

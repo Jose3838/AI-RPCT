@@ -8,3 +8,4 @@ timestamp,status,accuracy_score,forecast_rows,correct_rows,signal_counts
 2026-06-21T10:26:33.444441+00:00,ok,100.0,138,138,"{'bearish': 55, 'neutral': 51, 'bullish': 32}"
 2026-06-21T10:26:37.754746+00:00,ok,100.0,161,161,"{'bearish': 67, 'neutral': 57, 'bullish': 37}"
 2026-06-21T11:26:36.087683+00:00,ok,100.0,184,184,"{'bearish': 77, 'neutral': 64, 'bullish': 43}"
+2026-06-21T15:41:50.361694+00:00,ok,100.0,207,207,"{'bearish': 85, 'neutral': 70, 'bullish': 52}"

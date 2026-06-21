@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AI-RPCT Dashboard</title>
+  <link rel="stylesheet" href="/web/terminal.css">
+  <script src="/web/app.js"></script>
+</head>
+<body>
+<nav>
+  <a href="/web/">Terminal</a> | <a href="/dashboard">Dashboard</a> | <a href="/customers">Customers</a> | <a href="/reports">Reports</a> | <a href="/market">Market</a>
+</nav>
+<section>
+  <h1>Dashboard</h1>
+  <p>Key product metrics</p>
+  <ul>
+    <li>Data Moat: <span id="dataMoat">...</span></li>
+    <li>Executive Score: <span id="execScore">...</span></li>
+    <li>Product Readiness: <span id="productReady">...</span></li>
+    <li>Collection Health: <span id="collectionHealth">...</span></li>
+    <li>Investor Readiness: <span id="investorReadiness">...</span></li>
+  </ul>
+  <button onclick="location.href='/download/customer-report'">Download Customer PDF</button>
+</section>
+
+<script>
+async function fetchJson(path){
+  try{
+    const r = await fetch(path);
+    return await r.json();
+  }catch(e){
+    return null;
+  }
+}
+
+async function loadKpis(){
+  const metrics = await fetchJson('/dashboard-metrics');
+
+  if(metrics && metrics.data_moat_score !== undefined) document.getElementById('dataMoat').innerText = metrics.data_moat_score;
+  if(metrics && metrics.executive_score !== undefined) document.getElementById('execScore').innerText = metrics.executive_score;
+  if(metrics && metrics.product_readiness_score !== undefined) document.getElementById('productReady').innerText = metrics.product_readiness_score;
+  if(metrics && metrics.collection_health) document.getElementById('collectionHealth').innerText = (metrics.collection_health.healthy ? 'Healthy' : 'Unhealthy');
+  if(metrics && metrics.investor_readiness_score !== undefined) document.getElementById('investorReadiness').innerText = metrics.investor_readiness_score;
+}
+
+loadKpis();
+setInterval(loadKpis, 60000);
+</script>
+</body>
+</html>

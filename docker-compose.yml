@@ -1,7 +1,17 @@
+version: "3.9"
+
 services:
   ai-rpct:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
     ports:
       - "8000:8000"
-    volumes:
-      - ./data:/app/data
+    environment:
+      AI_RPCT_API_KEYS: ${AI_RPCT_API_KEYS:-demo-key}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

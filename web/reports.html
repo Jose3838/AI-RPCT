@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AI-RPCT Reports</title>
+  <link rel="stylesheet" href="/web/terminal.css">
+</head>
+<body>
+<nav>
+  <a href="/web/">Terminal</a> | <a href="/dashboard">Dashboard</a> | <a href="/customers">Customers</a> | <a href="/reports">Reports</a> | <a href="/market">Market</a>
+</nav>
+<section>
+  <h1>Reports</h1>
+  <p>Available exports and scheduled reports.</p>
+  <ul>
+    <li>Generate Customer PDF with the button below (protected by `X-API-KEY`).</li>
+    <li>The direct links will require an API key header and are provided for CLI/API testing only.</li>
+  </ul>
+</section>
+
+<script>
+async function triggerPdfExport(){
+  const btn = document.getElementById('exportBtn');
+  const apiKey = 'demo-key';
+  btn.disabled = true;
+  btn.innerText = 'Generating...';
+  try{
+    const res = await fetch('/terminal-customer-report-pdf-export-v1', {
+      headers: {
+        'X-API-KEY': apiKey
+      }
+    });
+    const data = await res.json();
+    if(data && data.pdf && data.pdf.status === 'saved'){
+      const downloadRes = await fetch('/download/customer-report', {
+        headers: {
+          'X-API-KEY': apiKey
+        }
+      });
+      if (!downloadRes.ok) {
+        const errorText = await downloadRes.text();
+        throw new Error('Download failed: ' + errorText);
+      }
+      const blob = await downloadRes.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'AI-RPCT-Customer-Intelligence-Report.pdf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } else {
+      alert('PDF generation failed: ' + JSON.stringify(data));
+    }
+  }catch(e){
+    alert('Failed to call export endpoint: ' + e.message);
+  } finally {
+    btn.disabled = false;
+    btn.innerText = 'Generate & Download Customer PDF';
+  }
+}
+</script>
+
+<p><button id="exportBtn" onclick="triggerPdfExport()">Generate & Download Customer PDF</button></p>
+</section>
+</body>
+</html>

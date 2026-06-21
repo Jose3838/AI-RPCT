@@ -61,6 +61,10 @@ Exports:
 
 data/reports/customer_report_v1.pdf
 
+### Dashboard Metrics
+
+`/dashboard-metrics` — Aggregated KPI payload used by the web dashboard (`web/dashboard.html`). Returns JSON with `data_moat_score`, `executive_score`, `product_readiness_score`, `collection_health`, `investor_readiness_score`.
+
 ## Historical Assets
 
 Key datasets:

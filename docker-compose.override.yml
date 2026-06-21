@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  ai-rpct:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - ./data:/app/data
+    environment:
+      AI_RPCT_API_KEYS: ${AI_RPCT_API_KEYS:-demo-key}
+    ports:
+      - "8000:8000"
