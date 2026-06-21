@@ -3831,3 +3831,22 @@ def terminal_gpu_buying_signals_v1():
             "GPU buying signals are based on discount versus historical average price."
         )
     }
+
+
+@app.get("/terminal-customer-value-v1")
+def terminal_customer_value_v1():
+
+    from intelligence.customer.customer_value_dashboard_v1 import (
+        customer_value_dashboard_v1
+    )
+
+    dashboard = customer_value_dashboard_v1()
+
+    return {
+        "status": "ok",
+        "customer_value": dashboard,
+        "headline": (
+            f"{dashboard.get('buy_count', 0)} actionable GPU buy signals"
+        ),
+        "readout": dashboard.get("readout")
+    }
