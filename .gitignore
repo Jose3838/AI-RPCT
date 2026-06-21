@@ -4,3 +4,8 @@ __pycache__/
 *.pyc
 
 venv/
+
+# Local secrets
+.env
+logs/*.launchd*.log
+logs/*.launchd*.log

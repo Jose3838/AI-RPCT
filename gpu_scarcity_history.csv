@@ -11,3 +11,5 @@ timestamp,gpu_scarcity_index,scarcity_status,average_capacity,provider_count
 2026-06-17T17:40:20.866611,60,tightening,66.33,6
 2026-06-17T18:07:44.408187,60,tightening,50.33,6
 2026-06-17T18:08:21.586179,60,tightening,50.33,6
+2026-06-17T18:40:07.266171,60,tightening,50.5,6
+2026-06-17T18:40:45.543094,60,tightening,50.5,6

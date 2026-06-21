@@ -12,3 +12,5 @@ timestamp,risk_level,capacity_pressure_index,forecast_signal,data_trust_index
 2026-06-17T17:40:27.909965,medium,63.38,market_weakness_expected,100.0
 2026-06-17T18:07:56.090543,medium,62.5,market_weakness_expected,100.0
 2026-06-17T18:08:33.090014,medium,62.5,market_weakness_expected,100.0
+2026-06-17T18:40:20.375439,medium,62.5,market_weakness_expected,100.0
+2026-06-17T18:40:59.197257,medium,62.5,market_weakness_expected,100.0

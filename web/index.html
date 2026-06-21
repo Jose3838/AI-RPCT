@@ -2,58 +2,259 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>AI-RPCT Terminal</title>
+<title>AI-RPCT Command Terminal</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-body{background:#070b16;color:#f4f7fb;font-family:Arial;padding:24px}
-h1{font-size:42px;margin-bottom:4px}
-.subtitle{color:#9fb3c8;margin-bottom:18px}
-.status{color:#7CFFB2;margin-bottom:24px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-.card{background:#151b2e;border:1px solid #26324f;border-radius:14px;padding:18px}
-.kpi{font-size:34px;font-weight:bold}
-.label{color:#9fb3c8;font-size:13px}
-canvas{background:#fff;border-radius:10px;padding:10px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{border-bottom:1px solid #26324f;padding:8px;text-align:left}
-th{color:#9fb3c8}
-a{color:#7cb7ff}
-</style>
+<link rel="stylesheet" href="/web/terminal.css">
 </head>
 <body>
-<h1>AI-RPCT Terminal</h1>
-<div class="subtitle">Bloomberg-style intelligence for AI infrastructure risk</div>
-<div class="status" id="refreshStatus">Loading live data...</div>
+<div class="shell">
 
-<div class="grid">
-  <div class="card"><div class="label">AI Infrastructure Index</div><div id="aiIndex" class="kpi">...</div></div>
-  <div class="card"><div class="label">GPU Price Index</div><div id="gpuPrice" class="kpi">...</div></div>
-  <div class="card"><div class="label">Risk Score</div><div id="riskScore" class="kpi">...</div></div>
-  <div class="card"><div class="label">GPU Trend</div><div id="gpuTrend" class="kpi">...</div></div>
-  <div class="card"><div class="label">Live Providers</div><div id="providerCount" class="kpi">...</div></div>
-  <div class="card"><div class="label">Data Quality</div><div id="quality" class="kpi">...</div></div>
-</div>
+<div class="executive-strip">
 
-<br>
-
-<div class="grid">
-  <div class="card"><h3>Provider Market Share</h3><canvas id="marketShareChart"></canvas></div>
-  <div class="card"><h3>Provider Health</h3><table id="providerHealth"></table></div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="card"><h3>Top Expensive GPUs</h3><table id="gpuTable"></table></div>
-  <div class="card">
-    <h3>Reports</h3>
-    <p><a href="/weekly-infrastructure-report" target="_blank">Weekly Infrastructure Report</a></p>
-    <p><a href="/investor-snapshot" target="_blank">Investor Snapshot</a></p>
-    <p><a href="/market-intelligence-snapshot" target="_blank">Market Intelligence Snapshot</a></p>
-    <p><a href="/executive-ai-memo" target="_blank">Executive AI Memo</a></p>
+  <div class="executive-item">
+    <div class="mini-label">Observations</div>
+    <div id="execObservations" class="metric">...</div>
   </div>
+
+  <div class="executive-item">
+    <div class="mini-label">Providers</div>
+    <div id="execProviders" class="metric">...</div>
+  </div>
+
+  <div class="executive-item">
+    <div class="mini-label">GPU Markets</div>
+    <div id="execGpuMarkets" class="metric">...</div>
+  </div>
+
+  <div class="executive-item">
+    <div class="mini-label">Forecast Readiness</div>
+    <div id="execForecast" class="metric">...</div>
+  </div>
+
 </div>
 
-<script src="app.js"></script>
+  <header class="header">
+    <div class="brand">
+      <div class="eyebrow">AI Infrastructure Intelligence</div>
+      <h1>AI-RPCT Command Terminal</h1>
+      <p>Bloomberg-style market intelligence for GPU, AI and cloud infrastructure.</p>
+    </div>
+    <div class="badge" id="refreshStatus">Loading live data...</div>
+
+      <button class="refresh-button" onclick="location.reload()">Refresh Intelligence</button>
+
+  </header>
+
+  
+  <div class="signal-tape" id="signalTape">
+    <span>Loading market signals...</span>
+  </div>
+
+
+  
+  <div class="health-strip" id="systemHealthStrip">
+    Checking system health...
+  </div>
+
+
+  
+  <div class="demo-warning" id="demoWarning">
+    Checking provider mode...
+  </div>
+
+
+  <section class="hero">
+    <div>
+      <div class="hero-label">Operating Thesis</div>
+      <h2>GPU market structure, pricing pressure and provider concentration in one terminal.</h2>
+    </div>
+    <div class="hero-stat">
+      <span>LIVE</span>
+      <strong>Market Intel</strong>
+    </div>
+  </section>
+
+  <section class="grid">
+
+    <div class="card span-12 coverage-action-card">
+      <h3>Coverage Action Plan</h3>
+      <table id="coverageActionPlanTable"></table>
+    </div>
+
+
+    
+    <div class="card span-12">
+      <h3>Top Forecast Opportunities</h3>
+      <table id="forecastOpportunitiesTable"></table>
+    </div>
+
+    <div class="card span-12 forecast-intelligence-card">
+      <h3>Forecast Intelligence</h3>
+      <div class="forecast-grid">
+        <div>
+          <div class="label">Forecast Count</div>
+          <div id="forecastIntelCount" class="metric">...</div>
+        </div>
+        <div>
+          <div class="label">Supply Shock Risk</div>
+          <div id="forecastSupplyShock" class="snapshot-title">...</div>
+        </div>
+        <div>
+          <div class="label">Expansion Signal</div>
+          <div id="forecastExpansionSignal" class="snapshot-title">...</div>
+        </div>
+      </div>
+      <div class="panel-note" id="forecastBacktestSummary">Loading forecast backtest...</div>
+    </div>
+
+
+    <div class="card span-4 regime-card">
+      <h3>Market Regime</h3>
+      <div id="marketRegime" class="snapshot-title">...</div>
+      <p id="marketRegimeReadout" class="narrative-summary">...</p>
+    </div>
+
+    <div class="card span-4 coverage-card">
+      <h3>Live Coverage</h3>
+      <div id="liveCoverage" class="metric">...</div>
+      <p id="liveCoverageReadout" class="narrative-summary">...</p>
+    </div>
+
+    <div class="card span-4 forecast-signal-card">
+      <h3>Forecast Signal</h3>
+      <div id="forecastSignal" class="snapshot-title">...</div>
+      <p id="forecastSignalReadout" class="narrative-summary">...</p>
+    </div>
+
+
+    <div class="card span-6 forecast-card">
+      <h3>Forecast Readiness</h3>
+      <div id="forecastReadinessScore" class="metric">...</div>
+      <p id="forecastReadinessReadout" class="narrative-summary">...</p>
+    </div>
+
+
+    <div class="card span-12 risk-card">
+      <h3>Provider Concentration Alert</h3>
+      <div id="providerRiskHeadline" class="snapshot-title">...</div>
+      <p id="providerRiskReadout" class="narrative-summary">...</p>
+    </div>
+
+
+    <div class="card span-12 moat-card">
+      <h3>Data Moat</h3>
+      <div class="moat-grid">
+        <div>
+          <div class="label">Historical Observations</div>
+          <div id="moatObservations" class="metric">...</div>
+        </div>
+        <div>
+          <div class="label">Asset Size</div>
+          <div id="moatAssetSize" class="metric">...</div>
+        </div>
+        <div>
+          <div class="label">Moat Readout</div>
+          <p id="moatReadout" class="narrative-summary">...</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card span-12 investor-card">
+      <h3>Investor / Buyer Snapshot</h3>
+      <div class="investor-grid">
+        <div>
+          <div class="label">Positioning</div>
+          <div id="investorPositioning" class="snapshot-title">...</div>
+        </div>
+        <div>
+          <div class="label">Commercial Readout</div>
+          <p id="investorCommercialReadout" class="narrative-summary">...</p>
+        </div>
+      </div>
+    </div>
+
+
+    
+<div class="card span-6">
+  <h3>GPU Price Gainers</h3>
+  <table id="gpuGainersTable"></table>
+</div>
+
+<div class="card span-6">
+  <h3>GPU Price Losers</h3>
+  <table id="gpuLosersTable"></table>
+</div>
+
+<div class="card span-12">
+      <h3>Executive Market Narrative</h3>
+      <div id="marketNarrativeHeadline" class="narrative-headline">...</div>
+      <p id="marketNarrativeSummary" class="narrative-summary">Loading narrative...</p>
+    </div>
+
+    <div class="card span-3"><div class="label">AI Infrastructure Index</div><div id="aiIndex" class="metric">...</div></div>
+    <div class="card span-3"><div class="label">GPU Price Index</div><div id="gpuPrice" class="metric">...</div></div>
+    <div class="card span-3"><div class="label">Risk Score</div><div id="riskScore" class="metric">...</div></div>
+    <div class="card span-3"><div class="label">GPU Trend</div><div id="gpuTrend" class="metric">...</div></div>
+    <div class="card span-3"><div class="label">Live Providers</div><div id="providerCount" class="metric">...</div></div>
+    <div class="card span-3"><div class="label">Data Quality</div><div id="quality" class="metric">...</div></div>
+
+    <div class="card span-3"><div class="label">Market Breadth</div><div id="marketBreadth" class="metric">...</div></div>
+    <div class="card span-3"><div class="label">Provider Concentration</div><div id="providerConcentration" class="metric">...</div></div>
+    <div class="card span-3"><div class="label">Historical Observations</div><div id="historicalObservations" class="metric">...</div></div>
+    <div class="card span-3"><div class="label">GPU Models</div><div id="gpuModels" class="metric">...</div></div>
+    <div class="card span-6">
+      <h3>Provider Market Share</h3>
+      <canvas id="marketShareChart"></canvas>
+    </div>
+    <div class="card span-6">
+      <h3>Provider Health</h3>
+      <table id="providerHealth"></table>
+    </div>
+
+    <div class="card span-12">
+      <h3>GPU Market Depth</h3>
+      <table id="gpuMarketDepthTable"></table></div>
+    <div class="card span-12">
+      <h3>GPU Market Leaders</h3>
+      <table id="gpuLeadersTable"></table>
+    </div>
+
+    </div>
+
+    <div class="card span-8">
+      <h3>Top Expensive GPUs</h3>
+      <table id="gpuTable"></table>
+    </div>
+    
+    <div class="card span-6">
+      <h3>Opportunity Feed</h3>
+      <table id="opportunityFeedTable"></table>
+    </div>
+    <div class="card span-6">
+      <h3>Risk Feed</h3>
+      <table id="riskFeedTable"></table>
+    </div>
+
+    <div class="card span-4">
+      <h3>Intelligence Reports</h3>
+      <div class="links">
+        <a href="/weekly-infrastructure-report" target="_blank">Weekly Infrastructure Report</a>
+        <a href="/investor-snapshot" target="_blank">Investor Snapshot</a>
+        <a href="/market-intelligence-snapshot" target="_blank">Market Intelligence Snapshot</a>
+        <a href="/executive-ai-memo" target="_blank">Executive AI Memo</a>
+        <a href="/run-master-daily-cycle-v2" target="_blank">Run Master Cycle V2</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="terminal-footer">
+    <div>AI-RPCT · GPU Infrastructure Intelligence Terminal</div>
+    <div id="terminalLastUpdated">Last updated: loading...</div>
+    <div>Mode: Live + Historical Intelligence</div>
+  </footer>
+</div>
+
+<script src="/web/app.js"></script>
 </body>
 </html>

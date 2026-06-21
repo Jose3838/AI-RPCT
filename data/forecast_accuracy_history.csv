@@ -1,0 +1,11 @@
+timestamp,status,accuracy_score,forecast_rows,correct_rows,signal_counts
+2026-06-20T11:25:05.515951+00:00,ok,100.0,46,46,"{'bearish': 20, 'neutral': 16, 'bullish': 10}"
+2026-06-20T11:25:19.395765+00:00,ok,100.0,69,69,"{'bearish': 29, 'neutral': 25, 'bullish': 15}"
+2026-06-20T11:26:10.821056+00:00,ok,100.0,69,69,"{'bearish': 29, 'neutral': 25, 'bullish': 15}"
+2026-06-20T12:07:33.567041+00:00,ok,100.0,69,69,"{'bearish': 29, 'neutral': 25, 'bullish': 15}"
+2026-06-21T10:24:39.239255+00:00,ok,100.0,92,92,"{'bearish': 39, 'neutral': 33, 'bullish': 20}"
+2026-06-21T10:25:59.907778+00:00,ok,100.0,115,115,"{'bearish': 47, 'neutral': 42, 'bullish': 26}"
+2026-06-21T10:26:33.444441+00:00,ok,100.0,138,138,"{'bearish': 55, 'neutral': 51, 'bullish': 32}"
+2026-06-21T10:26:37.754746+00:00,ok,100.0,161,161,"{'bearish': 67, 'neutral': 57, 'bullish': 37}"
+2026-06-21T11:26:36.087683+00:00,ok,100.0,184,184,"{'bearish': 77, 'neutral': 64, 'bullish': 43}"
+2026-06-21T15:41:50.361694+00:00,ok,100.0,207,207,"{'bearish': 85, 'neutral': 70, 'bullish': 52}"

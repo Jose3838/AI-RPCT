@@ -1,0 +1,3 @@
+timestamp,data_moat_score,data_moat_level,readiness_score,readiness_level,live_coverage_score,total_data_points,cycle_health
+2026-06-19T13:09:32.282870,68.65,growing_data_moat,93.65,institutional_ready,0.0,77,healthy
+2026-06-19T13:11:00.463997,69.53,growing_data_moat,94.53,institutional_ready,0.0,86,healthy
