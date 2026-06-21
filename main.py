@@ -4058,3 +4058,19 @@ def terminal_weekly_market_report_v1():
         "headline": report.get("headline"),
         "summary": report.get("summary")
     }
+
+
+@app.get("/terminal-customer-report-export-v1")
+def terminal_customer_report_export_v1():
+
+    from intelligence.reports.customer_report_export_v1 import (
+        customer_report_export_v1
+    )
+
+    report = customer_report_export_v1()
+
+    return {
+        "status": "ok",
+        "report": report,
+        "headline": "Customer intelligence report exported"
+    }
