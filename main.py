@@ -3807,3 +3807,27 @@ def terminal_gpu_opportunities_v1():
         "headline":
             "Top GPU pricing opportunities"
     }
+
+
+@app.get("/terminal-gpu-buying-signals-v1")
+def terminal_gpu_buying_signals_v1():
+
+    from intelligence.opportunities.gpu_buying_signal_v1 import (
+        gpu_buying_signal_v1
+    )
+
+    signals = gpu_buying_signal_v1()
+
+    buy_count = len([
+        item for item in signals.get("signals", [])
+        if item.get("signal") == "BUY"
+    ])
+
+    return {
+        "status": "ok",
+        "buying_signals": signals,
+        "headline": f"{buy_count} GPU buy signals detected",
+        "readout": (
+            "GPU buying signals are based on discount versus historical average price."
+        )
+    }
