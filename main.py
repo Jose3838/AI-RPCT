@@ -4136,3 +4136,14 @@ def api_v1_customer_intelligence():
         "daily_brief": terminal_daily_intelligence_brief_v1(),
         "weekly_report": terminal_weekly_market_report_v1()
     }
+
+
+@app.get("/api/v1/demo")
+def api_v1_demo():
+
+    return {
+        "status": "ok",
+        "demo": terminal_customer_demo_snapshot_v1(),
+        "decision_center": terminal_customer_decision_center_v1(),
+        "pdf_report": terminal_customer_report_pdf_export_v1()
+    }
