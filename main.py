@@ -3787,3 +3787,23 @@ def terminal_ceo_command_center_v1():
         "summary": summary,
         "operations": operations
     }
+
+
+@app.get("/terminal-gpu-opportunities-v1")
+def terminal_gpu_opportunities_v1():
+
+    from intelligence.opportunities.gpu_opportunity_ranking_v1 import (
+        gpu_opportunity_ranking_v1
+    )
+
+    opportunities = (
+        gpu_opportunity_ranking_v1()
+    )
+
+    return {
+        "status": "ok",
+        "version": "v1",
+        "opportunities": opportunities,
+        "headline":
+            "Top GPU pricing opportunities"
+    }
