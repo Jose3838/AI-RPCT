@@ -4106,3 +4106,33 @@ def terminal_customer_report_pdf_export_v1():
         "pdf": result,
         "headline": "Customer PDF report exported"
     }
+
+
+@app.get("/api/v1/product")
+def api_v1_product():
+
+    return {
+        "status": "ok",
+        "product": "AI-RPCT",
+        "version": "v1",
+        "description": "GPU cloud market intelligence and decision platform",
+        "endpoints": {
+            "summary": "/terminal-intelligence-summary-v2",
+            "ceo_command_center": "/terminal-ceo-command-center-v1",
+            "customer_decision_center": "/terminal-customer-decision-center-v1",
+            "daily_brief": "/terminal-daily-intelligence-brief-v1",
+            "weekly_report": "/terminal-weekly-market-report-v1",
+            "customer_pdf_report": "/terminal-customer-report-pdf-export-v1"
+        }
+    }
+
+
+@app.get("/api/v1/customer-intelligence")
+def api_v1_customer_intelligence():
+
+    return {
+        "status": "ok",
+        "customer_decision": terminal_customer_decision_center_v1(),
+        "daily_brief": terminal_daily_intelligence_brief_v1(),
+        "weekly_report": terminal_weekly_market_report_v1()
+    }
