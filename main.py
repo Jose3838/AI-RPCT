@@ -4147,3 +4147,17 @@ def api_v1_demo():
         "decision_center": terminal_customer_decision_center_v1(),
         "pdf_report": terminal_customer_report_pdf_export_v1()
     }
+
+
+@app.get("/api/v1/health")
+def api_v1_health():
+
+    return {
+        "status": "ok",
+        "collection": terminal_collection_health_v2(),
+        "launchagent": terminal_launchagent_health_v1(),
+        "summary": {
+            "product": terminal_product_readiness_v1(),
+            "data_moat": terminal_data_moat_v2()
+        }
+    }
