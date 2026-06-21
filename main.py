@@ -3800,6 +3800,10 @@ def terminal_ceo_command_center_v1():
         terminal_customer_decision_center_v1()
     )
 
+    customer_demo_snapshot = (
+        terminal_customer_demo_snapshot_v1()
+    )
+
     return {
         "status": "ok",
         "version": "v1",
@@ -3810,7 +3814,8 @@ def terminal_ceo_command_center_v1():
         "budget_advisor": budget_advisor,
         "provider_switching": provider_switching,
         "gpu_risk": gpu_risk,
-        "customer_decision_center": customer_decision_center
+        "customer_decision_center": customer_decision_center,
+        "customer_demo_snapshot": customer_demo_snapshot
     }
 
 
