@@ -3903,3 +3903,27 @@ def terminal_provider_switching_advisor_v1():
         ),
         "readout": advisor.get("reason")
     }
+
+
+@app.get("/terminal-gpu-risk-advisor-v1")
+def terminal_gpu_risk_advisor_v1():
+
+    from intelligence.customer.gpu_risk_advisor_v1 import (
+        gpu_risk_advisor_v1
+    )
+
+    advisor = gpu_risk_advisor_v1()
+
+    high_risk_count = len([
+        item for item in advisor.get("risks", [])
+        if item.get("risk") == "high_price_risk"
+    ])
+
+    return {
+        "status": "ok",
+        "risk_advisor": advisor,
+        "headline": f"{high_risk_count} high price risk GPUs detected",
+        "readout": (
+            "GPU risk advisor compares recent price levels against historical averages."
+        )
+    }
