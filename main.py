@@ -4090,3 +4090,19 @@ def terminal_customer_report_pdf_ready_v1():
         "report": report,
         "headline": "PDF-ready customer report generated"
     }
+
+
+@app.get("/terminal-customer-report-pdf-export-v1")
+def terminal_customer_report_pdf_export_v1():
+
+    from intelligence.reports.customer_report_pdf_export_v1 import (
+        customer_report_pdf_export_v1
+    )
+
+    result = customer_report_pdf_export_v1()
+
+    return {
+        "status": "ok",
+        "pdf": result,
+        "headline": "Customer PDF report exported"
+    }
