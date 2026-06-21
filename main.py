@@ -3780,12 +3780,17 @@ def terminal_ceo_command_center_v1():
         terminal_operations_dashboard_v1()
     )
 
+    customer_value = (
+        terminal_customer_value_v1()
+    )
+
     return {
         "status": "ok",
         "version": "v1",
         "strategy": strategy,
         "summary": summary,
-        "operations": operations
+        "operations": operations,
+        "customer_value": customer_value
     }
 
 
