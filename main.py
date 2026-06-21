@@ -4074,3 +4074,19 @@ def terminal_customer_report_export_v1():
         "report": report,
         "headline": "Customer intelligence report exported"
     }
+
+
+@app.get("/terminal-customer-report-pdf-ready-v1")
+def terminal_customer_report_pdf_ready_v1():
+
+    from intelligence.reports.customer_report_pdf_ready_v1 import (
+        customer_report_pdf_ready_v1
+    )
+
+    report = customer_report_pdf_ready_v1()
+
+    return {
+        "status": "ok",
+        "report": report,
+        "headline": "PDF-ready customer report generated"
+    }
