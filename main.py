@@ -3792,6 +3792,10 @@ def terminal_ceo_command_center_v1():
         terminal_provider_switching_advisor_v1()
     )
 
+    gpu_risk = (
+        terminal_gpu_risk_advisor_v1()
+    )
+
     return {
         "status": "ok",
         "version": "v1",
@@ -3800,7 +3804,8 @@ def terminal_ceo_command_center_v1():
         "operations": operations,
         "customer_value": customer_value,
         "budget_advisor": budget_advisor,
-        "provider_switching": provider_switching
+        "provider_switching": provider_switching,
+        "gpu_risk": gpu_risk
     }
 
 
