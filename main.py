@@ -4161,3 +4161,20 @@ def api_v1_health():
             "data_moat": terminal_data_moat_v2()
         }
     }
+
+
+@app.get("/")
+def root():
+
+    return {
+        "product": "AI-RPCT",
+        "version": "product-v1",
+        "status": "live",
+        "docs": "/docs",
+        "apis": [
+            "/api/v1/product",
+            "/api/v1/customer-intelligence",
+            "/api/v1/demo",
+            "/api/v1/health"
+        ]
+    }
