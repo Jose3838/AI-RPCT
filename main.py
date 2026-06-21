@@ -4006,3 +4006,22 @@ def terminal_customer_demo_snapshot_v1():
         "demo_snapshot": snapshot,
         "headline": snapshot.get("headline")
     }
+
+
+@app.get("/terminal-daily-intelligence-brief-v1")
+def terminal_daily_intelligence_brief_v1():
+
+    from intelligence.reports.daily_intelligence_brief_v1 import (
+        daily_intelligence_brief_v1
+    )
+
+    brief = (
+        daily_intelligence_brief_v1()
+    )
+
+    return {
+        "status": "ok",
+        "brief": brief,
+        "headline":
+            brief.get("headline")
+    }
