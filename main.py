@@ -3985,3 +3985,19 @@ def terminal_customer_decision_center_v1():
             f"{provider.get('advisor', {}).get('decision', 'unknown')}."
         )
     }
+
+
+@app.get("/terminal-customer-demo-snapshot-v1")
+def terminal_customer_demo_snapshot_v1():
+
+    from intelligence.demo.customer_demo_snapshot_v1 import (
+        customer_demo_snapshot_v1
+    )
+
+    snapshot = customer_demo_snapshot_v1()
+
+    return {
+        "status": "ok",
+        "demo_snapshot": snapshot,
+        "headline": snapshot.get("headline")
+    }
