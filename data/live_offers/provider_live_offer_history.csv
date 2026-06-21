@@ -3405,3 +3405,72 @@ observed_at,provider,gpu_model,region,price_usd_per_gpu_hour,available,source,mo
 2026-06-20T12:07:35.482514+00:00,lambda,H100,us,2.5,True,lambda_fallback_demo,demo,68b4f616e6a0211e
 2026-06-20T12:07:35.482533+00:00,nebius,H100,eu-north1,2.35,True,nebius_fallback_demo,demo,bff37852306c9f8a
 2026-06-20T12:07:35.482552+00:00,crusoe,H100,us,2.15,True,crusoe_fallback_demo,demo,902b0a309cf18cf8
+2026-06-21T10:24:40.673806+00:00,vast,Tesla V100,"Washington, US",0.15155555555555555,True,vast_live_api,live,8cc17373f963ea72
+2026-06-21T10:24:40.674149+00:00,vast,Tesla V100,"Washington, US",0.15155555555555555,True,vast_live_api,live,8cc17373f963ea72
+2026-06-21T10:24:40.674320+00:00,vast,Tesla V100,"Washington, US",0.0768888888888889,True,vast_live_api,live,95d596d2a5758330
+2026-06-21T10:24:40.674406+00:00,vast,Tesla V100,"Washington, US",0.0768888888888889,True,vast_live_api,live,95d596d2a5758330
+2026-06-21T10:24:40.674482+00:00,vast,Tesla V100,"Washington, US",0.04488888888888889,True,vast_live_api,live,ccd2f794c1f401f5
+2026-06-21T10:24:40.674555+00:00,vast,Tesla V100,"Washington, US",0.03955555555555556,True,vast_live_api,live,56b6873bd29bda70
+2026-06-21T10:24:40.674714+00:00,vast,Tesla V100,"Washington, US",0.02088888888888889,True,vast_live_api,live,26c1591c639bb593
+2026-06-21T10:24:40.674819+00:00,vast,Tesla V100,"Washington, US",0.02088888888888889,True,vast_live_api,live,26c1591c639bb593
+2026-06-21T10:24:40.674894+00:00,vast,RTX 5090,", CN",0.21355555555555558,True,vast_live_api,live,d5283dca37dfbbc1
+2026-06-21T10:24:40.674968+00:00,vast,RTX 5080,"Bulgaria, BG",0.2288888888888889,True,vast_live_api,live,d2ae2975ec467aa6
+2026-06-21T10:24:40.675040+00:00,vast,RTX 5080,"Bulgaria, BG",0.11555555555555556,True,vast_live_api,live,cd43e0160271949e
+2026-06-21T10:24:40.675114+00:00,vast,RTX 4090,"Argentina, AR",0.16888888888888887,True,vast_live_api,live,160f66cfe2a4314c
+2026-06-21T10:24:40.675187+00:00,vast,H200,"France, FR",3.948658743633277,True,vast_live_api,live,ed77ee2e4c1f38ad
+2026-06-21T10:24:40.675259+00:00,vast,RTX 5090,"Vietnam, VN",0.44222222222222224,True,vast_live_api,live,1f302a18169e69b9
+2026-06-21T10:24:40.675329+00:00,vast,RTX 5090,"Finland, FI",0.5014814814814814,True,vast_live_api,live,600b157bb4fd8d50
+2026-06-21T10:24:40.675403+00:00,vast,RTX 5090,"Finland, FI",0.9948148148148147,True,vast_live_api,live,69ef99cde6a8533b
+2026-06-21T10:24:40.675508+00:00,vast,H200,"France, FR",1.974974533106961,True,vast_live_api,live,29a4e00270ec9eeb
+2026-06-21T10:24:40.675580+00:00,vast,RTX PRO 6000 WS,"Alberta, CA",0.8688888888888889,True,vast_live_api,live,9255a983b7fc0154
+2026-06-21T10:24:40.675650+00:00,vast,H200,"France, FR",7.896027164685909,True,vast_live_api,live,40aa4fb1a44d44ef
+2026-06-21T10:24:40.675722+00:00,vast,RTX 4070S Ti,"Vietnam, VN",0.0802962962962963,True,vast_live_api,live,f59d39c2d590c743
+2026-06-21T10:24:40.675812+00:00,vast,RTX 4070S Ti,"Vietnam, VN",0.0802962962962963,True,vast_live_api,live,f59d39c2d590c743
+2026-06-21T10:24:40.675885+00:00,vast,RTX 4080S,"Vietnam, VN",0.08681481481481482,True,vast_live_api,live,5762cc08cbd82150
+2026-06-21T10:24:40.675958+00:00,vast,H200,"France, FR",15.790764006791173,True,vast_live_api,live,f5449b220c172135
+2026-06-21T10:24:40.676033+00:00,vast,RTX PRO 6000 WS,"Switzerland, CH",1.2422222222222221,True,vast_live_api,live,c3063bd0e7981f1d
+2026-06-21T10:24:40.676122+00:00,vast,RTX 5090,"California, US",0.7511111111111112,True,vast_live_api,live,cefdb590f113d003
+2026-06-21T10:24:40.676196+00:00,vast,RTX 4080S,"Vietnam, VN",0.09822222222222221,True,vast_live_api,live,e1e79ae18a4b4405
+2026-06-21T10:24:40.676266+00:00,vast,H100 SXM,"France, FR",1.468888888888889,True,vast_live_api,live,f06aa80456c6cea6
+2026-06-21T10:24:40.676353+00:00,vast,RTX PRO 4500,"Lithuania, LT",0.1622222222222222,True,vast_live_api,live,ff57c2da9d588cff
+2026-06-21T10:24:40.676425+00:00,vast,B200,"Virginia, US",8.184722222222222,True,vast_live_api,live,b823feaf0392a57c
+2026-06-21T10:24:40.676495+00:00,vast,RTX 4090,", CN",0.2688888888888889,True,vast_live_api,live,5a6de2dd2ba53984
+2026-06-21T10:24:40.676568+00:00,vast,B200,"Alabama, US",3.4444444444444446,True,vast_live_api,live,4e890104292187c9
+2026-06-21T10:24:40.676638+00:00,vast,B200,"Virginia, US",16.75972222222222,True,vast_live_api,live,abd9e828491994bd
+2026-06-21T10:24:40.676710+00:00,vast,RTX PRO 6000 S,"Spain, ES",0.6688888888888889,True,vast_live_api,live,af2fe9db63cc4d49
+2026-06-21T10:24:40.676781+00:00,vast,RTX 5090,"Shanghai, CN",0.6148148148148149,True,vast_live_api,live,8e34bcfb9825cdb7
+2026-06-21T10:24:40.676853+00:00,vast,RTX 4090,", CN",0.13555555555555554,True,vast_live_api,live,f591a3435ba0e272
+2026-06-21T10:24:40.676923+00:00,vast,RTX 4080S,"Vietnam, VN",0.09348148148148148,True,vast_live_api,live,54dbaf1bd56cf3fa
+2026-06-21T10:24:40.676994+00:00,vast,L4,"Hong Kong, HK",0.030740740740740742,True,vast_live_api,live,63b0ad03fe0b7ea1
+2026-06-21T10:24:40.677063+00:00,vast,H200 NVL,"Montana, US",7.743555555555557,True,vast_live_api,live,0630329da7cb62e9
+2026-06-21T10:24:40.677134+00:00,vast,H200 NVL,"Montana, US",3.8768888888888893,True,vast_live_api,live,93c96c0b33a98823
+2026-06-21T10:24:40.677205+00:00,vast,H200,"New Jersey, US",1.3172514619883042,True,vast_live_api,live,f6c03e1fa605b706
+2026-06-21T10:24:40.677291+00:00,vast,B200,"Virginia, US",31.80972222222223,True,vast_live_api,live,82080bf3b230b963
+2026-06-21T10:24:40.677364+00:00,vast,RTX PRO 6000 WS,"Pennsylvania, US",0.6703703703703703,True,vast_live_api,live,93aa1e267e916da7
+2026-06-21T10:24:40.677436+00:00,vast,RTX 5090,"British Columbia, CA",0.4675555555555556,True,vast_live_api,live,bd17562af255ebf6
+2026-06-21T10:24:40.677506+00:00,vast,RTX PRO 6000 WS,"Hungary, HU",2.6437037037037037,True,vast_live_api,live,6c4291076900caaa
+2026-06-21T10:24:40.677576+00:00,vast,RTX PRO 6000 WS,"Sweden, SE",2.5237037037037036,True,vast_live_api,live,a78ffb7cc4dca525
+2026-06-21T10:24:40.677655+00:00,vast,RTX 5090,"Denmark, DK",2.03037037037037,True,vast_live_api,live,f7d93ec8e1037cb4
+2026-06-21T10:24:40.677727+00:00,vast,B200,"Alabama, US",13.756944444444445,True,vast_live_api,live,7c5b26a481ecf632
+2026-06-21T10:24:40.677798+00:00,vast,RTX 5070 Ti,"South Korea, KR",0.13555555555555554,True,vast_live_api,live,7f2a11460b0c157a
+2026-06-21T10:24:40.677867+00:00,vast,H200 NVL,"Montana, US",1.9435555555555557,True,vast_live_api,live,ac0ed27c97e3e1b5
+2026-06-21T10:24:40.677937+00:00,vast,B200,"Alabama, US",4.069444444444445,True,vast_live_api,live,f88c9202f962dcb2
+2026-06-21T10:24:40.678022+00:00,vast,B300,"Taiwan, TW",15.002222222222223,True,vast_live_api,live,7544d0ef05dcd840
+2026-06-21T10:24:40.678093+00:00,vast,H200 NVL,"Montana, US",15.47688888888889,True,vast_live_api,live,540e8de8e0686494
+2026-06-21T10:24:40.678163+00:00,vast,B200,"Alabama, US",27.506944444444443,True,vast_live_api,live,38d3ec5ac1b0202c
+2026-06-21T10:24:40.678235+00:00,vast,RTX PRO 6000 S,", US",1.202222222222222,True,vast_live_api,live,7c2f0dd7076d656e
+2026-06-21T10:24:40.678306+00:00,vast,B200,"Alabama, US",6.881944444444445,True,vast_live_api,live,88bb0dc73806a686
+2026-06-21T10:24:40.678385+00:00,vast,RTX PRO 6000 WS,"Hungary, HU",1.3237037037037038,True,vast_live_api,live,3d0f1b577972f588
+2026-06-21T10:24:40.678456+00:00,vast,RTX 5090,"Czechia, CZ",0.46888888888888886,True,vast_live_api,live,4cbc9f01b4c0b72a
+2026-06-21T10:24:40.678525+00:00,vast,RTX PRO 6000 S,"Michigan, US",4.535555555555556,True,vast_live_api,live,cd5b9d6189f11f6f
+2026-06-21T10:24:40.678597+00:00,vast,RTX PRO 6000 S,", US",2.9355555555555557,True,vast_live_api,live,1f761ff7629bdc40
+2026-06-21T10:24:40.678677+00:00,vast,RTX PRO 6000 S,"Texas, US",1.7362962962962964,True,vast_live_api,live,de8f3f2177dc99ac
+2026-06-21T10:24:40.678746+00:00,vast,RTX 5090,"The Netherlands, NL",1.0696296296296297,True,vast_live_api,live,e02dd3c825c57010
+2026-06-21T10:24:40.678815+00:00,vast,RTX 5090,"Hungary, HU",1.3343703703703704,True,vast_live_api,live,2f5ff72e13c7334c
+2026-06-21T10:24:40.678884+00:00,vast,RTX PRO 5000,"Czechia, CZ",1.3348148148148147,True,vast_live_api,live,669237ac0d10e78b
+2026-06-21T10:24:40.678955+00:00,vast,RTX 4090,"Quebec, CA",0.9355555555555555,True,vast_live_api,live,3e259e6e2be2d178
+2026-06-21T10:24:41.488639+00:00,runpod,mixed,global,0.48,True,runpod_live_api,live,7d80e0c18c6aa0e7
+2026-06-21T10:24:41.488821+00:00,coreweave,H100,us,2.75,True,coreweave_fallback_demo,demo,f25fbcc3b6ecec94
+2026-06-21T10:24:41.488859+00:00,lambda,H100,us,2.5,True,lambda_fallback_demo,demo,68b4f616e6a0211e
+2026-06-21T10:24:41.488880+00:00,nebius,H100,eu-north1,2.35,True,nebius_fallback_demo,demo,bff37852306c9f8a
+2026-06-21T10:24:41.488901+00:00,crusoe,H100,us,2.15,True,crusoe_fallback_demo,demo,902b0a309cf18cf8

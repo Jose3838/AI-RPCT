@@ -1,2 +1,8 @@
 timestamp,stage,product_readiness,executive_score,investor_readiness,data_moat,collection,launchagent_installed
 2026-06-20T12:14:30.717499+00:00,demo_ready,80.14,75.35,76.41,78.68,healthy,True
+2026-06-20T12:15:05.284269+00:00,demo_ready,80.14,75.35,76.41,78.68,healthy,True
+2026-06-20T12:18:49.440462+00:00,demo_ready,80.14,75.35,76.41,78.68,healthy,True
+2026-06-20T12:19:22.967481+00:00,demo_ready,80.14,75.35,76.41,78.68,healthy,True
+2026-06-20T12:19:29.096820+00:00,demo_ready,80.14,75.35,76.41,78.68,healthy,True
+2026-06-20T12:19:29.268087+00:00,demo_ready,80.14,75.35,76.41,78.68,healthy,True
+2026-06-20T12:21:14.067118+00:00,demo_ready,80.14,75.35,76.41,78.68,healthy,True
