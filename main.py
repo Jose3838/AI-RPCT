@@ -4041,3 +4041,20 @@ def terminal_daily_intelligence_brief_v1():
         "brief": brief,
         "headline": brief.get("headline")
     }
+
+
+@app.get("/terminal-weekly-market-report-v1")
+def terminal_weekly_market_report_v1():
+
+    from intelligence.reports.weekly_market_report_v1 import (
+        weekly_market_report_v1
+    )
+
+    report = weekly_market_report_v1()
+
+    return {
+        "status": "ok",
+        "report": report,
+        "headline": report.get("headline"),
+        "summary": report.get("summary")
+    }
