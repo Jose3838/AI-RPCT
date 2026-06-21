@@ -3855,3 +3855,22 @@ def terminal_customer_value_v1():
         ),
         "readout": dashboard.get("readout")
     }
+
+
+@app.get("/terminal-gpu-budget-advisor-v1")
+def terminal_gpu_budget_advisor_v1():
+
+    from intelligence.customer.gpu_budget_advisor_v1 import (
+        gpu_budget_advisor_v1
+    )
+
+    advisor = gpu_budget_advisor_v1()
+
+    return {
+        "status": "ok",
+        "advisor": advisor,
+        "headline": (
+            f"GPU budget decision: {advisor.get('decision')}"
+        ),
+        "readout": advisor.get("reason")
+    }
