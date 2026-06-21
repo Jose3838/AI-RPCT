@@ -3879,3 +3879,22 @@ def terminal_gpu_budget_advisor_v1():
         ),
         "readout": advisor.get("reason")
     }
+
+
+@app.get("/terminal-provider-switching-advisor-v1")
+def terminal_provider_switching_advisor_v1():
+
+    from intelligence.customer.provider_switching_advisor_v1 import (
+        provider_switching_advisor_v1
+    )
+
+    advisor = provider_switching_advisor_v1()
+
+    return {
+        "status": "ok",
+        "advisor": advisor,
+        "headline": (
+            f"Provider switching decision: {advisor.get('decision')}"
+        ),
+        "readout": advisor.get("reason")
+    }
