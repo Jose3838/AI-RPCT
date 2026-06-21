@@ -5,3 +5,4 @@ timestamp,status,dominant_provider,market_share_pct,regime,trend,delta_pct,hours
 2026-06-21T10:26:01.824051+00:00,ok,vast,92.7536,extreme_dominance,flat,0.0,95.06,6,2026-06-21T10:25:59.888094+00:00
 2026-06-21T10:26:35.282338+00:00,ok,vast,92.7536,extreme_dominance,flat,0.0,95.06,6,2026-06-21T10:26:33.422654+00:00
 2026-06-21T10:26:39.346917+00:00,ok,vast,92.7536,extreme_dominance,flat,0.0,95.07,6,2026-06-21T10:26:37.736004+00:00
+2026-06-21T11:26:38.133592+00:00,ok,vast,92.7536,extreme_dominance,flat,0.0,96.07,6,2026-06-21T11:26:36.065378+00:00
