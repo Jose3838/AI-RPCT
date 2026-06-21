@@ -3956,3 +3956,27 @@ def terminal_customer_decision_center_v1():
             f"{provider.get('advisor', {}).get('decision', 'unknown')}."
         )
     }
+
+
+@app.get("/terminal-customer-decision-center-v1")
+def terminal_customer_decision_center_v1():
+
+    customer_value = terminal_customer_value_v1()
+    budget = terminal_gpu_budget_advisor_v1()
+    provider = terminal_provider_switching_advisor_v1()
+    risk = terminal_gpu_risk_advisor_v1()
+
+    return {
+        "status": "ok",
+        "version": "v1",
+        "customer_value": customer_value,
+        "budget_advisor": budget,
+        "provider_switching": provider,
+        "gpu_risk": risk,
+        "headline": (
+            f"Budget decision: "
+            f"{budget.get('advisor', {}).get('decision', 'unknown')}. "
+            f"Provider decision: "
+            f"{provider.get('advisor', {}).get('decision', 'unknown')}."
+        )
+    }
