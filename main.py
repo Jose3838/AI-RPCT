@@ -3788,6 +3788,10 @@ def terminal_ceo_command_center_v1():
         terminal_gpu_budget_advisor_v1()
     )
 
+    provider_switching = (
+        terminal_provider_switching_advisor_v1()
+    )
+
     return {
         "status": "ok",
         "version": "v1",
@@ -3795,7 +3799,8 @@ def terminal_ceo_command_center_v1():
         "summary": summary,
         "operations": operations,
         "customer_value": customer_value,
-        "budget_advisor": budget_advisor
+        "budget_advisor": budget_advisor,
+        "provider_switching": provider_switching
     }
 
 

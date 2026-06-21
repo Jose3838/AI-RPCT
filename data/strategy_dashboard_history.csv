@@ -6,3 +6,13 @@ timestamp,stage,product_readiness,executive_score,investor_readiness,data_moat,c
 2026-06-20T12:19:29.096820+00:00,demo_ready,80.14,75.35,76.41,78.68,healthy,True
 2026-06-20T12:19:29.268087+00:00,demo_ready,80.14,75.35,76.41,78.68,healthy,True
 2026-06-20T12:21:14.067118+00:00,demo_ready,80.14,75.35,76.41,78.68,healthy,True
+2026-06-21T10:48:07.703648+00:00,demo_ready,88.67,82.81,83.75,95,healthy,True
+2026-06-21T10:48:17.333777+00:00,demo_ready,88.67,82.81,83.75,95,healthy,True
+2026-06-21T10:48:57.188506+00:00,demo_ready,88.67,82.81,83.75,95,healthy,True
+2026-06-21T10:48:57.401733+00:00,demo_ready,88.67,82.81,83.75,95,healthy,True
+2026-06-21T10:48:57.618319+00:00,demo_ready,88.67,82.81,83.75,95,healthy,True
+2026-06-21T10:49:12.046981+00:00,demo_ready,88.67,82.81,83.75,95,healthy,True
+2026-06-21T10:52:08.566622+00:00,demo_ready,88.67,82.81,83.75,95,healthy,True
+2026-06-21T10:52:18.422000+00:00,demo_ready,88.67,82.81,83.75,95,healthy,True
+2026-06-21T10:53:58.967925+00:00,demo_ready,88.67,82.81,83.75,95,healthy,True
+2026-06-21T10:55:25.811958+00:00,demo_ready,88.67,82.81,83.75,95,healthy,True
