@@ -103,6 +103,7 @@ Core files:
 - `analytics/core_signal_history.py`
 - `analytics/core_signal_quality.py`
 - `analytics/core_intelligence_readiness.py`
+- `analytics/core_provenance_audit.py`
 - `analytics/provider_preflight.py`
 - `analytics/provider_reliability_gaps.py`
 - `data/*.csv`

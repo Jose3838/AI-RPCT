@@ -24,6 +24,7 @@ Then inspect:
 - `data/provider_reliability_gaps.csv`
 - `data/core_signal_quality.csv`
 - `data/core_intelligence_readiness.csv`
+- `data/core_provenance_audit.csv`
 - `reports/daily_terminal_brief_YYYYMMDD.txt`
 
 `scripts/core_status.py` prints the current readiness phase, blockers, next action and a prioritized action plan.
@@ -35,8 +36,9 @@ Then inspect:
 3. Confirm `scripts/core_status.py` no longer lists critical provider-preflight actions.
 4. Confirm `live_provider_ingestion_status.csv` shows `fresh`, not `fallback`.
 5. Confirm `provider_reliability_gaps.csv` no longer contains `provider_ingestion_using_fallback`.
-6. Run the core pipeline daily until 30 distinct signal-history days are collected.
-7. Only sell paid reliability claims once `core_intelligence_readiness.csv` leaves `blocked_by_live_data`.
+6. Confirm `core_provenance_audit.csv` no longer reports `fallback_contaminated`.
+7. Run the core pipeline daily until 30 distinct signal-history days are collected.
+8. Only sell paid reliability claims once `core_intelligence_readiness.csv` leaves `blocked_by_live_data`.
 
 ## Priority Order
 
@@ -53,5 +55,6 @@ Paid beta can begin only when:
 
 - core readiness phase is not `blocked_by_live_data`
 - no high-priority fallback ingestion gaps remain
+- provenance band is not `fallback_contaminated`
 - core signal history has 30 clean days
 - executive brief clearly labels remaining confidence limits
