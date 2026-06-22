@@ -74,6 +74,7 @@ from analytics.provider_preflight import (
     summarize_provider_preflight,
 )
 from scripts.core_status import build_action_plan, build_core_status
+from scripts.history_backfill_plan import build_history_backfill_plan
 from snapshot_scheduler import run_scheduled_snapshot
 from security.limits import build_limit_status
 from security.entitlements import has_access
@@ -85,6 +86,7 @@ def test_core_files_exist():
     assert Path("run_daily.sh").exists()
     assert Path("scripts/run_core_intelligence.sh").exists()
     assert Path("scripts/core_status.py").exists()
+    assert Path("scripts/history_backfill_plan.py").exists()
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert Path("analytics/market_pulse_snapshot.py").exists()
     assert Path("analytics/core_signal_history.py").exists()
@@ -590,6 +592,15 @@ def test_core_status_action_plan_prioritizes_preflight():
 
     assert actions[0]["priority"] == "critical"
     assert actions[0]["source"] == "provider_preflight"
+
+
+def test_history_backfill_plan_contract():
+    plan = build_history_backfill_plan()
+
+    assert plan["product"] == "AI-RPCT"
+    assert plan["policy"] == "do_not_fake_history"
+    assert "recommended_action" in plan
+    assert isinstance(plan["missing_recent_days"], list)
 
 
 def test_provider_preflight_blocks_missing_keys_and_fallback():
