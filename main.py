@@ -17,7 +17,11 @@ from intelligence.reports.customer_report_pdf_export_v1 import (
 from api.routes import router
 from api.auth_routes import router as auth_router
 from api.commercial_core import build_commercial_snapshot, build_sales_pipeline
-from api.onboarding_core import create_customer_api_key
+from api.onboarding_core import (
+    create_customer_api_key,
+    reactivate_customer_api_key,
+    revoke_customer_api_key,
+)
 from api.terminal_core import (
     build_api_catalog,
     build_dashboard_snapshot,
@@ -99,6 +103,24 @@ def v1_create_customer(
 ):
     require_v1_access("/v1/customers", x_api_key)
     return create_customer_api_key(customer_name, plan)
+
+
+@app.post("/v1/customers/revoke")
+def v1_revoke_customer(
+    api_key: str,
+    x_api_key: str = Header(default=None),
+):
+    require_v1_access("/v1/customers/revoke", x_api_key)
+    return revoke_customer_api_key(api_key)
+
+
+@app.post("/v1/customers/reactivate")
+def v1_reactivate_customer(
+    api_key: str,
+    x_api_key: str = Header(default=None),
+):
+    require_v1_access("/v1/customers/reactivate", x_api_key)
+    return reactivate_customer_api_key(api_key)
 
 
 @app.get("/v1/reports/latest")

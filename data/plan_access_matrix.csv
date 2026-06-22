@@ -8,6 +8,8 @@ endpoint,free,pro,enterprise
 /v1/commercial-snapshot,false,false,true
 /v1/sales-pipeline,false,false,true
 /v1/customers,false,false,true
+/v1/customers/revoke,false,false,true
+/v1/customers/reactivate,false,false,true
 /v1/reports/latest,false,true,true
 /v1/signals,true,true,true
 /v1/recommendations,false,true,true

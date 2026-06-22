@@ -23,7 +23,11 @@ from api.access import (
     enforce_plan_limits,
 )
 from api.commercial_core import build_commercial_snapshot, build_sales_pipeline
-from api.onboarding_core import create_customer_api_key
+from api.onboarding_core import (
+    create_customer_api_key,
+    reactivate_customer_api_key,
+    revoke_customer_api_key,
+)
 from security.limits import build_limit_status
 from security.entitlements import has_access
 from security.plan_resolver import resolve_plan
@@ -115,6 +119,10 @@ def test_v1_plan_access_contract():
     assert has_access("enterprise", "/v1/sales-pipeline")
     assert not has_access("pro", "/v1/customers")
     assert has_access("enterprise", "/v1/customers")
+    assert not has_access("pro", "/v1/customers/revoke")
+    assert has_access("enterprise", "/v1/customers/revoke")
+    assert not has_access("pro", "/v1/customers/reactivate")
+    assert has_access("enterprise", "/v1/customers/reactivate")
     assert has_access("free", "/v1/signals")
     assert not has_access("free", "/v1/recommendations")
     assert has_access("pro", "/v1/recommendations")
@@ -204,6 +212,32 @@ def test_v1_customer_onboarding_contract(tmp_path, monkeypatch):
     assert payload["api_key"] in registry.read_text()
 
 
+def test_v1_customer_lifecycle_contract(tmp_path, monkeypatch):
+    registry = tmp_path / "api_key_registry.csv"
+    accounts = tmp_path / "customer_accounts.csv"
+    registry.write_text("key,plan,status\nairpct_test,pro,active\n")
+    accounts.write_text(
+        "account_id,customer_name,api_key,plan,status\n"
+        "acct_test,Test Buyer,airpct_test,pro,active\n"
+    )
+
+    monkeypatch.setattr("api.onboarding_core.API_KEY_REGISTRY_FILE", registry)
+    monkeypatch.setattr("api.onboarding_core.CUSTOMER_ACCOUNTS_FILE", accounts)
+
+    revoked = revoke_customer_api_key("airpct_test")
+
+    assert revoked["status"] == "updated"
+    assert revoked["key_status"] == "revoked"
+    assert "airpct_test,pro,revoked" in registry.read_text()
+    assert "acct_test,Test Buyer,airpct_test,pro,revoked" in accounts.read_text()
+
+    reactivated = reactivate_customer_api_key("airpct_test")
+
+    assert reactivated["key_status"] == "active"
+    assert "airpct_test,pro,active" in registry.read_text()
+    assert "acct_test,Test Buyer,airpct_test,pro,active" in accounts.read_text()
+
+
 def test_v1_limit_status_contract():
     now = datetime(2026, 6, 22, 12, 0, 0)
     records = [
@@ -247,6 +281,8 @@ def test_main_app_exposes_v1_core_routes():
     assert "/v1/commercial-snapshot" in paths
     assert "/v1/sales-pipeline" in paths
     assert "/v1/customers" in paths
+    assert "/v1/customers/revoke" in paths
+    assert "/v1/customers/reactivate" in paths
     assert "/v1/reports/latest" in paths
     assert "/v1/signals" in paths
     assert "/v1/recommendations" in paths

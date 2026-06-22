@@ -89,3 +89,52 @@ def create_customer_api_key(customer_name, plan):
         },
         "api_key": api_key,
     }
+
+
+def update_customer_api_key_status(api_key, status):
+    api_key = str(api_key or "").strip()
+    status = str(status or "").strip().lower()
+
+    if not api_key:
+        raise HTTPException(status_code=400, detail="api_key is required")
+
+    if status not in {"active", "revoked"}:
+        raise HTTPException(status_code=400, detail="status must be active or revoked")
+
+    registry = read_csv_records(
+        API_KEY_REGISTRY_FILE,
+        ["key", "plan", "status"],
+    )
+    accounts = read_csv_records(
+        CUSTOMER_ACCOUNTS_FILE,
+        ["account_id", "customer_name", "api_key", "plan", "status"],
+    )
+
+    registry_match = registry["key"] == api_key
+    account_match = accounts["api_key"] == api_key
+
+    if registry.empty or not registry_match.any():
+        raise HTTPException(status_code=404, detail="api key not found")
+
+    registry.loc[registry_match, "status"] = status
+    if not accounts.empty and account_match.any():
+        accounts.loc[account_match, "status"] = status
+
+    write_csv_records(API_KEY_REGISTRY_FILE, registry)
+    write_csv_records(CUSTOMER_ACCOUNTS_FILE, accounts)
+
+    return {
+        "product": "AI-RPCT",
+        "version": "v1",
+        "status": "updated",
+        "api_key": api_key,
+        "key_status": status,
+    }
+
+
+def revoke_customer_api_key(api_key):
+    return update_customer_api_key_status(api_key, "revoked")
+
+
+def reactivate_customer_api_key(api_key):
+    return update_customer_api_key_status(api_key, "active")

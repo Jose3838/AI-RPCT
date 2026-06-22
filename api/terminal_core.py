@@ -497,6 +497,18 @@ def build_api_catalog():
             "tier": "enterprise"
         },
         {
+            "endpoint": "/v1/customers/revoke",
+            "category": "commercial",
+            "description": "Enterprise customer lifecycle endpoint that revokes a V1 API key.",
+            "tier": "enterprise"
+        },
+        {
+            "endpoint": "/v1/customers/reactivate",
+            "category": "commercial",
+            "description": "Enterprise customer lifecycle endpoint that reactivates a revoked V1 API key.",
+            "tier": "enterprise"
+        },
+        {
             "endpoint": "/v1/signals",
             "category": "intelligence",
             "description": "Decision signals generated from live market, price, scarcity and provider data.",

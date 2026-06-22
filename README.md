@@ -73,6 +73,8 @@ These endpoints are the product surface we should protect first:
 - `/v1/commercial-snapshot`
 - `/v1/sales-pipeline`
 - `/v1/customers`
+- `/v1/customers/revoke`
+- `/v1/customers/reactivate`
 - `/v1/reports/latest`
 - `/v1/signals`
 - `/v1/recommendations`
@@ -179,6 +181,12 @@ curl -H "x-api-key: demo-enterprise-key" \
 
 curl -X POST -H "x-api-key: demo-enterprise-key" \
   "http://127.0.0.1:8000/v1/customers?customer_name=Acme%20AI&plan=pro"
+
+curl -X POST -H "x-api-key: demo-enterprise-key" \
+  "http://127.0.0.1:8000/v1/customers/revoke?api_key=airpct_customer_key"
+
+curl -X POST -H "x-api-key: demo-enterprise-key" \
+  "http://127.0.0.1:8000/v1/customers/reactivate?api_key=airpct_customer_key"
 ```
 
 ## Current Caveats
