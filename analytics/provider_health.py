@@ -85,6 +85,31 @@ def build_provider_health(provider_files, now=None):
     return pd.DataFrame(rows)
 
 
+def apply_ingestion_status(health, status_path="data/live_provider_ingestion_status.csv"):
+    status_path = Path(status_path)
+    if not status_path.exists() or status_path.stat().st_size <= 1:
+        health["ingestion_status"] = "unknown"
+        health["used_fallback"] = False
+        return health
+
+    statuses = pd.read_csv(status_path)
+    if statuses.empty or "provider" not in statuses.columns:
+        health["ingestion_status"] = "unknown"
+        health["used_fallback"] = False
+        return health
+
+    statuses["provider"] = statuses["provider"].map(normalize_provider_name)
+    status_map = statuses.set_index("provider").to_dict(orient="index")
+    health = health.copy()
+    health["ingestion_status"] = health["provider"].map(
+        lambda provider: status_map.get(provider, {}).get("status", "unknown")
+    )
+    health["used_fallback"] = health["provider"].map(
+        lambda provider: bool(status_map.get(provider, {}).get("used_fallback", False))
+    )
+    return health
+
+
 providers = [
     ("vast", "data/vast_live_report.csv"),
     ("runpod", "data/runpod_live_report.csv")
@@ -93,6 +118,7 @@ providers = [
 
 def main():
     health = build_provider_health(providers)
+    health = apply_ingestion_status(health)
     health.to_csv(
         "data/provider_health.csv",
         index=False

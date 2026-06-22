@@ -56,8 +56,9 @@ from analytics.forecast_signal import build_forecast_signal
 from analytics.gpu_scarcity_index import build_gpu_scarcity_index
 from analytics.provider_reliability_ranking import build_provider_reliability_ranking
 from analytics.provider_daily_metrics import build_provider_daily_metrics
-from analytics.provider_health import build_provider_health
+from analytics.provider_health import apply_ingestion_status, build_provider_health
 from analytics.provider_reliability_gaps import build_provider_reliability_gaps
+from analytics.live_provider_ingest import run_live_provider_ingest
 from analytics.core_signal_history import (
     append_core_signal_history,
     build_core_signal_history_summary,
@@ -390,6 +391,26 @@ def test_provider_health_exposes_freshness_and_errors(tmp_path):
     assert runpod["status"] == "offline"
 
 
+def test_provider_health_applies_ingestion_status(tmp_path):
+    health = pd.DataFrame([{
+        "provider": "vast",
+        "status": "online",
+        "rows": 1,
+        "freshness_hours": 1,
+        "health_score": 90,
+    }])
+    status_file = tmp_path / "status.csv"
+    status_file.write_text(
+        "provider,status,fresh_rows,used_fallback,output_file,error\n"
+        "vast,fallback,0,True,data/vast_live_report.csv,\n"
+    )
+
+    enriched = apply_ingestion_status(health, status_file)
+
+    assert enriched.iloc[0]["ingestion_status"] == "fallback"
+    assert bool(enriched.iloc[0]["used_fallback"])
+
+
 def test_provider_reliability_gaps_prioritize_stale_history():
     ranking = pd.DataFrame([
         {
@@ -399,14 +420,61 @@ def test_provider_reliability_gaps_prioritize_stale_history():
             "depth_score": 100,
             "history_days": 3,
             "availability_score": 90,
+            "ingestion_status": "fallback",
+            "used_fallback": True,
         }
     ])
 
     gaps = build_provider_reliability_gaps(ranking)
 
     assert gaps.iloc[0]["priority"] == "high"
+    assert "provider_ingestion_using_fallback" in set(gaps["gap"])
     assert "stale_provider_data" in set(gaps["gap"])
     assert "insufficient_reliability_history" in set(gaps["gap"])
+
+
+def test_live_provider_ingest_writes_fresh_and_status(tmp_path, monkeypatch):
+    monkeypatch.setattr("analytics.live_provider_ingest.DATA_DIR", tmp_path)
+
+    class FakeProvider:
+        name = "vast_real"
+
+        def fetch(self):
+            return [{
+                "provider": "vast_real",
+                "gpu": "H100",
+                "price_per_hour": 2.0,
+                "availability": 1,
+                "timestamp": "2026-06-22 09:00:00",
+            }]
+
+    result = run_live_provider_ingest([FakeProvider()])
+
+    assert result["fresh_providers"] == 1
+    assert result["rows"] == 1
+    assert (tmp_path / "vast_live_report.csv").exists()
+    assert (tmp_path / "live_provider_data.csv").exists()
+    assert (tmp_path / "live_provider_ingestion_status.csv").exists()
+
+
+def test_live_provider_ingest_uses_provider_fallback(tmp_path, monkeypatch):
+    monkeypatch.setattr("analytics.live_provider_ingest.DATA_DIR", tmp_path)
+    (tmp_path / "runpod_live_report.csv").write_text(
+        "provider,gpu,price_per_hour,availability,timestamp\n"
+        "runpod,A100,1.0,1,2026-06-21 09:00:00\n"
+    )
+
+    class EmptyProvider:
+        name = "runpod_real"
+
+        def fetch(self):
+            return []
+
+    result = run_live_provider_ingest([EmptyProvider()])
+
+    assert result["fresh_providers"] == 0
+    assert result["fallback_providers"] == 1
+    assert result["rows"] == 1
 
 
 def test_core_signal_history_summary_tracks_days(tmp_path):

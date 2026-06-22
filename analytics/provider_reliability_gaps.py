@@ -31,6 +31,17 @@ def build_provider_reliability_gaps(ranking):
         depth_score = as_float(provider.get("depth_score"))
         history_days = as_float(provider.get("history_days"))
         availability_score = as_float(provider.get("availability_score"))
+        used_fallback = str(provider.get("used_fallback", "")).lower() in {"true", "1", "yes"}
+        ingestion_status = str(provider.get("ingestion_status", "unknown"))
+
+        if used_fallback or ingestion_status == "fallback":
+            rows.append({
+                "provider": name,
+                "priority": "high",
+                "gap": "provider_ingestion_using_fallback",
+                "recommended_action": "Restore fresh live provider ingestion or rotate credentials before relying on the provider score.",
+                "evidence": f"ingestion_status={ingestion_status}, used_fallback={used_fallback}",
+            })
 
         if freshness_score < 60:
             rows.append({
