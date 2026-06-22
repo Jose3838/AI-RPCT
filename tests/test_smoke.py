@@ -64,6 +64,7 @@ from analytics.core_signal_history import (
     build_core_signal_history_summary,
 )
 from analytics.core_history_audit import build_core_history_audit
+from analytics.core_provenance_audit import build_core_provenance_audit
 from analytics.core_signal_quality import build_core_signal_quality
 from analytics.core_intelligence_readiness import (
     build_core_intelligence_readiness,
@@ -117,6 +118,7 @@ def test_v1_terminal_summary_contract():
     assert "history_records" in payload["core_signal_health"]
     assert "core_intelligence_readiness" in payload
     assert "core_history_audit" in payload
+    assert "core_provenance_audit" in payload
     assert "provider_reliability" in payload
     assert "quality" in payload
 
@@ -529,6 +531,20 @@ def test_core_history_audit_tracks_progress_and_missing_days(tmp_path):
     assert "2026-06-21" in audit["missing_recent_days"]
 
 
+def test_core_provenance_audit_detects_fallback_rows(tmp_path):
+    history_file = tmp_path / "core_signal_history.csv"
+    history_file.write_text(
+        "timestamp,date,provider_fallback_count,paid_reliability_claims_allowed,history_claim_scope\n"
+        "2026-06-22T09:00:00+00:00,2026-06-22,2,False,research_only\n"
+    )
+
+    audit = build_core_provenance_audit(history_file).iloc[0]
+
+    assert audit["provenance_band"] == "fallback_contaminated"
+    assert audit["fallback_rows"] == 1
+    assert not bool(audit["paid_claims_allowed"])
+
+
 def test_core_signal_quality_contract():
     quality = build_core_signal_quality().iloc[0]
 
@@ -539,6 +555,8 @@ def test_core_signal_quality_contract():
     assert "high_provider_gap_count" in quality
     assert "history_progress_pct" in quality
     assert "history_days_remaining" in quality
+    assert "provenance_score" in quality
+    assert "provenance_band" in quality
     assert "blockers" in quality
 
 
@@ -657,8 +675,10 @@ def test_v1_executive_brief_contract():
     assert "capacity_forecast_score" in payload["core_metrics"]
     assert "core_readiness_phase" in payload["core_metrics"]
     assert "history_progress_pct" in payload["core_metrics"]
+    assert "provenance_band" in payload["core_metrics"]
     assert "Core Signal Quality" in payload["markdown"]
     assert "History Progress" in payload["markdown"]
+    assert "Provenance" in payload["markdown"]
     assert "Provider Reliability" in payload["markdown"]
 
 

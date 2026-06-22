@@ -22,6 +22,19 @@ def read_first(path):
     return pd.read_csv(path).iloc[0].to_dict()
 
 
+def read_records(path):
+    path = Path(path)
+    if not path.exists() or path.stat().st_size <= 1:
+        return []
+    return pd.read_csv(path).to_dict(orient="records")
+
+
+def as_bool(value):
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() in {"true", "1", "yes"}
+
+
 def as_float(value, fallback=0.0):
     try:
         return float(value)
@@ -35,6 +48,12 @@ def build_core_signal_history_row(generated_at=None):
     forecast = read_latest(DATA_DIR / "forecast_signal.csv")
     reliability = read_first(DATA_DIR / "provider_reliability_ranking.csv")
     quality = read_latest(DATA_DIR / "live_data_quality_score.csv")
+    preflight_summary = read_latest(DATA_DIR / "provider_preflight_summary.csv")
+    ingestion_rows = read_records(DATA_DIR / "live_provider_ingestion_status.csv")
+
+    ingestion_statuses = sorted({str(row.get("status", "unknown")) for row in ingestion_rows}) or ["unknown"]
+    fallback_count = len([row for row in ingestion_rows if as_bool(row.get("used_fallback"))])
+    paid_reliability_allowed = as_bool(preflight_summary.get("paid_reliability_claims_allowed"))
 
     return {
         "timestamp": generated_at,
@@ -54,6 +73,10 @@ def build_core_signal_history_row(generated_at=None):
         "top_provider_reliability_score": as_float(reliability.get("reliability_score")),
         "top_provider_reliability_band": reliability.get("reliability_band", "unknown"),
         "live_data_quality_score": as_float(quality.get("live_data_quality_score")),
+        "provider_ingestion_statuses": "|".join(ingestion_statuses),
+        "provider_fallback_count": fallback_count,
+        "paid_reliability_claims_allowed": paid_reliability_allowed,
+        "history_claim_scope": "paid_claim_safe" if paid_reliability_allowed else "research_only",
     }
 
 
@@ -103,6 +126,7 @@ def build_core_signal_history_summary(history_file=HISTORY_FILE):
         "capacity_forecast_score",
         "top_provider_reliability_score",
         "live_data_quality_score",
+        "provider_fallback_count",
     ]:
         deltas[key] = round(
             as_float(latest.get(key)) - as_float(previous.get(key)),

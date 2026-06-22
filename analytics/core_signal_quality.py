@@ -49,6 +49,7 @@ def read_records(path):
 def build_core_signal_quality():
     history = build_core_signal_history_summary()
     history_audit = read_latest(DATA_DIR / "core_history_audit.csv")
+    provenance_audit = read_latest(DATA_DIR / "core_provenance_audit.csv")
     scarcity = read_latest(DATA_DIR / "gpu_scarcity_index.csv")
     forecast = read_latest(DATA_DIR / "forecast_signal.csv")
     reliability = read_first(DATA_DIR / "provider_reliability_ranking.csv")
@@ -72,13 +73,15 @@ def build_core_signal_quality():
     forecast_confidence = as_float(forecast.get("confidence_score"))
     reliability_score = as_float(reliability.get("reliability_score"))
     provider_gap_score = max(0.0, 100.0 - (len(high_provider_gaps) * 12.5))
+    provenance_score = 100.0 if provenance_audit.get("provenance_band") == "paid_claim_safe" else 45.0
 
     quality_score = round(
         (history_score * 0.30)
         + (scarcity_explainability * 0.20)
         + (forecast_confidence * 0.20)
-        + (reliability_score * 0.20)
-        + (provider_gap_score * 0.10),
+        + (reliability_score * 0.15)
+        + (provider_gap_score * 0.10)
+        + (provenance_score * 0.05),
         2
     )
 
@@ -93,6 +96,8 @@ def build_core_signal_quality():
         blockers.append("restore_live_provider_ingestion")
     if "stale_provider_data" in high_gap_names:
         blockers.append("refresh_provider_connectors")
+    if provenance_audit.get("provenance_band") == "fallback_contaminated":
+        blockers.append("remove_fallback_from_paid_history")
 
     return pd.DataFrame([{
         "core_signal_quality_score": quality_score,
@@ -105,6 +110,8 @@ def build_core_signal_quality():
         "forecast_confidence_score": forecast_confidence,
         "top_provider_reliability_score": reliability_score,
         "provider_gap_score": provider_gap_score,
+        "provenance_score": provenance_score,
+        "provenance_band": provenance_audit.get("provenance_band", "unknown"),
         "high_provider_gap_count": len(high_provider_gaps),
         "paid_beta_signal_ready": quality_score >= 75 and history.get("days_collected", 0) >= 30 and not high_provider_gaps,
         "blockers": ", ".join(blockers) if blockers else "none",

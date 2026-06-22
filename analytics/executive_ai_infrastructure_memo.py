@@ -34,6 +34,7 @@ forecast = read_latest("data/forecast_signal.csv")
 quality = read_latest("data/core_signal_quality.csv")
 readiness = read_latest("data/core_intelligence_readiness.csv")
 history_audit = read_latest("data/core_history_audit.csv")
+provenance_audit = read_latest("data/core_provenance_audit.csv")
 reliability = read_first("data/provider_reliability_ranking.csv")
 reliability_gaps = read_table("data/provider_reliability_gaps.csv")
 category = read_table("data/gpu_category_index.csv")
@@ -63,6 +64,7 @@ Top Provider Reliability: {reliability.get('provider', 'n/a')} ({reliability.get
 Core Signal Quality: {quality.get('core_signal_quality_score', 'n/a')} ({quality.get('quality_band', 'n/a')})
 Core Readiness Phase: {readiness.get('readiness_phase', 'n/a')}
 History Progress: {history_audit.get('progress_pct', 'n/a')}% ({history_audit.get('days_remaining', 'n/a')} days remaining)
+Provenance: {provenance_audit.get('provenance_band', 'n/a')} ({provenance_audit.get('fallback_row_pct', 'n/a')}% fallback rows)
 Paid Beta Signal Ready: {quality.get('paid_beta_signal_ready', 'n/a')}
 Signal Blockers: {quality.get('blockers', 'n/a')}
 Next Action: {readiness.get('next_action', 'n/a')}

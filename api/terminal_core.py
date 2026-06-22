@@ -1367,6 +1367,7 @@ def build_executive_brief():
     core_signal_health = summary.get("core_signal_health", {})
     core_readiness = summary.get("core_intelligence_readiness", {})
     history_audit = summary.get("core_history_audit", {})
+    provenance_audit = summary.get("core_provenance_audit", {})
     frontier = summary.get("frontier", {})
 
     high_priority = [
@@ -1428,6 +1429,7 @@ def build_executive_brief():
         f"- Core Signal Quality: {core_signal_health.get('quality_score', 'n/a')} ({core_signal_health.get('quality_band', 'n/a')})",
         f"- Core Readiness Phase: {core_readiness.get('readiness_phase', 'n/a')}",
         f"- History Progress: {history_audit.get('progress_pct', 'n/a')}% ({history_audit.get('days_remaining', 'n/a')} days remaining)",
+        f"- Provenance: {provenance_audit.get('provenance_band', 'n/a')} ({provenance_audit.get('fallback_row_pct', 'n/a')}% fallback rows)",
         f"- Core Signal History Days: {core_signal_health.get('days_collected', 'n/a')}",
         f"- Frontier GPU Index: {frontier.get('frontier_gpu_index', 'n/a')}",
         "",
@@ -1466,6 +1468,8 @@ def build_executive_brief():
             "core_readiness_phase": core_readiness.get("readiness_phase"),
             "history_progress_pct": history_audit.get("progress_pct"),
             "history_days_remaining": history_audit.get("days_remaining"),
+            "provenance_band": provenance_audit.get("provenance_band"),
+            "fallback_row_pct": provenance_audit.get("fallback_row_pct"),
             "core_signal_days_collected": core_signal_health.get("days_collected"),
             "frontier_gpu_index": frontier.get("frontier_gpu_index")
         },
@@ -1487,6 +1491,7 @@ def build_terminal_summary():
     signal_quality = read_latest(DATA_DIR / "core_signal_quality.csv")
     core_readiness = read_latest(DATA_DIR / "core_intelligence_readiness.csv")
     history_audit = read_latest(DATA_DIR / "core_history_audit.csv")
+    provenance_audit = read_latest(DATA_DIR / "core_provenance_audit.csv")
     signal_history = read_records(DATA_DIR / "core_signal_history.csv")
     reliability = read_first(DATA_DIR / "provider_reliability_ranking.csv")
     reliability_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv")
@@ -1506,6 +1511,7 @@ def build_terminal_summary():
         "provider_reliability_gaps": reliability_gaps[:10],
         "core_intelligence_readiness": core_readiness,
         "core_history_audit": history_audit,
+        "core_provenance_audit": provenance_audit,
         "core_signal_health": {
             "history_records": len(signal_history),
             "days_collected": len({row.get("date") for row in signal_history if row.get("date")}),
@@ -1517,6 +1523,8 @@ def build_terminal_summary():
             "next_action": core_readiness.get("next_action"),
             "history_progress_pct": history_audit.get("progress_pct"),
             "history_days_remaining": history_audit.get("days_remaining"),
+            "provenance_band": provenance_audit.get("provenance_band"),
+            "fallback_row_pct": provenance_audit.get("fallback_row_pct"),
         },
         "frontier": frontier
     }

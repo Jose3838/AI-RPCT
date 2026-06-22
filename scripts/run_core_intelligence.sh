@@ -21,6 +21,7 @@ python analytics/provider_reliability_ranking.py
 python analytics/provider_reliability_gaps.py
 python analytics/core_signal_history.py
 python analytics/core_history_audit.py
+python analytics/core_provenance_audit.py
 python analytics/core_signal_quality.py
 python analytics/core_intelligence_readiness.py
 python analytics/market_pulse_snapshot.py
