@@ -1,34 +1,62 @@
-import pandas as pd
 from datetime import datetime
 from pathlib import Path
 
+import pandas as pd
+
+
+def read_latest(path):
+    path = Path(path)
+    if not path.exists() or path.stat().st_size <= 1:
+        return {}
+    return pd.read_csv(path).iloc[-1].to_dict()
+
+
+def read_table(path):
+    path = Path(path)
+    if not path.exists() or path.stat().st_size <= 1:
+        return pd.DataFrame()
+    return pd.read_csv(path)
+
 Path("reports").mkdir(exist_ok=True)
 
-risk = pd.read_csv("data/terminal_risk_score.csv").iloc[-1]
-summary = pd.read_csv("data/terminal_summary.csv").iloc[-1]
-frontier = pd.read_csv("data/frontier_gpu_index.csv").iloc[-1]
-category = pd.read_csv("data/gpu_category_index.csv")
+risk = read_latest("data/terminal_risk_score.csv")
+summary = read_latest("data/terminal_summary.csv")
+frontier = read_latest("data/frontier_gpu_index.csv")
+scarcity = read_latest("data/gpu_scarcity_index.csv")
+forecast = read_latest("data/forecast_signal.csv")
+quality = read_latest("data/core_signal_quality.csv")
+reliability = read_latest("data/provider_reliability_ranking.csv")
+category = read_table("data/gpu_category_index.csv")
+category_text = category.to_string(index=False) if not category.empty else "No GPU category data available."
 
 memo = f"""
 AI-RPCT Executive AI Infrastructure Memo
 Generated: {datetime.now()}
 
-Overall Risk Level: {risk['risk_level']}
-Terminal Risk Score: {risk['terminal_risk_score']}
+Overall Risk Level: {risk.get('risk_level', 'n/a')}
+Terminal Risk Score: {risk.get('terminal_risk_score', 'n/a')}
 
-AI Infrastructure Index: {summary['ai_infrastructure_index']}
-GPU Price Index: {summary['gpu_price_index']}
-GPU Price Trend: {summary['gpu_price_trend']}
-Top Provider: {summary['top_provider']}
+AI Infrastructure Index: {summary.get('ai_infrastructure_index', 'n/a')}
+GPU Price Index: {summary.get('gpu_price_index', 'n/a')}
+GPU Price Trend: {summary.get('gpu_price_trend', 'n/a')}
+Top Provider: {summary.get('top_provider', 'n/a')}
 
-Frontier GPU Index: {frontier['frontier_gpu_index']}
-Frontier Offers: {frontier['frontier_offers']}
+Core Intelligence:
+GPU Scarcity Index: {scarcity.get('gpu_scarcity_index', 'n/a')} ({scarcity.get('scarcity_band', 'n/a')})
+Capacity Forecast Score: {forecast.get('forecast_score', 'n/a')} ({forecast.get('capacity_shock_band', 'n/a')})
+Top Provider Reliability: {reliability.get('provider', 'n/a')} ({reliability.get('reliability_score', 'n/a')})
+Core Signal Quality: {quality.get('core_signal_quality_score', 'n/a')} ({quality.get('quality_band', 'n/a')})
+Paid Beta Signal Ready: {quality.get('paid_beta_signal_ready', 'n/a')}
+Signal Blockers: {quality.get('blockers', 'n/a')}
+
+Frontier GPU Index: {frontier.get('frontier_gpu_index', 'n/a')}
+Frontier Offers: {frontier.get('frontier_offers', 'n/a')}
 
 GPU Category Index:
-{category.to_string(index=False)}
+{category_text}
 
 Interpretation:
-AI-RPCT monitors live GPU market data, provider health, pricing signals, scarcity indicators and infrastructure risk signals.
+AI-RPCT monitors live GPU market data, provider health, pricing signals, scarcity indicators and infrastructure risk signals. The strongest product asset is the daily time series of scarcity, shock forecast and provider reliability.
 """
 
 filename = f"reports/executive_ai_infrastructure_memo_{datetime.now().strftime('%Y%m%d')}.txt"

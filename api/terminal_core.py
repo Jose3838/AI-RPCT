@@ -1303,6 +1303,9 @@ def build_executive_brief():
     risk = summary.get("risk", {})
     quality = summary.get("quality", {})
     scarcity = summary.get("scarcity", {})
+    capacity_forecast = summary.get("capacity_forecast", {})
+    provider_reliability = summary.get("provider_reliability", {})
+    core_signal_health = summary.get("core_signal_health", {})
     frontier = summary.get("frontier", {})
 
     high_priority = [
@@ -1358,7 +1361,16 @@ def build_executive_brief():
         f"- Top Provider: {top_provider}",
         f"- Live Data Quality: {quality.get('live_data_quality_score', 'n/a')}",
         f"- GPU Scarcity Index: {scarcity.get('gpu_scarcity_index', 'n/a')}",
+        f"- Capacity Forecast Score: {capacity_forecast.get('forecast_score', 'n/a')}",
+        f"- Capacity Shock Band: {capacity_forecast.get('capacity_shock_band', 'n/a')}",
+        f"- Top Provider Reliability: {provider_reliability.get('provider', 'n/a')} ({provider_reliability.get('reliability_score', 'n/a')})",
+        f"- Core Signal Quality: {core_signal_health.get('quality_score', 'n/a')} ({core_signal_health.get('quality_band', 'n/a')})",
+        f"- Core Signal History Days: {core_signal_health.get('days_collected', 'n/a')}",
         f"- Frontier GPU Index: {frontier.get('frontier_gpu_index', 'n/a')}",
+        "",
+        "## Signal Readiness",
+        f"- Paid Beta Signal Ready: {core_signal_health.get('paid_beta_signal_ready', False)}",
+        f"- Blockers: {core_signal_health.get('blockers', 'n/a')}",
         "",
         "## Top Signals",
         *[f"- {item.get('severity', 'n/a').upper()}: {item.get('title', '')}" for item in top_signals],
@@ -1383,8 +1395,14 @@ def build_executive_brief():
             "top_provider": top_provider,
             "live_data_quality_score": quality.get("live_data_quality_score"),
             "gpu_scarcity_index": scarcity.get("gpu_scarcity_index"),
+            "capacity_forecast_score": capacity_forecast.get("forecast_score"),
+            "capacity_shock_band": capacity_forecast.get("capacity_shock_band"),
+            "top_provider_reliability_score": provider_reliability.get("reliability_score"),
+            "core_signal_quality_score": core_signal_health.get("quality_score"),
+            "core_signal_days_collected": core_signal_health.get("days_collected"),
             "frontier_gpu_index": frontier.get("frontier_gpu_index")
         },
+        "signal_readiness": core_signal_health,
         "top_signals": top_signals,
         "recommended_actions": top_recommendations,
         "markdown": "\n".join(markdown)

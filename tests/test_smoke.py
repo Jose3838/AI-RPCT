@@ -386,6 +386,9 @@ def test_v1_executive_brief_contract():
     assert payload["headline"]
     assert payload["summary"]
     assert "markdown" in payload
+    assert "signal_readiness" in payload
+    assert "capacity_forecast_score" in payload["core_metrics"]
+    assert "Core Signal Quality" in payload["markdown"]
 
 
 def test_customer_report_export_contract():

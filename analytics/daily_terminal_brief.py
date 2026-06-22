@@ -1,33 +1,67 @@
-import pandas as pd
 from datetime import datetime
 from pathlib import Path
 
+import pandas as pd
+
+
+def read_latest(path):
+    path = Path(path)
+    if not path.exists() or path.stat().st_size <= 1:
+        return {}
+    return pd.read_csv(path).iloc[-1].to_dict()
+
+
+def read_table(path):
+    path = Path(path)
+    if not path.exists() or path.stat().st_size <= 1:
+        return pd.DataFrame()
+    return pd.read_csv(path)
+
 Path("reports").mkdir(exist_ok=True)
 
-terminal = pd.read_csv("data/terminal_summary.csv").iloc[-1]
-signal = pd.read_csv("data/intelligence_signal_score.csv").iloc[-1]
-frontier = pd.read_csv("data/frontier_gpu_index.csv").iloc[-1]
-watchlist = pd.read_csv("data/gpu_watchlist_intelligence.csv")
+terminal = read_latest("data/terminal_summary.csv")
+signal = read_latest("data/intelligence_signal_score.csv")
+frontier = read_latest("data/frontier_gpu_index.csv")
+scarcity = read_latest("data/gpu_scarcity_index.csv")
+forecast = read_latest("data/forecast_signal.csv")
+quality = read_latest("data/core_signal_quality.csv")
+reliability = read_latest("data/provider_reliability_ranking.csv")
+watchlist = read_table("data/gpu_watchlist_intelligence.csv")
 
-top_watch = watchlist.sort_values("avg_price", ascending=False).head(5)
+top_watch = (
+    watchlist.sort_values("avg_price", ascending=False).head(5)
+    if not watchlist.empty and "avg_price" in watchlist.columns
+    else pd.DataFrame()
+)
+watchlist_text = (
+    top_watch[["gpu", "category", "offers", "avg_price", "min_price", "max_price"]].to_string(index=False)
+    if not top_watch.empty
+    else "No GPU watchlist data available."
+)
 
 brief = f"""
 AI-RPCT Daily Terminal Brief
 Generated: {datetime.now()}
 
-AI Infrastructure Index: {terminal['ai_infrastructure_index']}
-GPU Price Index: {terminal['gpu_price_index']}
-GPU Price Trend: {terminal['gpu_price_trend']}
-Top Provider: {terminal['top_provider']}
+AI Infrastructure Index: {terminal.get('ai_infrastructure_index', 'n/a')}
+GPU Price Index: {terminal.get('gpu_price_index', 'n/a')}
+GPU Price Trend: {terminal.get('gpu_price_trend', 'n/a')}
+Top Provider: {terminal.get('top_provider', 'n/a')}
 
-Frontier GPU Index: {frontier['frontier_gpu_index']}
-Frontier Offers: {frontier['frontier_offers']}
+GPU Scarcity Index: {scarcity.get('gpu_scarcity_index', 'n/a')} ({scarcity.get('scarcity_band', 'n/a')})
+Capacity Forecast Score: {forecast.get('forecast_score', 'n/a')} ({forecast.get('capacity_shock_band', 'n/a')})
+Provider Reliability Leader: {reliability.get('provider', 'n/a')} ({reliability.get('reliability_score', 'n/a')})
+Core Signal Quality: {quality.get('core_signal_quality_score', 'n/a')} ({quality.get('quality_band', 'n/a')})
+Signal Blockers: {quality.get('blockers', 'n/a')}
 
-Intelligence Signal: {signal['signal']}
-Signal Score: {signal['intelligence_signal_score']}
+Frontier GPU Index: {frontier.get('frontier_gpu_index', 'n/a')}
+Frontier Offers: {frontier.get('frontier_offers', 'n/a')}
+
+Intelligence Signal: {signal.get('signal', 'n/a')}
+Signal Score: {signal.get('intelligence_signal_score', 'n/a')}
 
 Top Watchlist GPUs:
-{top_watch[['gpu','category','offers','avg_price','min_price','max_price']].to_string(index=False)}
+{watchlist_text}
 """
 
 filename = f"reports/daily_terminal_brief_{datetime.now().strftime('%Y%m%d')}.txt"
