@@ -23,5 +23,6 @@ python analytics/core_intelligence_readiness.py
 python analytics/market_pulse_snapshot.py
 python analytics/daily_terminal_brief.py
 python analytics/executive_ai_infrastructure_memo.py
+python scripts/core_status.py
 
 echo "CORE INTELLIGENCE DONE"

@@ -80,6 +80,7 @@ def test_core_files_exist():
     assert Path("run_daily.sh").exists()
     assert Path("scripts/run_core_intelligence.sh").exists()
     assert Path("scripts/core_status.py").exists()
+    assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert Path("analytics/market_pulse_snapshot.py").exists()
     assert Path("analytics/core_signal_history.py").exists()
     assert Path("analytics/core_signal_quality.py").exists()
