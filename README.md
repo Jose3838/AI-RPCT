@@ -71,6 +71,7 @@ These endpoints are the product surface we should protect first:
 - `/v1/plan-limits`
 - `/v1/usage-summary`
 - `/v1/commercial-snapshot`
+- `/v1/sales-pipeline`
 - `/v1/reports/latest`
 - `/v1/signals`
 - `/v1/recommendations`
@@ -171,6 +172,9 @@ Enterprise commercial snapshot:
 ```bash
 curl -H "x-api-key: demo-enterprise-key" \
   "http://127.0.0.1:8000/v1/commercial-snapshot"
+
+curl -H "x-api-key: demo-enterprise-key" \
+  "http://127.0.0.1:8000/v1/sales-pipeline"
 ```
 
 ## Current Caveats

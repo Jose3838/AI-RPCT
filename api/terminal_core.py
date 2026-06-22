@@ -485,6 +485,12 @@ def build_api_catalog():
             "tier": "enterprise"
         },
         {
+            "endpoint": "/v1/sales-pipeline",
+            "category": "commercial",
+            "description": "Enterprise sales pipeline generated from usage, limits and account upgrade signals.",
+            "tier": "enterprise"
+        },
+        {
             "endpoint": "/v1/signals",
             "category": "intelligence",
             "description": "Decision signals generated from live market, price, scarcity and provider data.",

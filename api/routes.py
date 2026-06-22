@@ -2,7 +2,7 @@ from fastapi import APIRouter, Header
 from fastapi.responses import HTMLResponse
 import pandas as pd
 from pathlib import Path
-from api.commercial_core import build_commercial_snapshot
+from api.commercial_core import build_commercial_snapshot, build_sales_pipeline
 from api.access import (
     build_access_status,
     build_plan_limits,
@@ -68,6 +68,12 @@ def v1_usage_summary(x_api_key: str = Header(default=None)):
 def v1_commercial_snapshot(x_api_key: str = Header(default=None)):
     require_v1_access("/v1/commercial-snapshot", x_api_key)
     return build_commercial_snapshot()
+
+
+@router.get("/v1/sales-pipeline")
+def v1_sales_pipeline(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/sales-pipeline", x_api_key)
+    return build_sales_pipeline()
 
 
 @router.get("/v1/reports/latest")

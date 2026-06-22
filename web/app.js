@@ -191,6 +191,11 @@ function renderCommercialLocked(message = "Enterprise key required.") {
   if (el) {
     el.innerHTML = `<div class="text-sm text-slate-500">${message}</div>`;
   }
+
+  const pipeline = document.getElementById("salesPipelineList");
+  if (pipeline) {
+    pipeline.innerHTML = `<div class="text-sm text-slate-500">${message}</div>`;
+  }
 }
 
 function renderCommercialSnapshot(snapshot) {
@@ -230,6 +235,33 @@ function renderCommercialSnapshot(snapshot) {
       </div>
     `;
   }).join("");
+}
+
+function renderSalesPipeline(pipeline) {
+  const el = document.getElementById("salesPipelineList");
+  if (!el) {
+    return;
+  }
+
+  const opportunities = pipeline.opportunities || [];
+  if (opportunities.length === 0) {
+    el.innerHTML = `<div class="text-sm text-slate-500">No sales opportunities yet.</div>`;
+    return;
+  }
+
+  el.innerHTML = opportunities.map((item) => `
+    <div class="rounded-lg border ${severityClasses(item.priority)} bg-slate-900/30 p-4">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <div>
+          <div class="text-sm font-semibold text-slate-100">${value(item, "customer_name", "Unknown customer")}</div>
+          <div class="text-xs text-slate-400 mt-1">${value(item, "opportunity_type", "opportunity")} / ${value(item, "priority", "medium")}</div>
+        </div>
+        <div class="text-sm text-slate-300">${money(item.estimated_mrr_lift_usd)} estimated MRR lift</div>
+      </div>
+      <div class="text-sm text-slate-200 mt-3">${value(item, "recommended_action", "")}</div>
+      <div class="text-xs text-slate-500 mt-2">${value(item, "rationale", "")}</div>
+    </div>
+  `).join("");
 }
 
 function setCustomerReportLink(enabled) {
@@ -332,6 +364,8 @@ async function loadPaidData() {
     if ((status.allowed_endpoints || []).includes("/v1/commercial-snapshot")) {
       const commercial = await getJson("/v1/commercial-snapshot", activeApiKey);
       renderCommercialSnapshot(commercial);
+      const pipeline = await getJson("/v1/sales-pipeline", activeApiKey);
+      renderSalesPipeline(pipeline);
     } else {
       renderCommercialLocked("Enterprise key required for commercial metrics.");
     }

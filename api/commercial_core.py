@@ -106,3 +106,97 @@ def build_commercial_snapshot():
         },
         "accounts": account_snapshots,
     }
+
+
+def make_sales_opportunity(account):
+    plan = account.get("plan")
+    signal = account.get("upgrade_signal")
+    usage = account.get("usage", {})
+    utilization = account.get("utilization", {})
+
+    if signal == "convert_to_pro":
+        return {
+            "account_id": account.get("account_id"),
+            "customer_name": account.get("customer_name"),
+            "current_plan": plan,
+            "opportunity_type": "conversion",
+            "priority": "medium",
+            "recommended_action": "Offer Pro trial or buyer call",
+            "rationale": "The free account has active usage and can be converted into a paid Pro subscription.",
+            "estimated_mrr_lift_usd": 299,
+            "evidence": {
+                "total_calls": usage.get("total_calls", 0),
+                "monthly_utilization": utilization.get("monthly", 0),
+            },
+        }
+
+    if signal == "expand_to_enterprise":
+        return {
+            "account_id": account.get("account_id"),
+            "customer_name": account.get("customer_name"),
+            "current_plan": plan,
+            "opportunity_type": "expansion",
+            "priority": "high",
+            "recommended_action": "Start Enterprise expansion conversation",
+            "rationale": "The Pro account is approaching plan capacity and may need enterprise limits or reporting.",
+            "estimated_mrr_lift_usd": 2201,
+            "evidence": {
+                "total_calls": usage.get("total_calls", 0),
+                "monthly_utilization": utilization.get("monthly", 0),
+            },
+        }
+
+    if signal == "retain_and_expand":
+        return {
+            "account_id": account.get("account_id"),
+            "customer_name": account.get("customer_name"),
+            "current_plan": plan,
+            "opportunity_type": "retention",
+            "priority": "medium",
+            "recommended_action": "Schedule quarterly business review",
+            "rationale": "The enterprise account is active and should be retained through reporting and expansion discovery.",
+            "estimated_mrr_lift_usd": 0,
+            "evidence": {
+                "total_calls": usage.get("total_calls", 0),
+                "monthly_utilization": utilization.get("monthly", 0),
+            },
+        }
+
+    return None
+
+
+def build_sales_pipeline():
+    commercial = build_commercial_snapshot()
+    opportunities = [
+        opportunity for opportunity in (
+            make_sales_opportunity(account)
+            for account in commercial["accounts"]
+        )
+        if opportunity is not None
+    ]
+
+    priority_rank = {"high": 0, "medium": 1, "low": 2}
+    opportunities = sorted(
+        opportunities,
+        key=lambda item: (
+            priority_rank.get(item.get("priority"), 9),
+            -item.get("estimated_mrr_lift_usd", 0),
+        ),
+    )
+
+    return {
+        "product": "AI-RPCT",
+        "version": "v1",
+        "report_type": "sales_pipeline",
+        "summary": {
+            "opportunity_count": len(opportunities),
+            "estimated_mrr_lift_usd": sum(
+                item["estimated_mrr_lift_usd"] for item in opportunities
+            ),
+            "high_priority": len([
+                item for item in opportunities
+                if item.get("priority") == "high"
+            ]),
+        },
+        "opportunities": opportunities,
+    }

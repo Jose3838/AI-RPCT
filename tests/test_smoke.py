@@ -22,7 +22,7 @@ from api.access import (
     build_usage_summary,
     enforce_plan_limits,
 )
-from api.commercial_core import build_commercial_snapshot
+from api.commercial_core import build_commercial_snapshot, build_sales_pipeline
 from security.limits import build_limit_status
 from security.entitlements import has_access
 from security.plan_resolver import resolve_plan
@@ -110,6 +110,8 @@ def test_v1_plan_access_contract():
     assert has_access("pro", "/v1/usage-summary")
     assert not has_access("pro", "/v1/commercial-snapshot")
     assert has_access("enterprise", "/v1/commercial-snapshot")
+    assert not has_access("pro", "/v1/sales-pipeline")
+    assert has_access("enterprise", "/v1/sales-pipeline")
     assert has_access("free", "/v1/signals")
     assert not has_access("free", "/v1/recommendations")
     assert has_access("pro", "/v1/recommendations")
@@ -167,6 +169,17 @@ def test_v1_commercial_snapshot_contract():
     assert "upgrade_signal" in payload["accounts"][0]
 
 
+def test_v1_sales_pipeline_contract():
+    payload = build_sales_pipeline()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "sales_pipeline"
+    assert "opportunity_count" in payload["summary"]
+    assert "estimated_mrr_lift_usd" in payload["summary"]
+    assert isinstance(payload["opportunities"], list)
+
+
 def test_v1_limit_status_contract():
     now = datetime(2026, 6, 22, 12, 0, 0)
     records = [
@@ -208,6 +221,7 @@ def test_main_app_exposes_v1_core_routes():
     assert "/v1/plan-limits" in paths
     assert "/v1/usage-summary" in paths
     assert "/v1/commercial-snapshot" in paths
+    assert "/v1/sales-pipeline" in paths
     assert "/v1/reports/latest" in paths
     assert "/v1/signals" in paths
     assert "/v1/recommendations" in paths
