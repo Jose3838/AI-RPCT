@@ -93,10 +93,13 @@ def build_market_signals():
     terminal = read_latest(DATA_DIR / "terminal_summary.csv")
     risk = read_latest(DATA_DIR / "terminal_risk_score.csv")
     trend = read_latest(DATA_DIR / "gpu_price_trend_signal.csv")
+    forecast = read_latest(DATA_DIR / "forecast_signal.csv")
+    scarcity_index = read_latest(DATA_DIR / "gpu_scarcity_index.csv")
     cheapest = read_records(DATA_DIR / "live_gpu_cheapest.csv")
     expensive = read_records(DATA_DIR / "live_gpu_most_expensive.csv")
     scarcity = read_records(DATA_DIR / "scarcity_watchlist.csv")
     provider_health = read_records(DATA_DIR / "provider_health.csv")
+    provider_reliability = read_records(DATA_DIR / "provider_reliability_ranking.csv")
 
     signals = []
     risk_score = as_float(risk.get("terminal_risk_score"))
@@ -200,6 +203,56 @@ def build_market_signals():
             }
         ))
 
+    scarcity_score = as_float(scarcity_index.get("gpu_scarcity_index"))
+    if scarcity_score >= 70:
+        scarcity_severity = "high"
+    elif scarcity_score >= 45:
+        scarcity_severity = "medium"
+    else:
+        scarcity_severity = "low"
+
+    signals.append(make_signal(
+        "gpu_scarcity_index",
+        scarcity_severity,
+        f"GPU Scarcity Index is {scarcity_score}",
+        "The scarcity index blends availability pressure, price pressure, frontier GPU pressure and provider depth.",
+        {
+            "gpu_scarcity_index": scarcity_score,
+            "scarcity_band": scarcity_index.get("scarcity_band"),
+            "availability_pressure_score": scarcity_index.get("availability_pressure_score"),
+            "price_pressure_score": scarcity_index.get("price_pressure_score"),
+            "frontier_pressure_score": scarcity_index.get("frontier_pressure_score"),
+            "provider_depth_score": scarcity_index.get("provider_depth_score"),
+        }
+    ))
+
+    forecast_score = as_float(forecast.get("forecast_score"))
+    shock_band_value = forecast.get("capacity_shock_band", "stable")
+    shock_delta = as_float(forecast.get("capacity_shock_delta"))
+    if shock_band_value in {"shock_up", "rising"} or forecast_score >= 70:
+        severity = "high" if shock_band_value == "shock_up" or forecast_score >= 80 else "medium"
+        title = "Capacity shock risk is rising"
+    elif shock_band_value in {"shock_down", "easing"}:
+        severity = "medium"
+        title = "Capacity pressure is easing"
+    else:
+        severity = "low"
+        title = "Capacity shock forecast is stable"
+
+    signals.append(make_signal(
+        "capacity_shock_forecast",
+        severity,
+        title,
+        "The forecast combines RPCT pressure, shortage probability, scarcity and recent shock delta.",
+        {
+            "forecast_score": forecast_score,
+            "outlook": forecast.get("outlook"),
+            "capacity_shock_delta": shock_delta,
+            "capacity_shock_band": shock_band_value,
+            "confidence_score": forecast.get("confidence_score"),
+        }
+    ))
+
     offline = [row.get("provider") for row in provider_health if row.get("status") != "online"]
     if offline:
         signals.append(make_signal(
@@ -208,6 +261,29 @@ def build_market_signals():
             "Provider health needs attention",
             "At least one tracked provider is not currently reporting as online.",
             {"offline_providers": offline}
+        ))
+
+    weak_providers = [
+        row for row in provider_reliability
+        if as_float(row.get("reliability_score")) < 60
+    ]
+    if weak_providers:
+        signals.append(make_signal(
+            "provider_reliability",
+            "medium",
+            "Provider Reliability Score needs attention",
+            "One or more providers have weak reliability scores based on freshness, depth, availability and stability.",
+            {
+                "providers": [
+                    {
+                        "provider": row.get("provider"),
+                        "reliability_score": row.get("reliability_score"),
+                        "reliability_band": row.get("reliability_band"),
+                    }
+                    for row in weak_providers[:5]
+                ],
+                "count": len(weak_providers),
+            }
         ))
 
     return {

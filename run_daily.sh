@@ -21,6 +21,7 @@ python analytics/provider_concentration.py
 python analytics/provider_credentials.py
 python analytics/provider_readiness.py
 python analytics/shortage_probability.py
+python analytics/gpu_scarcity_index.py
 python analytics/forecast_signal.py
 python analytics/trend_engine.py
 python analytics/time_series_forecast.py
@@ -47,7 +48,6 @@ python dashboard/dashboard.py
 
 echo "DONE"
 python analytics/ai_infrastructure_index.py
-python analytics/gpu_scarcity_index.py
 python analytics/index_history.py
 python analytics/archive_daily_snapshot.py
 python analytics/provider_daily_metrics.py

@@ -2,6 +2,7 @@ from datetime import datetime
 from pathlib import Path
 
 import pytest
+import pandas as pd
 from fastapi import HTTPException
 
 from main import app
@@ -51,6 +52,9 @@ from api.onboarding_core import (
 )
 from api.ops_core import build_launch_controls, build_v1_operations_status
 from analytics.market_pulse_snapshot import main as save_market_pulse_snapshot_cli
+from analytics.forecast_signal import build_forecast_signal
+from analytics.gpu_scarcity_index import build_gpu_scarcity_index
+from analytics.provider_reliability_ranking import build_provider_reliability_ranking
 from snapshot_scheduler import run_scheduled_snapshot
 from security.limits import build_limit_status
 from security.entitlements import has_access
@@ -278,6 +282,61 @@ def test_v1_market_signals_contract():
     assert payload["version"] == "v1"
     assert isinstance(payload["signals"], list)
     assert payload["signal_count"] == len(payload["signals"])
+    signal_types = {signal["type"] for signal in payload["signals"]}
+    assert "gpu_scarcity_index" in signal_types
+    assert "capacity_shock_forecast" in signal_types
+
+
+def test_gpu_scarcity_index_exposes_driver_components():
+    gpu = pd.DataFrame([
+        {"timestamp": "2026-06-22 09:00:00", "provider": "vast", "gpu": "H100", "price_per_hour": 2.5, "availability": 800},
+        {"timestamp": "2026-06-22 09:00:00", "provider": "runpod", "gpu": "A100", "price_per_hour": 1.4, "availability": 1200},
+        {"timestamp": "2026-06-21 09:00:00", "provider": "vast", "gpu": "H100", "price_per_hour": 1.0, "availability": 3000},
+    ])
+
+    row = build_gpu_scarcity_index(gpu).iloc[0]
+
+    assert 0 <= row["gpu_scarcity_index"] <= 100
+    assert row["scarcity_band"] in {"stable", "watch", "elevated", "high"}
+    assert row["provider_count"] == 2
+    assert "frontier_pressure_score" in row
+
+
+def test_forecast_signal_exposes_capacity_shock_fields():
+    rpct = pd.DataFrame([
+        {"score": 30},
+        {"score": 35},
+        {"score": 40},
+        {"score": 80},
+    ])
+    shortage = pd.DataFrame([{"shortage_probability": 60}])
+    scarcity = pd.DataFrame([{"gpu_scarcity_index": 70}])
+
+    row = build_forecast_signal(rpct, shortage, scarcity).iloc[0]
+
+    assert 0 <= row["forecast_score"] <= 100
+    assert row["capacity_shock_band"] in {"shock_up", "rising", "stable", "easing", "shock_down"}
+    assert row["capacity_shock_delta"] > 0
+    assert row["confidence_score"] > 0
+
+
+def test_provider_reliability_ranking_exposes_score_components():
+    health = pd.DataFrame([
+        {"provider": "vast", "status": "online", "rows": 100, "freshness_hours": 1, "health_score": 90},
+        {"provider": "runpod", "status": "online", "rows": 10, "freshness_hours": 20, "health_score": 45},
+    ])
+    metrics = pd.DataFrame([
+        {"provider": "vast", "availability": 2400, "price_per_hour": 1.2, "date": "2026-06-21"},
+        {"provider": "vast", "availability": 2300, "price_per_hour": 1.25, "date": "2026-06-22"},
+        {"provider": "runpod", "availability": 500, "price_per_hour": 3.0, "date": "2026-06-22"},
+    ])
+
+    ranking = build_provider_reliability_ranking(health, metrics)
+
+    assert ranking.iloc[0]["provider"] == "vast"
+    assert "reliability_score" in ranking.columns
+    assert "freshness_score" in ranking.columns
+    assert ranking.iloc[0]["reliability_band"] in {"strong", "watch", "weak", "critical"}
 
 
 def test_v1_recommendations_contract():
