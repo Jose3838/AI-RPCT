@@ -78,6 +78,7 @@ These endpoints are the product surface we should protect first:
 - `/v1/commercial-board-report`
 - `/v1/commercial-board-report/html`
 - `/v1/audit-log`
+- `/v1/operations-status`
 - `/v1/customers`
 - `/v1/customers/revoke`
 - `/v1/customers/reactivate`
@@ -199,6 +200,9 @@ curl -H "x-api-key: demo-enterprise-key" \
 
 curl -H "x-api-key: demo-enterprise-key" \
   "http://127.0.0.1:8000/v1/audit-log"
+
+curl -H "x-api-key: demo-enterprise-key" \
+  "http://127.0.0.1:8000/v1/operations-status"
 
 curl -X POST -H "x-api-key: demo-enterprise-key" \
   "http://127.0.0.1:8000/v1/customers?customer_name=Acme%20AI&plan=pro"

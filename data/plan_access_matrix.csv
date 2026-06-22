@@ -14,6 +14,7 @@ endpoint,free,pro,enterprise
 /v1/commercial-board-report/html,false,false,true
 /v1/commercial-board-report/save,false,false,true
 /v1/audit-log,false,false,true
+/v1/operations-status,false,false,true
 /v1/customers,false,false,true
 /v1/customers/revoke,false,false,true
 /v1/customers/reactivate,false,false,true

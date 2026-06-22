@@ -15,6 +15,7 @@ from api.onboarding_core import (
     reactivate_customer_api_key,
     revoke_customer_api_key,
 )
+from api.ops_core import build_v1_operations_status
 from api.access import (
     build_access_status,
     build_plan_limits,
@@ -136,6 +137,12 @@ def v1_audit_log(
 ):
     require_v1_access("/v1/audit-log", x_api_key)
     return build_audit_log(limit)
+
+
+@router.get("/v1/operations-status")
+def v1_operations_status(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/operations-status", x_api_key)
+    return build_v1_operations_status()
 
 
 @router.post("/v1/customers")

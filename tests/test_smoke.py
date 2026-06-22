@@ -39,6 +39,7 @@ from api.onboarding_core import (
     reactivate_customer_api_key,
     revoke_customer_api_key,
 )
+from api.ops_core import build_v1_operations_status
 from security.limits import build_limit_status
 from security.entitlements import has_access
 from security.plan_resolver import resolve_plan
@@ -139,6 +140,8 @@ def test_v1_plan_access_contract():
     assert has_access("enterprise", "/v1/commercial-board-report/html")
     assert not has_access("pro", "/v1/audit-log")
     assert has_access("enterprise", "/v1/audit-log")
+    assert not has_access("pro", "/v1/operations-status")
+    assert has_access("enterprise", "/v1/operations-status")
     assert not has_access("pro", "/v1/customers")
     assert has_access("enterprise", "/v1/customers")
     assert not has_access("pro", "/v1/customers/revoke")
@@ -263,6 +266,18 @@ def test_commercial_board_export_contract():
     assert "Commercial Board Report" in html
 
 
+def test_v1_operations_status_contract():
+    payload = build_v1_operations_status()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "operations_status"
+    assert payload["status"] in {"ready", "beta_watch"}
+    assert isinstance(payload["blocking_issues"], list)
+    assert "readiness" in payload
+    assert isinstance(payload["files"], list)
+
+
 def test_v1_audit_log_contract(tmp_path, monkeypatch):
     audit_file = tmp_path / "audit_log.csv"
     monkeypatch.setattr("api.audit_core.AUDIT_FILE", audit_file)
@@ -379,6 +394,7 @@ def test_main_app_exposes_v1_core_routes():
     assert "/v1/commercial-board-report/html" in paths
     assert "/v1/commercial-board-report/save" in paths
     assert "/v1/audit-log" in paths
+    assert "/v1/operations-status" in paths
     assert "/v1/customers" in paths
     assert "/v1/customers/revoke" in paths
     assert "/v1/customers/reactivate" in paths
