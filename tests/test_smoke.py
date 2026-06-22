@@ -72,7 +72,10 @@ def test_core_files_exist():
     assert Path("main.py").exists()
     assert Path("api/routes.py").exists()
     assert Path("run_daily.sh").exists()
+    assert Path("scripts/run_core_intelligence.sh").exists()
     assert Path("analytics/market_pulse_snapshot.py").exists()
+    assert Path("analytics/core_signal_history.py").exists()
+    assert Path("analytics/core_signal_quality.py").exists()
     assert Path("README.md").exists()
 
 
@@ -97,6 +100,7 @@ def test_v1_terminal_summary_contract():
     assert "risk" in payload
     assert "core_signal_health" in payload
     assert "history_records" in payload["core_signal_health"]
+    assert "provider_reliability" in payload
     assert "quality" in payload
 
 

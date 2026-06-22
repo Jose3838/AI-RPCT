@@ -23,6 +23,13 @@ def read_latest(path):
     return records[-1]
 
 
+def read_first(path):
+    records = read_records(path)
+    if not records:
+        return {}
+    return records[0]
+
+
 def read_latest_report(pattern):
     reports = sorted(REPORTS_DIR.glob(pattern))
     if not reports:
@@ -1418,7 +1425,7 @@ def build_terminal_summary():
     forecast = read_latest(DATA_DIR / "forecast_signal.csv")
     signal_quality = read_latest(DATA_DIR / "core_signal_quality.csv")
     signal_history = read_records(DATA_DIR / "core_signal_history.csv")
-    reliability = read_latest(DATA_DIR / "provider_reliability_ranking.csv")
+    reliability = read_first(DATA_DIR / "provider_reliability_ranking.csv")
     reliability_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv")
     frontier = read_latest(DATA_DIR / "frontier_gpu_index.csv")
 

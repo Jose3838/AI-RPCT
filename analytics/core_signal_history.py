@@ -15,6 +15,13 @@ def read_latest(path):
     return pd.read_csv(path).iloc[-1].to_dict()
 
 
+def read_first(path):
+    path = Path(path)
+    if not path.exists() or path.stat().st_size <= 1:
+        return {}
+    return pd.read_csv(path).iloc[0].to_dict()
+
+
 def as_float(value, fallback=0.0):
     try:
         return float(value)
@@ -26,7 +33,7 @@ def build_core_signal_history_row(generated_at=None):
     generated_at = generated_at or datetime.now(timezone.utc).isoformat()
     scarcity = read_latest(DATA_DIR / "gpu_scarcity_index.csv")
     forecast = read_latest(DATA_DIR / "forecast_signal.csv")
-    reliability = read_latest(DATA_DIR / "provider_reliability_ranking.csv")
+    reliability = read_first(DATA_DIR / "provider_reliability_ranking.csv")
     quality = read_latest(DATA_DIR / "live_data_quality_score.csv")
 
     return {

@@ -32,11 +32,18 @@ def read_latest(path):
     return pd.read_csv(path).iloc[-1].to_dict()
 
 
+def read_first(path):
+    path = Path(path)
+    if not path.exists() or path.stat().st_size <= 1:
+        return {}
+    return pd.read_csv(path).iloc[0].to_dict()
+
+
 def build_core_signal_quality():
     history = build_core_signal_history_summary()
     scarcity = read_latest(DATA_DIR / "gpu_scarcity_index.csv")
     forecast = read_latest(DATA_DIR / "forecast_signal.csv")
-    reliability = read_latest(DATA_DIR / "provider_reliability_ranking.csv")
+    reliability = read_first(DATA_DIR / "provider_reliability_ranking.csv")
 
     history_score = min(100.0, (history.get("days_collected", 0) / 30) * 100)
     scarcity_explainability = 100.0 if all(

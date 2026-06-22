@@ -11,6 +11,13 @@ def read_latest(path):
     return pd.read_csv(path).iloc[-1].to_dict()
 
 
+def read_first(path):
+    path = Path(path)
+    if not path.exists() or path.stat().st_size <= 1:
+        return {}
+    return pd.read_csv(path).iloc[0].to_dict()
+
+
 def read_table(path):
     path = Path(path)
     if not path.exists() or path.stat().st_size <= 1:
@@ -25,7 +32,7 @@ frontier = read_latest("data/frontier_gpu_index.csv")
 scarcity = read_latest("data/gpu_scarcity_index.csv")
 forecast = read_latest("data/forecast_signal.csv")
 quality = read_latest("data/core_signal_quality.csv")
-reliability = read_latest("data/provider_reliability_ranking.csv")
+reliability = read_first("data/provider_reliability_ranking.csv")
 category = read_table("data/gpu_category_index.csv")
 category_text = category.to_string(index=False) if not category.empty else "No GPU category data available."
 

@@ -51,6 +51,7 @@ Use the virtual environment directly:
 ```bash
 PYTHONPATH=. venv/bin/pytest tests
 ./run_daily.sh
+./scripts/run_core_intelligence.sh
 venv/bin/python snapshot_scheduler.py
 venv/bin/python database/db_status.py
 ```
@@ -97,12 +98,16 @@ Core files:
 - `engine/calculate_rpct.py`
 - `analytics/*`
 - `analytics/market_pulse_snapshot.py`
+- `analytics/core_signal_history.py`
+- `analytics/core_signal_quality.py`
+- `analytics/provider_reliability_gaps.py`
 - `data/*.csv`
 - `data/launch_controls.csv`
 - `main.py`
 - `api/routes.py`
 - `web/app.js`
 - `run_daily.sh`
+- `scripts/run_core_intelligence.sh`
 
 ## MVP Priorities
 
