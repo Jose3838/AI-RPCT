@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI-RPCT Terminal - Bloomberg-Style Intelligence</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
@@ -21,34 +22,32 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0f172a 0%, #1a1f35 100%);
-            color: #f1f5f9;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background:
+                radial-gradient(circle at 72% 14%, rgba(59, 130, 246, 0.16), transparent 30%),
+                linear-gradient(180deg, #05070a 0%, #0a0f17 52%, #05070a 100%);
+            color: #f8fafc;
+            font-family: Inter, 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            letter-spacing: 0;
         }
 
         .terminal-card {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(51, 65, 85, 0.3));
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            border-radius: 12px;
+            background: rgba(6, 10, 16, 0.76);
+            border: 1px solid rgba(226, 232, 240, 0.12);
+            border-radius: 10px;
             padding: 20px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(14px);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .terminal-card:hover {
-            border-color: rgba(148, 163, 184, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: rgba(226, 232, 240, 0.22);
         }
 
         .kpi-value {
             font-size: 2rem;
             font-weight: 700;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #60a5fa, #93c5fd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            letter-spacing: -0.02em;
+            color: #f8fafc;
         }
 
         .status-indicator {
@@ -76,22 +75,20 @@
         }
 
         .header-bar {
-            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-            background: linear-gradient(180deg, rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.4));
-            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.1);
+            background: rgba(5, 7, 10, 0.78);
+            backdrop-filter: blur(16px);
             position: sticky;
             top: 0;
             z-index: 40;
         }
 
         .header-title {
-            font-size: 2rem;
+            font-size: 1rem;
             font-weight: 700;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #60a5fa, #93c5fd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            letter-spacing: 0.08em;
+            color: #f8fafc;
+            text-transform: uppercase;
         }
 
         .chart-container {
@@ -175,10 +172,105 @@
         }
 
         .metric-box {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            border-radius: 12px;
+            background: rgba(6, 10, 16, 0.76);
+            border: 1px solid rgba(226, 232, 240, 0.12);
+            border-radius: 10px;
             padding: 20px;
-            border-top: 3px solid #3b82f6;
+            border-top: 1px solid rgba(96, 165, 250, 0.48);
+        }
+
+        .hero-shell {
+            min-height: calc(100vh - 112px);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .hero-panel {
+            position: relative;
+            border: 1px solid rgba(226, 232, 240, 0.13);
+            border-radius: 10px;
+            background:
+                linear-gradient(135deg, rgba(248, 250, 252, 0.055), rgba(15, 23, 42, 0.58)),
+                rgba(5, 7, 10, 0.74);
+            padding: clamp(28px, 4vw, 52px);
+            overflow: hidden;
+        }
+
+        .artifact-panel {
+            min-height: 560px;
+        }
+
+        .hero-artifact {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.95;
+        }
+
+        .artifact-overlay {
+            position: relative;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .artifact-vignette {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background:
+                linear-gradient(90deg, rgba(5, 7, 10, 0.92), rgba(5, 7, 10, 0.24) 46%, rgba(5, 7, 10, 0.8)),
+                linear-gradient(180deg, rgba(5, 7, 10, 0.12), rgba(5, 7, 10, 0.86));
+            pointer-events: none;
+        }
+
+        .artifact-chip {
+            border: 1px solid rgba(226, 232, 240, 0.14);
+            background: rgba(5, 7, 10, 0.62);
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 0.72rem;
+            color: #cbd5e1;
+            backdrop-filter: blur(12px);
+        }
+
+        .future-card {
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.7);
+            padding: 18px;
+            min-height: 210px;
+        }
+
+        .future-card.good {
+            border-color: rgba(16, 185, 129, 0.28);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.09), rgba(15, 23, 42, 0.74));
+        }
+
+        .future-card.bad {
+            border-color: rgba(245, 158, 11, 0.28);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(15, 23, 42, 0.74));
+        }
+
+        .timeline-line {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(148, 163, 184, 0.12), rgba(96, 165, 250, 0.72), rgba(148, 163, 184, 0.12));
+        }
+
+        @media (min-width: 1024px) {
+            .hero-shell {
+                grid-template-columns: 0.95fr 1.05fr;
+            }
+        }
+
+        .terminal-section-label {
+            margin: 72px 0 22px;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
         }
 
         .fade-in {
@@ -228,18 +320,23 @@
 <body>
     <!-- Header -->
     <div class="header-bar">
-        <div class="max-w-7xl mx-auto px-6 py-6">
-            <div class="flex justify-between items-start">
-                <div>
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded border border-slate-600 bg-slate-950 flex items-center justify-center text-xs font-semibold">AI</div>
                     <h1 class="header-title">AI-RPCT Terminal</h1>
-                    <p class="text-sm text-slate-400 mt-1">Bloomberg-style intelligence for AI infrastructure risk</p>
                 </div>
-                <div class="text-right">
+                <div class="hidden md:flex items-center gap-8 text-sm text-slate-400">
+                    <a href="#terminal" class="hover:text-slate-100">Terminal</a>
+                    <a href="#trust" class="hover:text-slate-100">Trust</a>
+                    <a href="#radar" class="hover:text-slate-100">Provider Radar</a>
+                </div>
+                <div class="text-right flex items-center gap-3">
                     <div class="status-indicator status-operational">
                         <span class="w-2 h-2 bg-green-500 rounded-full"></span>
                         Live
                     </div>
-                    <div class="text-xs text-slate-500 mt-2" id="refreshStatus">
+                    <div class="hidden sm:block text-xs text-slate-500" id="refreshStatus">
                         <span class="spinner-mini"></span> Updating...
                     </div>
                 </div>
@@ -249,6 +346,93 @@
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-6 py-8">
+        <!-- Hero -->
+        <section class="hero-shell mb-8 fade-in">
+            <div class="hero-panel flex flex-col justify-between">
+                <div>
+                    <div class="text-xs uppercase tracking-[0.34em] text-blue-300 font-semibold">AI Infrastructure Intelligence</div>
+                    <h2 class="text-5xl md:text-7xl font-semibold text-slate-50 mt-6 leading-none">
+                        Same market.<br>
+                        Different visibility.
+                    </h2>
+                    <p class="text-lg md:text-xl text-slate-300 mt-8 leading-8 max-w-xl">
+                        AI-RPCT reveals pressure building across GPU supply, provider concentration, pricing and data trust before infrastructure decisions get expensive.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3 mt-8">
+                        <a href="#terminal" class="terminal-button inline-flex justify-center">Open Terminal</a>
+                        <a href="#trust" class="inline-flex justify-center rounded-lg border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-200 hover:border-slate-500">View Trust Status</a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mt-10">
+                    <div>
+                        <div class="text-2xl font-semibold text-slate-50">Pulse</div>
+                        <div class="text-xs text-slate-500 mt-1">Market pressure</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-semibold text-slate-50">Radar</div>
+                        <div class="text-xs text-slate-500 mt-1">Provider risk</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-semibold text-slate-50">Trust</div>
+                        <div class="text-xs text-slate-500 mt-1">Data guardrails</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-panel artifact-panel">
+                <canvas id="heroArtifact" class="hero-artifact" aria-hidden="true"></canvas>
+                <div class="artifact-vignette"></div>
+                <div class="artifact-overlay h-full flex flex-col justify-between">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="artifact-chip">GPU clusters</span>
+                        <span class="artifact-chip">Provider network</span>
+                        <span class="artifact-chip">Risk telemetry</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-24">
+                        <div class="future-card bad">
+                            <div class="text-xs uppercase tracking-wider text-amber-300">Without AI-RPCT</div>
+                            <div class="text-2xl font-semibold text-slate-100 mt-4">Blind capacity decisions</div>
+                            <div class="timeline-line my-5"></div>
+                            <div class="space-y-3 text-sm text-slate-300">
+                                <div>Provider concentration discovered late</div>
+                                <div>Stale data mistaken for live signal</div>
+                                <div>GPU price pressure missed until procurement</div>
+                            </div>
+                            <div class="text-xs text-amber-200 mt-6">Outcome: higher spend, slower action, weaker conviction</div>
+                        </div>
+
+                        <div class="future-card good">
+                            <div class="text-xs uppercase tracking-wider text-emerald-300">With AI-RPCT</div>
+                            <div class="text-2xl font-semibold text-slate-100 mt-4">Decision-ready visibility</div>
+                            <div class="timeline-line my-5"></div>
+                            <div class="space-y-3 text-sm text-slate-300">
+                                <div>Market Pulse exposes pressure changes</div>
+                                <div>Trust labels separate beta, stale and live data</div>
+                                <div>Provider Radar flags benchmark and dependency risk</div>
+                            </div>
+                            <div class="text-xs text-emerald-200 mt-6">Outcome: faster readouts, clearer risk, better provider choices</div>
+                        </div>
+                    </div>
+
+                    <div class="rounded-lg border border-slate-700 bg-slate-950/50 p-4 mt-4">
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Recommended Action</div>
+                        <div class="text-base text-slate-100 mt-2">Benchmark provider depth before committing GPU spend.</div>
+                        <div class="text-xs text-slate-500 mt-2">Generated from pulse, trust and provider-risk signals.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="terminal" class="terminal-section-label">
+            <div>
+                <div class="text-xs uppercase tracking-[0.28em] text-blue-300 font-semibold">Live Terminal</div>
+                <h2 class="text-3xl md:text-5xl font-semibold text-slate-50 mt-3">Operate with signal, not noise.</h2>
+            </div>
+            <div class="hidden md:block text-sm text-slate-500 max-w-sm">
+                Real-time market pulse, trust guardrails, provider radar and paid intelligence workflows.
+            </div>
+        </div>
 
         <!-- KPI Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 fade-in">
@@ -286,6 +470,225 @@
                 <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Data Quality Score</div>
                 <div class="kpi-value mt-2" id="quality">...</div>
                 <div class="text-xs text-slate-500 mt-3">Feed integrity</div>
+            </div>
+        </div>
+
+        <!-- Data Trust Status -->
+        <div id="trust" class="terminal-card fade-in mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Data Trust Score</div>
+                    <div id="dataTrustScore" class="kpi-value mt-2">...</div>
+                    <div id="dataTrustLevel" class="status-indicator status-warning mt-3">Loading</div>
+                </div>
+                <div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Product Label</div>
+                    <div id="dataTrustLabel" class="text-lg font-semibold text-slate-100 mt-3">...</div>
+                    <div id="paidClaimsAllowed" class="text-xs text-slate-500 mt-3">Checking paid claims status...</div>
+                </div>
+                <div class="lg:col-span-2">
+                    <h3 class="section-title text-base mb-4 mt-0">Data Trust Guardrails</h3>
+                    <div id="dataTrustSummary" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
+                    <div id="dataTrustBlockers" class="flex flex-wrap gap-2 mt-4">
+                        <span class="text-sm text-slate-500">Loading blockers...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Trust Remediation Path</div>
+                        <div id="trustRemediationPath" class="text-lg font-semibold text-slate-100 mt-2">Loading...</div>
+                        <div id="trustRemediationCount" class="text-xs text-slate-500 mt-2">Counting trust actions...</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Next Action</div>
+                        <div id="trustNextAction" class="text-base font-semibold text-slate-100 mt-2">Loading next action...</div>
+                        <div id="trustNextMetric" class="text-xs text-slate-500 mt-2">Success metric unavailable.</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Action Plan</div>
+                        <div id="trustRemediationActions" class="space-y-2 mt-2">
+                            <div class="text-sm text-slate-500">Loading remediation actions...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-4">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Connector Readiness</div>
+                        <div id="connectorReadinessCount" class="text-lg font-semibold text-slate-100 mt-2">Loading...</div>
+                        <div id="connectorNextAction" class="text-xs text-slate-500 mt-2">Checking provider connectors...</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Verified Live</div>
+                        <div id="connectorVerifiedCount" class="text-2xl font-semibold text-slate-100 mt-2">...</div>
+                        <div class="text-xs text-slate-500 mt-2">Providers with live verified sources</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Connector Blockers</div>
+                        <div id="connectorBlockerCount" class="text-2xl font-semibold text-slate-100 mt-2">...</div>
+                        <div class="text-xs text-slate-500 mt-2">Issues blocking trust upgrade</div>
+                    </div>
+                    <div class="lg:col-span-2">
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Provider Matrix</div>
+                        <div id="connectorReadinessList" class="space-y-2 mt-2">
+                            <div class="text-sm text-slate-500">Loading connector readiness...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Connector Upgrade Plan</div>
+                        <div id="connectorUpgradeHeadline" class="text-base font-semibold text-slate-100 mt-2">Loading upgrade plan...</div>
+                        <div id="connectorUpgradePhase" class="text-xs text-slate-500 mt-2">Rollout phase unavailable.</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Next Provider Fix</div>
+                        <div id="connectorNextProvider" class="text-lg font-semibold text-slate-100 mt-2">...</div>
+                        <div id="connectorNextProviderValue" class="text-xs text-slate-500 mt-2">Buyer value loading...</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Implementation Steps</div>
+                        <div id="connectorUpgradeSteps" class="space-y-2 mt-2">
+                            <div class="text-sm text-slate-500">Loading connector upgrade steps...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Pulse -->
+        <div class="terminal-card fade-in mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Market Pulse</div>
+                    <div id="marketPulseScore" class="kpi-value mt-2">...</div>
+                    <div id="marketPulseBand" class="status-indicator status-warning mt-3">Loading</div>
+                </div>
+                <div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Confidence</div>
+                    <div id="marketPulseConfidence" class="kpi-value mt-2">...</div>
+                    <div id="marketPulseConfidenceBand" class="text-xs text-slate-500 mt-3">Live-data confidence</div>
+                </div>
+                <div class="lg:col-span-2">
+                    <h3 class="section-title text-base mb-4 mt-0">AI Infrastructure Market Pulse</h3>
+                    <div id="marketPulseHeadline" class="text-xl font-semibold text-slate-100">Loading market pulse...</div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div>
+                            <div class="text-xs uppercase tracking-wider text-slate-400">Buyer Readout</div>
+                            <div id="marketPulseBuyer" class="text-sm text-slate-300 mt-2 leading-6"></div>
+                        </div>
+                        <div>
+                            <div class="text-xs uppercase tracking-wider text-slate-400">Investor Readout</div>
+                            <div id="marketPulseInvestor" class="text-sm text-slate-300 mt-2 leading-6"></div>
+                        </div>
+                    </div>
+                    <div id="marketPulseActions" class="text-xs text-slate-500 mt-4"></div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 mt-6">
+                <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-3">
+                    <div class="text-xs text-slate-500">Risk</div>
+                    <div id="pulseRisk" class="text-sm font-semibold text-slate-100 mt-1">...</div>
+                </div>
+                <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-3">
+                    <div class="text-xs text-slate-500">Scarcity</div>
+                    <div id="pulseScarcity" class="text-sm font-semibold text-slate-100 mt-1">...</div>
+                </div>
+                <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-3">
+                    <div class="text-xs text-slate-500">Pricing</div>
+                    <div id="pulsePricing" class="text-sm font-semibold text-slate-100 mt-1">...</div>
+                </div>
+                <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-3">
+                    <div class="text-xs text-slate-500">Frontier</div>
+                    <div id="pulseFrontier" class="text-sm font-semibold text-slate-100 mt-1">...</div>
+                </div>
+                <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-3">
+                    <div class="text-xs text-slate-500">Alerts</div>
+                    <div id="pulseAlerts" class="text-sm font-semibold text-slate-100 mt-1">...</div>
+                </div>
+                <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-3">
+                    <div class="text-xs text-slate-500">Quality</div>
+                    <div id="pulseQuality" class="text-sm font-semibold text-slate-100 mt-1">...</div>
+                </div>
+                <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-3">
+                    <div class="text-xs text-slate-500">Moat</div>
+                    <div id="pulseMoat" class="text-sm font-semibold text-slate-100 mt-1">...</div>
+                </div>
+            </div>
+            <div class="mt-6 rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Pulse Trend</div>
+                        <div id="marketPulseTrend" class="text-sm text-slate-300 mt-2">Pro key required for market pulse history.</div>
+                    </div>
+                    <div id="marketPulseDelta" class="text-2xl font-semibold text-slate-100">Locked</div>
+                </div>
+                <div id="marketPulseHistoryList" class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
+                    <div class="text-sm text-slate-500">Unlock Pro history to see how pressure is changing.</div>
+                </div>
+            </div>
+            <div class="mt-4 rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                    <div class="lg:max-w-3xl">
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Market Pulse Brief</div>
+                        <div id="marketPulseBriefHeadline" class="text-base font-semibold text-slate-100 mt-2">Pro key required for the pulse brief.</div>
+                        <div id="marketPulseBriefSummary" class="text-sm text-slate-300 mt-2 leading-6">Unlock Pro intelligence to generate an executive-readable market pulse brief.</div>
+                    </div>
+                    <button id="saveMarketPulseBrief" class="terminal-button hidden" type="button">Save Brief</button>
+                </div>
+                <div id="marketPulseBriefDrivers" class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
+                    <div class="text-sm text-slate-500">Brief drivers are available with Pro access.</div>
+                </div>
+            </div>
+            <div class="mt-4 rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Daily Change Brief</div>
+                        <div id="dailyChangeHeadline" class="text-base font-semibold text-slate-100 mt-2">Pro key required for daily change intelligence.</div>
+                        <div id="dailyChangeSummary" class="text-sm text-slate-300 mt-2 leading-6">Unlock Pro to see what changed since the previous pulse.</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Recommended Decision</div>
+                        <div id="dailyChangeDecision" class="text-lg font-semibold text-slate-100 mt-2">Locked</div>
+                        <div id="dailyChangeTrust" class="text-xs text-slate-500 mt-2">Trust guardrails unavailable.</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider text-slate-400">Change Signals</div>
+                        <div id="dailyChangeSignals" class="space-y-2 mt-2">
+                            <div class="text-sm text-slate-500">Daily change signals are available with Pro access.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Access Console -->
+        <div id="radar" class="terminal-card fade-in mb-8">
+            <h3 class="section-title text-base mb-4">Provider Risk Radar</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+                <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+                    <div class="text-xs uppercase tracking-wider text-slate-400">Highest Risk Provider</div>
+                    <div id="providerRadarHighest" class="text-xl font-semibold text-slate-100 mt-2">Pro key required</div>
+                    <div id="providerRadarHighestDetail" class="text-xs text-slate-500 mt-2">Unlock Pro provider intelligence.</div>
+                </div>
+                <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+                    <div class="text-xs uppercase tracking-wider text-slate-400">Lowest Risk Provider</div>
+                    <div id="providerRadarLowest" class="text-xl font-semibold text-slate-100 mt-2">Locked</div>
+                    <div id="providerRadarLowestDetail" class="text-xs text-slate-500 mt-2">Provider benchmark unavailable.</div>
+                </div>
+                <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+                    <div class="text-xs uppercase tracking-wider text-slate-400">Providers Scored</div>
+                    <div id="providerRadarCount" class="text-xl font-semibold text-slate-100 mt-2">Locked</div>
+                    <div class="text-xs text-slate-500 mt-2">Concentration, depth, diversity, freshness, health and price.</div>
+                </div>
+            </div>
+            <div id="providerRiskRadarList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="text-sm text-slate-500">Pro key required for provider risk radar.</div>
             </div>
         </div>
 

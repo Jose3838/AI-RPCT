@@ -20,6 +20,23 @@ def file_status(path):
     }
 
 
+def read_launch_controls():
+    path = Path("data/launch_controls.csv")
+    if not path.exists() or path.stat().st_size <= 1:
+        return {}
+
+    controls = {}
+    for row in pd.read_csv(path).to_dict(orient="records"):
+        control = row.get("control")
+        if not control:
+            continue
+        controls[str(control).strip()] = {
+            "status": str(row.get("status", "")).strip().lower() == "true",
+            "detail": str(row.get("detail", "") or ""),
+        }
+    return controls
+
+
 def build_v1_operations_status():
     required_files = [
         "data/api_key_registry.csv",
@@ -27,6 +44,7 @@ def build_v1_operations_status():
         "data/plan_access_matrix.csv",
         "data/plan_limits.csv",
         "data/plan_pricing.csv",
+        "data/launch_controls.csv",
         "api/terminal_core.py",
         "api/access.py",
         "api/commercial_core.py",
@@ -43,17 +61,31 @@ def build_v1_operations_status():
     monetization = read_latest_record("data/monetization_readiness.csv")
     commercial = read_latest_record("data/commercial_readiness.csv")
     beta = read_latest_record("data/public_beta_status.csv")
+    launch_controls = read_launch_controls()
 
     blocking_issues = []
     if missing:
         blocking_issues.append("required_files_missing")
     if empty:
         blocking_issues.append("required_files_empty")
-    if str(beta.get("paid_customers_allowed", "False")).lower() != "true":
+    paid_allowed = launch_controls.get("paid_customers_allowed", {}).get(
+        "status",
+        str(beta.get("paid_customers_allowed", "False")).lower() == "true",
+    )
+    billing_ready = launch_controls.get("billing_ready", {}).get(
+        "status",
+        str(commercial.get("billing_ready", "False")).lower() == "true",
+    )
+    terms_ready = launch_controls.get("terms_ready", {}).get(
+        "status",
+        str(commercial.get("terms_ready", "False")).lower() == "true",
+    )
+
+    if not paid_allowed:
         blocking_issues.append("paid_customers_not_enabled")
-    if str(commercial.get("billing_ready", "False")).lower() != "true":
+    if not billing_ready:
         blocking_issues.append("billing_not_ready")
-    if str(commercial.get("terms_ready", "False")).lower() != "true":
+    if not terms_ready:
         blocking_issues.append("terms_not_ready")
 
     status = "ready" if not blocking_issues else "beta_watch"
@@ -69,6 +101,16 @@ def build_v1_operations_status():
             "monetization": monetization,
             "commercial": commercial,
             "public_beta": beta,
+            "launch_controls": launch_controls,
         },
         "files": files,
+    }
+
+
+def build_launch_controls():
+    return {
+        "product": "AI-RPCT",
+        "version": "v1",
+        "report_type": "launch_controls",
+        "controls": read_launch_controls(),
     }

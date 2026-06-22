@@ -15,7 +15,7 @@ from api.onboarding_core import (
     reactivate_customer_api_key,
     revoke_customer_api_key,
 )
-from api.ops_core import build_v1_operations_status
+from api.ops_core import build_launch_controls, build_v1_operations_status
 from api.access import (
     build_access_status,
     build_plan_limits,
@@ -36,10 +36,21 @@ from intelligence.reports.commercial_board_export_v1 import (
 from api.terminal_core import (
     build_api_catalog,
     build_dashboard_snapshot,
+    build_data_trust_status,
+    build_daily_change_brief,
     build_executive_brief,
     build_latest_reports,
+    build_market_pulse_brief,
+    build_market_pulse,
+    build_market_pulse_history,
     build_market_signals,
+    build_provider_connector_readiness,
+    build_provider_connector_upgrade_plan,
+    build_provider_risk_radar,
     build_recommendations,
+    build_trust_remediation_plan,
+    save_market_pulse_brief,
+    save_market_pulse_snapshot,
     build_terminal_summary,
 )
 
@@ -59,6 +70,70 @@ def v1_terminal_summary():
 @router.get("/v1/dashboard-snapshot")
 def v1_dashboard_snapshot():
     return build_dashboard_snapshot()
+
+
+@router.get("/v1/data-trust-status")
+def v1_data_trust_status():
+    return build_data_trust_status()
+
+
+@router.get("/v1/trust-remediation-plan")
+def v1_trust_remediation_plan():
+    return build_trust_remediation_plan()
+
+
+@router.get("/v1/provider-connector-readiness")
+def v1_provider_connector_readiness():
+    return build_provider_connector_readiness()
+
+
+@router.get("/v1/provider-connector-upgrade-plan")
+def v1_provider_connector_upgrade_plan():
+    return build_provider_connector_upgrade_plan()
+
+
+@router.get("/v1/market-pulse")
+def v1_market_pulse():
+    return build_market_pulse()
+
+
+@router.get("/v1/market-pulse-history")
+def v1_market_pulse_history(
+    limit: int = 30,
+    x_api_key: str = Header(default=None),
+):
+    require_v1_access("/v1/market-pulse-history", x_api_key)
+    return build_market_pulse_history(limit)
+
+
+@router.get("/v1/market-pulse-brief")
+def v1_market_pulse_brief(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/market-pulse-brief", x_api_key)
+    return build_market_pulse_brief()
+
+
+@router.get("/v1/provider-risk-radar")
+def v1_provider_risk_radar(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/provider-risk-radar", x_api_key)
+    return build_provider_risk_radar()
+
+
+@router.get("/v1/daily-change-brief")
+def v1_daily_change_brief(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/daily-change-brief", x_api_key)
+    return build_daily_change_brief()
+
+
+@router.post("/v1/market-pulse-brief/save")
+def v1_save_market_pulse_brief(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/market-pulse-brief/save", x_api_key)
+    return save_market_pulse_brief()
+
+
+@router.post("/v1/market-pulse/snapshot")
+def v1_save_market_pulse_snapshot(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/market-pulse/snapshot", x_api_key)
+    return save_market_pulse_snapshot()
 
 
 @router.get("/v1/api-catalog")
@@ -143,6 +218,12 @@ def v1_audit_log(
 def v1_operations_status(x_api_key: str = Header(default=None)):
     require_v1_access("/v1/operations-status", x_api_key)
     return build_v1_operations_status()
+
+
+@router.get("/v1/launch-controls")
+def v1_launch_controls(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/launch-controls", x_api_key)
+    return build_launch_controls()
 
 
 @router.post("/v1/customers")

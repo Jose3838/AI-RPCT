@@ -1,0 +1,5 @@
+control,status,detail
+billing_ready,false,Stripe or invoice workflow not connected yet
+terms_ready,false,Terms draft exists but is not approved for paid customers
+paid_customers_allowed,false,Keep paid onboarding disabled until billing and terms are approved
+public_demo_allowed,true,Public demo is allowed with demo keys and preview disclaimers

@@ -31,6 +31,7 @@ Do not spend aggressively on infrastructure before the signal is valuable. The c
 - daily text reports
 - markdown research snapshots
 - local HTML dashboard
+- web terminal with market pulse, paid intelligence unlocks, and commercial panels
 - FastAPI service
 - SQLite import path
 - automated daily pipeline
@@ -41,8 +42,9 @@ Do not spend aggressively on infrastructure before the signal is valuable. The c
 Use the virtual environment directly:
 
 ```bash
-venv/bin/python -m pytest
+PYTHONPATH=. venv/bin/pytest tests
 ./run_daily.sh
+venv/bin/python snapshot_scheduler.py
 venv/bin/python database/db_status.py
 ```
 
@@ -58,6 +60,7 @@ Then open:
 http://127.0.0.1:8000/
 http://127.0.0.1:8000/web
 http://127.0.0.1:8000/v1/dashboard-snapshot
+http://127.0.0.1:8000/v1/market-pulse
 ```
 
 ## Stable V1 API Core
@@ -66,6 +69,17 @@ These endpoints are the product surface we should protect first:
 
 - `/v1/terminal-summary`
 - `/v1/dashboard-snapshot`
+- `/v1/data-trust-status`
+- `/v1/trust-remediation-plan`
+- `/v1/provider-connector-readiness`
+- `/v1/provider-connector-upgrade-plan`
+- `/v1/market-pulse`
+- `/v1/market-pulse-history`
+- `/v1/market-pulse/snapshot`
+- `/v1/market-pulse-brief`
+- `/v1/market-pulse-brief/save`
+- `/v1/provider-risk-radar`
+- `/v1/daily-change-brief`
 - `/v1/api-catalog`
 - `/v1/access-status`
 - `/v1/plan-limits`
@@ -79,6 +93,7 @@ These endpoints are the product surface we should protect first:
 - `/v1/commercial-board-report/html`
 - `/v1/audit-log`
 - `/v1/operations-status`
+- `/v1/launch-controls`
 - `/v1/customers`
 - `/v1/customers/revoke`
 - `/v1/customers/reactivate`
@@ -101,7 +116,9 @@ Core files:
 - `collectors/collect_gpu_data.py`
 - `engine/calculate_rpct.py`
 - `analytics/*`
+- `analytics/market_pulse_snapshot.py`
 - `data/*.csv`
+- `data/launch_controls.csv`
 - `main.py`
 - `api/routes.py`
 - `web/app.js`
@@ -126,6 +143,15 @@ Core files:
 - Price Dislocation Signal
 - Enterprise Provider Recommendation
 
+The public data trust status is exposed at `/v1/data-trust-status`.
+The trust remediation plan is exposed at `/v1/trust-remediation-plan`.
+The provider connector readiness matrix is exposed at `/v1/provider-connector-readiness`.
+The provider connector upgrade workflow is exposed at `/v1/provider-connector-upgrade-plan`.
+The first proprietary market pulse is exposed at `/v1/market-pulse`.
+The market pulse history is exposed at `/v1/market-pulse-history` and requires a Pro or Enterprise API key.
+The market pulse brief is exposed at `/v1/market-pulse-brief` and requires a Pro or Enterprise API key.
+The provider risk radar is exposed at `/v1/provider-risk-radar` and requires a Pro or Enterprise API key.
+The daily change brief is exposed at `/v1/daily-change-brief` and requires a Pro or Enterprise API key.
 The first decision-signal layer is exposed at `/v1/signals` and included in `/v1/dashboard-snapshot`.
 The first recommendation layer is exposed at `/v1/recommendations` and requires a Pro or Enterprise API key.
 The first executive brief is exposed at `/v1/executive-brief` and requires a Pro or Enterprise API key.
@@ -164,11 +190,37 @@ Access and usage checks:
 ```bash
 curl "http://127.0.0.1:8000/v1/plan-limits"
 
+curl "http://127.0.0.1:8000/v1/data-trust-status"
+
+curl "http://127.0.0.1:8000/v1/trust-remediation-plan"
+
+curl "http://127.0.0.1:8000/v1/provider-connector-readiness"
+
+curl "http://127.0.0.1:8000/v1/provider-connector-upgrade-plan"
+
 curl -H "x-api-key: demo-pro-key" \
   "http://127.0.0.1:8000/v1/access-status"
 
 curl -H "x-api-key: demo-pro-key" \
   "http://127.0.0.1:8000/v1/usage-summary"
+
+curl -H "x-api-key: demo-pro-key" \
+  "http://127.0.0.1:8000/v1/market-pulse-history"
+
+curl -X POST -H "x-api-key: demo-pro-key" \
+  "http://127.0.0.1:8000/v1/market-pulse/snapshot"
+
+curl -H "x-api-key: demo-pro-key" \
+  "http://127.0.0.1:8000/v1/market-pulse-brief"
+
+curl -X POST -H "x-api-key: demo-pro-key" \
+  "http://127.0.0.1:8000/v1/market-pulse-brief/save"
+
+curl -H "x-api-key: demo-pro-key" \
+  "http://127.0.0.1:8000/v1/provider-risk-radar"
+
+curl -H "x-api-key: demo-pro-key" \
+  "http://127.0.0.1:8000/v1/daily-change-brief"
 ```
 
 Plan limits are enforced on authenticated V1 endpoints:
@@ -203,6 +255,9 @@ curl -H "x-api-key: demo-enterprise-key" \
 
 curl -H "x-api-key: demo-enterprise-key" \
   "http://127.0.0.1:8000/v1/operations-status"
+
+curl -H "x-api-key: demo-enterprise-key" \
+  "http://127.0.0.1:8000/v1/launch-controls"
 
 curl -X POST -H "x-api-key: demo-enterprise-key" \
   "http://127.0.0.1:8000/v1/customers?customer_name=Acme%20AI&plan=pro"

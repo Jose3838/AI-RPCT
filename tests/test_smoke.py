@@ -7,9 +7,19 @@ from fastapi import HTTPException
 from main import app
 from api.terminal_core import (
     build_dashboard_snapshot,
+    build_data_trust_status,
+    build_daily_change_brief,
     build_executive_brief,
+    build_market_pulse_brief,
+    build_market_pulse,
+    build_market_pulse_history,
     build_market_signals,
+    build_provider_connector_readiness,
+    build_provider_connector_upgrade_plan,
+    build_provider_risk_radar,
     build_recommendations,
+    build_trust_remediation_plan,
+    save_market_pulse_snapshot,
     build_terminal_summary,
 )
 from intelligence.reports.customer_report_pdf_export_v1 import (
@@ -39,7 +49,9 @@ from api.onboarding_core import (
     reactivate_customer_api_key,
     revoke_customer_api_key,
 )
-from api.ops_core import build_v1_operations_status
+from api.ops_core import build_launch_controls, build_v1_operations_status
+from analytics.market_pulse_snapshot import main as save_market_pulse_snapshot_cli
+from snapshot_scheduler import run_scheduled_snapshot
 from security.limits import build_limit_status
 from security.entitlements import has_access
 from security.plan_resolver import resolve_plan
@@ -48,7 +60,20 @@ def test_core_files_exist():
     assert Path("main.py").exists()
     assert Path("api/routes.py").exists()
     assert Path("run_daily.sh").exists()
+    assert Path("analytics/market_pulse_snapshot.py").exists()
     assert Path("README.md").exists()
+
+
+def test_snapshot_scheduler_contract():
+    payload = run_scheduled_snapshot(
+        lambda: {"status": "ok", "version": "test"},
+        lambda: {"status": "saved", "market_pulse_score": 50},
+    )
+
+    assert payload["status"] == "ok"
+    assert payload["snapshot_result"]["version"] == "test"
+    assert payload["market_pulse_snapshot"]["status"] == "saved"
+    assert payload["executed_at"].endswith("+00:00")
 
 
 def test_v1_terminal_summary_contract():
@@ -73,6 +98,177 @@ def test_v1_dashboard_snapshot_contract():
     assert "executive_brief" in payload
     assert payload["recommendations"] == []
     assert "requires Pro access" in payload["executive_brief"]["headline"]
+
+
+def test_v1_data_trust_status_contract():
+    payload = build_data_trust_status()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "data_trust_status"
+    assert payload["trust_level"] in {"high", "medium", "low", "critical"}
+    assert payload["product_label"] in {
+        "decision_support_ready",
+        "beta_research_mode",
+        "demo_mode",
+    }
+    assert 0 <= payload["trust_score"] <= 100
+    assert isinstance(payload["blockers"], list)
+    assert "placeholder_sources" in payload["summary"]
+
+
+def test_v1_trust_remediation_plan_contract():
+    payload = build_trust_remediation_plan()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "trust_remediation_plan"
+    assert payload["readiness_path"] in {
+        "blocked_by_critical_trust_issues",
+        "near_decision_support_ready",
+        "maintain_and_validate",
+    }
+    assert isinstance(payload["actions"], list)
+    assert payload["action_count"] == len(payload["actions"])
+    assert "current_trust" in payload
+    assert "next_action" in payload
+
+
+def test_v1_provider_connector_readiness_contract():
+    payload = build_provider_connector_readiness()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "provider_connector_readiness"
+    assert "provider_count" in payload
+    assert "readiness_counts" in payload
+    assert isinstance(payload["providers"], list)
+    if payload["providers"]:
+        provider = payload["providers"][0]
+        assert "provider" in provider
+        assert "readiness" in provider
+        assert "next_action" in provider
+        assert "credential_configured" in provider
+
+
+def test_v1_provider_connector_upgrade_plan_contract():
+    payload = build_provider_connector_upgrade_plan()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "provider_connector_upgrade_plan"
+    assert payload["rollout_phase"] in {
+        "clear_trust_blockers",
+        "expand_data_moat",
+        "maintain_verified_connectors",
+    }
+    assert "current_trust" in payload
+    assert "next_upgrade" in payload
+    assert isinstance(payload["providers"], list)
+    if payload["providers"]:
+        provider = payload["providers"][0]
+        assert "priority_score" in provider
+        assert "upgrade_steps" in provider
+        assert "buyer_value" in provider
+
+
+def test_v1_market_pulse_contract():
+    payload = build_market_pulse()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "market_pulse"
+    assert payload["headline"]
+    assert payload["market_pulse_band"] in {"stable", "watch", "elevated", "critical"}
+    assert payload["confidence_band"] in {"thin", "low", "medium", "high"}
+    assert 0 <= payload["market_pulse_score"] <= 100
+    assert 0 <= payload["confidence_score"] <= 100
+    assert "terminal_risk_score" in payload["drivers"]
+    assert "buyers" in payload["audience_readouts"]
+    assert isinstance(payload["next_best_actions"], list)
+
+
+def test_v1_market_pulse_history_contract(tmp_path, monkeypatch):
+    history_file = tmp_path / "market_pulse_history.csv"
+    monkeypatch.setattr("api.terminal_core.MARKET_PULSE_HISTORY_FILE", history_file)
+
+    first = build_market_pulse()
+    second = build_market_pulse()
+    first["market_pulse_score"] = 40
+    first["market_pulse_band"] = "watch"
+    second["market_pulse_score"] = 55
+    second["market_pulse_band"] = "watch"
+
+    save_market_pulse_snapshot(first, history_file)
+    save_market_pulse_snapshot(second, history_file)
+    payload = build_market_pulse_history()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "market_pulse_history"
+    assert payload["record_count"] == 2
+    assert payload["trend"]["delta"] == 15
+    assert payload["trend"]["direction"] == "up"
+    assert len(payload["history"]) == 2
+
+
+def test_v1_market_pulse_brief_contract():
+    payload = build_market_pulse_brief()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "market_pulse_brief"
+    assert payload["headline"]
+    assert payload["summary"]
+    assert "market_pulse" in payload
+    assert "history_summary" in payload
+    assert isinstance(payload["driver_readout"], list)
+    assert "# AI-RPCT Market Pulse Brief" in payload["markdown"]
+
+
+def test_v1_provider_risk_radar_contract():
+    payload = build_provider_risk_radar()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "provider_risk_radar"
+    assert "provider_count" in payload
+    assert isinstance(payload["providers"], list)
+    if payload["providers"]:
+        provider = payload["providers"][0]
+        assert "provider" in provider
+        assert provider["risk_band"] in {"low", "medium", "high"}
+        assert 0 <= provider["risk_score"] <= 100
+        assert "recommended_action" in provider
+        assert "drivers" in provider
+
+
+def test_v1_daily_change_brief_contract():
+    payload = build_daily_change_brief()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "daily_change_brief"
+    assert payload["headline"]
+    assert payload["summary"]
+    assert payload["recommended_decision"]
+    assert isinstance(payload["changes"], list)
+    assert "market_pulse" in payload
+    assert "provider_risk" in payload
+    assert "data_trust" in payload
+    assert "# AI-RPCT Daily Change Brief" in payload["markdown"]
+
+
+def test_market_pulse_snapshot_cli_writes_history(tmp_path, monkeypatch):
+    history_file = tmp_path / "market_pulse_history.csv"
+    monkeypatch.setenv("AIRPCT_MARKET_PULSE_HISTORY_FILE", str(history_file))
+
+    payload = save_market_pulse_snapshot_cli()
+
+    assert payload["status"] == "saved"
+    assert payload["file"] == str(history_file)
+    assert history_file.exists()
+    assert "market_pulse_score" in history_file.read_text()
 
 
 def test_v1_market_signals_contract():
@@ -123,6 +319,21 @@ def test_v1_plan_access_contract():
 
     assert has_access("free", "/v1/access-status")
     assert has_access("free", "/v1/plan-limits")
+    assert has_access("free", "/v1/data-trust-status")
+    assert has_access("free", "/v1/trust-remediation-plan")
+    assert has_access("free", "/v1/provider-connector-readiness")
+    assert has_access("free", "/v1/provider-connector-upgrade-plan")
+    assert has_access("free", "/v1/market-pulse")
+    assert not has_access("free", "/v1/market-pulse-history")
+    assert has_access("pro", "/v1/market-pulse-history")
+    assert has_access("pro", "/v1/market-pulse/snapshot")
+    assert not has_access("free", "/v1/market-pulse-brief")
+    assert has_access("pro", "/v1/market-pulse-brief")
+    assert has_access("pro", "/v1/market-pulse-brief/save")
+    assert not has_access("free", "/v1/provider-risk-radar")
+    assert has_access("pro", "/v1/provider-risk-radar")
+    assert not has_access("free", "/v1/daily-change-brief")
+    assert has_access("pro", "/v1/daily-change-brief")
     assert not has_access("free", "/v1/usage-summary")
     assert has_access("pro", "/v1/usage-summary")
     assert not has_access("pro", "/v1/commercial-snapshot")
@@ -142,6 +353,8 @@ def test_v1_plan_access_contract():
     assert has_access("enterprise", "/v1/audit-log")
     assert not has_access("pro", "/v1/operations-status")
     assert has_access("enterprise", "/v1/operations-status")
+    assert not has_access("pro", "/v1/launch-controls")
+    assert has_access("enterprise", "/v1/launch-controls")
     assert not has_access("pro", "/v1/customers")
     assert has_access("enterprise", "/v1/customers")
     assert not has_access("pro", "/v1/customers/revoke")
@@ -275,7 +488,19 @@ def test_v1_operations_status_contract():
     assert payload["status"] in {"ready", "beta_watch"}
     assert isinstance(payload["blocking_issues"], list)
     assert "readiness" in payload
+    assert "launch_controls" in payload["readiness"]
     assert isinstance(payload["files"], list)
+
+
+def test_v1_launch_controls_contract():
+    payload = build_launch_controls()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "launch_controls"
+    assert "billing_ready" in payload["controls"]
+    assert "terms_ready" in payload["controls"]
+    assert "paid_customers_allowed" in payload["controls"]
 
 
 def test_v1_audit_log_contract(tmp_path, monkeypatch):
@@ -381,6 +606,17 @@ def test_main_app_exposes_v1_core_routes():
 
     assert "/v1/terminal-summary" in paths
     assert "/v1/dashboard-snapshot" in paths
+    assert "/v1/data-trust-status" in paths
+    assert "/v1/trust-remediation-plan" in paths
+    assert "/v1/provider-connector-readiness" in paths
+    assert "/v1/provider-connector-upgrade-plan" in paths
+    assert "/v1/market-pulse" in paths
+    assert "/v1/market-pulse-history" in paths
+    assert "/v1/market-pulse/snapshot" in paths
+    assert "/v1/market-pulse-brief" in paths
+    assert "/v1/market-pulse-brief/save" in paths
+    assert "/v1/provider-risk-radar" in paths
+    assert "/v1/daily-change-brief" in paths
     assert "/v1/api-catalog" in paths
     assert "/v1/access-status" in paths
     assert "/v1/plan-limits" in paths
@@ -395,6 +631,7 @@ def test_main_app_exposes_v1_core_routes():
     assert "/v1/commercial-board-report/save" in paths
     assert "/v1/audit-log" in paths
     assert "/v1/operations-status" in paths
+    assert "/v1/launch-controls" in paths
     assert "/v1/customers" in paths
     assert "/v1/customers/revoke" in paths
     assert "/v1/customers/reactivate" in paths

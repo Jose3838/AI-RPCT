@@ -89,6 +89,7 @@ python analytics/terminal_risk_score.py
 python analytics/executive_ai_infrastructure_memo.py
 python analytics/live_data_quality_score.py
 python analytics/terminal_trend_history.py
+python analytics/market_pulse_snapshot.py
 python analytics/provider_market_share_history.py
 python analytics/market_intelligence_snapshot.py
 python analytics/gpu_price_volatility.py

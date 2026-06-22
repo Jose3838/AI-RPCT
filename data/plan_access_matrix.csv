@@ -1,6 +1,17 @@
 endpoint,free,pro,enterprise
 /v1/terminal-summary,true,true,true
 /v1/dashboard-snapshot,true,true,true
+/v1/data-trust-status,true,true,true
+/v1/trust-remediation-plan,true,true,true
+/v1/provider-connector-readiness,true,true,true
+/v1/provider-connector-upgrade-plan,true,true,true
+/v1/market-pulse,true,true,true
+/v1/market-pulse-history,false,true,true
+/v1/market-pulse/snapshot,false,true,true
+/v1/market-pulse-brief,false,true,true
+/v1/market-pulse-brief/save,false,true,true
+/v1/provider-risk-radar,false,true,true
+/v1/daily-change-brief,false,true,true
 /v1/api-catalog,true,true,true
 /v1/access-status,true,true,true
 /v1/plan-limits,true,true,true
@@ -15,6 +26,7 @@ endpoint,free,pro,enterprise
 /v1/commercial-board-report/save,false,false,true
 /v1/audit-log,false,false,true
 /v1/operations-status,false,false,true
+/v1/launch-controls,false,false,true
 /v1/customers,false,false,true
 /v1/customers/revoke,false,false,true
 /v1/customers/reactivate,false,false,true
