@@ -176,6 +176,12 @@ def test_v1_provider_connector_readiness_contract():
     assert isinstance(payload["providers"], list)
     if payload["providers"]:
         provider = payload["providers"][0]
+        assert "preflight_readiness" in provider
+        assert "ingestion_status" in provider
+        assert "used_fallback" in provider
+    assert isinstance(payload["providers"], list)
+    if payload["providers"]:
+        provider = payload["providers"][0]
         assert "provider" in provider
         assert "readiness" in provider
         assert "next_action" in provider

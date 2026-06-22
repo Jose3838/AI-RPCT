@@ -981,6 +981,8 @@ def build_provider_connector_readiness():
     credentials = read_records(DATA_DIR / "provider_credentials.csv")
     provider_health = read_records(DATA_DIR / "provider_health.csv")
     comparison = read_records(DATA_DIR / "provider_comparison.csv")
+    preflight = read_records(DATA_DIR / "provider_preflight.csv")
+    ingestion_status = read_records(DATA_DIR / "live_provider_ingestion_status.csv")
 
     credentials_by_provider = {
         normalize_provider_name(row.get("provider")): as_bool(row.get("configured"))
@@ -994,6 +996,14 @@ def build_provider_connector_readiness():
         normalize_provider_name(row.get("provider")): row
         for row in comparison
     }
+    preflight_by_provider = {
+        normalize_provider_name(row.get("provider")): row
+        for row in preflight
+    }
+    ingestion_by_provider = {
+        normalize_provider_name(row.get("provider")): row
+        for row in ingestion_status
+    }
 
     provider_sources = [
         row for row in sources
@@ -1006,12 +1016,25 @@ def build_provider_connector_readiness():
         source_status = str(source.get("status", "")).lower()
         health = health_by_provider.get(provider_key, {})
         comparison_row = comparison_by_provider.get(provider_key, {})
+        preflight_row = preflight_by_provider.get(provider_key, {})
+        ingestion_row = ingestion_by_provider.get(provider_key, {})
         credential_configured = credentials_by_provider.get(provider_key, False)
+        if preflight_row:
+            credential_configured = as_bool(preflight_row.get("credential_configured"))
         freshness_hours = as_float(health.get("freshness_hours"), 999.0)
         live_rows = as_float(health.get("rows"))
         offers = as_float(comparison_row.get("offers"))
+        ingestion_value = str(ingestion_row.get("status", preflight_row.get("ingestion_status", "unknown"))).lower()
+        used_fallback = as_bool(ingestion_row.get("used_fallback", preflight_row.get("used_fallback")))
+        preflight_readiness = str(preflight_row.get("readiness", "unknown")).lower()
 
-        if source_status == "live_external" and freshness_hours <= 24 and live_rows > 0:
+        if preflight_readiness == "blocked":
+            readiness = "blocked_by_preflight"
+            next_action = preflight_row.get("next_action", "fix_provider_preflight")
+        elif used_fallback or ingestion_value == "fallback":
+            readiness = "fallback_only"
+            next_action = "restore_fresh_live_ingestion"
+        elif ingestion_value == "fresh" and freshness_hours <= 24 and live_rows > 0:
             readiness = "verified_live"
             next_action = "maintain_connector"
         elif source_status == "placeholder" and live_rows > 0:
@@ -1035,6 +1058,9 @@ def build_provider_connector_readiness():
             "source": source.get("source"),
             "source_status": source_status,
             "credential_configured": credential_configured,
+            "preflight_readiness": preflight_readiness,
+            "ingestion_status": ingestion_value,
+            "used_fallback": used_fallback,
             "readiness": readiness,
             "next_action": next_action,
             "freshness_hours": freshness_hours,
@@ -1073,6 +1099,8 @@ def connector_upgrade_priority(provider):
     rows = as_float(provider.get("rows"))
 
     readiness_weight = {
+        "blocked_by_preflight": 96.0,
+        "fallback_only": 90.0,
         "placeholder": 88.0,
         "placeholder_with_rows": 82.0,
         "stale_live_data": 72.0,
