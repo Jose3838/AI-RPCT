@@ -70,6 +70,7 @@ These endpoints are the product surface we should protect first:
 - `/v1/access-status`
 - `/v1/plan-limits`
 - `/v1/usage-summary`
+- `/v1/commercial-snapshot`
 - `/v1/reports/latest`
 - `/v1/signals`
 - `/v1/recommendations`
@@ -164,6 +165,13 @@ Plan limits are enforced on authenticated V1 endpoints:
 - Free: 50 requests/day, 1,000 requests/month
 - Pro: 10,000 requests/day, 250,000 requests/month
 - Enterprise: 1,000,000 requests/day, 10,000,000 requests/month
+
+Enterprise commercial snapshot:
+
+```bash
+curl -H "x-api-key: demo-enterprise-key" \
+  "http://127.0.0.1:8000/v1/commercial-snapshot"
+```
 
 ## Current Caveats
 

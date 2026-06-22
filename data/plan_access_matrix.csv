@@ -5,6 +5,7 @@ endpoint,free,pro,enterprise
 /v1/access-status,true,true,true
 /v1/plan-limits,true,true,true
 /v1/usage-summary,false,true,true
+/v1/commercial-snapshot,false,false,true
 /v1/reports/latest,false,true,true
 /v1/signals,true,true,true
 /v1/recommendations,false,true,true

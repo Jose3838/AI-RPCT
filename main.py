@@ -16,6 +16,7 @@ from intelligence.reports.customer_report_pdf_export_v1 import (
 
 from api.routes import router
 from api.auth_routes import router as auth_router
+from api.commercial_core import build_commercial_snapshot
 from api.terminal_core import (
     build_api_catalog,
     build_dashboard_snapshot,
@@ -75,6 +76,12 @@ def v1_plan_limits():
 def v1_usage_summary(x_api_key: str = Header(default=None)):
     require_v1_access("/v1/usage-summary", x_api_key)
     return build_usage_summary(x_api_key)
+
+
+@app.get("/v1/commercial-snapshot")
+def v1_commercial_snapshot(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/commercial-snapshot", x_api_key)
+    return build_commercial_snapshot()
 
 
 @app.get("/v1/reports/latest")

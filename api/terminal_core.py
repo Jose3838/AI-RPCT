@@ -479,6 +479,12 @@ def build_api_catalog():
             "tier": "pro"
         },
         {
+            "endpoint": "/v1/commercial-snapshot",
+            "category": "commercial",
+            "description": "Enterprise commercial dashboard with accounts, usage, limits, MRR and upgrade signals.",
+            "tier": "enterprise"
+        },
+        {
             "endpoint": "/v1/signals",
             "category": "intelligence",
             "description": "Decision signals generated from live market, price, scarcity and provider data.",

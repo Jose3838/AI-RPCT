@@ -181,6 +181,57 @@ function renderPaidLocked() {
   renderRecommendations([]);
 }
 
+function renderCommercialLocked(message = "Enterprise key required.") {
+  setText("commercialAccounts", "Locked");
+  setText("commercialMrr", "Locked");
+  setText("commercialArr", "Locked");
+  setText("commercialUsage", "Locked");
+
+  const el = document.getElementById("commercialAccountsList");
+  if (el) {
+    el.innerHTML = `<div class="text-sm text-slate-500">${message}</div>`;
+  }
+}
+
+function renderCommercialSnapshot(snapshot) {
+  const summary = snapshot.summary || {};
+  const accounts = snapshot.accounts || [];
+
+  setText("commercialAccounts", number(summary.active_accounts, 0));
+  setText("commercialMrr", money(summary.mrr_usd));
+  setText("commercialArr", money(summary.annual_run_rate_usd));
+  setText("commercialUsage", number(summary.usage_total, 0));
+
+  const el = document.getElementById("commercialAccountsList");
+  if (!el) {
+    return;
+  }
+
+  el.innerHTML = accounts.map((account) => {
+    const limits = account.limits || {};
+    const plan = String(account.plan || "unknown").toUpperCase();
+    const usage = account.usage || {};
+
+    return `
+      <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <div>
+            <div class="text-sm font-semibold text-slate-100">${value(account, "customer_name", "Unknown customer")}</div>
+            <div class="text-xs text-slate-500 mt-1">${plan} / ${value(account, "upgrade_signal", "none")}</div>
+          </div>
+          <div class="text-sm text-slate-300">
+            ${money(account.monthly_price_usd)} MRR / ${number(usage.total_calls, 0)} calls
+          </div>
+        </div>
+        <div class="text-xs text-slate-500 mt-3">
+          Daily ${number(limits.daily_calls, 0)}/${number((limits.limits || {}).requests_per_day, 0)}
+          | Monthly ${number(limits.monthly_calls, 0)}/${number((limits.limits || {}).requests_per_month, 0)}
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
 function setCustomerReportLink(enabled) {
   const link = document.getElementById("customerReportLink");
   if (!link) {
@@ -277,12 +328,20 @@ async function loadPaidData() {
       const recommendations = await getJson("/v1/recommendations", activeApiKey);
       renderRecommendations(recommendations.recommendations || []);
     }
+
+    if ((status.allowed_endpoints || []).includes("/v1/commercial-snapshot")) {
+      const commercial = await getJson("/v1/commercial-snapshot", activeApiKey);
+      renderCommercialSnapshot(commercial);
+    } else {
+      renderCommercialLocked("Enterprise key required for commercial metrics.");
+    }
   } catch (error) {
     console.error(error);
     localStorage.removeItem("airpct_api_key");
     activeApiKey = "";
     updateAccessPanel({ authenticated: false, plan: null }, null);
     renderPaidLocked();
+    renderCommercialLocked();
   }
 }
 
@@ -385,6 +444,7 @@ function applySnapshot(snapshot) {
   updateGpuTrendChart(snapshot.gpu_watchlist || []);
   renderSignals(snapshot.signals || []);
   renderPaidLocked();
+  renderCommercialLocked();
   renderAlerts(snapshot.alerts || []);
 
   setTable("#providerHealth", snapshot.provider_health || [], [
