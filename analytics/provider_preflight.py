@@ -11,11 +11,30 @@ REQUIRED_PROVIDERS = [
     {"provider": "runpod", "env_key": "RUNPOD_API_KEY"},
 ]
 
+PLACEHOLDER_VALUES = {
+    "",
+    "changeme",
+    "change_me",
+    "placeholder",
+    "dein_key_hier",
+    "dein_runpod_key",
+    "your_key_here",
+}
+
 
 def as_bool(value):
     if isinstance(value, bool):
         return value
     return str(value).strip().lower() in {"true", "1", "yes"}
+
+
+def is_configured_secret(value):
+    if value is None:
+        return False
+    normalized = str(value).strip()
+    if normalized.lower() in PLACEHOLDER_VALUES:
+        return False
+    return len(normalized) >= 8
 
 
 def read_records(path):
@@ -39,7 +58,7 @@ def build_provider_preflight(env=None, ingestion_rows=None):
     for provider in REQUIRED_PROVIDERS:
         name = provider["provider"]
         env_key = provider["env_key"]
-        configured = bool(env.get(env_key))
+        configured = is_configured_secret(env.get(env_key))
         ingestion = ingestion_by_provider.get(name, {})
         ingestion_status = ingestion.get("status", "not_run")
         used_fallback = as_bool(ingestion.get("used_fallback"))
@@ -63,6 +82,7 @@ def build_provider_preflight(env=None, ingestion_rows=None):
             "provider": name,
             "env_key": env_key,
             "credential_configured": configured,
+            "credential_status": "configured" if configured else "missing_or_placeholder",
             "ingestion_status": ingestion_status,
             "used_fallback": used_fallback,
             "readiness": readiness,

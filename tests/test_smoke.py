@@ -72,10 +72,12 @@ from analytics.core_intelligence_readiness import (
 )
 from analytics.provider_preflight import (
     build_provider_preflight,
+    is_configured_secret,
     summarize_provider_preflight,
 )
 from scripts.core_status import build_action_plan, build_core_status
 from scripts.history_backfill_plan import build_history_backfill_plan
+from scripts.provider_env_check import build_provider_env_check
 from snapshot_scheduler import run_scheduled_snapshot
 from security.limits import build_limit_status
 from security.entitlements import has_access
@@ -87,6 +89,7 @@ def test_core_files_exist():
     assert Path("run_daily.sh").exists()
     assert Path("scripts/run_core_intelligence.sh").exists()
     assert Path("scripts/core_status.py").exists()
+    assert Path("scripts/provider_env_check.py").exists()
     assert Path("scripts/history_backfill_plan.py").exists()
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert Path("analytics/market_pulse_snapshot.py").exists()
@@ -637,9 +640,16 @@ def test_provider_preflight_blocks_missing_keys_and_fallback():
     assert "missing_api_key" in preflight.iloc[0]["blockers"]
 
 
+def test_provider_secret_validation_rejects_placeholders():
+    assert not is_configured_secret("")
+    assert not is_configured_secret("DEIN_KEY_HIER")
+    assert not is_configured_secret("placeholder")
+    assert is_configured_secret("realistic_test_key_123")
+
+
 def test_provider_preflight_allows_fresh_configured():
     preflight = build_provider_preflight(
-        env={"VAST_API_KEY": "set", "RUNPOD_API_KEY": "set"},
+        env={"VAST_API_KEY": "realistic_vast_test_key", "RUNPOD_API_KEY": "realistic_runpod_test_key"},
         ingestion_rows=[
             {"provider": "vast", "status": "fresh", "used_fallback": False},
             {"provider": "runpod", "status": "fresh", "used_fallback": False},
@@ -650,6 +660,19 @@ def test_provider_preflight_allows_fresh_configured():
     assert set(preflight["readiness"]) == {"ready"}
     assert summary["paid_reliability_claims_allowed"] is True
     assert summary["ready_count"] == 2
+
+
+def test_provider_env_check_contract():
+    payload = build_provider_env_check({
+        "VAST_API_KEY": "realistic_test_key_123",
+        "RUNPOD_API_KEY": "",
+    })
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["configured_count"] == 1
+    assert not payload["all_required_configured"]
+    assert "providers" in payload
+    assert "realistic_test_key_123" not in str(payload)
 
 
 def test_v1_recommendations_contract():

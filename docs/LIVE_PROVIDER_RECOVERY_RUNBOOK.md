@@ -14,6 +14,7 @@ AI-RPCT should not make paid provider reliability claims while the core readines
 Run:
 
 ```bash
+venv/bin/python scripts/provider_env_check.py
 ./scripts/run_core_intelligence.sh
 venv/bin/python scripts/core_status.py
 ```
