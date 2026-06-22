@@ -54,6 +54,7 @@ PYTHONPATH=. venv/bin/pytest tests
 ./scripts/run_core_intelligence.sh
 venv/bin/python scripts/core_status.py
 venv/bin/python scripts/provider_env_check.py
+venv/bin/python scripts/secret_hygiene_check.py
 venv/bin/python scripts/history_backfill_plan.py
 venv/bin/python snapshot_scheduler.py
 venv/bin/python database/db_status.py

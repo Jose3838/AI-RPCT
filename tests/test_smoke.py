@@ -78,6 +78,7 @@ from analytics.provider_preflight import (
 from scripts.core_status import build_action_plan, build_core_status
 from scripts.history_backfill_plan import build_history_backfill_plan
 from scripts.provider_env_check import build_provider_env_check
+from scripts.secret_hygiene_check import build_secret_hygiene_check
 from snapshot_scheduler import run_scheduled_snapshot
 from security.limits import build_limit_status
 from security.entitlements import has_access
@@ -90,6 +91,7 @@ def test_core_files_exist():
     assert Path("scripts/run_core_intelligence.sh").exists()
     assert Path("scripts/core_status.py").exists()
     assert Path("scripts/provider_env_check.py").exists()
+    assert Path("scripts/secret_hygiene_check.py").exists()
     assert Path("scripts/history_backfill_plan.py").exists()
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert Path("analytics/market_pulse_snapshot.py").exists()
@@ -675,6 +677,15 @@ def test_provider_env_check_contract():
     assert not payload["all_required_configured"]
     assert "providers" in payload
     assert "realistic_test_key_123" not in str(payload)
+
+
+def test_secret_hygiene_check_contract():
+    payload = build_secret_hygiene_check()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["env_ignored"]
+    assert not payload["env_example_has_secret_values"]
+    assert payload["status"] == "ok"
 
 
 def test_v1_recommendations_contract():
