@@ -9,6 +9,7 @@ endpoint,free,pro,enterprise
 /v1/sales-pipeline,false,false,true
 /v1/customer-admin,false,false,true
 /v1/account-health,false,false,true
+/v1/revenue-forecast,false,false,true
 /v1/audit-log,false,false,true
 /v1/customers,false,false,true
 /v1/customers/revoke,false,false,true

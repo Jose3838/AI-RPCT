@@ -503,6 +503,12 @@ def build_api_catalog():
             "tier": "enterprise"
         },
         {
+            "endpoint": "/v1/revenue-forecast",
+            "category": "commercial",
+            "description": "Enterprise revenue forecast combining current MRR, pipeline lift and account health risk.",
+            "tier": "enterprise"
+        },
+        {
             "endpoint": "/v1/audit-log",
             "category": "commercial",
             "description": "Enterprise audit trail for customer and API-key administration actions.",

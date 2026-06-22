@@ -311,3 +311,46 @@ def build_account_health_snapshot():
         },
         "accounts": accounts,
     }
+
+
+def build_revenue_forecast():
+    commercial = build_commercial_snapshot()
+    pipeline = build_sales_pipeline()
+    health = build_account_health_snapshot()
+
+    current_mrr = commercial["summary"]["mrr_usd"]
+    pipeline_lift = pipeline["summary"]["estimated_mrr_lift_usd"]
+    at_risk_accounts = [
+        account for account in health["accounts"]
+        if account.get("health") == "at_risk"
+    ]
+    at_risk_mrr = sum(
+        account.get("monthly_price_usd", 0)
+        for account in commercial["accounts"]
+        if account.get("account_id") in {
+            item.get("account_id") for item in at_risk_accounts
+        }
+    )
+    conservative_mrr = max(current_mrr + (pipeline_lift * 0.25) - at_risk_mrr, 0)
+    expected_mrr = max(current_mrr + (pipeline_lift * 0.5) - (at_risk_mrr * 0.5), 0)
+    best_case_mrr = current_mrr + pipeline_lift
+
+    return {
+        "product": "AI-RPCT",
+        "version": "v1",
+        "report_type": "revenue_forecast",
+        "summary": {
+            "current_mrr_usd": current_mrr,
+            "current_arr_usd": current_mrr * 12,
+            "pipeline_mrr_lift_usd": pipeline_lift,
+            "at_risk_mrr_usd": at_risk_mrr,
+            "conservative_mrr_usd": conservative_mrr,
+            "expected_mrr_usd": expected_mrr,
+            "best_case_mrr_usd": best_case_mrr,
+            "expected_arr_usd": expected_mrr * 12,
+        },
+        "drivers": {
+            "pipeline": pipeline["summary"],
+            "health": health["summary"],
+        },
+    }

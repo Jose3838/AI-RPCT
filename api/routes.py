@@ -7,6 +7,7 @@ from api.commercial_core import (
     build_account_health_snapshot,
     build_commercial_snapshot,
     build_customer_admin_snapshot,
+    build_revenue_forecast,
     build_sales_pipeline,
 )
 from api.onboarding_core import (
@@ -97,6 +98,12 @@ def v1_customer_admin(x_api_key: str = Header(default=None)):
 def v1_account_health(x_api_key: str = Header(default=None)):
     require_v1_access("/v1/account-health", x_api_key)
     return build_account_health_snapshot()
+
+
+@router.get("/v1/revenue-forecast")
+def v1_revenue_forecast(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/revenue-forecast", x_api_key)
+    return build_revenue_forecast()
 
 
 @router.get("/v1/audit-log")

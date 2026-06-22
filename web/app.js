@@ -186,6 +186,10 @@ function renderCommercialLocked(message = "Enterprise key required.") {
   setText("commercialMrr", "Locked");
   setText("commercialArr", "Locked");
   setText("commercialUsage", "Locked");
+  setText("forecastPipeline", "Locked");
+  setText("forecastRisk", "Locked");
+  setText("forecastExpectedMrr", "Locked");
+  setText("forecastExpectedArr", "Locked");
 
   const el = document.getElementById("commercialAccountsList");
   if (el) {
@@ -368,6 +372,15 @@ function renderAccountHealth(payload) {
   }).join("");
 }
 
+function renderRevenueForecast(payload) {
+  const summary = payload.summary || {};
+
+  setText("forecastPipeline", money(summary.pipeline_mrr_lift_usd));
+  setText("forecastRisk", money(summary.at_risk_mrr_usd));
+  setText("forecastExpectedMrr", money(summary.expected_mrr_usd));
+  setText("forecastExpectedArr", money(summary.expected_arr_usd));
+}
+
 function setCustomerReportLink(enabled) {
   const link = document.getElementById("customerReportLink");
   if (!link) {
@@ -474,6 +487,8 @@ async function loadPaidData() {
       renderCustomerAdmin(customerAdmin);
       const accountHealth = await getJson("/v1/account-health", activeApiKey);
       renderAccountHealth(accountHealth);
+      const revenueForecast = await getJson("/v1/revenue-forecast", activeApiKey);
+      renderRevenueForecast(revenueForecast);
       const auditLog = await getJson("/v1/audit-log", activeApiKey);
       renderAuditLog(auditLog);
     } else {

@@ -74,6 +74,7 @@ These endpoints are the product surface we should protect first:
 - `/v1/sales-pipeline`
 - `/v1/customer-admin`
 - `/v1/account-health`
+- `/v1/revenue-forecast`
 - `/v1/audit-log`
 - `/v1/customers`
 - `/v1/customers/revoke`
@@ -187,6 +188,9 @@ curl -H "x-api-key: demo-enterprise-key" \
 
 curl -H "x-api-key: demo-enterprise-key" \
   "http://127.0.0.1:8000/v1/account-health"
+
+curl -H "x-api-key: demo-enterprise-key" \
+  "http://127.0.0.1:8000/v1/revenue-forecast"
 
 curl -H "x-api-key: demo-enterprise-key" \
   "http://127.0.0.1:8000/v1/audit-log"
