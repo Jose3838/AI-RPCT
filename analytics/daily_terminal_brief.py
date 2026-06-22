@@ -33,6 +33,7 @@ scarcity = read_latest("data/gpu_scarcity_index.csv")
 forecast = read_latest("data/forecast_signal.csv")
 quality = read_latest("data/core_signal_quality.csv")
 reliability = read_first("data/provider_reliability_ranking.csv")
+reliability_gaps = read_table("data/provider_reliability_gaps.csv")
 watchlist = read_table("data/gpu_watchlist_intelligence.csv")
 
 top_watch = (
@@ -44,6 +45,11 @@ watchlist_text = (
     top_watch[["gpu", "category", "offers", "avg_price", "min_price", "max_price"]].to_string(index=False)
     if not top_watch.empty
     else "No GPU watchlist data available."
+)
+top_gaps = (
+    reliability_gaps.head(5)[["provider", "priority", "gap", "recommended_action"]].to_string(index=False)
+    if not reliability_gaps.empty
+    else "No provider reliability gaps available."
 )
 
 brief = f"""
@@ -60,6 +66,9 @@ Capacity Forecast Score: {forecast.get('forecast_score', 'n/a')} ({forecast.get(
 Provider Reliability Leader: {reliability.get('provider', 'n/a')} ({reliability.get('reliability_score', 'n/a')})
 Core Signal Quality: {quality.get('core_signal_quality_score', 'n/a')} ({quality.get('quality_band', 'n/a')})
 Signal Blockers: {quality.get('blockers', 'n/a')}
+
+Top Provider Reliability Gaps:
+{top_gaps}
 
 Frontier GPU Index: {frontier.get('frontier_gpu_index', 'n/a')}
 Frontier Offers: {frontier.get('frontier_offers', 'n/a')}

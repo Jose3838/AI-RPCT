@@ -33,8 +33,14 @@ scarcity = read_latest("data/gpu_scarcity_index.csv")
 forecast = read_latest("data/forecast_signal.csv")
 quality = read_latest("data/core_signal_quality.csv")
 reliability = read_first("data/provider_reliability_ranking.csv")
+reliability_gaps = read_table("data/provider_reliability_gaps.csv")
 category = read_table("data/gpu_category_index.csv")
 category_text = category.to_string(index=False) if not category.empty else "No GPU category data available."
+top_gaps = (
+    reliability_gaps.head(5)[["provider", "priority", "gap", "recommended_action"]].to_string(index=False)
+    if not reliability_gaps.empty
+    else "No provider reliability gaps available."
+)
 
 memo = f"""
 AI-RPCT Executive AI Infrastructure Memo
@@ -55,6 +61,9 @@ Top Provider Reliability: {reliability.get('provider', 'n/a')} ({reliability.get
 Core Signal Quality: {quality.get('core_signal_quality_score', 'n/a')} ({quality.get('quality_band', 'n/a')})
 Paid Beta Signal Ready: {quality.get('paid_beta_signal_ready', 'n/a')}
 Signal Blockers: {quality.get('blockers', 'n/a')}
+
+Top Provider Reliability Gaps:
+{top_gaps}
 
 Frontier GPU Index: {frontier.get('frontier_gpu_index', 'n/a')}
 Frontier Offers: {frontier.get('frontier_offers', 'n/a')}

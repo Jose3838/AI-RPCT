@@ -107,6 +107,7 @@ def build_market_signals():
     scarcity = read_records(DATA_DIR / "scarcity_watchlist.csv")
     provider_health = read_records(DATA_DIR / "provider_health.csv")
     provider_reliability = read_records(DATA_DIR / "provider_reliability_ranking.csv")
+    provider_reliability_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv")
 
     signals = []
     risk_score = as_float(risk.get("terminal_risk_score"))
@@ -290,6 +291,29 @@ def build_market_signals():
                     for row in weak_providers[:5]
                 ],
                 "count": len(weak_providers),
+            }
+        ))
+
+    high_provider_gaps = [
+        row for row in provider_reliability_gaps
+        if row.get("priority") == "high"
+    ]
+    if high_provider_gaps:
+        signals.append(make_signal(
+            "provider_reliability_gaps",
+            "high",
+            "Provider reliability gaps require action",
+            "The provider reliability layer has high-priority gaps that should be fixed before relying on paid customer claims.",
+            {
+                "gaps": [
+                    {
+                        "provider": row.get("provider"),
+                        "gap": row.get("gap"),
+                        "recommended_action": row.get("recommended_action"),
+                    }
+                    for row in high_provider_gaps[:5]
+                ],
+                "count": len(high_provider_gaps),
             }
         ))
 
