@@ -26,6 +26,11 @@ from intelligence.reports.customer_report_pdf_export_v1 import (
     build_customer_report_payload,
     save_customer_report,
 )
+from intelligence.reports.commercial_board_export_v1 import (
+    build_commercial_board_html,
+    build_commercial_board_payload,
+    save_commercial_board_report,
+)
 
 from api.terminal_core import (
     build_api_catalog,
@@ -104,6 +109,24 @@ def v1_account_health(x_api_key: str = Header(default=None)):
 def v1_revenue_forecast(x_api_key: str = Header(default=None)):
     require_v1_access("/v1/revenue-forecast", x_api_key)
     return build_revenue_forecast()
+
+
+@router.get("/v1/commercial-board-report")
+def v1_commercial_board_report(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/commercial-board-report", x_api_key)
+    return build_commercial_board_payload()
+
+
+@router.get("/v1/commercial-board-report/html", response_class=HTMLResponse)
+def v1_commercial_board_report_html(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/commercial-board-report/html", x_api_key)
+    return build_commercial_board_html()
+
+
+@router.post("/v1/commercial-board-report/save")
+def v1_save_commercial_board_report(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/commercial-board-report/save", x_api_key)
+    return save_commercial_board_report()
 
 
 @router.get("/v1/audit-log")

@@ -16,6 +16,10 @@ from intelligence.reports.customer_report_pdf_export_v1 import (
     build_customer_report_html,
     build_customer_report_payload,
 )
+from intelligence.reports.commercial_board_export_v1 import (
+    build_commercial_board_html,
+    build_commercial_board_payload,
+)
 from api.access import (
     build_access_status,
     build_plan_limits,
@@ -130,6 +134,9 @@ def test_v1_plan_access_contract():
     assert has_access("enterprise", "/v1/account-health")
     assert not has_access("pro", "/v1/revenue-forecast")
     assert has_access("enterprise", "/v1/revenue-forecast")
+    assert not has_access("pro", "/v1/commercial-board-report")
+    assert has_access("enterprise", "/v1/commercial-board-report")
+    assert has_access("enterprise", "/v1/commercial-board-report/html")
     assert not has_access("pro", "/v1/audit-log")
     assert has_access("enterprise", "/v1/audit-log")
     assert not has_access("pro", "/v1/customers")
@@ -240,6 +247,20 @@ def test_v1_revenue_forecast_contract():
     assert payload["summary"]["expected_arr_usd"] == payload["summary"]["expected_mrr_usd"] * 12
     assert "pipeline" in payload["drivers"]
     assert "health" in payload["drivers"]
+
+
+def test_commercial_board_export_contract():
+    payload = build_commercial_board_payload()
+    html = build_commercial_board_html()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "commercial_board_export"
+    assert "commercial" in payload
+    assert "forecast" in payload
+    assert "markdown" in payload
+    assert "<html" in html
+    assert "Commercial Board Report" in html
 
 
 def test_v1_audit_log_contract(tmp_path, monkeypatch):
@@ -354,6 +375,9 @@ def test_main_app_exposes_v1_core_routes():
     assert "/v1/customer-admin" in paths
     assert "/v1/account-health" in paths
     assert "/v1/revenue-forecast" in paths
+    assert "/v1/commercial-board-report" in paths
+    assert "/v1/commercial-board-report/html" in paths
+    assert "/v1/commercial-board-report/save" in paths
     assert "/v1/audit-log" in paths
     assert "/v1/customers" in paths
     assert "/v1/customers/revoke" in paths

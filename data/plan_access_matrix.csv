@@ -10,6 +10,9 @@ endpoint,free,pro,enterprise
 /v1/customer-admin,false,false,true
 /v1/account-health,false,false,true
 /v1/revenue-forecast,false,false,true
+/v1/commercial-board-report,false,false,true
+/v1/commercial-board-report/html,false,false,true
+/v1/commercial-board-report/save,false,false,true
 /v1/audit-log,false,false,true
 /v1/customers,false,false,true
 /v1/customers/revoke,false,false,true

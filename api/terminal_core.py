@@ -509,6 +509,18 @@ def build_api_catalog():
             "tier": "enterprise"
         },
         {
+            "endpoint": "/v1/commercial-board-report",
+            "category": "reports",
+            "description": "Enterprise commercial board report payload with revenue, pipeline and account health.",
+            "tier": "enterprise"
+        },
+        {
+            "endpoint": "/v1/commercial-board-report/html",
+            "category": "reports",
+            "description": "PDF-ready HTML version of the enterprise commercial board report.",
+            "tier": "enterprise"
+        },
+        {
             "endpoint": "/v1/audit-log",
             "category": "commercial",
             "description": "Enterprise audit trail for customer and API-key administration actions.",

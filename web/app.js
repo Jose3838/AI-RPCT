@@ -383,18 +383,30 @@ function renderRevenueForecast(payload) {
 
 function setCustomerReportLink(enabled) {
   const link = document.getElementById("customerReportLink");
-  if (!link) {
-    return;
-  }
-
-  if (!enabled || !activeApiKey) {
+  if (link && (!enabled || !activeApiKey)) {
     link.classList.add("hidden");
     link.removeAttribute("href");
     return;
   }
 
-  link.href = "#";
-  link.classList.remove("hidden");
+  if (link) {
+    link.href = "#";
+    link.classList.remove("hidden");
+  }
+
+  const boardLink = document.getElementById("commercialBoardReportLink");
+  if (!boardLink) {
+    return;
+  }
+
+  if (!enabled || !activeApiKey) {
+    boardLink.classList.add("hidden");
+    boardLink.removeAttribute("href");
+    return;
+  }
+
+  boardLink.href = "#";
+  boardLink.classList.remove("hidden");
 }
 
 async function openCustomerReport() {
@@ -409,6 +421,24 @@ async function openCustomerReport() {
 
   if (!res.ok) {
     throw new Error("Customer report export failed");
+  }
+
+  const html = await res.text();
+  const blob = new Blob([html], { type: "text/html" });
+  window.open(URL.createObjectURL(blob), "_blank", "noopener,noreferrer");
+}
+
+async function openCommercialBoardReport() {
+  if (!activeApiKey) {
+    return;
+  }
+
+  const res = await fetch(`${API}/v1/commercial-board-report/html`, {
+    headers: { "x-api-key": activeApiKey }
+  });
+
+  if (!res.ok) {
+    throw new Error("Commercial board report export failed");
   }
 
   const html = await res.text();
@@ -681,6 +711,17 @@ document.addEventListener("DOMContentLoaded", () => {
       openCustomerReport().catch((error) => {
         console.error(error);
         setText("accessSummary", "Customer report export failed for this key.");
+      });
+    });
+  }
+
+  const boardReportLink = document.getElementById("commercialBoardReportLink");
+  if (boardReportLink) {
+    boardReportLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      openCommercialBoardReport().catch((error) => {
+        console.error(error);
+        setText("accessSummary", "Commercial board report export failed for this key.");
       });
     });
   }
