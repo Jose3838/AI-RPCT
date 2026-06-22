@@ -1,6 +1,9 @@
 #!/bin/bash
 cd ~/AI-RPCT
 source venv/bin/activate
+export PYTHONPATH="$(pwd):${PYTHONPATH}"
+export MPLCONFIGDIR="$(pwd)/.matplotlib"
+mkdir -p "$MPLCONFIGDIR"
 
 echo "=============================="
 echo "AI-RPCT DAILY RUN"

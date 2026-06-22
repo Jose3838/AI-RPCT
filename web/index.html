@@ -1,59 +1,489 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-<meta charset="utf-8">
-<title>AI-RPCT Terminal</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-body{background:#070b16;color:#f4f7fb;font-family:Arial;padding:24px}
-h1{font-size:42px;margin-bottom:4px}
-.subtitle{color:#9fb3c8;margin-bottom:18px}
-.status{color:#7CFFB2;margin-bottom:24px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-.card{background:#151b2e;border:1px solid #26324f;border-radius:14px;padding:18px}
-.kpi{font-size:34px;font-weight:bold}
-.label{color:#9fb3c8;font-size:13px}
-canvas{background:#fff;border-radius:10px;padding:10px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{border-bottom:1px solid #26324f;padding:8px;text-align:left}
-th{color:#9fb3c8}
-a{color:#7cb7ff}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-RPCT Terminal - Bloomberg-Style Intelligence</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f35 100%);
+            color: #f1f5f9;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .terminal-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(51, 65, 85, 0.3));
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .terminal-card:hover {
+            border-color: rgba(148, 163, 184, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #60a5fa, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-operational {
+            background: rgba(16, 185, 129, 0.1);
+            color: #86efac;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .status-warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: #fcd34d;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .header-bar {
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.4));
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 40;
+        }
+
+        .header-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #60a5fa, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        canvas {
+            max-height: 300px !important;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        th {
+            background: rgba(30, 41, 59, 0.5);
+            color: #94a3b8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .link-accent {
+            color: #60a5fa;
+            text-decoration: none;
+            transition: all 0.2s;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        .link-accent:hover {
+            color: #93c5fd;
+            border-bottom-color: #93c5fd;
+        }
+
+        .spinner-mini {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-top: 32px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, transparent);
+        }
+
+        .metric-box {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 12px;
+            padding: 20px;
+            border-top: 3px solid #3b82f6;
+        }
+
+        .fade-in {
+            animation: fade-in 0.5s ease-in-out;
+        }
+
+        .terminal-input {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            border-radius: 8px;
+            color: #f8fafc;
+            padding: 10px 12px;
+            font-size: 0.875rem;
+            outline: none;
+        }
+
+        .terminal-input:focus {
+            border-color: rgba(96, 165, 250, 0.75);
+        }
+
+        .terminal-button {
+            border-radius: 8px;
+            background: #2563eb;
+            color: #eff6ff;
+            padding: 10px 14px;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .terminal-button:hover {
+            background: #1d4ed8;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>AI-RPCT Terminal</h1>
-<div class="subtitle">Bloomberg-style intelligence for AI infrastructure risk</div>
-<div class="status" id="refreshStatus">Loading live data...</div>
+    <!-- Header -->
+    <div class="header-bar">
+        <div class="max-w-7xl mx-auto px-6 py-6">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h1 class="header-title">AI-RPCT Terminal</h1>
+                    <p class="text-sm text-slate-400 mt-1">Bloomberg-style intelligence for AI infrastructure risk</p>
+                </div>
+                <div class="text-right">
+                    <div class="status-indicator status-operational">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        Live
+                    </div>
+                    <div class="text-xs text-slate-500 mt-2" id="refreshStatus">
+                        <span class="spinner-mini"></span> Updating...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="grid">
-  <div class="card"><div class="label">AI Infrastructure Index</div><div id="aiIndex" class="kpi">...</div></div>
-  <div class="card"><div class="label">GPU Price Index</div><div id="gpuPrice" class="kpi">...</div></div>
-  <div class="card"><div class="label">Risk Score</div><div id="riskScore" class="kpi">...</div></div>
-  <div class="card"><div class="label">GPU Trend</div><div id="gpuTrend" class="kpi">...</div></div>
-  <div class="card"><div class="label">Live Providers</div><div id="providerCount" class="kpi">...</div></div>
-  <div class="card"><div class="label">Data Quality</div><div id="quality" class="kpi">...</div></div>
-</div>
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-8">
 
-<br>
+        <!-- KPI Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 fade-in">
+            <div class="metric-box">
+                <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">AI Infrastructure Index</div>
+                <div class="kpi-value mt-2" id="aiIndex">...</div>
+                <div class="text-xs text-slate-500 mt-3">Real-time market conditions</div>
+            </div>
 
-<div class="grid">
-  <div class="card"><h3>Provider Market Share</h3><canvas id="marketShareChart"></canvas></div>
-  <div class="card"><h3>Provider Health</h3><table id="providerHealth"></table></div>
-</div>
+            <div class="metric-box">
+                <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">GPU Price Index</div>
+                <div class="kpi-value mt-2" id="gpuPrice">...</div>
+                <div class="text-xs text-slate-500 mt-3">Weighted average pricing</div>
+            </div>
 
-<br>
+            <div class="metric-box">
+                <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Risk Score</div>
+                <div class="kpi-value mt-2" id="riskScore">...</div>
+                <div class="text-xs text-slate-500 mt-3">Critical risk assessment</div>
+            </div>
 
-<div class="grid">
-  <div class="card"><h3>Top Expensive GPUs</h3><table id="gpuTable"></table></div>
-  <div class="card">
-    <h3>Reports</h3>
-    <p><a href="/weekly-infrastructure-report" target="_blank">Weekly Infrastructure Report</a></p>
-    <p><a href="/investor-snapshot" target="_blank">Investor Snapshot</a></p>
-    <p><a href="/market-intelligence-snapshot" target="_blank">Market Intelligence Snapshot</a></p>
-    <p><a href="/executive-ai-memo" target="_blank">Executive AI Memo</a></p>
-  </div>
-</div>
+            <div class="metric-box">
+                <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">GPU Market Trend</div>
+                <div class="kpi-value mt-2" id="gpuTrend">...</div>
+                <div class="text-xs text-slate-500 mt-3">Supply dynamics</div>
+            </div>
 
-<script src="app.js"></script>
+            <div class="metric-box">
+                <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Active Providers</div>
+                <div class="kpi-value mt-2" id="providerCount">...</div>
+                <div class="text-xs text-slate-500 mt-3">Live market participants</div>
+            </div>
+
+            <div class="metric-box">
+                <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Data Quality Score</div>
+                <div class="kpi-value mt-2" id="quality">...</div>
+                <div class="text-xs text-slate-500 mt-3">Feed integrity</div>
+            </div>
+        </div>
+
+        <!-- API Access Console -->
+        <div class="terminal-card fade-in mb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 items-end">
+                <div class="lg:col-span-2">
+                    <h3 class="section-title text-base mb-4">API Access Console</h3>
+                    <div class="flex flex-col md:flex-row gap-3">
+                        <input id="apiKeyInput" class="terminal-input" type="password" placeholder="Enter API key, e.g. demo-pro-key or demo-enterprise-key">
+                        <button id="saveApiKey" class="terminal-button" type="button">Unlock</button>
+                    </div>
+                    <div class="text-xs text-slate-500 mt-3">Local demo keys: demo-free-key, demo-pro-key, demo-enterprise-key</div>
+                </div>
+                <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+                    <div class="text-xs uppercase tracking-wider text-slate-400">Current Plan</div>
+                    <div id="accessPlan" class="text-lg font-semibold text-slate-100 mt-2">Not authenticated</div>
+                    <div id="accessSummary" class="text-xs text-slate-400 mt-2">Paid intelligence is locked until a valid key is saved.</div>
+                    <div id="usageSummary" class="text-xs text-slate-500 mt-3"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Executive Brief -->
+        <div class="terminal-card fade-in mb-8">
+            <h3 class="section-title text-base mb-4">Executive Brief</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                <div class="lg:col-span-2">
+                    <div id="briefHeadline" class="text-xl font-semibold text-slate-100">Loading brief...</div>
+                    <div id="briefSummary" class="text-sm text-slate-300 mt-3 leading-6"></div>
+                </div>
+                <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+                    <div class="text-xs uppercase tracking-wider text-slate-400">Export</div>
+                    <div class="text-sm text-slate-300 mt-3">
+                        Enterprise exports are available through authenticated API requests.
+                    </div>
+                    <div class="text-xs text-slate-500 mt-3">
+                        Use header <code>x-api-key: demo-enterprise-key</code> for local testing.
+                    </div>
+                    <a id="customerReportLink" href="#" target="_blank" class="hidden inline-block mt-4 text-sm link-accent">Open customer report</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decision Signals -->
+        <div class="terminal-card fade-in mb-8">
+            <h3 class="section-title text-base mb-4">Decision Signals</h3>
+            <div id="signalsGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                <div class="text-sm text-slate-500">Loading signals...</div>
+            </div>
+        </div>
+
+        <div class="terminal-card fade-in mb-8">
+            <h3 class="section-title text-base mb-4">Recommended Actions</h3>
+            <div id="recommendationsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="text-sm text-slate-500">Loading recommendations...</div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 fade-in">
+            <div class="terminal-card">
+                <h3 class="section-title text-base mb-4">Provider Market Share</h3>
+                <div class="chart-container">
+                    <canvas id="marketShareChart"></canvas>
+                </div>
+            </div>
+
+            <div class="terminal-card">
+                <h3 class="section-title text-base mb-4">GPU Pricing Trends</h3>
+                <div class="chart-container">
+                    <canvas id="gpuTrendChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Provider Health & GPU Market -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 fade-in">
+            <div class="terminal-card">
+                <h3 class="section-title text-base mb-4">Provider Health Status</h3>
+                <table id="providerHealth">
+                    <thead>
+                        <tr>
+                            <th>Provider</th>
+                            <th>Status</th>
+                            <th>Rows</th>
+                            <th>Freshness</th>
+                            <th>Health</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5" class="text-center text-slate-500 py-6">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="terminal-card">
+                <h3 class="section-title text-base mb-4">Top Expensive GPUs</h3>
+                <table id="gpuTable">
+                    <thead>
+                        <tr>
+                            <th>GPU</th>
+                            <th>Offers</th>
+                            <th>Avg Price</th>
+                            <th>Min Price</th>
+                            <th>Max Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5" class="text-center text-slate-500 py-6">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Market Intelligence -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8 fade-in">
+            <div class="terminal-card lg:col-span-2">
+                <h3 class="section-title text-base mb-4">GPU Watchlist</h3>
+                <table id="watchlistTable">
+                    <thead>
+                        <tr>
+                            <th>GPU</th>
+                            <th>Category</th>
+                            <th>Offers</th>
+                            <th>Avg Price</th>
+                            <th>Range</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5" class="text-center text-slate-500 py-6">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="terminal-card">
+                <h3 class="section-title text-base mb-4">Live Alerts</h3>
+                <div id="alertsList" class="space-y-3">
+                    <div class="text-sm text-slate-500">Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="terminal-card fade-in mb-8">
+            <h3 class="section-title text-base mb-4">Provider Comparison</h3>
+            <table id="providerComparison">
+                <thead>
+                    <tr>
+                        <th>Provider</th>
+                        <th>Offers</th>
+                        <th>GPU Types</th>
+                        <th>Avg Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4" class="text-center text-slate-500 py-6">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Reports Section -->
+        <div class="terminal-card fade-in">
+            <h3 class="section-title text-base">Intelligence Reports & Exports</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <a href="/v1/reports/latest" target="_blank" class="p-4 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition border border-slate-700">
+                    <div class="text-sm font-semibold text-blue-400">Weekly Infrastructure Report</div>
+                    <div class="text-xs text-slate-500 mt-2">Comprehensive market analysis</div>
+                </a>
+                <a href="/v1/reports/latest" target="_blank" class="p-4 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition border border-slate-700">
+                    <div class="text-sm font-semibold text-blue-400">Investor Snapshot</div>
+                    <div class="text-xs text-slate-500 mt-2">Executive summary for stakeholders</div>
+                </a>
+                <a href="/v1/reports/latest" target="_blank" class="p-4 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition border border-slate-700">
+                    <div class="text-sm font-semibold text-blue-400">Market Intelligence</div>
+                    <div class="text-xs text-slate-500 mt-2">Real-time market conditions</div>
+                </a>
+                <a href="/v1/reports/latest" target="_blank" class="p-4 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition border border-slate-700">
+                    <div class="text-sm font-semibold text-blue-400">Executive Memo</div>
+                    <div class="text-xs text-slate-500 mt-2">Daily AI infrastructure brief</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-12 pt-8 border-t border-slate-700 text-center text-slate-500 text-sm">
+            <p>AI-RPCT Intelligence Terminal • Enterprise-grade AI infrastructure monitoring</p>
+            <p class="mt-2">Last refresh: <span id="lastRefresh">--:--:--</span> UTC</p>
+        </footer>
+    </main>
+
+    <script src="/web/app.js"></script>
 </body>
 </html>

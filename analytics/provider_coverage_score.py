@@ -1,7 +1,19 @@
 import pandas as pd
+from pathlib import Path
 
-vast = pd.read_csv("data/live_provider_data.csv")
-runpod = pd.read_csv("data/runpod_live_report.csv")
+def read_provider_csv(path):
+    if not path.exists() or path.stat().st_size <= 1:
+        return pd.DataFrame(columns=[
+            "provider",
+            "gpu",
+            "price_per_hour",
+            "availability",
+            "timestamp"
+        ])
+    return pd.read_csv(path)
+
+vast = read_provider_csv(Path("data/live_provider_data.csv"))
+runpod = read_provider_csv(Path("data/runpod_live_report.csv"))
 
 vast_gpus = set(vast["gpu"].dropna().unique())
 runpod_gpus = set(runpod["gpu"].dropna().unique())

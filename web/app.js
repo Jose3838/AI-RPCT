@@ -1,50 +1,471 @@
-const API="https://ai-rpct-production.up.railway.app";
-let marketChart=null;
+const API = window.location.origin;
 
-async function get(path){
-  const res=await fetch(API+path);
-  return await res.json();
+let marketShareChart = null;
+let gpuTrendChart = null;
+let activeApiKey = localStorage.getItem("airpct_api_key") || "";
+
+Chart.defaults.color = "#94a3b8";
+Chart.defaults.borderColor = "rgba(148, 163, 184, 0.1)";
+
+async function getJson(path, apiKey = "") {
+  const headers = {};
+  if (apiKey) {
+    headers["x-api-key"] = apiKey;
+  }
+
+  const res = await fetch(API + path, { headers });
+  if (!res.ok) {
+    throw new Error(`Request failed: ${path}`);
+  }
+  return res.json();
 }
 
-function table(el, rows, cols){
-  if(!rows || rows.length===0){
-    el.innerHTML="<tr><td>No data</td></tr>";
+function value(data, key, fallback = "n/a") {
+  if (!data || data[key] === undefined || data[key] === null || data[key] === "") {
+    return fallback;
+  }
+  return data[key];
+}
+
+function number(value, digits = 2) {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) {
+    return "n/a";
+  }
+  return parsed.toFixed(digits).replace(/\.00$/, "");
+}
+
+function money(value) {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) {
+    return "n/a";
+  }
+  return `$${parsed.toFixed(2)}`;
+}
+
+function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.textContent = text;
+  }
+}
+
+function setTable(selector, rows, columns, emptyText = "No data") {
+  const tbody = document.querySelector(`${selector} tbody`);
+  if (!tbody) {
     return;
   }
 
-  el.innerHTML =
-    "<tr>" + cols.map(c=>`<th>${c}</th>`).join("") + "</tr>" +
-    rows.map(r =>
-      "<tr>" + cols.map(c=>`<td>${r[c]}</td>`).join("") + "</tr>"
-    ).join("");
+  if (!rows || rows.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="${columns.length}" class="text-center text-slate-500 py-6">${emptyText}</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = rows.map((row) => `
+    <tr>
+      ${columns.map((column) => `<td>${column.render ? column.render(row) : value(row, column.key)}</td>`).join("")}
+    </tr>
+  `).join("");
 }
 
-async function load(){
-  const snap = await get("/dashboard-snapshot");
+function statusBadge(status) {
+  const online = String(status).toLowerCase() === "online";
+  const classes = online ? "status-operational" : "status-warning";
+  return `<span class="status-indicator ${classes}">${online ? "online" : value({status}, "status")}</span>`;
+}
 
-  document.getElementById("aiIndex").innerText = snap.terminal.ai_infrastructure_index;
-  document.getElementById("gpuPrice").innerText = snap.terminal.gpu_price_index;
-  document.getElementById("riskScore").innerText = snap.risk.terminal_risk_score;
-  document.getElementById("gpuTrend").innerText = snap.terminal.gpu_price_trend;
-  document.getElementById("providerCount").innerText = snap.market_share.length;
-  document.getElementById("quality").innerText = snap.quality.live_data_quality_score + "%";
+function renderAlerts(alerts) {
+  const el = document.getElementById("alertsList");
+  if (!el) {
+    return;
+  }
 
-  if(marketChart){ marketChart.destroy(); }
+  if (!alerts || alerts.length === 0) {
+    el.innerHTML = `<div class="text-sm text-slate-500">No alerts</div>`;
+    return;
+  }
 
-  marketChart = new Chart(document.getElementById("marketShareChart"),{
-    type:"doughnut",
-    data:{
-      labels:snap.market_share.map(x=>x.provider),
-      datasets:[{data:snap.market_share.map(x=>x.market_share_pct)}]
-    }
+  el.innerHTML = alerts.map((alert) => {
+    const severity = String(value(alert, "severity", "low")).toLowerCase();
+    const color = severity === "high" ? "text-red-300 border-red-500/30 bg-red-500/10" :
+      severity === "medium" ? "text-amber-300 border-amber-500/30 bg-amber-500/10" :
+      "text-emerald-300 border-emerald-500/30 bg-emerald-500/10";
+
+    return `
+      <div class="rounded-lg border ${color} p-3">
+        <div class="text-xs uppercase tracking-wider">${value(alert, "type", "alert")} / ${severity}</div>
+        <div class="text-sm mt-1">${value(alert, "message", "No alert message")}</div>
+      </div>
+    `;
+  }).join("");
+}
+
+function severityClasses(severity) {
+  const normalized = String(severity || "low").toLowerCase();
+  if (normalized === "high") {
+    return "border-red-500/30 bg-red-500/10 text-red-200";
+  }
+  if (normalized === "medium") {
+    return "border-amber-500/30 bg-amber-500/10 text-amber-200";
+  }
+  return "border-emerald-500/30 bg-emerald-500/10 text-emerald-200";
+}
+
+function renderSignals(signals) {
+  const el = document.getElementById("signalsGrid");
+  if (!el) {
+    return;
+  }
+
+  if (!signals || signals.length === 0) {
+    el.innerHTML = `<div class="text-sm text-slate-500">No decision signals available.</div>`;
+    return;
+  }
+
+  el.innerHTML = signals.slice(0, 6).map((signal) => {
+    const evidence = signal.evidence || {};
+    const evidenceText = Object.entries(evidence)
+      .slice(0, 3)
+      .map(([key, val]) => `${key}: ${Array.isArray(val) ? val.join(", ") : val}`)
+      .join(" | ");
+
+    return `
+      <div class="rounded-lg border ${severityClasses(signal.severity)} p-4">
+        <div class="flex items-center justify-between gap-3">
+          <div class="text-xs uppercase tracking-wider">${value(signal, "type", "signal")}</div>
+          <div class="text-xs uppercase">${value(signal, "severity", "low")}</div>
+        </div>
+        <div class="text-sm font-semibold text-slate-100 mt-3">${value(signal, "title", "Untitled signal")}</div>
+        <div class="text-sm text-slate-300 mt-2">${value(signal, "message", "")}</div>
+        <div class="text-xs text-slate-400 mt-3">${evidenceText}</div>
+      </div>
+    `;
+  }).join("");
+}
+
+function renderRecommendations(recommendations) {
+  const el = document.getElementById("recommendationsGrid");
+  if (!el) {
+    return;
+  }
+
+  if (!recommendations || recommendations.length === 0) {
+    el.innerHTML = `<div class="text-sm text-slate-500">No recommendations available.</div>`;
+    return;
+  }
+
+  el.innerHTML = recommendations.slice(0, 6).map((item) => {
+    const evidence = item.evidence || {};
+    const evidenceText = Object.entries(evidence)
+      .slice(0, 4)
+      .map(([key, val]) => `${key}: ${Array.isArray(val) ? val.join(", ") : val}`)
+      .join(" | ");
+
+    return `
+      <div class="rounded-lg border ${severityClasses(item.priority)} bg-slate-900/20 p-4">
+        <div class="flex items-center justify-between gap-3">
+          <div class="text-xs uppercase tracking-wider">${value(item, "action", "recommendation")}</div>
+          <div class="text-xs uppercase">${value(item, "priority", "medium")}</div>
+        </div>
+        <div class="text-base font-semibold text-slate-100 mt-3">${value(item, "title", "Untitled recommendation")}</div>
+        <div class="text-sm text-slate-300 mt-2">${value(item, "rationale", "")}</div>
+        <div class="text-xs text-slate-400 mt-3">${evidenceText}</div>
+      </div>
+    `;
+  }).join("");
+}
+
+function renderPaidLocked() {
+  setText("briefHeadline", "Executive brief requires Pro access");
+  setText("briefSummary", "Enter a Pro or Enterprise API key to unlock executive reporting and recommended actions.");
+  renderRecommendations([]);
+}
+
+function setCustomerReportLink(enabled) {
+  const link = document.getElementById("customerReportLink");
+  if (!link) {
+    return;
+  }
+
+  if (!enabled || !activeApiKey) {
+    link.classList.add("hidden");
+    link.removeAttribute("href");
+    return;
+  }
+
+  link.href = "#";
+  link.classList.remove("hidden");
+}
+
+async function openCustomerReport() {
+  if (!activeApiKey) {
+    return;
+  }
+
+  const customerName = encodeURIComponent("AI Infrastructure Buyer");
+  const res = await fetch(`${API}/v1/customer-report/html?customer_name=${customerName}`, {
+    headers: { "x-api-key": activeApiKey }
   });
 
-  table(document.getElementById("providerHealth"), snap.provider_health, ["provider","status","rows","freshness_hours","health_score"]);
-  table(document.getElementById("gpuTable"), snap.gpu_rankings, ["gpu","offers","avg_price","min_price","max_price"]);
+  if (!res.ok) {
+    throw new Error("Customer report export failed");
+  }
 
-  document.getElementById("refreshStatus").innerText =
-    "Live data refreshed: " + new Date().toLocaleTimeString();
+  const html = await res.text();
+  const blob = new Blob([html], { type: "text/html" });
+  window.open(URL.createObjectURL(blob), "_blank", "noopener,noreferrer");
 }
 
-load();
-setInterval(load,60000);
+function updateAccessPanel(status, usage) {
+  const plan = status && status.plan ? status.plan : "none";
+  const authenticated = status && status.authenticated;
+
+  setText("accessPlan", authenticated ? plan.toUpperCase() : "Not authenticated");
+  setText(
+    "accessSummary",
+    authenticated
+      ? `${(status.allowed_endpoints || []).length} endpoints available for this key.`
+      : "Paid intelligence is locked until a valid key is saved."
+  );
+
+  const limits = (usage && usage.limits) || (status && status.limits) || null;
+  const totalCalls = usage && Number.isFinite(Number(usage.total_calls)) ? usage.total_calls : 0;
+  const topEndpoint = usage && usage.by_endpoint && usage.by_endpoint[0]
+    ? `${usage.by_endpoint[0].endpoint}: ${usage.by_endpoint[0].calls}`
+    : "No tracked paid calls yet";
+  const limitText = limits && limits.limits
+    ? `Today: ${limits.daily_calls}/${limits.limits.requests_per_day}, month: ${limits.monthly_calls}/${limits.limits.requests_per_month}.`
+    : "";
+
+  setText("usageSummary", authenticated ? `Usage: ${totalCalls} calls. ${limitText} ${topEndpoint}` : "");
+  setCustomerReportLink(plan === "enterprise");
+}
+
+async function loadPaidData() {
+  const input = document.getElementById("apiKeyInput");
+  if (input && activeApiKey) {
+    input.value = activeApiKey;
+  }
+
+  if (!activeApiKey) {
+    updateAccessPanel({ authenticated: false, plan: null }, null);
+    renderPaidLocked();
+    return;
+  }
+
+  try {
+    const status = await getJson("/v1/access-status", activeApiKey);
+    let usage = null;
+
+    try {
+      usage = await getJson("/v1/usage-summary", activeApiKey);
+    } catch (error) {
+      usage = null;
+    }
+
+    updateAccessPanel(status, usage);
+
+    if ((status.allowed_endpoints || []).includes("/v1/executive-brief")) {
+      const brief = await getJson("/v1/executive-brief", activeApiKey);
+      setText("briefHeadline", value(brief, "headline", "Executive brief unavailable"));
+      setText("briefSummary", value(brief, "summary", ""));
+    } else {
+      renderPaidLocked();
+    }
+
+    if ((status.allowed_endpoints || []).includes("/v1/recommendations")) {
+      const recommendations = await getJson("/v1/recommendations", activeApiKey);
+      renderRecommendations(recommendations.recommendations || []);
+    }
+  } catch (error) {
+    console.error(error);
+    localStorage.removeItem("airpct_api_key");
+    activeApiKey = "";
+    updateAccessPanel({ authenticated: false, plan: null }, null);
+    renderPaidLocked();
+  }
+}
+
+function updateMarketShareChart(rows) {
+  const ctx = document.getElementById("marketShareChart");
+  if (!ctx) {
+    return;
+  }
+
+  if (marketShareChart) {
+    marketShareChart.destroy();
+  }
+
+  marketShareChart = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: (rows || []).map((row) => value(row, "provider")),
+      datasets: [{
+        data: (rows || []).map((row) => Number(value(row, "market_share_pct", 0))),
+        backgroundColor: ["#3b82f6", "#10b981", "#f59e0b", "#06b6d4", "#6366f1", "#94a3b8"],
+        borderColor: "#1e293b",
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: "bottom",
+          labels: { color: "#cbd5e1", font: { size: 12 } }
+        }
+      }
+    }
+  });
+}
+
+function updateGpuTrendChart(watchlist) {
+  const ctx = document.getElementById("gpuTrendChart");
+  if (!ctx) {
+    return;
+  }
+
+  if (gpuTrendChart) {
+    gpuTrendChart.destroy();
+  }
+
+  const rows = (watchlist || []).slice(0, 8);
+
+  gpuTrendChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: rows.map((row) => value(row, "gpu")),
+      datasets: [{
+        label: "Average price per hour",
+        data: rows.map((row) => Number(value(row, "avg_price", 0))),
+        backgroundColor: "rgba(59, 130, 246, 0.55)",
+        borderColor: "#60a5fa",
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: "#cbd5e1" } }
+      },
+      scales: {
+        y: { grid: { color: "rgba(148, 163, 184, 0.1)" }, ticks: { color: "#94a3b8" } },
+        x: { grid: { display: false }, ticks: { color: "#94a3b8" } }
+      }
+    }
+  });
+}
+
+function updateTimestamp() {
+  const now = new Date();
+  setText("lastRefresh", now.toISOString().split("T")[1].split(".")[0]);
+  const status = document.getElementById("refreshStatus");
+  if (status) {
+    status.innerHTML = `Updated ${now.toLocaleTimeString()}`;
+  }
+}
+
+function applySnapshot(snapshot) {
+  const terminal = snapshot.terminal || {};
+  const risk = snapshot.risk || {};
+  const quality = snapshot.quality || {};
+
+  setText("aiIndex", number(value(terminal, "ai_infrastructure_index"), 1));
+  setText("gpuPrice", number(value(terminal, "gpu_price_index"), 4));
+  setText("riskScore", number(value(risk, "terminal_risk_score"), 0));
+  setText("gpuTrend", value(terminal, "gpu_price_trend"));
+  setText("providerCount", String((snapshot.provider_health || []).filter((row) => row.status === "online").length));
+  setText("quality", `${number(value(quality, "live_data_quality_score"), 0)}%`);
+  setText("briefHeadline", value(snapshot.executive_brief, "headline", "Executive brief unavailable"));
+  setText("briefSummary", value(snapshot.executive_brief, "summary", ""));
+
+  updateMarketShareChart(snapshot.market_share || []);
+  updateGpuTrendChart(snapshot.gpu_watchlist || []);
+  renderSignals(snapshot.signals || []);
+  renderPaidLocked();
+  renderAlerts(snapshot.alerts || []);
+
+  setTable("#providerHealth", snapshot.provider_health || [], [
+    { key: "provider" },
+    { key: "status", render: (row) => statusBadge(row.status) },
+    { key: "rows", render: (row) => number(row.rows, 0) },
+    { key: "freshness_hours", render: (row) => `${number(row.freshness_hours, 1)}h` },
+    { key: "health_score", render: (row) => number(row.health_score, 0) }
+  ]);
+
+  setTable("#gpuTable", snapshot.gpu_rankings || [], [
+    { key: "gpu" },
+    { key: "offers", render: (row) => number(row.offers, 0) },
+    { key: "avg_price", render: (row) => money(row.avg_price) },
+    { key: "min_price", render: (row) => money(row.min_price) },
+    { key: "max_price", render: (row) => money(row.max_price) }
+  ]);
+
+  setTable("#watchlistTable", snapshot.gpu_watchlist || [], [
+    { key: "gpu" },
+    { key: "category" },
+    { key: "offers", render: (row) => number(row.offers, 0) },
+    { key: "avg_price", render: (row) => money(row.avg_price) },
+    { key: "range", render: (row) => `${money(row.min_price)} - ${money(row.max_price)}` }
+  ]);
+
+  setTable("#providerComparison", snapshot.provider_comparison || [], [
+    { key: "provider" },
+    { key: "offers", render: (row) => number(row.offers, 0) },
+    { key: "gpu_types", render: (row) => number(row.gpu_types, 0) },
+    { key: "avg_price", render: (row) => money(row.avg_price) }
+  ]);
+
+  updateTimestamp();
+}
+
+async function loadDashboardData() {
+  try {
+    const snapshot = await getJson("/v1/dashboard-snapshot");
+    applySnapshot(snapshot);
+    await loadPaidData();
+  } catch (error) {
+    console.error(error);
+    const status = document.getElementById("refreshStatus");
+    if (status) {
+      status.textContent = "Data refresh failed";
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("apiKeyInput");
+  const button = document.getElementById("saveApiKey");
+
+  if (input && activeApiKey) {
+    input.value = activeApiKey;
+  }
+
+  if (button && input) {
+    button.addEventListener("click", () => {
+      activeApiKey = input.value.trim();
+      if (activeApiKey) {
+        localStorage.setItem("airpct_api_key", activeApiKey);
+      } else {
+        localStorage.removeItem("airpct_api_key");
+      }
+      loadPaidData();
+    });
+  }
+
+  const reportLink = document.getElementById("customerReportLink");
+  if (reportLink) {
+    reportLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      openCustomerReport().catch((error) => {
+        console.error(error);
+        setText("accessSummary", "Customer report export failed for this key.");
+      });
+    });
+  }
+
+  loadDashboardData();
+  setInterval(loadDashboardData, 60000);
+});

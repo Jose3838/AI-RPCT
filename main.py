@@ -1,8 +1,30 @@
+from fastapi import Header
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from api.access import (
+    build_access_status,
+    build_plan_limits,
+    build_usage_summary,
+    require_v1_access,
+)
+from intelligence.reports.customer_report_pdf_export_v1 import (
+    build_customer_report_html,
+    build_customer_report_payload,
+    save_customer_report,
+)
 
 from api.routes import router
 from api.auth_routes import router as auth_router
+from api.terminal_core import (
+    build_api_catalog,
+    build_dashboard_snapshot,
+    build_executive_brief,
+    build_latest_reports,
+    build_market_signals,
+    build_recommendations,
+    build_terminal_summary,
+)
 
 app = FastAPI(
     title="AI-RPCT",
@@ -22,6 +44,86 @@ def root():
         "version": "63.0",
         "terminal": "/web"
     }
+
+
+@app.get("/v1/terminal-summary")
+def v1_terminal_summary():
+    return build_terminal_summary()
+
+
+@app.get("/v1/dashboard-snapshot")
+def v1_dashboard_snapshot():
+    return build_dashboard_snapshot()
+
+
+@app.get("/v1/api-catalog")
+def v1_api_catalog():
+    return build_api_catalog()
+
+
+@app.get("/v1/access-status")
+def v1_access_status(x_api_key: str = Header(default=None)):
+    return build_access_status(x_api_key)
+
+
+@app.get("/v1/plan-limits")
+def v1_plan_limits():
+    return build_plan_limits()
+
+
+@app.get("/v1/usage-summary")
+def v1_usage_summary(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/usage-summary", x_api_key)
+    return build_usage_summary(x_api_key)
+
+
+@app.get("/v1/reports/latest")
+def v1_latest_reports():
+    return build_latest_reports()
+
+
+@app.get("/v1/signals")
+def v1_signals():
+    return build_market_signals()
+
+
+@app.get("/v1/recommendations")
+def v1_recommendations(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/recommendations", x_api_key)
+    return build_recommendations()
+
+
+@app.get("/v1/executive-brief")
+def v1_executive_brief(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/executive-brief", x_api_key)
+    return build_executive_brief()
+
+
+@app.get("/v1/customer-report")
+def v1_customer_report(
+    customer_name: str = "AI Infrastructure Buyer",
+    x_api_key: str = Header(default=None),
+):
+    require_v1_access("/v1/customer-report", x_api_key)
+    return build_customer_report_payload(customer_name)
+
+
+@app.get("/v1/customer-report/html", response_class=HTMLResponse)
+def v1_customer_report_html(
+    customer_name: str = "AI Infrastructure Buyer",
+    x_api_key: str = Header(default=None),
+):
+    require_v1_access("/v1/customer-report/html", x_api_key)
+    return build_customer_report_html(customer_name)
+
+
+@app.post("/v1/customer-report/save")
+def v1_save_customer_report(
+    customer_name: str = "AI Infrastructure Buyer",
+    x_api_key: str = Header(default=None),
+):
+    require_v1_access("/v1/customer-report/save", x_api_key)
+    return save_customer_report(customer_name)
 
 import csv
 

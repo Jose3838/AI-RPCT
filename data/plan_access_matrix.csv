@@ -1,4 +1,17 @@
 endpoint,free,pro,enterprise
+/v1/terminal-summary,true,true,true
+/v1/dashboard-snapshot,true,true,true
+/v1/api-catalog,true,true,true
+/v1/access-status,true,true,true
+/v1/plan-limits,true,true,true
+/v1/usage-summary,false,true,true
+/v1/reports/latest,false,true,true
+/v1/signals,true,true,true
+/v1/recommendations,false,true,true
+/v1/executive-brief,false,true,true
+/v1/customer-report,false,false,true
+/v1/customer-report/html,false,false,true
+/v1/customer-report/save,false,false,true
 /terminal-summary,true,true,true
 /dashboard-snapshot,true,true,true
 /gpu-price-index,true,true,true

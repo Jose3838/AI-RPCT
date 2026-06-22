@@ -1,4 +1,4 @@
-plan,requests_per_day,features
-starter,100,dashboard
-pro,10000,dashboard api alerts
-enterprise,1000000,custom api reports white-label
+plan,requests_per_day,requests_per_month,features
+free,50,1000,dashboard signals access-status
+pro,10000,250000,dashboard api alerts recommendations executive-brief usage-summary
+enterprise,1000000,10000000,custom-api customer-reports white-label priority-support

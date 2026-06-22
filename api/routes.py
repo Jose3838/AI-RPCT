@@ -1,6 +1,28 @@
 from fastapi import APIRouter, Header
+from fastapi.responses import HTMLResponse
 import pandas as pd
 from pathlib import Path
+from api.access import (
+    build_access_status,
+    build_plan_limits,
+    build_usage_summary,
+    require_v1_access,
+)
+from intelligence.reports.customer_report_pdf_export_v1 import (
+    build_customer_report_html,
+    build_customer_report_payload,
+    save_customer_report,
+)
+
+from api.terminal_core import (
+    build_api_catalog,
+    build_dashboard_snapshot,
+    build_executive_brief,
+    build_latest_reports,
+    build_market_signals,
+    build_recommendations,
+    build_terminal_summary,
+)
 
 router = APIRouter()
 
@@ -8,6 +30,86 @@ def read_csv(path):
     if not Path(path).exists():
         return []
     return pd.read_csv(path).to_dict(orient="records")
+
+
+@router.get("/v1/terminal-summary")
+def v1_terminal_summary():
+    return build_terminal_summary()
+
+
+@router.get("/v1/dashboard-snapshot")
+def v1_dashboard_snapshot():
+    return build_dashboard_snapshot()
+
+
+@router.get("/v1/api-catalog")
+def v1_api_catalog():
+    return build_api_catalog()
+
+
+@router.get("/v1/access-status")
+def v1_access_status(x_api_key: str = Header(default=None)):
+    return build_access_status(x_api_key)
+
+
+@router.get("/v1/plan-limits")
+def v1_plan_limits():
+    return build_plan_limits()
+
+
+@router.get("/v1/usage-summary")
+def v1_usage_summary(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/usage-summary", x_api_key)
+    return build_usage_summary(x_api_key)
+
+
+@router.get("/v1/reports/latest")
+def v1_latest_reports():
+    return build_latest_reports()
+
+
+@router.get("/v1/signals")
+def v1_signals():
+    return build_market_signals()
+
+
+@router.get("/v1/recommendations")
+def v1_recommendations(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/recommendations", x_api_key)
+    return build_recommendations()
+
+
+@router.get("/v1/executive-brief")
+def v1_executive_brief(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/executive-brief", x_api_key)
+    return build_executive_brief()
+
+
+@router.get("/v1/customer-report")
+def v1_customer_report(
+    customer_name: str = "AI Infrastructure Buyer",
+    x_api_key: str = Header(default=None),
+):
+    require_v1_access("/v1/customer-report", x_api_key)
+    return build_customer_report_payload(customer_name)
+
+
+@router.get("/v1/customer-report/html", response_class=HTMLResponse)
+def v1_customer_report_html(
+    customer_name: str = "AI Infrastructure Buyer",
+    x_api_key: str = Header(default=None),
+):
+    require_v1_access("/v1/customer-report/html", x_api_key)
+    return build_customer_report_html(customer_name)
+
+
+@router.post("/v1/customer-report/save")
+def v1_save_customer_report(
+    customer_name: str = "AI Infrastructure Buyer",
+    x_api_key: str = Header(default=None),
+):
+    require_v1_access("/v1/customer-report/save", x_api_key)
+    return save_customer_report(customer_name)
 
 @router.get("/rankings")
 def rankings():
@@ -284,6 +386,59 @@ def cron_health():
 def data_moat():
     import pandas as pd
     return pd.read_csv("data/data_moat_score.csv").to_dict(orient="records")
+
+@router.get("/dashboard-metrics")
+def dashboard_metrics():
+    """Aggregated KPI dashboard metrics"""
+    import pandas as pd
+    import numpy as np
+    from pathlib import Path
+    
+    result = {
+        "data_moat_score": 0,
+        "executive_score": 0,
+        "product_readiness_score": 0,
+        "collection_health": 0,
+        "investor_readiness_score": 0,
+        "rpct_score": 0,
+        "forecast_score": 0,
+        "shortage_probability": 0,
+        "top_provider": "N/A"
+    }
+    
+    # Try to load investor dashboard data (main KPIs)
+    try:
+        if Path("data/investor_dashboard.csv").exists():
+            inv_data = pd.read_csv("data/investor_dashboard.csv").iloc[0]
+            result["rpct_score"] = float(inv_data.get("rpct_score", 0))
+            result["forecast_score"] = float(inv_data.get("forecast_score", 0))
+            result["shortage_probability"] = float(inv_data.get("shortage_probability", 0))
+            result["top_provider"] = str(inv_data.get("top_provider", "N/A"))
+    except:
+        pass
+    
+    # Try to load data moat score
+    try:
+        if Path("data/data_moat_score.csv").exists():
+            dm_data = pd.read_csv("data/data_moat_score.csv").iloc[0]
+            result["data_moat_score"] = float(dm_data.get("score", dm_data.get("data_moat_score", 0)))
+    except:
+        result["data_moat_score"] = result["rpct_score"]
+    
+    # Try to load collection health / data quality
+    try:
+        if Path("data/data_quality.csv").exists():
+            dq_data = pd.read_csv("data/data_quality.csv").iloc[0]
+            result["collection_health"] = float(dq_data.get("data_quality_score", 75))
+    except:
+        result["collection_health"] = 75
+    
+    # Assign remaining scores
+    result["executive_score"] = result["forecast_score"]
+    result["product_readiness_score"] = min(100, result["collection_health"] + 15)
+    result["investor_readiness_score"] = min(100, result["rpct_score"] * 0.8)
+    
+    return result
 
 @router.get("/daily-intelligence")
 def daily_intelligence():

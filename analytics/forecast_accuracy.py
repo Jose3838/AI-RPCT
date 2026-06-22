@@ -1,7 +1,7 @@
 import pandas as pd
 
 try:
-    forecast = pd.read_csv("data/forecast.csv")
+    forecast = pd.read_csv("data/forecast_signal.csv")
     actual = pd.read_csv("data/rpct_scores.csv")
 
     accuracy = 0.75

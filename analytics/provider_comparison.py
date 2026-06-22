@@ -3,9 +3,20 @@ from pathlib import Path
 
 rows = []
 
+def read_provider_csv(path):
+    if not path.exists() or path.stat().st_size <= 1:
+        return pd.DataFrame(columns=[
+            "provider",
+            "gpu",
+            "price_per_hour",
+            "availability",
+            "timestamp"
+        ])
+    return pd.read_csv(path)
+
 # Vast
 if Path("data/live_provider_data.csv").exists():
-    vast = pd.read_csv("data/live_provider_data.csv")
+    vast = read_provider_csv(Path("data/live_provider_data.csv"))
 
     rows.append({
         "provider": "vast",
@@ -16,7 +27,7 @@ if Path("data/live_provider_data.csv").exists():
 
 # RunPod
 if Path("data/runpod_live_report.csv").exists():
-    runpod = pd.read_csv("data/runpod_live_report.csv")
+    runpod = read_provider_csv(Path("data/runpod_live_report.csv"))
 
     rows.append({
         "provider": "runpod",
