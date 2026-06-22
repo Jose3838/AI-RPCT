@@ -52,6 +52,7 @@ Use the virtual environment directly:
 PYTHONPATH=. venv/bin/pytest tests
 ./run_daily.sh
 ./scripts/run_core_intelligence.sh
+venv/bin/python scripts/core_status.py
 venv/bin/python snapshot_scheduler.py
 venv/bin/python database/db_status.py
 ```
@@ -109,6 +110,7 @@ Core files:
 - `web/app.js`
 - `run_daily.sh`
 - `scripts/run_core_intelligence.sh`
+- `scripts/core_status.py`
 
 Operational runbooks:
 

@@ -68,6 +68,7 @@ from analytics.core_intelligence_readiness import (
     build_core_intelligence_readiness,
     readiness_phase,
 )
+from scripts.core_status import build_core_status
 from snapshot_scheduler import run_scheduled_snapshot
 from security.limits import build_limit_status
 from security.entitlements import has_access
@@ -78,6 +79,7 @@ def test_core_files_exist():
     assert Path("api/routes.py").exists()
     assert Path("run_daily.sh").exists()
     assert Path("scripts/run_core_intelligence.sh").exists()
+    assert Path("scripts/core_status.py").exists()
     assert Path("analytics/market_pulse_snapshot.py").exists()
     assert Path("analytics/core_signal_history.py").exists()
     assert Path("analytics/core_signal_quality.py").exists()
@@ -534,6 +536,15 @@ def test_core_intelligence_readiness_contract():
     }
     assert "next_action" in readiness
     assert "blockers" in readiness
+
+
+def test_core_status_contract():
+    status = build_core_status()
+
+    assert status["product"] == "AI-RPCT"
+    assert "readiness_phase" in status
+    assert "next_action" in status
+    assert isinstance(status["top_provider_gaps"], list)
 
 
 def test_v1_recommendations_contract():
