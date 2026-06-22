@@ -18,6 +18,7 @@ from api.routes import router
 from api.auth_routes import router as auth_router
 from api.audit_core import build_audit_log, log_audit_event
 from api.commercial_core import (
+    build_account_health_snapshot,
     build_commercial_snapshot,
     build_customer_admin_snapshot,
     build_sales_pipeline,
@@ -104,6 +105,12 @@ def v1_sales_pipeline(x_api_key: str = Header(default=None)):
 def v1_customer_admin(x_api_key: str = Header(default=None)):
     require_v1_access("/v1/customer-admin", x_api_key)
     return build_customer_admin_snapshot()
+
+
+@app.get("/v1/account-health")
+def v1_account_health(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/account-health", x_api_key)
+    return build_account_health_snapshot()
 
 
 @app.get("/v1/audit-log")

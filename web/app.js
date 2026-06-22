@@ -206,6 +206,11 @@ function renderCommercialLocked(message = "Enterprise key required.") {
   if (audit) {
     audit.innerHTML = `<div class="text-sm text-slate-500">${message}</div>`;
   }
+
+  const health = document.getElementById("accountHealthList");
+  if (health) {
+    health.innerHTML = `<div class="text-sm text-slate-500">${message}</div>`;
+  }
 }
 
 function renderCommercialSnapshot(snapshot) {
@@ -330,6 +335,39 @@ function renderAuditLog(payload) {
   `).join("");
 }
 
+function renderAccountHealth(payload) {
+  const el = document.getElementById("accountHealthList");
+  if (!el) {
+    return;
+  }
+
+  const accounts = payload.accounts || [];
+  if (accounts.length === 0) {
+    el.innerHTML = `<div class="text-sm text-slate-500">No account health data.</div>`;
+    return;
+  }
+
+  el.innerHTML = accounts.map((account) => {
+    const health = value(account, "health", "watch");
+    const color = health === "healthy" ? "border-emerald-500/30 text-emerald-200" :
+      health === "watch" ? "border-amber-500/30 text-amber-200" :
+      "border-red-500/30 text-red-200";
+
+    return `
+      <div class="rounded-lg border ${color} bg-slate-900/30 p-4">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <div class="text-sm font-semibold text-slate-100">${value(account, "customer_name", "Unknown customer")}</div>
+            <div class="text-xs text-slate-500 mt-1">${value(account, "plan", "unknown")} / ${health}</div>
+          </div>
+          <div class="text-lg font-semibold">${number(account.health_score, 0)}</div>
+        </div>
+        <div class="text-xs text-slate-500 mt-3">${(account.reasons || []).join(" | ")}</div>
+      </div>
+    `;
+  }).join("");
+}
+
 function setCustomerReportLink(enabled) {
   const link = document.getElementById("customerReportLink");
   if (!link) {
@@ -434,6 +472,8 @@ async function loadPaidData() {
       renderSalesPipeline(pipeline);
       const customerAdmin = await getJson("/v1/customer-admin", activeApiKey);
       renderCustomerAdmin(customerAdmin);
+      const accountHealth = await getJson("/v1/account-health", activeApiKey);
+      renderAccountHealth(accountHealth);
       const auditLog = await getJson("/v1/audit-log", activeApiKey);
       renderAuditLog(auditLog);
     } else {

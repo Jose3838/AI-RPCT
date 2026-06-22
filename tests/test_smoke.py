@@ -23,7 +23,11 @@ from api.access import (
     enforce_plan_limits,
 )
 from api.audit_core import build_audit_log, log_audit_event
-from api.commercial_core import build_commercial_snapshot, build_sales_pipeline
+from api.commercial_core import (
+    build_account_health_snapshot,
+    build_commercial_snapshot,
+    build_sales_pipeline,
+)
 from api.commercial_core import build_customer_admin_snapshot
 from api.onboarding_core import (
     create_customer_api_key,
@@ -121,6 +125,8 @@ def test_v1_plan_access_contract():
     assert has_access("enterprise", "/v1/sales-pipeline")
     assert not has_access("pro", "/v1/customer-admin")
     assert has_access("enterprise", "/v1/customer-admin")
+    assert not has_access("pro", "/v1/account-health")
+    assert has_access("enterprise", "/v1/account-health")
     assert not has_access("pro", "/v1/audit-log")
     assert has_access("enterprise", "/v1/audit-log")
     assert not has_access("pro", "/v1/customers")
@@ -207,6 +213,18 @@ def test_v1_customer_admin_snapshot_contract():
     assert "active" in payload["summary"]["status_counts"]
     assert isinstance(payload["accounts"], list)
     assert "api_key" in payload["accounts"][0]
+
+
+def test_v1_account_health_contract():
+    payload = build_account_health_snapshot()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "account_health"
+    assert payload["summary"]["account_count"] >= 3
+    assert isinstance(payload["accounts"], list)
+    assert "health_score" in payload["accounts"][0]
+    assert "health" in payload["accounts"][0]
 
 
 def test_v1_audit_log_contract(tmp_path, monkeypatch):
@@ -319,6 +337,7 @@ def test_main_app_exposes_v1_core_routes():
     assert "/v1/commercial-snapshot" in paths
     assert "/v1/sales-pipeline" in paths
     assert "/v1/customer-admin" in paths
+    assert "/v1/account-health" in paths
     assert "/v1/audit-log" in paths
     assert "/v1/customers" in paths
     assert "/v1/customers/revoke" in paths

@@ -233,3 +233,81 @@ def build_customer_admin_snapshot():
         },
         "accounts": account_snapshots,
     }
+
+
+def score_account_health(account):
+    status = account.get("status")
+    usage = account.get("usage", {})
+    utilization = account.get("utilization", {})
+    total_calls = usage.get("total_calls", 0)
+    monthly_utilization = utilization.get("monthly", 0)
+
+    score = 100
+    reasons = []
+
+    if status != "active":
+        score -= 70
+        reasons.append("account is not active")
+
+    if total_calls == 0:
+        score -= 25
+        reasons.append("no tracked usage")
+
+    if monthly_utilization >= 0.9:
+        score -= 20
+        reasons.append("near monthly limit")
+    elif monthly_utilization >= 0.75:
+        score -= 10
+        reasons.append("high monthly utilization")
+
+    score = max(score, 0)
+
+    if score >= 80:
+        health = "healthy"
+    elif score >= 50:
+        health = "watch"
+    else:
+        health = "at_risk"
+
+    return {
+        "account_id": account.get("account_id"),
+        "customer_name": account.get("customer_name"),
+        "plan": account.get("plan"),
+        "status": account.get("status"),
+        "health_score": score,
+        "health": health,
+        "reasons": reasons or ["usage and status are within expected range"],
+        "usage_total": total_calls,
+        "monthly_utilization": monthly_utilization,
+        "upgrade_signal": account.get("upgrade_signal"),
+    }
+
+
+def build_account_health_snapshot():
+    admin = build_customer_admin_snapshot()
+    accounts = [
+        score_account_health(account)
+        for account in admin["accounts"]
+    ]
+    accounts = sorted(
+        accounts,
+        key=lambda item: (item["health_score"], -item["usage_total"]),
+    )
+    health_counts = {}
+
+    for account in accounts:
+        health = account["health"]
+        health_counts[health] = health_counts.get(health, 0) + 1
+
+    return {
+        "product": "AI-RPCT",
+        "version": "v1",
+        "report_type": "account_health",
+        "summary": {
+            "account_count": len(accounts),
+            "health_counts": health_counts,
+            "at_risk": health_counts.get("at_risk", 0),
+            "watch": health_counts.get("watch", 0),
+        },
+        "accounts": accounts,
+    }

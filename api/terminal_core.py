@@ -497,6 +497,12 @@ def build_api_catalog():
             "tier": "enterprise"
         },
         {
+            "endpoint": "/v1/account-health",
+            "category": "commercial",
+            "description": "Enterprise account health scoring for retention, adoption and expansion operations.",
+            "tier": "enterprise"
+        },
+        {
             "endpoint": "/v1/audit-log",
             "category": "commercial",
             "description": "Enterprise audit trail for customer and API-key administration actions.",
