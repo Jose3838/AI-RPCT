@@ -42,6 +42,7 @@ def build_core_intelligence_readiness():
     quality = read_latest(DATA_DIR / "core_signal_quality.csv")
     pulse = read_latest(DATA_DIR / "market_pulse_history.csv")
     ingestion = read_latest(DATA_DIR / "live_provider_ingestion_status.csv")
+    preflight = read_latest(DATA_DIR / "provider_preflight_summary.csv")
 
     blockers = [
         blocker.strip()
@@ -51,10 +52,18 @@ def build_core_intelligence_readiness():
     blocker_set = set(blockers)
     phase = readiness_phase(quality, blocker_set)
 
+    if not as_bool(preflight.get("paid_reliability_claims_allowed", False)):
+        blocker_set.add("provider_preflight_blocked")
+        blockers.append("provider_preflight_blocked")
+        phase = "blocked_by_live_data"
+
     if phase == "paid_beta_ready":
         next_action = "Start controlled paid beta with one customer."
     elif phase == "blocked_by_live_data":
-        next_action = "Restore fresh provider ingestion for Vast and RunPod before making paid reliability claims."
+        next_action = preflight.get(
+            "next_action",
+            "Restore fresh provider ingestion for Vast and RunPod before making paid reliability claims.",
+        )
     elif phase == "building_history":
         next_action = "Run the core intelligence pipeline daily until 30 clean history days are collected."
     else:
@@ -69,6 +78,8 @@ def build_core_intelligence_readiness():
         "paid_beta_signal_ready": as_bool(quality.get("paid_beta_signal_ready")),
         "market_pulse_score": as_float(pulse.get("market_pulse_score")),
         "latest_ingestion_status": ingestion.get("status", "unknown"),
+        "provider_preflight_ready_count": as_float(preflight.get("ready_count")),
+        "provider_preflight_blocked_count": as_float(preflight.get("blocked_count")),
         "blockers": ", ".join(blockers) if blockers else "none",
         "next_action": next_action,
     }])

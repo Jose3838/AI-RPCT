@@ -68,6 +68,10 @@ from analytics.core_intelligence_readiness import (
     build_core_intelligence_readiness,
     readiness_phase,
 )
+from analytics.provider_preflight import (
+    build_provider_preflight,
+    summarize_provider_preflight,
+)
 from scripts.core_status import build_core_status
 from snapshot_scheduler import run_scheduled_snapshot
 from security.limits import build_limit_status
@@ -537,6 +541,7 @@ def test_core_intelligence_readiness_contract():
     }
     assert "next_action" in readiness
     assert "blockers" in readiness
+    assert "provider_preflight_blocked_count" in readiness
 
 
 def test_core_status_contract():
@@ -546,6 +551,37 @@ def test_core_status_contract():
     assert "readiness_phase" in status
     assert "next_action" in status
     assert isinstance(status["top_provider_gaps"], list)
+
+
+def test_provider_preflight_blocks_missing_keys_and_fallback():
+    preflight = build_provider_preflight(
+        env={},
+        ingestion_rows=[
+            {"provider": "vast", "status": "fallback", "used_fallback": True},
+            {"provider": "runpod", "status": "empty", "used_fallback": False},
+        ],
+    )
+    summary = summarize_provider_preflight(preflight)
+
+    assert set(preflight["readiness"]) == {"blocked"}
+    assert summary["paid_reliability_claims_allowed"] is False
+    assert summary["blocked_count"] == 2
+    assert "missing_api_key" in preflight.iloc[0]["blockers"]
+
+
+def test_provider_preflight_allows_fresh_configured():
+    preflight = build_provider_preflight(
+        env={"VAST_API_KEY": "set", "RUNPOD_API_KEY": "set"},
+        ingestion_rows=[
+            {"provider": "vast", "status": "fresh", "used_fallback": False},
+            {"provider": "runpod", "status": "fresh", "used_fallback": False},
+        ],
+    )
+    summary = summarize_provider_preflight(preflight)
+
+    assert set(preflight["readiness"]) == {"ready"}
+    assert summary["paid_reliability_claims_allowed"] is True
+    assert summary["ready_count"] == 2
 
 
 def test_v1_recommendations_contract():
