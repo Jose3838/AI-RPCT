@@ -16,6 +16,7 @@ from intelligence.reports.customer_report_pdf_export_v1 import (
 
 from api.routes import router
 from api.auth_routes import router as auth_router
+from api.audit_core import build_audit_log, log_audit_event
 from api.commercial_core import (
     build_commercial_snapshot,
     build_customer_admin_snapshot,
@@ -105,6 +106,15 @@ def v1_customer_admin(x_api_key: str = Header(default=None)):
     return build_customer_admin_snapshot()
 
 
+@app.get("/v1/audit-log")
+def v1_audit_log(
+    limit: int = 100,
+    x_api_key: str = Header(default=None),
+):
+    require_v1_access("/v1/audit-log", x_api_key)
+    return build_audit_log(limit)
+
+
 @app.post("/v1/customers")
 def v1_create_customer(
     customer_name: str,
@@ -112,7 +122,14 @@ def v1_create_customer(
     x_api_key: str = Header(default=None),
 ):
     require_v1_access("/v1/customers", x_api_key)
-    return create_customer_api_key(customer_name, plan)
+    result = create_customer_api_key(customer_name, plan)
+    log_audit_event(
+        x_api_key,
+        "customer_created",
+        result["api_key"],
+        result["account"]["account_id"],
+    )
+    return result
 
 
 @app.post("/v1/customers/revoke")
@@ -121,7 +138,9 @@ def v1_revoke_customer(
     x_api_key: str = Header(default=None),
 ):
     require_v1_access("/v1/customers/revoke", x_api_key)
-    return revoke_customer_api_key(api_key)
+    result = revoke_customer_api_key(api_key)
+    log_audit_event(x_api_key, "customer_key_revoked", api_key)
+    return result
 
 
 @app.post("/v1/customers/reactivate")
@@ -130,7 +149,9 @@ def v1_reactivate_customer(
     x_api_key: str = Header(default=None),
 ):
     require_v1_access("/v1/customers/reactivate", x_api_key)
-    return reactivate_customer_api_key(api_key)
+    result = reactivate_customer_api_key(api_key)
+    log_audit_event(x_api_key, "customer_key_reactivated", api_key)
+    return result
 
 
 @app.get("/v1/reports/latest")

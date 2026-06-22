@@ -22,6 +22,7 @@ from api.access import (
     build_usage_summary,
     enforce_plan_limits,
 )
+from api.audit_core import build_audit_log, log_audit_event
 from api.commercial_core import build_commercial_snapshot, build_sales_pipeline
 from api.commercial_core import build_customer_admin_snapshot
 from api.onboarding_core import (
@@ -120,6 +121,8 @@ def test_v1_plan_access_contract():
     assert has_access("enterprise", "/v1/sales-pipeline")
     assert not has_access("pro", "/v1/customer-admin")
     assert has_access("enterprise", "/v1/customer-admin")
+    assert not has_access("pro", "/v1/audit-log")
+    assert has_access("enterprise", "/v1/audit-log")
     assert not has_access("pro", "/v1/customers")
     assert has_access("enterprise", "/v1/customers")
     assert not has_access("pro", "/v1/customers/revoke")
@@ -204,6 +207,26 @@ def test_v1_customer_admin_snapshot_contract():
     assert "active" in payload["summary"]["status_counts"]
     assert isinstance(payload["accounts"], list)
     assert "api_key" in payload["accounts"][0]
+
+
+def test_v1_audit_log_contract(tmp_path, monkeypatch):
+    audit_file = tmp_path / "audit_log.csv"
+    monkeypatch.setattr("api.audit_core.AUDIT_FILE", audit_file)
+
+    log_audit_event(
+        "demo-enterprise-key",
+        "customer_created",
+        "airpct_test",
+        "acct_test",
+    )
+    payload = build_audit_log()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "audit_log"
+    assert payload["summary"]["events"] == 1
+    assert payload["summary"]["action_counts"]["customer_created"] == 1
+    assert payload["events"][0]["target_api_key"] == "airpct_test"
 
 
 def test_v1_customer_onboarding_contract(tmp_path, monkeypatch):
@@ -296,6 +319,7 @@ def test_main_app_exposes_v1_core_routes():
     assert "/v1/commercial-snapshot" in paths
     assert "/v1/sales-pipeline" in paths
     assert "/v1/customer-admin" in paths
+    assert "/v1/audit-log" in paths
     assert "/v1/customers" in paths
     assert "/v1/customers/revoke" in paths
     assert "/v1/customers/reactivate" in paths

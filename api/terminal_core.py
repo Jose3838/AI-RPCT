@@ -497,6 +497,12 @@ def build_api_catalog():
             "tier": "enterprise"
         },
         {
+            "endpoint": "/v1/audit-log",
+            "category": "commercial",
+            "description": "Enterprise audit trail for customer and API-key administration actions.",
+            "tier": "enterprise"
+        },
+        {
             "endpoint": "/v1/customers",
             "category": "commercial",
             "description": "Enterprise customer onboarding endpoint that creates an account and active V1 API key.",
