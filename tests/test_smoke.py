@@ -55,6 +55,9 @@ from analytics.market_pulse_snapshot import main as save_market_pulse_snapshot_c
 from analytics.forecast_signal import build_forecast_signal
 from analytics.gpu_scarcity_index import build_gpu_scarcity_index
 from analytics.provider_reliability_ranking import build_provider_reliability_ranking
+from analytics.provider_daily_metrics import build_provider_daily_metrics
+from analytics.provider_health import build_provider_health
+from analytics.provider_reliability_gaps import build_provider_reliability_gaps
 from analytics.core_signal_history import (
     append_core_signal_history,
     build_core_signal_history_summary,
@@ -344,6 +347,62 @@ def test_provider_reliability_ranking_exposes_score_components():
     assert "reliability_score" in ranking.columns
     assert "freshness_score" in ranking.columns
     assert ranking.iloc[0]["reliability_band"] in {"strong", "watch", "weak", "critical"}
+    assert "history_days" in ranking.columns
+    assert "provider_rank_score" in ranking.columns
+
+
+def test_provider_daily_metrics_normalizes_and_deduplicates():
+    rankings = pd.DataFrame([
+        {"provider": "vast_real", "price_per_hour": 1.0, "availability": 2500, "score": 70},
+        {"provider": "vast", "price_per_hour": 1.2, "availability": 2400, "score": 80},
+        {"provider": "runpod_real", "price_per_hour": 2.0, "availability": 1000, "score": 40},
+    ])
+
+    daily = build_provider_daily_metrics(rankings, run_date="2026-06-22")
+
+    assert set(daily["provider"]) == {"vast", "runpod"}
+    assert len(daily) == 2
+    assert daily[daily["provider"] == "vast"].iloc[0]["score"] == 80
+
+
+def test_provider_health_exposes_freshness_and_errors(tmp_path):
+    provider_file = tmp_path / "vast.csv"
+    provider_file.write_text(
+        "provider,gpu,price_per_hour,availability,timestamp\n"
+        "vast_real,H100,2.0,1,2026-06-22 09:00:00\n"
+    )
+
+    health = build_provider_health(
+        [("vast_real", provider_file), ("runpod", tmp_path / "missing.csv")],
+        now=datetime(2026, 6, 22, 10, 0, 0),
+    )
+
+    vast = health[health["provider"] == "vast"].iloc[0]
+    runpod = health[health["provider"] == "runpod"].iloc[0]
+
+    assert vast["status"] == "online"
+    assert vast["freshness_band"] == "fresh"
+    assert vast["health_score"] > runpod["health_score"]
+    assert runpod["status"] == "offline"
+
+
+def test_provider_reliability_gaps_prioritize_stale_history():
+    ranking = pd.DataFrame([
+        {
+            "provider": "vast",
+            "reliability_score": 45,
+            "freshness_score": 20,
+            "depth_score": 100,
+            "history_days": 3,
+            "availability_score": 90,
+        }
+    ])
+
+    gaps = build_provider_reliability_gaps(ranking)
+
+    assert gaps.iloc[0]["priority"] == "high"
+    assert "stale_provider_data" in set(gaps["gap"])
+    assert "insufficient_reliability_history" in set(gaps["gap"])
 
 
 def test_core_signal_history_summary_tracks_days(tmp_path):

@@ -1419,6 +1419,7 @@ def build_terminal_summary():
     signal_quality = read_latest(DATA_DIR / "core_signal_quality.csv")
     signal_history = read_records(DATA_DIR / "core_signal_history.csv")
     reliability = read_latest(DATA_DIR / "provider_reliability_ranking.csv")
+    reliability_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv")
     frontier = read_latest(DATA_DIR / "frontier_gpu_index.csv")
 
     return {
@@ -1432,6 +1433,7 @@ def build_terminal_summary():
         "scarcity": scarcity,
         "capacity_forecast": forecast,
         "provider_reliability": reliability,
+        "provider_reliability_gaps": reliability_gaps[:10],
         "core_signal_health": {
             "history_records": len(signal_history),
             "days_collected": len({row.get("date") for row in signal_history if row.get("date")}),
