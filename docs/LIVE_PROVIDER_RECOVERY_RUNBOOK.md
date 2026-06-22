@@ -15,6 +15,7 @@ Run:
 
 ```bash
 ./scripts/run_core_intelligence.sh
+venv/bin/python scripts/core_status.py
 ```
 
 Then inspect:
@@ -25,14 +26,26 @@ Then inspect:
 - `data/core_intelligence_readiness.csv`
 - `reports/daily_terminal_brief_YYYYMMDD.txt`
 
+`scripts/core_status.py` prints the current readiness phase, blockers, next action and a prioritized action plan.
+
 ## Recovery Order
 
 1. Configure valid `VAST_API_KEY` and `RUNPOD_API_KEY`.
 2. Run `./scripts/run_core_intelligence.sh`.
-3. Confirm `live_provider_ingestion_status.csv` shows `fresh`, not `fallback`.
-4. Confirm `provider_reliability_gaps.csv` no longer contains `provider_ingestion_using_fallback`.
-5. Run the core pipeline daily until 30 distinct signal-history days are collected.
-6. Only sell paid reliability claims once `core_intelligence_readiness.csv` leaves `blocked_by_live_data`.
+3. Confirm `scripts/core_status.py` no longer lists critical provider-preflight actions.
+4. Confirm `live_provider_ingestion_status.csv` shows `fresh`, not `fallback`.
+5. Confirm `provider_reliability_gaps.csv` no longer contains `provider_ingestion_using_fallback`.
+6. Run the core pipeline daily until 30 distinct signal-history days are collected.
+7. Only sell paid reliability claims once `core_intelligence_readiness.csv` leaves `blocked_by_live_data`.
+
+## Priority Order
+
+Follow `action_plan` from `scripts/core_status.py` in this order:
+
+1. Critical provider-preflight actions
+2. High-priority provider reliability gaps
+3. Core signal history collection
+4. Remaining medium/low provider coverage work
 
 ## Paid Beta Rule
 
@@ -42,4 +55,3 @@ Paid beta can begin only when:
 - no high-priority fallback ingestion gaps remain
 - core signal history has 30 clean days
 - executive brief clearly labels remaining confidence limits
-

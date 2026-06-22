@@ -117,6 +117,14 @@ Operational runbooks:
 
 - `docs/LIVE_PROVIDER_RECOVERY_RUNBOOK.md`
 
+Current core status:
+
+```bash
+venv/bin/python scripts/core_status.py
+```
+
+The status output includes readiness phase, paid-beta signal readiness, blockers, next action, and a prioritized action plan.
+
 ## MVP Priorities
 
 1. Stabilize the daily data pipeline.
