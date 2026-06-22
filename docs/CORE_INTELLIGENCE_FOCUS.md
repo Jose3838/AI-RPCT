@@ -82,10 +82,12 @@ Inputs to strengthen:
 Track these before adding more product surface:
 
 - days of clean history collected
+- days of core signal history collected
 - provider coverage count
 - stale-source count
 - daily pipeline success rate
 - signal confidence
+- core signal quality score
 - number of user interviews
 - number of paid beta commitments
 
@@ -98,4 +100,3 @@ AI-RPCT is ready to charge the first customer when:
 - the product clearly labels confidence and data gaps
 - one target user says the daily brief would change a real workflow
 - billing and terms are ready enough for a small paid beta
-

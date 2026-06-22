@@ -55,6 +55,11 @@ from analytics.market_pulse_snapshot import main as save_market_pulse_snapshot_c
 from analytics.forecast_signal import build_forecast_signal
 from analytics.gpu_scarcity_index import build_gpu_scarcity_index
 from analytics.provider_reliability_ranking import build_provider_reliability_ranking
+from analytics.core_signal_history import (
+    append_core_signal_history,
+    build_core_signal_history_summary,
+)
+from analytics.core_signal_quality import build_core_signal_quality
 from snapshot_scheduler import run_scheduled_snapshot
 from security.limits import build_limit_status
 from security.entitlements import has_access
@@ -87,6 +92,8 @@ def test_v1_terminal_summary_contract():
     assert payload["mission"] == "Bloomberg for AI Infrastructure"
     assert "terminal" in payload
     assert "risk" in payload
+    assert "core_signal_health" in payload
+    assert "history_records" in payload["core_signal_health"]
     assert "quality" in payload
 
 
@@ -337,6 +344,28 @@ def test_provider_reliability_ranking_exposes_score_components():
     assert "reliability_score" in ranking.columns
     assert "freshness_score" in ranking.columns
     assert ranking.iloc[0]["reliability_band"] in {"strong", "watch", "weak", "critical"}
+
+
+def test_core_signal_history_summary_tracks_days(tmp_path):
+    history_file = tmp_path / "core_signal_history.csv"
+
+    append_core_signal_history(history_file=history_file, generated_at="2026-06-21T09:00:00+00:00")
+    append_core_signal_history(history_file=history_file, generated_at="2026-06-22T09:00:00+00:00")
+    summary = build_core_signal_history_summary(history_file)
+
+    assert summary["record_count"] == 2
+    assert summary["days_collected"] == 2
+    assert summary["coverage_band"] == "thin_history"
+    assert "gpu_scarcity_index" in summary["deltas"]
+
+
+def test_core_signal_quality_contract():
+    quality = build_core_signal_quality().iloc[0]
+
+    assert 0 <= quality["core_signal_quality_score"] <= 100
+    assert quality["quality_band"] in {"strong", "usable", "needs_work", "weak"}
+    assert "paid_beta_signal_ready" in quality
+    assert "blockers" in quality
 
 
 def test_v1_recommendations_contract():

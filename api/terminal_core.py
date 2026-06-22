@@ -1397,6 +1397,10 @@ def build_terminal_summary():
     quality = read_latest(DATA_DIR / "live_data_quality_score.csv")
     pulse = read_latest(DATA_DIR / "ai_infrastructure_pulse.csv")
     scarcity = read_latest(DATA_DIR / "gpu_scarcity_index.csv")
+    forecast = read_latest(DATA_DIR / "forecast_signal.csv")
+    signal_quality = read_latest(DATA_DIR / "core_signal_quality.csv")
+    signal_history = read_records(DATA_DIR / "core_signal_history.csv")
+    reliability = read_latest(DATA_DIR / "provider_reliability_ranking.csv")
     frontier = read_latest(DATA_DIR / "frontier_gpu_index.csv")
 
     return {
@@ -1408,6 +1412,16 @@ def build_terminal_summary():
         "quality": quality,
         "pulse": pulse,
         "scarcity": scarcity,
+        "capacity_forecast": forecast,
+        "provider_reliability": reliability,
+        "core_signal_health": {
+            "history_records": len(signal_history),
+            "days_collected": len({row.get("date") for row in signal_history if row.get("date")}),
+            "quality_score": signal_quality.get("core_signal_quality_score"),
+            "quality_band": signal_quality.get("quality_band"),
+            "paid_beta_signal_ready": as_bool(signal_quality.get("paid_beta_signal_ready")),
+            "blockers": signal_quality.get("blockers"),
+        },
         "frontier": frontier
     }
 
