@@ -196,6 +196,16 @@ function renderCommercialLocked(message = "Enterprise key required.") {
   if (pipeline) {
     pipeline.innerHTML = `<div class="text-sm text-slate-500">${message}</div>`;
   }
+
+  const admin = document.getElementById("customerAdminList");
+  if (admin) {
+    admin.innerHTML = `<div class="text-sm text-slate-500">${message}</div>`;
+  }
+
+  const audit = document.getElementById("auditLogList");
+  if (audit) {
+    audit.innerHTML = `<div class="text-sm text-slate-500">${message}</div>`;
+  }
 }
 
 function renderCommercialSnapshot(snapshot) {
@@ -260,6 +270,62 @@ function renderSalesPipeline(pipeline) {
       </div>
       <div class="text-sm text-slate-200 mt-3">${value(item, "recommended_action", "")}</div>
       <div class="text-xs text-slate-500 mt-2">${value(item, "rationale", "")}</div>
+    </div>
+  `).join("");
+}
+
+function renderCustomerAdmin(snapshot) {
+  const el = document.getElementById("customerAdminList");
+  if (!el) {
+    return;
+  }
+
+  const accounts = snapshot.accounts || [];
+  if (accounts.length === 0) {
+    el.innerHTML = `<div class="text-sm text-slate-500">No customer accounts.</div>`;
+    return;
+  }
+
+  el.innerHTML = accounts.map((account) => {
+    const usage = account.usage || {};
+    const status = value(account, "status", "unknown");
+    const statusClass = status === "active" ? "status-operational" : "status-warning";
+
+    return `
+      <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <div class="text-sm font-semibold text-slate-100">${value(account, "customer_name", "Unknown customer")}</div>
+            <div class="text-xs text-slate-500 mt-1">${value(account, "plan", "unknown")} / ${value(account, "api_key", "n/a")}</div>
+          </div>
+          <span class="status-indicator ${statusClass}">${status}</span>
+        </div>
+        <div class="text-xs text-slate-500 mt-3">${number(usage.total_calls, 0)} calls / ${money(account.monthly_price_usd)} MRR</div>
+      </div>
+    `;
+  }).join("");
+}
+
+function renderAuditLog(payload) {
+  const el = document.getElementById("auditLogList");
+  if (!el) {
+    return;
+  }
+
+  const events = payload.events || [];
+  if (events.length === 0) {
+    el.innerHTML = `<div class="text-sm text-slate-500">No audit events yet.</div>`;
+    return;
+  }
+
+  el.innerHTML = events.slice(0, 8).map((event) => `
+    <div class="rounded-lg border border-slate-700 bg-slate-900/30 p-4">
+      <div class="flex items-center justify-between gap-3">
+        <div class="text-sm font-semibold text-slate-100">${value(event, "action", "event")}</div>
+        <div class="text-xs text-slate-500">${value(event, "status", "ok")}</div>
+      </div>
+      <div class="text-xs text-slate-500 mt-2">${value(event, "timestamp", "")}</div>
+      <div class="text-xs text-slate-400 mt-2">Target: ${value(event, "target_api_key", "n/a")}</div>
     </div>
   `).join("");
 }
@@ -366,6 +432,10 @@ async function loadPaidData() {
       renderCommercialSnapshot(commercial);
       const pipeline = await getJson("/v1/sales-pipeline", activeApiKey);
       renderSalesPipeline(pipeline);
+      const customerAdmin = await getJson("/v1/customer-admin", activeApiKey);
+      renderCustomerAdmin(customerAdmin);
+      const auditLog = await getJson("/v1/audit-log", activeApiKey);
+      renderAuditLog(auditLog);
     } else {
       renderCommercialLocked("Enterprise key required for commercial metrics.");
     }
