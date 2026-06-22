@@ -3,6 +3,7 @@ from fastapi.responses import HTMLResponse
 import pandas as pd
 from pathlib import Path
 from api.commercial_core import build_commercial_snapshot, build_sales_pipeline
+from api.onboarding_core import create_customer_api_key
 from api.access import (
     build_access_status,
     build_plan_limits,
@@ -74,6 +75,16 @@ def v1_commercial_snapshot(x_api_key: str = Header(default=None)):
 def v1_sales_pipeline(x_api_key: str = Header(default=None)):
     require_v1_access("/v1/sales-pipeline", x_api_key)
     return build_sales_pipeline()
+
+
+@router.post("/v1/customers")
+def v1_create_customer(
+    customer_name: str,
+    plan: str,
+    x_api_key: str = Header(default=None),
+):
+    require_v1_access("/v1/customers", x_api_key)
+    return create_customer_api_key(customer_name, plan)
 
 
 @router.get("/v1/reports/latest")

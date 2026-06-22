@@ -491,6 +491,12 @@ def build_api_catalog():
             "tier": "enterprise"
         },
         {
+            "endpoint": "/v1/customers",
+            "category": "commercial",
+            "description": "Enterprise customer onboarding endpoint that creates an account and active V1 API key.",
+            "tier": "enterprise"
+        },
+        {
             "endpoint": "/v1/signals",
             "category": "intelligence",
             "description": "Decision signals generated from live market, price, scarcity and provider data.",

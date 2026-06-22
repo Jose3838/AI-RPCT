@@ -23,6 +23,7 @@ from api.access import (
     enforce_plan_limits,
 )
 from api.commercial_core import build_commercial_snapshot, build_sales_pipeline
+from api.onboarding_core import create_customer_api_key
 from security.limits import build_limit_status
 from security.entitlements import has_access
 from security.plan_resolver import resolve_plan
@@ -112,6 +113,8 @@ def test_v1_plan_access_contract():
     assert has_access("enterprise", "/v1/commercial-snapshot")
     assert not has_access("pro", "/v1/sales-pipeline")
     assert has_access("enterprise", "/v1/sales-pipeline")
+    assert not has_access("pro", "/v1/customers")
+    assert has_access("enterprise", "/v1/customers")
     assert has_access("free", "/v1/signals")
     assert not has_access("free", "/v1/recommendations")
     assert has_access("pro", "/v1/recommendations")
@@ -180,6 +183,27 @@ def test_v1_sales_pipeline_contract():
     assert isinstance(payload["opportunities"], list)
 
 
+def test_v1_customer_onboarding_contract(tmp_path, monkeypatch):
+    registry = tmp_path / "api_key_registry.csv"
+    accounts = tmp_path / "customer_accounts.csv"
+    registry.write_text("key,plan,status\n")
+    accounts.write_text("account_id,customer_name,api_key,plan,status\n")
+
+    monkeypatch.setattr("api.onboarding_core.API_KEY_REGISTRY_FILE", registry)
+    monkeypatch.setattr("api.onboarding_core.CUSTOMER_ACCOUNTS_FILE", accounts)
+
+    payload = create_customer_api_key("Acme Test", "pro")
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["status"] == "created"
+    assert payload["account"]["customer_name"] == "Acme Test"
+    assert payload["account"]["plan"] == "pro"
+    assert payload["api_key"].startswith("airpct_")
+    assert "Acme Test" in accounts.read_text()
+    assert payload["api_key"] in registry.read_text()
+
+
 def test_v1_limit_status_contract():
     now = datetime(2026, 6, 22, 12, 0, 0)
     records = [
@@ -222,6 +246,7 @@ def test_main_app_exposes_v1_core_routes():
     assert "/v1/usage-summary" in paths
     assert "/v1/commercial-snapshot" in paths
     assert "/v1/sales-pipeline" in paths
+    assert "/v1/customers" in paths
     assert "/v1/reports/latest" in paths
     assert "/v1/signals" in paths
     assert "/v1/recommendations" in paths
