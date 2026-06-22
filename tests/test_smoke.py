@@ -598,6 +598,8 @@ def test_core_status_contract():
 
     assert status["product"] == "AI-RPCT"
     assert "readiness_phase" in status
+    assert "provider_credentials" in status
+    assert "configured_count" in status["provider_credentials"]
     assert "next_action" in status
     assert "action_plan" in status
     assert isinstance(status["action_plan"], list)
