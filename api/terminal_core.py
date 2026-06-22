@@ -1337,6 +1337,7 @@ def build_executive_brief():
     capacity_forecast = summary.get("capacity_forecast", {})
     provider_reliability = summary.get("provider_reliability", {})
     core_signal_health = summary.get("core_signal_health", {})
+    core_readiness = summary.get("core_intelligence_readiness", {})
     frontier = summary.get("frontier", {})
 
     high_priority = [
@@ -1396,12 +1397,14 @@ def build_executive_brief():
         f"- Capacity Shock Band: {capacity_forecast.get('capacity_shock_band', 'n/a')}",
         f"- Top Provider Reliability: {provider_reliability.get('provider', 'n/a')} ({provider_reliability.get('reliability_score', 'n/a')})",
         f"- Core Signal Quality: {core_signal_health.get('quality_score', 'n/a')} ({core_signal_health.get('quality_band', 'n/a')})",
+        f"- Core Readiness Phase: {core_readiness.get('readiness_phase', 'n/a')}",
         f"- Core Signal History Days: {core_signal_health.get('days_collected', 'n/a')}",
         f"- Frontier GPU Index: {frontier.get('frontier_gpu_index', 'n/a')}",
         "",
         "## Signal Readiness",
         f"- Paid Beta Signal Ready: {core_signal_health.get('paid_beta_signal_ready', False)}",
         f"- Blockers: {core_signal_health.get('blockers', 'n/a')}",
+        f"- Next Action: {core_readiness.get('next_action', 'n/a')}",
         "",
         "## Top Signals",
         *[f"- {item.get('severity', 'n/a').upper()}: {item.get('title', '')}" for item in top_signals],
@@ -1430,10 +1433,12 @@ def build_executive_brief():
             "capacity_shock_band": capacity_forecast.get("capacity_shock_band"),
             "top_provider_reliability_score": provider_reliability.get("reliability_score"),
             "core_signal_quality_score": core_signal_health.get("quality_score"),
+            "core_readiness_phase": core_readiness.get("readiness_phase"),
             "core_signal_days_collected": core_signal_health.get("days_collected"),
             "frontier_gpu_index": frontier.get("frontier_gpu_index")
         },
         "signal_readiness": core_signal_health,
+        "core_intelligence_readiness": core_readiness,
         "top_signals": top_signals,
         "recommended_actions": top_recommendations,
         "markdown": "\n".join(markdown)
@@ -1448,6 +1453,7 @@ def build_terminal_summary():
     scarcity = read_latest(DATA_DIR / "gpu_scarcity_index.csv")
     forecast = read_latest(DATA_DIR / "forecast_signal.csv")
     signal_quality = read_latest(DATA_DIR / "core_signal_quality.csv")
+    core_readiness = read_latest(DATA_DIR / "core_intelligence_readiness.csv")
     signal_history = read_records(DATA_DIR / "core_signal_history.csv")
     reliability = read_first(DATA_DIR / "provider_reliability_ranking.csv")
     reliability_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv")
@@ -1465,6 +1471,7 @@ def build_terminal_summary():
         "capacity_forecast": forecast,
         "provider_reliability": reliability,
         "provider_reliability_gaps": reliability_gaps[:10],
+        "core_intelligence_readiness": core_readiness,
         "core_signal_health": {
             "history_records": len(signal_history),
             "days_collected": len({row.get("date") for row in signal_history if row.get("date")}),
@@ -1472,6 +1479,8 @@ def build_terminal_summary():
             "quality_band": signal_quality.get("quality_band"),
             "paid_beta_signal_ready": as_bool(signal_quality.get("paid_beta_signal_ready")),
             "blockers": signal_quality.get("blockers"),
+            "readiness_phase": core_readiness.get("readiness_phase"),
+            "next_action": core_readiness.get("next_action"),
         },
         "frontier": frontier
     }

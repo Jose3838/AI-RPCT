@@ -78,6 +78,7 @@ python analytics/provider_reliability_gaps.py
 python analytics/gpu_price_trend_signal.py
 python analytics/core_signal_history.py
 python analytics/core_signal_quality.py
+python analytics/core_intelligence_readiness.py
 python analytics/terminal_summary.py
 python analytics/api_inventory_runtime.py
 python analytics/market_data_moat_status.py

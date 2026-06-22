@@ -100,6 +100,7 @@ Core files:
 - `analytics/market_pulse_snapshot.py`
 - `analytics/core_signal_history.py`
 - `analytics/core_signal_quality.py`
+- `analytics/core_intelligence_readiness.py`
 - `analytics/provider_reliability_gaps.py`
 - `data/*.csv`
 - `data/launch_controls.csv`
@@ -108,6 +109,10 @@ Core files:
 - `web/app.js`
 - `run_daily.sh`
 - `scripts/run_core_intelligence.sh`
+
+Operational runbooks:
+
+- `docs/LIVE_PROVIDER_RECOVERY_RUNBOOK.md`
 
 ## MVP Priorities
 

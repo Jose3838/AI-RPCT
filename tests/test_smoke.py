@@ -64,6 +64,10 @@ from analytics.core_signal_history import (
     build_core_signal_history_summary,
 )
 from analytics.core_signal_quality import build_core_signal_quality
+from analytics.core_intelligence_readiness import (
+    build_core_intelligence_readiness,
+    readiness_phase,
+)
 from snapshot_scheduler import run_scheduled_snapshot
 from security.limits import build_limit_status
 from security.entitlements import has_access
@@ -101,6 +105,7 @@ def test_v1_terminal_summary_contract():
     assert "risk" in payload
     assert "core_signal_health" in payload
     assert "history_records" in payload["core_signal_health"]
+    assert "core_intelligence_readiness" in payload
     assert "provider_reliability" in payload
     assert "quality" in payload
 
@@ -497,7 +502,38 @@ def test_core_signal_quality_contract():
     assert 0 <= quality["core_signal_quality_score"] <= 100
     assert quality["quality_band"] in {"strong", "usable", "needs_work", "weak"}
     assert "paid_beta_signal_ready" in quality
+    assert "provider_gap_score" in quality
+    assert "high_provider_gap_count" in quality
     assert "blockers" in quality
+
+
+def test_core_intelligence_readiness_phase_priority():
+    assert readiness_phase(
+        {"paid_beta_signal_ready": False, "core_signal_quality_score": 50},
+        {"restore_live_provider_ingestion"},
+    ) == "blocked_by_live_data"
+    assert readiness_phase(
+        {"paid_beta_signal_ready": False, "core_signal_quality_score": 50},
+        {"collect_30_days_of_core_signal_history"},
+    ) == "building_history"
+    assert readiness_phase(
+        {"paid_beta_signal_ready": True, "core_signal_quality_score": 90},
+        set(),
+    ) == "paid_beta_ready"
+
+
+def test_core_intelligence_readiness_contract():
+    readiness = build_core_intelligence_readiness().iloc[0]
+
+    assert readiness["readiness_phase"] in {
+        "paid_beta_ready",
+        "blocked_by_live_data",
+        "building_history",
+        "usable_beta_signal",
+        "research_mode",
+    }
+    assert "next_action" in readiness
+    assert "blockers" in readiness
 
 
 def test_v1_recommendations_contract():
@@ -519,7 +555,9 @@ def test_v1_executive_brief_contract():
     assert payload["summary"]
     assert "markdown" in payload
     assert "signal_readiness" in payload
+    assert "core_intelligence_readiness" in payload
     assert "capacity_forecast_score" in payload["core_metrics"]
+    assert "core_readiness_phase" in payload["core_metrics"]
     assert "Core Signal Quality" in payload["markdown"]
     assert "Provider Reliability" in payload["markdown"]
 
