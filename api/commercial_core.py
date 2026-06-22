@@ -200,3 +200,36 @@ def build_sales_pipeline():
         },
         "opportunities": opportunities,
     }
+
+
+def build_customer_admin_snapshot():
+    accounts = read_records(ACCOUNTS_FILE)
+    pricing = read_plan_pricing()
+    account_snapshots = [
+        build_account_snapshot(account, pricing)
+        for account in accounts
+    ]
+
+    status_counts = {}
+    plan_counts = {}
+
+    for account in account_snapshots:
+        status = account.get("status", "unknown")
+        plan = account.get("plan", "unknown")
+        status_counts[status] = status_counts.get(status, 0) + 1
+        plan_counts[plan] = plan_counts.get(plan, 0) + 1
+
+    return {
+        "product": "AI-RPCT",
+        "version": "v1",
+        "report_type": "customer_admin_snapshot",
+        "summary": {
+            "total_accounts": len(account_snapshots),
+            "status_counts": status_counts,
+            "plan_counts": plan_counts,
+            "total_usage": sum(
+                account["usage"]["total_calls"] for account in account_snapshots
+            ),
+        },
+        "accounts": account_snapshots,
+    }

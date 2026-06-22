@@ -16,7 +16,11 @@ from intelligence.reports.customer_report_pdf_export_v1 import (
 
 from api.routes import router
 from api.auth_routes import router as auth_router
-from api.commercial_core import build_commercial_snapshot, build_sales_pipeline
+from api.commercial_core import (
+    build_commercial_snapshot,
+    build_customer_admin_snapshot,
+    build_sales_pipeline,
+)
 from api.onboarding_core import (
     create_customer_api_key,
     reactivate_customer_api_key,
@@ -93,6 +97,12 @@ def v1_commercial_snapshot(x_api_key: str = Header(default=None)):
 def v1_sales_pipeline(x_api_key: str = Header(default=None)):
     require_v1_access("/v1/sales-pipeline", x_api_key)
     return build_sales_pipeline()
+
+
+@app.get("/v1/customer-admin")
+def v1_customer_admin(x_api_key: str = Header(default=None)):
+    require_v1_access("/v1/customer-admin", x_api_key)
+    return build_customer_admin_snapshot()
 
 
 @app.post("/v1/customers")

@@ -23,6 +23,7 @@ from api.access import (
     enforce_plan_limits,
 )
 from api.commercial_core import build_commercial_snapshot, build_sales_pipeline
+from api.commercial_core import build_customer_admin_snapshot
 from api.onboarding_core import (
     create_customer_api_key,
     reactivate_customer_api_key,
@@ -117,6 +118,8 @@ def test_v1_plan_access_contract():
     assert has_access("enterprise", "/v1/commercial-snapshot")
     assert not has_access("pro", "/v1/sales-pipeline")
     assert has_access("enterprise", "/v1/sales-pipeline")
+    assert not has_access("pro", "/v1/customer-admin")
+    assert has_access("enterprise", "/v1/customer-admin")
     assert not has_access("pro", "/v1/customers")
     assert has_access("enterprise", "/v1/customers")
     assert not has_access("pro", "/v1/customers/revoke")
@@ -189,6 +192,18 @@ def test_v1_sales_pipeline_contract():
     assert "opportunity_count" in payload["summary"]
     assert "estimated_mrr_lift_usd" in payload["summary"]
     assert isinstance(payload["opportunities"], list)
+
+
+def test_v1_customer_admin_snapshot_contract():
+    payload = build_customer_admin_snapshot()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["version"] == "v1"
+    assert payload["report_type"] == "customer_admin_snapshot"
+    assert payload["summary"]["total_accounts"] >= 3
+    assert "active" in payload["summary"]["status_counts"]
+    assert isinstance(payload["accounts"], list)
+    assert "api_key" in payload["accounts"][0]
 
 
 def test_v1_customer_onboarding_contract(tmp_path, monkeypatch):
@@ -280,6 +295,7 @@ def test_main_app_exposes_v1_core_routes():
     assert "/v1/usage-summary" in paths
     assert "/v1/commercial-snapshot" in paths
     assert "/v1/sales-pipeline" in paths
+    assert "/v1/customer-admin" in paths
     assert "/v1/customers" in paths
     assert "/v1/customers/revoke" in paths
     assert "/v1/customers/reactivate" in paths

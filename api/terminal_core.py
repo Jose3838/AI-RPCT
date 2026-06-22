@@ -491,6 +491,12 @@ def build_api_catalog():
             "tier": "enterprise"
         },
         {
+            "endpoint": "/v1/customer-admin",
+            "category": "commercial",
+            "description": "Enterprise customer administration snapshot with account status, plan, usage and limits.",
+            "tier": "enterprise"
+        },
+        {
             "endpoint": "/v1/customers",
             "category": "commercial",
             "description": "Enterprise customer onboarding endpoint that creates an account and active V1 API key.",
