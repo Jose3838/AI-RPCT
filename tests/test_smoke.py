@@ -72,7 +72,7 @@ from analytics.provider_preflight import (
     build_provider_preflight,
     summarize_provider_preflight,
 )
-from scripts.core_status import build_core_status
+from scripts.core_status import build_action_plan, build_core_status
 from snapshot_scheduler import run_scheduled_snapshot
 from security.limits import build_limit_status
 from security.entitlements import has_access
@@ -556,7 +556,20 @@ def test_core_status_contract():
     assert status["product"] == "AI-RPCT"
     assert "readiness_phase" in status
     assert "next_action" in status
+    assert "action_plan" in status
+    assert isinstance(status["action_plan"], list)
     assert isinstance(status["top_provider_gaps"], list)
+
+
+def test_core_status_action_plan_prioritizes_preflight():
+    actions = build_action_plan(
+        {"blockers": "collect_30_days_of_core_signal_history"},
+        [{"provider": "vast", "priority": "high", "gap": "stale_provider_data", "recommended_action": "Refresh Vast."}],
+        [{"provider": "vast", "readiness": "blocked", "next_action": "Configure VAST_API_KEY."}],
+    )
+
+    assert actions[0]["priority"] == "critical"
+    assert actions[0]["source"] == "provider_preflight"
 
 
 def test_provider_preflight_blocks_missing_keys_and_fallback():
