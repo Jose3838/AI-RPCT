@@ -48,6 +48,7 @@ def read_records(path):
 
 def build_core_signal_quality():
     history = build_core_signal_history_summary()
+    history_audit = read_latest(DATA_DIR / "core_history_audit.csv")
     scarcity = read_latest(DATA_DIR / "gpu_scarcity_index.csv")
     forecast = read_latest(DATA_DIR / "forecast_signal.csv")
     reliability = read_first(DATA_DIR / "provider_reliability_ranking.csv")
@@ -58,7 +59,7 @@ def build_core_signal_quality():
     ]
     high_gap_names = {gap.get("gap") for gap in high_provider_gaps}
 
-    history_score = min(100.0, (history.get("days_collected", 0) / 30) * 100)
+    history_score = min(100.0, as_float(history_audit.get("progress_pct"), (history.get("days_collected", 0) / 30) * 100))
     scarcity_explainability = 100.0 if all(
         key in scarcity
         for key in [
@@ -98,6 +99,8 @@ def build_core_signal_quality():
         "quality_band": band(quality_score),
         "days_collected": history.get("days_collected", 0),
         "history_coverage_band": history.get("coverage_band"),
+        "history_progress_pct": history_score,
+        "history_days_remaining": as_float(history_audit.get("days_remaining"), 30),
         "scarcity_explainability_score": scarcity_explainability,
         "forecast_confidence_score": forecast_confidence,
         "top_provider_reliability_score": reliability_score,

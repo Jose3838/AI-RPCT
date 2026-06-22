@@ -25,6 +25,7 @@ def build_core_status():
     readiness = read_latest(DATA_DIR / "core_intelligence_readiness.csv")
     quality = read_latest(DATA_DIR / "core_signal_quality.csv")
     pulse = read_latest(DATA_DIR / "market_pulse_history.csv")
+    history_audit = read_latest(DATA_DIR / "core_history_audit.csv")
     gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv", limit=5)
     preflight = read_records(DATA_DIR / "provider_preflight.csv", limit=10)
     action_plan = build_action_plan(readiness, gaps, preflight)
@@ -35,6 +36,9 @@ def build_core_status():
         "core_signal_quality_score": readiness.get("core_signal_quality_score", quality.get("core_signal_quality_score")),
         "quality_band": readiness.get("quality_band", quality.get("quality_band", "unknown")),
         "market_pulse_score": readiness.get("market_pulse_score", pulse.get("market_pulse_score")),
+        "history_progress_pct": history_audit.get("progress_pct"),
+        "history_days_remaining": history_audit.get("days_remaining"),
+        "history_band": history_audit.get("history_band"),
         "paid_beta_signal_ready": readiness.get("paid_beta_signal_ready", False),
         "blockers": readiness.get("blockers", quality.get("blockers", "unknown")),
         "next_action": readiness.get("next_action", "Run ./scripts/run_core_intelligence.sh"),

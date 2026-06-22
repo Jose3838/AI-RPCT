@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 import pytest
@@ -63,6 +63,7 @@ from analytics.core_signal_history import (
     append_core_signal_history,
     build_core_signal_history_summary,
 )
+from analytics.core_history_audit import build_core_history_audit
 from analytics.core_signal_quality import build_core_signal_quality
 from analytics.core_intelligence_readiness import (
     build_core_intelligence_readiness,
@@ -113,6 +114,7 @@ def test_v1_terminal_summary_contract():
     assert "core_signal_health" in payload
     assert "history_records" in payload["core_signal_health"]
     assert "core_intelligence_readiness" in payload
+    assert "core_history_audit" in payload
     assert "provider_reliability" in payload
     assert "quality" in payload
 
@@ -509,6 +511,22 @@ def test_core_signal_history_summary_tracks_days(tmp_path):
     assert "gpu_scarcity_index" in summary["deltas"]
 
 
+def test_core_history_audit_tracks_progress_and_missing_days(tmp_path):
+    history_file = tmp_path / "core_signal_history.csv"
+    history_file.write_text(
+        "timestamp,date,gpu_scarcity_index\n"
+        "2026-06-20T09:00:00+00:00,2026-06-20,30\n"
+        "2026-06-22T09:00:00+00:00,2026-06-22,40\n"
+    )
+
+    audit = build_core_history_audit(history_file, end_date=date(2026, 6, 22)).iloc[0]
+
+    assert audit["days_collected"] == 2
+    assert audit["days_remaining"] == 28
+    assert audit["history_band"] == "thin_history"
+    assert "2026-06-21" in audit["missing_recent_days"]
+
+
 def test_core_signal_quality_contract():
     quality = build_core_signal_quality().iloc[0]
 
@@ -517,6 +535,8 @@ def test_core_signal_quality_contract():
     assert "paid_beta_signal_ready" in quality
     assert "provider_gap_score" in quality
     assert "high_provider_gap_count" in quality
+    assert "history_progress_pct" in quality
+    assert "history_days_remaining" in quality
     assert "blockers" in quality
 
 
@@ -625,7 +645,9 @@ def test_v1_executive_brief_contract():
     assert "core_intelligence_readiness" in payload
     assert "capacity_forecast_score" in payload["core_metrics"]
     assert "core_readiness_phase" in payload["core_metrics"]
+    assert "history_progress_pct" in payload["core_metrics"]
     assert "Core Signal Quality" in payload["markdown"]
+    assert "History Progress" in payload["markdown"]
     assert "Provider Reliability" in payload["markdown"]
 
 
