@@ -19,6 +19,13 @@ Do not spend aggressively on infrastructure before the signal is valuable. The c
 - deploy only the API/dashboard needed for beta users
 - add paid infrastructure only after real users validate the value
 
+The product direction is now deliberately narrower:
+
+- AI-RPCT is an intelligence product, not a generic GPU marketplace.
+- The moat is the historical signal time series, not the raw data alone.
+- API expansion is frozen unless a new endpoint directly improves core intelligence, data quality, historical collection, or customer validation.
+- Commercial and operations endpoints support the product, but they are not the product core.
+
 ## Current System
 
 - market data collector
@@ -63,46 +70,19 @@ http://127.0.0.1:8000/v1/dashboard-snapshot
 http://127.0.0.1:8000/v1/market-pulse
 ```
 
-## Stable V1 API Core
+## Stable V1 API Surface
 
-These endpoints are the product surface we should protect first:
+These endpoints are the Core Intelligence surface we should protect first:
 
-- `/v1/terminal-summary`
 - `/v1/dashboard-snapshot`
-- `/v1/data-trust-status`
-- `/v1/trust-remediation-plan`
-- `/v1/provider-connector-readiness`
-- `/v1/provider-connector-upgrade-plan`
 - `/v1/market-pulse`
-- `/v1/market-pulse-history`
-- `/v1/market-pulse/snapshot`
-- `/v1/market-pulse-brief`
-- `/v1/market-pulse-brief/save`
-- `/v1/provider-risk-radar`
-- `/v1/daily-change-brief`
-- `/v1/api-catalog`
-- `/v1/access-status`
-- `/v1/plan-limits`
-- `/v1/usage-summary`
-- `/v1/commercial-snapshot`
-- `/v1/sales-pipeline`
-- `/v1/customer-admin`
-- `/v1/account-health`
-- `/v1/revenue-forecast`
-- `/v1/commercial-board-report`
-- `/v1/commercial-board-report/html`
-- `/v1/audit-log`
-- `/v1/operations-status`
-- `/v1/launch-controls`
-- `/v1/customers`
-- `/v1/customers/revoke`
-- `/v1/customers/reactivate`
-- `/v1/reports/latest`
 - `/v1/signals`
 - `/v1/recommendations`
 - `/v1/executive-brief`
-- `/v1/customer-report`
-- `/v1/customer-report/html`
+
+Supporting commercial and operations endpoints exist for customer validation, access control, reporting, and launch readiness. They should stay stable, but new work should not expand that surface until the Core Intelligence layer is stronger.
+
+See `docs/CORE_INTELLIGENCE_FOCUS.md` for the current CTO execution doctrine.
 
 ## Data Flow
 
@@ -127,12 +107,12 @@ Core files:
 ## MVP Priorities
 
 1. Stabilize the daily data pipeline.
-2. Make provider live-data ingestion reliable.
-3. Define 3-5 unique intelligence signals.
-4. Build a clear terminal dashboard.
-5. Add historical data quality checks.
-6. Package investor/customer reports.
-7. Add API keys, plans, usage limits, and billing readiness.
+2. Build complete historical time series.
+3. Make provider live-data ingestion reliable.
+4. Improve GPU Scarcity Index.
+5. Improve Capacity Shock Forecast.
+6. Improve Provider Reliability Score.
+7. Validate the product with the first paying user.
 
 ## Unique Signals To Build
 

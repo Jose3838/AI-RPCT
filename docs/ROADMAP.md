@@ -1,25 +1,44 @@
-# AI-RPCT SaaS Beta
+# AI-RPCT Roadmap
 
-## Core Platform
+## Current Strategic Focus
 
-- API
-- Forecasting
-- Alerts
-- Provider Rankings
-- Market Share
-- KPI Dashboard
-- Investor Reports
+AI-RPCT is prioritizing Core Intelligence over API and dashboard expansion.
 
-## SaaS Layer
+The next product milestone is not "more endpoints." It is a trusted daily intelligence loop:
 
-- API Keys
-- Usage Tracking
-- Plans
-- Dashboard
+- daily pipeline reliability
+- historical time-series completeness
+- GPU Scarcity Index
+- Capacity Shock Forecast
+- Provider Reliability Score
+- first paying user
 
-## Next
+## Product Core
 
-- User Accounts
-- Billing
-- Deployment
-- Cloud Hosting
+Protect and improve:
+
+- `/v1/dashboard-snapshot`
+- `/v1/market-pulse`
+- `/v1/signals`
+- `/v1/recommendations`
+- `/v1/executive-brief`
+
+## Supporting Infrastructure
+
+Keep stable, but do not expand by default:
+
+- API keys
+- usage tracking
+- plans
+- customer administration
+- commercial reporting
+- operations readiness
+
+## Deferred Until Signal Value Is Proven
+
+- broad dashboard expansion
+- heavy cloud infrastructure
+- data warehouse
+- Kubernetes
+- large sales automation
+- non-core API surface growth
