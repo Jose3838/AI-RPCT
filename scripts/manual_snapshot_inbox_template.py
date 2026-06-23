@@ -1,6 +1,9 @@
 import json
+import sys
 from datetime import date
 from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 import pandas as pd
 

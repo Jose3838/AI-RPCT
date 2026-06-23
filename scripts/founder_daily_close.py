@@ -1,7 +1,12 @@
 import json
+import sys
+from pathlib import Path
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from analytics.research_preview_brief import build_research_preview_brief
 from scripts.core_status import build_core_status
+from scripts.manual_snapshot_template_check import build_manual_snapshot_template_check
 
 
 def build_founder_daily_close():
@@ -11,9 +16,18 @@ def build_founder_daily_close():
     snapshot_quality = core.get("manual_snapshot_quality", {})
     paid_gate = core.get("paid_beta_gate", {})
     recovery = core.get("provider_recovery_plan", {})
+    snapshot_plan = core.get("snapshot_collection_plan", [])
+    template_check = build_manual_snapshot_template_check()
     action_plan = core.get("action_plan", [])
 
     tomorrow_focus = preview.get("next_action") or core.get("next_action")
+    if template_check.get("status") in {
+        "template_needs_sources",
+        "template_partially_ready",
+        "ready_to_copy",
+        "template_missing_or_empty",
+    }:
+        tomorrow_focus = template_check.get("next_action", tomorrow_focus)
     if (
         preview.get("preview_status") != "snapshot_collection_needed"
         and action_plan
@@ -36,6 +50,10 @@ def build_founder_daily_close():
         "region_universe_count": coverage.get("region_universe_count"),
         "manual_snapshot_quality_status": snapshot_quality.get("status"),
         "valid_manual_snapshot_count": snapshot_quality.get("valid_snapshot_count"),
+        "manual_snapshot_template_status": template_check.get("status"),
+        "manual_snapshot_template_valid_rows": template_check.get("valid_row_count"),
+        "manual_snapshot_template_rejected_rows": template_check.get("rejected_row_count"),
+        "snapshot_collection_targets": snapshot_plan[:5],
         "history_policy": coverage.get("history_policy"),
         "tomorrow_focus": tomorrow_focus,
         "top_actions": action_plan[:5],

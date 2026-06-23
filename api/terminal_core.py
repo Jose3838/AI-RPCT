@@ -5,6 +5,7 @@ import pandas as pd
 
 from scripts.provider_recovery_plan import build_provider_recovery_plan
 from scripts.manual_snapshot_workflow import build_manual_snapshot_workflow
+from scripts.manual_snapshot_template_check import build_manual_snapshot_template_check
 
 
 DATA_DIR = Path("data")
@@ -1523,12 +1524,14 @@ def build_terminal_summary():
     paid_beta_gate = read_latest(DATA_DIR / "paid_beta_gate.csv")
     coverage_universe = read_latest(DATA_DIR / "coverage_universe_status.csv")
     manual_snapshot_quality = read_latest(DATA_DIR / "manual_snapshot_quality.csv")
+    snapshot_collection_plan = read_records(DATA_DIR / "snapshot_collection_plan.csv")
     signal_history = read_records(DATA_DIR / "core_signal_history.csv")
     reliability = read_first(DATA_DIR / "provider_reliability_ranking.csv")
     reliability_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv")
     frontier = read_latest(DATA_DIR / "frontier_gpu_index.csv")
     recovery_plan = build_provider_recovery_plan()
     snapshot_workflow = build_manual_snapshot_workflow()
+    template_check = build_manual_snapshot_template_check()
 
     return {
         "product": "AI-RPCT",
@@ -1548,6 +1551,16 @@ def build_terminal_summary():
         "paid_beta_gate": paid_beta_gate,
         "coverage_universe": coverage_universe,
         "manual_snapshot_quality": manual_snapshot_quality,
+        "snapshot_collection_plan": snapshot_collection_plan[:10],
+        "manual_snapshot_template_check": {
+            "status": template_check.get("status"),
+            "template_file": template_check.get("template_file"),
+            "template_row_count": template_check.get("template_row_count"),
+            "valid_row_count": template_check.get("valid_row_count"),
+            "rejected_row_count": template_check.get("rejected_row_count"),
+            "top_rejection_reasons": template_check.get("top_rejection_reasons", []),
+            "next_action": template_check.get("next_action"),
+        },
         "manual_snapshot_workflow": {
             "inbox_path": snapshot_workflow.get("inbox_path"),
             "fixed_values": snapshot_workflow.get("fixed_values", {}),

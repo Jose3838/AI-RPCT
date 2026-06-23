@@ -151,6 +151,11 @@ def test_v1_terminal_summary_contract():
     assert "paid_beta_gate" in payload
     assert "coverage_universe" in payload
     assert "manual_snapshot_quality" in payload
+    assert "snapshot_collection_plan" in payload
+    assert isinstance(payload["snapshot_collection_plan"], list)
+    assert "manual_snapshot_template_check" in payload
+    assert "status" in payload["manual_snapshot_template_check"]
+    assert "next_action" in payload["manual_snapshot_template_check"]
     assert "manual_snapshot_workflow" in payload
     assert "inbox_path" in payload["manual_snapshot_workflow"]
     assert payload["manual_snapshot_workflow"]["fixed_values"]["claim_scope"] == "research_preview"
@@ -925,6 +930,9 @@ def test_founder_daily_close_contract():
     assert "tomorrow_focus" in close
     assert "top_actions" in close
     assert isinstance(close["top_actions"], list)
+    assert "manual_snapshot_template_status" in close
+    assert "snapshot_collection_targets" in close
+    assert isinstance(close["snapshot_collection_targets"], list)
     assert "do_not_claim_yet" in close
 
 
