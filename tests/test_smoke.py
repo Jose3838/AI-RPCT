@@ -81,6 +81,7 @@ from analytics.provider_preflight import (
     summarize_provider_preflight,
 )
 from scripts.core_status import build_action_plan, build_core_status
+from scripts.founder_daily_close import build_founder_daily_close
 from scripts.history_backfill_plan import build_history_backfill_plan
 from scripts.manual_snapshot_workflow import build_manual_snapshot_workflow
 from scripts.provider_env_check import build_provider_env_check
@@ -100,6 +101,7 @@ def test_core_files_exist():
     assert Path("scripts/provider_env_check.py").exists()
     assert Path("scripts/secret_hygiene_check.py").exists()
     assert Path("scripts/history_backfill_plan.py").exists()
+    assert Path("scripts/founder_daily_close.py").exists()
     assert Path("scripts/manual_snapshot_workflow.py").exists()
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert Path("analytics/market_pulse_snapshot.py").exists()
@@ -843,6 +845,18 @@ def test_research_preview_brief_contract():
     assert "No 6-12 month history claim without sourced historical records." in brief["unsafe_claims"]
     assert "Research Preview Brief" in brief["markdown"]
     assert "Claims Not Yet Safe" in brief["markdown"]
+
+
+def test_founder_daily_close_contract():
+    close = build_founder_daily_close()
+
+    assert close["product"] == "AI-RPCT"
+    assert close["report_type"] == "founder_daily_close"
+    assert close["status"] == "saved_for_next_session"
+    assert "tomorrow_focus" in close
+    assert "top_actions" in close
+    assert isinstance(close["top_actions"], list)
+    assert "do_not_claim_yet" in close
 
 
 def test_provider_preflight_blocks_missing_keys_and_fallback():
