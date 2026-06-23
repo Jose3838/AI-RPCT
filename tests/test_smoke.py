@@ -74,6 +74,7 @@ from analytics.paid_beta_gate import build_paid_beta_gate
 from analytics.coverage_universe_status import build_coverage_universe_status
 from analytics.manual_snapshot_ingest import build_manual_snapshot_ingest
 from analytics.manual_snapshot_quality import build_manual_snapshot_quality
+from analytics.research_preview_brief import build_research_preview_brief
 from analytics.provider_preflight import (
     build_provider_preflight,
     is_configured_secret,
@@ -105,6 +106,7 @@ def test_core_files_exist():
     assert Path("analytics/coverage_universe_status.py").exists()
     assert Path("analytics/manual_snapshot_ingest.py").exists()
     assert Path("analytics/manual_snapshot_quality.py").exists()
+    assert Path("analytics/research_preview_brief.py").exists()
     assert Path("analytics/core_signal_history.py").exists()
     assert Path("analytics/core_signal_quality.py").exists()
     assert Path("README.md").exists()
@@ -824,6 +826,23 @@ def test_manual_snapshot_ingest_rejects_invalid_rows(tmp_path):
     assert result["rejected_count"] == 1
     assert len(master) == 0
     assert "unknown_region" in rejected.iloc[0]["rejection_reason"]
+
+
+def test_research_preview_brief_contract():
+    brief = build_research_preview_brief()
+
+    assert brief["product"] == "AI-RPCT"
+    assert brief["report_type"] == "research_preview_brief"
+    assert brief["preview_status"] in {
+        "research_preview",
+        "snapshot_collection_needed",
+        "paid_beta_ready",
+    }
+    assert "safe_claims" in brief
+    assert "unsafe_claims" in brief
+    assert "No 6-12 month history claim without sourced historical records." in brief["unsafe_claims"]
+    assert "Research Preview Brief" in brief["markdown"]
+    assert "Claims Not Yet Safe" in brief["markdown"]
 
 
 def test_provider_preflight_blocks_missing_keys_and_fallback():

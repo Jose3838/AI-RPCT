@@ -99,6 +99,7 @@ python analytics/coverage_universe_status.py
 python analytics/scarcity_watchlist.py
 python analytics/terminal_risk_score.py
 python analytics/executive_ai_infrastructure_memo.py
+python analytics/research_preview_brief.py
 python analytics/live_data_quality_score.py
 python analytics/terminal_trend_history.py
 python analytics/market_pulse_snapshot.py
