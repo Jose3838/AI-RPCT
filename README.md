@@ -58,6 +58,7 @@ venv/bin/python scripts/provider_recovery_plan.py
 venv/bin/python scripts/scheduler_health.py
 venv/bin/python scripts/secret_hygiene_check.py
 venv/bin/python analytics/collection_cadence_audit.py
+venv/bin/python analytics/morning_brief.py
 venv/bin/python scripts/history_backfill_plan.py
 venv/bin/python scripts/manual_snapshot_workflow.py
 venv/bin/python scripts/founder_daily_close.py
@@ -122,6 +123,7 @@ Core files:
 - `engine/calculate_rpct.py`
 - `analytics/*`
 - `analytics/market_pulse_snapshot.py`
+- `analytics/morning_brief.py`
 - `analytics/core_signal_history.py`
 - `analytics/collection_cadence_audit.py`
 - `analytics/core_signal_quality.py`

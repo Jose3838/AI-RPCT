@@ -1849,6 +1849,7 @@ def build_api_catalog():
 
 def build_latest_reports():
     return {
+        "morning_brief": read_latest_report("morning_brief_*.md"),
         "daily_terminal_brief": read_latest_report("daily_terminal_brief_*.txt"),
         "weekly_infrastructure_report": read_latest_report("weekly_infrastructure_report_*.txt"),
         "market_intelligence_snapshot": read_latest_report("market_intelligence_snapshot_*.txt"),

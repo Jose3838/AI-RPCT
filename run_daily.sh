@@ -101,6 +101,7 @@ python analytics/coverage_universe_status.py
 python analytics/snapshot_collection_plan.py
 python analytics/scarcity_watchlist.py
 python analytics/terminal_risk_score.py
+python analytics/morning_brief.py
 python analytics/executive_ai_infrastructure_memo.py
 python analytics/research_preview_brief.py
 python analytics/live_data_quality_score.py
