@@ -1521,6 +1521,7 @@ def build_terminal_summary():
     signal_quality = read_latest(DATA_DIR / "core_signal_quality.csv")
     core_readiness = read_latest(DATA_DIR / "core_intelligence_readiness.csv")
     history_audit = read_latest(DATA_DIR / "core_history_audit.csv")
+    cadence_audit = read_latest(DATA_DIR / "collection_cadence_audit.csv")
     provenance_audit = read_latest(DATA_DIR / "core_provenance_audit.csv")
     paid_beta_gate = read_latest(DATA_DIR / "paid_beta_gate.csv")
     coverage_universe = read_latest(DATA_DIR / "coverage_universe_status.csv")
@@ -1549,6 +1550,7 @@ def build_terminal_summary():
         "provider_reliability_gaps": reliability_gaps[:10],
         "core_intelligence_readiness": core_readiness,
         "core_history_audit": history_audit,
+        "collection_cadence": cadence_audit,
         "core_provenance_audit": provenance_audit,
         "paid_beta_gate": paid_beta_gate,
         "coverage_universe": coverage_universe,
@@ -1597,6 +1599,9 @@ def build_terminal_summary():
             "next_action": core_readiness.get("next_action"),
             "history_progress_pct": history_audit.get("progress_pct"),
             "history_days_remaining": history_audit.get("days_remaining"),
+            "collection_cadence_status": cadence_audit.get("status"),
+            "collection_current_streak_days": cadence_audit.get("current_streak_days"),
+            "collection_missing_day_count": cadence_audit.get("missing_day_count"),
             "provenance_band": provenance_audit.get("provenance_band"),
             "fallback_row_pct": provenance_audit.get("fallback_row_pct"),
             "paid_beta_gate_status": paid_beta_gate.get("gate_status"),

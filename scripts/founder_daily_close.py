@@ -12,6 +12,7 @@ from scripts.manual_snapshot_template_check import build_manual_snapshot_templat
 def build_founder_daily_close():
     core = build_core_status()
     preview = build_research_preview_brief()
+    cadence = core.get("collection_cadence", {})
     coverage = core.get("coverage_universe", {})
     snapshot_quality = core.get("manual_snapshot_quality", {})
     paid_gate = core.get("paid_beta_gate", {})
@@ -40,6 +41,10 @@ def build_founder_daily_close():
         "report_type": "founder_daily_close",
         "status": "saved_for_next_session",
         "readiness_phase": core.get("readiness_phase"),
+        "collection_cadence_status": cadence.get("status"),
+        "collection_days_collected": cadence.get("days_collected"),
+        "collection_current_streak_days": cadence.get("current_streak_days"),
+        "collection_missing_day_count": cadence.get("missing_day_count"),
         "research_preview_status": preview.get("preview_status"),
         "paid_beta_gate_status": paid_gate.get("status"),
         "paid_beta_allowed": paid_gate.get("allowed", False),

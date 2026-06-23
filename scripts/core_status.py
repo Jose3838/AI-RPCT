@@ -34,6 +34,7 @@ def build_core_status():
     pulse = read_latest(DATA_DIR / "market_pulse_history.csv")
     history_audit = read_latest(DATA_DIR / "core_history_audit.csv")
     provenance_audit = read_latest(DATA_DIR / "core_provenance_audit.csv")
+    cadence_audit = read_latest(DATA_DIR / "collection_cadence_audit.csv")
     paid_beta_gate = read_latest(DATA_DIR / "paid_beta_gate.csv")
     coverage_universe = read_latest(DATA_DIR / "coverage_universe_status.csv")
     manual_snapshot_quality = read_latest(DATA_DIR / "manual_snapshot_quality.csv")
@@ -57,6 +58,15 @@ def build_core_status():
         "provenance_band": provenance_audit.get("provenance_band"),
         "fallback_row_pct": provenance_audit.get("fallback_row_pct"),
         "provenance_blockers": provenance_audit.get("blockers"),
+        "collection_cadence": {
+            "status": cadence_audit.get("status", "unknown"),
+            "days_collected": cadence_audit.get("days_collected"),
+            "current_streak_days": cadence_audit.get("current_streak_days"),
+            "missing_day_count": cadence_audit.get("missing_day_count"),
+            "next_milestone_days": cadence_audit.get("next_milestone_days"),
+            "days_to_next_milestone": cadence_audit.get("days_to_next_milestone"),
+            "next_action": cadence_audit.get("next_action"),
+        },
         "paid_beta_gate": {
             "allowed": paid_beta_gate.get("paid_beta_allowed", False),
             "status": paid_beta_gate.get("gate_status", "unknown"),

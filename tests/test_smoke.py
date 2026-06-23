@@ -63,6 +63,7 @@ from analytics.core_signal_history import (
     append_core_signal_history,
     build_core_signal_history_summary,
 )
+from analytics.collection_cadence_audit import build_collection_cadence_audit
 from analytics.core_history_audit import build_core_history_audit
 from analytics.core_provenance_audit import build_core_provenance_audit
 from analytics.core_signal_quality import build_core_signal_quality
@@ -117,7 +118,9 @@ def test_core_files_exist():
     assert Path("scripts/scheduler_health.py").exists()
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/collection_cadence_audit.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("run_daily.sh").read_text()
+    assert "analytics/collection_cadence_audit.py" in Path("run_daily.sh").read_text()
     launch_agent_script = Path("scripts/install_macos_launch_agent.sh").read_text()
     assert "com.airpct.daily" in launch_agent_script
     assert "./scripts/run_core_intelligence.sh" in launch_agent_script
@@ -130,6 +133,7 @@ def test_core_files_exist():
     assert Path("analytics/research_preview_brief.py").exists()
     assert Path("analytics/snapshot_collection_plan.py").exists()
     assert Path("analytics/core_signal_history.py").exists()
+    assert Path("analytics/collection_cadence_audit.py").exists()
     assert Path("analytics/core_signal_quality.py").exists()
     assert Path("README.md").exists()
     assert Path("data/gpu_universe.csv").exists()
@@ -161,6 +165,7 @@ def test_v1_terminal_summary_contract():
     assert "history_records" in payload["core_signal_health"]
     assert "core_intelligence_readiness" in payload
     assert "core_history_audit" in payload
+    assert "collection_cadence" in payload
     assert "core_provenance_audit" in payload
     assert "paid_beta_gate" in payload
     assert "coverage_universe" in payload
@@ -177,6 +182,7 @@ def test_v1_terminal_summary_contract():
     assert payload["manual_snapshot_workflow"]["fixed_values"]["claim_scope"] == "research_preview"
     assert "provider_recovery_plan" in payload
     assert "paid_beta_gate_status" in payload["core_signal_health"]
+    assert "collection_cadence_status" in payload["core_signal_health"]
     assert "provider_reliability" in payload
     assert "quality" in payload
 
@@ -1029,6 +1035,8 @@ def test_founder_daily_close_contract():
     assert close["product"] == "AI-RPCT"
     assert close["report_type"] == "founder_daily_close"
     assert close["status"] == "saved_for_next_session"
+    assert "collection_cadence_status" in close
+    assert "collection_days_collected" in close
     assert "tomorrow_focus" in close
     assert "top_actions" in close
     assert isinstance(close["top_actions"], list)
@@ -1049,6 +1057,22 @@ def test_scheduler_health_contract():
     assert "plist_installed" in health
     assert "last_run_completed" in health
     assert "next_action" in health
+
+
+def test_collection_cadence_audit_detects_missing_days(tmp_path):
+    pd.DataFrame([
+        {"date": "2026-06-20"},
+        {"date": "2026-06-22"},
+        {"date": "2026-06-23"},
+    ]).to_csv(tmp_path / "core_signal_history.csv", index=False)
+
+    audit = build_collection_cadence_audit(tmp_path, today=date(2026, 6, 23)).iloc[0]
+
+    assert audit["status"] == "history_has_gaps"
+    assert audit["days_collected"] == 3
+    assert audit["current_streak_days"] == 2
+    assert audit["missing_day_count"] == 1
+    assert audit["missing_dates"] == "2026-06-21"
 
 
 def test_provider_preflight_blocks_missing_keys_and_fallback():
