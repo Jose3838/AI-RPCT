@@ -125,6 +125,8 @@ def test_v1_terminal_summary_contract():
     assert "core_intelligence_readiness" in payload
     assert "core_history_audit" in payload
     assert "core_provenance_audit" in payload
+    assert "paid_beta_gate" in payload
+    assert "paid_beta_gate_status" in payload["core_signal_health"]
     assert "provider_reliability" in payload
     assert "quality" in payload
 
@@ -709,13 +711,16 @@ def test_v1_executive_brief_contract():
     assert "markdown" in payload
     assert "signal_readiness" in payload
     assert "core_intelligence_readiness" in payload
+    assert "paid_beta_gate" in payload
     assert "capacity_forecast_score" in payload["core_metrics"]
     assert "core_readiness_phase" in payload["core_metrics"]
     assert "history_progress_pct" in payload["core_metrics"]
     assert "provenance_band" in payload["core_metrics"]
+    assert "paid_beta_gate_status" in payload["core_metrics"]
     assert "Core Signal Quality" in payload["markdown"]
     assert "History Progress" in payload["markdown"]
     assert "Provenance" in payload["markdown"]
+    assert "Paid Beta Gate" in payload["markdown"]
     assert "Provider Reliability" in payload["markdown"]
 
 

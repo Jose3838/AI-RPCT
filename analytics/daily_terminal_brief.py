@@ -35,6 +35,7 @@ quality = read_latest("data/core_signal_quality.csv")
 readiness = read_latest("data/core_intelligence_readiness.csv")
 history_audit = read_latest("data/core_history_audit.csv")
 provenance_audit = read_latest("data/core_provenance_audit.csv")
+paid_beta_gate = read_latest("data/paid_beta_gate.csv")
 reliability = read_first("data/provider_reliability_ranking.csv")
 reliability_gaps = read_table("data/provider_reliability_gaps.csv")
 watchlist = read_table("data/gpu_watchlist_intelligence.csv")
@@ -71,8 +72,10 @@ Core Signal Quality: {quality.get('core_signal_quality_score', 'n/a')} ({quality
 Core Readiness Phase: {readiness.get('readiness_phase', 'n/a')}
 History Progress: {history_audit.get('progress_pct', 'n/a')}% ({history_audit.get('days_remaining', 'n/a')} days remaining)
 Provenance: {provenance_audit.get('provenance_band', 'n/a')} ({provenance_audit.get('fallback_row_pct', 'n/a')}% fallback rows)
+Paid Beta Gate: {paid_beta_gate.get('gate_status', 'n/a')} (allowed: {paid_beta_gate.get('paid_beta_allowed', 'n/a')})
+Paid Beta Gate Blockers: {paid_beta_gate.get('blockers', 'n/a')}
 Signal Blockers: {quality.get('blockers', 'n/a')}
-Next Action: {readiness.get('next_action', 'n/a')}
+Next Action: {paid_beta_gate.get('next_action', readiness.get('next_action', 'n/a'))}
 
 Top Provider Reliability Gaps:
 {top_gaps}
