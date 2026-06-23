@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 import pandas as pd
 
 from scripts.provider_recovery_plan import build_provider_recovery_plan
+from scripts.manual_snapshot_workflow import build_manual_snapshot_workflow
 
 
 DATA_DIR = Path("data")
@@ -1520,11 +1521,14 @@ def build_terminal_summary():
     history_audit = read_latest(DATA_DIR / "core_history_audit.csv")
     provenance_audit = read_latest(DATA_DIR / "core_provenance_audit.csv")
     paid_beta_gate = read_latest(DATA_DIR / "paid_beta_gate.csv")
+    coverage_universe = read_latest(DATA_DIR / "coverage_universe_status.csv")
+    manual_snapshot_quality = read_latest(DATA_DIR / "manual_snapshot_quality.csv")
     signal_history = read_records(DATA_DIR / "core_signal_history.csv")
     reliability = read_first(DATA_DIR / "provider_reliability_ranking.csv")
     reliability_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv")
     frontier = read_latest(DATA_DIR / "frontier_gpu_index.csv")
     recovery_plan = build_provider_recovery_plan()
+    snapshot_workflow = build_manual_snapshot_workflow()
 
     return {
         "product": "AI-RPCT",
@@ -1542,6 +1546,15 @@ def build_terminal_summary():
         "core_history_audit": history_audit,
         "core_provenance_audit": provenance_audit,
         "paid_beta_gate": paid_beta_gate,
+        "coverage_universe": coverage_universe,
+        "manual_snapshot_quality": manual_snapshot_quality,
+        "manual_snapshot_workflow": {
+            "inbox_path": snapshot_workflow.get("inbox_path"),
+            "fixed_values": snapshot_workflow.get("fixed_values", {}),
+            "priority_collection": snapshot_workflow.get("priority_collection", {}),
+            "daily_commands": snapshot_workflow.get("daily_commands", []),
+            "rules": snapshot_workflow.get("rules", []),
+        },
         "provider_recovery_plan": {
             "status": recovery_plan.get("status"),
             "configured_count": recovery_plan.get("configured_count"),

@@ -139,6 +139,11 @@ def test_v1_terminal_summary_contract():
     assert "core_history_audit" in payload
     assert "core_provenance_audit" in payload
     assert "paid_beta_gate" in payload
+    assert "coverage_universe" in payload
+    assert "manual_snapshot_quality" in payload
+    assert "manual_snapshot_workflow" in payload
+    assert "inbox_path" in payload["manual_snapshot_workflow"]
+    assert payload["manual_snapshot_workflow"]["fixed_values"]["claim_scope"] == "research_preview"
     assert "provider_recovery_plan" in payload
     assert "paid_beta_gate_status" in payload["core_signal_health"]
     assert "provider_reliability" in payload
