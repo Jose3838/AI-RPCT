@@ -85,6 +85,7 @@ from scripts.core_status import build_action_plan, build_core_status
 from scripts.founder_daily_close import build_founder_daily_close
 from scripts.history_backfill_plan import build_history_backfill_plan
 from scripts.manual_snapshot_inbox_template import build_manual_snapshot_inbox_template
+from scripts.manual_snapshot_template_check import build_manual_snapshot_template_check
 from scripts.manual_snapshot_workflow import build_manual_snapshot_workflow
 from scripts.provider_env_check import build_provider_env_check
 from scripts.provider_recovery_plan import build_provider_recovery_plan
@@ -105,6 +106,7 @@ def test_core_files_exist():
     assert Path("scripts/history_backfill_plan.py").exists()
     assert Path("scripts/founder_daily_close.py").exists()
     assert Path("scripts/manual_snapshot_inbox_template.py").exists()
+    assert Path("scripts/manual_snapshot_template_check.py").exists()
     assert Path("scripts/manual_snapshot_workflow.py").exists()
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert Path("analytics/market_pulse_snapshot.py").exists()
@@ -721,6 +723,47 @@ def test_manual_snapshot_inbox_template_contract():
     assert template.iloc[0]["claim_scope"] == "research_preview"
     assert "source_url" in template.columns
     assert "Fill price" in template.iloc[0]["notes"]
+
+
+def test_manual_snapshot_template_check_rejects_unfilled_template(tmp_path):
+    pd.DataFrame([{"gpu": "H100"}]).to_csv(tmp_path / "gpu_universe.csv", index=False)
+    pd.DataFrame([{"provider": "vast"}]).to_csv(tmp_path / "provider_universe.csv", index=False)
+    pd.DataFrame([{"region_code": "us-east"}]).to_csv(tmp_path / "region_universe.csv", index=False)
+    build_manual_snapshot_inbox_template(tmp_path, limit=1).to_csv(
+        tmp_path / "manual_market_snapshot_inbox_template.csv",
+        index=False,
+    )
+
+    check = build_manual_snapshot_template_check(tmp_path)
+
+    assert check["status"] == "template_needs_sources"
+    assert check["valid_row_count"] == 0
+    assert check["rejected_row_count"] == 1
+
+
+def test_manual_snapshot_template_check_accepts_completed_template(tmp_path):
+    pd.DataFrame([{"gpu": "H100"}]).to_csv(tmp_path / "gpu_universe.csv", index=False)
+    pd.DataFrame([{"provider": "vast"}]).to_csv(tmp_path / "provider_universe.csv", index=False)
+    pd.DataFrame([{"region_code": "us-east"}]).to_csv(tmp_path / "region_universe.csv", index=False)
+    pd.DataFrame([{
+        "snapshot_date": "2026-06-23",
+        "provider": "vast",
+        "gpu": "H100",
+        "region_code": "us-east",
+        "price_per_hour": 1.5,
+        "availability": 10,
+        "delivery_time_days": 0,
+        "source_url": "https://example.com/h100",
+        "source_type": "manual_public_snapshot",
+        "claim_scope": "research_preview",
+        "notes": "test",
+    }]).to_csv(tmp_path / "manual_market_snapshot_inbox_template.csv", index=False)
+
+    check = build_manual_snapshot_template_check(tmp_path)
+
+    assert check["status"] == "ready_to_copy"
+    assert check["valid_row_count"] == 1
+    assert check["rejected_row_count"] == 0
 
 
 def test_manual_snapshot_quality_rejects_untrusted_rows(tmp_path):
