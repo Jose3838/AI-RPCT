@@ -90,6 +90,7 @@ from scripts.manual_snapshot_template_check import build_manual_snapshot_templat
 from scripts.manual_snapshot_workflow import build_manual_snapshot_workflow
 from scripts.provider_env_check import build_provider_env_check
 from scripts.provider_recovery_plan import build_provider_recovery_plan
+from scripts.scheduler_health import build_scheduler_health
 from scripts.secret_hygiene_check import build_secret_hygiene_check
 from snapshot_scheduler import run_scheduled_snapshot
 from security.limits import build_limit_status
@@ -113,6 +114,7 @@ def test_core_files_exist():
     assert Path("scripts/install_macos_launch_agent.sh").exists()
     assert Path("scripts/macos_launch_agent_status.sh").exists()
     assert Path("scripts/uninstall_macos_launch_agent.sh").exists()
+    assert Path("scripts/scheduler_health.py").exists()
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("run_daily.sh").read_text()
@@ -168,6 +170,8 @@ def test_v1_terminal_summary_contract():
     assert "manual_snapshot_template_check" in payload
     assert "status" in payload["manual_snapshot_template_check"]
     assert "next_action" in payload["manual_snapshot_template_check"]
+    assert "scheduler_health" in payload
+    assert "status" in payload["scheduler_health"]
     assert "manual_snapshot_workflow" in payload
     assert "inbox_path" in payload["manual_snapshot_workflow"]
     assert payload["manual_snapshot_workflow"]["fixed_values"]["claim_scope"] == "research_preview"
@@ -1031,7 +1035,20 @@ def test_founder_daily_close_contract():
     assert "manual_snapshot_template_status" in close
     assert "snapshot_collection_targets" in close
     assert isinstance(close["snapshot_collection_targets"], list)
+    assert "scheduler_status" in close
+    assert "scheduler_next_action" in close
     assert "do_not_claim_yet" in close
+
+
+def test_scheduler_health_contract():
+    health = build_scheduler_health()
+
+    assert health["product"] == "AI-RPCT"
+    assert health["report_type"] == "scheduler_health"
+    assert "status" in health
+    assert "plist_installed" in health
+    assert "last_run_completed" in health
+    assert "next_action" in health
 
 
 def test_provider_preflight_blocks_missing_keys_and_fallback():

@@ -16,6 +16,7 @@ def build_founder_daily_close():
     snapshot_quality = core.get("manual_snapshot_quality", {})
     paid_gate = core.get("paid_beta_gate", {})
     recovery = core.get("provider_recovery_plan", {})
+    scheduler = core.get("scheduler_health", {})
     snapshot_plan = core.get("snapshot_collection_plan", [])
     template_check = build_manual_snapshot_template_check()
     action_plan = core.get("action_plan", [])
@@ -44,6 +45,9 @@ def build_founder_daily_close():
         "paid_beta_allowed": paid_gate.get("allowed", False),
         "provider_recovery_status": recovery.get("status"),
         "missing_provider_credentials": recovery.get("missing_credentials", []),
+        "scheduler_status": scheduler.get("status"),
+        "scheduler_last_run_completed": scheduler.get("last_run_completed"),
+        "scheduler_next_action": scheduler.get("next_action"),
         "coverage_status": coverage.get("status"),
         "gpu_universe_count": coverage.get("gpu_universe_count"),
         "provider_universe_count": coverage.get("provider_universe_count"),

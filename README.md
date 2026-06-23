@@ -55,6 +55,7 @@ PYTHONPATH=. venv/bin/pytest tests
 venv/bin/python scripts/core_status.py
 venv/bin/python scripts/provider_env_check.py
 venv/bin/python scripts/provider_recovery_plan.py
+venv/bin/python scripts/scheduler_health.py
 venv/bin/python scripts/secret_hygiene_check.py
 venv/bin/python scripts/history_backfill_plan.py
 venv/bin/python scripts/manual_snapshot_workflow.py
@@ -152,6 +153,7 @@ Core files:
 - `scripts/manual_snapshot_workflow.py`
 - `scripts/install_macos_launch_agent.sh`
 - `scripts/macos_launch_agent_status.sh`
+- `scripts/scheduler_health.py`
 - `scripts/uninstall_macos_launch_agent.sh`
 - `scripts/provider_recovery_plan.py`
 - `scripts/history_backfill_plan.py`

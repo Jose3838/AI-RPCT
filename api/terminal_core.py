@@ -6,6 +6,7 @@ import pandas as pd
 from scripts.provider_recovery_plan import build_provider_recovery_plan
 from scripts.manual_snapshot_workflow import build_manual_snapshot_workflow
 from scripts.manual_snapshot_template_check import build_manual_snapshot_template_check
+from scripts.scheduler_health import build_scheduler_health
 
 
 DATA_DIR = Path("data")
@@ -1532,6 +1533,7 @@ def build_terminal_summary():
     recovery_plan = build_provider_recovery_plan()
     snapshot_workflow = build_manual_snapshot_workflow()
     template_check = build_manual_snapshot_template_check()
+    scheduler_health = build_scheduler_health()
 
     return {
         "product": "AI-RPCT",
@@ -1560,6 +1562,15 @@ def build_terminal_summary():
             "rejected_row_count": template_check.get("rejected_row_count"),
             "top_rejection_reasons": template_check.get("top_rejection_reasons", []),
             "next_action": template_check.get("next_action"),
+        },
+        "scheduler_health": {
+            "status": scheduler_health.get("status"),
+            "plist_installed": scheduler_health.get("plist_installed"),
+            "schedule": scheduler_health.get("schedule"),
+            "out_log_age_hours": scheduler_health.get("out_log_age_hours"),
+            "last_run_completed": scheduler_health.get("last_run_completed"),
+            "has_recent_error": scheduler_health.get("has_recent_error"),
+            "next_action": scheduler_health.get("next_action"),
         },
         "manual_snapshot_workflow": {
             "inbox_path": snapshot_workflow.get("inbox_path"),

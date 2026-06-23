@@ -8,6 +8,7 @@ import pandas as pd
 
 from scripts.provider_env_check import build_provider_env_check
 from scripts.provider_recovery_plan import build_provider_recovery_plan
+from scripts.scheduler_health import build_scheduler_health
 
 
 DATA_DIR = Path("data")
@@ -41,6 +42,7 @@ def build_core_status():
     preflight = read_records(DATA_DIR / "provider_preflight.csv", limit=10)
     env_check = build_provider_env_check()
     recovery_plan = build_provider_recovery_plan()
+    scheduler_health = build_scheduler_health()
     action_plan = build_action_plan(readiness, gaps, preflight)
 
     return {
@@ -72,6 +74,15 @@ def build_core_status():
             "verified_live_count": recovery_plan.get("verified_live_count"),
             "missing_credentials": recovery_plan.get("missing_credentials", []),
             "next_action": recovery_plan.get("next_action"),
+        },
+        "scheduler_health": {
+            "status": scheduler_health.get("status"),
+            "plist_installed": scheduler_health.get("plist_installed"),
+            "schedule": scheduler_health.get("schedule"),
+            "out_log_age_hours": scheduler_health.get("out_log_age_hours"),
+            "last_run_completed": scheduler_health.get("last_run_completed"),
+            "has_recent_error": scheduler_health.get("has_recent_error"),
+            "next_action": scheduler_health.get("next_action"),
         },
         "coverage_universe": {
             "status": coverage_universe.get("status", "unknown"),
