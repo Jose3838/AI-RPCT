@@ -89,6 +89,11 @@ python analytics/collection_cadence_audit.py
 python analytics/core_history_audit.py
 python analytics/core_provenance_audit.py
 python analytics/core_signal_quality.py
+python analytics/forecast_validation_history.py
+python analytics/provider_reliability_live_overlay.py
+python analytics/signal_performance_score.py
+python analytics/signal_explainability_drilldowns.py
+python analytics/customer_watchlists.py
 python analytics/core_intelligence_readiness.py
 python analytics/paid_beta_gate.py
 python analytics/claim_gate_matrix.py
@@ -106,6 +111,8 @@ python scripts/manual_snapshot_copy_ready.py
 python analytics/manual_snapshot_ingest.py
 python analytics/manual_snapshot_quality.py
 python analytics/source_url_coverage_metrics.py
+python analytics/source_evidence_view.py
+python analytics/source_backed_scarcity.py
 python analytics/coverage_universe_status.py
 python analytics/snapshot_collection_plan.py
 python analytics/region_scarcity_heatmap.py
@@ -113,6 +120,7 @@ python analytics/scarcity_watchlist.py
 python analytics/terminal_risk_score.py
 python analytics/morning_brief.py
 python analytics/executive_ai_infrastructure_memo.py
+python analytics/customer_ready_executive_brief.py
 python analytics/research_preview_brief.py
 python analytics/live_data_quality_score.py
 python analytics/terminal_trend_history.py

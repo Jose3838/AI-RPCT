@@ -70,6 +70,14 @@ from analytics.forecast_accuracy import build_forecast_accuracy
 from analytics.region_scarcity_heatmap import build_region_scarcity_heatmap
 from analytics.claim_gate_matrix import build_claim_gate_matrix
 from analytics.paid_data_point_provenance import build_paid_data_point_provenance
+from analytics.source_evidence_view import build_source_evidence_view
+from analytics.source_backed_scarcity import build_source_backed_scarcity
+from analytics.forecast_validation_history import build_forecast_validation_history
+from analytics.provider_reliability_live_overlay import build_provider_reliability_live_overlay
+from analytics.signal_performance_score import build_signal_performance_score
+from analytics.signal_explainability_drilldowns import build_signal_explainability_drilldowns
+from analytics.customer_watchlists import build_customer_watchlists
+from analytics.customer_ready_executive_brief import build_customer_ready_executive_brief
 from analytics.forecast_signal import build_forecast_signal
 from analytics.gpu_scarcity_index import build_gpu_scarcity_index
 from analytics.provider_reliability_ranking import build_provider_reliability_ranking
@@ -143,11 +151,19 @@ def test_core_files_exist():
     assert "analytics/ai_infrastructure_stress_index.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/core_intelligence_alerts.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/source_url_coverage_metrics.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/source_evidence_view.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/source_backed_scarcity.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/forecast_accuracy.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/forecast_validation_history.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/provider_reliability_live_overlay.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/signal_performance_score.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/signal_explainability_drilldowns.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/customer_watchlists.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/region_scarcity_heatmap.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/claim_gate_matrix.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/paid_data_point_provenance.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/morning_brief.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/customer_ready_executive_brief.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("run_daily.sh").read_text()
     assert "analytics/collection_cadence_audit.py" in Path("run_daily.sh").read_text()
     assert "analytics/signal_methodology_registry.py" in Path("run_daily.sh").read_text()
@@ -156,11 +172,19 @@ def test_core_files_exist():
     assert "analytics/ai_infrastructure_stress_index.py" in Path("run_daily.sh").read_text()
     assert "analytics/core_intelligence_alerts.py" in Path("run_daily.sh").read_text()
     assert "analytics/source_url_coverage_metrics.py" in Path("run_daily.sh").read_text()
+    assert "analytics/source_evidence_view.py" in Path("run_daily.sh").read_text()
+    assert "analytics/source_backed_scarcity.py" in Path("run_daily.sh").read_text()
     assert "analytics/forecast_accuracy.py" in Path("run_daily.sh").read_text()
+    assert "analytics/forecast_validation_history.py" in Path("run_daily.sh").read_text()
+    assert "analytics/provider_reliability_live_overlay.py" in Path("run_daily.sh").read_text()
+    assert "analytics/signal_performance_score.py" in Path("run_daily.sh").read_text()
+    assert "analytics/signal_explainability_drilldowns.py" in Path("run_daily.sh").read_text()
+    assert "analytics/customer_watchlists.py" in Path("run_daily.sh").read_text()
     assert "analytics/region_scarcity_heatmap.py" in Path("run_daily.sh").read_text()
     assert "analytics/claim_gate_matrix.py" in Path("run_daily.sh").read_text()
     assert "analytics/paid_data_point_provenance.py" in Path("run_daily.sh").read_text()
     assert "analytics/morning_brief.py" in Path("run_daily.sh").read_text()
+    assert "analytics/customer_ready_executive_brief.py" in Path("run_daily.sh").read_text()
     launch_agent_script = Path("scripts/install_macos_launch_agent.sh").read_text()
     assert "com.airpct.daily" in launch_agent_script
     assert "./scripts/run_core_intelligence.sh" in launch_agent_script
@@ -174,7 +198,14 @@ def test_core_files_exist():
     assert Path("analytics/ai_infrastructure_stress_index.py").exists()
     assert Path("analytics/core_intelligence_alerts.py").exists()
     assert Path("analytics/source_url_coverage_metrics.py").exists()
+    assert Path("analytics/source_evidence_view.py").exists()
+    assert Path("analytics/source_backed_scarcity.py").exists()
     assert Path("analytics/forecast_accuracy.py").exists()
+    assert Path("analytics/forecast_validation_history.py").exists()
+    assert Path("analytics/provider_reliability_live_overlay.py").exists()
+    assert Path("analytics/signal_performance_score.py").exists()
+    assert Path("analytics/signal_explainability_drilldowns.py").exists()
+    assert Path("analytics/customer_watchlists.py").exists()
     assert Path("analytics/region_scarcity_heatmap.py").exists()
     assert Path("analytics/claim_gate_matrix.py").exists()
     assert Path("analytics/paid_data_point_provenance.py").exists()
@@ -182,6 +213,7 @@ def test_core_files_exist():
     assert Path("analytics/manual_snapshot_ingest.py").exists()
     assert Path("analytics/manual_snapshot_quality.py").exists()
     assert Path("analytics/research_preview_brief.py").exists()
+    assert Path("analytics/customer_ready_executive_brief.py").exists()
     assert Path("analytics/snapshot_collection_plan.py").exists()
     assert Path("analytics/core_signal_history.py").exists()
     assert Path("analytics/collection_cadence_audit.py").exists()
@@ -223,11 +255,18 @@ def test_v1_terminal_summary_contract():
     assert "price_dislocation" in payload
     assert "ai_infrastructure_stress" in payload
     assert "source_url_coverage" in payload
+    assert "source_evidence_view" in payload
+    assert "source_backed_scarcity" in payload
     assert "core_intelligence_alerts" in payload
     assert "claim_gate_matrix" in payload
     assert "paid_data_point_provenance" in payload
     assert "forecast_accuracy" in payload
+    assert "forecast_validation_history" in payload
     assert "region_scarcity_heatmap" in payload
+    assert "signal_performance_score" in payload
+    assert "signal_explainability_drilldowns" in payload
+    assert "customer_watchlists" in payload
+    assert "customer_ready_executive_brief" in payload
     assert "coverage_universe" in payload
     assert "manual_snapshot_quality" in payload
     assert "snapshot_collection_plan" in payload
@@ -248,6 +287,7 @@ def test_v1_terminal_summary_contract():
     assert "paid_beta_gate_status" in payload["core_signal_health"]
     assert "collection_cadence_status" in payload["core_signal_health"]
     assert "provider_reliability" in payload
+    assert "provider_reliability_live_overlay" in payload
     assert "quality" in payload
 
 
@@ -1107,6 +1147,9 @@ def test_morning_brief_contract():
     assert "ai_infrastructure_stress_index" in brief
     assert "core_alert_count" in brief
     assert "forecast_directional_accuracy_pct" in brief
+    assert "forecast_validation_band" in brief
+    assert "signal_performance_score" in brief
+    assert "source_backed_scarcity_status" in brief
     assert "claim_gate_count" in brief
     assert "region_heatmap_count" in brief
     assert "AI-RPCT Morning Brief" in brief["markdown"]
@@ -1148,6 +1191,8 @@ def test_bloomberg_execution_roadmap_contract():
     assert roadmap[roadmap["step"] == 13].iloc[0]["status"] == "done"
     assert roadmap[roadmap["step"] == 16].iloc[0]["status"] == "done"
     assert roadmap[roadmap["step"] == 26].iloc[0]["status"] == "done"
+    for step in [21, 22, 23, 30, 33, 38, 39, 40, 48, 50]:
+        assert roadmap[roadmap["step"] == step].iloc[0]["status"] == "done"
     assert set(roadmap["category"]) == {
         "data_moat",
         "trust",
@@ -1198,6 +1243,154 @@ def test_source_url_coverage_metrics_counts_sources(tmp_path):
     assert coverage["snapshot_count"] == 2
     assert coverage["source_url_count"] == 1
     assert coverage["source_url_coverage_pct"] == 50
+
+
+def test_source_evidence_view_handles_empty_snapshot_file(tmp_path):
+    pd.DataFrame(columns=[
+        "observed_at",
+        "provider",
+        "gpu",
+        "region_code",
+        "source_type",
+        "source_url",
+        "price_per_hour",
+        "availability",
+        "delivery_time_hours",
+        "claim_scope",
+    ]).to_csv(tmp_path / "manual_market_snapshots.csv", index=False)
+
+    evidence = build_source_evidence_view(tmp_path / "manual_market_snapshots.csv").iloc[0]
+
+    assert evidence["status"] == "no_source_evidence"
+    assert evidence["evidence_quality"] == "missing"
+
+
+def test_source_backed_scarcity_contract(tmp_path, monkeypatch):
+    pd.DataFrame([{"gpu_scarcity_index": 65, "scarcity_band": "elevated"}]).to_csv(tmp_path / "gpu_scarcity_index.csv", index=False)
+    pd.DataFrame([{"source_url_coverage_pct": 100}]).to_csv(tmp_path / "source_url_coverage_metrics.csv", index=False)
+    pd.DataFrame([{
+        "status": "source_evidence_available",
+        "provider": "vast",
+        "gpu": "H100",
+        "evidence_quality": "linked",
+    }]).to_csv(tmp_path / "source_evidence_view.csv", index=False)
+    monkeypatch.setattr("analytics.source_backed_scarcity.DATA_DIR", tmp_path)
+
+    result = build_source_backed_scarcity().iloc[0]
+
+    assert result["status"] == "source_backed"
+    assert bool(result["paid_claim_safe"])
+
+
+def test_forecast_validation_history_contract(tmp_path, monkeypatch):
+    pd.DataFrame([{"forecast_score": 70, "capacity_shock_band": "rising", "confidence_score": 80}]).to_csv(tmp_path / "forecast_signal.csv", index=False)
+    pd.DataFrame([{"directional_accuracy_pct": 60}]).to_csv(tmp_path / "forecast_accuracy.csv", index=False)
+    pd.DataFrame([
+        {"date": f"2026-06-{day:02d}", "capacity_forecast_score": 50}
+        for day in range(1, 31)
+    ]).to_csv(tmp_path / "core_signal_history.csv", index=False)
+    monkeypatch.setattr("analytics.forecast_validation_history.DATA_DIR", tmp_path)
+
+    validation = build_forecast_validation_history().iloc[0]
+
+    assert validation["validation_band"] == "validated_research"
+    assert bool(validation["paid_claim_safe"])
+
+
+def test_provider_reliability_live_overlay_contract(tmp_path, monkeypatch):
+    pd.DataFrame([{
+        "provider": "vast",
+        "reliability_score": 80,
+        "reliability_band": "strong",
+        "history_days": 30,
+    }]).to_csv(tmp_path / "provider_reliability_ranking.csv", index=False)
+    pd.DataFrame([{"provider": "vast", "status": "fresh", "used_fallback": False}]).to_csv(tmp_path / "live_provider_ingestion_status.csv", index=False)
+    pd.DataFrame([{"provider": "vast", "readiness": "ready"}]).to_csv(tmp_path / "provider_preflight.csv", index=False)
+    monkeypatch.setattr("analytics.provider_reliability_live_overlay.DATA_DIR", tmp_path)
+
+    overlay = build_provider_reliability_live_overlay().iloc[0]
+
+    assert bool(overlay["live_reliability_ready"])
+    assert overlay["blockers"] == "none"
+
+
+def test_signal_performance_score_contract(tmp_path, monkeypatch):
+    pd.DataFrame([{"directional_accuracy_pct": 80}]).to_csv(tmp_path / "forecast_accuracy.csv", index=False)
+    pd.DataFrame([{"days_collected": 30}]).to_csv(tmp_path / "collection_cadence_audit.csv", index=False)
+    pd.DataFrame([{"source_url_coverage_pct": 100}]).to_csv(tmp_path / "source_url_coverage_metrics.csv", index=False)
+    pd.DataFrame([{"core_signal_quality_score": 80}]).to_csv(tmp_path / "core_signal_quality.csv", index=False)
+    pd.DataFrame([
+        {"signal_id": "gpu_scarcity_index"},
+        {"signal_id": "capacity_shock_forecast"},
+        {"signal_id": "provider_reliability_score"},
+        {"signal_id": "price_dislocation_signal"},
+    ]).to_csv(tmp_path / "signal_methodology_registry.csv", index=False)
+    pd.DataFrame([{"paid_safe": True}, {"paid_safe": True}]).to_csv(tmp_path / "paid_data_point_provenance.csv", index=False)
+    monkeypatch.setattr("analytics.signal_performance_score.DATA_DIR", tmp_path)
+
+    performance = build_signal_performance_score().iloc[0]
+
+    assert performance["signal_performance_score"] >= 80
+    assert performance["performance_band"] == "decision_grade"
+
+
+def test_signal_explainability_drilldowns_contract(tmp_path, monkeypatch):
+    pd.DataFrame([{
+        "availability_pressure_score": 60,
+        "price_pressure_score": 50,
+        "frontier_pressure_score": 70,
+        "provider_depth_score": 40,
+    }]).to_csv(tmp_path / "gpu_scarcity_index.csv", index=False)
+    pd.DataFrame([{
+        "latest_rpct": 60,
+        "shortage_probability": 50,
+        "gpu_scarcity_index": 70,
+        "capacity_shock_delta": 8,
+    }]).to_csv(tmp_path / "forecast_signal.csv", index=False)
+    pd.DataFrame([{
+        "freshness_score": 90,
+        "depth_score": 80,
+        "availability_score": 70,
+        "history_score": 60,
+    }]).to_csv(tmp_path / "provider_reliability_ranking.csv", index=False)
+    pd.DataFrame([{"price_dislocation_score": 30}]).to_csv(tmp_path / "price_dislocation_signal.csv", index=False)
+    pd.DataFrame([{"ai_infrastructure_stress_index": 55}]).to_csv(tmp_path / "ai_infrastructure_stress_index.csv", index=False)
+    pd.DataFrame([{"signal_performance_score": 65}]).to_csv(tmp_path / "signal_performance_score.csv", index=False)
+    monkeypatch.setattr("analytics.signal_explainability_drilldowns.DATA_DIR", tmp_path)
+
+    drilldowns = build_signal_explainability_drilldowns()
+
+    assert "gpu_scarcity_index" in set(drilldowns["signal"])
+    assert "component" in drilldowns.columns
+
+
+def test_customer_watchlists_contract(tmp_path, monkeypatch):
+    pd.DataFrame([{"provider": "vast", "gpu": "H100", "region_code": "us-east", "priority": "high"}]).to_csv(tmp_path / "snapshot_collection_plan.csv", index=False)
+    pd.DataFrame([{"provider": "runpod", "priority": "high", "gap": "fallback", "recommended_action": "restore"}]).to_csv(tmp_path / "provider_reliability_gaps.csv", index=False)
+    pd.DataFrame([{"region_code": "us-east", "scarcity_band": "watch"}]).to_csv(tmp_path / "region_scarcity_heatmap.csv", index=False)
+    pd.DataFrame([{"top_gpu": "H100", "dislocation_band": "elevated"}]).to_csv(tmp_path / "price_dislocation_signal.csv", index=False)
+    pd.DataFrame([{"scarcity_band": "elevated"}]).to_csv(tmp_path / "gpu_scarcity_index.csv", index=False)
+    monkeypatch.setattr("analytics.customer_watchlists.DATA_DIR", tmp_path)
+
+    watchlists = build_customer_watchlists()
+
+    assert {"snapshot_target", "provider", "region"}.issubset(set(watchlists["watch_type"]))
+
+
+def test_customer_ready_executive_brief_contract(tmp_path, monkeypatch):
+    pd.DataFrame([{"stress_band": "watch", "today_action": "Collect sources."}]).to_csv(tmp_path / "morning_brief_summary.csv", index=False)
+    pd.DataFrame([{"signal_performance_score": 60, "performance_band": "usable_research", "blockers": "none"}]).to_csv(tmp_path / "signal_performance_score.csv", index=False)
+    pd.DataFrame([{"allowed": False}]).to_csv(tmp_path / "claim_gate_matrix.csv", index=False)
+    pd.DataFrame([{"watch_type": "provider", "name": "vast", "priority": "high", "next_action": "restore"}]).to_csv(tmp_path / "customer_watchlists.csv", index=False)
+    pd.DataFrame([{"signal": "gpu_scarcity_index", "component": "price", "value": 50, "weight": 0.25}]).to_csv(tmp_path / "signal_explainability_drilldowns.csv", index=False)
+    pd.DataFrame([{"provider": "vast", "gpu": "H100", "region_code": "us-east", "evidence_quality": "linked"}]).to_csv(tmp_path / "source_evidence_view.csv", index=False)
+    monkeypatch.setattr("analytics.customer_ready_executive_brief.DATA_DIR", tmp_path)
+
+    brief = build_customer_ready_executive_brief()
+
+    assert brief["report_type"] == "customer_ready_executive_brief"
+    assert brief["claim_posture"] == "research_preview"
+    assert "Customer-Ready Executive Brief" in brief["markdown"]
 
 
 def test_core_intelligence_alerts_emit_high_stress_alert(tmp_path):

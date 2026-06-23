@@ -49,10 +49,13 @@ def build_morning_brief():
     coverage = read_latest(DATA_DIR / "coverage_universe_status.csv")
     snapshot_quality = read_latest(DATA_DIR / "manual_snapshot_quality.csv")
     source_coverage = read_latest(DATA_DIR / "source_url_coverage_metrics.csv")
+    source_backed_scarcity = read_latest(DATA_DIR / "source_backed_scarcity.csv")
+    signal_performance = read_latest(DATA_DIR / "signal_performance_score.csv")
     alerts = read_records(DATA_DIR / "core_intelligence_alerts.csv", limit=5)
     claim_gates = read_records(DATA_DIR / "claim_gate_matrix.csv", limit=10)
     region_heatmap = read_records(DATA_DIR / "region_scarcity_heatmap.csv", limit=10)
     forecast_accuracy = read_latest(DATA_DIR / "forecast_accuracy.csv")
+    forecast_validation = read_latest(DATA_DIR / "forecast_validation_history.csv")
     methodology = read_records(DATA_DIR / "signal_methodology_registry.csv", limit=10)
     roadmap = read_records(DATA_DIR / "bloomberg_execution_roadmap.csv", limit=50)
     provider_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv", limit=3)
@@ -145,7 +148,10 @@ def build_morning_brief():
         f"- Coverage Status: {value(coverage, 'status')}",
         f"- Manual Snapshot Quality: {value(snapshot_quality, 'status')}",
         f"- Source URL Coverage: {value(source_coverage, 'source_url_coverage_pct', 0)}%",
+        f"- Source-Backed Scarcity: {value(source_backed_scarcity, 'status')}",
         f"- Forecast Accuracy: {value(forecast_accuracy, 'directional_accuracy_pct', 0)}%",
+        f"- Forecast Validation: {value(forecast_validation, 'validation_band')}",
+        f"- Signal Performance: {value(signal_performance, 'signal_performance_score', 0)} ({value(signal_performance, 'performance_band')})",
         f"- Allowed Claim Gates: {allowed_claims}/{len(claim_gates)}",
         f"- Region Heatmap Rows: {len(region_heatmap)}",
         f"- Documented Core Methodologies: {methodology_count}",
@@ -186,8 +192,12 @@ def build_morning_brief():
         "ai_infrastructure_stress_index": stress_score,
         "stress_band": stress_band_value,
         "source_url_coverage_pct": value(source_coverage, "source_url_coverage_pct", 0),
+        "source_backed_scarcity_status": value(source_backed_scarcity, "status"),
         "core_alert_count": len(alerts),
         "forecast_directional_accuracy_pct": value(forecast_accuracy, "directional_accuracy_pct", 0),
+        "forecast_validation_band": value(forecast_validation, "validation_band"),
+        "signal_performance_score": value(signal_performance, "signal_performance_score", 0),
+        "signal_performance_band": value(signal_performance, "performance_band"),
         "allowed_claim_gate_count": allowed_claims,
         "claim_gate_count": len(claim_gates),
         "region_heatmap_count": len(region_heatmap),

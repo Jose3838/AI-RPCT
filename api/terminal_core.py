@@ -1522,12 +1522,19 @@ def build_terminal_summary():
     price_dislocation = read_latest(DATA_DIR / "price_dislocation_signal.csv")
     stress_index = read_latest(DATA_DIR / "ai_infrastructure_stress_index.csv")
     source_coverage = read_latest(DATA_DIR / "source_url_coverage_metrics.csv")
+    source_evidence = read_records(DATA_DIR / "source_evidence_view.csv")
+    source_backed_scarcity = read_latest(DATA_DIR / "source_backed_scarcity.csv")
     core_alerts = read_records(DATA_DIR / "core_intelligence_alerts.csv")
     claim_gate_matrix = read_records(DATA_DIR / "claim_gate_matrix.csv")
     paid_data_point_provenance = read_records(DATA_DIR / "paid_data_point_provenance.csv")
     forecast_accuracy = read_latest(DATA_DIR / "forecast_accuracy.csv")
+    forecast_validation = read_latest(DATA_DIR / "forecast_validation_history.csv")
     region_scarcity_heatmap = read_records(DATA_DIR / "region_scarcity_heatmap.csv")
     signal_quality = read_latest(DATA_DIR / "core_signal_quality.csv")
+    signal_performance = read_latest(DATA_DIR / "signal_performance_score.csv")
+    signal_explainability = read_records(DATA_DIR / "signal_explainability_drilldowns.csv")
+    customer_watchlists = read_records(DATA_DIR / "customer_watchlists.csv")
+    customer_ready_brief = read_latest(DATA_DIR / "customer_ready_executive_brief_summary.csv")
     core_readiness = read_latest(DATA_DIR / "core_intelligence_readiness.csv")
     history_audit = read_latest(DATA_DIR / "core_history_audit.csv")
     cadence_audit = read_latest(DATA_DIR / "collection_cadence_audit.csv")
@@ -1540,6 +1547,7 @@ def build_terminal_summary():
     bloomberg_roadmap = read_records(DATA_DIR / "bloomberg_execution_roadmap.csv")
     signal_history = read_records(DATA_DIR / "core_signal_history.csv")
     reliability = read_first(DATA_DIR / "provider_reliability_ranking.csv")
+    reliability_live_overlay = read_records(DATA_DIR / "provider_reliability_live_overlay.csv")
     reliability_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv")
     frontier = read_latest(DATA_DIR / "frontier_gpu_index.csv")
     recovery_plan = build_provider_recovery_plan()
@@ -1561,12 +1569,20 @@ def build_terminal_summary():
         "price_dislocation": price_dislocation,
         "ai_infrastructure_stress": stress_index,
         "source_url_coverage": source_coverage,
+        "source_evidence_view": source_evidence[:10],
+        "source_backed_scarcity": source_backed_scarcity,
         "core_intelligence_alerts": core_alerts[:10],
         "claim_gate_matrix": claim_gate_matrix[:10],
         "paid_data_point_provenance": paid_data_point_provenance[:10],
         "forecast_accuracy": forecast_accuracy,
+        "forecast_validation_history": forecast_validation,
         "region_scarcity_heatmap": region_scarcity_heatmap[:10],
+        "signal_performance_score": signal_performance,
+        "signal_explainability_drilldowns": signal_explainability[:15],
+        "customer_watchlists": customer_watchlists[:15],
+        "customer_ready_executive_brief": customer_ready_brief,
         "provider_reliability": reliability,
+        "provider_reliability_live_overlay": reliability_live_overlay[:10],
         "provider_reliability_gaps": reliability_gaps[:10],
         "core_intelligence_readiness": core_readiness,
         "core_history_audit": history_audit,
