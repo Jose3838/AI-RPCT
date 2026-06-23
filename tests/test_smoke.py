@@ -72,6 +72,7 @@ from analytics.core_intelligence_readiness import (
 )
 from analytics.paid_beta_gate import build_paid_beta_gate
 from analytics.coverage_universe_status import build_coverage_universe_status
+from analytics.manual_snapshot_ingest import build_manual_snapshot_ingest
 from analytics.manual_snapshot_quality import build_manual_snapshot_quality
 from analytics.provider_preflight import (
     build_provider_preflight,
@@ -100,6 +101,7 @@ def test_core_files_exist():
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert Path("analytics/market_pulse_snapshot.py").exists()
     assert Path("analytics/coverage_universe_status.py").exists()
+    assert Path("analytics/manual_snapshot_ingest.py").exists()
     assert Path("analytics/manual_snapshot_quality.py").exists()
     assert Path("analytics/core_signal_history.py").exists()
     assert Path("analytics/core_signal_quality.py").exists()
@@ -107,6 +109,7 @@ def test_core_files_exist():
     assert Path("data/gpu_universe.csv").exists()
     assert Path("data/provider_universe.csv").exists()
     assert Path("data/region_universe.csv").exists()
+    assert Path("data/manual_market_snapshot_inbox.csv").exists()
 
 
 def test_snapshot_scheduler_contract():
@@ -717,6 +720,88 @@ def test_manual_snapshot_quality_accepts_source_labeled_rows(tmp_path):
     assert quality["status"] == "snapshots_valid_for_research_preview"
     assert quality["valid_snapshot_count"] == 1
     assert quality["blockers"] == "none"
+
+
+def test_manual_snapshot_ingest_imports_valid_rows(tmp_path):
+    pd.DataFrame([{"gpu": "H100"}]).to_csv(tmp_path / "gpu_universe.csv", index=False)
+    pd.DataFrame([{"provider": "vast"}]).to_csv(tmp_path / "provider_universe.csv", index=False)
+    pd.DataFrame([{"region_code": "us-east"}]).to_csv(tmp_path / "region_universe.csv", index=False)
+    pd.DataFrame(columns=[
+        "snapshot_date",
+        "provider",
+        "gpu",
+        "region_code",
+        "price_per_hour",
+        "availability",
+        "delivery_time_days",
+        "source_url",
+        "source_type",
+        "claim_scope",
+        "notes",
+    ]).to_csv(tmp_path / "manual_market_snapshots.csv", index=False)
+    pd.DataFrame([{
+        "snapshot_date": "2026-06-23",
+        "provider": "vast",
+        "gpu": "H100",
+        "region_code": "us-east",
+        "price_per_hour": 1.5,
+        "availability": 10,
+        "delivery_time_days": 0,
+        "source_url": "https://example.com/h100",
+        "source_type": "manual_public_snapshot",
+        "claim_scope": "research_preview",
+        "notes": "test",
+    }]).to_csv(tmp_path / "manual_market_snapshot_inbox.csv", index=False)
+
+    result = build_manual_snapshot_ingest(tmp_path)
+    master = pd.read_csv(tmp_path / "manual_market_snapshots.csv")
+
+    assert result["status"] == "imported"
+    assert result["imported_count"] == 1
+    assert result["rejected_count"] == 0
+    assert len(master) == 1
+
+
+def test_manual_snapshot_ingest_rejects_invalid_rows(tmp_path):
+    pd.DataFrame([{"gpu": "H100"}]).to_csv(tmp_path / "gpu_universe.csv", index=False)
+    pd.DataFrame([{"provider": "vast"}]).to_csv(tmp_path / "provider_universe.csv", index=False)
+    pd.DataFrame([{"region_code": "us-east"}]).to_csv(tmp_path / "region_universe.csv", index=False)
+    pd.DataFrame(columns=[
+        "snapshot_date",
+        "provider",
+        "gpu",
+        "region_code",
+        "price_per_hour",
+        "availability",
+        "delivery_time_days",
+        "source_url",
+        "source_type",
+        "claim_scope",
+        "notes",
+    ]).to_csv(tmp_path / "manual_market_snapshots.csv", index=False)
+    pd.DataFrame([{
+        "snapshot_date": "2026-06-23",
+        "provider": "vast",
+        "gpu": "H100",
+        "region_code": "unknown-region",
+        "price_per_hour": -1,
+        "availability": 10,
+        "delivery_time_days": 0,
+        "source_url": "not-a-url",
+        "source_type": "manual",
+        "claim_scope": "research_preview",
+        "notes": "test",
+    }]).to_csv(tmp_path / "manual_market_snapshot_inbox.csv", index=False)
+
+    result = build_manual_snapshot_ingest(tmp_path)
+    master = pd.read_csv(tmp_path / "manual_market_snapshots.csv")
+    rejected = pd.read_csv(tmp_path / "manual_market_snapshot_rejections.csv")
+
+    assert result["status"] == "nothing_imported"
+    assert result["imported_count"] == 0
+    assert result["rejected_count"] == 1
+    assert len(master) == 0
+    assert "unknown_region" in rejected.iloc[0]["rejection_reason"]
 
 
 def test_provider_preflight_blocks_missing_keys_and_fallback():

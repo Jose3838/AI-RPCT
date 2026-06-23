@@ -110,6 +110,7 @@ Core files:
 - `analytics/paid_beta_gate.py`
 - `analytics/core_provenance_audit.py`
 - `analytics/coverage_universe_status.py`
+- `analytics/manual_snapshot_ingest.py`
 - `analytics/manual_snapshot_quality.py`
 - `analytics/provider_preflight.py`
 - `analytics/provider_reliability_gaps.py`
@@ -118,6 +119,7 @@ Core files:
 - `data/provider_universe.csv`
 - `data/region_universe.csv`
 - `data/manual_market_snapshots.csv`
+- `data/manual_market_snapshot_inbox.csv`
 - `data/launch_controls.csv`
 - `main.py`
 - `api/routes.py`
