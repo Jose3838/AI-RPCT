@@ -110,6 +110,7 @@ Core files:
 - `analytics/paid_beta_gate.py`
 - `analytics/core_provenance_audit.py`
 - `analytics/coverage_universe_status.py`
+- `analytics/manual_snapshot_quality.py`
 - `analytics/provider_preflight.py`
 - `analytics/provider_reliability_gaps.py`
 - `data/*.csv`

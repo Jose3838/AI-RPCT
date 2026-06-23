@@ -72,6 +72,7 @@ from analytics.core_intelligence_readiness import (
 )
 from analytics.paid_beta_gate import build_paid_beta_gate
 from analytics.coverage_universe_status import build_coverage_universe_status
+from analytics.manual_snapshot_quality import build_manual_snapshot_quality
 from analytics.provider_preflight import (
     build_provider_preflight,
     is_configured_secret,
@@ -99,6 +100,7 @@ def test_core_files_exist():
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert Path("analytics/market_pulse_snapshot.py").exists()
     assert Path("analytics/coverage_universe_status.py").exists()
+    assert Path("analytics/manual_snapshot_quality.py").exists()
     assert Path("analytics/core_signal_history.py").exists()
     assert Path("analytics/core_signal_quality.py").exists()
     assert Path("README.md").exists()
@@ -618,6 +620,7 @@ def test_core_status_contract():
     assert "configured_count" in status["provider_credentials"]
     assert "provider_recovery_plan" in status
     assert "coverage_universe" in status
+    assert "manual_snapshot_quality" in status
     assert "next_action" in status
     assert "action_plan" in status
     assert isinstance(status["action_plan"], list)
@@ -652,7 +655,68 @@ def test_coverage_universe_status_contract():
     assert status["region_universe_count"] >= 8
     assert status["claim_scope"] == "research_preview"
     assert status["history_policy"] == "do_not_backfill_without_sources"
+    assert "valid_manual_snapshot_count" in status
     assert "next_action" in status
+
+
+def test_manual_snapshot_quality_empty_template_contract():
+    quality = build_manual_snapshot_quality().iloc[0]
+
+    assert quality["status"] in {"no_snapshots", "snapshots_valid_for_research_preview", "snapshots_need_cleanup"}
+    assert quality["claim_scope"] == "research_preview"
+    assert quality["history_policy"] == "do_not_backfill_without_sources"
+    assert "next_action" in quality
+
+
+def test_manual_snapshot_quality_rejects_untrusted_rows(tmp_path):
+    pd.DataFrame([{"gpu": "H100"}]).to_csv(tmp_path / "gpu_universe.csv", index=False)
+    pd.DataFrame([{"provider": "vast"}]).to_csv(tmp_path / "provider_universe.csv", index=False)
+    pd.DataFrame([{"region_code": "us-east"}]).to_csv(tmp_path / "region_universe.csv", index=False)
+    pd.DataFrame([{
+        "snapshot_date": "2099-01-01",
+        "provider": "vast",
+        "gpu": "H100",
+        "region_code": "us-east",
+        "price_per_hour": 1.5,
+        "availability": 10,
+        "delivery_time_days": 0,
+        "source_url": "not-a-url",
+        "source_type": "manual",
+        "claim_scope": "paid_claim",
+        "notes": "",
+    }]).to_csv(tmp_path / "manual_market_snapshots.csv", index=False)
+
+    quality = build_manual_snapshot_quality(tmp_path).iloc[0]
+
+    assert quality["status"] == "snapshots_need_cleanup"
+    assert quality["valid_snapshot_count"] == 0
+    assert "source_url_not_http" in quality["blockers"]
+    assert "claim_scope_must_be_research_preview" in quality["blockers"]
+
+
+def test_manual_snapshot_quality_accepts_source_labeled_rows(tmp_path):
+    pd.DataFrame([{"gpu": "H100"}]).to_csv(tmp_path / "gpu_universe.csv", index=False)
+    pd.DataFrame([{"provider": "vast"}]).to_csv(tmp_path / "provider_universe.csv", index=False)
+    pd.DataFrame([{"region_code": "us-east"}]).to_csv(tmp_path / "region_universe.csv", index=False)
+    pd.DataFrame([{
+        "snapshot_date": "2026-06-23",
+        "provider": "vast",
+        "gpu": "H100",
+        "region_code": "us-east",
+        "price_per_hour": 1.5,
+        "availability": 10,
+        "delivery_time_days": 0,
+        "source_url": "https://example.com/h100",
+        "source_type": "manual_public_snapshot",
+        "claim_scope": "research_preview",
+        "notes": "",
+    }]).to_csv(tmp_path / "manual_market_snapshots.csv", index=False)
+
+    quality = build_manual_snapshot_quality(tmp_path).iloc[0]
+
+    assert quality["status"] == "snapshots_valid_for_research_preview"
+    assert quality["valid_snapshot_count"] == 1
+    assert quality["blockers"] == "none"
 
 
 def test_provider_preflight_blocks_missing_keys_and_fallback():

@@ -32,6 +32,7 @@ def build_core_status():
     provenance_audit = read_latest(DATA_DIR / "core_provenance_audit.csv")
     paid_beta_gate = read_latest(DATA_DIR / "paid_beta_gate.csv")
     coverage_universe = read_latest(DATA_DIR / "coverage_universe_status.csv")
+    manual_snapshot_quality = read_latest(DATA_DIR / "manual_snapshot_quality.csv")
     gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv", limit=5)
     preflight = read_records(DATA_DIR / "provider_preflight.csv", limit=10)
     env_check = build_provider_env_check()
@@ -74,8 +75,17 @@ def build_core_status():
             "provider_universe_count": coverage_universe.get("provider_universe_count"),
             "region_universe_count": coverage_universe.get("region_universe_count"),
             "manual_snapshot_count": coverage_universe.get("manual_snapshot_count"),
+            "valid_manual_snapshot_count": coverage_universe.get("valid_manual_snapshot_count"),
             "history_policy": coverage_universe.get("history_policy"),
             "next_action": coverage_universe.get("next_action"),
+        },
+        "manual_snapshot_quality": {
+            "status": manual_snapshot_quality.get("status", "unknown"),
+            "snapshot_count": manual_snapshot_quality.get("snapshot_count"),
+            "valid_snapshot_count": manual_snapshot_quality.get("valid_snapshot_count"),
+            "invalid_snapshot_count": manual_snapshot_quality.get("invalid_snapshot_count"),
+            "blockers": manual_snapshot_quality.get("blockers"),
+            "next_action": manual_snapshot_quality.get("next_action"),
         },
         "paid_beta_signal_ready": readiness.get("paid_beta_signal_ready", False),
         "blockers": readiness.get("blockers", quality.get("blockers", "unknown")),

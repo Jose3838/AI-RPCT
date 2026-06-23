@@ -2,6 +2,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from analytics.manual_snapshot_quality import filter_valid_manual_snapshots
+
 
 DATA_DIR = Path("data")
 
@@ -31,24 +33,30 @@ def build_coverage_universe_status(data_dir=DATA_DIR):
     gpu_data = read_csv(data_dir / "gpu_data.csv")
     manual_snapshots = read_csv(data_dir / "manual_market_snapshots.csv")
     provider_comparison = read_csv(data_dir / "provider_comparison.csv")
+    valid_manual_snapshots = filter_valid_manual_snapshots(
+        manual_snapshots,
+        gpu_universe,
+        provider_universe,
+        region_universe,
+    )
 
     tracked_gpus = set()
     if not gpu_data.empty and "gpu" in gpu_data:
         tracked_gpus |= {normalize(value) for value in gpu_data["gpu"].dropna()}
-    if not manual_snapshots.empty and "gpu" in manual_snapshots:
-        tracked_gpus |= {normalize(value) for value in manual_snapshots["gpu"].dropna()}
+    if not valid_manual_snapshots.empty and "gpu" in valid_manual_snapshots:
+        tracked_gpus |= {normalize(value) for value in valid_manual_snapshots["gpu"].dropna()}
 
     tracked_providers = set()
     if not gpu_data.empty and "provider" in gpu_data:
         tracked_providers |= {normalize(value) for value in gpu_data["provider"].dropna()}
     if not provider_comparison.empty and "provider" in provider_comparison:
         tracked_providers |= {normalize(value) for value in provider_comparison["provider"].dropna()}
-    if not manual_snapshots.empty and "provider" in manual_snapshots:
-        tracked_providers |= {normalize(value) for value in manual_snapshots["provider"].dropna()}
+    if not valid_manual_snapshots.empty and "provider" in valid_manual_snapshots:
+        tracked_providers |= {normalize(value) for value in valid_manual_snapshots["provider"].dropna()}
 
     tracked_regions = set()
-    if not manual_snapshots.empty and "region_code" in manual_snapshots:
-        tracked_regions |= {normalize(value) for value in manual_snapshots["region_code"].dropna()}
+    if not valid_manual_snapshots.empty and "region_code" in valid_manual_snapshots:
+        tracked_regions |= {normalize(value) for value in valid_manual_snapshots["region_code"].dropna()}
 
     gpu_count = len(gpu_universe)
     provider_count = len(provider_universe)
@@ -68,6 +76,7 @@ def build_coverage_universe_status(data_dir=DATA_DIR):
     ])
 
     manual_snapshot_count = int(len(manual_snapshots))
+    valid_manual_snapshot_count = int(len(valid_manual_snapshots))
     blockers = []
     if covered_gpu_count < 20:
         blockers.append("expand_tracked_gpu_snapshots")
@@ -77,6 +86,8 @@ def build_coverage_universe_status(data_dir=DATA_DIR):
         blockers.append("add_region_labeled_snapshots")
     if manual_snapshot_count == 0:
         blockers.append("add_manual_public_snapshots_with_sources")
+    elif valid_manual_snapshot_count == 0:
+        blockers.append("fix_manual_snapshot_quality")
 
     if not blockers:
         status = "coverage_ready_for_research_preview"
@@ -97,6 +108,7 @@ def build_coverage_universe_status(data_dir=DATA_DIR):
         "provider_coverage_pct": coverage_pct(covered_provider_count, provider_count),
         "region_coverage_pct": coverage_pct(covered_region_count, region_count),
         "manual_snapshot_count": manual_snapshot_count,
+        "valid_manual_snapshot_count": valid_manual_snapshot_count,
         "claim_scope": "research_preview",
         "history_policy": "do_not_backfill_without_sources",
         "blockers": ", ".join(blockers) if blockers else "none",
