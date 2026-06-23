@@ -63,6 +63,9 @@ from analytics.bloomberg_execution_roadmap import (
     build_roadmap_summary,
 )
 from analytics.price_dislocation_signal import build_price_dislocation_signal
+from analytics.ai_infrastructure_stress_index import build_ai_infrastructure_stress_index
+from analytics.core_intelligence_alerts import build_core_intelligence_alerts
+from analytics.source_url_coverage_metrics import build_source_url_coverage_metrics
 from analytics.forecast_signal import build_forecast_signal
 from analytics.gpu_scarcity_index import build_gpu_scarcity_index
 from analytics.provider_reliability_ranking import build_provider_reliability_ranking
@@ -133,12 +136,18 @@ def test_core_files_exist():
     assert "analytics/signal_methodology_registry.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/bloomberg_execution_roadmap.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/price_dislocation_signal.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/ai_infrastructure_stress_index.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/core_intelligence_alerts.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/source_url_coverage_metrics.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/morning_brief.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("run_daily.sh").read_text()
     assert "analytics/collection_cadence_audit.py" in Path("run_daily.sh").read_text()
     assert "analytics/signal_methodology_registry.py" in Path("run_daily.sh").read_text()
     assert "analytics/bloomberg_execution_roadmap.py" in Path("run_daily.sh").read_text()
     assert "analytics/price_dislocation_signal.py" in Path("run_daily.sh").read_text()
+    assert "analytics/ai_infrastructure_stress_index.py" in Path("run_daily.sh").read_text()
+    assert "analytics/core_intelligence_alerts.py" in Path("run_daily.sh").read_text()
+    assert "analytics/source_url_coverage_metrics.py" in Path("run_daily.sh").read_text()
     assert "analytics/morning_brief.py" in Path("run_daily.sh").read_text()
     launch_agent_script = Path("scripts/install_macos_launch_agent.sh").read_text()
     assert "com.airpct.daily" in launch_agent_script
@@ -150,6 +159,9 @@ def test_core_files_exist():
     assert Path("analytics/signal_methodology_registry.py").exists()
     assert Path("analytics/bloomberg_execution_roadmap.py").exists()
     assert Path("analytics/price_dislocation_signal.py").exists()
+    assert Path("analytics/ai_infrastructure_stress_index.py").exists()
+    assert Path("analytics/core_intelligence_alerts.py").exists()
+    assert Path("analytics/source_url_coverage_metrics.py").exists()
     assert Path("analytics/coverage_universe_status.py").exists()
     assert Path("analytics/manual_snapshot_ingest.py").exists()
     assert Path("analytics/manual_snapshot_quality.py").exists()
@@ -193,6 +205,9 @@ def test_v1_terminal_summary_contract():
     assert "core_provenance_audit" in payload
     assert "paid_beta_gate" in payload
     assert "price_dislocation" in payload
+    assert "ai_infrastructure_stress" in payload
+    assert "source_url_coverage" in payload
+    assert "core_intelligence_alerts" in payload
     assert "coverage_universe" in payload
     assert "manual_snapshot_quality" in payload
     assert "snapshot_collection_plan" in payload
@@ -1068,6 +1083,9 @@ def test_morning_brief_contract():
     assert "today_action" in brief
     assert "documented_methodology_count" in brief
     assert "bloomberg_roadmap_total_steps" in brief
+    assert "action_confidence_score" in brief
+    assert "ai_infrastructure_stress_index" in brief
+    assert "core_alert_count" in brief
     assert "AI-RPCT Morning Brief" in brief["markdown"]
     assert "Today's Action" in brief["markdown"]
 
@@ -1097,6 +1115,11 @@ def test_bloomberg_execution_roadmap_contract():
     assert summary["total_steps"] == 50
     assert summary["done_steps"] > 0
     assert roadmap[roadmap["step"] == 24].iloc[0]["status"] == "done"
+    assert roadmap[roadmap["step"] == 17].iloc[0]["status"] == "done"
+    assert roadmap[roadmap["step"] == 18].iloc[0]["status"] == "done"
+    assert roadmap[roadmap["step"] == 20].iloc[0]["status"] == "done"
+    assert roadmap[roadmap["step"] == 25].iloc[0]["status"] == "done"
+    assert roadmap[roadmap["step"] == 34].iloc[0]["status"] == "done"
     assert set(roadmap["category"]) == {
         "data_moat",
         "trust",
@@ -1120,6 +1143,45 @@ def test_price_dislocation_signal_detects_wide_spread():
     assert signal["price_dislocation_score"] == 100
     assert signal["dislocation_band"] == "extreme"
     assert signal["top_gpu"] == "H100"
+
+
+def test_ai_infrastructure_stress_index_contract(tmp_path):
+    pd.DataFrame([{"gpu_scarcity_index": 60}]).to_csv(tmp_path / "gpu_scarcity_index.csv", index=False)
+    pd.DataFrame([{"forecast_score": 70}]).to_csv(tmp_path / "forecast_signal.csv", index=False)
+    pd.DataFrame([{"price_dislocation_score": 50}]).to_csv(tmp_path / "price_dislocation_signal.csv", index=False)
+    pd.DataFrame([{"reliability_score": 40}]).to_csv(tmp_path / "provider_reliability_ranking.csv", index=False)
+
+    stress = build_ai_infrastructure_stress_index(tmp_path).iloc[0]
+
+    assert stress["status"] == "stress_index_ready"
+    assert stress["ai_infrastructure_stress_index"] == 61
+    assert stress["stress_band"] == "elevated"
+
+
+def test_source_url_coverage_metrics_counts_sources(tmp_path):
+    pd.DataFrame([
+        {"provider": "vast", "gpu": "H100", "region_code": "us-east", "source_url": "https://example.com/a"},
+        {"provider": "runpod", "gpu": "H100", "region_code": "us-east", "source_url": ""},
+    ]).to_csv(tmp_path / "manual_market_snapshots.csv", index=False)
+
+    coverage = build_source_url_coverage_metrics(tmp_path).iloc[0]
+
+    assert coverage["status"] == "source_coverage_incomplete"
+    assert coverage["snapshot_count"] == 2
+    assert coverage["source_url_count"] == 1
+    assert coverage["source_url_coverage_pct"] == 50
+
+
+def test_core_intelligence_alerts_emit_high_stress_alert(tmp_path):
+    pd.DataFrame([{"ai_infrastructure_stress_index": 80}]).to_csv(tmp_path / "ai_infrastructure_stress_index.csv", index=False)
+    pd.DataFrame([{"gpu_scarcity_index": 10}]).to_csv(tmp_path / "gpu_scarcity_index.csv", index=False)
+    pd.DataFrame([{"capacity_shock_band": "stable"}]).to_csv(tmp_path / "forecast_signal.csv", index=False)
+    pd.DataFrame([{"price_dislocation_score": 10}]).to_csv(tmp_path / "price_dislocation_signal.csv", index=False)
+    pd.DataFrame([{"provider": "vast", "reliability_score": 80}]).to_csv(tmp_path / "provider_reliability_ranking.csv", index=False)
+
+    alerts = build_core_intelligence_alerts(tmp_path)
+
+    assert "stress_index_elevated" in set(alerts["alert_type"])
 
 
 def test_morning_brief_cli_writes_summary():

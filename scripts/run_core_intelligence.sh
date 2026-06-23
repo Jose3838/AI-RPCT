@@ -16,6 +16,8 @@ python analytics/provider_preflight.py
 python analytics/gpu_scarcity_index.py
 python analytics/forecast_signal.py
 python analytics/price_dislocation_signal.py
+python analytics/ai_infrastructure_stress_index.py
+python analytics/core_intelligence_alerts.py
 python analytics/provider_health.py
 python analytics/provider_daily_metrics.py
 python analytics/provider_reliability_ranking.py
@@ -25,6 +27,7 @@ python analytics/bloomberg_execution_roadmap.py
 python scripts/manual_snapshot_copy_ready.py
 python analytics/manual_snapshot_ingest.py
 python analytics/manual_snapshot_quality.py
+python analytics/source_url_coverage_metrics.py
 python analytics/coverage_universe_status.py
 python analytics/snapshot_collection_plan.py
 python analytics/core_signal_history.py
