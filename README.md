@@ -64,6 +64,10 @@ venv/bin/python analytics/price_dislocation_signal.py
 venv/bin/python analytics/ai_infrastructure_stress_index.py
 venv/bin/python analytics/core_intelligence_alerts.py
 venv/bin/python analytics/source_url_coverage_metrics.py
+venv/bin/python analytics/forecast_accuracy.py
+venv/bin/python analytics/region_scarcity_heatmap.py
+venv/bin/python analytics/claim_gate_matrix.py
+venv/bin/python analytics/paid_data_point_provenance.py
 venv/bin/python analytics/morning_brief.py
 venv/bin/python scripts/history_backfill_plan.py
 venv/bin/python scripts/manual_snapshot_workflow.py
@@ -138,6 +142,10 @@ Core files:
 - `analytics/ai_infrastructure_stress_index.py`
 - `analytics/core_intelligence_alerts.py`
 - `analytics/source_url_coverage_metrics.py`
+- `analytics/forecast_accuracy.py`
+- `analytics/region_scarcity_heatmap.py`
+- `analytics/claim_gate_matrix.py`
+- `analytics/paid_data_point_provenance.py`
 - `analytics/core_signal_history.py`
 - `analytics/collection_cadence_audit.py`
 - `analytics/core_signal_quality.py`

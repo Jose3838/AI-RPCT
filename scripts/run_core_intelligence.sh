@@ -18,6 +18,7 @@ python analytics/forecast_signal.py
 python analytics/price_dislocation_signal.py
 python analytics/ai_infrastructure_stress_index.py
 python analytics/core_intelligence_alerts.py
+python analytics/forecast_accuracy.py
 python analytics/provider_health.py
 python analytics/provider_daily_metrics.py
 python analytics/provider_reliability_ranking.py
@@ -30,6 +31,7 @@ python analytics/manual_snapshot_quality.py
 python analytics/source_url_coverage_metrics.py
 python analytics/coverage_universe_status.py
 python analytics/snapshot_collection_plan.py
+python analytics/region_scarcity_heatmap.py
 python analytics/core_signal_history.py
 python analytics/collection_cadence_audit.py
 python analytics/core_history_audit.py
@@ -37,6 +39,8 @@ python analytics/core_provenance_audit.py
 python analytics/core_signal_quality.py
 python analytics/core_intelligence_readiness.py
 python analytics/paid_beta_gate.py
+python analytics/claim_gate_matrix.py
+python analytics/paid_data_point_provenance.py
 python analytics/market_pulse_snapshot.py
 python analytics/daily_terminal_brief.py
 python analytics/morning_brief.py

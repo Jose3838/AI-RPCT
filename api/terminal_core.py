@@ -1523,6 +1523,10 @@ def build_terminal_summary():
     stress_index = read_latest(DATA_DIR / "ai_infrastructure_stress_index.csv")
     source_coverage = read_latest(DATA_DIR / "source_url_coverage_metrics.csv")
     core_alerts = read_records(DATA_DIR / "core_intelligence_alerts.csv")
+    claim_gate_matrix = read_records(DATA_DIR / "claim_gate_matrix.csv")
+    paid_data_point_provenance = read_records(DATA_DIR / "paid_data_point_provenance.csv")
+    forecast_accuracy = read_latest(DATA_DIR / "forecast_accuracy.csv")
+    region_scarcity_heatmap = read_records(DATA_DIR / "region_scarcity_heatmap.csv")
     signal_quality = read_latest(DATA_DIR / "core_signal_quality.csv")
     core_readiness = read_latest(DATA_DIR / "core_intelligence_readiness.csv")
     history_audit = read_latest(DATA_DIR / "core_history_audit.csv")
@@ -1558,6 +1562,10 @@ def build_terminal_summary():
         "ai_infrastructure_stress": stress_index,
         "source_url_coverage": source_coverage,
         "core_intelligence_alerts": core_alerts[:10],
+        "claim_gate_matrix": claim_gate_matrix[:10],
+        "paid_data_point_provenance": paid_data_point_provenance[:10],
+        "forecast_accuracy": forecast_accuracy,
+        "region_scarcity_heatmap": region_scarcity_heatmap[:10],
         "provider_reliability": reliability,
         "provider_reliability_gaps": reliability_gaps[:10],
         "core_intelligence_readiness": core_readiness,

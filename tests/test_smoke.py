@@ -66,6 +66,10 @@ from analytics.price_dislocation_signal import build_price_dislocation_signal
 from analytics.ai_infrastructure_stress_index import build_ai_infrastructure_stress_index
 from analytics.core_intelligence_alerts import build_core_intelligence_alerts
 from analytics.source_url_coverage_metrics import build_source_url_coverage_metrics
+from analytics.forecast_accuracy import build_forecast_accuracy
+from analytics.region_scarcity_heatmap import build_region_scarcity_heatmap
+from analytics.claim_gate_matrix import build_claim_gate_matrix
+from analytics.paid_data_point_provenance import build_paid_data_point_provenance
 from analytics.forecast_signal import build_forecast_signal
 from analytics.gpu_scarcity_index import build_gpu_scarcity_index
 from analytics.provider_reliability_ranking import build_provider_reliability_ranking
@@ -139,6 +143,10 @@ def test_core_files_exist():
     assert "analytics/ai_infrastructure_stress_index.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/core_intelligence_alerts.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/source_url_coverage_metrics.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/forecast_accuracy.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/region_scarcity_heatmap.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/claim_gate_matrix.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/paid_data_point_provenance.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/morning_brief.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("run_daily.sh").read_text()
     assert "analytics/collection_cadence_audit.py" in Path("run_daily.sh").read_text()
@@ -148,6 +156,10 @@ def test_core_files_exist():
     assert "analytics/ai_infrastructure_stress_index.py" in Path("run_daily.sh").read_text()
     assert "analytics/core_intelligence_alerts.py" in Path("run_daily.sh").read_text()
     assert "analytics/source_url_coverage_metrics.py" in Path("run_daily.sh").read_text()
+    assert "analytics/forecast_accuracy.py" in Path("run_daily.sh").read_text()
+    assert "analytics/region_scarcity_heatmap.py" in Path("run_daily.sh").read_text()
+    assert "analytics/claim_gate_matrix.py" in Path("run_daily.sh").read_text()
+    assert "analytics/paid_data_point_provenance.py" in Path("run_daily.sh").read_text()
     assert "analytics/morning_brief.py" in Path("run_daily.sh").read_text()
     launch_agent_script = Path("scripts/install_macos_launch_agent.sh").read_text()
     assert "com.airpct.daily" in launch_agent_script
@@ -162,6 +174,10 @@ def test_core_files_exist():
     assert Path("analytics/ai_infrastructure_stress_index.py").exists()
     assert Path("analytics/core_intelligence_alerts.py").exists()
     assert Path("analytics/source_url_coverage_metrics.py").exists()
+    assert Path("analytics/forecast_accuracy.py").exists()
+    assert Path("analytics/region_scarcity_heatmap.py").exists()
+    assert Path("analytics/claim_gate_matrix.py").exists()
+    assert Path("analytics/paid_data_point_provenance.py").exists()
     assert Path("analytics/coverage_universe_status.py").exists()
     assert Path("analytics/manual_snapshot_ingest.py").exists()
     assert Path("analytics/manual_snapshot_quality.py").exists()
@@ -208,6 +224,10 @@ def test_v1_terminal_summary_contract():
     assert "ai_infrastructure_stress" in payload
     assert "source_url_coverage" in payload
     assert "core_intelligence_alerts" in payload
+    assert "claim_gate_matrix" in payload
+    assert "paid_data_point_provenance" in payload
+    assert "forecast_accuracy" in payload
+    assert "region_scarcity_heatmap" in payload
     assert "coverage_universe" in payload
     assert "manual_snapshot_quality" in payload
     assert "snapshot_collection_plan" in payload
@@ -1086,6 +1106,9 @@ def test_morning_brief_contract():
     assert "action_confidence_score" in brief
     assert "ai_infrastructure_stress_index" in brief
     assert "core_alert_count" in brief
+    assert "forecast_directional_accuracy_pct" in brief
+    assert "claim_gate_count" in brief
+    assert "region_heatmap_count" in brief
     assert "AI-RPCT Morning Brief" in brief["markdown"]
     assert "Today's Action" in brief["markdown"]
 
@@ -1120,6 +1143,11 @@ def test_bloomberg_execution_roadmap_contract():
     assert roadmap[roadmap["step"] == 20].iloc[0]["status"] == "done"
     assert roadmap[roadmap["step"] == 25].iloc[0]["status"] == "done"
     assert roadmap[roadmap["step"] == 34].iloc[0]["status"] == "done"
+    assert roadmap[roadmap["step"] == 10].iloc[0]["status"] == "done"
+    assert roadmap[roadmap["step"] == 12].iloc[0]["status"] == "done"
+    assert roadmap[roadmap["step"] == 13].iloc[0]["status"] == "done"
+    assert roadmap[roadmap["step"] == 16].iloc[0]["status"] == "done"
+    assert roadmap[roadmap["step"] == 26].iloc[0]["status"] == "done"
     assert set(roadmap["category"]) == {
         "data_moat",
         "trust",
@@ -1182,6 +1210,62 @@ def test_core_intelligence_alerts_emit_high_stress_alert(tmp_path):
     alerts = build_core_intelligence_alerts(tmp_path)
 
     assert "stress_index_elevated" in set(alerts["alert_type"])
+
+
+def test_forecast_accuracy_contract(tmp_path):
+    pd.DataFrame([
+        {"date": "2026-06-22", "capacity_forecast_score": 70, "gpu_scarcity_index": 40},
+        {"date": "2026-06-23", "capacity_forecast_score": 60, "gpu_scarcity_index": 45},
+    ]).to_csv(tmp_path / "core_signal_history.csv", index=False)
+
+    accuracy = build_forecast_accuracy(tmp_path).iloc[0]
+
+    assert accuracy["status"] == "thin_forecast_history"
+    assert accuracy["evaluation_count"] == 1
+    assert accuracy["directional_accuracy_pct"] == 100
+
+
+def test_region_scarcity_heatmap_contract(tmp_path):
+    pd.DataFrame([
+        {"region_code": "us-east", "price_per_hour": 2.0, "availability": 100, "source_url": "https://example.com"},
+        {"region_code": "eu-west", "price_per_hour": 1.0, "availability": 2000, "source_url": ""},
+    ]).to_csv(tmp_path / "manual_market_snapshots.csv", index=False)
+
+    heatmap = build_region_scarcity_heatmap(tmp_path)
+
+    assert set(heatmap["region_code"]) == {"us-east", "eu-west"}
+    assert "region_scarcity_score" in heatmap.columns
+
+
+def test_claim_gate_matrix_contract(tmp_path):
+    pd.DataFrame([{"paid_beta_allowed": False, "blockers": "test"}]).to_csv(tmp_path / "paid_beta_gate.csv", index=False)
+    pd.DataFrame([{"paid_claims_allowed": False, "blockers": "fallback"}]).to_csv(tmp_path / "core_provenance_audit.csv", index=False)
+    pd.DataFrame([{"paid_safe": False}]).to_csv(tmp_path / "forecast_accuracy.csv", index=False)
+    pd.DataFrame([{"source_url_coverage_pct": 0}]).to_csv(tmp_path / "source_url_coverage_metrics.csv", index=False)
+    pd.DataFrame([{"status": "building_history"}]).to_csv(tmp_path / "collection_cadence_audit.csv", index=False)
+
+    matrix = build_claim_gate_matrix(tmp_path)
+
+    assert len(matrix) == 4
+    assert "paid_live_reliability_claims" in set(matrix["claim"])
+
+
+def test_paid_data_point_provenance_contract(tmp_path):
+    pd.DataFrame([{
+        "signal_id": "gpu_scarcity_index",
+        "signal_name": "GPU Scarcity Index",
+        "output_file": "data/gpu_scarcity_index.csv",
+        "primary_output": "gpu_scarcity_index",
+    }]).to_csv(tmp_path / "signal_methodology_registry.csv", index=False)
+    pd.DataFrame([{"paid_claims_allowed": False}]).to_csv(tmp_path / "core_provenance_audit.csv", index=False)
+    pd.DataFrame([{"source_url_coverage_pct": 0}]).to_csv(tmp_path / "source_url_coverage_metrics.csv", index=False)
+    pd.DataFrame([{"paid_beta_allowed": False}]).to_csv(tmp_path / "paid_beta_gate.csv", index=False)
+
+    provenance = build_paid_data_point_provenance(tmp_path).iloc[0]
+
+    assert provenance["signal_id"] == "gpu_scarcity_index"
+    assert provenance["paid_safe"] == False
+    assert "paid_beta_gate_blocked" in provenance["blockers"]
 
 
 def test_morning_brief_cli_writes_summary():

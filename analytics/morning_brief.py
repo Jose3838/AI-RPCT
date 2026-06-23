@@ -50,6 +50,9 @@ def build_morning_brief():
     snapshot_quality = read_latest(DATA_DIR / "manual_snapshot_quality.csv")
     source_coverage = read_latest(DATA_DIR / "source_url_coverage_metrics.csv")
     alerts = read_records(DATA_DIR / "core_intelligence_alerts.csv", limit=5)
+    claim_gates = read_records(DATA_DIR / "claim_gate_matrix.csv", limit=10)
+    region_heatmap = read_records(DATA_DIR / "region_scarcity_heatmap.csv", limit=10)
+    forecast_accuracy = read_latest(DATA_DIR / "forecast_accuracy.csv")
     methodology = read_records(DATA_DIR / "signal_methodology_registry.csv", limit=10)
     roadmap = read_records(DATA_DIR / "bloomberg_execution_roadmap.csv", limit=50)
     provider_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv", limit=3)
@@ -72,6 +75,7 @@ def build_morning_brief():
     methodology_count = len(methodology)
     roadmap_done = len([row for row in roadmap if row.get("status") == "done"])
     roadmap_total = len(roadmap)
+    allowed_claims = len([row for row in claim_gates if row.get("allowed") is True or str(row.get("allowed")).lower() == "true"])
     action_confidence_score = 80
     action_confidence_reason = "Daily scheduler is healthy and trust gates identify source-labeled snapshots as the active blocker."
 
@@ -141,6 +145,9 @@ def build_morning_brief():
         f"- Coverage Status: {value(coverage, 'status')}",
         f"- Manual Snapshot Quality: {value(snapshot_quality, 'status')}",
         f"- Source URL Coverage: {value(source_coverage, 'source_url_coverage_pct', 0)}%",
+        f"- Forecast Accuracy: {value(forecast_accuracy, 'directional_accuracy_pct', 0)}%",
+        f"- Allowed Claim Gates: {allowed_claims}/{len(claim_gates)}",
+        f"- Region Heatmap Rows: {len(region_heatmap)}",
         f"- Documented Core Methodologies: {methodology_count}",
         f"- Bloomberg Roadmap: {roadmap_done}/{roadmap_total} steps done",
         "",
@@ -180,6 +187,10 @@ def build_morning_brief():
         "stress_band": stress_band_value,
         "source_url_coverage_pct": value(source_coverage, "source_url_coverage_pct", 0),
         "core_alert_count": len(alerts),
+        "forecast_directional_accuracy_pct": value(forecast_accuracy, "directional_accuracy_pct", 0),
+        "allowed_claim_gate_count": allowed_claims,
+        "claim_gate_count": len(claim_gates),
+        "region_heatmap_count": len(region_heatmap),
         "readiness_phase": readiness_phase,
         "paid_beta_gate_status": paid_status,
         "scheduler_status": scheduler_status,
