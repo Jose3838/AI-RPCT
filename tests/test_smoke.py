@@ -81,6 +81,7 @@ from analytics.provider_preflight import (
 )
 from scripts.core_status import build_action_plan, build_core_status
 from scripts.history_backfill_plan import build_history_backfill_plan
+from scripts.manual_snapshot_workflow import build_manual_snapshot_workflow
 from scripts.provider_env_check import build_provider_env_check
 from scripts.provider_recovery_plan import build_provider_recovery_plan
 from scripts.secret_hygiene_check import build_secret_hygiene_check
@@ -98,6 +99,7 @@ def test_core_files_exist():
     assert Path("scripts/provider_env_check.py").exists()
     assert Path("scripts/secret_hygiene_check.py").exists()
     assert Path("scripts/history_backfill_plan.py").exists()
+    assert Path("scripts/manual_snapshot_workflow.py").exists()
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert Path("analytics/market_pulse_snapshot.py").exists()
     assert Path("analytics/coverage_universe_status.py").exists()
@@ -669,6 +671,21 @@ def test_manual_snapshot_quality_empty_template_contract():
     assert quality["claim_scope"] == "research_preview"
     assert quality["history_policy"] == "do_not_backfill_without_sources"
     assert "next_action" in quality
+
+
+def test_manual_snapshot_workflow_contract():
+    workflow = build_manual_snapshot_workflow()
+
+    assert workflow["product"] == "AI-RPCT"
+    assert workflow["report_type"] == "manual_snapshot_workflow"
+    assert workflow["fixed_values"]["source_type"] == "manual_public_snapshot"
+    assert workflow["fixed_values"]["claim_scope"] == "research_preview"
+    assert "snapshot_date" in workflow["required_columns"]
+    assert workflow["example_row"]["source_type"] == "manual_public_snapshot"
+    assert workflow["example_row"]["claim_scope"] == "research_preview"
+    assert workflow["priority_collection"]["gpus"]
+    assert workflow["priority_collection"]["providers"]
+    assert workflow["priority_collection"]["regions"]
 
 
 def test_manual_snapshot_quality_rejects_untrusted_rows(tmp_path):
