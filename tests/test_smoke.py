@@ -110,9 +110,17 @@ def test_core_files_exist():
     assert Path("scripts/manual_snapshot_template_check.py").exists()
     assert Path("scripts/manual_snapshot_copy_ready.py").exists()
     assert Path("scripts/manual_snapshot_workflow.py").exists()
+    assert Path("scripts/install_macos_launch_agent.sh").exists()
+    assert Path("scripts/macos_launch_agent_status.sh").exists()
+    assert Path("scripts/uninstall_macos_launch_agent.sh").exists()
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("run_daily.sh").read_text()
+    launch_agent_script = Path("scripts/install_macos_launch_agent.sh").read_text()
+    assert "com.airpct.daily" in launch_agent_script
+    assert "./scripts/run_core_intelligence.sh" in launch_agent_script
+    assert "launchd.daily.out.log" in launch_agent_script
+    assert "<integer>8</integer>" in launch_agent_script
     assert Path("analytics/market_pulse_snapshot.py").exists()
     assert Path("analytics/coverage_universe_status.py").exists()
     assert Path("analytics/manual_snapshot_ingest.py").exists()

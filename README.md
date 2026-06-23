@@ -68,6 +68,16 @@ venv/bin/python snapshot_scheduler.py
 venv/bin/python database/db_status.py
 ```
 
+Install the free macOS auto-runner:
+
+```bash
+./scripts/install_macos_launch_agent.sh
+./scripts/macos_launch_agent_status.sh
+./scripts/uninstall_macos_launch_agent.sh
+```
+
+The LaunchAgent runs `./scripts/run_core_intelligence.sh` at login and every day at 08:15 local time while the Mac is awake. Logs are written to `logs/launchd.daily.out.log` and `logs/launchd.daily.err.log`.
+
 Start the API locally:
 
 ```bash
@@ -138,7 +148,11 @@ Core files:
 - `scripts/founder_daily_close.py`
 - `scripts/manual_snapshot_inbox_template.py`
 - `scripts/manual_snapshot_template_check.py`
+- `scripts/manual_snapshot_copy_ready.py`
 - `scripts/manual_snapshot_workflow.py`
+- `scripts/install_macos_launch_agent.sh`
+- `scripts/macos_launch_agent_status.sh`
+- `scripts/uninstall_macos_launch_agent.sh`
 - `scripts/provider_recovery_plan.py`
 - `scripts/history_backfill_plan.py`
 
