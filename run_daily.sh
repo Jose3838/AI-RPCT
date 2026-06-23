@@ -77,6 +77,7 @@ python analytics/provider_comparison.py
 python analytics/provider_health.py
 python analytics/provider_reliability_ranking.py
 python analytics/provider_reliability_gaps.py
+python analytics/signal_methodology_registry.py
 python analytics/gpu_price_trend_signal.py
 python analytics/core_signal_history.py
 python analytics/collection_cadence_audit.py

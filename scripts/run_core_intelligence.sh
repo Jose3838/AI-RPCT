@@ -19,6 +19,7 @@ python analytics/provider_health.py
 python analytics/provider_daily_metrics.py
 python analytics/provider_reliability_ranking.py
 python analytics/provider_reliability_gaps.py
+python analytics/signal_methodology_registry.py
 python scripts/manual_snapshot_copy_ready.py
 python analytics/manual_snapshot_ingest.py
 python analytics/manual_snapshot_quality.py

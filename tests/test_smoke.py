@@ -53,6 +53,10 @@ from api.onboarding_core import (
 from api.ops_core import build_launch_controls, build_v1_operations_status
 from analytics.market_pulse_snapshot import main as save_market_pulse_snapshot_cli
 from analytics.morning_brief import build_morning_brief
+from analytics.signal_methodology_registry import (
+    build_signal_methodology_markdown,
+    build_signal_methodology_registry,
+)
 from analytics.forecast_signal import build_forecast_signal
 from analytics.gpu_scarcity_index import build_gpu_scarcity_index
 from analytics.provider_reliability_ranking import build_provider_reliability_ranking
@@ -120,9 +124,11 @@ def test_core_files_exist():
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/collection_cadence_audit.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/signal_methodology_registry.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/morning_brief.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("run_daily.sh").read_text()
     assert "analytics/collection_cadence_audit.py" in Path("run_daily.sh").read_text()
+    assert "analytics/signal_methodology_registry.py" in Path("run_daily.sh").read_text()
     assert "analytics/morning_brief.py" in Path("run_daily.sh").read_text()
     launch_agent_script = Path("scripts/install_macos_launch_agent.sh").read_text()
     assert "com.airpct.daily" in launch_agent_script
@@ -131,6 +137,7 @@ def test_core_files_exist():
     assert "<integer>8</integer>" in launch_agent_script
     assert Path("analytics/market_pulse_snapshot.py").exists()
     assert Path("analytics/morning_brief.py").exists()
+    assert Path("analytics/signal_methodology_registry.py").exists()
     assert Path("analytics/coverage_universe_status.py").exists()
     assert Path("analytics/manual_snapshot_ingest.py").exists()
     assert Path("analytics/manual_snapshot_quality.py").exists()
@@ -177,6 +184,8 @@ def test_v1_terminal_summary_contract():
     assert "manual_snapshot_quality" in payload
     assert "snapshot_collection_plan" in payload
     assert isinstance(payload["snapshot_collection_plan"], list)
+    assert "signal_methodology_registry" in payload
+    assert isinstance(payload["signal_methodology_registry"], list)
     assert "manual_snapshot_template_check" in payload
     assert "status" in payload["manual_snapshot_template_check"]
     assert "next_action" in payload["manual_snapshot_template_check"]
@@ -1042,8 +1051,24 @@ def test_morning_brief_contract():
     assert "headline" in brief
     assert "operating_mode" in brief
     assert "today_action" in brief
+    assert "documented_methodology_count" in brief
     assert "AI-RPCT Morning Brief" in brief["markdown"]
     assert "Today's Action" in brief["markdown"]
+
+
+def test_signal_methodology_registry_contract():
+    registry = build_signal_methodology_registry()
+    markdown = build_signal_methodology_markdown(registry)
+
+    assert len(registry) >= 3
+    assert set(registry["signal_id"]) >= {
+        "gpu_scarcity_index",
+        "capacity_shock_forecast",
+        "provider_reliability_score",
+    }
+    assert "formula_summary" in registry.columns
+    assert "paid_safe_requirement" in registry.columns
+    assert "AI-RPCT Signal Methodology Registry" in markdown
 
 
 def test_morning_brief_cli_writes_summary():

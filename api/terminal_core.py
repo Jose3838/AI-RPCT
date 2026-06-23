@@ -1528,6 +1528,7 @@ def build_terminal_summary():
     coverage_universe = read_latest(DATA_DIR / "coverage_universe_status.csv")
     manual_snapshot_quality = read_latest(DATA_DIR / "manual_snapshot_quality.csv")
     snapshot_collection_plan = read_records(DATA_DIR / "snapshot_collection_plan.csv")
+    signal_methodology = read_records(DATA_DIR / "signal_methodology_registry.csv")
     signal_history = read_records(DATA_DIR / "core_signal_history.csv")
     reliability = read_first(DATA_DIR / "provider_reliability_ranking.csv")
     reliability_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv")
@@ -1558,6 +1559,7 @@ def build_terminal_summary():
         "coverage_universe": coverage_universe,
         "manual_snapshot_quality": manual_snapshot_quality,
         "snapshot_collection_plan": snapshot_collection_plan[:10],
+        "signal_methodology_registry": signal_methodology[:10],
         "manual_snapshot_template_check": {
             "status": template_check.get("status"),
             "template_file": template_check.get("template_file"),

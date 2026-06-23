@@ -46,6 +46,7 @@ def build_morning_brief():
     paid_gate = read_latest(DATA_DIR / "paid_beta_gate.csv")
     coverage = read_latest(DATA_DIR / "coverage_universe_status.csv")
     snapshot_quality = read_latest(DATA_DIR / "manual_snapshot_quality.csv")
+    methodology = read_records(DATA_DIR / "signal_methodology_registry.csv", limit=10)
     provider_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv", limit=3)
     snapshot_targets = read_records(DATA_DIR / "snapshot_collection_plan.csv", limit=5)
 
@@ -59,6 +60,7 @@ def build_morning_brief():
     days_to_next = value(cadence, "days_to_next_milestone", "n/a")
     paid_status = value(paid_gate, "gate_status")
     scheduler_status = value(scheduler, "status", "unknown")
+    methodology_count = len(methodology)
 
     headline = (
         f"AI infrastructure stress is {scarcity_band}; "
@@ -113,6 +115,7 @@ def build_morning_brief():
         f"- Days To Next Milestone: {days_to_next}",
         f"- Coverage Status: {value(coverage, 'status')}",
         f"- Manual Snapshot Quality: {value(snapshot_quality, 'status')}",
+        f"- Documented Core Methodologies: {methodology_count}",
         "",
         "## Top Provider Risks",
         *provider_gap_lines,
@@ -142,6 +145,7 @@ def build_morning_brief():
         "collection_cadence_status": cadence_status,
         "days_collected": days_collected,
         "days_to_next_milestone": days_to_next,
+        "documented_methodology_count": methodology_count,
         "markdown": markdown,
     }
 
