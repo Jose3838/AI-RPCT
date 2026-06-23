@@ -93,6 +93,7 @@ python analytics/intelligence_signal_score.py
 python analytics/daily_terminal_brief.py
 python analytics/gpu_category_index.py
 python analytics/provider_coverage_score.py
+python scripts/manual_snapshot_copy_ready.py
 python analytics/manual_snapshot_ingest.py
 python analytics/manual_snapshot_quality.py
 python analytics/coverage_universe_status.py

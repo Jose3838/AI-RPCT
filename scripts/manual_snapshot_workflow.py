@@ -81,6 +81,7 @@ def build_manual_snapshot_workflow(data_dir=DATA_DIR):
         "daily_commands": [
             "venv/bin/python scripts/manual_snapshot_inbox_template.py",
             "venv/bin/python scripts/manual_snapshot_template_check.py",
+            "venv/bin/python scripts/manual_snapshot_copy_ready.py",
             "venv/bin/python analytics/manual_snapshot_ingest.py",
             "venv/bin/python analytics/manual_snapshot_quality.py",
             "venv/bin/python analytics/coverage_universe_status.py",

@@ -84,6 +84,7 @@ from analytics.provider_preflight import (
 from scripts.core_status import build_action_plan, build_core_status
 from scripts.founder_daily_close import build_founder_daily_close
 from scripts.history_backfill_plan import build_history_backfill_plan
+from scripts.manual_snapshot_copy_ready import build_manual_snapshot_copy_ready
 from scripts.manual_snapshot_inbox_template import build_manual_snapshot_inbox_template
 from scripts.manual_snapshot_template_check import build_manual_snapshot_template_check
 from scripts.manual_snapshot_workflow import build_manual_snapshot_workflow
@@ -107,8 +108,11 @@ def test_core_files_exist():
     assert Path("scripts/founder_daily_close.py").exists()
     assert Path("scripts/manual_snapshot_inbox_template.py").exists()
     assert Path("scripts/manual_snapshot_template_check.py").exists()
+    assert Path("scripts/manual_snapshot_copy_ready.py").exists()
     assert Path("scripts/manual_snapshot_workflow.py").exists()
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "scripts/manual_snapshot_copy_ready.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "scripts/manual_snapshot_copy_ready.py" in Path("run_daily.sh").read_text()
     assert Path("analytics/market_pulse_snapshot.py").exists()
     assert Path("analytics/coverage_universe_status.py").exists()
     assert Path("analytics/manual_snapshot_ingest.py").exists()
@@ -769,6 +773,92 @@ def test_manual_snapshot_template_check_accepts_completed_template(tmp_path):
     assert check["status"] == "ready_to_copy"
     assert check["valid_row_count"] == 1
     assert check["rejected_row_count"] == 0
+
+
+def test_manual_snapshot_copy_ready_copies_only_valid_template_rows(tmp_path):
+    pd.DataFrame([{"gpu": "H100"}]).to_csv(tmp_path / "gpu_universe.csv", index=False)
+    pd.DataFrame([{"provider": "vast"}]).to_csv(tmp_path / "provider_universe.csv", index=False)
+    pd.DataFrame([{"region_code": "us-east"}]).to_csv(tmp_path / "region_universe.csv", index=False)
+    pd.DataFrame(columns=[
+        "snapshot_date",
+        "provider",
+        "gpu",
+        "region_code",
+        "price_per_hour",
+        "availability",
+        "delivery_time_days",
+        "source_url",
+        "source_type",
+        "claim_scope",
+        "notes",
+    ]).to_csv(tmp_path / "manual_market_snapshot_inbox.csv", index=False)
+    pd.DataFrame([
+        {
+            "snapshot_date": "2026-06-23",
+            "provider": "vast",
+            "gpu": "H100",
+            "region_code": "us-east",
+            "price_per_hour": 1.5,
+            "availability": 10,
+            "delivery_time_days": 0,
+            "source_url": "https://example.com/h100",
+            "source_type": "manual_public_snapshot",
+            "claim_scope": "research_preview",
+            "notes": "valid",
+        },
+        {
+            "snapshot_date": "2026-06-23",
+            "provider": "vast",
+            "gpu": "H100",
+            "region_code": "unknown",
+            "price_per_hour": "",
+            "availability": 10,
+            "delivery_time_days": 0,
+            "source_url": "",
+            "source_type": "manual_public_snapshot",
+            "claim_scope": "research_preview",
+            "notes": "invalid",
+        },
+    ]).to_csv(tmp_path / "manual_market_snapshot_inbox_template.csv", index=False)
+
+    result = build_manual_snapshot_copy_ready(tmp_path)
+    inbox = pd.read_csv(tmp_path / "manual_market_snapshot_inbox.csv")
+    rejections = pd.read_csv(tmp_path / "manual_market_snapshot_template_rejections.csv")
+
+    assert result["status"] == "partially_copied"
+    assert result["copied_count"] == 1
+    assert result["rejected_template_row_count"] == 1
+    assert len(inbox) == 1
+    assert len(rejections) == 1
+
+
+def test_manual_snapshot_copy_ready_deduplicates_existing_inbox_rows(tmp_path):
+    pd.DataFrame([{"gpu": "H100"}]).to_csv(tmp_path / "gpu_universe.csv", index=False)
+    pd.DataFrame([{"provider": "vast"}]).to_csv(tmp_path / "provider_universe.csv", index=False)
+    pd.DataFrame([{"region_code": "us-east"}]).to_csv(tmp_path / "region_universe.csv", index=False)
+    row = {
+        "snapshot_date": "2026-06-23",
+        "provider": "vast",
+        "gpu": "H100",
+        "region_code": "us-east",
+        "price_per_hour": 1.5,
+        "availability": 10,
+        "delivery_time_days": 0,
+        "source_url": "https://example.com/h100",
+        "source_type": "manual_public_snapshot",
+        "claim_scope": "research_preview",
+        "notes": "valid",
+    }
+    pd.DataFrame([row]).to_csv(tmp_path / "manual_market_snapshot_inbox.csv", index=False)
+    pd.DataFrame([row]).to_csv(tmp_path / "manual_market_snapshot_inbox_template.csv", index=False)
+
+    result = build_manual_snapshot_copy_ready(tmp_path)
+    inbox = pd.read_csv(tmp_path / "manual_market_snapshot_inbox.csv")
+
+    assert result["status"] == "no_new_rows"
+    assert result["copied_count"] == 0
+    assert result["duplicate_count"] == 1
+    assert len(inbox) == 1
 
 
 def test_manual_snapshot_quality_rejects_untrusted_rows(tmp_path):
