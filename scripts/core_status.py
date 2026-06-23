@@ -4,6 +4,7 @@ from pathlib import Path
 import pandas as pd
 
 from scripts.provider_env_check import build_provider_env_check
+from scripts.provider_recovery_plan import build_provider_recovery_plan
 
 
 DATA_DIR = Path("data")
@@ -33,6 +34,7 @@ def build_core_status():
     gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv", limit=5)
     preflight = read_records(DATA_DIR / "provider_preflight.csv", limit=10)
     env_check = build_provider_env_check()
+    recovery_plan = build_provider_recovery_plan()
     action_plan = build_action_plan(readiness, gaps, preflight)
 
     return {
@@ -57,6 +59,13 @@ def build_core_status():
             "configured_count": env_check.get("configured_count"),
             "required_count": env_check.get("required_count"),
             "all_required_configured": env_check.get("all_required_configured"),
+        },
+        "provider_recovery_plan": {
+            "status": recovery_plan.get("status"),
+            "configured_count": recovery_plan.get("configured_count"),
+            "verified_live_count": recovery_plan.get("verified_live_count"),
+            "missing_credentials": recovery_plan.get("missing_credentials", []),
+            "next_action": recovery_plan.get("next_action"),
         },
         "paid_beta_signal_ready": readiness.get("paid_beta_signal_ready", False),
         "blockers": readiness.get("blockers", quality.get("blockers", "unknown")),

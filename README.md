@@ -54,6 +54,7 @@ PYTHONPATH=. venv/bin/pytest tests
 ./scripts/run_core_intelligence.sh
 venv/bin/python scripts/core_status.py
 venv/bin/python scripts/provider_env_check.py
+venv/bin/python scripts/provider_recovery_plan.py
 venv/bin/python scripts/secret_hygiene_check.py
 venv/bin/python scripts/history_backfill_plan.py
 venv/bin/python analytics/paid_beta_gate.py
@@ -118,6 +119,7 @@ Core files:
 - `run_daily.sh`
 - `scripts/run_core_intelligence.sh`
 - `scripts/core_status.py`
+- `scripts/provider_recovery_plan.py`
 - `scripts/history_backfill_plan.py`
 
 Operational runbooks:

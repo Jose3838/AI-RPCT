@@ -79,6 +79,7 @@ from analytics.provider_preflight import (
 from scripts.core_status import build_action_plan, build_core_status
 from scripts.history_backfill_plan import build_history_backfill_plan
 from scripts.provider_env_check import build_provider_env_check
+from scripts.provider_recovery_plan import build_provider_recovery_plan
 from scripts.secret_hygiene_check import build_secret_hygiene_check
 from snapshot_scheduler import run_scheduled_snapshot
 from security.limits import build_limit_status
@@ -605,6 +606,7 @@ def test_core_status_contract():
     assert "readiness_phase" in status
     assert "provider_credentials" in status
     assert "configured_count" in status["provider_credentials"]
+    assert "provider_recovery_plan" in status
     assert "next_action" in status
     assert "action_plan" in status
     assert isinstance(status["action_plan"], list)
@@ -680,6 +682,74 @@ def test_provider_env_check_contract():
     assert not payload["all_required_configured"]
     assert "providers" in payload
     assert "realistic_test_key_123" not in str(payload)
+
+
+def test_provider_recovery_plan_blocks_missing_credentials(tmp_path):
+    pd.DataFrame([{
+        "provider": "vast",
+        "readiness": "blocked",
+        "ingestion_status": "fallback",
+        "used_fallback": True,
+        "next_action": "Configure VAST_API_KEY in the runtime environment.",
+    }, {
+        "provider": "runpod",
+        "readiness": "blocked",
+        "ingestion_status": "fallback",
+        "used_fallback": True,
+        "next_action": "Configure RUNPOD_API_KEY in the runtime environment.",
+    }]).to_csv(tmp_path / "provider_preflight.csv", index=False)
+    pd.DataFrame([{
+        "provider": "vast",
+        "status": "fallback",
+        "used_fallback": True,
+    }]).to_csv(tmp_path / "live_provider_ingestion_status.csv", index=False)
+
+    payload = build_provider_recovery_plan(
+        env={"VAST_API_KEY": "", "RUNPOD_API_KEY": "real_runpod_secret_123"},
+        data_dir=tmp_path,
+    )
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["report_type"] == "provider_recovery_plan"
+    assert payload["status"] == "blocked_by_missing_credentials"
+    assert payload["missing_credentials"] == ["VAST_API_KEY"]
+    assert payload["configured_count"] == 1
+    assert "real_runpod_secret_123" not in str(payload)
+
+
+def test_provider_recovery_plan_allows_clean_history_collection(tmp_path):
+    pd.DataFrame([{
+        "provider": "vast",
+        "readiness": "ready",
+        "ingestion_status": "fresh",
+        "used_fallback": False,
+    }, {
+        "provider": "runpod",
+        "readiness": "ready",
+        "ingestion_status": "fresh",
+        "used_fallback": False,
+    }]).to_csv(tmp_path / "provider_preflight.csv", index=False)
+    pd.DataFrame([{
+        "provider": "vast",
+        "status": "fresh",
+        "used_fallback": False,
+    }, {
+        "provider": "runpod",
+        "status": "fresh",
+        "used_fallback": False,
+    }]).to_csv(tmp_path / "live_provider_ingestion_status.csv", index=False)
+
+    payload = build_provider_recovery_plan(
+        env={
+            "VAST_API_KEY": "realistic_vast_secret_123",
+            "RUNPOD_API_KEY": "realistic_runpod_secret_123",
+        },
+        data_dir=tmp_path,
+    )
+
+    assert payload["status"] == "ready_for_clean_history_collection"
+    assert payload["verified_live_count"] == 2
+    assert payload["missing_credentials"] == []
 
 
 def test_secret_hygiene_check_contract():

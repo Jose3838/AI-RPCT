@@ -15,6 +15,7 @@ Run:
 
 ```bash
 venv/bin/python scripts/provider_env_check.py
+venv/bin/python scripts/provider_recovery_plan.py
 ./scripts/run_core_intelligence.sh
 venv/bin/python scripts/core_status.py
 ```
@@ -29,7 +30,7 @@ Then inspect:
 - `data/paid_beta_gate.csv`
 - `reports/daily_terminal_brief_YYYYMMDD.txt`
 
-`scripts/core_status.py` prints the current readiness phase, paid-beta gate, blockers, next action and a prioritized action plan.
+`scripts/provider_recovery_plan.py` prints the safe credential and ingestion recovery checklist without exposing secret values. `scripts/core_status.py` prints the current readiness phase, paid-beta gate, blockers, next action and a prioritized action plan.
 
 ## Recovery Order
 
