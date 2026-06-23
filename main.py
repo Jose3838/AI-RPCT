@@ -1,3 +1,4 @@
+from api.customer_decision_routes import router as customer_decision_router
 from fastapi import Header
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
@@ -1122,3 +1123,5 @@ def live_data_audit_history_endpoint():
         "status": "ok",
         "history": load_live_data_audit_history()
     }
+
+app.include_router(customer_decision_router)
