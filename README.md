@@ -60,6 +60,7 @@ venv/bin/python scripts/secret_hygiene_check.py
 venv/bin/python analytics/collection_cadence_audit.py
 venv/bin/python analytics/signal_methodology_registry.py
 venv/bin/python analytics/bloomberg_execution_roadmap.py
+venv/bin/python analytics/price_dislocation_signal.py
 venv/bin/python analytics/morning_brief.py
 venv/bin/python scripts/history_backfill_plan.py
 venv/bin/python scripts/manual_snapshot_workflow.py
@@ -130,6 +131,7 @@ Core files:
 - `analytics/morning_brief.py`
 - `analytics/signal_methodology_registry.py`
 - `analytics/bloomberg_execution_roadmap.py`
+- `analytics/price_dislocation_signal.py`
 - `analytics/core_signal_history.py`
 - `analytics/collection_cadence_audit.py`
 - `analytics/core_signal_quality.py`

@@ -48,6 +48,19 @@ SIGNALS = [
         "current_claim_scope": "research_preview",
         "paid_safe_requirement": "Live provider ingestion green, 30+ provider history days and no missing critical credentials.",
     },
+    {
+        "signal_id": "price_dislocation_signal",
+        "signal_name": "Price Dislocation Signal",
+        "product_role": "Detects unusually wide cross-provider price spreads for the same GPU.",
+        "input_files": "data/gpu_data.csv",
+        "formula_summary": "For GPUs with 2+ provider prices, max spread pct = (max price - min price) / median price; score is capped at 100.",
+        "output_file": "data/price_dislocation_signal.csv",
+        "primary_output": "price_dislocation_score",
+        "trust_gate": "Requires source-labeled price observations and persistence checks before paid claims.",
+        "moat_value": "Daily spread history can reveal recurring provider mispricing that static price tables miss.",
+        "current_claim_scope": "research_preview",
+        "paid_safe_requirement": "Source-backed cross-provider observations, 30+ days of spread history and validated recurrence.",
+    },
 ]
 
 

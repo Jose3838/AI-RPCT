@@ -1519,6 +1519,7 @@ def build_terminal_summary():
     pulse = read_latest(DATA_DIR / "ai_infrastructure_pulse.csv")
     scarcity = read_latest(DATA_DIR / "gpu_scarcity_index.csv")
     forecast = read_latest(DATA_DIR / "forecast_signal.csv")
+    price_dislocation = read_latest(DATA_DIR / "price_dislocation_signal.csv")
     signal_quality = read_latest(DATA_DIR / "core_signal_quality.csv")
     core_readiness = read_latest(DATA_DIR / "core_intelligence_readiness.csv")
     history_audit = read_latest(DATA_DIR / "core_history_audit.csv")
@@ -1550,6 +1551,7 @@ def build_terminal_summary():
         "pulse": pulse,
         "scarcity": scarcity,
         "capacity_forecast": forecast,
+        "price_dislocation": price_dislocation,
         "provider_reliability": reliability,
         "provider_reliability_gaps": reliability_gaps[:10],
         "core_intelligence_readiness": core_readiness,

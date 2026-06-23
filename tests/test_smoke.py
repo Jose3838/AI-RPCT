@@ -62,6 +62,7 @@ from analytics.bloomberg_execution_roadmap import (
     build_roadmap_markdown,
     build_roadmap_summary,
 )
+from analytics.price_dislocation_signal import build_price_dislocation_signal
 from analytics.forecast_signal import build_forecast_signal
 from analytics.gpu_scarcity_index import build_gpu_scarcity_index
 from analytics.provider_reliability_ranking import build_provider_reliability_ranking
@@ -131,11 +132,13 @@ def test_core_files_exist():
     assert "analytics/collection_cadence_audit.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/signal_methodology_registry.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/bloomberg_execution_roadmap.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/price_dislocation_signal.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/morning_brief.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("run_daily.sh").read_text()
     assert "analytics/collection_cadence_audit.py" in Path("run_daily.sh").read_text()
     assert "analytics/signal_methodology_registry.py" in Path("run_daily.sh").read_text()
     assert "analytics/bloomberg_execution_roadmap.py" in Path("run_daily.sh").read_text()
+    assert "analytics/price_dislocation_signal.py" in Path("run_daily.sh").read_text()
     assert "analytics/morning_brief.py" in Path("run_daily.sh").read_text()
     launch_agent_script = Path("scripts/install_macos_launch_agent.sh").read_text()
     assert "com.airpct.daily" in launch_agent_script
@@ -146,6 +149,7 @@ def test_core_files_exist():
     assert Path("analytics/morning_brief.py").exists()
     assert Path("analytics/signal_methodology_registry.py").exists()
     assert Path("analytics/bloomberg_execution_roadmap.py").exists()
+    assert Path("analytics/price_dislocation_signal.py").exists()
     assert Path("analytics/coverage_universe_status.py").exists()
     assert Path("analytics/manual_snapshot_ingest.py").exists()
     assert Path("analytics/manual_snapshot_quality.py").exists()
@@ -188,6 +192,7 @@ def test_v1_terminal_summary_contract():
     assert "collection_cadence" in payload
     assert "core_provenance_audit" in payload
     assert "paid_beta_gate" in payload
+    assert "price_dislocation" in payload
     assert "coverage_universe" in payload
     assert "manual_snapshot_quality" in payload
     assert "snapshot_collection_plan" in payload
@@ -1076,6 +1081,7 @@ def test_signal_methodology_registry_contract():
         "gpu_scarcity_index",
         "capacity_shock_forecast",
         "provider_reliability_score",
+        "price_dislocation_signal",
     }
     assert "formula_summary" in registry.columns
     assert "paid_safe_requirement" in registry.columns
@@ -1090,6 +1096,7 @@ def test_bloomberg_execution_roadmap_contract():
     assert len(roadmap) == 50
     assert summary["total_steps"] == 50
     assert summary["done_steps"] > 0
+    assert roadmap[roadmap["step"] == 24].iloc[0]["status"] == "done"
     assert set(roadmap["category"]) == {
         "data_moat",
         "trust",
@@ -1098,6 +1105,21 @@ def test_bloomberg_execution_roadmap_contract():
         "commercial",
     }
     assert "AI-RPCT Bloomberg Execution Roadmap" in markdown
+
+
+def test_price_dislocation_signal_detects_wide_spread():
+    gpu_data = pd.DataFrame([
+        {"timestamp": "2026-06-23 08:00:00", "provider": "cheap_cloud", "gpu": "H100", "price_per_hour": 2.0, "availability": 5},
+        {"timestamp": "2026-06-23 08:00:00", "provider": "premium_cloud", "gpu": "H100", "price_per_hour": 6.0, "availability": 5},
+        {"timestamp": "2026-06-23 08:00:00", "provider": "mid_cloud", "gpu": "H100", "price_per_hour": 4.0, "availability": 5},
+    ])
+
+    signal = build_price_dislocation_signal(gpu_data).iloc[0]
+
+    assert signal["status"] == "price_dislocation_signal_ready"
+    assert signal["price_dislocation_score"] == 100
+    assert signal["dislocation_band"] == "extreme"
+    assert signal["top_gpu"] == "H100"
 
 
 def test_morning_brief_cli_writes_summary():

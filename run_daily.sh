@@ -23,6 +23,7 @@ python analytics/provider_readiness.py
 python analytics/shortage_probability.py
 python analytics/gpu_scarcity_index.py
 python analytics/forecast_signal.py
+python analytics/price_dislocation_signal.py
 python analytics/trend_engine.py
 python analytics/time_series_forecast.py
 python analytics/market_regime.py

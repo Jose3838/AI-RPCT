@@ -15,6 +15,7 @@ python analytics/live_provider_ingest.py
 python analytics/provider_preflight.py
 python analytics/gpu_scarcity_index.py
 python analytics/forecast_signal.py
+python analytics/price_dislocation_signal.py
 python analytics/provider_health.py
 python analytics/provider_daily_metrics.py
 python analytics/provider_reliability_ranking.py

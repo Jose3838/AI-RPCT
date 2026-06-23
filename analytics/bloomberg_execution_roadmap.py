@@ -35,7 +35,7 @@ ROADMAP = [
     ("core_intelligence", 21, "Strengthen GPU Scarcity Index with source-backed observations.", "in_progress", "data/gpu_scarcity_index.csv"),
     ("core_intelligence", 22, "Strengthen Capacity Shock Forecast with validation history.", "in_progress", "data/forecast_signal.csv"),
     ("core_intelligence", 23, "Strengthen Provider Reliability Score with live ingestion.", "in_progress", "data/provider_reliability_ranking.csv"),
-    ("core_intelligence", 24, "Add Price Dislocation Signal.", "not_started", "analytics"),
+    ("core_intelligence", 24, "Add Price Dislocation Signal.", "done", "analytics/price_dislocation_signal.py"),
     ("core_intelligence", 25, "Add AI Infrastructure Stress Index composite.", "not_started", "analytics"),
     ("core_intelligence", 26, "Add region-level scarcity heatmap data.", "not_started", "data/manual_market_snapshots.csv"),
     ("core_intelligence", 27, "Add provider recovery and credential readiness plan.", "done", "scripts/provider_recovery_plan.py"),

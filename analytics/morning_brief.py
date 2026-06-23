@@ -39,6 +39,7 @@ def build_morning_brief():
     generated_at = datetime.now().isoformat()
     scarcity = read_latest(DATA_DIR / "gpu_scarcity_index.csv")
     forecast = read_latest(DATA_DIR / "forecast_signal.csv")
+    price_dislocation = read_latest(DATA_DIR / "price_dislocation_signal.csv")
     reliability = read_latest(DATA_DIR / "provider_reliability_ranking.csv")
     readiness = read_latest(DATA_DIR / "core_intelligence_readiness.csv")
     cadence = read_latest(DATA_DIR / "collection_cadence_audit.csv")
@@ -55,6 +56,8 @@ def build_morning_brief():
     scarcity_band = value(scarcity, "scarcity_band")
     forecast_score = value(forecast, "forecast_score")
     shock_band = value(forecast, "capacity_shock_band")
+    dislocation_score = value(price_dislocation, "price_dislocation_score")
+    dislocation_band = value(price_dislocation, "dislocation_band")
     readiness_phase = value(readiness, "readiness_phase")
     cadence_status = value(cadence, "status")
     days_collected = value(cadence, "days_collected", 0)
@@ -107,6 +110,7 @@ def build_morning_brief():
         "## Market Pulse",
         f"- GPU Scarcity Index: {scarcity_score} ({scarcity_band})",
         f"- Capacity Forecast Score: {forecast_score} ({shock_band})",
+        f"- Price Dislocation Score: {dislocation_score} ({dislocation_band})",
         f"- Reliability Leader: {value(reliability, 'provider')} ({value(reliability, 'reliability_score')})",
         "",
         "## Trust And Moat",
@@ -143,6 +147,8 @@ def build_morning_brief():
         "today_action": today_action,
         "scarcity_band": scarcity_band,
         "capacity_shock_band": shock_band,
+        "price_dislocation_score": dislocation_score,
+        "price_dislocation_band": dislocation_band,
         "readiness_phase": readiness_phase,
         "paid_beta_gate_status": paid_status,
         "scheduler_status": scheduler_status,
