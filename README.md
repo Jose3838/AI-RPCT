@@ -56,6 +56,7 @@ venv/bin/python scripts/core_status.py
 venv/bin/python scripts/provider_env_check.py
 venv/bin/python scripts/secret_hygiene_check.py
 venv/bin/python scripts/history_backfill_plan.py
+venv/bin/python analytics/paid_beta_gate.py
 venv/bin/python snapshot_scheduler.py
 venv/bin/python database/db_status.py
 ```
@@ -105,6 +106,7 @@ Core files:
 - `analytics/core_signal_history.py`
 - `analytics/core_signal_quality.py`
 - `analytics/core_intelligence_readiness.py`
+- `analytics/paid_beta_gate.py`
 - `analytics/core_provenance_audit.py`
 - `analytics/provider_preflight.py`
 - `analytics/provider_reliability_gaps.py`
@@ -128,7 +130,7 @@ Current core status:
 venv/bin/python scripts/core_status.py
 ```
 
-The status output includes readiness phase, paid-beta signal readiness, blockers, next action, and a prioritized action plan.
+The status output includes readiness phase, paid-beta signal readiness, paid-beta gate status, blockers, next action, and a prioritized action plan.
 
 ## MVP Priorities
 

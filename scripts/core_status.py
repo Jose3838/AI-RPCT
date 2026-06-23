@@ -29,6 +29,7 @@ def build_core_status():
     pulse = read_latest(DATA_DIR / "market_pulse_history.csv")
     history_audit = read_latest(DATA_DIR / "core_history_audit.csv")
     provenance_audit = read_latest(DATA_DIR / "core_provenance_audit.csv")
+    paid_beta_gate = read_latest(DATA_DIR / "paid_beta_gate.csv")
     gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv", limit=5)
     preflight = read_records(DATA_DIR / "provider_preflight.csv", limit=10)
     env_check = build_provider_env_check()
@@ -46,6 +47,12 @@ def build_core_status():
         "provenance_band": provenance_audit.get("provenance_band"),
         "fallback_row_pct": provenance_audit.get("fallback_row_pct"),
         "provenance_blockers": provenance_audit.get("blockers"),
+        "paid_beta_gate": {
+            "allowed": paid_beta_gate.get("paid_beta_allowed", False),
+            "status": paid_beta_gate.get("gate_status", "unknown"),
+            "blockers": paid_beta_gate.get("blockers", "unknown"),
+            "next_action": paid_beta_gate.get("next_action"),
+        },
         "provider_credentials": {
             "configured_count": env_check.get("configured_count"),
             "required_count": env_check.get("required_count"),
@@ -69,6 +76,15 @@ def build_action_plan(readiness, gaps, preflight):
                 "action": row.get("next_action"),
                 "provider": row.get("provider"),
             })
+
+    paid_beta_gate = read_latest(DATA_DIR / "paid_beta_gate.csv")
+    if paid_beta_gate and str(paid_beta_gate.get("gate_status", "")).lower() != "ready":
+        actions.append({
+            "priority": "critical",
+            "source": "paid_beta_gate",
+            "action": paid_beta_gate.get("next_action"),
+            "provider": "all",
+        })
 
     for gap in gaps:
         if gap.get("priority") in {"high", "critical"}:

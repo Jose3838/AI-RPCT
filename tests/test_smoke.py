@@ -70,6 +70,7 @@ from analytics.core_intelligence_readiness import (
     build_core_intelligence_readiness,
     readiness_phase,
 )
+from analytics.paid_beta_gate import build_paid_beta_gate
 from analytics.provider_preflight import (
     build_provider_preflight,
     is_configured_secret,
@@ -907,6 +908,8 @@ def test_v1_operations_status_contract():
     assert isinstance(payload["blocking_issues"], list)
     assert "readiness" in payload
     assert "launch_controls" in payload["readiness"]
+    assert "paid_beta_gate" in payload["readiness"]
+    assert "effective_controls" in payload
     assert isinstance(payload["files"], list)
 
 
@@ -919,6 +922,83 @@ def test_v1_launch_controls_contract():
     assert "billing_ready" in payload["controls"]
     assert "terms_ready" in payload["controls"]
     assert "paid_customers_allowed" in payload["controls"]
+    assert "paid_beta_gate" in payload
+    assert "effective_controls" in payload
+
+
+def test_paid_beta_gate_blocks_research_grade_core(tmp_path):
+    pd.DataFrame([{
+        "readiness_phase": "blocked_by_live_data",
+        "core_signal_quality_score": 53.3,
+        "paid_beta_signal_ready": False,
+        "provider_preflight_blocked_count": 2,
+    }]).to_csv(tmp_path / "core_intelligence_readiness.csv", index=False)
+    pd.DataFrame([{
+        "core_signal_quality_score": 53.3,
+    }]).to_csv(tmp_path / "core_signal_quality.csv", index=False)
+    pd.DataFrame([{
+        "progress_pct": 3.33,
+        "days_remaining": 29,
+        "paid_beta_history_ready": False,
+    }]).to_csv(tmp_path / "core_history_audit.csv", index=False)
+    pd.DataFrame([{
+        "provenance_band": "fallback_contaminated",
+        "paid_claims_allowed": False,
+    }]).to_csv(tmp_path / "core_provenance_audit.csv", index=False)
+    pd.DataFrame([{
+        "blocked_count": 2,
+        "paid_reliability_claims_allowed": False,
+        "next_action": "Configure VAST_API_KEY in the runtime environment.",
+    }]).to_csv(tmp_path / "provider_preflight_summary.csv", index=False)
+    pd.DataFrame([
+        {"control": "billing_ready", "status": "false", "detail": ""},
+        {"control": "terms_ready", "status": "false", "detail": ""},
+        {"control": "paid_customers_allowed", "status": "false", "detail": ""},
+    ]).to_csv(tmp_path / "launch_controls.csv", index=False)
+
+    gate = build_paid_beta_gate(tmp_path).iloc[0].to_dict()
+
+    assert bool(gate["paid_beta_allowed"]) is False
+    assert gate["gate_status"] == "blocked"
+    assert "provider_preflight_blocked" in gate["blockers"]
+    assert gate["next_action"] == "Configure VAST_API_KEY in the runtime environment."
+
+
+def test_paid_beta_gate_allows_clean_paid_beta(tmp_path):
+    pd.DataFrame([{
+        "readiness_phase": "paid_beta_ready",
+        "core_signal_quality_score": 88,
+        "paid_beta_signal_ready": True,
+        "provider_preflight_blocked_count": 0,
+    }]).to_csv(tmp_path / "core_intelligence_readiness.csv", index=False)
+    pd.DataFrame([{
+        "core_signal_quality_score": 88,
+    }]).to_csv(tmp_path / "core_signal_quality.csv", index=False)
+    pd.DataFrame([{
+        "progress_pct": 100,
+        "days_remaining": 0,
+        "paid_beta_history_ready": True,
+    }]).to_csv(tmp_path / "core_history_audit.csv", index=False)
+    pd.DataFrame([{
+        "provenance_band": "paid_claim_safe",
+        "paid_claims_allowed": True,
+    }]).to_csv(tmp_path / "core_provenance_audit.csv", index=False)
+    pd.DataFrame([{
+        "blocked_count": 0,
+        "paid_reliability_claims_allowed": True,
+        "next_action": "Start controlled paid beta with one customer.",
+    }]).to_csv(tmp_path / "provider_preflight_summary.csv", index=False)
+    pd.DataFrame([
+        {"control": "billing_ready", "status": "true", "detail": ""},
+        {"control": "terms_ready", "status": "true", "detail": ""},
+        {"control": "paid_customers_allowed", "status": "true", "detail": ""},
+    ]).to_csv(tmp_path / "launch_controls.csv", index=False)
+
+    gate = build_paid_beta_gate(tmp_path).iloc[0].to_dict()
+
+    assert bool(gate["paid_beta_allowed"]) is True
+    assert gate["gate_status"] == "ready"
+    assert gate["blockers"] == "none"
 
 
 def test_v1_audit_log_contract(tmp_path, monkeypatch):
@@ -1005,8 +1085,9 @@ def test_v1_limit_status_contract():
 
 
 def test_v1_enforce_plan_limits_blocks_exhausted_plan(monkeypatch):
+    today = date.today().isoformat()
     records = [
-        {"timestamp": "2026-06-22 09:00:00", "api_key": "demo-free-key", "endpoint": "/v1/signals"}
+        {"timestamp": f"{today} 09:00:00", "api_key": "demo-free-key", "endpoint": "/v1/signals"}
         for _ in range(50)
     ]
 

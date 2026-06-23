@@ -61,6 +61,7 @@ def build_v1_operations_status():
     monetization = read_latest_record("data/monetization_readiness.csv")
     commercial = read_latest_record("data/commercial_readiness.csv")
     beta = read_latest_record("data/public_beta_status.csv")
+    paid_beta_gate = read_latest_record("data/paid_beta_gate.csv")
     launch_controls = read_launch_controls()
 
     blocking_issues = []
@@ -87,6 +88,12 @@ def build_v1_operations_status():
         blocking_issues.append("billing_not_ready")
     if not terms_ready:
         blocking_issues.append("terms_not_ready")
+    if str(paid_beta_gate.get("gate_status", "blocked")).lower() != "ready":
+        blocking_issues.append("paid_beta_gate_not_ready")
+
+    effective_paid_allowed = paid_allowed and str(
+        paid_beta_gate.get("paid_beta_allowed", "False")
+    ).lower() == "true"
 
     status = "ready" if not blocking_issues else "beta_watch"
 
@@ -101,16 +108,32 @@ def build_v1_operations_status():
             "monetization": monetization,
             "commercial": commercial,
             "public_beta": beta,
+            "paid_beta_gate": paid_beta_gate,
             "launch_controls": launch_controls,
+        },
+        "effective_controls": {
+            "paid_customers_allowed": effective_paid_allowed,
+            "paid_beta_gate_status": paid_beta_gate.get("gate_status", "unknown"),
+            "paid_beta_next_action": paid_beta_gate.get("next_action"),
         },
         "files": files,
     }
 
 
 def build_launch_controls():
+    paid_beta_gate = read_latest_record("data/paid_beta_gate.csv")
+    controls = read_launch_controls()
+    paid_control = controls.get("paid_customers_allowed", {}).get("status", False)
+    paid_gate_allowed = str(paid_beta_gate.get("paid_beta_allowed", "False")).lower() == "true"
     return {
         "product": "AI-RPCT",
         "version": "v1",
         "report_type": "launch_controls",
-        "controls": read_launch_controls(),
+        "controls": controls,
+        "paid_beta_gate": paid_beta_gate,
+        "effective_controls": {
+            "paid_customers_allowed": paid_control and paid_gate_allowed,
+            "paid_beta_gate_status": paid_beta_gate.get("gate_status", "unknown"),
+            "paid_beta_next_action": paid_beta_gate.get("next_action"),
+        },
     }

@@ -83,6 +83,7 @@ python analytics/core_history_audit.py
 python analytics/core_provenance_audit.py
 python analytics/core_signal_quality.py
 python analytics/core_intelligence_readiness.py
+python analytics/paid_beta_gate.py
 python analytics/terminal_summary.py
 python analytics/api_inventory_runtime.py
 python analytics/market_data_moat_status.py
