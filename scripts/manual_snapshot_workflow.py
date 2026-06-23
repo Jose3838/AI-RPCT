@@ -4,6 +4,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from analytics.snapshot_collection_plan import build_snapshot_collection_plan
+
 
 DATA_DIR = Path("data")
 INBOX_PATH = DATA_DIR / "manual_market_snapshot_inbox.csv"
@@ -29,6 +31,7 @@ def build_manual_snapshot_workflow(data_dir=DATA_DIR):
     gpu_universe = read_csv(data_dir / "gpu_universe.csv")
     provider_universe = read_csv(data_dir / "provider_universe.csv")
     region_universe = read_csv(data_dir / "region_universe.csv")
+    collection_plan = build_snapshot_collection_plan(data_dir, limit=10)
 
     return {
         "product": "AI-RPCT",
@@ -58,6 +61,7 @@ def build_manual_snapshot_workflow(data_dir=DATA_DIR):
             "providers": priority_values(provider_universe, "provider"),
             "regions": priority_values(region_universe, "region_code"),
         },
+        "next_snapshot_targets": collection_plan.to_dict(orient="records"),
         "example_row": {
             "snapshot_date": date.today().isoformat(),
             "provider": "vast",

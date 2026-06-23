@@ -116,6 +116,7 @@ Core files:
 - `analytics/manual_snapshot_ingest.py`
 - `analytics/manual_snapshot_quality.py`
 - `analytics/research_preview_brief.py`
+- `analytics/snapshot_collection_plan.py`
 - `analytics/provider_preflight.py`
 - `analytics/provider_reliability_gaps.py`
 - `data/*.csv`

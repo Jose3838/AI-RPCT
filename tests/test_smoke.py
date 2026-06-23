@@ -75,6 +75,7 @@ from analytics.coverage_universe_status import build_coverage_universe_status
 from analytics.manual_snapshot_ingest import build_manual_snapshot_ingest
 from analytics.manual_snapshot_quality import build_manual_snapshot_quality
 from analytics.research_preview_brief import build_research_preview_brief
+from analytics.snapshot_collection_plan import build_snapshot_collection_plan
 from analytics.provider_preflight import (
     build_provider_preflight,
     is_configured_secret,
@@ -109,6 +110,7 @@ def test_core_files_exist():
     assert Path("analytics/manual_snapshot_ingest.py").exists()
     assert Path("analytics/manual_snapshot_quality.py").exists()
     assert Path("analytics/research_preview_brief.py").exists()
+    assert Path("analytics/snapshot_collection_plan.py").exists()
     assert Path("analytics/core_signal_history.py").exists()
     assert Path("analytics/core_signal_quality.py").exists()
     assert Path("README.md").exists()
@@ -635,6 +637,7 @@ def test_core_status_contract():
     assert "provider_recovery_plan" in status
     assert "coverage_universe" in status
     assert "manual_snapshot_quality" in status
+    assert "snapshot_collection_plan" in status
     assert "next_action" in status
     assert "action_plan" in status
     assert isinstance(status["action_plan"], list)
@@ -695,6 +698,17 @@ def test_manual_snapshot_workflow_contract():
     assert workflow["priority_collection"]["gpus"]
     assert workflow["priority_collection"]["providers"]
     assert workflow["priority_collection"]["regions"]
+    assert workflow["next_snapshot_targets"]
+    assert workflow["next_snapshot_targets"][0]["claim_scope"] == "research_preview"
+
+
+def test_snapshot_collection_plan_contract():
+    plan = build_snapshot_collection_plan()
+
+    assert not plan.empty
+    assert {"provider", "gpu", "region_code", "priority_score"}.issubset(plan.columns)
+    assert plan.iloc[0]["source_type"] == "manual_public_snapshot"
+    assert plan.iloc[0]["claim_scope"] == "research_preview"
 
 
 def test_manual_snapshot_quality_rejects_untrusted_rows(tmp_path):

@@ -22,6 +22,7 @@ python analytics/provider_reliability_gaps.py
 python analytics/manual_snapshot_ingest.py
 python analytics/manual_snapshot_quality.py
 python analytics/coverage_universe_status.py
+python analytics/snapshot_collection_plan.py
 python analytics/core_signal_history.py
 python analytics/core_history_audit.py
 python analytics/core_provenance_audit.py

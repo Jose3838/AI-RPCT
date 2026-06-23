@@ -33,6 +33,7 @@ def build_core_status():
     paid_beta_gate = read_latest(DATA_DIR / "paid_beta_gate.csv")
     coverage_universe = read_latest(DATA_DIR / "coverage_universe_status.csv")
     manual_snapshot_quality = read_latest(DATA_DIR / "manual_snapshot_quality.csv")
+    snapshot_collection_plan = read_records(DATA_DIR / "snapshot_collection_plan.csv", limit=5)
     gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv", limit=5)
     preflight = read_records(DATA_DIR / "provider_preflight.csv", limit=10)
     env_check = build_provider_env_check()
@@ -87,6 +88,7 @@ def build_core_status():
             "blockers": manual_snapshot_quality.get("blockers"),
             "next_action": manual_snapshot_quality.get("next_action"),
         },
+        "snapshot_collection_plan": snapshot_collection_plan,
         "paid_beta_signal_ready": readiness.get("paid_beta_signal_ready", False),
         "blockers": readiness.get("blockers", quality.get("blockers", "unknown")),
         "next_action": readiness.get("next_action", "Run ./scripts/run_core_intelligence.sh"),

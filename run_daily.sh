@@ -96,6 +96,7 @@ python analytics/provider_coverage_score.py
 python analytics/manual_snapshot_ingest.py
 python analytics/manual_snapshot_quality.py
 python analytics/coverage_universe_status.py
+python analytics/snapshot_collection_plan.py
 python analytics/scarcity_watchlist.py
 python analytics/terminal_risk_score.py
 python analytics/executive_ai_infrastructure_memo.py
