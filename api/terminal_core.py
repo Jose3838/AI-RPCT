@@ -3,6 +3,8 @@ from datetime import datetime, timezone
 
 import pandas as pd
 
+from scripts.provider_recovery_plan import build_provider_recovery_plan
+
 
 DATA_DIR = Path("data")
 REPORTS_DIR = Path("reports")
@@ -983,6 +985,7 @@ def build_provider_connector_readiness():
     comparison = read_records(DATA_DIR / "provider_comparison.csv")
     preflight = read_records(DATA_DIR / "provider_preflight.csv")
     ingestion_status = read_records(DATA_DIR / "live_provider_ingestion_status.csv")
+    recovery_plan = build_provider_recovery_plan()
 
     credentials_by_provider = {
         normalize_provider_name(row.get("provider")): as_bool(row.get("configured"))
@@ -1004,6 +1007,10 @@ def build_provider_connector_readiness():
         normalize_provider_name(row.get("provider")): row
         for row in ingestion_status
     }
+    recovery_by_provider = {
+        normalize_provider_name(row.get("provider")): row
+        for row in recovery_plan.get("providers", [])
+    }
 
     provider_sources = [
         row for row in sources
@@ -1018,6 +1025,7 @@ def build_provider_connector_readiness():
         comparison_row = comparison_by_provider.get(provider_key, {})
         preflight_row = preflight_by_provider.get(provider_key, {})
         ingestion_row = ingestion_by_provider.get(provider_key, {})
+        recovery_row = recovery_by_provider.get(provider_key, {})
         credential_configured = credentials_by_provider.get(provider_key, False)
         if preflight_row:
             credential_configured = as_bool(preflight_row.get("credential_configured"))
@@ -1063,6 +1071,12 @@ def build_provider_connector_readiness():
             "used_fallback": used_fallback,
             "readiness": readiness,
             "next_action": next_action,
+            "recovery_status": recovery_row.get("status"),
+            "recovery_next_action": recovery_row.get("next_action"),
+            "account_step": recovery_row.get("account_step"),
+            "env_step": recovery_row.get("env_step"),
+            "verification_command": recovery_row.get("verification_command"),
+            "recovery_docs": recovery_row.get("docs"),
             "freshness_hours": freshness_hours,
             "rows": live_rows,
             "offers": offers,
@@ -1087,6 +1101,13 @@ def build_provider_connector_readiness():
         "verified_live_count": readiness_counts.get("verified_live", 0),
         "readiness_counts": readiness_counts,
         "connector_blockers": len(blockers),
+        "provider_recovery_plan": {
+            "status": recovery_plan.get("status"),
+            "configured_count": recovery_plan.get("configured_count"),
+            "verified_live_count": recovery_plan.get("verified_live_count"),
+            "missing_credentials": recovery_plan.get("missing_credentials", []),
+            "next_action": recovery_plan.get("next_action"),
+        },
         "providers": providers,
         "next_provider_action": blockers[0] if blockers else {},
     }
@@ -1503,6 +1524,7 @@ def build_terminal_summary():
     reliability = read_first(DATA_DIR / "provider_reliability_ranking.csv")
     reliability_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv")
     frontier = read_latest(DATA_DIR / "frontier_gpu_index.csv")
+    recovery_plan = build_provider_recovery_plan()
 
     return {
         "product": "AI-RPCT",
@@ -1520,6 +1542,13 @@ def build_terminal_summary():
         "core_history_audit": history_audit,
         "core_provenance_audit": provenance_audit,
         "paid_beta_gate": paid_beta_gate,
+        "provider_recovery_plan": {
+            "status": recovery_plan.get("status"),
+            "configured_count": recovery_plan.get("configured_count"),
+            "verified_live_count": recovery_plan.get("verified_live_count"),
+            "missing_credentials": recovery_plan.get("missing_credentials", []),
+            "next_action": recovery_plan.get("next_action"),
+        },
         "core_signal_health": {
             "history_records": len(signal_history),
             "days_collected": len({row.get("date") for row in signal_history if row.get("date")}),

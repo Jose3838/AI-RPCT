@@ -127,6 +127,7 @@ def test_v1_terminal_summary_contract():
     assert "core_history_audit" in payload
     assert "core_provenance_audit" in payload
     assert "paid_beta_gate" in payload
+    assert "provider_recovery_plan" in payload
     assert "paid_beta_gate_status" in payload["core_signal_health"]
     assert "provider_reliability" in payload
     assert "quality" in payload
@@ -188,12 +189,16 @@ def test_v1_provider_connector_readiness_contract():
     assert payload["report_type"] == "provider_connector_readiness"
     assert "provider_count" in payload
     assert "readiness_counts" in payload
+    assert "provider_recovery_plan" in payload
+    assert "missing_credentials" in payload["provider_recovery_plan"]
     assert isinstance(payload["providers"], list)
     if payload["providers"]:
         provider = payload["providers"][0]
         assert "preflight_readiness" in provider
         assert "ingestion_status" in provider
         assert "used_fallback" in provider
+        assert "recovery_status" in provider
+        assert "verification_command" in provider
     assert isinstance(payload["providers"], list)
     if payload["providers"]:
         provider = payload["providers"][0]
