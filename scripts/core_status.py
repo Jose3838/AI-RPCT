@@ -31,6 +31,7 @@ def build_core_status():
     history_audit = read_latest(DATA_DIR / "core_history_audit.csv")
     provenance_audit = read_latest(DATA_DIR / "core_provenance_audit.csv")
     paid_beta_gate = read_latest(DATA_DIR / "paid_beta_gate.csv")
+    coverage_universe = read_latest(DATA_DIR / "coverage_universe_status.csv")
     gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv", limit=5)
     preflight = read_records(DATA_DIR / "provider_preflight.csv", limit=10)
     env_check = build_provider_env_check()
@@ -66,6 +67,15 @@ def build_core_status():
             "verified_live_count": recovery_plan.get("verified_live_count"),
             "missing_credentials": recovery_plan.get("missing_credentials", []),
             "next_action": recovery_plan.get("next_action"),
+        },
+        "coverage_universe": {
+            "status": coverage_universe.get("status", "unknown"),
+            "gpu_universe_count": coverage_universe.get("gpu_universe_count"),
+            "provider_universe_count": coverage_universe.get("provider_universe_count"),
+            "region_universe_count": coverage_universe.get("region_universe_count"),
+            "manual_snapshot_count": coverage_universe.get("manual_snapshot_count"),
+            "history_policy": coverage_universe.get("history_policy"),
+            "next_action": coverage_universe.get("next_action"),
         },
         "paid_beta_signal_ready": readiness.get("paid_beta_signal_ready", False),
         "blockers": readiness.get("blockers", quality.get("blockers", "unknown")),

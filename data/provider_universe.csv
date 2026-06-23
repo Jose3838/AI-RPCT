@@ -1,0 +1,17 @@
+provider,provider_type,tracking_priority,expected_regions,claim_scope
+vast,marketplace,1,multi_region,research_preview
+runpod,cloud_gpu,1,multi_region,research_preview
+coreweave,cloud_gpu,1,north_america_europe,research_preview
+lambda_labs,cloud_gpu,1,north_america,research_preview
+crusoe,cloud_gpu,2,north_america,research_preview
+nebius,cloud_gpu,2,europe,research_preview
+fluidstack,cloud_gpu,2,multi_region,research_preview
+paperspace,cloud_gpu,2,north_america,research_preview
+jarvislabs,cloud_gpu,3,asia,research_preview
+hyperstack,cloud_gpu,2,europe_middle_east,research_preview
+voltage_park,cloud_gpu,2,north_america,research_preview
+aws,public_cloud,1,multi_region,research_preview
+google_cloud,public_cloud,1,multi_region,research_preview
+microsoft_azure,public_cloud,1,multi_region,research_preview
+oracle_cloud,public_cloud,2,multi_region,research_preview
+ibm_cloud,public_cloud,3,multi_region,research_preview

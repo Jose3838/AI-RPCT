@@ -93,6 +93,7 @@ python analytics/intelligence_signal_score.py
 python analytics/daily_terminal_brief.py
 python analytics/gpu_category_index.py
 python analytics/provider_coverage_score.py
+python analytics/coverage_universe_status.py
 python analytics/scarcity_watchlist.py
 python analytics/terminal_risk_score.py
 python analytics/executive_ai_infrastructure_memo.py

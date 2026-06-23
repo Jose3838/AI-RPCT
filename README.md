@@ -109,9 +109,14 @@ Core files:
 - `analytics/core_intelligence_readiness.py`
 - `analytics/paid_beta_gate.py`
 - `analytics/core_provenance_audit.py`
+- `analytics/coverage_universe_status.py`
 - `analytics/provider_preflight.py`
 - `analytics/provider_reliability_gaps.py`
 - `data/*.csv`
+- `data/gpu_universe.csv`
+- `data/provider_universe.csv`
+- `data/region_universe.csv`
+- `data/manual_market_snapshots.csv`
 - `data/launch_controls.csv`
 - `main.py`
 - `api/routes.py`

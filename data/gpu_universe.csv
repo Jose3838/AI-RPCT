@@ -1,0 +1,23 @@
+gpu,category,vram_gb,generation,tracking_priority,claim_scope
+B200,frontier,180,blackwell,1,research_preview
+B300,frontier,,blackwell,1,research_preview
+GB200,frontier,,blackwell,1,research_preview
+H200,frontier,141,hopper,1,research_preview
+H100 SXM,frontier,80,hopper,1,research_preview
+H100 PCIe,frontier,80,hopper,1,research_preview
+H100 NVL,frontier,94,hopper,1,research_preview
+A100 SXM,datacenter,80,ampere,1,research_preview
+A100 PCIe,datacenter,80,ampere,1,research_preview
+A100 40GB,datacenter,40,ampere,2,research_preview
+L40S,datacenter,48,ada,1,research_preview
+L40,datacenter,48,ada,2,research_preview
+L4,datacenter,24,ada,2,research_preview
+A40,datacenter,48,ampere,2,research_preview
+A10,datacenter,24,ampere,3,research_preview
+RTX 6000 Ada,workstation,48,ada,2,research_preview
+RTX A6000,workstation,48,ampere,2,research_preview
+RTX 5090,prosumer,32,blackwell,2,research_preview
+RTX 4090,prosumer,24,ada,2,research_preview
+RTX 3090,prosumer,24,ampere,3,research_preview
+RTX A5000,workstation,24,ampere,3,research_preview
+RTX A4000,workstation,16,ampere,3,research_preview

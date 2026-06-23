@@ -1,0 +1,16 @@
+region_code,region_name,macro_region,tracking_priority,claim_scope
+us-east,US East,north_america,1,research_preview
+us-west,US West,north_america,1,research_preview
+us-central,US Central,north_america,2,research_preview
+canada,Canada,north_america,3,research_preview
+eu-west,Europe West,europe,1,research_preview
+eu-central,Europe Central,europe,1,research_preview
+eu-north,Europe North,europe,2,research_preview
+uk,United Kingdom,europe,2,research_preview
+middle-east,Middle East,middle_east,2,research_preview
+india,India,asia_pacific,2,research_preview
+singapore,Singapore,asia_pacific,1,research_preview
+japan,Japan,asia_pacific,2,research_preview
+south-korea,South Korea,asia_pacific,2,research_preview
+australia,Australia,asia_pacific,3,research_preview
+latin-america,Latin America,latin_america,3,research_preview

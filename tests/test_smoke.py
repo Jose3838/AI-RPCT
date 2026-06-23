@@ -71,6 +71,7 @@ from analytics.core_intelligence_readiness import (
     readiness_phase,
 )
 from analytics.paid_beta_gate import build_paid_beta_gate
+from analytics.coverage_universe_status import build_coverage_universe_status
 from analytics.provider_preflight import (
     build_provider_preflight,
     is_configured_secret,
@@ -97,9 +98,13 @@ def test_core_files_exist():
     assert Path("scripts/history_backfill_plan.py").exists()
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert Path("analytics/market_pulse_snapshot.py").exists()
+    assert Path("analytics/coverage_universe_status.py").exists()
     assert Path("analytics/core_signal_history.py").exists()
     assert Path("analytics/core_signal_quality.py").exists()
     assert Path("README.md").exists()
+    assert Path("data/gpu_universe.csv").exists()
+    assert Path("data/provider_universe.csv").exists()
+    assert Path("data/region_universe.csv").exists()
 
 
 def test_snapshot_scheduler_contract():
@@ -612,6 +617,7 @@ def test_core_status_contract():
     assert "provider_credentials" in status
     assert "configured_count" in status["provider_credentials"]
     assert "provider_recovery_plan" in status
+    assert "coverage_universe" in status
     assert "next_action" in status
     assert "action_plan" in status
     assert isinstance(status["action_plan"], list)
@@ -636,6 +642,17 @@ def test_history_backfill_plan_contract():
     assert plan["policy"] == "do_not_fake_history"
     assert "recommended_action" in plan
     assert isinstance(plan["missing_recent_days"], list)
+
+
+def test_coverage_universe_status_contract():
+    status = build_coverage_universe_status().iloc[0]
+
+    assert status["gpu_universe_count"] >= 20
+    assert status["provider_universe_count"] >= 15
+    assert status["region_universe_count"] >= 8
+    assert status["claim_scope"] == "research_preview"
+    assert status["history_policy"] == "do_not_backfill_without_sources"
+    assert "next_action" in status
 
 
 def test_provider_preflight_blocks_missing_keys_and_fallback():
