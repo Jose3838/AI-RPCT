@@ -47,6 +47,7 @@ def build_morning_brief():
     coverage = read_latest(DATA_DIR / "coverage_universe_status.csv")
     snapshot_quality = read_latest(DATA_DIR / "manual_snapshot_quality.csv")
     methodology = read_records(DATA_DIR / "signal_methodology_registry.csv", limit=10)
+    roadmap = read_records(DATA_DIR / "bloomberg_execution_roadmap.csv", limit=50)
     provider_gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv", limit=3)
     snapshot_targets = read_records(DATA_DIR / "snapshot_collection_plan.csv", limit=5)
 
@@ -61,6 +62,8 @@ def build_morning_brief():
     paid_status = value(paid_gate, "gate_status")
     scheduler_status = value(scheduler, "status", "unknown")
     methodology_count = len(methodology)
+    roadmap_done = len([row for row in roadmap if row.get("status") == "done"])
+    roadmap_total = len(roadmap)
 
     headline = (
         f"AI infrastructure stress is {scarcity_band}; "
@@ -116,6 +119,7 @@ def build_morning_brief():
         f"- Coverage Status: {value(coverage, 'status')}",
         f"- Manual Snapshot Quality: {value(snapshot_quality, 'status')}",
         f"- Documented Core Methodologies: {methodology_count}",
+        f"- Bloomberg Roadmap: {roadmap_done}/{roadmap_total} steps done",
         "",
         "## Top Provider Risks",
         *provider_gap_lines,
@@ -146,6 +150,8 @@ def build_morning_brief():
         "days_collected": days_collected,
         "days_to_next_milestone": days_to_next,
         "documented_methodology_count": methodology_count,
+        "bloomberg_roadmap_done_steps": roadmap_done,
+        "bloomberg_roadmap_total_steps": roadmap_total,
         "markdown": markdown,
     }
 

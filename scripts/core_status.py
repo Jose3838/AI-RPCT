@@ -38,6 +38,7 @@ def build_core_status():
     paid_beta_gate = read_latest(DATA_DIR / "paid_beta_gate.csv")
     coverage_universe = read_latest(DATA_DIR / "coverage_universe_status.csv")
     manual_snapshot_quality = read_latest(DATA_DIR / "manual_snapshot_quality.csv")
+    roadmap = read_records(DATA_DIR / "bloomberg_execution_roadmap.csv", limit=50)
     snapshot_collection_plan = read_records(DATA_DIR / "snapshot_collection_plan.csv", limit=5)
     gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv", limit=5)
     preflight = read_records(DATA_DIR / "provider_preflight.csv", limit=10)
@@ -111,6 +112,13 @@ def build_core_status():
             "invalid_snapshot_count": manual_snapshot_quality.get("invalid_snapshot_count"),
             "blockers": manual_snapshot_quality.get("blockers"),
             "next_action": manual_snapshot_quality.get("next_action"),
+        },
+        "bloomberg_roadmap": {
+            "total_steps": len(roadmap),
+            "done_steps": len([row for row in roadmap if row.get("status") == "done"]),
+            "in_progress_steps": len([row for row in roadmap if row.get("status") == "in_progress"]),
+            "not_started_steps": len([row for row in roadmap if row.get("status") == "not_started"]),
+            "next_steps": [row for row in roadmap if row.get("status") != "done"][:5],
         },
         "snapshot_collection_plan": snapshot_collection_plan,
         "paid_beta_signal_ready": readiness.get("paid_beta_signal_ready", False),

@@ -57,6 +57,11 @@ from analytics.signal_methodology_registry import (
     build_signal_methodology_markdown,
     build_signal_methodology_registry,
 )
+from analytics.bloomberg_execution_roadmap import (
+    build_bloomberg_execution_roadmap,
+    build_roadmap_markdown,
+    build_roadmap_summary,
+)
 from analytics.forecast_signal import build_forecast_signal
 from analytics.gpu_scarcity_index import build_gpu_scarcity_index
 from analytics.provider_reliability_ranking import build_provider_reliability_ranking
@@ -125,10 +130,12 @@ def test_core_files_exist():
     assert "scripts/manual_snapshot_copy_ready.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/collection_cadence_audit.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/signal_methodology_registry.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "analytics/bloomberg_execution_roadmap.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/morning_brief.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("run_daily.sh").read_text()
     assert "analytics/collection_cadence_audit.py" in Path("run_daily.sh").read_text()
     assert "analytics/signal_methodology_registry.py" in Path("run_daily.sh").read_text()
+    assert "analytics/bloomberg_execution_roadmap.py" in Path("run_daily.sh").read_text()
     assert "analytics/morning_brief.py" in Path("run_daily.sh").read_text()
     launch_agent_script = Path("scripts/install_macos_launch_agent.sh").read_text()
     assert "com.airpct.daily" in launch_agent_script
@@ -138,6 +145,7 @@ def test_core_files_exist():
     assert Path("analytics/market_pulse_snapshot.py").exists()
     assert Path("analytics/morning_brief.py").exists()
     assert Path("analytics/signal_methodology_registry.py").exists()
+    assert Path("analytics/bloomberg_execution_roadmap.py").exists()
     assert Path("analytics/coverage_universe_status.py").exists()
     assert Path("analytics/manual_snapshot_ingest.py").exists()
     assert Path("analytics/manual_snapshot_quality.py").exists()
@@ -186,6 +194,8 @@ def test_v1_terminal_summary_contract():
     assert isinstance(payload["snapshot_collection_plan"], list)
     assert "signal_methodology_registry" in payload
     assert isinstance(payload["signal_methodology_registry"], list)
+    assert "bloomberg_execution_roadmap" in payload
+    assert "total_steps" in payload["bloomberg_execution_roadmap"]
     assert "manual_snapshot_template_check" in payload
     assert "status" in payload["manual_snapshot_template_check"]
     assert "next_action" in payload["manual_snapshot_template_check"]
@@ -1052,6 +1062,7 @@ def test_morning_brief_contract():
     assert "operating_mode" in brief
     assert "today_action" in brief
     assert "documented_methodology_count" in brief
+    assert "bloomberg_roadmap_total_steps" in brief
     assert "AI-RPCT Morning Brief" in brief["markdown"]
     assert "Today's Action" in brief["markdown"]
 
@@ -1069,6 +1080,24 @@ def test_signal_methodology_registry_contract():
     assert "formula_summary" in registry.columns
     assert "paid_safe_requirement" in registry.columns
     assert "AI-RPCT Signal Methodology Registry" in markdown
+
+
+def test_bloomberg_execution_roadmap_contract():
+    roadmap = build_bloomberg_execution_roadmap()
+    summary = build_roadmap_summary(roadmap)
+    markdown = build_roadmap_markdown(roadmap)
+
+    assert len(roadmap) == 50
+    assert summary["total_steps"] == 50
+    assert summary["done_steps"] > 0
+    assert set(roadmap["category"]) == {
+        "data_moat",
+        "trust",
+        "core_intelligence",
+        "terminal_product",
+        "commercial",
+    }
+    assert "AI-RPCT Bloomberg Execution Roadmap" in markdown
 
 
 def test_morning_brief_cli_writes_summary():
