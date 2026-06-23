@@ -76,6 +76,7 @@ def build_manual_snapshot_workflow(data_dir=DATA_DIR):
             "notes": "Replace example values with public source evidence.",
         },
         "daily_commands": [
+            "venv/bin/python scripts/manual_snapshot_inbox_template.py",
             "venv/bin/python analytics/manual_snapshot_ingest.py",
             "venv/bin/python analytics/manual_snapshot_quality.py",
             "venv/bin/python analytics/coverage_universe_status.py",

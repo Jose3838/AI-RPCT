@@ -84,6 +84,7 @@ from analytics.provider_preflight import (
 from scripts.core_status import build_action_plan, build_core_status
 from scripts.founder_daily_close import build_founder_daily_close
 from scripts.history_backfill_plan import build_history_backfill_plan
+from scripts.manual_snapshot_inbox_template import build_manual_snapshot_inbox_template
 from scripts.manual_snapshot_workflow import build_manual_snapshot_workflow
 from scripts.provider_env_check import build_provider_env_check
 from scripts.provider_recovery_plan import build_provider_recovery_plan
@@ -103,6 +104,7 @@ def test_core_files_exist():
     assert Path("scripts/secret_hygiene_check.py").exists()
     assert Path("scripts/history_backfill_plan.py").exists()
     assert Path("scripts/founder_daily_close.py").exists()
+    assert Path("scripts/manual_snapshot_inbox_template.py").exists()
     assert Path("scripts/manual_snapshot_workflow.py").exists()
     assert "scripts/core_status.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert Path("analytics/market_pulse_snapshot.py").exists()
@@ -709,6 +711,16 @@ def test_snapshot_collection_plan_contract():
     assert {"provider", "gpu", "region_code", "priority_score"}.issubset(plan.columns)
     assert plan.iloc[0]["source_type"] == "manual_public_snapshot"
     assert plan.iloc[0]["claim_scope"] == "research_preview"
+
+
+def test_manual_snapshot_inbox_template_contract():
+    template = build_manual_snapshot_inbox_template(limit=3)
+
+    assert len(template) == 3
+    assert template.iloc[0]["source_type"] == "manual_public_snapshot"
+    assert template.iloc[0]["claim_scope"] == "research_preview"
+    assert "source_url" in template.columns
+    assert "Fill price" in template.iloc[0]["notes"]
 
 
 def test_manual_snapshot_quality_rejects_untrusted_rows(tmp_path):

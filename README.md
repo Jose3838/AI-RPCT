@@ -59,6 +59,7 @@ venv/bin/python scripts/secret_hygiene_check.py
 venv/bin/python scripts/history_backfill_plan.py
 venv/bin/python scripts/manual_snapshot_workflow.py
 venv/bin/python scripts/founder_daily_close.py
+venv/bin/python scripts/manual_snapshot_inbox_template.py
 venv/bin/python analytics/manual_snapshot_ingest.py
 venv/bin/python analytics/paid_beta_gate.py
 venv/bin/python snapshot_scheduler.py
@@ -133,6 +134,7 @@ Core files:
 - `scripts/run_core_intelligence.sh`
 - `scripts/core_status.py`
 - `scripts/founder_daily_close.py`
+- `scripts/manual_snapshot_inbox_template.py`
 - `scripts/manual_snapshot_workflow.py`
 - `scripts/provider_recovery_plan.py`
 - `scripts/history_backfill_plan.py`
