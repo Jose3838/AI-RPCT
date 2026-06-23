@@ -4,14 +4,24 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
+import pandas as pd
+
 from analytics.research_preview_brief import build_research_preview_brief
 from scripts.core_status import build_core_status
 from scripts.manual_snapshot_template_check import build_manual_snapshot_template_check
 
 
+def read_latest(path):
+    path = Path(path)
+    if not path.exists() or path.stat().st_size <= 1:
+        return {}
+    return pd.read_csv(path).iloc[-1].to_dict()
+
+
 def build_founder_daily_close():
     core = build_core_status()
     preview = build_research_preview_brief()
+    morning = read_latest(Path("data") / "morning_brief_summary.csv")
     cadence = core.get("collection_cadence", {})
     coverage = core.get("coverage_universe", {})
     snapshot_quality = core.get("manual_snapshot_quality", {})
@@ -35,12 +45,17 @@ def build_founder_daily_close():
         and action_plan
     ):
         tomorrow_focus = action_plan[0].get("action", tomorrow_focus)
+    if morning.get("today_action"):
+        tomorrow_focus = morning.get("today_action")
 
     return {
         "product": "AI-RPCT",
         "report_type": "founder_daily_close",
         "status": "saved_for_next_session",
         "readiness_phase": core.get("readiness_phase"),
+        "morning_headline": morning.get("headline"),
+        "morning_operating_mode": morning.get("operating_mode"),
+        "morning_today_action": morning.get("today_action"),
         "collection_cadence_status": cadence.get("status"),
         "collection_days_collected": cadence.get("days_collected"),
         "collection_current_streak_days": cadence.get("current_streak_days"),

@@ -1513,6 +1513,7 @@ def build_executive_brief():
 
 def build_terminal_summary():
     terminal = read_latest(DATA_DIR / "terminal_summary.csv")
+    morning_brief = read_latest(DATA_DIR / "morning_brief_summary.csv")
     risk = read_latest(DATA_DIR / "terminal_risk_score.csv")
     quality = read_latest(DATA_DIR / "live_data_quality_score.csv")
     pulse = read_latest(DATA_DIR / "ai_infrastructure_pulse.csv")
@@ -1540,6 +1541,7 @@ def build_terminal_summary():
         "product": "AI-RPCT",
         "mission": "Bloomberg for AI Infrastructure",
         "status": "ok" if terminal else "degraded",
+        "morning_brief": morning_brief,
         "terminal": terminal,
         "risk": risk,
         "quality": quality,

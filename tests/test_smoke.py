@@ -163,6 +163,7 @@ def test_v1_terminal_summary_contract():
 
     assert payload["product"] == "AI-RPCT"
     assert payload["mission"] == "Bloomberg for AI Infrastructure"
+    assert "morning_brief" in payload
     assert "terminal" in payload
     assert "risk" in payload
     assert "core_signal_health" in payload
@@ -1045,12 +1046,26 @@ def test_morning_brief_contract():
     assert "Today's Action" in brief["markdown"]
 
 
+def test_morning_brief_cli_writes_summary():
+    from analytics import morning_brief
+
+    morning_brief.main()
+
+    summary = pd.read_csv("data/morning_brief_summary.csv").iloc[-1].to_dict()
+    assert summary["report_type"] == "morning_brief"
+    assert "headline" in summary
+    assert "today_action" in summary
+
+
 def test_founder_daily_close_contract():
     close = build_founder_daily_close()
 
     assert close["product"] == "AI-RPCT"
     assert close["report_type"] == "founder_daily_close"
     assert close["status"] == "saved_for_next_session"
+    assert "morning_headline" in close
+    assert "morning_operating_mode" in close
+    assert "morning_today_action" in close
     assert "collection_cadence_status" in close
     assert "collection_days_collected" in close
     assert "tomorrow_focus" in close

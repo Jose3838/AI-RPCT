@@ -11,6 +11,7 @@ from scripts.scheduler_health import build_scheduler_health
 
 DATA_DIR = Path("data")
 REPORTS_DIR = Path("reports")
+SUMMARY_FILE = DATA_DIR / "morning_brief_summary.csv"
 
 
 def read_latest(path):
@@ -146,11 +147,14 @@ def build_morning_brief():
 
 
 def main():
+    DATA_DIR.mkdir(exist_ok=True)
     REPORTS_DIR.mkdir(exist_ok=True)
     brief = build_morning_brief()
     path = REPORTS_DIR / f"morning_brief_{datetime.now().strftime('%Y%m%d')}.md"
     path.write_text(brief["markdown"])
-    print(pd.DataFrame([{key: value for key, value in brief.items() if key != "markdown"}]))
+    summary = pd.DataFrame([{key: value for key, value in brief.items() if key != "markdown"}])
+    summary.to_csv(SUMMARY_FILE, index=False)
+    print(summary)
 
 
 if __name__ == "__main__":

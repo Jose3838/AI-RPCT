@@ -81,6 +81,8 @@ Install the free macOS auto-runner:
 
 The LaunchAgent runs `./scripts/run_core_intelligence.sh` at login and every day at 08:15 local time while the Mac is awake. Logs are written to `logs/launchd.daily.out.log` and `logs/launchd.daily.err.log`.
 
+The morning brief writes both a markdown report in `reports/` and a structured summary at `data/morning_brief_summary.csv`.
+
 Start the API locally:
 
 ```bash
