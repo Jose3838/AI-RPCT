@@ -10,6 +10,7 @@ mkdir -p logs
   echo "DAILY COLLECTION START $(date -u)"
   python analytics/free_source_audit.py
   python analytics/historical_moat_audit.py
+  python analytics/live_provider_ingestion_runner.py
   python analytics/provider_preflight.py
   python live_data_snapshot_auditor.py
   python live_data_audit_history.py

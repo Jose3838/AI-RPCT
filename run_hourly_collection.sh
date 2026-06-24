@@ -10,6 +10,7 @@ mkdir -p logs
   echo "HOURLY COLLECTION START $(date -u)"
   python live_data_snapshot_auditor.py
   python live_data_audit_history.py
+  python analytics/live_provider_ingestion_runner.py
   python analytics/provider_preflight.py
   python analytics/historical_moat_audit.py
   echo "HOURLY COLLECTION DONE $(date -u)"
