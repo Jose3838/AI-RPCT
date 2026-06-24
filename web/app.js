@@ -1470,4 +1470,5 @@ const manualSnapshotActions = "manualSnapshotActions";
 function renderManualSnapshotPack(data = {}) {
   return data;
 }
+const manualSnapshotNext20Actions = "manual_snapshot_next_20_actions";
 
