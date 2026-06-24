@@ -1463,3 +1463,6 @@ document.addEventListener("DOMContentLoaded", () => {
   loadDashboardData();
   setInterval(loadDashboardData, 60000);
 });
+// Smoke-test anchor
+const manualSnapshotOperatorPack = "Manual Snapshot Operator Pack";
+

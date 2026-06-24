@@ -1,0 +1,5 @@
+domain,file_count,history_days,first_date,last_date,history_depth_score,moat_status,notes
+live_provider_history,2,2,2026-06-17,2026-06-21,25,thin_historical_moat,live_provider_history has 2 unique historical snapshot day(s).
+manual_snapshot_history,1,1,2026-06-24,2026-06-24,10,single_day_history,manual_snapshot_history has 1 unique historical snapshot day(s).
+raw_providers,2,2,2026-06-17,2026-06-21,25,thin_historical_moat,raw_providers has 2 unique historical snapshot day(s).
+snapshots,18,3,2026-06-16,2026-06-21,25,thin_historical_moat,snapshots has 3 unique historical snapshot day(s).
