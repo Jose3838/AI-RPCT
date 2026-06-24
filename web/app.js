@@ -1465,4 +1465,5 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // Smoke-test anchor
 const manualSnapshotOperatorPack = "Manual Snapshot Operator Pack";
+const manualSnapshotActions = "manualSnapshotActions";
 
