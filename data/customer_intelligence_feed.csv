@@ -1,0 +1,2 @@
+product,report_type,headline,summary,change_count,evidence_moat_score,evidence_moat_status,gpu_coverage_pct,provider_coverage_pct,region_coverage_pct,top_gap_count,claim_scope,recommended_action
+AI-RPCT,customer_intelligence_feed,No material evidence changes detected.,"Evidence moat status is thin_evidence_moat with score 26.67. GPU coverage is 50.0%, provider coverage is 87.5%, region coverage is 73.33%.",0,26.67,thin_evidence_moat,50.0,87.5,73.33,5,research_preview,Review top coverage gaps and maintain daily source-backed evidence collection.
