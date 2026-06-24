@@ -1,2 +1,2 @@
-evidence_moat_score,gpu_coverage_pct,provider_coverage_pct,region_coverage_pct,history_days,latest_snapshot_count
-45.02,50.0,87.5,73.33,1,36
+evidence_moat_score,evidence_intelligence_score,gpu_coverage_pct,provider_coverage_pct,region_coverage_pct
+45.02,56.63,50.0,87.5,73.33
