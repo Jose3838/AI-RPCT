@@ -1,8 +1,12 @@
 from __future__ import annotations
 
 import csv
+import sys
 from datetime import UTC, datetime
 from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT_DIR))
 
 import pandas as pd
 

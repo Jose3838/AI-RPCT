@@ -1,3 +1,3 @@
-provider,status,fresh_rows,used_fallback,output_file,error
-vast,fallback,0,True,data/vast_live_report.csv,
-runpod,fallback,0,True,data/runpod_live_report.csv,
+provider,status,fresh_rows,used_fallback,output_file,error,timestamp
+vast,fresh,100,False,data/vast_live_report.csv,,2026-06-24T17:36:46.702683+00:00
+runpod,fresh,50,False,data/runpod_live_report.csv,,2026-06-24T17:36:48.068668+00:00

@@ -1,3 +1,3 @@
 provider,env_key,credential_configured,credential_status,ingestion_status,used_fallback,readiness,blockers,next_action
-vast,VAST_API_KEY,True,configured,fallback,True,blocked,using_fallback_data,Restore fresh live ingestion and verify connector credentials.
-runpod,RUNPOD_API_KEY,True,configured,fallback,True,blocked,using_fallback_data,Restore fresh live ingestion and verify connector credentials.
+vast,VAST_API_KEY,True,configured,fresh,False,ready,none,Maintain daily connector monitoring.
+runpod,RUNPOD_API_KEY,True,configured,fresh,False,ready,none,Maintain daily connector monitoring.
