@@ -1,6 +1,6 @@
 # AI-RPCT Customer-Ready Executive Brief
 
-Generated: 2026-06-24T14:17:23.756976
+Generated: 2026-06-24T14:20:26.961540
 
 ## Headline
 AI infrastructure stress is watch; signal performance is building.

@@ -1,6 +1,6 @@
 # AI-RPCT Research Preview Brief
 
-Generated: 2026-06-24T14:17:23.292157
+Generated: 2026-06-24T14:20:26.506880
 
 ## Headline
 AI-RPCT research preview universe is ready; source-labeled snapshots are needed.
@@ -11,7 +11,7 @@ AI-RPCT research preview universe is ready; source-labeled snapshots are needed.
 - Paid Beta Gate: blocked (allowed: False)
 - Coverage Status: universe_ready_snapshot_collection_needed
 - Manual Snapshot Quality: snapshots_valid_for_research_preview
-- Valid Manual Snapshots: 20
+- Valid Manual Snapshots: 36
 - GPU Universe: 22
 - Provider Universe: 16
 - Region Universe: 15

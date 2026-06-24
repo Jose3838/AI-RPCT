@@ -1,6 +1,6 @@
 # AI-RPCT Morning Brief
 
-Generated: 2026-06-24T14:17:23.513821
+Generated: 2026-06-24T14:20:26.725487
 
 ## Headline
 AI infrastructure stress is watch; capacity shock signal is stable; history moat is building (3 days).

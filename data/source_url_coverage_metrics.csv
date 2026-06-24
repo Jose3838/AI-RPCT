@@ -1,2 +1,2 @@
 status,snapshot_count,source_url_count,source_url_coverage_pct,provider_with_source_count,gpu_with_source_count,region_with_source_count,claim_scope,next_action
-source_coverage_ready,20,20,100.0,14,3,6,research_preview,Keep every manual snapshot tied to a public source URL.
+source_coverage_ready,36,36,100.0,14,11,11,research_preview,Keep every manual snapshot tied to a public source URL.

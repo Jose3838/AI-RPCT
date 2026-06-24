@@ -1,2 +1,2 @@
 status,snapshot_count,valid_snapshot_count,invalid_snapshot_count,duplicate_snapshot_count,source_labeled_count,claim_scope,history_policy,blockers,next_action
-snapshots_valid_for_research_preview,20,20,0,0,20,research_preview,do_not_backfill_without_sources,none,Continue collecting source-labeled manual snapshots.
+snapshots_valid_for_research_preview,36,36,0,0,36,research_preview,do_not_backfill_without_sources,none,Continue collecting source-labeled manual snapshots.
