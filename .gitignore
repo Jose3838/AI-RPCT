@@ -1,4 +1,8 @@
 .env
+logs/
+*.launchd.err.log
+*.launchd.out.log
+data/airpct.db
 *.db
 __pycache__/
 *.pyc
