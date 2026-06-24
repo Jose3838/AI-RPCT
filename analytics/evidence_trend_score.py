@@ -1,13 +1,11 @@
 from pathlib import Path
 import pandas as pd
 
-history = Path("warehouse/manual_snapshot_history")
-
-files = sorted(history.glob("*.csv"))
+history_dir = Path("warehouse/manual_snapshot_history")
 
 rows = []
 
-for file in files:
+for file in sorted(history_dir.glob("*.csv")):
     try:
         df = pd.read_csv(file)
 
@@ -15,14 +13,13 @@ for file in files:
             "snapshot_date": file.stem.replace("manual_snapshot_", ""),
             "snapshot_count": len(df)
         })
-
     except Exception:
         pass
 
 trend = pd.DataFrame(rows)
 
-if len(trend) >= 2:
-    trend["growth"] = trend["snapshot_count"].diff()
+if len(trend) > 1:
+    trend["growth"] = trend["snapshot_count"].diff().fillna(0)
 else:
     trend["growth"] = 0
 
