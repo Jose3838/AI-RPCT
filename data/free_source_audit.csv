@@ -1,0 +1,9 @@
+source_name,provider,category,claim_type,collection_method,requires_api,public_access,update_frequency,reliability_score,coverage_score,evidence_ready,moat_value,notes
+runpod_public_marketplace,runpod,marketplace,"gpu_price,gpu_availability",public_page_or_html_snapshot,False,public,daily,7,8,True,9,High-value GPU price and availability signal without mandatory API dependency.
+vast_public_marketplace,vast,marketplace,"gpu_price,gpu_availability,region_signal",public_page_or_html_snapshot,False,public,daily,7,9,True,10,Very strong market-price signal; API useful later but not required for initial moat.
+lambda_gpu_cloud_catalog,lambda,catalog,"gpu_support,gpu_availability,provider_region",public_catalog_snapshot,False,public,daily,8,7,True,8,Useful for catalog and availability claims.
+coreweave_public_docs,coreweave,docs,"gpu_support,provider_region,product_capability",public_docs_snapshot,False,public,weekly,8,7,True,7,"Good for capability claims, weaker for live price claims."
+ibm_cloud_gpu_docs,ibm_cloud,docs,"gpu_support,provider_region",public_docs_snapshot,False,public,weekly,8,5,True,6,Important because ibm_cloud is an open provider gap.
+voltage_park_public_site,voltage_park,provider_site,"provider_capacity,gpu_support",public_site_snapshot,False,public,weekly,6,4,True,7,Important because voltage_park is an open provider gap; likely weaker live pricing signal.
+nvidia_product_pages,nvidia,vendor_docs,"gpu_specs,new_gpu_launch,gpu_generation",public_docs_snapshot,False,public,weekly,9,9,True,8,Authoritative source for GPU taxonomy and new GPU coverage gaps.
+provider_status_pages,multi_provider,status,"provider_outage,service_risk",public_status_snapshot,False,public,hourly_or_daily,8,6,True,8,Useful for risk radar and customer decision layer.
