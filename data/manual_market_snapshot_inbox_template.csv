@@ -1,0 +1,4 @@
+snapshot_date,provider,gpu,region_code,price_per_hour,availability,delivery_time_days,source_url,source_type,claim_scope,notes
+2026-06-24,vast,A100 PCIe,eu-central,0.89,1,0,https://vast.ai/pricing,manual_public_snapshot,research_preview,"Manual public source snapshot."
+2026-06-24,runpod,A100 PCIe,eu-central,1.19,1,0,https://www.runpod.io/pricing,manual_public_snapshot,research_preview,"Manual public source snapshot."
+2026-06-24,lambda_labs,A100 PCIe,eu-central,1.10,1,0,https://lambdalabs.com/service/gpu-cloud,manual_public_snapshot,research_preview,"Manual public source snapshot."

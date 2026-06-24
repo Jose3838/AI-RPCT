@@ -1,0 +1,4 @@
+status,observed_at,provider,gpu,region_code,source_type,source_url,price_per_hour,availability,delivery_time_hours,claim_scope,evidence_quality,next_action
+source_evidence_available,,lambda_labs,A100 PCIe,eu-central,manual_public_snapshot,https://lambdalabs.com/service/gpu-cloud,1.1,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,runpod,A100 PCIe,eu-central,manual_public_snapshot,https://www.runpod.io/pricing,1.19,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,vast,A100 PCIe,eu-central,manual_public_snapshot,https://vast.ai/pricing,0.89,1,,research_preview,linked,maintain_daily_collection
