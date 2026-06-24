@@ -1,0 +1,6 @@
+metric,score,weight,note
+provider_readiness,100.0,0.3,2/2 providers ready
+history_depth,21.25,0.3,avg history depth score=21.25
+free_source_coverage,100.0,0.25,8/8 free sources evidence-ready
+coverage_gap_pressure,15.0,0.15,17 open coverage gaps
+total,63.62,1.0,developing_evidence_moat
