@@ -49,6 +49,7 @@ from api.terminal_core import (
     build_provider_risk_radar,
     build_recommendations,
     build_trust_remediation_plan,
+    build_manual_snapshot_daily_pack_payload,
     save_market_pulse_brief,
     save_market_pulse_snapshot,
     build_terminal_summary,
@@ -60,6 +61,18 @@ def read_csv(path):
     if not Path(path).exists():
         return []
     return pd.read_csv(path).to_dict(orient="records")
+
+
+def read_csv_records(path):
+    p = Path(path)
+    if not p.exists() or p.stat().st_size <= 1:
+        return []
+    return pd.read_csv(p).fillna("").to_dict(orient="records")
+
+
+def read_latest_csv(path):
+    records = read_csv_records(path)
+    return records[-1] if records else {}
 
 
 @router.get("/v1/terminal-summary")
@@ -96,6 +109,31 @@ def v1_provider_connector_upgrade_plan():
 def v1_market_pulse():
     return build_market_pulse()
 
+
+@router.get("/v1/manual-snapshot-daily-pack")
+def v1_manual_snapshot_daily_pack():
+    return build_manual_snapshot_daily_pack_payload()
+
+
+
+@router.get("/v1/evidence-intelligence")
+def evidence_intelligence():
+    return {
+        "customer_intelligence_feed": read_latest_csv("data/customer_intelligence_feed.csv"),
+        "evidence_moat_score_v2": read_latest_csv("data/evidence_moat_score_v2.csv"),
+        "coverage_universe_status": read_latest_csv("data/coverage_universe_status.csv"),
+        "source_url_coverage_metrics": read_latest_csv("data/source_url_coverage_metrics.csv"),
+    }
+
+
+@router.get("/v1/evidence-changes")
+def evidence_changes():
+    return read_csv_records("data/manual_snapshot_changes.csv")
+
+
+@router.get("/v1/evidence-gaps")
+def evidence_gaps():
+    return read_csv_records("data/coverage_gap_priority.csv")
 
 @router.get("/v1/market-pulse-history")
 def v1_market_pulse_history(
