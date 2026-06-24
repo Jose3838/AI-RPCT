@@ -1467,3 +1467,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const manualSnapshotOperatorPack = "Manual Snapshot Operator Pack";
 const manualSnapshotActions = "manualSnapshotActions";
 
+function renderManualSnapshotPack(data = {}) {
+  return data;
+}
+
