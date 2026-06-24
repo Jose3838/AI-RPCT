@@ -1,0 +1,2 @@
+product,report_type,score,status,base_evidence_moat_score,source_url_coverage_pct,coverage_blend,history_depth_score,change_intelligence_score,open_gap_count,gap_priority_penalty,claim_scope,next_action
+AI-RPCT,evidence_moat_score_v2,26.67,thin_evidence_moat,45.02,100.0,68.25,10,0,17,20.4,research_preview,Close highest-impact coverage gaps and collect daily comparable snapshots.

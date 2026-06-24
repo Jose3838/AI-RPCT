@@ -1,0 +1,18 @@
+gap_type,target,priority,recommended_action,impact_score,recommended_order
+gpu,B300,1,Add source-labeled snapshot for GPU B300,110,1
+gpu,GB200,1,Add source-labeled snapshot for GPU GB200,110,2
+gpu,H100 NVL,1,Add source-labeled snapshot for GPU H100 NVL,110,3
+gpu,A100 40GB,2,Add source-labeled snapshot for GPU A100 40GB,90,4
+gpu,A40,2,Add source-labeled snapshot for GPU A40,90,5
+gpu,L40,2,Add source-labeled snapshot for GPU L40,90,6
+gpu,RTX A6000,2,Add source-labeled snapshot for GPU RTX A6000,90,7
+provider,voltage_park,2,Add source-labeled snapshot for provider voltage_park,85,8
+region,middle-east,2,Add source-labeled snapshot for region middle-east,80,9
+region,south-korea,2,Add source-labeled snapshot for region south-korea,80,10
+region,us-central,2,Add source-labeled snapshot for region us-central,80,11
+gpu,A10,3,Add source-labeled snapshot for GPU A10,70,12
+gpu,RTX 3090,3,Add source-labeled snapshot for GPU RTX 3090,70,13
+gpu,RTX A4000,3,Add source-labeled snapshot for GPU RTX A4000,70,14
+gpu,RTX A5000,3,Add source-labeled snapshot for GPU RTX A5000,70,15
+provider,ibm_cloud,3,Add source-labeled snapshot for provider ibm_cloud,65,16
+region,latin-america,3,Add source-labeled snapshot for region latin-america,60,17
