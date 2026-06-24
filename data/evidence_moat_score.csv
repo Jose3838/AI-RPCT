@@ -1,0 +1,2 @@
+product,report_type,score,status,valid_snapshot_count,source_url_coverage_pct,gpu_coverage_pct,provider_coverage_pct,region_coverage_pct,history_days,open_gap_count,claim_scope,next_action
+AI-RPCT,evidence_moat_score,45.02,thin_evidence_moat,36,100.0,50.0,87.5,73.33,1,17,research_preview,Close priority GPU/provider/region gaps and keep daily source-backed history.
