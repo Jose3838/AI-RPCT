@@ -1,0 +1,8 @@
+blocker,recommended_action,status,claim_scope
+core_not_paid_beta_ready,Raise core signal quality above paid threshold.,open,research_preview
+history_not_ready,Collect clean daily history until 30-day threshold is met.,open,research_preview
+fallback_provenance_not_paid_safe,Remove fallback contamination from paid claim paths.,open,research_preview
+provider_preflight_blocked,Configure live provider API keys and pass provider preflight.,open,research_preview
+billing_not_ready,Enable billing readiness gate and verify usage tracking.,open,research_preview
+terms_not_ready,"Finalize Terms, Privacy, Trust Center and Beta disclosure.",open,research_preview
+paid_customers_disabled,Enable paid customer flag only after live data and legal gates pass.,open,research_preview

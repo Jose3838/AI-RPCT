@@ -1,0 +1,2 @@
+paid_beta_allowed,gate_status,readiness_phase,core_signal_quality_score,history_progress_pct,history_days_remaining,provenance_band,provider_preflight_blocked_count,billing_ready,terms_ready,paid_customers_enabled,blockers,next_action
+False,blocked,blocked_by_live_data,55.45,10.0,27.0,fallback_contaminated,2.0,False,False,False,"core_not_paid_beta_ready, history_not_ready, fallback_provenance_not_paid_safe, provider_preflight_blocked, billing_not_ready, terms_not_ready, paid_customers_disabled",Configure VAST_API_KEY in the runtime environment.

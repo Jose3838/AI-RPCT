@@ -1,0 +1,5 @@
+claim,allowed,scope,blockers,evidence
+paid_live_reliability_claims,False,research_preview,"core_not_paid_beta_ready, history_not_ready, fallback_provenance_not_paid_safe, provider_preflight_blocked, billing_not_ready, terms_not_ready, paid_customers_disabled",data/paid_beta_gate.csv|data/core_provenance_audit.csv
+forecast_predictive_claims,False,research_preview,forecast_accuracy_not_paid_safe,data/forecast_accuracy.csv
+region_coverage_claims,True,research_preview,source_url_coverage_below_90_pct,data/source_url_coverage_metrics.csv
+daily_collection_cadence_claims,True,research_preview,none,data/collection_cadence_audit.csv
