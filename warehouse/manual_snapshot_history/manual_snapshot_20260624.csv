@@ -1,0 +1,37 @@
+snapshot_date,provider,gpu,region_code,price_per_hour,availability,delivery_time_days,source_url,source_type,claim_scope,notes
+2026-06-24,vast,A100 PCIe,eu-central,0.89,1,0,https://vast.ai/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,runpod,A100 PCIe,eu-central,1.19,1,0,https://www.runpod.io/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,lambda_labs,A100 PCIe,eu-central,1.1,1,0,https://lambdalabs.com/service/gpu-cloud,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,vast,H100 PCIe,eu-west,2.49,1,0,https://vast.ai/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,runpod,H100 PCIe,eu-west,2.69,1,0,https://www.runpod.io/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,coreweave,H100 PCIe,eu-west,3.4,1,0,https://www.coreweave.com/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,lambda_labs,H100 PCIe,us-east,2.99,1,0,https://lambdalabs.com/service/gpu-cloud,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,vast,L40S,singapore,0.74,1,0,https://vast.ai/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,runpod,L40S,singapore,0.79,1,0,https://www.runpod.io/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,lambda_labs,L40S,us-east,0.8,1,0,https://lambdalabs.com/service/gpu-cloud,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,aws,H100 PCIe,us-east,4.1,1,0,https://aws.amazon.com/ec2/instance-types/p5/,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,google_cloud,H100 PCIe,us-east,4.5,1,0,https://cloud.google.com/compute/gpus-pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,microsoft_azure,H100 PCIe,us-east,4.8,1,0,https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,oracle_cloud,H100 PCIe,us-east,3.9,1,0,https://www.oracle.com/cloud/price-list/,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,crusoe,H100 PCIe,us-west,3.25,1,0,https://crusoe.ai/cloud/pricing/,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,nebius,H100 PCIe,eu-central,3.3,1,0,https://nebius.com/prices,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,fluidstack,H100 PCIe,eu-west,3.2,1,0,https://www.fluidstack.io/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,hyperstack,H100 PCIe,uk,3.1,1,0,https://www.hyperstack.cloud/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,paperspace,A100 PCIe,us-east,1.2,1,0,https://www.paperspace.com/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,jarvislabs,A100 PCIe,singapore,1.15,1,0,https://jarvislabs.ai/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,vast,B200,us-east,5.9,1,0,https://vast.ai/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,runpod,B200,us-east,6.2,1,0,https://www.runpod.io/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,vast,H200,us-west,4.1,1,0,https://vast.ai/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,runpod,H200,us-west,4.4,1,0,https://www.runpod.io/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,vast,H100 SXM,eu-north,2.8,1,0,https://vast.ai/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,runpod,H100 SXM,eu-north,3.0,1,0,https://www.runpod.io/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,vast,A100 SXM,japan,1.15,1,0,https://vast.ai/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,runpod,A100 SXM,japan,1.35,1,0,https://www.runpod.io/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,vast,L4,india,0.35,1,0,https://vast.ai/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,runpod,L4,india,0.45,1,0,https://www.runpod.io/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,vast,RTX 4090,australia,0.49,1,0,https://vast.ai/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,runpod,RTX 4090,australia,0.59,1,0,https://www.runpod.io/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,vast,RTX 5090,canada,0.75,1,0,https://vast.ai/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,runpod,RTX 5090,canada,0.85,1,0,https://www.runpod.io/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,vast,RTX 6000 Ada,uk,0.95,1,0,https://vast.ai/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
+2026-06-24,runpod,RTX 6000 Ada,uk,1.05,1,0,https://www.runpod.io/pricing,manual_public_snapshot,research_preview,Manual public source snapshot.
