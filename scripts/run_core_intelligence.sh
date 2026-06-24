@@ -33,6 +33,7 @@ python analytics/source_evidence_view.py
 python analytics/source_backed_scarcity.py
 python analytics/coverage_universe_status.py
 python analytics/snapshot_collection_plan.py
+python scripts/manual_snapshot_daily_pack.py
 python analytics/region_scarcity_heatmap.py
 python analytics/core_signal_history.py
 python analytics/collection_cadence_audit.py
@@ -48,7 +49,7 @@ python analytics/core_intelligence_readiness.py
 python analytics/paid_beta_gate.py
 python analytics/claim_gate_matrix.py
 python analytics/paid_data_point_provenance.py
-python analytics/market_pulse_snapshot.py
+python snapshot_scheduler.py
 python analytics/daily_terminal_brief.py
 python analytics/morning_brief.py
 python analytics/executive_ai_infrastructure_memo.py

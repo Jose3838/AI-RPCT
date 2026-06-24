@@ -52,6 +52,7 @@ from api.terminal_core import (
     build_provider_risk_radar,
     build_recommendations,
     build_trust_remediation_plan,
+    build_manual_snapshot_daily_pack_payload,
     save_market_pulse_brief,
     save_market_pulse_snapshot,
     build_terminal_summary,
@@ -110,6 +111,11 @@ def v1_provider_connector_upgrade_plan():
 @app.get("/v1/market-pulse")
 def v1_market_pulse():
     return build_market_pulse()
+
+
+@app.get("/v1/manual-snapshot-daily-pack")
+def v1_manual_snapshot_daily_pack():
+    return build_manual_snapshot_daily_pack_payload()
 
 
 @app.get("/v1/market-pulse-history")

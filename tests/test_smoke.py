@@ -1,4 +1,5 @@
 from datetime import date, datetime
+import json
 from pathlib import Path
 
 import pytest
@@ -20,6 +21,7 @@ from api.terminal_core import (
     build_provider_risk_radar,
     build_recommendations,
     build_trust_remediation_plan,
+    build_manual_snapshot_daily_pack_payload,
     save_market_pulse_snapshot,
     build_terminal_summary,
 )
@@ -115,6 +117,10 @@ from scripts.manual_snapshot_copy_ready import build_manual_snapshot_copy_ready
 from scripts.manual_snapshot_inbox_template import build_manual_snapshot_inbox_template
 from scripts.manual_snapshot_template_check import build_manual_snapshot_template_check
 from scripts.manual_snapshot_workflow import build_manual_snapshot_workflow
+from scripts.manual_snapshot_daily_pack import (
+    build_manual_snapshot_daily_pack,
+    save_manual_snapshot_daily_pack,
+)
 from scripts.provider_env_check import build_provider_env_check
 from scripts.provider_recovery_plan import build_provider_recovery_plan
 from scripts.scheduler_health import build_scheduler_health
@@ -128,6 +134,7 @@ def test_core_files_exist():
     assert Path("main.py").exists()
     assert Path("api/routes.py").exists()
     assert Path("run_daily.sh").exists()
+    assert Path("run_hourly_collection.sh").exists()
     assert Path("scripts/run_core_intelligence.sh").exists()
     assert Path("scripts/core_status.py").exists()
     assert Path("scripts/provider_env_check.py").exists()
@@ -138,6 +145,7 @@ def test_core_files_exist():
     assert Path("scripts/manual_snapshot_template_check.py").exists()
     assert Path("scripts/manual_snapshot_copy_ready.py").exists()
     assert Path("scripts/manual_snapshot_workflow.py").exists()
+    assert Path("scripts/manual_snapshot_daily_pack.py").exists()
     assert Path("scripts/install_macos_launch_agent.sh").exists()
     assert Path("scripts/macos_launch_agent_status.sh").exists()
     assert Path("scripts/uninstall_macos_launch_agent.sh").exists()
@@ -164,6 +172,8 @@ def test_core_files_exist():
     assert "analytics/paid_data_point_provenance.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/morning_brief.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "analytics/customer_ready_executive_brief.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "snapshot_scheduler.py" in Path("scripts/run_core_intelligence.sh").read_text()
+    assert "scripts/manual_snapshot_daily_pack.py" in Path("scripts/run_core_intelligence.sh").read_text()
     assert "scripts/manual_snapshot_copy_ready.py" in Path("run_daily.sh").read_text()
     assert "analytics/collection_cadence_audit.py" in Path("run_daily.sh").read_text()
     assert "analytics/signal_methodology_registry.py" in Path("run_daily.sh").read_text()
@@ -269,6 +279,8 @@ def test_v1_terminal_summary_contract():
     assert "customer_ready_executive_brief" in payload
     assert "coverage_universe" in payload
     assert "manual_snapshot_quality" in payload
+    assert "manual_snapshot_daily_pack" in payload
+    assert "manual_snapshot_next_20_actions" in payload
     assert "snapshot_collection_plan" in payload
     assert isinstance(payload["snapshot_collection_plan"], list)
     assert "signal_methodology_registry" in payload
@@ -291,6 +303,11 @@ def test_v1_terminal_summary_contract():
     assert "quality" in payload
 
 
+def test_terminal_payloads_are_strict_json_serializable():
+    json.dumps(build_terminal_summary(), allow_nan=False)
+    json.dumps(build_dashboard_snapshot(), allow_nan=False)
+
+
 def test_v1_dashboard_snapshot_contract():
     payload = build_dashboard_snapshot()
 
@@ -303,6 +320,28 @@ def test_v1_dashboard_snapshot_contract():
     assert "executive_brief" in payload
     assert payload["recommendations"] == []
     assert "requires Pro access" in payload["executive_brief"]["headline"]
+
+
+def test_v1_manual_snapshot_daily_pack_contract():
+    payload = build_manual_snapshot_daily_pack_payload()
+
+    assert payload["product"] == "AI-RPCT"
+    assert payload["report_type"] == "manual_snapshot_daily_pack"
+    assert "summary" in payload
+    assert "next_actions" in payload
+    assert isinstance(payload["next_actions"], list)
+    assert "markdown_report" in payload
+
+
+def test_web_terminal_exposes_manual_snapshot_pack():
+    html = Path("web/index.html").read_text()
+    js = Path("web/app.js").read_text()
+
+    assert "Manual Snapshot Operator Pack" in html
+    assert "manualSnapshotActions" in html
+    assert "/v1/manual-snapshot-daily-pack" in html
+    assert "renderManualSnapshotPack" in js
+    assert "manual_snapshot_next_20_actions" in js
 
 
 def test_v1_data_trust_status_contract():
@@ -772,6 +811,8 @@ def test_core_status_contract():
     assert "provider_recovery_plan" in status
     assert "coverage_universe" in status
     assert "manual_snapshot_quality" in status
+    assert "manual_snapshot_daily_pack" in status
+    assert "manual_snapshot_next_20_actions" in status
     assert "snapshot_collection_plan" in status
     assert "next_action" in status
     assert "action_plan" in status
@@ -844,6 +885,55 @@ def test_snapshot_collection_plan_contract():
     assert {"provider", "gpu", "region_code", "priority_score"}.issubset(plan.columns)
     assert plan.iloc[0]["source_type"] == "manual_public_snapshot"
     assert plan.iloc[0]["claim_scope"] == "research_preview"
+
+
+def test_manual_snapshot_daily_pack_builds_next_20_actions(tmp_path):
+    pd.DataFrame([
+        {"gpu": f"GPU-{index}", "tracking_priority": 1}
+        for index in range(1, 11)
+    ]).to_csv(tmp_path / "gpu_universe.csv", index=False)
+    pd.DataFrame([
+        {"provider": f"provider-{index}", "provider_type": "marketplace", "tracking_priority": 1}
+        for index in range(1, 9)
+    ]).to_csv(tmp_path / "provider_universe.csv", index=False)
+    pd.DataFrame([
+        {"region_code": f"region-{index}", "tracking_priority": 1}
+        for index in range(1, 7)
+    ]).to_csv(tmp_path / "region_universe.csv", index=False)
+
+    pack = build_manual_snapshot_daily_pack(tmp_path, action_limit=20)
+
+    assert pack["summary"]["report_type"] == "manual_snapshot_daily_pack"
+    assert pack["summary"]["next_action_count"] == 20
+    assert len(pack["next_actions"]) == 20
+    assert pack["next_actions"][0]["rank"] == 1
+    assert pack["next_actions"][0]["source_type"] == "manual_public_snapshot"
+    assert pack["next_actions"][0]["claim_scope"] == "research_preview"
+    assert "source_url" in pack["next_actions"][0]["operator_step"]
+
+
+def test_manual_snapshot_daily_pack_save_writes_outputs(tmp_path):
+    pd.DataFrame([
+        {"gpu": f"GPU-{index}", "tracking_priority": 1}
+        for index in range(1, 11)
+    ]).to_csv(tmp_path / "gpu_universe.csv", index=False)
+    pd.DataFrame([
+        {"provider": f"provider-{index}", "provider_type": "marketplace", "tracking_priority": 1}
+        for index in range(1, 9)
+    ]).to_csv(tmp_path / "provider_universe.csv", index=False)
+    pd.DataFrame([
+        {"region_code": f"region-{index}", "tracking_priority": 1}
+        for index in range(1, 7)
+    ]).to_csv(tmp_path / "region_universe.csv", index=False)
+
+    reports_dir = tmp_path / "reports"
+    pack = save_manual_snapshot_daily_pack(tmp_path, reports_dir=reports_dir)
+
+    assert pack["summary"]["next_action_count"] == 20
+    assert (tmp_path / "manual_snapshot_daily_pack.csv").exists()
+    assert (tmp_path / "manual_snapshot_next_20_actions.csv").exists()
+    assert (tmp_path / "manual_snapshot_daily_pack.json").exists()
+    assert (reports_dir / "manual_snapshot_next_20_actions.md").exists()
 
 
 def test_manual_snapshot_inbox_template_contract():
@@ -2073,6 +2163,7 @@ def test_main_app_exposes_v1_core_routes():
     assert "/v1/provider-connector-readiness" in paths
     assert "/v1/provider-connector-upgrade-plan" in paths
     assert "/v1/market-pulse" in paths
+    assert "/v1/manual-snapshot-daily-pack" in paths
     assert "/v1/market-pulse-history" in paths
     assert "/v1/market-pulse/snapshot" in paths
     assert "/v1/market-pulse-brief" in paths

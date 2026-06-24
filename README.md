@@ -84,6 +84,7 @@ venv/bin/python scripts/manual_snapshot_inbox_template.py
 venv/bin/python scripts/manual_snapshot_template_check.py
 venv/bin/python scripts/manual_snapshot_copy_ready.py
 venv/bin/python analytics/manual_snapshot_ingest.py
+venv/bin/python scripts/manual_snapshot_daily_pack.py
 venv/bin/python analytics/paid_beta_gate.py
 venv/bin/python snapshot_scheduler.py
 venv/bin/python database/db_status.py
@@ -173,6 +174,7 @@ Core files:
 - `analytics/manual_snapshot_quality.py`
 - `analytics/research_preview_brief.py`
 - `analytics/snapshot_collection_plan.py`
+- `scripts/manual_snapshot_daily_pack.py`
 - `analytics/provider_preflight.py`
 - `analytics/provider_reliability_gaps.py`
 - `data/*.csv`

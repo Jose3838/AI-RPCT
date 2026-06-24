@@ -38,6 +38,8 @@ def build_core_status():
     paid_beta_gate = read_latest(DATA_DIR / "paid_beta_gate.csv")
     coverage_universe = read_latest(DATA_DIR / "coverage_universe_status.csv")
     manual_snapshot_quality = read_latest(DATA_DIR / "manual_snapshot_quality.csv")
+    manual_snapshot_daily_pack = read_latest(DATA_DIR / "manual_snapshot_daily_pack.csv")
+    manual_snapshot_next_20 = read_records(DATA_DIR / "manual_snapshot_next_20_actions.csv", limit=20)
     roadmap = read_records(DATA_DIR / "bloomberg_execution_roadmap.csv", limit=50)
     snapshot_collection_plan = read_records(DATA_DIR / "snapshot_collection_plan.csv", limit=5)
     gaps = read_records(DATA_DIR / "provider_reliability_gaps.csv", limit=5)
@@ -113,6 +115,13 @@ def build_core_status():
             "blockers": manual_snapshot_quality.get("blockers"),
             "next_action": manual_snapshot_quality.get("next_action"),
         },
+        "manual_snapshot_daily_pack": {
+            "status": manual_snapshot_daily_pack.get("status", "unknown"),
+            "coverage_status": manual_snapshot_daily_pack.get("coverage_status", "unknown"),
+            "template_status": manual_snapshot_daily_pack.get("template_status", "unknown"),
+            "next_action_count": manual_snapshot_daily_pack.get("next_action_count"),
+            "next_action": manual_snapshot_daily_pack.get("next_action"),
+        },
         "bloomberg_roadmap": {
             "total_steps": len(roadmap),
             "done_steps": len([row for row in roadmap if row.get("status") == "done"]),
@@ -121,6 +130,7 @@ def build_core_status():
             "next_steps": [row for row in roadmap if row.get("status") != "done"][:5],
         },
         "snapshot_collection_plan": snapshot_collection_plan,
+        "manual_snapshot_next_20_actions": manual_snapshot_next_20,
         "paid_beta_signal_ready": readiness.get("paid_beta_signal_ready", False),
         "blockers": readiness.get("blockers", quality.get("blockers", "unknown")),
         "next_action": readiness.get("next_action", "Run ./scripts/run_core_intelligence.sh"),

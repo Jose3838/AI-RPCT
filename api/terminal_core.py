@@ -1,5 +1,6 @@
 from pathlib import Path
 from datetime import datetime, timezone
+import math
 
 import pandas as pd
 
@@ -18,7 +19,24 @@ def read_records(path):
     path = Path(path)
     if not path.exists() or path.stat().st_size <= 1:
         return []
-    return pd.read_csv(path).to_dict(orient="records")
+    return sanitize_json_value(pd.read_csv(path).to_dict(orient="records"))
+
+
+def sanitize_json_value(value):
+    if isinstance(value, dict):
+        return {key: sanitize_json_value(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [sanitize_json_value(item) for item in value]
+    if isinstance(value, tuple):
+        return [sanitize_json_value(item) for item in value]
+    if isinstance(value, float) and not math.isfinite(value):
+        return None
+    try:
+        if pd.isna(value):
+            return None
+    except (TypeError, ValueError):
+        pass
+    return value
 
 
 def read_latest(path):
@@ -1542,6 +1560,8 @@ def build_terminal_summary():
     paid_beta_gate = read_latest(DATA_DIR / "paid_beta_gate.csv")
     coverage_universe = read_latest(DATA_DIR / "coverage_universe_status.csv")
     manual_snapshot_quality = read_latest(DATA_DIR / "manual_snapshot_quality.csv")
+    manual_snapshot_daily_pack = read_latest(DATA_DIR / "manual_snapshot_daily_pack.csv")
+    manual_snapshot_next_20 = read_records(DATA_DIR / "manual_snapshot_next_20_actions.csv")
     snapshot_collection_plan = read_records(DATA_DIR / "snapshot_collection_plan.csv")
     signal_methodology = read_records(DATA_DIR / "signal_methodology_registry.csv")
     bloomberg_roadmap = read_records(DATA_DIR / "bloomberg_execution_roadmap.csv")
@@ -1555,7 +1575,7 @@ def build_terminal_summary():
     template_check = build_manual_snapshot_template_check()
     scheduler_health = build_scheduler_health()
 
-    return {
+    return sanitize_json_value({
         "product": "AI-RPCT",
         "mission": "Bloomberg for AI Infrastructure",
         "status": "ok" if terminal else "degraded",
@@ -1591,6 +1611,8 @@ def build_terminal_summary():
         "paid_beta_gate": paid_beta_gate,
         "coverage_universe": coverage_universe,
         "manual_snapshot_quality": manual_snapshot_quality,
+        "manual_snapshot_daily_pack": manual_snapshot_daily_pack,
+        "manual_snapshot_next_20_actions": manual_snapshot_next_20[:20],
         "snapshot_collection_plan": snapshot_collection_plan[:10],
         "signal_methodology_registry": signal_methodology[:10],
         "bloomberg_execution_roadmap": {
@@ -1653,11 +1675,11 @@ def build_terminal_summary():
             "paid_beta_gate_blockers": paid_beta_gate.get("blockers"),
         },
         "frontier": frontier
-    }
+    })
 
 
 def build_dashboard_snapshot():
-    return {
+    return sanitize_json_value({
         **build_terminal_summary(),
         "signals": build_market_signals()["signals"],
         "recommendations": [],
@@ -1671,7 +1693,17 @@ def build_dashboard_snapshot():
         "gpu_rankings": read_records(DATA_DIR / "live_gpu_most_expensive.csv")[:10],
         "gpu_watchlist": read_records(DATA_DIR / "gpu_watchlist_intelligence.csv"),
         "alerts": read_records(DATA_DIR / "live_gpu_alerts.csv")
-    }
+    })
+
+
+def build_manual_snapshot_daily_pack_payload():
+    return sanitize_json_value({
+        "product": "AI-RPCT",
+        "report_type": "manual_snapshot_daily_pack",
+        "summary": read_latest(DATA_DIR / "manual_snapshot_daily_pack.csv"),
+        "next_actions": read_records(DATA_DIR / "manual_snapshot_next_20_actions.csv")[:20],
+        "markdown_report": str(REPORTS_DIR / "manual_snapshot_next_20_actions.md"),
+    })
 
 
 def build_api_catalog():
