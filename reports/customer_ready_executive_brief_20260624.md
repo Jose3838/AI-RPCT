@@ -1,6 +1,6 @@
 # AI-RPCT Customer-Ready Executive Brief
 
-Generated: 2026-06-24T14:14:05.281168
+Generated: 2026-06-24T14:17:23.756976
 
 ## Headline
 AI infrastructure stress is watch; signal performance is building.
@@ -41,9 +41,14 @@ Collect 27 more daily records to reach the 30-day milestone.
 - capacity_shock_forecast / capacity_shock_delta: 0.0 (0.1)
 
 ## Source Evidence
+- aws / H100 PCIe / us-east: linked
+- coreweave / H100 PCIe / eu-west: linked
+- crusoe / H100 PCIe / us-west: linked
+- fluidstack / H100 PCIe / eu-west: linked
+- google_cloud / H100 PCIe / us-east: linked
+- hyperstack / H100 PCIe / uk: linked
+- jarvislabs / A100 PCIe / singapore: linked
 - lambda_labs / A100 PCIe / eu-central: linked
-- runpod / A100 PCIe / eu-central: linked
-- vast / A100 PCIe / eu-central: linked
 
 ## Guardrail
 This brief is research-preview unless all claim gates are paid-safe.

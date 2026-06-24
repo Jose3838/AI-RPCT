@@ -1,4 +1,21 @@
 status,observed_at,provider,gpu,region_code,source_type,source_url,price_per_hour,availability,delivery_time_hours,claim_scope,evidence_quality,next_action
+source_evidence_available,,aws,H100 PCIe,us-east,manual_public_snapshot,https://aws.amazon.com/ec2/instance-types/p5/,4.1,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,coreweave,H100 PCIe,eu-west,manual_public_snapshot,https://www.coreweave.com/pricing,3.4,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,crusoe,H100 PCIe,us-west,manual_public_snapshot,https://crusoe.ai/cloud/pricing/,3.25,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,fluidstack,H100 PCIe,eu-west,manual_public_snapshot,https://www.fluidstack.io/pricing,3.2,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,google_cloud,H100 PCIe,us-east,manual_public_snapshot,https://cloud.google.com/compute/gpus-pricing,4.5,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,hyperstack,H100 PCIe,uk,manual_public_snapshot,https://www.hyperstack.cloud/pricing,3.1,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,jarvislabs,A100 PCIe,singapore,manual_public_snapshot,https://jarvislabs.ai/pricing,1.15,1,,research_preview,linked,maintain_daily_collection
 source_evidence_available,,lambda_labs,A100 PCIe,eu-central,manual_public_snapshot,https://lambdalabs.com/service/gpu-cloud,1.1,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,lambda_labs,H100 PCIe,us-east,manual_public_snapshot,https://lambdalabs.com/service/gpu-cloud,2.99,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,lambda_labs,L40S,us-east,manual_public_snapshot,https://lambdalabs.com/service/gpu-cloud,0.8,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,microsoft_azure,H100 PCIe,us-east,manual_public_snapshot,https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/,4.8,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,nebius,H100 PCIe,eu-central,manual_public_snapshot,https://nebius.com/prices,3.3,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,oracle_cloud,H100 PCIe,us-east,manual_public_snapshot,https://www.oracle.com/cloud/price-list/,3.9,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,paperspace,A100 PCIe,us-east,manual_public_snapshot,https://www.paperspace.com/pricing,1.2,1,,research_preview,linked,maintain_daily_collection
 source_evidence_available,,runpod,A100 PCIe,eu-central,manual_public_snapshot,https://www.runpod.io/pricing,1.19,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,runpod,H100 PCIe,eu-west,manual_public_snapshot,https://www.runpod.io/pricing,2.69,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,runpod,L40S,singapore,manual_public_snapshot,https://www.runpod.io/pricing,0.79,1,,research_preview,linked,maintain_daily_collection
 source_evidence_available,,vast,A100 PCIe,eu-central,manual_public_snapshot,https://vast.ai/pricing,0.89,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,vast,H100 PCIe,eu-west,manual_public_snapshot,https://vast.ai/pricing,2.49,1,,research_preview,linked,maintain_daily_collection
+source_evidence_available,,vast,L40S,singapore,manual_public_snapshot,https://vast.ai/pricing,0.74,1,,research_preview,linked,maintain_daily_collection
