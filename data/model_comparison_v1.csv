@@ -1,0 +1,4 @@
+model_name,rows,avg_confidence,learning_enabled,model_type
+forecast_engine_v4,148,72.51,False,multi_factor_rule_engine
+forecast_engine_v5,148,86.25,True,learning_baseline_hybrid
+learning_baseline_model_v1,148,100.0,True,historical_outcome_frequency_baseline
