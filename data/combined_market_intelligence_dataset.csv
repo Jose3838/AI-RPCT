@@ -1,0 +1,788 @@
+date,event_name,event_type,impact_area,description,source,category,trust_grade,created_at,dataset,source_file,release_date,architecture,gpu,vendor,provider,instance,price_per_hour,region,timestamp,output_file,row_count,intelligence_layer,availability
+2006-06-23,CUDA introduced,platform,gpu_compute,CUDA created the foundation for general-purpose GPU computing.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00,market_events,market_events_market_events.csv,,,,,,,,,,,,historical_archive,
+2012-09-30,AlexNet wins ImageNet,ai_breakthrough,deep_learning_demand,Deep learning accelerated demand for GPU compute.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00,market_events,market_events_market_events.csv,,,,,,,,,,,,historical_archive,
+2017-05-10,NVIDIA Volta V100 announced,gpu_launch,training_compute,V100 became a major accelerator for AI training.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00,market_events,market_events_market_events.csv,,,,,,,,,,,,historical_archive,
+2020-05-14,NVIDIA Ampere A100 announced,gpu_launch,training_compute,A100 became a major cloud AI infrastructure GPU.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00,market_events,market_events_market_events.csv,,,,,,,,,,,,historical_archive,
+2022-11-30,ChatGPT launched,market_demand,ai_infrastructure_demand,Generative AI accelerated demand for GPU infrastructure.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00,market_events,market_events_market_events.csv,,,,,,,,,,,,historical_archive,
+2023-03-21,NVIDIA H100 cloud demand accelerates,capacity_pressure,h100_availability,H100 became a high-demand GPU for frontier AI workloads.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00,market_events,market_events_market_events.csv,,,,,,,,,,,,historical_archive,
+2024-03-18,NVIDIA Blackwell announced,gpu_launch,next_generation_compute,Blackwell introduced the next major AI accelerator generation.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00,market_events,market_events_market_events.csv,,,,,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2006-06-01,Tesla,Tesla C870,NVIDIA,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2008-06-16,Tesla,Tesla S1070,NVIDIA,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2010-07-12,Fermi,Tesla C2050,NVIDIA,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2012-03-22,Kepler,Tesla K20,NVIDIA,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2014-03-25,Maxwell,GTX 750 Ti,NVIDIA,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2016-05-27,Pascal,P100,NVIDIA,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2017-05-10,Volta,V100,NVIDIA,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2018-09-20,Turing,RTX 2080 Ti,NVIDIA,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2020-05-14,Ampere,A100,NVIDIA,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2022-03-22,Ampere,A30,NVIDIA,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2022-09-20,Ada Lovelace,RTX 4090,NVIDIA,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2023-03-21,Hopper,H100,NVIDIA,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2024-03-18,Blackwell,B200,NVIDIA,,,,,,,,historical_archive,
+,,,,,Historical Archive,,A,2026-06-25T10:51:44.049795+00:00,gpu_releases,gpu_release_history.csv,2024-06-02,Blackwell,GB200,NVIDIA,,,,,,,,historical_archive,
+2017-01-01,,,,,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00,provider_pricing,cloud_gpu_instances_provider_pricing.csv,,,K80,,AWS,p2,0.0,global,,,,historical_archive,
+2017-10-01,,,,,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00,provider_pricing,cloud_gpu_instances_provider_pricing.csv,,,V100,,AWS,p3,0.0,global,,,,historical_archive,
+2020-11-01,,,,,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00,provider_pricing,cloud_gpu_instances_provider_pricing.csv,,,A100,,AWS,p4d,0.0,global,,,,historical_archive,
+2023-09-01,,,,,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00,provider_pricing,cloud_gpu_instances_provider_pricing.csv,,,H100,,AWS,p5,0.0,global,,,,historical_archive,
+2017-01-01,,,,,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00,provider_pricing,cloud_gpu_instances_provider_pricing.csv,,,K80,,Azure,NC,0.0,global,,,,historical_archive,
+2018-01-01,,,,,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00,provider_pricing,cloud_gpu_instances_provider_pricing.csv,,,V100,,Azure,NCv3,0.0,global,,,,historical_archive,
+2020-01-01,,,,,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00,provider_pricing,cloud_gpu_instances_provider_pricing.csv,,,A100,,Azure,ND A100 v4,0.0,global,,,,historical_archive,
+2023-01-01,,,,,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00,provider_pricing,cloud_gpu_instances_provider_pricing.csv,,,H100,,Azure,ND H100 v5,0.0,global,,,,historical_archive,
+2017-01-01,,,,,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00,provider_pricing,cloud_gpu_instances_provider_pricing.csv,,,K80,,Google Cloud,k80,0.0,global,,,,historical_archive,
+2018-01-01,,,,,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00,provider_pricing,cloud_gpu_instances_provider_pricing.csv,,,V100,,Google Cloud,v100,0.0,global,,,,historical_archive,
+2021-01-01,,,,,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00,provider_pricing,cloud_gpu_instances_provider_pricing.csv,,,A100,,Google Cloud,a2,0.0,global,,,,historical_archive,
+2023-01-01,,,,,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00,provider_pricing,cloud_gpu_instances_provider_pricing.csv,,,H100,,Google Cloud,a3,0.0,global,,,,historical_archive,
+,,,,,Market Events,market_events,A,,metadata,provenance_log.csv,,,,,,,,,2026-06-25T10:57:40.539273+00:00,warehouse/historical/market_events/market_events_market_events.csv,7.0,historical_archive,
+,,,,,Market Events,market_events,A,,metadata,provenance_log.csv,,,,,,,,,2026-06-25T10:59:32.035783+00:00,warehouse/historical/market_events/market_events_market_events.csv,7.0,historical_archive,
+,,,,,Cloud GPU Instances,provider_pricing,A,,metadata,provenance_log.csv,,,,,,,,,2026-06-25T11:01:45.795679+00:00,warehouse/historical/provider_pricing/cloud_gpu_instances_provider_pricing.csv,12.0,historical_archive,
+,,,,,Cloud GPU Instances,provider_pricing,A,,metadata,provenance_log.csv,,,,,,,,,2026-06-25T11:03:21.913350+00:00,warehouse/historical/provider_pricing/cloud_gpu_instances_provider_pricing.csv,12.0,historical_archive,
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,MI300X,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,A100 PCIe,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,A100 SXM 40GB,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,A100 SXM,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,A40,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,B200,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,B300,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,B300 MIG 34GB,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,NVIDIA GeForce GTX 1050,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,NVIDIA GeForce GTX 1050 Ti,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 3070,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 3080,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 3080 Ti,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 3090,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 3090 Ti,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 4070 Ti,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 4080,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 4080 SUPER,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 4090,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 5080,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 5090,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,H100 SXM,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,H100 NVL,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,H100 PCIe,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,H200 SXM,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,H200 NVL,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,L4,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,L40,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,L40S,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 2000 Ada,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 4000 Ada,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 4000 Ada SFF,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 5000 Ada,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 6000 Ada,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX A2000,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX A4000,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX A4500,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX A5000,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX A6000,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX PRO 4000,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX PRO 4500,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX PRO 5000,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX PRO 6000 MaxQ,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX PRO 6000,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,PRO 6000 MIG 24GB,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,PRO 6000 MIG 48GB,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX PRO 6000 WK,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,Tesla V100,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,V100 SXM2,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,unknown,,runpod_real,,0.0,,2026-06-24 19:46:20,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,MI300X,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,A100 PCIe,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,A100 SXM 40GB,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,A100 SXM,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,A40,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,B200,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,B300,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,B300 MIG 34GB,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,NVIDIA GeForce GTX 1050,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,NVIDIA GeForce GTX 1050 Ti,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 3070,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 3080,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 3080 Ti,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 3090,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 3090 Ti,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 4070 Ti,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 4080,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 4080 SUPER,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 4090,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 5080,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 5090,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,H100 SXM,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,H100 NVL,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,H100 PCIe,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,H200 SXM,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,H200 NVL,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,L4,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,L40,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,L40S,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 2000 Ada,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 4000 Ada,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 4000 Ada SFF,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 5000 Ada,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX 6000 Ada,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX A2000,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX A4000,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX A4500,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX A5000,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX A6000,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX PRO 4000,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX PRO 4500,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX PRO 5000,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX PRO 6000 MaxQ,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX PRO 6000,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,PRO 6000 MIG 24GB,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,PRO 6000 MIG 48GB,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,RTX PRO 6000 WK,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,Tesla V100,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,V100 SXM2,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_runpod.csv,,,unknown,,runpod_real,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,Tesla V100,,vast_real,,0.1515555555555555,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,Tesla V100,,vast_real,,0.0768888888888889,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,Tesla V100,,vast_real,,0.0395555555555555,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,Tesla V100,,vast_real,,0.0208888888888888,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,Tesla V100,,vast_real,,0.0208888888888888,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,5.714874269005848,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,1.4319795321637427,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,0.6207407407407408,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.4577777777777778,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,2.859611111111111,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.9948148148148148,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.4754232547617356,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.5014814814814814,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,0.6134814814814815,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,1.1491851851851853,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,2.457037037037037,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200 NVL,,vast_real,,3.8768888888888897,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.4688888888888888,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,B200,,vast_real,,4.347222222222222,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200 NVL,,vast_real,,1.9435555555555557,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,B200,,vast_real,,4.289583333333333,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,B200,,vast_real,,8.684722222222224,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,B200,,vast_real,,3.4444444444444446,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.7481481481481482,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,2.777037037037037,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,1.0696296296296297,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,1.3362962962962963,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,B200,,vast_real,,6.881944444444445,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,B200,,vast_real,,8.752136752136753,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5070 Ti,,vast_real,,0.1355555555555555,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,1.9814814814814816,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,1.5229629629629629,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,2.671851851851852,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.6688888888888889,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,1.7362962962962964,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,3.4696296296296296,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,1.0675555555555556,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,1.3385185185185184,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,1.7362962962962964,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,1.7362962962962964,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5070 Ti,,vast_real,,0.2688888888888889,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 SXM,,vast_real,,1.611111111111111,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 SXM,,vast_real,,3.211111111111111,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,3.4696296296296296,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,3.4696296296296296,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5060 Ti,,vast_real,,0.1755555555555555,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,1.4696296296296298,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 SXM,,vast_real,,6.4111111111111105,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,5.337037037037037,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,B300,,vast_real,,15.002083333333337,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.3644444444444444,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 5000,,vast_real,,0.7348148148148149,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.5407407407407407,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5060 Ti,,vast_real,,0.1918518518518518,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 5000,,vast_real,,1.334814814814815,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,6.936296296296296,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5070 Ti,,vast_real,,0.2037037037037037,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5060 Ti,,vast_real,,0.0888888888888888,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5080,,vast_real,,0.242962962962963,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200 NVL,,vast_real,,3.863999999999999,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,1.756888888888889,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,1.4681481481481482,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 3090,,vast_real,,0.2688888888888889,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,7.370614035087719,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,6.936296296296296,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.8022222222222222,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,3.68640350877193,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,6.936296296296296,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,5.86962962962963,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 NVL,,vast_real,,1.8595555555555552,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 SXM,,vast_real,,9.602222222222222,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5070,,vast_real,,0.2361481481481481,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,26.86750584795322,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.2688888888888889,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.4029629629629629,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5070,,vast_real,,0.1188148148148148,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,5.868148148148149,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.9407407407407408,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,9.817037037037036,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 3090,,vast_real,,0.2688888888888889,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 NVL,,vast_real,,4.455555555555556,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,14.739035087719298,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5060 Ti,,vast_real,,0.0985185185185185,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.6044444444444445,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 SXM,,vast_real,,4.788888888888889,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.6422222222222222,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 SXM,,vast_real,,18.66814814814815,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 4000,,vast_real,,0.4274074074074074,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,4.271111111111111,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5080,,vast_real,,0.2177777777777778,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200 NVL,,vast_real,,2.9355555555555557,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.5888888888888889,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 6000Ada,,vast_real,,1.602074074074074,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 6000Ada,,vast_real,,1.4689037037037038,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,3.202222222222222,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4070S Ti,,vast_real,,0.2696296296296296,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 3090,,vast_real,,0.1429629629629629,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4070,,vast_real,,0.078074074074074,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,29.47587719298245,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4070S Ti,,vast_real,,0.1377777777777777,,2026-06-24 19:46:19,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,Tesla V100,,vast_real,,0.1515555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,Tesla V100,,vast_real,,0.0768888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,Tesla V100,,vast_real,,0.0395555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,Tesla V100,,vast_real,,0.0208888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,Tesla V100,,vast_real,,0.0208888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,1.4319795321637427,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,5.714874269005848,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.4177777777777777,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.4624988684639287,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,2.859611111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,11.42540058479532,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,0.7721481481481481,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,1.074074074074074,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,0.6192592592592593,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,2.140740740740741,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.5014814814814814,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.923516255446376,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,B200,,vast_real,,8.684722222222224,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200 NVL,,vast_real,,3.8768888888888897,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,0.6134814814814815,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,B200,,vast_real,,3.4444444444444446,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200 NVL,,vast_real,,1.9435555555555557,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,1.871111111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.4688888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,B200,,vast_real,,4.377136752136752,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,B200,,vast_real,,4.347222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.8795555555555556,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,2.67037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,B200,,vast_real,,6.881944444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,0.8288888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,1.0044444444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 SXM,,vast_real,,1.611111111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,3.4696296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,1.7362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,1.337037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,1.7362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,3.4696296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.6688888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,1.7362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 SXM,,vast_real,,6.4111111111111105,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.7961481481481482,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,5.337037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,2.9362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5060 Ti,,vast_real,,0.1755555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 5000,,vast_real,,0.6681481481481482,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,12.634502923976608,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 5000,,vast_real,,1.334814814814815,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 6000Ada,,vast_real,,0.5377777777777778,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5070 Ti,,vast_real,,0.2037037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,6.936296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5060 Ti,,vast_real,,0.0888888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,6.936296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,6.936296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.5407407407407407,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 5000,,vast_real,,1.228888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,15.002192982456142,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,1.7081481481481482,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 SXM,,vast_real,,2.136,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.9407407407407408,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,3.68640350877193,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 3090,,vast_real,,0.3,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200 NVL,,vast_real,,3.8462222222222224,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,7.370614035087719,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.8029629629629629,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5070,,vast_real,,0.1188148148148148,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,4.271111111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 WS,,vast_real,,9.817037037037036,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 SXM,,vast_real,,9.602222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 SXM,,vast_real,,18.66814814814815,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5060 Ti,,vast_real,,0.2422222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,B200,,vast_real,,11.256944444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.4029629629629629,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.357037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,5.868148148148149,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 3090,,vast_real,,0.2688888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,0.6044444444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 6000 S,,vast_real,,3.202222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200 NVL,,vast_real,,2.9355555555555557,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5080,,vast_real,,0.2177777777777778,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 4000,,vast_real,,0.2822222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4070S Ti,,vast_real,,0.1377777777777777,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4070S Ti,,vast_real,,0.2696296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 4000,,vast_real,,0.4274074074074074,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 6000Ada,,vast_real,,1.4689037037037038,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 NVL,,vast_real,,2.2288888888888887,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,A800 PCIE,,vast_real,,0.6688888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H100 NVL,,vast_real,,4.455555555555556,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5090,,vast_real,,1.7348148148148148,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,A100 PCIE,,vast_real,,1.002222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5060,,vast_real,,0.0688888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX PRO 4000,,vast_real,,0.6037037037037036,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200,,vast_real,,29.47587719298245,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,H200 NVL,,vast_real,,9.328444444444443,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5070 Ti,,vast_real,,0.4014814814814814,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 6000Ada,,vast_real,,1.602074074074074,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 5070,,vast_real,,0.1362962962962963,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 3090,,vast_real,,0.1429629629629629,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090,,vast_real,,0.7488888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 3090,,vast_real,,0.1355555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-24_vast.csv,,,RTX 4090D,,vast_real,,0.6022222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.1515555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.0768888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.0395555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.0208888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.0208888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,1.4319795321637427,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,5.714874269005848,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.4177777777777777,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.4624988684639287,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,2.859611111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,11.42540058479532,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,0.7721481481481481,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,1.074074074074074,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,0.6192592592592593,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,2.140740740740741,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.5014814814814814,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.923516255446376,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,8.684722222222224,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,3.8768888888888897,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,0.6134814814814815,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,3.4444444444444446,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,1.9435555555555557,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,1.871111111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.4688888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,4.377136752136752,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,4.347222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.8795555555555556,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,2.67037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,6.881944444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,0.8288888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,1.0044444444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,1.611111111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,3.4696296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,1.7362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,1.337037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,1.7362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,3.4696296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.6688888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,1.7362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,6.4111111111111105,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.7961481481481482,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,5.337037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,2.9362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5060 Ti,,vast,,0.1755555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 5000,,vast,,0.6681481481481482,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,12.634502923976608,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 5000,,vast,,1.334814814814815,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 6000Ada,,vast,,0.5377777777777778,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5070 Ti,,vast,,0.2037037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,6.936296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5060 Ti,,vast,,0.0888888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,6.936296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,6.936296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.5407407407407407,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 5000,,vast,,1.228888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,15.002192982456142,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,1.7081481481481482,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,2.136,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.9407407407407408,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,3.68640350877193,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 3090,,vast,,0.3,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,3.8462222222222224,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,7.370614035087719,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.8029629629629629,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5070,,vast,,0.1188148148148148,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,4.271111111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,9.817037037037036,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,9.602222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,18.66814814814815,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5060 Ti,,vast,,0.2422222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,11.256944444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.4029629629629629,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.357037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,5.868148148148149,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 3090,,vast,,0.2688888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.6044444444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,3.202222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,2.9355555555555557,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5080,,vast,,0.2177777777777778,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 4000,,vast,,0.2822222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4070S Ti,,vast,,0.1377777777777777,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4070S Ti,,vast,,0.2696296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 4000,,vast,,0.4274074074074074,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 6000Ada,,vast,,1.4689037037037038,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 NVL,,vast,,2.2288888888888887,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,A800 PCIE,,vast,,0.6688888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 NVL,,vast,,4.455555555555556,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,1.7348148148148148,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,A100 PCIE,,vast,,1.002222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5060,,vast,,0.0688888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 4000,,vast,,0.6037037037037036,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,29.47587719298245,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,9.328444444444443,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5070 Ti,,vast,,0.4014814814814814,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 6000Ada,,vast,,1.602074074074074,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5070,,vast,,0.1362962962962963,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 3090,,vast,,0.1429629629629629,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.7488888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 3090,,vast,,0.1355555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090D,,vast,,0.6022222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.1515555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.0768888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.0395555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.0208888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.0208888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,1.4319795321637427,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,5.714874269005848,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.4177777777777777,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.4624988684639287,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,2.859611111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,11.42540058479532,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,0.7721481481481481,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,1.074074074074074,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,0.6192592592592593,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,2.140740740740741,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.5014814814814814,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.923516255446376,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,8.684722222222224,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,3.8768888888888897,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,0.6134814814814815,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,3.4444444444444446,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,1.9435555555555557,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,1.871111111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.4688888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,4.377136752136752,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,4.347222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.8795555555555556,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,2.67037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,6.881944444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,0.8288888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,1.0044444444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,1.611111111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,3.4696296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,1.7362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,1.337037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,1.7362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,3.4696296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.6688888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,1.7362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,6.4111111111111105,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.7961481481481482,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,5.337037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,2.9362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5060 Ti,,vast,,0.1755555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 5000,,vast,,0.6681481481481482,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,12.634502923976608,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 5000,,vast,,1.334814814814815,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 6000Ada,,vast,,0.5377777777777778,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5070 Ti,,vast,,0.2037037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,6.936296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5060 Ti,,vast,,0.0888888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,6.936296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,6.936296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.5407407407407407,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 5000,,vast,,1.228888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,15.002192982456142,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,1.7081481481481482,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,2.136,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.9407407407407408,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,3.68640350877193,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 3090,,vast,,0.3,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,3.8462222222222224,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,7.370614035087719,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.8029629629629629,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5070,,vast,,0.1188148148148148,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,4.271111111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,9.817037037037036,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,9.602222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,18.66814814814815,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5060 Ti,,vast,,0.2422222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,11.256944444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.4029629629629629,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.357037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,5.868148148148149,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 3090,,vast,,0.2688888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.6044444444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,3.202222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,2.9355555555555557,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5080,,vast,,0.2177777777777778,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 4000,,vast,,0.2822222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4070S Ti,,vast,,0.1377777777777777,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4070S Ti,,vast,,0.2696296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 4000,,vast,,0.4274074074074074,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 6000Ada,,vast,,1.4689037037037038,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 NVL,,vast,,2.2288888888888887,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,A800 PCIE,,vast,,0.6688888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 NVL,,vast,,4.455555555555556,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,1.7348148148148148,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,A100 PCIE,,vast,,1.002222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5060,,vast,,0.0688888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 4000,,vast,,0.6037037037037036,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,29.47587719298245,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,9.328444444444443,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5070 Ti,,vast,,0.4014814814814814,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 6000Ada,,vast,,1.602074074074074,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5070,,vast,,0.1362962962962963,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 3090,,vast,,0.1429629629629629,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.7488888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 3090,,vast,,0.1355555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090D,,vast,,0.6022222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.1515555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.0768888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.0395555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.0208888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,Tesla V100,,vast,,0.0208888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,1.4319795321637427,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,5.714874269005848,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.4177777777777777,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.4624988684639287,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,2.859611111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,11.42540058479532,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,0.7721481481481481,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,1.074074074074074,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,0.6192592592592593,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,2.140740740740741,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.5014814814814814,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.923516255446376,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,8.684722222222224,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,3.8768888888888897,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,0.6134814814814815,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,3.4444444444444446,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,1.9435555555555557,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,1.871111111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.4688888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,4.377136752136752,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,4.347222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.8795555555555556,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,2.67037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,6.881944444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,0.8288888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,1.0044444444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,1.611111111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,3.4696296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,1.7362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,1.337037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,1.7362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,3.4696296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.6688888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,1.7362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,6.4111111111111105,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.7961481481481482,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,5.337037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,2.9362962962962964,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5060 Ti,,vast,,0.1755555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 5000,,vast,,0.6681481481481482,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,12.634502923976608,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 5000,,vast,,1.334814814814815,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 6000Ada,,vast,,0.5377777777777778,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5070 Ti,,vast,,0.2037037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,6.936296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5060 Ti,,vast,,0.0888888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,6.936296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,6.936296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.5407407407407407,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 5000,,vast,,1.228888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,15.002192982456142,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,1.7081481481481482,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,2.136,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.9407407407407408,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,3.68640350877193,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 3090,,vast,,0.3,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,3.8462222222222224,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,7.370614035087719,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.8029629629629629,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5070,,vast,,0.1188148148148148,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,4.271111111111111,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 WS,,vast,,9.817037037037036,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,9.602222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 SXM,,vast,,18.66814814814815,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5060 Ti,,vast,,0.2422222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,B200,,vast,,11.256944444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.4029629629629629,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.357037037037037,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,5.868148148148149,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 3090,,vast,,0.2688888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,0.6044444444444445,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 6000 S,,vast,,3.202222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,2.9355555555555557,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5080,,vast,,0.2177777777777778,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 4000,,vast,,0.2822222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4070S Ti,,vast,,0.1377777777777777,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4070S Ti,,vast,,0.2696296296296296,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 4000,,vast,,0.4274074074074074,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 6000Ada,,vast,,1.4689037037037038,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 NVL,,vast,,2.2288888888888887,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,A800 PCIE,,vast,,0.6688888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H100 NVL,,vast,,4.455555555555556,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5090,,vast,,1.7348148148148148,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,A100 PCIE,,vast,,1.002222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5060,,vast,,0.0688888888888888,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX PRO 4000,,vast,,0.6037037037037036,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200,,vast,,29.47587719298245,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,H200 NVL,,vast,,9.328444444444443,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5070 Ti,,vast,,0.4014814814814814,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 6000Ada,,vast,,1.602074074074074,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 5070,,vast,,0.1362962962962963,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 3090,,vast,,0.1429629629629629,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090,,vast,,0.7488888888888889,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 3090,,vast,,0.1355555555555555,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_vast.csv,,,RTX 4090D,,vast,,0.6022222222222222,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,MI300X,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,A100 PCIe,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,A100 SXM 40GB,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,A100 SXM,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,A40,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,B200,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,B300,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,B300 MIG 34GB,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,NVIDIA GeForce GTX 1050,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,NVIDIA GeForce GTX 1050 Ti,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3070,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3080,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3080 Ti,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3090,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3090 Ti,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4070 Ti,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4080,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4080 SUPER,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4090,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 5080,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 5090,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H100 SXM,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H100 NVL,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H100 PCIe,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H200 SXM,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H200 NVL,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,L4,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,L40,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,L40S,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 2000 Ada,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4000 Ada,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4000 Ada SFF,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 5000 Ada,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 6000 Ada,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A2000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A4000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A4500,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A5000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A6000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 4000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 4500,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 5000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 6000 MaxQ,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 6000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,PRO 6000 MIG 24GB,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,PRO 6000 MIG 48GB,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 6000 WK,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,Tesla V100,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,V100 SXM2,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,unknown,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,MI300X,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,A100 PCIe,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,A100 SXM 40GB,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,A100 SXM,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,A40,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,B200,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,B300,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,B300 MIG 34GB,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,NVIDIA GeForce GTX 1050,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,NVIDIA GeForce GTX 1050 Ti,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3070,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3080,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3080 Ti,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3090,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3090 Ti,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4070 Ti,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4080,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4080 SUPER,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4090,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 5080,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 5090,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H100 SXM,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H100 NVL,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H100 PCIe,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H200 SXM,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H200 NVL,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,L4,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,L40,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,L40S,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 2000 Ada,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4000 Ada,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4000 Ada SFF,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 5000 Ada,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 6000 Ada,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A2000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A4000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A4500,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A5000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A6000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 4000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 4500,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 5000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 6000 MaxQ,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 6000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,PRO 6000 MIG 24GB,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,PRO 6000 MIG 48GB,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 6000 WK,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,Tesla V100,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,V100 SXM2,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,unknown,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,MI300X,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,A100 PCIe,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,A100 SXM 40GB,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,A100 SXM,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,A40,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,B200,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,B300,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,B300 MIG 34GB,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,NVIDIA GeForce GTX 1050,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,NVIDIA GeForce GTX 1050 Ti,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3070,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3080,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3080 Ti,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3090,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 3090 Ti,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4070 Ti,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4080,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4080 SUPER,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4090,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 5080,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 5090,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H100 SXM,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H100 NVL,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H100 PCIe,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H200 SXM,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,H200 NVL,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,L4,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,L40,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,L40S,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 2000 Ada,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4000 Ada,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 4000 Ada SFF,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 5000 Ada,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX 6000 Ada,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A2000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A4000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A4500,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A5000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX A6000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 4000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 4500,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 5000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 6000 MaxQ,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 6000,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,PRO 6000 MIG 24GB,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,PRO 6000 MIG 48GB,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,RTX PRO 6000 WK,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,Tesla V100,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,V100 SXM2,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
+,,,,,,,,,provider_timeseries,2026-06-25_runpod.csv,,,unknown,,runpod,,0.0,,2026-06-24 19:51:35,,,live_provider_timeseries,1.0
