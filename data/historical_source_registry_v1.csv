@@ -1,0 +1,8 @@
+source,category,automation,priority,target,status
+AWS,hyperscaler,api_or_scraper,critical,"pricing, gpu catalog, regions",planned
+Azure,hyperscaler,api_or_scraper,critical,"vm pricing, gpu catalog",planned
+Google Cloud,hyperscaler,api_or_scraper,critical,"accelerators, pricing",planned
+CoreWeave,gpu_cloud,scraper,high,gpu inventory,planned
+Lambda,gpu_cloud,scraper,high,pricing,planned
+Crusoe,gpu_cloud,scraper,high,gpu catalog,planned
+Nebius,gpu_cloud,scraper,medium,gpu catalog,planned
