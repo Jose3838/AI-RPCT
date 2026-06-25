@@ -1,0 +1,2 @@
+model_name,train_accuracy,validation_accuracy,test_accuracy,generalization_gap,production_ready,blockers,next_action
+forecast_engine_v6,100.0,0.0,0.0,100.0,False,"poor_validation_generalization, poor_test_generalization, large_train_validation_gap",Collect more live history and improve feature generalization.
