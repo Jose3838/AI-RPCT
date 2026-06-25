@@ -1,0 +1,149 @@
+provider,gpu,forecast_signal,confidence,expected_accuracy,validation_status
+runpod,A100 PCIe,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,A100 SXM,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,A100 SXM 40GB,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,A40,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,B200,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,B300,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,B300 MIG 34GB,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,H100 NVL,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,H100 PCIe,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,H100 SXM,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,H200 NVL,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,H200 SXM,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,L4,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,L40,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,L40S,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,MI300X,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,NVIDIA GeForce GTX 1050,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,NVIDIA GeForce GTX 1050 Ti,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,PRO 6000 MIG 24GB,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,PRO 6000 MIG 48GB,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 2000 Ada,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 3070,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 3080,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 3080 Ti,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 3090,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 3090 Ti,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 4000 Ada,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 4000 Ada SFF,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 4070 Ti,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 4080,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 4080 SUPER,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 4090,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 5000 Ada,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 5080,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 5090,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX 6000 Ada,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX A2000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX A4000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX A4500,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX A5000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX A6000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX PRO 4000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX PRO 4500,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX PRO 5000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX PRO 6000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX PRO 6000 MaxQ,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,RTX PRO 6000 WK,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,Tesla V100,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,V100 SXM2,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod,unknown,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,A100 PCIe,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,A100 SXM,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,A100 SXM 40GB,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,A40,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,B200,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,B300,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,B300 MIG 34GB,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,H100 NVL,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,H100 PCIe,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,H100 SXM,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,H200 NVL,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,H200 SXM,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,L4,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,L40,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,L40S,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,MI300X,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,NVIDIA GeForce GTX 1050,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,NVIDIA GeForce GTX 1050 Ti,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,PRO 6000 MIG 24GB,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,PRO 6000 MIG 48GB,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 2000 Ada,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 3070,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 3080,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 3080 Ti,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 3090,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 3090 Ti,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 4000 Ada,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 4000 Ada SFF,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 4070 Ti,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 4080,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 4080 SUPER,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 4090,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 5000 Ada,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 5080,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 5090,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX 6000 Ada,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX A2000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX A4000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX A4500,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX A5000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX A6000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX PRO 4000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX PRO 4500,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX PRO 5000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX PRO 6000,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX PRO 6000 MaxQ,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,RTX PRO 6000 WK,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,Tesla V100,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,V100 SXM2,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+runpod_real,unknown,insufficient_price_data,45.0,0.6,awaiting_future_market_data
+vast,A100 PCIE,stable_market,45.0,0.6,awaiting_future_market_data
+vast,A800 PCIE,stable_market,45.0,0.6,awaiting_future_market_data
+vast,B200,volatile_market,50.0,0.6,awaiting_future_market_data
+vast,H100 NVL,volatile_market,50.0,0.6,awaiting_future_market_data
+vast,H100 SXM,volatile_market,50.0,0.6,awaiting_future_market_data
+vast,H200,volatile_market,65.0,0.75,awaiting_future_market_data
+vast,H200 NVL,volatile_market,50.0,0.6,awaiting_future_market_data
+vast,RTX 3090,volatile_market,50.0,0.6,awaiting_future_market_data
+vast,RTX 4070S Ti,volatile_market,50.0,0.6,awaiting_future_market_data
+vast,RTX 4090,volatile_market,50.0,0.6,awaiting_future_market_data
+vast,RTX 4090D,stable_market,45.0,0.6,awaiting_future_market_data
+vast,RTX 5060,stable_market,45.0,0.6,awaiting_future_market_data
+vast,RTX 5060 Ti,volatile_market,50.0,0.6,awaiting_future_market_data
+vast,RTX 5070,price_pressure_possible,50.0,0.6,awaiting_future_market_data
+vast,RTX 5070 Ti,volatile_market,50.0,0.6,awaiting_future_market_data
+vast,RTX 5080,stable_market,45.0,0.6,awaiting_future_market_data
+vast,RTX 5090,volatile_market,65.0,0.75,awaiting_future_market_data
+vast,RTX 6000Ada,volatile_market,50.0,0.6,awaiting_future_market_data
+vast,RTX PRO 4000,volatile_market,50.0,0.6,awaiting_future_market_data
+vast,RTX PRO 5000,volatile_market,50.0,0.6,awaiting_future_market_data
+vast,RTX PRO 6000 S,volatile_market,65.0,0.75,awaiting_future_market_data
+vast,RTX PRO 6000 WS,volatile_market,65.0,0.75,awaiting_future_market_data
+vast,Tesla V100,volatile_market,50.0,0.6,awaiting_future_market_data
+vast_real,A100 PCIE,stable_market,45.0,0.6,awaiting_future_market_data
+vast_real,A800 PCIE,stable_market,45.0,0.6,awaiting_future_market_data
+vast_real,B200,volatile_market,50.0,0.6,awaiting_future_market_data
+vast_real,B300,stable_market,45.0,0.6,awaiting_future_market_data
+vast_real,H100 NVL,volatile_market,45.0,0.6,awaiting_future_market_data
+vast_real,H100 SXM,volatile_market,50.0,0.6,awaiting_future_market_data
+vast_real,H200,volatile_market,50.0,0.6,awaiting_future_market_data
+vast_real,H200 NVL,volatile_market,50.0,0.6,awaiting_future_market_data
+vast_real,RTX 3090,volatile_market,50.0,0.6,awaiting_future_market_data
+vast_real,RTX 4070,stable_market,45.0,0.6,awaiting_future_market_data
+vast_real,RTX 4070S Ti,volatile_market,45.0,0.6,awaiting_future_market_data
+vast_real,RTX 4090,volatile_market,50.0,0.6,awaiting_future_market_data
+vast_real,RTX 4090D,stable_market,45.0,0.6,awaiting_future_market_data
+vast_real,RTX 5060,stable_market,45.0,0.6,awaiting_future_market_data
+vast_real,RTX 5060 Ti,volatile_market,50.0,0.6,awaiting_future_market_data
+vast_real,RTX 5070,volatile_market,45.0,0.6,awaiting_future_market_data
+vast_real,RTX 5070 Ti,volatile_market,50.0,0.6,awaiting_future_market_data
+vast_real,RTX 5080,price_pressure_possible,45.0,0.6,awaiting_future_market_data
+vast_real,RTX 5090,volatile_market,65.0,0.75,awaiting_future_market_data
+vast_real,RTX 6000Ada,volatile_market,50.0,0.6,awaiting_future_market_data
+vast_real,RTX PRO 4000,volatile_market,45.0,0.6,awaiting_future_market_data
+vast_real,RTX PRO 5000,volatile_market,50.0,0.6,awaiting_future_market_data
+vast_real,RTX PRO 6000 S,volatile_market,65.0,0.75,awaiting_future_market_data
+vast_real,RTX PRO 6000 WS,volatile_market,50.0,0.6,awaiting_future_market_data
+vast_real,Tesla V100,volatile_market,50.0,0.6,awaiting_future_market_data
