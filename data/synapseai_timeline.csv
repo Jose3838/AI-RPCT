@@ -1,0 +1,5 @@
+timeline_id,software_stack,vendor,version,release_date,release_year,lifecycle_status,source_id,source_url,notes
+synapseai_100,SynapseAI,Intel,1.10,2022-09-27,2022,historical,intel_products,https://docs.habana.ai,Official SynapseAI documentation reference.
+synapseai_110,SynapseAI,Intel,1.11,2023-03-30,2023,historical,intel_products,https://docs.habana.ai,Official SynapseAI documentation reference.
+synapseai_115,SynapseAI,Intel,1.15,2024-04-02,2024,historical,intel_products,https://docs.habana.ai,Official SynapseAI documentation reference.
+synapseai_120,SynapseAI,Intel,1.20,2025-03-18,2025,current,intel_products,https://docs.habana.ai,Official SynapseAI documentation reference.
