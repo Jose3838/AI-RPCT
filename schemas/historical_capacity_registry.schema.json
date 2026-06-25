@@ -1,0 +1,33 @@
+{
+  "dataset_id": "historical_capacity_registry",
+  "schema_version": "1",
+  "required_columns": [
+    "capacity_record_id",
+    "relationship_id",
+    "observation_date",
+    "capacity_status",
+    "availability_level",
+    "source_id"
+  ],
+  "unique_columns": [
+    "capacity_record_id"
+  ],
+  "allowed_values": {
+    "capacity_status": [
+      "available",
+      "limited",
+      "unavailable"
+    ],
+    "availability_level": [
+      "high",
+      "medium",
+      "low",
+      "unknown"
+    ]
+  },
+  "reference_columns": {
+    "relationship_id": "provider_relationship_registry.relationship_id",
+    "source_id": "historical_source_registry.source_id"
+  },
+  "notes": "Schema for point-in-time historical capacity observations."
+}
