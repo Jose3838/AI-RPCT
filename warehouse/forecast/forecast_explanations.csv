@@ -1,0 +1,3 @@
+explanation_id,forecast_id,primary_reason,secondary_reason,governance_note
+exp000001,fcst000001,High availability observed,Capacity currently available,Rule-based explanation only. No ML inference. No accuracy claim.
+exp000002,fcst000002,Limited availability observed,Monitor provider capacity,Rule-based explanation only. No ML inference. No accuracy claim.
