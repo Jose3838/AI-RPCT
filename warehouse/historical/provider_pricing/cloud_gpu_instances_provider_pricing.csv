@@ -1,13 +1,13 @@
 date,provider,gpu,instance,price_per_hour,region,source,category,trust_grade,created_at
-2017-01-01,AWS,K80,p2,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:01:45.792154+00:00
-2017-10-01,AWS,V100,p3,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:01:45.792154+00:00
-2020-11-01,AWS,A100,p4d,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:01:45.792154+00:00
-2023-09-01,AWS,H100,p5,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:01:45.792154+00:00
-2017-01-01,Azure,K80,NC,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:01:45.792154+00:00
-2018-01-01,Azure,V100,NCv3,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:01:45.792154+00:00
-2020-01-01,Azure,A100,ND A100 v4,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:01:45.792154+00:00
-2023-01-01,Azure,H100,ND H100 v5,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:01:45.792154+00:00
-2017-01-01,Google Cloud,K80,k80,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:01:45.792154+00:00
-2018-01-01,Google Cloud,V100,v100,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:01:45.792154+00:00
-2021-01-01,Google Cloud,A100,a2,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:01:45.792154+00:00
-2023-01-01,Google Cloud,H100,a3,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:01:45.792154+00:00
+2017-01-01,AWS,K80,p2,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00
+2017-10-01,AWS,V100,p3,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00
+2020-11-01,AWS,A100,p4d,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00
+2023-09-01,AWS,H100,p5,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00
+2017-01-01,Azure,K80,NC,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00
+2018-01-01,Azure,V100,NCv3,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00
+2020-01-01,Azure,A100,ND A100 v4,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00
+2023-01-01,Azure,H100,ND H100 v5,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00
+2017-01-01,Google Cloud,K80,k80,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00
+2018-01-01,Google Cloud,V100,v100,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00
+2021-01-01,Google Cloud,A100,a2,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00
+2023-01-01,Google Cloud,H100,a3,0,global,Cloud GPU Instances,provider_pricing,A,2026-06-25T11:03:21.909828+00:00
