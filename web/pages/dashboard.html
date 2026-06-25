@@ -25,14 +25,100 @@
     <section class="hero">
       <p class="eyebrow">AI-RPCT Module</p>
       <h1>Dashboard</h1>
-      <p>Pipeline status, KPIs, and platform overview.</p>
+      <p>Pipeline status, KPIs, health checks, and platform overview.</p>
     </section>
 
-    <section class="panel">
-      <h2>Status</h2>
-      <p>This page is part of the AI-RPCT Web Console framework.</p>
-      <p>Detailed data views will be wired into this module in the next sprint.</p>
-    </section>
+    
+<section class="grid">
+  
+<div class="card">
+  <strong>Pipeline Status</strong>
+  <span>SUCCESS</span>
+</div>
+
+  
+<div class="card">
+  <strong>Registries</strong>
+  <span>138</span>
+</div>
+
+  
+<div class="card">
+  <strong>Providers</strong>
+  <span>9</span>
+</div>
+
+  
+<div class="card">
+  <strong>Accelerators</strong>
+  <span>10</span>
+</div>
+
+  
+<div class="card">
+  <strong>Feature Records</strong>
+  <span>2</span>
+</div>
+
+  
+<div class="card">
+  <strong>Forecast Records</strong>
+  <span>2</span>
+</div>
+
+  
+<div class="card">
+  <strong>Data Quality Checks</strong>
+  <span>4</span>
+</div>
+
+  
+<div class="card">
+  <strong>ML Production Promotions</strong>
+  <span>0</span>
+</div>
+
+</section>
+
+<section class="panel">
+  <h2>Pipeline Health</h2>
+  
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>dataset</th><th>row_count</th><th>status</th></tr></thead>
+    <tbody><tr><td>feature_store.csv</td><td>2</td><td>ok</td></tr><tr><td>forecast_dataset.csv</td><td>2</td><td>ok</td></tr><tr><td>forecast_engine_v1_output.csv</td><td>2</td><td>ok</td></tr><tr><td>forecast_explanations.csv</td><td>2</td><td>ok</td></tr></tbody>
+  </table>
+</div>
+
+
+</section>
+
+<section class="panel">
+  <h2>Data Quality</h2>
+  
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>dataset</th><th>row_count</th><th>column_count</th><th>status</th></tr></thead>
+    <tbody><tr><td>feature_store.csv</td><td>2</td><td>9</td><td>ok</td></tr><tr><td>forecast_dataset.csv</td><td>2</td><td>9</td><td>ok</td></tr><tr><td>forecast_engine_v1_output.csv</td><td>2</td><td>9</td><td>ok</td></tr><tr><td>forecast_explanations.csv</td><td>2</td><td>5</td><td>ok</td></tr></tbody>
+  </table>
+</div>
+
+
+</section>
+
+<section class="panel">
+  <h2>Forecast Run Summary</h2>
+  
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>summary_id</th><th>run_timestamp_utc</th><th>forecast_output_rows</th><th>governance_status</th><th>ml_training_allowed</th><th>production_promotion_allowed</th></tr></thead>
+    <tbody><tr><td>forecast_summary_000001</td><td>2026-06-25T23:40:05.611555+00:00</td><td>2</td><td>non_production_no_true_labels</td><td>false</td><td>false</td></tr></tbody>
+  </table>
+</div>
+
+
+</section>
+
   </main>
 
   <script src="../assets/js/app.js"></script>

@@ -10,8 +10,7 @@ PAGES = WEB / "pages"
 CSS = WEB / "assets" / "css" / "style.css"
 JS = WEB / "assets" / "js" / "app.js"
 
-REGISTRY_METADATA = ROOT / "data" / "registry_metadata.csv"
-
+DATA = ROOT / "data"
 
 PAGES_CONFIG = [
     ("dashboard", "Dashboard", "Pipeline status, KPIs, and platform overview."),
@@ -42,58 +41,94 @@ def html_escape(value: str) -> str:
     )
 
 
+def row_count(filename: str) -> int:
+    return len(load_csv(DATA / filename))
+
+
 def navigation(prefix: str = "") -> str:
-    links = [
+    return "\n".join(
         f'<a href="{prefix}pages/{slug}.html">{title}</a>'
         for slug, title, _ in PAGES_CONFIG
-    ]
-
-    return "\n".join(links)
+    )
 
 
 def page_navigation() -> str:
-    links = [
+    return "\n".join(
         f'<a href="{slug}.html">{title}</a>'
         for slug, title, _ in PAGES_CONFIG
-    ]
-
-    return "\n".join(links)
+    )
 
 
-def render_table(rows: list[dict[str, str]], limit: int = 40) -> str:
+def render_table(rows: list[dict[str, str]], limit: int = 30) -> str:
     if not rows:
         return "<p>No data available.</p>"
 
     columns = list(rows[0].keys())
     visible_rows = rows[:limit]
 
-    header = "".join(f"<th>{html_escape(column)}</th>" for column in columns)
+    header = "".join(f"<th>{html_escape(col)}</th>" for col in columns)
 
     body = ""
-
     for row in visible_rows:
         body += "<tr>"
-        for column in columns:
-            body += f"<td>{html_escape(row.get(column, ''))}</td>"
+        for col in columns:
+            body += f"<td>{html_escape(row.get(col, ''))}</td>"
         body += "</tr>"
 
     more = ""
-
     if len(rows) > limit:
         more = f"<p class='muted'>Showing {limit} of {len(rows)} rows.</p>"
 
     return f"""
 <div class="table-wrap">
   <table>
-    <thead>
-      <tr>{header}</tr>
-    </thead>
-    <tbody>
-      {body}
-    </tbody>
+    <thead><tr>{header}</tr></thead>
+    <tbody>{body}</tbody>
   </table>
 </div>
 {more}
+"""
+
+
+def metric_card(label: str, value: str) -> str:
+    return f"""
+<div class="card">
+  <strong>{html_escape(label)}</strong>
+  <span>{html_escape(value)}</span>
+</div>
+"""
+
+
+def page_shell(title: str, description: str, body: str) -> str:
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{html_escape(title)} · AI-RPCT</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">AI-RPCT</div>
+    <nav>
+      <a href="../index.html">Home</a>
+      {page_navigation()}
+    </nav>
+  </aside>
+
+  <main class="content">
+    <section class="hero">
+      <p class="eyebrow">AI-RPCT Module</p>
+      <h1>{html_escape(title)}</h1>
+      <p>{html_escape(description)}</p>
+    </section>
+
+    {body}
+  </main>
+
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
 """
 
 
@@ -124,10 +159,10 @@ def write_index() -> None:
     </section>
 
     <section class="grid">
-      <div class="card"><strong>Pipeline</strong><span>SUCCESS</span></div>
-      <div class="card"><strong>Registries</strong><span>Auto Catalog</span></div>
-      <div class="card"><strong>Forecast</strong><span>Rule-based v1</span></div>
-      <div class="card"><strong>API</strong><span>FastAPI v2</span></div>
+      {metric_card("Pipeline", "SUCCESS")}
+      {metric_card("Registries", str(row_count("registry_metadata.csv")))}
+      {metric_card("Forecast Records", str(row_count("forecast_engine_v1_output.csv")))}
+      {metric_card("API", "FastAPI v2")}
     </section>
 
     <section class="panel">
@@ -145,92 +180,86 @@ def write_index() -> None:
     (WEB / "index.html").write_text(html, encoding="utf-8")
 
 
-def write_default_page(slug: str, title: str, description: str) -> None:
-    html = f"""<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>{html_escape(title)} · AI-RPCT</title>
-  <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
-  <aside class="sidebar">
-    <div class="brand">AI-RPCT</div>
-    <nav>
-      <a href="../index.html">Home</a>
-      {page_navigation()}
-    </nav>
-  </aside>
+def write_dashboard_page() -> None:
+    pipeline_health = load_csv(DATA / "pipeline_health_summary.csv")
+    data_quality = load_csv(DATA / "data_quality_metrics.csv")
+    forecast_summary = load_csv(DATA / "forecast_run_summary.csv")
 
-  <main class="content">
-    <section class="hero">
-      <p class="eyebrow">AI-RPCT Module</p>
-      <h1>{html_escape(title)}</h1>
-      <p>{html_escape(description)}</p>
-    </section>
+    body = f"""
+<section class="grid">
+  {metric_card("Pipeline Status", "SUCCESS")}
+  {metric_card("Registries", str(row_count("registry_metadata.csv")))}
+  {metric_card("Providers", str(row_count("provider_entity_registry.csv")))}
+  {metric_card("Accelerators", str(row_count("unified_accelerator_registry.csv")))}
+  {metric_card("Feature Records", str(row_count("feature_store.csv")))}
+  {metric_card("Forecast Records", str(row_count("forecast_engine_v1_output.csv")))}
+  {metric_card("Data Quality Checks", str(row_count("data_quality_metrics.csv")))}
+  {metric_card("ML Production Promotions", "0")}
+</section>
 
-    <section class="panel">
-      <h2>Status</h2>
-      <p>This page is part of the AI-RPCT Web Console framework.</p>
-      <p>Detailed data views will be wired into this module in the next sprint.</p>
-    </section>
-  </main>
+<section class="panel">
+  <h2>Pipeline Health</h2>
+  {render_table(pipeline_health)}
+</section>
 
-  <script src="../assets/js/app.js"></script>
-</body>
-</html>
+<section class="panel">
+  <h2>Data Quality</h2>
+  {render_table(data_quality)}
+</section>
+
+<section class="panel">
+  <h2>Forecast Run Summary</h2>
+  {render_table(forecast_summary)}
+</section>
 """
-    (PAGES / f"{slug}.html").write_text(html, encoding="utf-8")
+    (PAGES / "dashboard.html").write_text(
+        page_shell(
+            "Dashboard",
+            "Pipeline status, KPIs, health checks, and platform overview.",
+            body,
+        ),
+        encoding="utf-8",
+    )
 
 
 def write_registry_page() -> None:
-    rows = load_csv(REGISTRY_METADATA)
+    rows = load_csv(DATA / "registry_metadata.csv")
 
-    html = f"""<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Registry Explorer · AI-RPCT</title>
-  <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
-  <aside class="sidebar">
-    <div class="brand">AI-RPCT</div>
-    <nav>
-      <a href="../index.html">Home</a>
-      {page_navigation()}
-    </nav>
-  </aside>
+    body = f"""
+<section class="grid">
+  {metric_card("Registry Metadata", f"{len(rows)} rows")}
+  {metric_card("Source", "data/registry_metadata.csv")}
+  {metric_card("Status", "Active")}
+  {metric_card("Mode", "Generated")}
+</section>
 
-  <main class="content">
-    <section class="hero">
-      <p class="eyebrow">AI-RPCT Module</p>
-      <h1>Registry Explorer</h1>
-      <p>
-        Browse automatically generated registry metadata, row counts,
-        warehouse groups, and active governance status.
-      </p>
-    </section>
-
-    <section class="grid">
-      <div class="card"><strong>Registry Metadata</strong><span>{len(rows)} rows</span></div>
-      <div class="card"><strong>Source</strong><span>data/registry_metadata.csv</span></div>
-      <div class="card"><strong>Status</strong><span>Active</span></div>
-      <div class="card"><strong>Mode</strong><span>Generated</span></div>
-    </section>
-
-    <section class="panel">
-      <h2>Registry Metadata Table</h2>
-      {render_table(rows)}
-    </section>
-  </main>
-
-  <script src="../assets/js/app.js"></script>
-</body>
-</html>
+<section class="panel">
+  <h2>Registry Metadata Table</h2>
+  {render_table(rows, limit=60)}
+</section>
 """
+    (PAGES / "registry.html").write_text(
+        page_shell(
+            "Registry Explorer",
+            "Browse generated AI-RPCT registries, row counts, warehouse groups, and status.",
+            body,
+        ),
+        encoding="utf-8",
+    )
 
-    (PAGES / "registry.html").write_text(html, encoding="utf-8")
+
+def write_default_page(slug: str, title: str, description: str) -> None:
+    body = """
+<section class="panel">
+  <h2>Status</h2>
+  <p>This page is part of the AI-RPCT Web Console framework.</p>
+  <p>Detailed data views will be wired into this module in the next sprint.</p>
+</section>
+"""
+    (PAGES / f"{slug}.html").write_text(
+        page_shell(title, description, body),
+        encoding="utf-8",
+    )
 
 
 def write_assets() -> None:
@@ -337,6 +366,7 @@ p {
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 22px;
+  margin-bottom: 24px;
 }
 
 .card {
@@ -418,12 +448,14 @@ def main() -> None:
 
     write_assets()
     write_index()
+    write_dashboard_page()
+    write_registry_page()
 
     for slug, title, description in PAGES_CONFIG:
-        if slug == "registry":
-            write_registry_page()
-        else:
-            write_default_page(slug, title, description)
+        if slug in {"dashboard", "registry"}:
+            continue
+
+        write_default_page(slug, title, description)
 
     print("Web console generated.")
     print(WEB / "index.html")
