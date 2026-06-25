@@ -1,0 +1,2 @@
+model_name,train_accuracy,validation_accuracy,test_accuracy,generalization_gap,status,reason
+forecast_engine_v8,100.0,68.18,73.91,31.82,watch,"Generalization improved, but dataset is still limited."
