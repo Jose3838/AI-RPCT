@@ -1,0 +1,2 @@
+selected_model,model_version,directional_accuracy,forecast_rows,selection_reason,status
+forecast_engine_v1,1.0,0.0541,148,highest_directional_accuracy,production_candidate
