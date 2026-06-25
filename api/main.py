@@ -73,7 +73,14 @@ def registries():
     return load_csv("data/registry_metadata.csv")
 
 @app.get("/registry/{name}")
-def registry(name: str, key: str | None = None, value: str | None = None):
+def registry(
+    name: str,
+    key: str | None = None,
+    value: str | None = None,
+    sort: str | None = None,
+    limit: int | None = None,
+    offset: int = 0,
+):
     path = registry_path(name)
 
     if not path.exists():
@@ -85,27 +92,40 @@ def registry(name: str, key: str | None = None, value: str | None = None):
     with path.open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
 
-    if key is None and value is None:
-        return rows
+    if key is not None or value is not None:
+        if key is None or value is None:
+            raise HTTPException(
+                status_code=400,
+                detail="Both key and value must be provided.",
+            )
 
-    if key is None or value is None:
-        raise HTTPException(
-            status_code=400,
-            detail="Both key and value must be provided for filtering.",
-        )
+        if rows and key not in rows[0]:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Unknown filter key: {key}",
+            )
 
-    if rows and key not in rows[0]:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Unknown filter key: {key}",
-        )
+        rows = [
+            row
+            for row in rows
+            if row.get(key) == value
+        ]
 
-    return [
-        row
-        for row in rows
-        if row.get(key) == value
-    ]
+    if sort is not None:
+        if rows and sort not in rows[0]:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Unknown sort column: {sort}",
+            )
 
+        rows = sorted(rows, key=lambda r: r.get(sort, ""))
+
+    rows = rows[offset:]
+
+    if limit is not None:
+        rows = rows[:limit]
+
+    return rows
 
 @app.get("/providers")
 def providers():
