@@ -1,0 +1,6 @@
+hardware_id,entity_id,vendor,product_family,architecture,compute_api,launch_year,status,source_id
+hw000001,gpu_amd_instinct_mi100,AMD,AMD Instinct,CDNA,ROCm,2020,active,amd_products
+hw000002,gpu_amd_instinct_mi300x,AMD,AMD Instinct,CDNA3,ROCm,2023,active,amd_products
+hw000003,gpu_intel_max_1100,Intel,Intel Data Center GPU Max,Ponte Vecchio / Xe-HPC,oneAPI,2023,active,intel_products
+hw000004,gpu_intel_gaudi2,Intel,Intel Gaudi,Gaudi2,SynapseAI,2022,active,intel_newsroom
+hw000005,gpu_intel_gaudi3,Intel,Intel Gaudi,Gaudi3,SynapseAI,2024,active,intel_newsroom
