@@ -1,0 +1,149 @@
+provider,gpu,record_count,avg_price,min_price,max_price,availability_sum,latest_timestamp,price_spread,feature_layer,market_regime,confidence,historical_gpu_release_count,historical_market_event_count,feature_store_version,forecast_score,forecast_signal,future_market_regime,training_version,gpu_family,provider_family
+runpod,A100 PCIe,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,A100_family,gpu_marketplace_family
+runpod,A100 SXM,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,A100_family,gpu_marketplace_family
+runpod,A100 SXM 40GB,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,A100_family,gpu_marketplace_family
+runpod,A40,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,B200,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,B200_family,gpu_marketplace_family
+runpod,B300,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,B300_family,gpu_marketplace_family
+runpod,B300 MIG 34GB,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,B300_family,gpu_marketplace_family
+runpod,H100 NVL,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,H100_family,gpu_marketplace_family
+runpod,H100 PCIe,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,H100_family,gpu_marketplace_family
+runpod,H100 SXM,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,H100_family,gpu_marketplace_family
+runpod,H200 NVL,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,H200_family,gpu_marketplace_family
+runpod,H200 SXM,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,H200_family,gpu_marketplace_family
+runpod,L4,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,L4_family,gpu_marketplace_family
+runpod,L40,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,L40_family,gpu_marketplace_family
+runpod,L40S,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,L40_family,gpu_marketplace_family
+runpod,MI300X,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,AMD_MI300_family,gpu_marketplace_family
+runpod,NVIDIA GeForce GTX 1050,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,NVIDIA GeForce GTX 1050 Ti,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,PRO 6000 MIG 24GB,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,PRO 6000 MIG 48GB,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,RTX 2000 Ada,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,RTX 3070,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX30_family,gpu_marketplace_family
+runpod,RTX 3080,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX30_family,gpu_marketplace_family
+runpod,RTX 3080 Ti,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX30_family,gpu_marketplace_family
+runpod,RTX 3090,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX30_family,gpu_marketplace_family
+runpod,RTX 3090 Ti,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX30_family,gpu_marketplace_family
+runpod,RTX 4000 Ada,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,RTX 4000 Ada SFF,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,RTX 4070 Ti,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+runpod,RTX 4080,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+runpod,RTX 4080 SUPER,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+runpod,RTX 4090,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+runpod,RTX 5000 Ada,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,RTX 5080,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+runpod,RTX 5090,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+runpod,RTX 6000 Ada,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,RTX A2000,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX_A_family,gpu_marketplace_family
+runpod,RTX A4000,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX_A_family,gpu_marketplace_family
+runpod,RTX A4500,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX_A_family,gpu_marketplace_family
+runpod,RTX A5000,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX_A_family,gpu_marketplace_family
+runpod,RTX A6000,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX_A_family,gpu_marketplace_family
+runpod,RTX PRO 4000,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,RTX PRO 4500,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,RTX PRO 5000,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,RTX PRO 6000,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,RTX PRO 6000 MaxQ,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,RTX PRO 6000 WK,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod,Tesla V100,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,legacy_datacenter_family,gpu_marketplace_family
+runpod,V100 SXM2,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,legacy_datacenter_family,gpu_marketplace_family
+runpod,unknown,3,0.0,0.0,0.0,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,unknown_family,gpu_marketplace_family
+runpod_real,A100 PCIe,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,A100_family,gpu_marketplace_family
+runpod_real,A100 SXM,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,A100_family,gpu_marketplace_family
+runpod_real,A100 SXM 40GB,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,A100_family,gpu_marketplace_family
+runpod_real,A40,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,B200,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,B200_family,gpu_marketplace_family
+runpod_real,B300,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,B300_family,gpu_marketplace_family
+runpod_real,B300 MIG 34GB,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,B300_family,gpu_marketplace_family
+runpod_real,H100 NVL,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,H100_family,gpu_marketplace_family
+runpod_real,H100 PCIe,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,H100_family,gpu_marketplace_family
+runpod_real,H100 SXM,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,H100_family,gpu_marketplace_family
+runpod_real,H200 NVL,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,H200_family,gpu_marketplace_family
+runpod_real,H200 SXM,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,H200_family,gpu_marketplace_family
+runpod_real,L4,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,L4_family,gpu_marketplace_family
+runpod_real,L40,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,L40_family,gpu_marketplace_family
+runpod_real,L40S,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,L40_family,gpu_marketplace_family
+runpod_real,MI300X,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,AMD_MI300_family,gpu_marketplace_family
+runpod_real,NVIDIA GeForce GTX 1050,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,NVIDIA GeForce GTX 1050 Ti,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,PRO 6000 MIG 24GB,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,PRO 6000 MIG 48GB,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,RTX 2000 Ada,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,RTX 3070,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX30_family,gpu_marketplace_family
+runpod_real,RTX 3080,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX30_family,gpu_marketplace_family
+runpod_real,RTX 3080 Ti,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX30_family,gpu_marketplace_family
+runpod_real,RTX 3090,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX30_family,gpu_marketplace_family
+runpod_real,RTX 3090 Ti,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX30_family,gpu_marketplace_family
+runpod_real,RTX 4000 Ada,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,RTX 4000 Ada SFF,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,RTX 4070 Ti,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+runpod_real,RTX 4080,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+runpod_real,RTX 4080 SUPER,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+runpod_real,RTX 4090,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+runpod_real,RTX 5000 Ada,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,RTX 5080,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+runpod_real,RTX 5090,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+runpod_real,RTX 6000 Ada,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,RTX A2000,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX_A_family,gpu_marketplace_family
+runpod_real,RTX A4000,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX_A_family,gpu_marketplace_family
+runpod_real,RTX A4500,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX_A_family,gpu_marketplace_family
+runpod_real,RTX A5000,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX_A_family,gpu_marketplace_family
+runpod_real,RTX A6000,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX_A_family,gpu_marketplace_family
+runpod_real,RTX PRO 4000,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,RTX PRO 4500,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,RTX PRO 5000,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,RTX PRO 6000,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,RTX PRO 6000 MaxQ,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,RTX PRO 6000 WK,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+runpod_real,Tesla V100,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,legacy_datacenter_family,gpu_marketplace_family
+runpod_real,V100 SXM2,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,legacy_datacenter_family,gpu_marketplace_family
+runpod_real,unknown,2,0.0,0.0,0.0,2.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,unknown_family,gpu_marketplace_family
+vast,A100 PCIE,3,1.0022,1.002222222222222,1.002222222222222,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,A100_family,gpu_marketplace_family
+vast,A800 PCIE,3,0.6689,0.6688888888888889,0.6688888888888889,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,A100_family,gpu_marketplace_family
+vast,B200,18,6.4987,3.4444444444444446,11.256944444444445,18.0,2026-06-24 19:51:35,7.8125,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,B200_family,gpu_marketplace_family
+vast,H100 NVL,6,3.3422,2.2288888888888887,4.455555555555556,6.0,2026-06-24 19:51:35,2.2267,live_provider_forecast_features,capacity_crunch,60,14,7,v1,67,bullish,capacity_crunch,v1,H100_family,gpu_marketplace_family
+vast,H100 SXM,15,7.6857,1.611111111111111,18.66814814814815,15.0,2026-06-24 19:51:35,17.057,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,H100_family,gpu_marketplace_family
+vast,H200,27,9.9557,1.4319795321637427,29.47587719298245,27.0,2026-06-24 19:51:35,28.0439,live_provider_forecast_features,volatile_market,70,14,7,v1,62,neutral,volatile_market,v1,H200_family,gpu_marketplace_family
+vast,H200 NVL,15,4.3861,1.9435555555555557,9.328444444444443,15.0,2026-06-24 19:51:35,7.3849,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,H200_family,gpu_marketplace_family
+vast,RTX 3090,12,0.2119,0.1355555555555555,0.3,12.0,2026-06-24 19:51:35,0.1644,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX30_family,gpu_marketplace_family
+vast,RTX 4070S Ti,6,0.2037,0.1377777777777777,0.2696296296296296,6.0,2026-06-24 19:51:35,0.1319,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+vast,RTX 4090,18,0.6322,0.357037037037037,0.9407407407407408,18.0,2026-06-24 19:51:35,0.5837,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+vast,RTX 4090D,3,0.6022,0.6022222222222222,0.6022222222222222,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+vast,RTX 5060,3,0.0689,0.0688888888888888,0.0688888888888888,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+vast,RTX 5060 Ti,9,0.1689,0.0888888888888888,0.2422222222222222,9.0,2026-06-24 19:51:35,0.1533,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+vast,RTX 5070,6,0.1276,0.1188148148148148,0.1362962962962963,6.0,2026-06-24 19:51:35,0.0175,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+vast,RTX 5070 Ti,6,0.3026,0.2037037037037037,0.4014814814814814,6.0,2026-06-24 19:51:35,0.1978,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+vast,RTX 5080,3,0.2178,0.2177777777777778,0.2177777777777778,3.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+vast,RTX 5090,42,1.4507,0.4177777777777777,5.868148148148149,42.0,2026-06-24 19:51:35,5.4504,live_provider_forecast_features,volatile_market,70,14,7,v1,62,neutral,volatile_market,v1,RTX50_family,gpu_marketplace_family
+vast,RTX 6000Ada,9,1.2029,0.5377777777777778,1.602074074074074,9.0,2026-06-24 19:51:35,1.0643,live_provider_forecast_features,capacity_crunch,60,14,7,v1,67,bullish,capacity_crunch,v1,other_gpu_family,gpu_marketplace_family
+vast,RTX PRO 4000,9,0.4378,0.2822222222222222,0.6037037037037036,9.0,2026-06-24 19:51:35,0.3215,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+vast,RTX PRO 5000,9,1.0773,0.6681481481481482,1.334814814814815,9.0,2026-06-24 19:51:35,0.6667,live_provider_forecast_features,capacity_crunch,60,14,7,v1,67,bullish,capacity_crunch,v1,other_gpu_family,gpu_marketplace_family
+vast,RTX PRO 6000 S,36,3.3734,0.6134814814814815,6.936296296296296,36.0,2026-06-24 19:51:35,6.3228,live_provider_forecast_features,volatile_market,70,14,7,v1,62,neutral,volatile_market,v1,other_gpu_family,gpu_marketplace_family
+vast,RTX PRO 6000 WS,27,2.8551,0.6192592592592593,9.817037037037036,27.0,2026-06-24 19:51:35,9.1978,live_provider_forecast_features,volatile_market,70,14,7,v1,62,neutral,volatile_market,v1,other_gpu_family,gpu_marketplace_family
+vast,Tesla V100,15,0.062,0.0208888888888888,0.1515555555555555,15.0,2026-06-24 19:51:35,0.1307,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,legacy_datacenter_family,gpu_marketplace_family
+vast_real,A100 PCIE,1,1.0022,1.002222222222222,1.002222222222222,1.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,A100_family,gpu_marketplace_family
+vast_real,A800 PCIE,1,0.6689,0.6688888888888889,0.6688888888888889,1.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,A100_family,gpu_marketplace_family
+vast_real,B200,12,6.2827,3.4444444444444446,11.256944444444445,12.0,2026-06-24 19:51:35,7.8125,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,B200_family,gpu_marketplace_family
+vast_real,B300,1,15.0021,15.002083333333337,15.002083333333337,1.0,2026-06-24 19:46:19,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,B300_family,gpu_marketplace_family
+vast_real,H100 NVL,4,3.2499,1.8595555555555552,4.455555555555556,4.0,2026-06-24 19:51:35,2.596,live_provider_forecast_features,capacity_crunch,60,14,7,v1,67,bullish,capacity_crunch,v1,H100_family,gpu_marketplace_family
+vast_real,H100 SXM,11,7.5201,1.611111111111111,18.66814814814815,11.0,2026-06-24 19:51:35,17.057,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,H100_family,gpu_marketplace_family
+vast_real,H200,17,10.691,1.4319795321637427,29.47587719298245,17.0,2026-06-24 19:51:35,28.0439,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,H200_family,gpu_marketplace_family
+vast_real,H200 NVL,9,3.839,1.9435555555555557,9.328444444444443,9.0,2026-06-24 19:51:35,7.3849,live_provider_forecast_features,capacity_crunch,60,14,7,v1,67,bullish,capacity_crunch,v1,H200_family,gpu_marketplace_family
+vast_real,RTX 3090,7,0.2183,0.1355555555555555,0.3,7.0,2026-06-24 19:51:35,0.1644,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX30_family,gpu_marketplace_family
+vast_real,RTX 4070,1,0.0781,0.078074074074074,0.078074074074074,1.0,2026-06-24 19:46:19,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+vast_real,RTX 4070S Ti,4,0.2037,0.1377777777777777,0.2696296296296296,4.0,2026-06-24 19:51:35,0.1319,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+vast_real,RTX 4090,14,0.596,0.2688888888888889,0.9407407407407408,14.0,2026-06-24 19:51:35,0.6719,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+vast_real,RTX 4090D,1,0.6022,0.6022222222222222,0.6022222222222222,1.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,RTX40_family,gpu_marketplace_family
+vast_real,RTX 5060,1,0.0689,0.0688888888888888,0.0688888888888888,1.0,2026-06-24 19:51:35,0.0,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+vast_real,RTX 5060 Ti,7,0.1516,0.0888888888888888,0.2422222222222222,7.0,2026-06-24 19:51:35,0.1533,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+vast_real,RTX 5070,4,0.1525,0.1188148148148148,0.2361481481481481,4.0,2026-06-24 19:51:35,0.1173,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+vast_real,RTX 5070 Ti,5,0.2427,0.1355555555555555,0.4014814814814814,5.0,2026-06-24 19:51:35,0.2659,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+vast_real,RTX 5080,3,0.2262,0.2177777777777778,0.242962962962963,3.0,2026-06-24 19:51:35,0.0252,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,RTX50_family,gpu_marketplace_family
+vast_real,RTX 5090,29,1.4821,0.4177777777777777,5.868148148148149,29.0,2026-06-24 19:51:35,5.4504,live_provider_forecast_features,volatile_market,70,14,7,v1,62,neutral,volatile_market,v1,RTX50_family,gpu_marketplace_family
+vast_real,RTX 6000Ada,5,1.3359,0.5377777777777778,1.602074074074074,5.0,2026-06-24 19:51:35,1.0643,live_provider_forecast_features,capacity_crunch,60,14,7,v1,67,bullish,capacity_crunch,v1,other_gpu_family,gpu_marketplace_family
+vast_real,RTX PRO 4000,4,0.4352,0.2822222222222222,0.6037037037037036,4.0,2026-06-24 19:51:35,0.3215,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+vast_real,RTX PRO 5000,5,1.0603,0.6681481481481482,1.334814814814815,5.0,2026-06-24 19:51:35,0.6667,live_provider_forecast_features,capacity_crunch,60,14,7,v1,67,bullish,capacity_crunch,v1,other_gpu_family,gpu_marketplace_family
+vast_real,RTX PRO 6000 S,26,3.4938,0.6134814814814815,6.936296296296296,26.0,2026-06-24 19:51:35,6.3228,live_provider_forecast_features,volatile_market,70,14,7,v1,62,neutral,volatile_market,v1,other_gpu_family,gpu_marketplace_family
+vast_real,RTX PRO 6000 WS,18,2.871,0.6192592592592593,9.817037037037036,18.0,2026-06-24 19:51:35,9.1978,live_provider_forecast_features,tight_market,60,14,7,v1,82,very_bullish,tight_market,v1,other_gpu_family,gpu_marketplace_family
+vast_real,Tesla V100,10,0.062,0.0208888888888888,0.1515555555555555,10.0,2026-06-24 19:51:35,0.1307,live_provider_forecast_features,tight_market,60,14,7,v1,72,bullish,tight_market,v1,legacy_datacenter_family,gpu_marketplace_family
