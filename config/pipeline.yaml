@@ -28,6 +28,14 @@ steps:
 
   - build_data_quality_metrics
 
+  - build_dependency_graph
+
   - build_pipeline_dashboard
+
+  - build_release_report
+
+  - build_duckdb_analytics_layer
+
+  - run_analytics_queries
 
   - validate_all_registries
