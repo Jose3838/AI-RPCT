@@ -22,6 +22,8 @@ steps:
 
   - build_forecast_explanations
 
+  - build_forecast_run_summary
+
   - build_pipeline_run_registry
 
   - build_pipeline_health_summary
