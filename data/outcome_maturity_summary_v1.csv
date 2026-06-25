@@ -1,2 +1,2 @@
-generated_at,rows,matured_windows,pending_windows,missing_target_timestamp
-2026-06-25T16:29:27.787359+00:00,444,0,444,0
+generated_at,total_windows,matured_windows,pending_windows,next_action
+2026-06-25T16:55:47.588846+00:00,444,0,444,Continue collecting live data until outcome windows mature.
