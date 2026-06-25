@@ -27,34 +27,25 @@ def evaluate(split_df: pd.DataFrame, model: pd.DataFrame, split_name: str) -> pd
         how="left",
     )
 
-    merged["predicted_market_regime"] = (
-        merged["predicted_market_regime"]
-        .fillna("unknown")
-    )
-
-    merged["prediction_correct"] = (
-        merged["predicted_market_regime"] ==
-        merged["future_market_regime"]
-    )
-
+    merged["predicted_market_regime"] = merged["predicted_market_regime"].fillna("unknown")
+    merged["prediction_correct"] = merged["predicted_market_regime"] == merged["future_market_regime"]
     merged["evaluation_split"] = split_name
 
     return merged
 
 
-def main():
+def main() -> None:
     family = read(FAMILY)
 
-    train_rows = len(read(TRAIN))
+    train_count = len(read(TRAIN))
+    valid_count = len(read(VALID))
 
-    train = family.iloc[:train_rows].copy()
-    validation = family.iloc[train_rows:int(train_rows * 1.214)].copy()
-    test = family.iloc[int(train_rows * 1.214):].copy()
+    train = family.iloc[:train_count].copy()
+    validation = family.iloc[train_count:train_count + valid_count].copy()
+    test = family.iloc[train_count + valid_count:].copy()
 
     model = (
-        train.groupby(
-            ["provider", "gpu_family"]
-        )["future_market_regime"]
+        train.groupby(["provider", "gpu_family"])["future_market_regime"]
         .agg(lambda x: x.mode().iloc[0] if not x.mode().empty else "unknown")
         .reset_index()
         .rename(columns={"future_market_regime": "predicted_market_regime"})
@@ -67,6 +58,7 @@ def main():
             evaluate(test, model, "test"),
         ],
         ignore_index=True,
+        sort=False,
     )
 
     summary = (
@@ -87,9 +79,9 @@ def main():
             [
                 "# Forecast Engine v7",
                 "",
-                f"Train Accuracy: {summary.get('train',0)}%",
-                f"Validation Accuracy: {summary.get('validation',0)}%",
-                f"Test Accuracy: {summary.get('test',0)}%",
+                f"Train Accuracy: {summary.get('train', 0)}%",
+                f"Validation Accuracy: {summary.get('validation', 0)}%",
+                f"Test Accuracy: {summary.get('test', 0)}%",
                 "",
                 "## CTO Assessment",
                 "",
