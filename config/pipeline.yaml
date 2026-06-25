@@ -3,43 +3,30 @@ pipeline_version: "1.0"
 steps:
 
   - build_historical_source_registry
-
   - build_historical_entity_registry
-
   - build_provider_entity_registry
-
   - build_provider_relationship_registry
-
   - build_unified_accelerator_registry
-
   - build_historical_capacity_registry
 
   - build_feature_store
-
   - build_forecast_dataset
-
   - run_forecast_engine_v1
-
   - build_forecast_explanations
-
   - build_forecast_run_summary
 
   - build_pipeline_run_registry
-
   - build_pipeline_health_summary
-
   - build_data_quality_metrics
 
+  - build_registry_catalog_v2
+
   - build_dependency_graph
-
   - build_pipeline_dashboard
-
   - build_release_report
 
   - build_duckdb_analytics_layer
-
   - run_analytics_queries
-
   - build_analytics_dashboard
 
   - validate_all_registries
