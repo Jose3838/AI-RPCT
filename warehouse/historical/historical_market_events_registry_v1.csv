@@ -1,0 +1,6 @@
+event_date,event_type,title,category,impact_level,verification_status,trust_grade,registry_version,created_at
+2006-11-01,gpu_architecture_release,NVIDIA Tesla architecture introduced,gpu,high,verified,A,v1,2026-06-25T17:28:24.747850+00:00
+2012-03-01,gpu_architecture_release,NVIDIA Kepler architecture introduced,gpu,high,verified,A,v1,2026-06-25T17:28:24.747850+00:00
+2016-04-01,gpu_architecture_release,NVIDIA Pascal architecture introduced,gpu,high,verified,A,v1,2026-06-25T17:28:24.747850+00:00
+2020-05-01,gpu_architecture_release,NVIDIA Ampere architecture introduced,gpu,critical,verified,A,v1,2026-06-25T17:28:24.747850+00:00
+2022-03-01,gpu_architecture_release,NVIDIA Hopper architecture introduced,gpu,critical,verified,A,v1,2026-06-25T17:28:24.747850+00:00
