@@ -1,0 +1,5 @@
+date,provider,provider_family,gpu_family,gpu,instance,price_per_hour,region,price_basis,source,trust_grade,collector_version,created_at
+2017-01-01,Azure,hyperscaler_family,K80_family,K80,NC,0,global,placeholder,Azure historical collector,B,v1,2026-06-25T13:25:00.749210+00:00
+2018-01-01,Azure,hyperscaler_family,V100_family,V100,NCv3,0,global,placeholder,Azure historical collector,B,v1,2026-06-25T13:25:00.749210+00:00
+2020-01-01,Azure,hyperscaler_family,A100_family,A100,ND A100 v4,0,global,placeholder,Azure historical collector,B,v1,2026-06-25T13:25:00.749210+00:00
+2023-01-01,Azure,hyperscaler_family,H100_family,H100,ND H100 v5,0,global,placeholder,Azure historical collector,B,v1,2026-06-25T13:25:00.749210+00:00
