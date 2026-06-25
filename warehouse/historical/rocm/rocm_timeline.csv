@@ -1,0 +1,5 @@
+timeline_id,software_stack,vendor,version,release_date,release_year,lifecycle_status,source_id,source_url,notes
+rocm_050,ROCm,AMD,5.0,2022-02-15,2022,historical,rocm_docs,https://rocm.docs.amd.com,Official ROCm documentation reference.
+rocm_060,ROCm,AMD,6.0,2023-12-06,2023,historical,rocm_docs,https://rocm.docs.amd.com,Official ROCm documentation reference.
+rocm_061,ROCm,AMD,6.1,2024-03-20,2024,historical,rocm_docs,https://rocm.docs.amd.com,Official ROCm documentation reference.
+rocm_070,ROCm,AMD,7.0,2025-06-17,2025,current,rocm_docs,https://rocm.docs.amd.com,Official ROCm documentation reference.
