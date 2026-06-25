@@ -1,7 +1,11 @@
 from __future__ import annotations
 
-import csv
 from pathlib import Path
+
+from builders.csv_writer import (
+    write_registry_csv,
+    print_registry_result,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -58,15 +62,6 @@ ROWS = [
 ]
 
 
-def write_csv(path: Path):
-    path.parent.mkdir(parents=True, exist_ok=True)
-
-    with path.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=COLUMNS)
-        writer.writeheader()
-        writer.writerows(ROWS)
-
-
 def main():
     data_path = ROOT / "data" / "historical_capacity_registry.csv"
 
@@ -78,12 +73,19 @@ def main():
         / "historical_capacity_registry.csv"
     )
 
-    write_csv(data_path)
-    write_csv(warehouse_path)
+    write_registry_csv(
+        columns=COLUMNS,
+        rows=ROWS,
+        data_path=data_path,
+        warehouse_path=warehouse_path,
+    )
 
-    print(f"Wrote {len(ROWS)} historical capacity records.")
-    print(data_path)
-    print(warehouse_path)
+    print_registry_result(
+        row_count=len(ROWS),
+        label="historical capacity records",
+        data_path=data_path,
+        warehouse_path=warehouse_path,
+    )
 
 
 if __name__ == "__main__":
