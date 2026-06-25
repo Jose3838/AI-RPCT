@@ -1,0 +1,2 @@
+timestamp,model_name,model_version,forecast_rows,directionally_correct,pending_validation,not_evaluable,directional_accuracy,status
+2026-06-25T11:49:20.068202+00:00,forecast_engine_v1,1.0,148,8,40,100,0.0541,active
