@@ -1,0 +1,22 @@
+entity_id,entity_type,display_name,canonical_name,vendor,status,source_id,notes
+vendor_amd,vendor,AMD,Advanced Micro Devices,AMD,active,amd_ir,Vendor entity.
+vendor_intel,vendor,Intel,Intel Corporation,Intel,active,intel_newsroom,Vendor entity.
+vendor_nvidia,vendor,NVIDIA,NVIDIA Corporation,NVIDIA,active,nvidia_news,Vendor entity.
+arch_cdna,architecture,CDNA,AMD CDNA,AMD,active,amd_products,AMD datacenter GPU architecture family.
+arch_cdna2,architecture,CDNA2,AMD CDNA2,AMD,active,amd_products,AMD datacenter GPU architecture family.
+arch_cdna3,architecture,CDNA3,AMD CDNA3,AMD,active,amd_products,AMD datacenter GPU architecture family.
+arch_ponte_vecchio,architecture,Ponte Vecchio / Xe-HPC,Intel Ponte Vecchio Xe-HPC,Intel,active,intel_products,Intel Data Center GPU Max architecture reference.
+arch_gaudi2,architecture,Gaudi2,Intel Gaudi2,Intel,active,intel_newsroom,Intel Habana AI accelerator architecture reference.
+arch_gaudi3,architecture,Gaudi3,Intel Gaudi3,Intel,active,intel_newsroom,Intel AI accelerator architecture reference.
+api_rocm,compute_api,ROCm,AMD ROCm,AMD,active,rocm_docs,AMD open software stack for accelerated compute.
+api_oneapi,compute_api,oneAPI,Intel oneAPI,Intel,active,intel_products,Intel cross-architecture programming model.
+api_synapseai,compute_api,SynapseAI,Intel Gaudi SynapseAI,Intel,active,intel_newsroom,Software stack reference for Intel Gaudi accelerators.
+api_cuda,compute_api,CUDA,NVIDIA CUDA,NVIDIA,active,cuda_docs,NVIDIA parallel computing platform and programming model.
+family_amd_instinct,product_family,AMD Instinct,AMD Instinct Accelerators,AMD,active,amd_products,AMD datacenter accelerator product family.
+family_intel_data_center_gpu_max,product_family,Intel Data Center GPU Max,Intel Data Center GPU Max Series,Intel,active,intel_products,Intel datacenter GPU product family.
+family_intel_gaudi,product_family,Intel Gaudi,Intel Gaudi AI Accelerators,Intel,active,intel_newsroom,Intel Gaudi accelerator product family.
+gpu_amd_instinct_mi100,gpu,AMD Instinct MI100,AMD Instinct MI100,AMD,active,amd_ir,Linked to AMD historical GPU registry.
+gpu_amd_instinct_mi300x,gpu,AMD Instinct MI300X,AMD Instinct MI300X,AMD,active,amd_ir,Linked to AMD historical GPU registry.
+gpu_intel_max_1100,gpu,Intel Data Center GPU Max 1100,Intel Data Center GPU Max 1100,Intel,active,intel_products,Linked to Intel historical GPU registry.
+gpu_intel_gaudi2,gpu,Intel Gaudi2,Intel Gaudi2,Intel,active,intel_newsroom,Linked to Intel historical GPU registry.
+gpu_intel_gaudi3,gpu,Intel Gaudi 3 AI Accelerator,Intel Gaudi 3 AI Accelerator,Intel,active,intel_newsroom,Linked to Intel historical GPU registry.
