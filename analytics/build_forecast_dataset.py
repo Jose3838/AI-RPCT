@@ -3,10 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from builders.csv_loader import load_csv
-from builders.csv_writer import (
-    print_registry_result,
-    write_registry_csv,
-)
+from builders.registry_builder import write_registry
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -25,10 +22,10 @@ COLUMNS = [
 ]
 
 
-def build_forecast_rows() -> list[dict[str, str]]:
+def build_rows() -> list[dict[str, str]]:
     feature_rows = load_csv(FEATURE_STORE)
 
-    rows: list[dict[str, str]] = []
+    rows = []
 
     for idx, row in enumerate(feature_rows, start=1):
         rows.append(
@@ -49,29 +46,15 @@ def build_forecast_rows() -> list[dict[str, str]]:
 
 
 def main():
-    rows = build_forecast_rows()
-
-    data_path = ROOT / "data" / "forecast_dataset.csv"
-
-    warehouse_path = (
-        ROOT
-        / "warehouse"
-        / "forecast"
-        / "forecast_dataset.csv"
-    )
-
-    write_registry_csv(
+    write_registry(
+        rows=build_rows(),
         columns=COLUMNS,
-        rows=rows,
-        data_path=data_path,
-        warehouse_path=warehouse_path,
-    )
-
-    print_registry_result(
-        row_count=len(rows),
+        data_filename="forecast_dataset.csv",
+        warehouse_parts=[
+            "forecast",
+            "forecast_dataset.csv",
+        ],
         label="forecast dataset records",
-        data_path=data_path,
-        warehouse_path=warehouse_path,
     )
 
 
