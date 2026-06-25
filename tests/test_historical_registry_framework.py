@@ -37,3 +37,10 @@ def test_catalog_governance_compliant():
     amd = next(row for row in rows if row["dataset_id"] == "amd_historical_gpu_registry")
     assert amd["governance_status"] == "compliant"
     assert amd["verification_status"] in {"verified", "partial", "pending"}
+
+def test_catalog_has_intel_registry():
+    with CATALOG.open(newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+
+    dataset_ids = {row["dataset_id"] for row in rows}
+    assert "intel_historical_gpu_registry" in dataset_ids
