@@ -1,23 +1,12 @@
-# Market Regime Detector V1
+# Market Regime Detector v1
 
 Regimes detected: 148
 
-Current capability
+This module classifies the current provider/GPU market state.
 
-✔ Stable markets
-
-✔ Tight markets
-
-✔ Capacity crunch
-
-✔ Volatile markets
-
-Next version will detect
-
-- structural shifts
-
-- seasonal behaviour
-
-- GPU generation transitions
-
-- long-term market cycles
+Regimes:
+- stable_market
+- tight_market
+- capacity_crunch
+- volatile_market
+- oversupply
