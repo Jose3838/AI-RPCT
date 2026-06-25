@@ -1,0 +1,6 @@
+relationship_id,provider_entity_id,target_entity_id,relationship_type,status,source_id
+relprov000001,provider_aws,api_cuda,supports,active,aws_docs
+relprov000002,provider_azure,api_cuda,supports,active,azure_docs
+relprov000003,provider_google_cloud,api_cuda,supports,active,gcp_docs
+relprov000004,provider_coreweave,gpu_nvidia_h100,offers,active,coreweave_docs
+relprov000005,provider_lambda,gpu_nvidia_a100,offers,active,lambda_docs
