@@ -1,0 +1,25 @@
+pipeline_version: "1.0"
+
+steps:
+
+  - build_historical_source_registry
+
+  - build_historical_entity_registry
+
+  - build_provider_entity_registry
+
+  - build_provider_relationship_registry
+
+  - build_unified_accelerator_registry
+
+  - build_historical_capacity_registry
+
+  - build_feature_store
+
+  - build_forecast_dataset
+
+  - run_forecast_engine_v1
+
+  - build_forecast_explanations
+
+  - validate_all_registries
