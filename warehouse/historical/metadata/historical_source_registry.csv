@@ -7,3 +7,9 @@ nvidia_news,NVIDIA,NVIDIA Newsroom,official,https://nvidianews.nvidia.com,NVIDIA
 nvidia_products,NVIDIA,NVIDIA Product Pages,official,https://www.nvidia.com,NVIDIA product pages and platform references,high,2026-06-25,active,Future source for NVIDIA product-level references.
 cuda_docs,NVIDIA,CUDA Documentation,official,https://docs.nvidia.com/cuda,CUDA documentation and release references,high,2026-06-25,active,Future source for CUDA timeline registry.
 rocm_docs,AMD,ROCm Documentation,official,https://rocm.docs.amd.com,ROCm documentation and release references,high,2026-06-25,active,Future source for ROCm timeline registry.
+coreweave_docs,CoreWeave,CoreWeave Documentation,official,https://docs.coreweave.com,CoreWeave documentation and platform references,high,2026-06-25,active,Official CoreWeave documentation.
+lambda_docs,Lambda,Lambda Documentation,official,https://docs.lambda.ai,Lambda documentation and platform references,high,2026-06-25,active,Official Lambda documentation.
+crusoe_docs,Crusoe,Crusoe Documentation,official,https://docs.crusoe.ai,Crusoe documentation and platform references,high,2026-06-25,active,Official Crusoe documentation.
+nebius_docs,Nebius,Nebius Documentation,official,https://docs.nebius.com,Nebius documentation and platform references,high,2026-06-25,active,Official Nebius documentation.
+runpod_docs,RunPod,RunPod Documentation,official,https://docs.runpod.io,RunPod documentation and platform references,high,2026-06-25,active,Official RunPod documentation.
+vast_docs,Vast.ai,Vast.ai Documentation,official,https://docs.vast.ai,Vast.ai documentation and platform references,high,2026-06-25,active,Official Vast.ai documentation.
