@@ -1,0 +1,8 @@
+priority,provider,coverage_status,target_data,forecast_impact,automation_priority
+critical,AWS,missing,"GPU pricing, availability, instance catalog",very_high,1
+critical,Azure,missing,"GPU pricing, VM catalog",very_high,2
+critical,Google Cloud,missing,"GPU pricing, accelerator catalog",very_high,3
+high,CoreWeave,partial,"GPU inventory, pricing",high,4
+high,Lambda,partial,GPU pricing,high,5
+high,Crusoe,missing,GPU catalog,medium,6
+medium,Nebius,missing,GPU catalog,medium,7
