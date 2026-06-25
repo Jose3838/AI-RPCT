@@ -1,0 +1,9 @@
+source_id,organization,source_name,source_type,base_url,coverage,verification_level,last_verified,status,notes
+amd_ir,AMD,AMD Investor Relations,official,https://ir.amd.com,AMD official announcements and investor press releases,high,2026-06-25,active,Primary source for AMD launch and corporate announcements.
+amd_products,AMD,AMD Product Pages,official,https://www.amd.com,AMD product specifications and product pages,high,2026-06-25,active,Used for product-level references when available.
+intel_newsroom,Intel,Intel Newsroom,official,https://newsroom.intel.com,Intel official news and launch announcements,high,2026-06-25,active,Primary source for Intel public launch announcements.
+intel_products,Intel,Intel Product Specifications,official,https://www.intel.com,Intel product specification pages,high,2026-06-25,active,Used for Intel product SKU details.
+nvidia_news,NVIDIA,NVIDIA Newsroom,official,https://nvidianews.nvidia.com,NVIDIA official announcements,high,2026-06-25,active,Future source for NVIDIA historical expansion.
+nvidia_products,NVIDIA,NVIDIA Product Pages,official,https://www.nvidia.com,NVIDIA product pages and platform references,high,2026-06-25,active,Future source for NVIDIA product-level references.
+cuda_docs,NVIDIA,CUDA Documentation,official,https://docs.nvidia.com/cuda,CUDA documentation and release references,high,2026-06-25,active,Future source for CUDA timeline registry.
+rocm_docs,AMD,ROCm Documentation,official,https://rocm.docs.amd.com,ROCm documentation and release references,high,2026-06-25,active,Future source for ROCm timeline registry.
