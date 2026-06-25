@@ -1,0 +1,5 @@
+provider,provider_family,date,event_type,instance_family,gpu_family,representative_gpu,region_scope,data_type,verification_status,trust_grade,registry_version,created_at
+AWS,hyperscaler_family,2016-09-01,gpu_instance_family_available,P2,K80_family,NVIDIA K80,multi_region,provider_gpu_catalog,needs_source_link,B,v1,2026-06-25T17:29:48.600999+00:00
+AWS,hyperscaler_family,2017-10-01,gpu_instance_family_available,P3,V100_family,NVIDIA V100,multi_region,provider_gpu_catalog,needs_source_link,B,v1,2026-06-25T17:29:48.600999+00:00
+AWS,hyperscaler_family,2020-11-01,gpu_instance_family_available,P4d,A100_family,NVIDIA A100,multi_region,provider_gpu_catalog,needs_source_link,B,v1,2026-06-25T17:29:48.600999+00:00
+AWS,hyperscaler_family,2023-07-01,gpu_instance_family_available,P5,H100_family,NVIDIA H100,multi_region,provider_gpu_catalog,needs_source_link,B,v1,2026-06-25T17:29:48.600999+00:00
