@@ -1,0 +1,12 @@
+source,category,start_year,end_year,trust_grade,automation_status,notes
+NVIDIA,gpu_releases,2006,2026,A,planned,Official GPU release history
+Vast.ai,provider_pricing,2021,2026,A,live,Live marketplace pricing
+RunPod,provider_pricing,2022,2026,A,live,Live marketplace pricing
+AWS,provider_pricing,2017,2026,A,planned,EC2 GPU instances
+Microsoft Azure,provider_pricing,2017,2026,A,planned,Azure GPU instances
+Google Cloud,provider_pricing,2017,2026,A,planned,GCP GPU instances
+CoreWeave,provider_capacity,2019,2026,B,planned,Cloud GPU capacity
+Lambda Labs,provider_capacity,2018,2026,B,planned,GPU cloud provider
+Crusoe,provider_capacity,2021,2026,B,planned,Sustainable AI infrastructure
+Nebius,provider_capacity,2024,2026,B,planned,European AI cloud
+Market Events,market_events,2006,2026,A,planned,Major AI infrastructure events
