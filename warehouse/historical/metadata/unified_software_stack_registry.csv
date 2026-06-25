@@ -1,0 +1,6 @@
+software_id,software_stack,vendor,version,release_year,lifecycle_status,source_id
+sw000001,CUDA,NVIDIA,12.3,2023,historical,cuda_docs
+sw000002,CUDA,NVIDIA,13.0 Update 1,2025,historical,cuda_docs
+sw000003,ROCm,AMD,7.0,2025,current,rocm_docs
+sw000004,oneAPI,Intel,2024.2,2024,historical,intel_products
+sw000005,SynapseAI,Intel,1.20,2025,current,intel_products
