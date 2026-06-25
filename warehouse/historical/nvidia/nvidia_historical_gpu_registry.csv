@@ -1,0 +1,6 @@
+entity_id,vendor,product_name,architecture,launch_year,compute_api,status,source_id
+gpu_nvidia_tesla_k80,NVIDIA,Tesla K80,Kepler,2014,CUDA,historical,nvidia_products
+gpu_nvidia_v100,NVIDIA,Tesla V100,Volta,2017,CUDA,historical,nvidia_products
+gpu_nvidia_a100,NVIDIA,A100,Ampere,2020,CUDA,historical,nvidia_products
+gpu_nvidia_h100,NVIDIA,H100,Hopper,2022,CUDA,current,nvidia_products
+gpu_nvidia_b200,NVIDIA,B200,Blackwell,2024,CUDA,current,nvidia_products
