@@ -13,3 +13,6 @@ crusoe_docs,Crusoe,Crusoe Documentation,official,https://docs.crusoe.ai,Crusoe d
 nebius_docs,Nebius,Nebius Documentation,official,https://docs.nebius.com,Nebius documentation and platform references,high,2026-06-25,active,Official Nebius documentation.
 runpod_docs,RunPod,RunPod Documentation,official,https://docs.runpod.io,RunPod documentation and platform references,high,2026-06-25,active,Official RunPod documentation.
 vast_docs,Vast.ai,Vast.ai Documentation,official,https://docs.vast.ai,Vast.ai documentation and platform references,high,2026-06-25,active,Official Vast.ai documentation.
+aws_docs,AWS,AWS Documentation,official,https://docs.aws.amazon.com,AWS documentation and service references,high,2026-06-25,active,Official AWS documentation.
+azure_docs,Microsoft Azure,Azure Documentation,official,https://learn.microsoft.com/azure,Azure documentation and service references,high,2026-06-25,active,Official Microsoft Azure documentation.
+gcp_docs,Google Cloud,Google Cloud Documentation,official,https://cloud.google.com/docs,Google Cloud documentation and service references,high,2026-06-25,active,Official Google Cloud documentation.

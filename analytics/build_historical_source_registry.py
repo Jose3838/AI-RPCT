@@ -188,7 +188,42 @@ ROWS = [
         "notes": "Official Vast.ai documentation.",
     },
     
-
+    {
+        "source_id": "aws_docs",
+        "organization": "AWS",
+        "source_name": "AWS Documentation",
+        "source_type": "official",
+        "base_url": "https://docs.aws.amazon.com",
+        "coverage": "AWS documentation and service references",
+        "verification_level": "high",
+        "last_verified": "2026-06-25",
+        "status": "active",
+        "notes": "Official AWS documentation.",
+    },
+    {
+        "source_id": "azure_docs",
+        "organization": "Microsoft Azure",
+        "source_name": "Azure Documentation",
+        "source_type": "official",
+        "base_url": "https://learn.microsoft.com/azure",
+        "coverage": "Azure documentation and service references",
+        "verification_level": "high",
+        "last_verified": "2026-06-25",
+        "status": "active",
+        "notes": "Official Microsoft Azure documentation.",
+    },
+    {
+        "source_id": "gcp_docs",
+        "organization": "Google Cloud",
+        "source_name": "Google Cloud Documentation",
+        "source_type": "official",
+        "base_url": "https://cloud.google.com/docs",
+        "coverage": "Google Cloud documentation and service references",
+        "verification_level": "high",
+        "last_verified": "2026-06-25",
+        "status": "active",
+        "notes": "Official Google Cloud documentation.",
+    },
 ]
 
 

@@ -1,0 +1,10 @@
+provider_id,provider_name,provider_category,headquarters_country,status,source_id
+prov000001,Amazon Web Services,Hyperscaler,USA,active,aws_docs
+prov000002,Microsoft Azure,Hyperscaler,USA,active,azure_docs
+prov000003,Google Cloud,Hyperscaler,USA,active,gcp_docs
+prov000004,CoreWeave,GPU Cloud,USA,active,coreweave_docs
+prov000005,Lambda,GPU Cloud,USA,active,lambda_docs
+prov000006,Crusoe,GPU Cloud,USA,active,crusoe_docs
+prov000007,Nebius,GPU Cloud,Netherlands,active,nebius_docs
+prov000008,RunPod,GPU Cloud,,active,runpod_docs
+prov000009,Vast.ai,GPU Marketplace,USA,active,vast_docs
