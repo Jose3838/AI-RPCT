@@ -31,4 +31,6 @@ steps:
   - run_analytics_queries
   - build_analytics_dashboard
 
+  - build_web_dashboard
+
   - validate_all_registries

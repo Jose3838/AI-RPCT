@@ -1,59 +1,93 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>AI-RPCT Terminal</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-body{background:#070b16;color:#f4f7fb;font-family:Arial;padding:24px}
-h1{font-size:42px;margin-bottom:4px}
-.subtitle{color:#9fb3c8;margin-bottom:18px}
-.status{color:#7CFFB2;margin-bottom:24px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-.card{background:#151b2e;border:1px solid #26324f;border-radius:14px;padding:18px}
-.kpi{font-size:34px;font-weight:bold}
-.label{color:#9fb3c8;font-size:13px}
-canvas{background:#fff;border-radius:10px;padding:10px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{border-bottom:1px solid #26324f;padding:8px;text-align:left}
-th{color:#9fb3c8}
-a{color:#7cb7ff}
-</style>
+  <meta charset="utf-8">
+  <title>AI-RPCT Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f7f7f7;
+      color: #222;
+    }
+    h1 {
+      margin-bottom: 0;
+    }
+    .subtitle {
+      color: #666;
+      margin-top: 4px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      padding: 10px;
+    }
+    th {
+      background: #fafafa;
+    }
+    .ok {
+      color: #0a7f28;
+      font-weight: bold;
+    }
+    .governance {
+      font-size: 0.95rem;
+      color: #444;
+    }
+  </style>
 </head>
 <body>
-<h1>AI-RPCT Terminal</h1>
-<div class="subtitle">Bloomberg-style intelligence for AI infrastructure risk</div>
-<div class="status" id="refreshStatus">Loading live data...</div>
+  <h1>AI-RPCT Dashboard</h1>
+  <p class="subtitle">Generated UTC: 2026-06-25T23:05:31.522573+00:00</p>
 
-<div class="grid">
-  <div class="card"><div class="label">AI Infrastructure Index</div><div id="aiIndex" class="kpi">...</div></div>
-  <div class="card"><div class="label">GPU Price Index</div><div id="gpuPrice" class="kpi">...</div></div>
-  <div class="card"><div class="label">Risk Score</div><div id="riskScore" class="kpi">...</div></div>
-  <div class="card"><div class="label">GPU Trend</div><div id="gpuTrend" class="kpi">...</div></div>
-  <div class="card"><div class="label">Live Providers</div><div id="providerCount" class="kpi">...</div></div>
-  <div class="card"><div class="label">Data Quality</div><div id="quality" class="kpi">...</div></div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="card"><h3>Provider Market Share</h3><canvas id="marketShareChart"></canvas></div>
-  <div class="card"><h3>Provider Health</h3><table id="providerHealth"></table></div>
-</div>
-
-<br>
-
-<div class="grid">
-  <div class="card"><h3>Top Expensive GPUs</h3><table id="gpuTable"></table></div>
   <div class="card">
-    <h3>Reports</h3>
-    <p><a href="/weekly-infrastructure-report" target="_blank">Weekly Infrastructure Report</a></p>
-    <p><a href="/investor-snapshot" target="_blank">Investor Snapshot</a></p>
-    <p><a href="/market-intelligence-snapshot" target="_blank">Market Intelligence Snapshot</a></p>
-    <p><a href="/executive-ai-memo" target="_blank">Executive AI Memo</a></p>
+    <h2>Pipeline Status</h2>
+    <p class="ok">SUCCESS</p>
   </div>
-</div>
 
-<script src="app.js"></script>
+  <div class="card">
+    <h2>Datasets</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Dataset</th>
+          <th>Path</th>
+          <th>Rows</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Feature Store</td><td>data/feature_store.csv</td><td>2</td><td>OK</td></tr>
+<tr><td>Forecast Dataset</td><td>data/forecast_dataset.csv</td><td>2</td><td>OK</td></tr>
+<tr><td>Forecast Output</td><td>data/forecast_engine_v1_output.csv</td><td>2</td><td>OK</td></tr>
+<tr><td>Forecast Explanations</td><td>data/forecast_explanations.csv</td><td>2</td><td>OK</td></tr>
+<tr><td>Registry Metadata</td><td>data/registry_metadata.csv</td><td>138</td><td>OK</td></tr>
+<tr><td>Pipeline Health</td><td>data/pipeline_health_summary.csv</td><td>4</td><td>OK</td></tr>
+<tr><td>Data Quality Metrics</td><td>data/data_quality_metrics.csv</td><td>4</td><td>OK</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card governance">
+    <h2>Governance</h2>
+    <ul>
+      <li>No ML training from feature-only datasets.</li>
+      <li>No accuracy claims without true future outcome labels.</li>
+      <li>No paid production promotion from prototype forecast outputs.</li>
+      <li>No invented pricing or synthetic benchmark claims.</li>
+    </ul>
+  </div>
 </body>
 </html>
