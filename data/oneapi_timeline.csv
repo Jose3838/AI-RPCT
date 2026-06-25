@@ -1,0 +1,5 @@
+timeline_id,software_stack,vendor,version,release_date,release_year,lifecycle_status,source_id,source_url,notes
+oneapi_2021_1,oneAPI,Intel,2021.1,2020-12-08,2020,historical,intel_newsroom,https://www.intel.com/content/www/us/en/newsroom/news/intel-oneapi-toolkits-gold-release.html,Intel announced gold release of oneAPI toolkits. No compatibility or performance claims stored.
+oneapi_2022_1,oneAPI,Intel,2022.1,2021-12-22,2021,historical,intel_products,https://www.intel.com/content/www/us/en/developer/articles/release-notes/intel-oneapi-toolkit-release-notes.html,Intel oneAPI toolkit release notes reference. Date retained as release-note reference.
+oneapi_2023_2,oneAPI,Intel,2023.2,2023-06-28,2023,historical,intel_products,https://www.intel.com/content/www/us/en/developer/articles/release-notes/intel-oneapi-toolkit-release-notes.html,Intel oneAPI toolkit release notes reference. No inferred support matrix stored.
+oneapi_2024_2,oneAPI,Intel,2024.2,2024-06-25,2024,historical,intel_products,https://www.intel.com/content/www/us/en/developer/articles/release-notes/intel-oneapi-toolkit-release-notes.html,Intel oneAPI toolkit release notes reference.
