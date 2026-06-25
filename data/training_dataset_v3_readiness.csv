@@ -1,0 +1,2 @@
+training_dataset,status,feature_rows,true_label_rows,trainable_label_rows,training_rows,reason
+training_dataset_v3,not_ready,148,444,0,0,No trainable true future outcome labels are available yet.
