@@ -1,0 +1,5 @@
+date,provider,provider_family,gpu_family,gpu,instance,price_per_hour,region,price_basis,source,trust_grade,collector_version,created_at
+2018-01-01,Lambda,specialized_gpu_cloud_family,V100_family,V100,gpu_cloud,0,us,placeholder,Lambda historical collector,C,v1,2026-06-25T13:28:46.101154+00:00
+2021-01-01,Lambda,specialized_gpu_cloud_family,A100_family,A100,gpu_cloud,0,us,placeholder,Lambda historical collector,C,v1,2026-06-25T13:28:46.101154+00:00
+2023-01-01,Lambda,specialized_gpu_cloud_family,H100_family,H100,gpu_cloud,0,us,placeholder,Lambda historical collector,C,v1,2026-06-25T13:28:46.101154+00:00
+2024-01-01,Lambda,specialized_gpu_cloud_family,H200_family,H200,gpu_cloud,0,us,placeholder,Lambda historical collector,C,v1,2026-06-25T13:28:46.101154+00:00
