@@ -1,0 +1,3 @@
+forecast_id,forecast_record_id,provider_id,entity_id,rule_based_signal,forecast_class,confidence_level,governance_status,notes
+fcst000001,forecast000001,prov000004,gpu_nvidia_h100,stable_supply_signal,monitor_only,not_applicable,non_production_no_true_labels,"Rule-based prototype. No ML training, no accuracy claim, no production promotion."
+fcst000002,forecast000002,prov000005,gpu_nvidia_a100,capacity_watch_signal,watch,not_applicable,non_production_no_true_labels,"Rule-based prototype. No ML training, no accuracy claim, no production promotion."
