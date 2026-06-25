@@ -1,0 +1,11 @@
+accelerator_id,hardware_id,entity_id,vendor,accelerator_type,product_family,architecture,compute_api,generation,launch_year,status,source_id
+acc000001,hw000001,gpu_amd_instinct_mi100,AMD,GPU,AMD Instinct,CDNA,ROCm,MI100,2020,active,amd_products
+acc000002,hw000002,gpu_amd_instinct_mi300x,AMD,GPU,AMD Instinct,CDNA3,ROCm,MI300,2023,active,amd_products
+acc000003,hw000003,gpu_intel_max_1100,Intel,GPU,Intel Data Center GPU Max,Ponte Vecchio / Xe-HPC,oneAPI,Max Series,2023,active,intel_products
+acc000004,hw000004,gpu_intel_gaudi2,Intel,AI Accelerator,Intel Gaudi,Gaudi2,SynapseAI,Gaudi,2022,active,intel_newsroom
+acc000005,hw000005,gpu_intel_gaudi3,Intel,AI Accelerator,Intel Gaudi,Gaudi3,SynapseAI,Gaudi,2024,active,intel_newsroom
+acc000006,hw000006,gpu_nvidia_tesla_k80,NVIDIA,GPU,Tesla,Kepler,CUDA,Kepler,2014,active,nvidia_products
+acc000007,hw000007,gpu_nvidia_v100,NVIDIA,GPU,Tesla,Volta,CUDA,Volta,2017,active,nvidia_products
+acc000008,hw000008,gpu_nvidia_a100,NVIDIA,GPU,Data Center,Ampere,CUDA,Ampere,2020,active,nvidia_products
+acc000009,hw000009,gpu_nvidia_h100,NVIDIA,GPU,Data Center,Hopper,CUDA,Hopper,2022,active,nvidia_products
+acc000010,hw000010,gpu_nvidia_b200,NVIDIA,GPU,Data Center,Blackwell,CUDA,Blackwell,2024,active,nvidia_products
