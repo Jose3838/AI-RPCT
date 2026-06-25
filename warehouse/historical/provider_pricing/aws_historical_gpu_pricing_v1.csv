@@ -1,0 +1,5 @@
+date,provider,provider_family,gpu_family,gpu,instance,price_per_hour,region,price_basis,source,trust_grade,collector_version,created_at
+2017-01-01,AWS,hyperscaler_family,K80_family,K80,p2,0,global,placeholder,AWS historical collector,B,v1,2026-06-25T13:22:56.575635+00:00
+2017-10-01,AWS,hyperscaler_family,V100_family,V100,p3,0,global,placeholder,AWS historical collector,B,v1,2026-06-25T13:22:56.575635+00:00
+2020-11-01,AWS,hyperscaler_family,A100_family,A100,p4d,0,global,placeholder,AWS historical collector,B,v1,2026-06-25T13:22:56.575635+00:00
+2023-09-01,AWS,hyperscaler_family,H100_family,H100,p5,0,global,placeholder,AWS historical collector,B,v1,2026-06-25T13:22:56.575635+00:00
