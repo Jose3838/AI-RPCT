@@ -1,12 +1,51 @@
-.env
-logs/
-*.launchd.err.log
-*.launchd.out.log
-data/airpct.db
-*.db
+# Python
 __pycache__/
-*.pyc
-.matplotlib/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
+# Virtual environments
 venv/
 .env
+.env.*
+
+# Logs
+logs/
+*.log
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Runtime generated reports
+reports/daily_*.txt
+reports/daily_terminal_brief_*.txt
+reports/executive_ai_infrastructure_memo_*.txt
+reports/investor_snapshot_*.txt
+reports/market_intelligence_snapshot_*.txt
+reports/weekly_infrastructure_report_*.txt
+reports/report_*.txt
+reports/customer_ready_executive_brief_2026*.md
+reports/morning_brief_2026*.md
+reports/research_preview_brief_2026*.md
+
+# Runtime warehouse snapshots
+warehouse/live_provider_history/
+warehouse/provider_timeseries/
+warehouse/raw_providers/
+warehouse/snapshots/
+warehouse/forecast_snapshots/
+
+# Runtime live offer dumps
+data/live_offers/
+
+# Runtime/generated local artifacts
+CONTINUATION_PROMPT.md
+analytics/free_source_history_snapshot.pyx
+
+# Generated dashboards / local exports
+web/dashboard.html
