@@ -1,0 +1,11 @@
+relationship_id,source_entity_id,relationship_type,target_entity_id,source_id,status,notes
+rel000001,gpu_amd_instinct_mi100,uses_architecture,arch_cdna,amd_products,active,
+rel000002,gpu_amd_instinct_mi100,uses_compute_api,api_rocm,rocm_docs,active,
+rel000003,gpu_amd_instinct_mi300x,uses_architecture,arch_cdna3,amd_products,active,
+rel000004,gpu_amd_instinct_mi300x,uses_compute_api,api_rocm,rocm_docs,active,
+rel000005,gpu_intel_max_1100,uses_architecture,arch_ponte_vecchio,intel_products,active,
+rel000006,gpu_intel_max_1100,uses_compute_api,api_oneapi,intel_products,active,
+rel000007,gpu_intel_gaudi2,uses_compute_api,api_synapseai,intel_newsroom,active,
+rel000008,gpu_intel_gaudi3,uses_compute_api,api_synapseai,intel_newsroom,active,
+rel000009,gpu_amd_instinct_mi100,member_of_family,family_amd_instinct,amd_products,active,
+rel000010,gpu_intel_max_1100,member_of_family,family_intel_data_center_gpu_max,intel_products,active,
