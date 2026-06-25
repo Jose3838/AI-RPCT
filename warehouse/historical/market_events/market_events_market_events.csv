@@ -1,8 +1,8 @@
 date,event_name,event_type,impact_area,description,source,category,trust_grade,created_at
-2006-06-23,CUDA introduced,platform,gpu_compute,CUDA created the foundation for general-purpose GPU computing.,Market Events,market_events,A,2026-06-25T10:57:40.536309+00:00
-2012-09-30,AlexNet wins ImageNet,ai_breakthrough,deep_learning_demand,Deep learning accelerated demand for GPU compute.,Market Events,market_events,A,2026-06-25T10:57:40.536309+00:00
-2017-05-10,NVIDIA Volta V100 announced,gpu_launch,training_compute,V100 became a major accelerator for AI training.,Market Events,market_events,A,2026-06-25T10:57:40.536309+00:00
-2020-05-14,NVIDIA Ampere A100 announced,gpu_launch,training_compute,A100 became a major cloud AI infrastructure GPU.,Market Events,market_events,A,2026-06-25T10:57:40.536309+00:00
-2022-11-30,ChatGPT launched,market_demand,ai_infrastructure_demand,Generative AI accelerated demand for GPU infrastructure.,Market Events,market_events,A,2026-06-25T10:57:40.536309+00:00
-2023-03-21,NVIDIA H100 cloud demand accelerates,capacity_pressure,h100_availability,H100 became a high-demand GPU for frontier AI workloads.,Market Events,market_events,A,2026-06-25T10:57:40.536309+00:00
-2024-03-18,NVIDIA Blackwell announced,gpu_launch,next_generation_compute,Blackwell introduced the next major AI accelerator generation.,Market Events,market_events,A,2026-06-25T10:57:40.536309+00:00
+2006-06-23,CUDA introduced,platform,gpu_compute,CUDA created the foundation for general-purpose GPU computing.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00
+2012-09-30,AlexNet wins ImageNet,ai_breakthrough,deep_learning_demand,Deep learning accelerated demand for GPU compute.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00
+2017-05-10,NVIDIA Volta V100 announced,gpu_launch,training_compute,V100 became a major accelerator for AI training.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00
+2020-05-14,NVIDIA Ampere A100 announced,gpu_launch,training_compute,A100 became a major cloud AI infrastructure GPU.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00
+2022-11-30,ChatGPT launched,market_demand,ai_infrastructure_demand,Generative AI accelerated demand for GPU infrastructure.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00
+2023-03-21,NVIDIA H100 cloud demand accelerates,capacity_pressure,h100_availability,H100 became a high-demand GPU for frontier AI workloads.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00
+2024-03-18,NVIDIA Blackwell announced,gpu_launch,next_generation_compute,Blackwell introduced the next major AI accelerator generation.,Market Events,market_events,A,2026-06-25T10:59:32.033357+00:00
