@@ -1,0 +1,149 @@
+provider,gpu,forecast_signal,confidence,avg_price,price_spread,record_count,availability_sum,recommendation,model_source,model_name,price_trend,availability_trend,selection_strategy,production_status
+runpod,A100 PCIe,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,A100 SXM,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,A100 SXM 40GB,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,A40,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,B200,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,B300,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,B300 MIG 34GB,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,H100 NVL,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,H100 PCIe,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,H100 SXM,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,H200 NVL,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,H200 SXM,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,L4,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,L40,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,L40S,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,MI300X,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,NVIDIA GeForce GTX 1050,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,NVIDIA GeForce GTX 1050 Ti,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,PRO 6000 MIG 24GB,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,PRO 6000 MIG 48GB,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 2000 Ada,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 3070,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 3080,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 3080 Ti,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 3090,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 3090 Ti,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 4000 Ada,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 4000 Ada SFF,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 4070 Ti,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 4080,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 4080 SUPER,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 4090,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 5000 Ada,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 5080,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 5090,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX 6000 Ada,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX A2000,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX A4000,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX A4500,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX A5000,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX A6000,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX PRO 4000,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX PRO 4500,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX PRO 5000,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX PRO 6000,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX PRO 6000 MaxQ,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,RTX PRO 6000 WK,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,Tesla V100,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,V100 SXM2,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod,unknown,stable_market_expected,53,0.0,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,A100 PCIe,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,A100 SXM,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,A100 SXM 40GB,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,A40,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,B200,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,B300,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,B300 MIG 34GB,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,H100 NVL,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,H100 PCIe,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,H100 SXM,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,H200 NVL,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,H200 SXM,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,L4,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,L40,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,L40S,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,MI300X,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,NVIDIA GeForce GTX 1050,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,NVIDIA GeForce GTX 1050 Ti,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,PRO 6000 MIG 24GB,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,PRO 6000 MIG 48GB,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 2000 Ada,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 3070,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 3080,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 3080 Ti,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 3090,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 3090 Ti,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 4000 Ada,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 4000 Ada SFF,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 4070 Ti,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 4080,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 4080 SUPER,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 4090,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 5000 Ada,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 5080,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 5090,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX 6000 Ada,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX A2000,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX A4000,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX A4500,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX A5000,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX A6000,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX PRO 4000,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX PRO 4500,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX PRO 5000,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX PRO 6000,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX PRO 6000 MaxQ,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,RTX PRO 6000 WK,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,Tesla V100,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,V100 SXM2,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+runpod_real,unknown,stable_market_expected,52,0.0,,2,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast,A100 PCIE,stable_market_expected,53,1.0022,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast,A800 PCIE,stable_market_expected,53,0.6689,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast,B200,price_increase_likely,68,6.4987,,18,,,v2_trend_based,forecast_engine_v3,0.2962,0.0,highest_confidence_champion,candidate
+vast,H100 NVL,price_increase_likely,56,3.3422,,6,,,v2_trend_based,forecast_engine_v3,0.999,0.0,highest_confidence_champion,candidate
+vast,H100 SXM,price_increase_likely,65,7.6857,,15,,,v2_trend_based,forecast_engine_v3,10.5871,0.0,highest_confidence_champion,candidate
+vast,H200,price_increase_likely,77,9.9557,,27,,,v2_trend_based,forecast_engine_v3,19.584,0.0,highest_confidence_champion,candidate
+vast,H200 NVL,price_increase_likely,65,4.3861,,15,,,v2_trend_based,forecast_engine_v3,1.4062,0.0,highest_confidence_champion,candidate
+vast,RTX 3090,price_decrease_likely,62,0.2119,,12,,,v2_trend_based,forecast_engine_v3,-0.5481,0.0,highest_confidence_champion,candidate
+vast,RTX 4070S Ti,price_increase_likely,56,0.2037,,6,,,v2_trend_based,forecast_engine_v3,0.957,0.0,highest_confidence_champion,candidate
+vast,RTX 4090,price_increase_likely,68,0.6322,,18,,,v2_trend_based,forecast_engine_v3,0.3849,0.0,highest_confidence_champion,candidate
+vast,RTX 4090D,stable_market_expected,53,0.6022,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast,RTX 5060,stable_market_expected,53,0.0689,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast,RTX 5060 Ti,price_increase_likely,59,0.1689,,9,,,v2_trend_based,forecast_engine_v3,0.3797,0.0,highest_confidence_champion,candidate
+vast,RTX 5070,price_increase_likely,56,0.1276,,6,,,v2_trend_based,forecast_engine_v3,0.1471,0.0,highest_confidence_champion,candidate
+vast,RTX 5070 Ti,price_increase_likely,56,0.3026,,6,,,v2_trend_based,forecast_engine_v3,0.9709,0.0,highest_confidence_champion,candidate
+vast,RTX 5080,stable_market_expected,53,0.2178,,3,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast,RTX 5090,price_increase_likely,92,1.4507,,42,,,v2_trend_based,forecast_engine_v3,3.1525,0.0,highest_confidence_champion,candidate
+vast,RTX 6000Ada,price_increase_likely,59,1.2029,,9,,,v2_trend_based,forecast_engine_v3,1.9791,0.0,highest_confidence_champion,candidate
+vast,RTX PRO 4000,price_increase_likely,59,0.4378,,9,,,v2_trend_based,forecast_engine_v3,1.1391,0.0,highest_confidence_champion,candidate
+vast,RTX PRO 5000,price_increase_likely,59,1.0773,,9,,,v2_trend_based,forecast_engine_v3,0.8392,0.0,highest_confidence_champion,candidate
+vast,RTX PRO 6000 S,price_increase_likely,86,3.3734,,36,,,v2_trend_based,forecast_engine_v3,3.1472,0.0,highest_confidence_champion,candidate
+vast,RTX PRO 6000 WS,price_increase_likely,77,2.8551,,27,,,v2_trend_based,forecast_engine_v3,8.14,0.0,highest_confidence_champion,candidate
+vast,Tesla V100,price_decrease_likely,65,0.062,,15,,,v2_trend_based,forecast_engine_v3,-0.8622,0.0,highest_confidence_champion,candidate
+vast_real,A100 PCIE,stable_market_expected,51,1.0022,,1,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast_real,A800 PCIE,stable_market_expected,51,0.6689,,1,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast_real,B200,price_increase_likely,62,6.2827,,12,,,v2_trend_based,forecast_engine_v3,1.5895,0.0,highest_confidence_champion,candidate
+vast_real,B300,stable_market_expected,51,15.0021,,1,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast_real,H100 NVL,price_increase_likely,54,3.2499,,4,,,v2_trend_based,forecast_engine_v3,1.396,0.0,highest_confidence_champion,candidate
+vast_real,H100 SXM,price_increase_likely,61,7.5201,,11,,,v2_trend_based,forecast_engine_v3,10.5871,0.0,highest_confidence_champion,candidate
+vast_real,H200,price_increase_likely,67,10.691,,17,,,v2_trend_based,forecast_engine_v3,4.1577,0.0,highest_confidence_champion,candidate
+vast_real,H200 NVL,price_increase_likely,59,3.839,,9,,,v2_trend_based,forecast_engine_v3,1.4062,0.0,highest_confidence_champion,candidate
+vast_real,RTX 3090,price_decrease_likely,57,0.2183,,7,,,v2_trend_based,forecast_engine_v3,-0.4959,0.0,highest_confidence_champion,candidate
+vast_real,RTX 4070,stable_market_expected,51,0.0781,,1,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast_real,RTX 4070S Ti,stable_market_expected,54,0.2037,,4,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast_real,RTX 4090,price_increase_likely,64,0.596,,14,,,v2_trend_based,forecast_engine_v3,1.0549,0.0,highest_confidence_champion,candidate
+vast_real,RTX 4090D,stable_market_expected,51,0.6022,,1,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast_real,RTX 5060,stable_market_expected,51,0.0689,,1,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast_real,RTX 5060 Ti,price_increase_likely,57,0.1516,,7,,,v2_trend_based,forecast_engine_v3,0.3797,0.0,highest_confidence_champion,candidate
+vast_real,RTX 5070,price_decrease_likely,54,0.1525,,4,,,v2_trend_based,forecast_engine_v3,-0.4228,0.0,highest_confidence_champion,candidate
+vast_real,RTX 5070 Ti,price_increase_likely,55,0.2427,,5,,,v2_trend_based,forecast_engine_v3,1.9617,0.0,highest_confidence_champion,candidate
+vast_real,RTX 5080,price_decrease_likely,53,0.2262,,3,,,v2_trend_based,forecast_engine_v3,-0.1037,0.0,highest_confidence_champion,candidate
+vast_real,RTX 5090,price_increase_likely,79,1.4821,,29,,,v2_trend_based,forecast_engine_v3,2.7896,0.0,highest_confidence_champion,candidate
+vast_real,RTX 6000Ada,stable_market_expected,55,1.3359,,5,,,v2_trend_based,forecast_engine_v3,0.0,0.0,highest_confidence_champion,candidate
+vast_real,RTX PRO 4000,price_increase_likely,54,0.4352,,4,,,v2_trend_based,forecast_engine_v3,0.4125,0.0,highest_confidence_champion,candidate
+vast_real,RTX PRO 5000,price_increase_likely,55,1.0603,,5,,,v2_trend_based,forecast_engine_v3,0.6724,0.0,highest_confidence_champion,candidate
+vast_real,RTX PRO 6000 S,price_increase_likely,76,3.4938,,26,,,v2_trend_based,forecast_engine_v3,4.2198,0.0,highest_confidence_champion,candidate
+vast_real,RTX PRO 6000 WS,price_increase_likely,68,2.871,,18,,,v2_trend_based,forecast_engine_v3,14.815,0.0,highest_confidence_champion,candidate
+vast_real,Tesla V100,price_decrease_likely,60,0.062,,10,,,v2_trend_based,forecast_engine_v3,-0.8622,0.0,highest_confidence_champion,candidate
