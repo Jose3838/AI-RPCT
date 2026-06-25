@@ -1,0 +1,6 @@
+timeline_id,software_stack,version,release_date,release_year,source_id,source_url,status,notes
+cuda_090,CUDA,9.0,2018-06-21,2018,cuda_docs,https://docs.nvidia.com/cuda/archive/9.0/cuda-toolkit-release-notes/index.html,historical_reference,Archived CUDA 9.0 release notes reference. Date reflects NVIDIA documentation page date.
+cuda_100,CUDA,10.0,2018-10-30,2018,cuda_docs,https://docs.nvidia.com/cuda/archive/10.0/cuda-toolkit-release-notes/index.html,historical_reference,Archived CUDA 10.0 release notes reference. Date reflects NVIDIA documentation page date.
+cuda_1201,CUDA,12.0 Update 1,2023-01-28,2023,cuda_docs,https://docs.nvidia.com/cuda/archive/12.0.1/cuda-toolkit-release-notes/index.html,historical_reference,CUDA 12.0 Update 1 release notes reference. No driver matrix copied into v1.
+cuda_1230,CUDA,12.3,2023-10-10,2023,cuda_docs,https://docs.nvidia.com/cuda/archive/12.3.0/cuda-toolkit-release-notes/contents.html,historical_reference,CUDA 12.3 release notes contents reference.
+cuda_1301,CUDA,13.0 Update 1,2025-09-04,2025,cuda_docs,https://docs.nvidia.com/cuda/archive/13.0.1/cuda-toolkit-release-notes/index.html,historical_reference,CUDA 13.0 Update 1 release notes reference.
