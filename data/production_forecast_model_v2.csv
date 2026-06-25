@@ -1,0 +1,2 @@
+selected_model,selection_type,baseline_reference,selected_average_score,baseline_average_score,historical_enrichment,explainability,production_status,customer_preview_ready,paid_production_ready,selection_reason
+forecast_engine_v10,historically_enriched_watch_champion,forecast_engine_v9,60.41,80.41,True,high,watch,True,False,Selected for historical timeline enrichment while remaining explainable; v9 retained as higher-score baseline reference.
