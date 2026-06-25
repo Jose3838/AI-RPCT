@@ -247,6 +247,48 @@ def write_registry_page() -> None:
         encoding="utf-8",
     )
 
+def write_infrastructure_page() -> None:
+    providers = load_csv(DATA / "provider_entity_registry.csv")
+    relationships = load_csv(DATA / "provider_relationship_registry.csv")
+    accelerators = load_csv(DATA / "unified_accelerator_registry.csv")
+    capacity = load_csv(DATA / "historical_capacity_registry.csv")
+
+    body = f"""
+<section class="grid">
+  {metric_card("Providers", str(len(providers)))}
+  {metric_card("Provider Relationships", str(len(relationships)))}
+  {metric_card("Accelerators", str(len(accelerators)))}
+  {metric_card("Capacity Records", str(len(capacity)))}
+</section>
+
+<section class="panel">
+  <h2>Provider Entities</h2>
+  {render_table(providers, limit=20)}
+</section>
+
+<section class="panel">
+  <h2>Provider Relationships</h2>
+  {render_table(relationships, limit=20)}
+</section>
+
+<section class="panel">
+  <h2>Unified Accelerators</h2>
+  {render_table(accelerators, limit=20)}
+</section>
+
+<section class="panel">
+  <h2>Historical Capacity</h2>
+  {render_table(capacity, limit=20)}
+</section>
+"""
+    (PAGES / "infrastructure.html").write_text(
+        page_shell(
+            "Infrastructure",
+            "Providers, accelerator inventory, relationships, and capacity observations.",
+            body,
+        ),
+        encoding="utf-8",
+    )
 
 def write_default_page(slug: str, title: str, description: str) -> None:
     body = """
@@ -450,9 +492,10 @@ def main() -> None:
     write_index()
     write_dashboard_page()
     write_registry_page()
+    write_infrastructure_page()
 
     for slug, title, description in PAGES_CONFIG:
-        if slug in {"dashboard", "registry"}:
+        if slug in {"dashboard", "registry", "infrastructure"}:
             continue
 
         write_default_page(slug, title, description)

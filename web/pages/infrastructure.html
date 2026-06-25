@@ -25,14 +25,87 @@
     <section class="hero">
       <p class="eyebrow">AI-RPCT Module</p>
       <h1>Infrastructure</h1>
-      <p>Providers, accelerators, and capacity data.</p>
+      <p>Providers, accelerator inventory, relationships, and capacity observations.</p>
     </section>
 
     
+<section class="grid">
+  
+<div class="card">
+  <strong>Providers</strong>
+  <span>9</span>
+</div>
+
+  
+<div class="card">
+  <strong>Provider Relationships</strong>
+  <span>5</span>
+</div>
+
+  
+<div class="card">
+  <strong>Accelerators</strong>
+  <span>10</span>
+</div>
+
+  
+<div class="card">
+  <strong>Capacity Records</strong>
+  <span>5</span>
+</div>
+
+</section>
+
 <section class="panel">
-  <h2>Status</h2>
-  <p>This page is part of the AI-RPCT Web Console framework.</p>
-  <p>Detailed data views will be wired into this module in the next sprint.</p>
+  <h2>Provider Entities</h2>
+  
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>entity_id</th><th>provider_id</th><th>provider_name</th><th>provider_category</th><th>status</th><th>source_id</th></tr></thead>
+    <tbody><tr><td>provider_aws</td><td>prov000001</td><td>Amazon Web Services</td><td>Hyperscaler</td><td>active</td><td>aws_docs</td></tr><tr><td>provider_azure</td><td>prov000002</td><td>Microsoft Azure</td><td>Hyperscaler</td><td>active</td><td>azure_docs</td></tr><tr><td>provider_google_cloud</td><td>prov000003</td><td>Google Cloud</td><td>Hyperscaler</td><td>active</td><td>gcp_docs</td></tr><tr><td>provider_coreweave</td><td>prov000004</td><td>CoreWeave</td><td>GPU Cloud</td><td>active</td><td>coreweave_docs</td></tr><tr><td>provider_lambda</td><td>prov000005</td><td>Lambda</td><td>GPU Cloud</td><td>active</td><td>lambda_docs</td></tr><tr><td>provider_crusoe</td><td>prov000006</td><td>Crusoe</td><td>GPU Cloud</td><td>active</td><td>crusoe_docs</td></tr><tr><td>provider_nebius</td><td>prov000007</td><td>Nebius</td><td>GPU Cloud</td><td>active</td><td>nebius_docs</td></tr><tr><td>provider_runpod</td><td>prov000008</td><td>RunPod</td><td>GPU Cloud</td><td>active</td><td>runpod_docs</td></tr><tr><td>provider_vast</td><td>prov000009</td><td>Vast.ai</td><td>GPU Marketplace</td><td>active</td><td>vast_docs</td></tr></tbody>
+  </table>
+</div>
+
+
+</section>
+
+<section class="panel">
+  <h2>Provider Relationships</h2>
+  
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>relationship_id</th><th>provider_entity_id</th><th>target_entity_id</th><th>relationship_type</th><th>status</th><th>source_id</th></tr></thead>
+    <tbody><tr><td>relprov000001</td><td>provider_aws</td><td>api_cuda</td><td>supports</td><td>active</td><td>aws_docs</td></tr><tr><td>relprov000002</td><td>provider_azure</td><td>api_cuda</td><td>supports</td><td>active</td><td>azure_docs</td></tr><tr><td>relprov000003</td><td>provider_google_cloud</td><td>api_cuda</td><td>supports</td><td>active</td><td>gcp_docs</td></tr><tr><td>relprov000004</td><td>provider_coreweave</td><td>gpu_nvidia_h100</td><td>offers</td><td>active</td><td>coreweave_docs</td></tr><tr><td>relprov000005</td><td>provider_lambda</td><td>gpu_nvidia_a100</td><td>offers</td><td>active</td><td>lambda_docs</td></tr></tbody>
+  </table>
+</div>
+
+
+</section>
+
+<section class="panel">
+  <h2>Unified Accelerators</h2>
+  
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>accelerator_id</th><th>hardware_id</th><th>entity_id</th><th>vendor</th><th>accelerator_type</th><th>product_family</th><th>architecture</th><th>compute_api</th><th>generation</th><th>launch_year</th><th>status</th><th>source_id</th></tr></thead>
+    <tbody><tr><td>acc000001</td><td>hw000001</td><td>gpu_amd_instinct_mi100</td><td>AMD</td><td>GPU</td><td>AMD Instinct</td><td>CDNA</td><td>ROCm</td><td>MI100</td><td>2020</td><td>active</td><td>amd_products</td></tr><tr><td>acc000002</td><td>hw000002</td><td>gpu_amd_instinct_mi300x</td><td>AMD</td><td>GPU</td><td>AMD Instinct</td><td>CDNA3</td><td>ROCm</td><td>MI300</td><td>2023</td><td>active</td><td>amd_products</td></tr><tr><td>acc000003</td><td>hw000003</td><td>gpu_intel_max_1100</td><td>Intel</td><td>GPU</td><td>Intel Data Center GPU Max</td><td>Ponte Vecchio / Xe-HPC</td><td>oneAPI</td><td>Max Series</td><td>2023</td><td>active</td><td>intel_products</td></tr><tr><td>acc000004</td><td>hw000004</td><td>gpu_intel_gaudi2</td><td>Intel</td><td>AI Accelerator</td><td>Intel Gaudi</td><td>Gaudi2</td><td>SynapseAI</td><td>Gaudi</td><td>2022</td><td>active</td><td>intel_newsroom</td></tr><tr><td>acc000005</td><td>hw000005</td><td>gpu_intel_gaudi3</td><td>Intel</td><td>AI Accelerator</td><td>Intel Gaudi</td><td>Gaudi3</td><td>SynapseAI</td><td>Gaudi</td><td>2024</td><td>active</td><td>intel_newsroom</td></tr><tr><td>acc000006</td><td>hw000006</td><td>gpu_nvidia_tesla_k80</td><td>NVIDIA</td><td>GPU</td><td>Tesla</td><td>Kepler</td><td>CUDA</td><td>Kepler</td><td>2014</td><td>active</td><td>nvidia_products</td></tr><tr><td>acc000007</td><td>hw000007</td><td>gpu_nvidia_v100</td><td>NVIDIA</td><td>GPU</td><td>Tesla</td><td>Volta</td><td>CUDA</td><td>Volta</td><td>2017</td><td>active</td><td>nvidia_products</td></tr><tr><td>acc000008</td><td>hw000008</td><td>gpu_nvidia_a100</td><td>NVIDIA</td><td>GPU</td><td>Data Center</td><td>Ampere</td><td>CUDA</td><td>Ampere</td><td>2020</td><td>active</td><td>nvidia_products</td></tr><tr><td>acc000009</td><td>hw000009</td><td>gpu_nvidia_h100</td><td>NVIDIA</td><td>GPU</td><td>Data Center</td><td>Hopper</td><td>CUDA</td><td>Hopper</td><td>2022</td><td>active</td><td>nvidia_products</td></tr><tr><td>acc000010</td><td>hw000010</td><td>gpu_nvidia_b200</td><td>NVIDIA</td><td>GPU</td><td>Data Center</td><td>Blackwell</td><td>CUDA</td><td>Blackwell</td><td>2024</td><td>active</td><td>nvidia_products</td></tr></tbody>
+  </table>
+</div>
+
+
+</section>
+
+<section class="panel">
+  <h2>Historical Capacity</h2>
+  
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>capacity_record_id</th><th>relationship_id</th><th>observation_date</th><th>capacity_status</th><th>availability_level</th><th>source_id</th></tr></thead>
+    <tbody><tr><td>cap000001</td><td>relprov000004</td><td>2024-01-15</td><td>available</td><td>high</td><td>coreweave_docs</td></tr><tr><td>cap000002</td><td>relprov000005</td><td>2024-02-01</td><td>limited</td><td>medium</td><td>lambda_docs</td></tr><tr><td>cap000003</td><td>relprov000001</td><td>2024-03-01</td><td>available</td><td>high</td><td>aws_docs</td></tr><tr><td>cap000004</td><td>relprov000002</td><td>2024-03-15</td><td>available</td><td>high</td><td>azure_docs</td></tr><tr><td>cap000005</td><td>relprov000003</td><td>2024-04-01</td><td>limited</td><td>medium</td><td>gcp_docs</td></tr></tbody>
+  </table>
+</div>
+
+
 </section>
 
   </main>
