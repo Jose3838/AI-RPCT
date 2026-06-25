@@ -1,0 +1,2 @@
+selected_model,model_type,validation_accuracy,test_accuracy,benchmark_score,explainability,guard_status,production_status,selection_reason,guard_reason
+forecast_engine_v8,rule_based_generalization,68.18,73.91,71.62,high,watch,watch,best benchmark score with explainability tie-breaker,"Generalization improved, but dataset is still limited."
