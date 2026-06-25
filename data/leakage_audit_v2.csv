@@ -1,0 +1,3 @@
+check,status,details,leakage_detected,production_block,recommendation
+target_column_present,fail,future_market_regime exists=False,,,
+summary,fail,Create true future outcome labels before training.,True,True,Create true future outcome labels before training.
