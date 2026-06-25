@@ -26,7 +26,6 @@ def main() -> None:
     train = float(summary.get("train", 0))
     validation = float(summary.get("validation", 0))
     test = float(summary.get("test", 0))
-
     gap = round(abs(train - validation), 2)
 
     if validation >= 85 and test >= 85 and gap <= 10:
