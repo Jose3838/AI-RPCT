@@ -14,7 +14,6 @@ REPORT = Path("reports/training_split_engine_v1.md")
 
 
 def main() -> None:
-
     if not TRAINING.exists():
         raise SystemExit("training_dataset_v1.csv missing")
 
@@ -23,12 +22,10 @@ def main() -> None:
     if df.empty:
         raise SystemExit("training dataset empty")
 
-    # Zeitlich sortieren, falls vorhanden
     if "latest_timestamp" in df.columns:
         df = df.sort_values("latest_timestamp")
 
     total = len(df)
-
     train_end = int(total * 0.70)
     valid_end = int(total * 0.85)
 
