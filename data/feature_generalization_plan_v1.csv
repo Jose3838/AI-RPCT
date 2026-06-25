@@ -1,0 +1,7 @@
+priority,gap,evidence,recommended_action,business_reason
+critical,poor_validation_generalization,validation_accuracy=0.0,Group sparse GPU variants into normalized GPU families before training.,Reduces overfitting and improves forecast transfer across similar GPUs.
+critical,poor_test_generalization,test_accuracy=0.0,Increase historical and live samples before allowing ML-backed production claims.,Prevents unreliable forecasts from being sold as decision intelligence.
+high,sparse_gpu_history,avg_rows_per_gpu=2.35,Create GPU family normalization: H100/H200/B200/A100/RTX40/RTX50/Legacy.,Transforms thin individual series into broader learnable market segments.
+high,limited_provider_diversity,provider_count=4,"Add historical provider coverage for AWS, Azure, GCP, CoreWeave, Lambda, Crusoe, Nebius.",Improves market representativeness and enterprise credibility.
+high,weak_price_signal,price_per_hour missing_or_zero,"Prioritize real historical price sources and normalize price basis: on-demand, spot, reserved.",Price forecasting is commercially valuable only with trusted price signals.
+medium,unseen_provider_gpu_pairs,unknown_predictions=45,"Train models at provider-family and GPU-family level, not only exact provider/GPU pair.",Allows forecasts for newly observed GPUs and providers.
