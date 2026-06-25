@@ -1,0 +1,5 @@
+check,status,details,audit,rows,leakage_detected,production_block,recommendation
+target_column_present,fail,future_market_regime exists,,,,,
+market_regime_feature_present,warning,market_regime used as feature,,,,,
+target_equals_feature,pass,future_market_regime identical to market_regime,,,,,
+,,,leakage_audit_v1,148.0,False,False,No obvious leakage detected.
