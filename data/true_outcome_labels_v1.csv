@@ -443,3 +443,891 @@ snapshot_id,provider,gpu,window_days,forecast_signal,target_timestamp,true_outco
 20260625T114644Z,vast_real,Tesla V100,7,volatile_market,2026-07-02T11:46:44.392236+00:00,,awaiting_future_observation,forecast_outcome_window,False
 20260625T114644Z,vast_real,Tesla V100,14,volatile_market,2026-07-09T11:46:44.392236+00:00,,awaiting_future_observation,forecast_outcome_window,False
 20260625T114644Z,vast_real,Tesla V100,30,volatile_market,2026-07-25T11:46:44.392236+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,A100 PCIe,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,A100 PCIe,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,A100 PCIe,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,A100 SXM,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,A100 SXM,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,A100 SXM,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,A100 SXM 40GB,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,A100 SXM 40GB,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,A100 SXM 40GB,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,A40,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,A40,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,A40,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,B200,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,B200,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,B200,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,B300,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,B300,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,B300,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,B300 MIG 34GB,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,B300 MIG 34GB,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,B300 MIG 34GB,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H100 NVL,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H100 NVL,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H100 NVL,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H100 PCIe,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H100 PCIe,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H100 PCIe,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H100 SXM,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H100 SXM,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H100 SXM,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H200 NVL,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H200 NVL,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H200 NVL,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H200 SXM,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H200 SXM,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,H200 SXM,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,L4,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,L4,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,L4,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,L40,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,L40,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,L40,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,L40S,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,L40S,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,L40S,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,MI300X,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,MI300X,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,MI300X,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,NVIDIA GeForce GTX 1050,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,NVIDIA GeForce GTX 1050,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,NVIDIA GeForce GTX 1050,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,NVIDIA GeForce GTX 1050 Ti,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,NVIDIA GeForce GTX 1050 Ti,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,NVIDIA GeForce GTX 1050 Ti,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,PRO 6000 MIG 24GB,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,PRO 6000 MIG 24GB,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,PRO 6000 MIG 24GB,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,PRO 6000 MIG 48GB,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,PRO 6000 MIG 48GB,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,PRO 6000 MIG 48GB,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 2000 Ada,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 2000 Ada,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 2000 Ada,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3070,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3070,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3070,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3080,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3080,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3080,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3080 Ti,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3080 Ti,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3080 Ti,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3090,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3090,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3090,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3090 Ti,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3090 Ti,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 3090 Ti,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4000 Ada,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4000 Ada,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4000 Ada,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4000 Ada SFF,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4000 Ada SFF,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4000 Ada SFF,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4070 Ti,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4070 Ti,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4070 Ti,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4080,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4080,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4080,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4080 SUPER,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4080 SUPER,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4080 SUPER,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4090,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4090,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 4090,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 5000 Ada,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 5000 Ada,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 5000 Ada,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 5080,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 5080,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 5080,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 5090,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 5090,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 5090,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 6000 Ada,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 6000 Ada,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX 6000 Ada,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A2000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A2000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A2000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A4000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A4000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A4000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A4500,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A4500,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A4500,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A5000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A5000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A5000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A6000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A6000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX A6000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 4000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 4000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 4000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 4500,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 4500,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 4500,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 5000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 5000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 5000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 6000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 6000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 6000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 6000 MaxQ,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 6000 MaxQ,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 6000 MaxQ,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 6000 WK,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 6000 WK,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,RTX PRO 6000 WK,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,Tesla V100,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,Tesla V100,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,Tesla V100,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,V100 SXM2,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,V100 SXM2,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,V100 SXM2,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,unknown,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,unknown,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod,unknown,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,A100 PCIe,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,A100 PCIe,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,A100 PCIe,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,A100 SXM,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,A100 SXM,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,A100 SXM,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,A100 SXM 40GB,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,A100 SXM 40GB,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,A100 SXM 40GB,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,A40,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,A40,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,A40,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,B200,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,B200,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,B200,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,B300,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,B300,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,B300,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,B300 MIG 34GB,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,B300 MIG 34GB,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,B300 MIG 34GB,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H100 NVL,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H100 NVL,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H100 NVL,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H100 PCIe,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H100 PCIe,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H100 PCIe,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H100 SXM,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H100 SXM,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H100 SXM,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H200 NVL,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H200 NVL,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H200 NVL,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H200 SXM,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H200 SXM,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,H200 SXM,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,L4,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,L4,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,L4,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,L40,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,L40,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,L40,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,L40S,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,L40S,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,L40S,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,MI300X,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,MI300X,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,MI300X,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,NVIDIA GeForce GTX 1050,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,NVIDIA GeForce GTX 1050,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,NVIDIA GeForce GTX 1050,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,NVIDIA GeForce GTX 1050 Ti,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,NVIDIA GeForce GTX 1050 Ti,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,NVIDIA GeForce GTX 1050 Ti,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,PRO 6000 MIG 24GB,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,PRO 6000 MIG 24GB,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,PRO 6000 MIG 24GB,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,PRO 6000 MIG 48GB,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,PRO 6000 MIG 48GB,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,PRO 6000 MIG 48GB,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 2000 Ada,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 2000 Ada,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 2000 Ada,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3070,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3070,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3070,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3080,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3080,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3080,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3080 Ti,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3080 Ti,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3080 Ti,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3090,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3090,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3090,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3090 Ti,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3090 Ti,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 3090 Ti,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4000 Ada,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4000 Ada,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4000 Ada,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4000 Ada SFF,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4000 Ada SFF,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4000 Ada SFF,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4070 Ti,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4070 Ti,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4070 Ti,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4080,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4080,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4080,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4080 SUPER,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4080 SUPER,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4080 SUPER,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4090,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4090,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 4090,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 5000 Ada,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 5000 Ada,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 5000 Ada,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 5080,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 5080,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 5080,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 5090,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 5090,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 5090,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 6000 Ada,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 6000 Ada,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX 6000 Ada,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A2000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A2000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A2000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A4000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A4000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A4000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A4500,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A4500,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A4500,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A5000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A5000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A5000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A6000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A6000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX A6000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 4000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 4000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 4000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 4500,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 4500,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 4500,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 5000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 5000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 5000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 6000,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 6000,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 6000,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 6000 MaxQ,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 6000 MaxQ,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 6000 MaxQ,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 6000 WK,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 6000 WK,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,RTX PRO 6000 WK,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,Tesla V100,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,Tesla V100,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,Tesla V100,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,V100 SXM2,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,V100 SXM2,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,V100 SXM2,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,unknown,7,insufficient_price_data,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,unknown,14,insufficient_price_data,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,runpod_real,unknown,30,insufficient_price_data,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,A100 PCIE,7,stable_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,A100 PCIE,14,stable_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,A100 PCIE,30,stable_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,A800 PCIE,7,stable_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,A800 PCIE,14,stable_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,A800 PCIE,30,stable_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,B200,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,B200,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,B200,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,H100 NVL,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,H100 NVL,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,H100 NVL,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,H100 SXM,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,H100 SXM,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,H100 SXM,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,H200,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,H200,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,H200,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,H200 NVL,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,H200 NVL,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,H200 NVL,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 3090,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 3090,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 3090,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 4070S Ti,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 4070S Ti,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 4070S Ti,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 4090,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 4090,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 4090,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 4090D,7,stable_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 4090D,14,stable_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 4090D,30,stable_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5060,7,stable_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5060,14,stable_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5060,30,stable_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5060 Ti,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5060 Ti,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5060 Ti,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5070,7,price_pressure_possible,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5070,14,price_pressure_possible,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5070,30,price_pressure_possible,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5070 Ti,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5070 Ti,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5070 Ti,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5080,7,stable_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5080,14,stable_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5080,30,stable_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5090,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5090,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 5090,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 6000Ada,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 6000Ada,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX 6000Ada,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX PRO 4000,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX PRO 4000,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX PRO 4000,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX PRO 5000,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX PRO 5000,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX PRO 5000,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX PRO 6000 S,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX PRO 6000 S,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX PRO 6000 S,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX PRO 6000 WS,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX PRO 6000 WS,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,RTX PRO 6000 WS,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,Tesla V100,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,Tesla V100,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast,Tesla V100,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,A100 PCIE,7,stable_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,A100 PCIE,14,stable_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,A100 PCIE,30,stable_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,A800 PCIE,7,stable_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,A800 PCIE,14,stable_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,A800 PCIE,30,stable_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,B200,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,B200,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,B200,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,B300,7,stable_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,B300,14,stable_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,B300,30,stable_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,H100 NVL,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,H100 NVL,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,H100 NVL,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,H100 SXM,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,H100 SXM,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,H100 SXM,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,H200,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,H200,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,H200,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,H200 NVL,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,H200 NVL,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,H200 NVL,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 3090,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 3090,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 3090,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 4070,7,stable_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 4070,14,stable_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 4070,30,stable_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 4070S Ti,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 4070S Ti,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 4070S Ti,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 4090,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 4090,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 4090,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 4090D,7,stable_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 4090D,14,stable_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 4090D,30,stable_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5060,7,stable_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5060,14,stable_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5060,30,stable_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5060 Ti,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5060 Ti,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5060 Ti,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5070,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5070,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5070,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5070 Ti,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5070 Ti,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5070 Ti,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5080,7,price_pressure_possible,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5080,14,price_pressure_possible,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5080,30,price_pressure_possible,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5090,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5090,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 5090,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 6000Ada,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 6000Ada,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX 6000Ada,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX PRO 4000,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX PRO 4000,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX PRO 4000,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX PRO 5000,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX PRO 5000,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX PRO 5000,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX PRO 6000 S,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX PRO 6000 S,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX PRO 6000 S,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX PRO 6000 WS,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX PRO 6000 WS,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,RTX PRO 6000 WS,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,Tesla V100,7,volatile_market,2026-07-02T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,Tesla V100,14,volatile_market,2026-07-09T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T170052Z,vast_real,Tesla V100,30,volatile_market,2026-07-25T17:00:52.039310+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,A100 PCIe,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,A100 PCIe,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,A100 PCIe,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,A100 SXM,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,A100 SXM,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,A100 SXM,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,A100 SXM 40GB,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,A100 SXM 40GB,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,A100 SXM 40GB,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,A40,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,A40,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,A40,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,B200,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,B200,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,B200,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,B300,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,B300,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,B300,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,B300 MIG 34GB,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,B300 MIG 34GB,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,B300 MIG 34GB,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H100 NVL,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H100 NVL,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H100 NVL,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H100 PCIe,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H100 PCIe,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H100 PCIe,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H100 SXM,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H100 SXM,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H100 SXM,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H200 NVL,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H200 NVL,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H200 NVL,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H200 SXM,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H200 SXM,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,H200 SXM,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,L4,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,L4,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,L4,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,L40,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,L40,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,L40,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,L40S,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,L40S,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,L40S,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,MI300X,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,MI300X,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,MI300X,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,NVIDIA GeForce GTX 1050,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,NVIDIA GeForce GTX 1050,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,NVIDIA GeForce GTX 1050,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,NVIDIA GeForce GTX 1050 Ti,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,NVIDIA GeForce GTX 1050 Ti,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,NVIDIA GeForce GTX 1050 Ti,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,PRO 6000 MIG 24GB,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,PRO 6000 MIG 24GB,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,PRO 6000 MIG 24GB,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,PRO 6000 MIG 48GB,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,PRO 6000 MIG 48GB,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,PRO 6000 MIG 48GB,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 2000 Ada,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 2000 Ada,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 2000 Ada,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3070,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3070,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3070,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3080,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3080,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3080,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3080 Ti,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3080 Ti,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3080 Ti,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3090,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3090,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3090,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3090 Ti,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3090 Ti,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 3090 Ti,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4000 Ada,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4000 Ada,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4000 Ada,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4000 Ada SFF,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4000 Ada SFF,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4000 Ada SFF,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4070 Ti,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4070 Ti,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4070 Ti,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4080,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4080,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4080,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4080 SUPER,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4080 SUPER,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4080 SUPER,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4090,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4090,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 4090,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 5000 Ada,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 5000 Ada,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 5000 Ada,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 5080,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 5080,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 5080,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 5090,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 5090,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 5090,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 6000 Ada,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 6000 Ada,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX 6000 Ada,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A2000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A2000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A2000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A4000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A4000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A4000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A4500,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A4500,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A4500,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A5000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A5000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A5000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A6000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A6000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX A6000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 4000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 4000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 4000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 4500,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 4500,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 4500,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 5000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 5000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 5000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 6000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 6000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 6000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 6000 MaxQ,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 6000 MaxQ,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 6000 MaxQ,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 6000 WK,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 6000 WK,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,RTX PRO 6000 WK,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,Tesla V100,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,Tesla V100,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,Tesla V100,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,V100 SXM2,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,V100 SXM2,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,V100 SXM2,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,unknown,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,unknown,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod,unknown,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,A100 PCIe,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,A100 PCIe,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,A100 PCIe,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,A100 SXM,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,A100 SXM,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,A100 SXM,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,A100 SXM 40GB,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,A100 SXM 40GB,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,A100 SXM 40GB,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,A40,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,A40,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,A40,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,B200,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,B200,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,B200,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,B300,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,B300,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,B300,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,B300 MIG 34GB,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,B300 MIG 34GB,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,B300 MIG 34GB,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H100 NVL,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H100 NVL,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H100 NVL,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H100 PCIe,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H100 PCIe,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H100 PCIe,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H100 SXM,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H100 SXM,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H100 SXM,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H200 NVL,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H200 NVL,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H200 NVL,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H200 SXM,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H200 SXM,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,H200 SXM,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,L4,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,L4,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,L4,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,L40,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,L40,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,L40,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,L40S,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,L40S,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,L40S,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,MI300X,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,MI300X,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,MI300X,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,NVIDIA GeForce GTX 1050,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,NVIDIA GeForce GTX 1050,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,NVIDIA GeForce GTX 1050,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,NVIDIA GeForce GTX 1050 Ti,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,NVIDIA GeForce GTX 1050 Ti,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,NVIDIA GeForce GTX 1050 Ti,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,PRO 6000 MIG 24GB,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,PRO 6000 MIG 24GB,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,PRO 6000 MIG 24GB,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,PRO 6000 MIG 48GB,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,PRO 6000 MIG 48GB,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,PRO 6000 MIG 48GB,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 2000 Ada,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 2000 Ada,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 2000 Ada,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3070,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3070,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3070,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3080,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3080,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3080,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3080 Ti,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3080 Ti,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3080 Ti,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3090,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3090,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3090,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3090 Ti,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3090 Ti,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 3090 Ti,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4000 Ada,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4000 Ada,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4000 Ada,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4000 Ada SFF,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4000 Ada SFF,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4000 Ada SFF,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4070 Ti,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4070 Ti,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4070 Ti,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4080,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4080,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4080,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4080 SUPER,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4080 SUPER,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4080 SUPER,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4090,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4090,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 4090,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 5000 Ada,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 5000 Ada,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 5000 Ada,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 5080,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 5080,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 5080,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 5090,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 5090,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 5090,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 6000 Ada,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 6000 Ada,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX 6000 Ada,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A2000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A2000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A2000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A4000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A4000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A4000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A4500,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A4500,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A4500,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A5000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A5000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A5000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A6000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A6000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX A6000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 4000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 4000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 4000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 4500,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 4500,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 4500,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 5000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 5000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 5000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 6000,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 6000,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 6000,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 6000 MaxQ,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 6000 MaxQ,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 6000 MaxQ,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 6000 WK,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 6000 WK,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,RTX PRO 6000 WK,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,Tesla V100,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,Tesla V100,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,Tesla V100,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,V100 SXM2,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,V100 SXM2,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,V100 SXM2,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,unknown,7,insufficient_price_data,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,unknown,14,insufficient_price_data,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,runpod_real,unknown,30,insufficient_price_data,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,A100 PCIE,7,stable_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,A100 PCIE,14,stable_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,A100 PCIE,30,stable_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,A800 PCIE,7,stable_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,A800 PCIE,14,stable_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,A800 PCIE,30,stable_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,B200,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,B200,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,B200,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,H100 NVL,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,H100 NVL,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,H100 NVL,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,H100 SXM,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,H100 SXM,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,H100 SXM,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,H200,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,H200,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,H200,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,H200 NVL,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,H200 NVL,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,H200 NVL,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 3090,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 3090,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 3090,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 4070S Ti,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 4070S Ti,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 4070S Ti,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 4090,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 4090,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 4090,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 4090D,7,stable_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 4090D,14,stable_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 4090D,30,stable_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5060,7,stable_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5060,14,stable_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5060,30,stable_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5060 Ti,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5060 Ti,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5060 Ti,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5070,7,price_pressure_possible,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5070,14,price_pressure_possible,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5070,30,price_pressure_possible,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5070 Ti,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5070 Ti,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5070 Ti,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5080,7,stable_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5080,14,stable_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5080,30,stable_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5090,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5090,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 5090,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 6000Ada,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 6000Ada,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX 6000Ada,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX PRO 4000,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX PRO 4000,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX PRO 4000,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX PRO 5000,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX PRO 5000,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX PRO 5000,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX PRO 6000 S,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX PRO 6000 S,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX PRO 6000 S,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX PRO 6000 WS,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX PRO 6000 WS,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,RTX PRO 6000 WS,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,Tesla V100,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,Tesla V100,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast,Tesla V100,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,A100 PCIE,7,stable_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,A100 PCIE,14,stable_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,A100 PCIE,30,stable_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,A800 PCIE,7,stable_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,A800 PCIE,14,stable_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,A800 PCIE,30,stable_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,B200,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,B200,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,B200,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,B300,7,stable_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,B300,14,stable_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,B300,30,stable_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,H100 NVL,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,H100 NVL,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,H100 NVL,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,H100 SXM,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,H100 SXM,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,H100 SXM,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,H200,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,H200,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,H200,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,H200 NVL,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,H200 NVL,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,H200 NVL,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 3090,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 3090,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 3090,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 4070,7,stable_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 4070,14,stable_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 4070,30,stable_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 4070S Ti,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 4070S Ti,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 4070S Ti,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 4090,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 4090,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 4090,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 4090D,7,stable_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 4090D,14,stable_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 4090D,30,stable_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5060,7,stable_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5060,14,stable_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5060,30,stable_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5060 Ti,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5060 Ti,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5060 Ti,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5070,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5070,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5070,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5070 Ti,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5070 Ti,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5070 Ti,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5080,7,price_pressure_possible,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5080,14,price_pressure_possible,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5080,30,price_pressure_possible,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5090,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5090,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 5090,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 6000Ada,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 6000Ada,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX 6000Ada,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX PRO 4000,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX PRO 4000,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX PRO 4000,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX PRO 5000,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX PRO 5000,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX PRO 5000,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX PRO 6000 S,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX PRO 6000 S,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX PRO 6000 S,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX PRO 6000 WS,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX PRO 6000 WS,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,RTX PRO 6000 WS,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,Tesla V100,7,volatile_market,2026-07-02T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,Tesla V100,14,volatile_market,2026-07-09T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False
+20260625T171045Z,vast_real,Tesla V100,30,volatile_market,2026-07-25T17:10:45.707048+00:00,,awaiting_future_observation,forecast_outcome_window,False

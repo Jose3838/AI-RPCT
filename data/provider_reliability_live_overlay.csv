@@ -1,0 +1,3 @@
+provider,reliability_score,reliability_band,live_ingestion_status,used_fallback,preflight_readiness,history_days,live_reliability_ready,blockers
+vast,75.05,watch,fallback,True,blocked,2,False,"live_ingestion_not_fresh, provider_using_fallback, provider_preflight_blocked, insufficient_reliability_history"
+runpod,54.11,weak,fallback,True,blocked,2,False,"live_ingestion_not_fresh, provider_using_fallback, provider_preflight_blocked, insufficient_reliability_history"

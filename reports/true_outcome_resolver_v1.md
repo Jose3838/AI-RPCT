@@ -1,6 +1,6 @@
 # True Outcome Resolver v1
 
-Input labels: 444
+Input labels: 1332
 Matured windows: 0
 Resolved labels: 0
 Trainable labels: 0

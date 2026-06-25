@@ -1,0 +1,2 @@
+alert_type,severity,title,evidence,recommended_action
+provider_reliability_critical,high,Provider reliability leader is still weak,"provider=runpod, score=None",Do not make paid reliability claims until live ingestion and history improve.

@@ -1,0 +1,16 @@
+signal,component,value,weight,interpretation,evidence_file
+gpu_scarcity_index,availability_pressure_score,44.5,0.35,Availability pressure captures how constrained tracked GPU capacity looks.,data/gpu_scarcity_index.csv
+gpu_scarcity_index,price_pressure_score,37.73,0.25,Price pressure captures whether capacity is becoming expensive.,data/gpu_scarcity_index.csv
+gpu_scarcity_index,frontier_pressure_score,28.66,0.25,Frontier pressure focuses on high-demand accelerator classes.,data/gpu_scarcity_index.csv
+gpu_scarcity_index,provider_depth_score,100.0,0.15,Provider depth reduces false conviction from single-provider observations.,data/gpu_scarcity_index.csv
+capacity_shock_forecast,latest_rpct,100.0,0.4,Latest RPCT captures current resource pressure.,data/forecast_signal.csv
+capacity_shock_forecast,shortage_probability,40.0,0.25,Shortage probability adds forward-looking pressure.,data/forecast_signal.csv
+capacity_shock_forecast,gpu_scarcity_index,34.06,0.25,Scarcity ties forecast risk back to observed GPU market pressure.,data/forecast_signal.csv
+capacity_shock_forecast,capacity_shock_delta,0.0,0.1,Shock delta measures abrupt movement versus recent baseline.,data/forecast_signal.csv
+provider_reliability_score,freshness_score,74.78,0.2,Freshness penalizes stale provider observations.,data/provider_reliability_ranking.csv
+provider_reliability_score,depth_score,100.0,0.1,Depth measures how much provider evidence is present.,data/provider_reliability_ranking.csv
+provider_reliability_score,availability_score,100.0,0.1,Availability score measures observed capacity depth.,data/provider_reliability_ranking.csv
+provider_reliability_score,history_score,6.67,0.15,History score rewards repeat observations over time.,data/provider_reliability_ranking.csv
+price_dislocation_signal,price_dislocation_score,30.43,1.0,Dislocation measures cross-provider price dispersion for comparable GPUs.,data/price_dislocation_signal.csv
+ai_infrastructure_stress_index,ai_infrastructure_stress_index,52.06,1.0,"Composite stress blends scarcity, forecast, dislocation and reliability pressure.",data/ai_infrastructure_stress_index.csv
+signal_performance_score,signal_performance_score,65.17,1.0,Performance tracks whether the signal system is becoming more trustworthy over time.,data/signal_performance_score.csv

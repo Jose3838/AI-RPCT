@@ -1,2 +1,2 @@
-gpu_scarcity_index,avg_price_per_hour,avg_availability
-40,1.7679,1425.37
+gpu_scarcity_index,scarcity_band,avg_price_per_hour,avg_availability,price_pressure_score,availability_pressure_score,frontier_pressure_score,provider_depth_score,provider_count,gpu_count
+34.06,watch,1.7875,1387.5,37.73,44.5,28.66,100.0,5,2

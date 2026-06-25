@@ -2,7 +2,7 @@
 
 Status: not_ready
 Feature rows: 148
-True label rows: 444
+True label rows: 1332
 Trainable label rows: 0
 Training rows: 0
 

@@ -1,0 +1,2 @@
+status,price_dislocation_score,dislocation_band,tracked_gpu_count,tracked_offer_count,max_spread_pct,top_gpu,cheapest_provider,most_expensive_provider,claim_scope,next_action
+price_dislocation_signal_ready,30.43,watch,2,8,30.43,A100,manual,coreweave,research_preview,Track source-labeled price spreads daily and validate persistence before paid claims.

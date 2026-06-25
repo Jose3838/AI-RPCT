@@ -1,0 +1,12 @@
+region_code,status,region_scarcity_score,scarcity_band,snapshot_count,source_labeled_count,avg_price_per_hour,avg_availability,claim_scope,next_action
+us-east,region_heatmap_ready,89.98,critical,9,9,3.8211,1.0,research_preview,Continue collecting region-level source-labeled snapshots.
+us-west,region_heatmap_ready,89.98,critical,3,3,3.9167,1.0,research_preview,Continue collecting region-level source-labeled snapshots.
+eu-west,region_heatmap_ready,80.9,critical,4,4,2.945,1.0,research_preview,Continue collecting region-level source-labeled snapshots.
+eu-north,region_heatmap_ready,80.16,critical,2,2,2.9,1.0,research_preview,Continue collecting region-level source-labeled snapshots.
+uk,region_heatmap_ready,60.53,elevated,3,3,1.7,1.0,research_preview,Continue collecting region-level source-labeled snapshots.
+eu-central,region_heatmap_ready,59.22,elevated,4,4,1.62,1.0,research_preview,Continue collecting region-level source-labeled snapshots.
+japan,region_heatmap_ready,53.16,elevated,2,2,1.25,1.0,research_preview,Continue collecting region-level source-labeled snapshots.
+singapore,region_heatmap_ready,47.33,watch,3,3,0.8933,1.0,research_preview,Continue collecting region-level source-labeled snapshots.
+canada,region_heatmap_ready,45.8,watch,2,2,0.8,1.0,research_preview,Continue collecting region-level source-labeled snapshots.
+australia,region_heatmap_ready,44.98,watch,2,2,0.54,1.0,research_preview,Continue collecting region-level source-labeled snapshots.
+india,region_heatmap_ready,44.98,watch,2,2,0.4,1.0,research_preview,Continue collecting region-level source-labeled snapshots.

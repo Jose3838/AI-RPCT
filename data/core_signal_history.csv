@@ -1,0 +1,5 @@
+timestamp,date,gpu_scarcity_index,scarcity_band,availability_pressure_score,price_pressure_score,frontier_pressure_score,provider_depth_score,capacity_forecast_score,capacity_outlook,capacity_shock_delta,capacity_shock_band,forecast_confidence_score,top_reliability_provider,top_provider_reliability_score,top_provider_reliability_band,live_data_quality_score,provider_ingestion_statuses,provider_fallback_count,paid_reliability_claims_allowed,history_claim_scope
+2026-06-22T18:16:20.525649+00:00,2026-06-22,34.06,watch,44.5,37.73,28.66,100.0,63.52,ELEVATED RISK,0.0,stable,100.0,vast,50.31,weak,100.0,fallback,2.0,False,research_only
+2026-06-23T15:19:58.106985+00:00,2026-06-23,34.06,watch,44.5,37.73,28.66,100.0,63.52,ELEVATED RISK,0.0,stable,100.0,vast,50.81,weak,100.0,fallback,2.0,False,research_only
+2026-06-24T17:23:35.531670+00:00,2026-06-24,34.06,watch,44.5,37.73,28.66,100.0,63.52,ELEVATED RISK,0.0,stable,100.0,vast,49.81,weak,100.0,fallback,2.0,False,research_only
+2026-06-25T06:43:31.920362+00:00,2026-06-25,34.06,watch,44.5,37.73,28.66,100.0,63.52,ELEVATED RISK,0.0,stable,100.0,vast,75.05,watch,100.0,fallback,2.0,False,research_only

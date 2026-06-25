@@ -1,2 +1,4 @@
 snapshot_id,snapshot_timestamp,forecast_rows,output_file
 20260625T114644Z,2026-06-25T11:46:44.392236+00:00,148,warehouse/forecast_snapshots/forecast_snapshot_20260625T114644Z.csv
+20260625T170052Z,2026-06-25T17:00:52.039310+00:00,148,warehouse/forecast_snapshots/forecast_snapshot_20260625T170052Z.csv
+20260625T171045Z,2026-06-25T17:10:45.707048+00:00,148,warehouse/forecast_snapshots/forecast_snapshot_20260625T171045Z.csv

@@ -1,0 +1,2 @@
+status,gpu_scarcity_index,scarcity_band,source_url_coverage_pct,source_evidence_rows,linked_source_rows,needs_url_rows,paid_claim_safe,next_action,evidence_file
+source_backed,34.06,watch,100.0,36,36,0,True,maintain_daily_source_collection,data/source_evidence_view.csv

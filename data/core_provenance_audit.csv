@@ -1,0 +1,2 @@
+history_rows,research_only_rows,paid_claim_safe_rows,fallback_rows,fallback_row_pct,provenance_band,paid_claims_allowed,blockers
+4,4,0,4,100.0,fallback_contaminated,False,"history_contains_provider_fallback_rows, latest_provider_preflight_blocks_paid_claims"

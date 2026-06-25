@@ -1,0 +1,2 @@
+status,evaluation_count,directional_accuracy_pct,claim_scope,paid_safe,next_action
+forecast_accuracy_ready,2,100.0,research_preview,False,Maintain forecast validation history until at least 30 evaluations are available.

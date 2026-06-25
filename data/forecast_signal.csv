@@ -1,2 +1,2 @@
-latest_rpct,shortage_probability,forecast_score,outlook
-100.0,40.0,76.0,HIGH RISK
+latest_rpct,shortage_probability,gpu_scarcity_index,forecast_score,outlook,capacity_shock_delta,capacity_shock_band,confidence_score,history_observations
+100.0,40.0,34.06,63.52,ELEVATED RISK,0.0,stable,100.0,37

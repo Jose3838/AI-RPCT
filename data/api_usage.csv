@@ -1,0 +1,23 @@
+timestamp,api_key,endpoint
+2026-06-21 19:29:55,demo-pro-key,/v1/recommendations
+2026-06-21 19:31:05,demo-enterprise-key,/v1/customer-report/html
+2026-06-21 19:31:05,demo-pro-key,/v1/usage-summary
+2026-06-21 19:31:05,demo-pro-key,/v1/executive-brief
+2026-06-21 19:31:05,demo-enterprise-key,/v1/customer-report
+2026-06-21 19:31:05,demo-pro-key,/v1/recommendations
+2026-06-21 19:34:01,demo-pro-key,/v1/recommendations
+2026-06-21 19:34:01,demo-pro-key,/v1/executive-brief
+2026-06-22 09:26:25,demo-pro-key,/v1/usage-summary
+2026-06-22 09:31:54,demo-enterprise-key,/v1/commercial-snapshot
+2026-06-22 09:36:10,demo-enterprise-key,/v1/sales-pipeline
+2026-06-22 09:44:34,demo-enterprise-key,/v1/customer-admin
+2026-06-22 09:47:25,demo-enterprise-key,/v1/audit-log
+2026-06-22 09:50:07,demo-enterprise-key,/v1/customer-admin
+2026-06-22 09:50:07,demo-enterprise-key,/v1/audit-log
+2026-06-22 09:54:17,demo-enterprise-key,/v1/account-health
+2026-06-22 09:57:55,demo-enterprise-key,/v1/revenue-forecast
+2026-06-22 10:02:40,demo-enterprise-key,/v1/commercial-board-report/html
+2026-06-22 10:05:08,demo-enterprise-key,/v1/operations-status
+2026-06-22 10:08:15,demo-enterprise-key,/v1/launch-controls
+2026-06-22 10:08:15,demo-enterprise-key,/v1/operations-status
+2026-06-22 19:35:40,demo-enterprise-key,/v1/launch-controls

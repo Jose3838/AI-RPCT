@@ -1,0 +1,5 @@
+provider,priority,gap,recommended_action,evidence
+runpod,high,insufficient_reliability_history,Collect daily provider metrics until 30 distinct history days are available.,history_days=2.0
+runpod,high,provider_ingestion_using_fallback,Restore fresh live provider ingestion or rotate credentials before relying on the provider score.,"ingestion_status=fallback, used_fallback=True"
+vast,high,insufficient_reliability_history,Collect daily provider metrics until 30 distinct history days are available.,history_days=2.0
+vast,high,provider_ingestion_using_fallback,Restore fresh live provider ingestion or rotate credentials before relying on the provider score.,"ingestion_status=fallback, used_fallback=True"

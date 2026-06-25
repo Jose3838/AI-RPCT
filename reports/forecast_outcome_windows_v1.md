@@ -1,6 +1,6 @@
 # Forecast Outcome Windows v1
 
-Outcome windows created: 444
+Outcome windows created: 1332
 
 ## Windows
 

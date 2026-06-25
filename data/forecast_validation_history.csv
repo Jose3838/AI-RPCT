@@ -1,0 +1,2 @@
+validation_band,forecast_score,capacity_shock_band,directional_accuracy_pct,forecast_confidence_score,history_records,validation_score,paid_claim_safe,blockers,evidence_files
+thin_history,63.52,stable,100.0,100.0,4,65.33,False,collect_30_days_of_core_signal_history,"data/forecast_signal.csv,data/forecast_accuracy.csv,data/core_signal_history.csv"

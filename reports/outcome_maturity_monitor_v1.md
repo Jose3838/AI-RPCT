@@ -1,8 +1,8 @@
 # Outcome Maturity Monitor v1
 
-Total windows: 444
+Total windows: 1332
 Matured windows: 0
-Pending windows: 444
+Pending windows: 1332
 
 ## CTO Assessment
 

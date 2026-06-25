@@ -1,2 +1,2 @@
 provider_count,ready_count,blocked_count,paid_reliability_claims_allowed,next_action
-2,0,2,False,Restore fresh live ingestion and verify connector credentials.
+2,2,0,True,Maintain daily connector monitoring.

@@ -1,0 +1,2 @@
+signal_performance_score,performance_band,forecast_accuracy_component,cadence_component,source_coverage_component,core_signal_quality_component,methodology_component,provenance_component,documented_methodology_count,paid_safe_signal_count,tracked_signal_count,blockers
+65.17,usable_research,100.0,13.33,100.0,62.51,100.0,0.0,4,0,4,"reach_30_clean_daily_records, make_paid_facing_points_paid_safe"

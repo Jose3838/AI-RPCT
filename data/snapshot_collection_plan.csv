@@ -1,0 +1,26 @@
+provider,gpu,region_code,priority_score,source_type,claim_scope,recommended_action
+vast,A100 PCIe,eu-west,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+coreweave,A100 PCIe,eu-central,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+lambda_labs,A100 PCIe,eu-west,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+runpod,A100 PCIe,eu-west,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+aws,A100 PCIe,eu-central,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+google_cloud,A100 PCIe,eu-central,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+microsoft_azure,A100 PCIe,eu-central,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+crusoe,A100 PCIe,eu-central,150.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+vast,A100 PCIe,singapore,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+coreweave,A100 PCIe,eu-west,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+lambda_labs,A100 PCIe,singapore,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+runpod,A100 PCIe,singapore,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+aws,A100 PCIe,eu-west,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+google_cloud,A100 PCIe,eu-west,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+microsoft_azure,A100 PCIe,eu-west,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+crusoe,A100 PCIe,eu-west,150.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+vast,A100 PCIe,us-east,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+coreweave,A100 PCIe,singapore,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+lambda_labs,A100 PCIe,us-east,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+runpod,A100 PCIe,us-east,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+aws,A100 PCIe,singapore,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+google_cloud,A100 PCIe,singapore,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+microsoft_azure,A100 PCIe,singapore,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+crusoe,A100 PCIe,singapore,150.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.
+vast,A100 PCIe,us-west,180.0,manual_public_snapshot,research_preview,Find a public source page and add one source-labeled row to data/manual_market_snapshot_inbox.csv.

@@ -1,17 +1,19 @@
 # Historical Moat Audit
 
-Generated: 2026-06-24
+Generated: 2026-06-25
 
 ## Summary
 
-- Domains audited: 4
-- Average history depth score: 21.25
+- Domains audited: 6
+- Average history depth score: 20.0
 
 ## Domains
 
-- live_provider_history: 2 days, score=25, status=thin_historical_moat
+- live_provider_history: 3 days, score=25, status=thin_historical_moat
+- provider_timeseries: 2 days, score=25, status=thin_historical_moat
 - raw_providers: 2 days, score=25, status=thin_historical_moat
 - snapshots: 3 days, score=25, status=thin_historical_moat
+- forecast_snapshots: 1 days, score=10, status=single_day_history
 - manual_snapshot_history: 1 days, score=10, status=single_day_history
 
 ## CTO Assessment

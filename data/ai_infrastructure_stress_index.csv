@@ -1,0 +1,2 @@
+status,ai_infrastructure_stress_index,stress_band,gpu_scarcity_component,capacity_forecast_component,price_dislocation_component,provider_reliability_stress_component,claim_scope,next_action
+stress_index_ready,52.06,watch,34.06,63.52,30.43,100.0,research_preview,Validate stress-index usefulness against future market moves before paid claims.

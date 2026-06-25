@@ -1,0 +1,2 @@
+core_signal_quality_score,quality_band,days_collected,history_coverage_band,history_progress_pct,history_days_remaining,scarcity_explainability_score,forecast_confidence_score,top_provider_reliability_score,provider_gap_score,provenance_score,provenance_band,high_provider_gap_count,paid_beta_signal_ready,blockers
+62.51,needs_work,4,thin_history,13.33,26.0,100.0,100.0,75.05,50.0,45.0,fallback_contaminated,4,False,"collect_30_days_of_core_signal_history, restore_live_provider_ingestion, remove_fallback_from_paid_history"

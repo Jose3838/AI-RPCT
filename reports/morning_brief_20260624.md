@@ -1,16 +1,16 @@
 # AI-RPCT Morning Brief
 
-Generated: 2026-06-24T14:20:26.725487
+Generated: 2026-06-24T19:51:39.206320
 
 ## Headline
-AI infrastructure stress is watch; capacity shock signal is stable; history moat is building (3 days).
+AI infrastructure stress is n/a; capacity shock signal is n/a; history moat is building (3 days).
 
 ## Market Pulse
-- AI Infrastructure Stress Index: 48.39 (watch)
-- GPU Scarcity Index: 34.06 (watch)
-- Capacity Forecast Score: 63.52 (stable)
-- Price Dislocation Score: 34.41 (watch)
-- Reliability Leader: runpod (29.81)
+- AI Infrastructure Stress Index: 52.06 (watch)
+- GPU Scarcity Index: 40.0 (n/a)
+- Capacity Forecast Score: 76.0 (n/a)
+- Price Dislocation Score: 30.43 (watch)
+- Reliability Leader: runpod (n/a)
 
 ## Trust And Moat
 - Readiness Phase: blocked_by_live_data
@@ -22,12 +22,12 @@ AI infrastructure stress is watch; capacity shock signal is stable; history moat
 - Coverage Status: universe_ready_snapshot_collection_needed
 - Manual Snapshot Quality: snapshots_valid_for_research_preview
 - Source URL Coverage: 100.0%
-- Source-Backed Scarcity: needs_manual_source_snapshots
+- Source-Backed Scarcity: source_backed
 - Forecast Accuracy: 100.0%
 - Forecast Validation: thin_history
-- Signal Performance: 43.09 (building)
-- Allowed Claim Gates: 1/4
-- Region Heatmap Rows: 1
+- Signal Performance: 63.04 (usable_research)
+- Allowed Claim Gates: 2/4
+- Region Heatmap Rows: 10
 - Documented Core Methodologies: 4
 - Bloomberg Roadmap: 41/50 steps done
 
@@ -40,10 +40,10 @@ AI infrastructure stress is watch; capacity shock signal is stable; history moat
 - high: Provider reliability leader is still weak -> Do not make paid reliability claims until live ingestion and history improve.
 
 ## Next Snapshot Targets
-- vast / A100 PCIe / eu-central
+- vast / A100 PCIe / eu-west
 - coreweave / A100 PCIe / eu-central
-- lambda_labs / A100 PCIe / eu-central
-- runpod / A100 PCIe / eu-central
+- lambda_labs / A100 PCIe / eu-west
+- runpod / A100 PCIe / eu-west
 - aws / A100 PCIe / eu-central
 
 ## Today's Operating Mode

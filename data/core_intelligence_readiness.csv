@@ -1,0 +1,2 @@
+readiness_phase,core_signal_quality_score,quality_band,days_collected,high_provider_gap_count,paid_beta_signal_ready,market_pulse_score,latest_ingestion_status,provider_preflight_ready_count,provider_preflight_blocked_count,blockers,next_action
+blocked_by_live_data,62.51,needs_work,4.0,4.0,False,55.91,fallback,0.0,2.0,"collect_30_days_of_core_signal_history, restore_live_provider_ingestion, remove_fallback_from_paid_history, provider_preflight_blocked",Configure VAST_API_KEY in the runtime environment.

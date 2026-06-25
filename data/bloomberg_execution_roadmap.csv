@@ -1,0 +1,51 @@
+category,step,action,status,evidence
+data_moat,1,Collect source-labeled public GPU price snapshots daily.,in_progress,data/manual_market_snapshots.csv
+data_moat,2,Expand priority coverage to 20+ GPU types.,done,data/gpu_universe.csv
+data_moat,3,Expand priority coverage to 15+ providers.,done,data/provider_universe.csv
+data_moat,4,Track priority regions for region-level pressure.,done,data/region_universe.csv
+data_moat,5,Reach 30 clean daily core signal records.,in_progress,data/core_signal_history.csv
+data_moat,6,Reach 90 clean daily core signal records.,not_started,data/core_signal_history.csv
+data_moat,7,Reach 180 clean daily core signal records.,not_started,data/core_signal_history.csv
+data_moat,8,Track manual snapshot quality and rejection reasons.,done,data/manual_snapshot_quality.csv
+data_moat,9,Track collection cadence and missing history days.,done,data/collection_cadence_audit.csv
+data_moat,10,Build source provenance for every paid-facing data point.,done,analytics/paid_data_point_provenance.py
+trust,11,Document each core signal methodology.,done,data/signal_methodology_registry.csv
+trust,12,Gate every claim as research-preview or paid-safe.,done,analytics/claim_gate_matrix.py
+trust,13,Expose signal trust status in terminal summary.,done,api/terminal_core.py
+trust,14,Separate fallback data from live provider data.,done,data/provider_preflight.csv
+trust,15,Create customer-facing trust center copy.,done,docs/TRUST_CENTER.md
+trust,16,Add forecast accuracy backtesting to paid-readiness gates.,done,analytics/forecast_accuracy.py
+trust,17,Add source URL coverage metrics by provider/GPU/region.,done,analytics/source_url_coverage_metrics.py
+trust,18,Add confidence score for each morning brief recommendation.,done,analytics/morning_brief.py
+trust,19,Publish safe-claims and unsafe-claims in research preview.,done,reports/research_preview_brief_*.md
+trust,20,Create methodology changelog for signal formula changes.,done,docs/SIGNAL_METHODOLOGY_CHANGELOG.md
+core_intelligence,21,Strengthen GPU Scarcity Index with source-backed observations.,done,analytics/source_backed_scarcity.py
+core_intelligence,22,Strengthen Capacity Shock Forecast with validation history.,done,analytics/forecast_validation_history.py
+core_intelligence,23,Strengthen Provider Reliability Score with live ingestion.,done,analytics/provider_reliability_live_overlay.py
+core_intelligence,24,Add Price Dislocation Signal.,done,analytics/price_dislocation_signal.py
+core_intelligence,25,Add AI Infrastructure Stress Index composite.,done,analytics/ai_infrastructure_stress_index.py
+core_intelligence,26,Add region-level scarcity heatmap data.,done,analytics/region_scarcity_heatmap.py
+core_intelligence,27,Add provider recovery and credential readiness plan.,done,scripts/provider_recovery_plan.py
+core_intelligence,28,Add collection target planner for manual snapshots.,done,data/snapshot_collection_plan.csv
+core_intelligence,29,Add daily provider reliability gap analysis.,done,data/provider_reliability_gaps.csv
+core_intelligence,30,Add signal performance score over time.,done,analytics/signal_performance_score.py
+terminal_product,31,Generate daily AI Infrastructure Morning Brief.,done,reports/morning_brief_*.md
+terminal_product,32,Expose structured morning brief in terminal summary.,done,data/morning_brief_summary.csv
+terminal_product,33,Create customer-ready executive brief.,done,analytics/customer_ready_executive_brief.py
+terminal_product,34,"Add actionable alerts for scarcity, shock and reliability drops.",done,analytics/core_intelligence_alerts.py
+terminal_product,35,Add latest reports registry for customer consumption.,done,api/terminal_core.py
+terminal_product,36,Add daily founder close for next-session continuity.,done,scripts/founder_daily_close.py
+terminal_product,37,Create terminal UI focused on morning decisions.,in_progress,web
+terminal_product,38,Add explain-this-score drilldowns.,done,analytics/signal_explainability_drilldowns.py
+terminal_product,39,Add source evidence viewer for manual snapshots.,done,analytics/source_evidence_view.py
+terminal_product,40,Add customer watchlists for GPUs/providers/regions.,done,analytics/customer_watchlists.py
+commercial,41,Define ICP and buying trigger.,done,docs/ICP.md
+commercial,42,Package research preview for first design partners.,in_progress,docs/BETA_OFFER.md
+commercial,43,Create weekly public AI infrastructure stress report.,in_progress,reports/weekly_infrastructure_report_*.txt
+commercial,44,Build customer report export.,done,intelligence/reports/customer_report_pdf_export_v1.py
+commercial,45,Create first paid-beta readiness checklist.,done,docs/BETA_CHECKLIST.md
+commercial,46,Add billing and entitlement hardening for paid beta.,in_progress,api/access.py
+commercial,47,Create outreach sequence and demo script.,done,docs/OUTREACH_SCRIPT.md
+commercial,48,Secure first design partner feedback loop.,done,docs/DESIGN_PARTNER_FEEDBACK_LOOP.md
+commercial,49,Set first paid price and offer terms.,in_progress,docs/PRICING.md
+commercial,50,Ship public credibility page with methodology and sample brief.,done,docs/PUBLIC_CREDIBILITY_PAGE.md

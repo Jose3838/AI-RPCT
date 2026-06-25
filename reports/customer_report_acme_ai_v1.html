@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AI-RPCT Customer Intelligence Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; color: #111827; }
+    h1 { margin-bottom: 4px; }
+    h2 { margin-top: 32px; border-bottom: 1px solid #e5e7eb; padding-bottom: 8px; }
+    .meta { color: #6b7280; margin-bottom: 28px; }
+    .summary { font-size: 18px; line-height: 1.5; background: #f3f4f6; padding: 20px; border-radius: 8px; }
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .metric, .card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
+    .metric strong { display: block; font-size: 22px; margin-top: 6px; }
+    .eyebrow { color: #2563eb; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+    small { color: #6b7280; }
+    @media print { body { margin: 24px; } }
+  </style>
+</head>
+<body>
+  <h1>AI-RPCT Customer Intelligence Report</h1>
+  <div class="meta">Customer: Acme AI | Generated: 2026-06-21T17:23:48.915633+00:00</div>
+
+  <h2>Executive Summary</h2>
+  <div class="summary">
+    <strong>AI infrastructure risk remains elevated.</strong>
+    <p>The terminal is showing elevated infrastructure risk, with frontier GPU scarcity and provider concentration requiring active monitoring.</p>
+  </div>
+
+  <h2>Core Metrics</h2>
+  <div class="metrics">
+    <div class="metric">AI Infrastructure Index<strong>75.6</strong></div>
+    <div class="metric">GPU Price Index<strong>4.1204</strong></div>
+    <div class="metric">Terminal Risk Score<strong>75</strong></div>
+    <div class="metric">Risk Level<strong>high</strong></div>
+    <div class="metric">Top Provider<strong>vast</strong></div>
+    <div class="metric">Data Quality<strong>100.0</strong></div>
+  </div>
+
+  <h2>Decision Signals</h2>
+  
+        <section class="card">
+          <div class="eyebrow">risk / medium</div>
+          <h3>Risk is in watch mode</h3>
+          <p>The market is not calm, but current conditions do not require immediate escalation.</p>
+          <small>terminal_risk_score: 75.0</small>
+        </section>
+        
+
+        <section class="card">
+          <div class="eyebrow">market / low</div>
+          <h3>GPU pricing is stable</h3>
+          <p>Pricing is not showing a strong directional move in the latest observation window.</p>
+          <small>gpu_price_trend: stable | change_pct: 0.0</small>
+        </section>
+        
+
+        <section class="card">
+          <div class="eyebrow">buying_signal / low</div>
+          <h3>Cheapest tracked GPU: Tesla V100</h3>
+          <p>This GPU currently offers the lowest average tracked price.</p>
+          <small>gpu: Tesla V100 | avg_price: 0.0401 | min_price: 0.0209 | offers: 5</small>
+        </section>
+        
+
+        <section class="card">
+          <div class="eyebrow">premium_pressure / medium</div>
+          <h3>Most expensive tracked GPU: B200</h3>
+          <p>High average pricing here can indicate frontier demand pressure or limited supply.</p>
+          <small>gpu: B200 | avg_price: 15.418 | max_price: 40.0069 | offers: 11</small>
+        </section>
+        
+
+        <section class="card">
+          <div class="eyebrow">scarcity / high</div>
+          <h3>Frontier GPU scarcity detected</h3>
+          <p>One or more frontier GPUs are flagged as scarce and should be watched closely.</p>
+          <small>gpus: B300, H100 SXM | count: 2</small>
+        </section>
+        
+
+  <h2>Recommended Actions</h2>
+  
+        <section class="card">
+          <div class="eyebrow">primary_provider_watch / medium</div>
+          <h3>Use vast as the primary provider benchmark</h3>
+          <p>This provider has the strongest current combination of online status and tracked offer depth.</p>
+          <small>provider: vast | offers: 100 | gpu_types: 21 | avg_price: 4.1204</small>
+        </section>
+        
+
+        <section class="card">
+          <div class="eyebrow">track_low_cost_capacity / medium</div>
+          <h3>Track low-cost capacity around Tesla V100</h3>
+          <p>This is currently the lowest-cost tracked GPU and can anchor budget-sensitive workloads.</p>
+          <small>gpu: Tesla V100 | avg_price: 0.0401 | min_price: 0.0209 | offers: 5</small>
+        </section>
+        
+
+        <section class="card">
+          <div class="eyebrow">protect_frontier_capacity / high</div>
+          <h3>Protect frontier GPU capacity decisions</h3>
+          <p>Frontier GPU scarcity is visible. Avoid relying on a single provider or a single GPU type.</p>
+          <small>scarce_gpus: B300, H100 SXM | count: 2</small>
+        </section>
+        
+
+        <section class="card">
+          <div class="eyebrow">maintain_watch_mode / medium</div>
+          <h3>Maintain watch mode</h3>
+          <p>Risk is elevated but not extreme. Keep monitoring before making irreversible commitments.</p>
+          <small>terminal_risk_score: 75.0</small>
+        </section>
+        
+</body>
+</html>

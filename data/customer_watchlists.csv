@@ -1,0 +1,27 @@
+watch_type,name,priority,reason,evidence_file,next_action
+region,eu-north,critical,Region-level scarcity pressure should be monitored for procurement decisions.,data/region_scarcity_heatmap.csv,collect_region_snapshot
+region,eu-west,critical,Region-level scarcity pressure should be monitored for procurement decisions.,data/region_scarcity_heatmap.csv,collect_region_snapshot
+region,us-west,critical,Region-level scarcity pressure should be monitored for procurement decisions.,data/region_scarcity_heatmap.csv,collect_region_snapshot
+region,us-east,critical,Region-level scarcity pressure should be monitored for procurement decisions.,data/region_scarcity_heatmap.csv,collect_region_snapshot
+provider,vast,high,insufficient_reliability_history,data/provider_reliability_gaps.csv,Collect daily provider metrics until 30 distinct history days are available.
+provider,runpod,high,insufficient_reliability_history,data/provider_reliability_gaps.csv,Collect daily provider metrics until 30 distinct history days are available.
+provider,runpod,high,provider_ingestion_using_fallback,data/provider_reliability_gaps.csv,Restore fresh live provider ingestion or rotate credentials before relying on the provider score.
+provider,vast,high,provider_ingestion_using_fallback,data/provider_reliability_gaps.csv,Restore fresh live provider ingestion or rotate credentials before relying on the provider score.
+region,japan,elevated,Region-level scarcity pressure should be monitored for procurement decisions.,data/region_scarcity_heatmap.csv,collect_region_snapshot
+region,eu-central,elevated,Region-level scarcity pressure should be monitored for procurement decisions.,data/region_scarcity_heatmap.csv,collect_region_snapshot
+region,uk,elevated,Region-level scarcity pressure should be monitored for procurement decisions.,data/region_scarcity_heatmap.csv,collect_region_snapshot
+region,australia,watch,Region-level scarcity pressure should be monitored for procurement decisions.,data/region_scarcity_heatmap.csv,collect_region_snapshot
+region,canada,watch,Region-level scarcity pressure should be monitored for procurement decisions.,data/region_scarcity_heatmap.csv,collect_region_snapshot
+region,singapore,watch,Region-level scarcity pressure should be monitored for procurement decisions.,data/region_scarcity_heatmap.csv,collect_region_snapshot
+market_signal,GPU Scarcity Index,watch,Daily scarcity signal is a core customer decision watch item.,data/gpu_scarcity_index.csv,monitor_daily_scarcity_direction
+price_dislocation,A100,watch,Cross-provider price dispersion can create procurement or arbitrage signals.,data/price_dislocation_signal.csv,compare_provider_prices_before_buying
+snapshot_target,coreweave / A100 PCIe / eu-west,medium,Priority collection target for building the defensible daily evidence moat.,data/snapshot_collection_plan.csv,collect_source_labeled_snapshot
+snapshot_target,vast / A100 PCIe / singapore,medium,Priority collection target for building the defensible daily evidence moat.,data/snapshot_collection_plan.csv,collect_source_labeled_snapshot
+snapshot_target,crusoe / A100 PCIe / eu-central,medium,Priority collection target for building the defensible daily evidence moat.,data/snapshot_collection_plan.csv,collect_source_labeled_snapshot
+snapshot_target,microsoft_azure / A100 PCIe / eu-central,medium,Priority collection target for building the defensible daily evidence moat.,data/snapshot_collection_plan.csv,collect_source_labeled_snapshot
+snapshot_target,google_cloud / A100 PCIe / eu-central,medium,Priority collection target for building the defensible daily evidence moat.,data/snapshot_collection_plan.csv,collect_source_labeled_snapshot
+snapshot_target,aws / A100 PCIe / eu-central,medium,Priority collection target for building the defensible daily evidence moat.,data/snapshot_collection_plan.csv,collect_source_labeled_snapshot
+snapshot_target,runpod / A100 PCIe / eu-west,medium,Priority collection target for building the defensible daily evidence moat.,data/snapshot_collection_plan.csv,collect_source_labeled_snapshot
+snapshot_target,lambda_labs / A100 PCIe / eu-west,medium,Priority collection target for building the defensible daily evidence moat.,data/snapshot_collection_plan.csv,collect_source_labeled_snapshot
+snapshot_target,coreweave / A100 PCIe / eu-central,medium,Priority collection target for building the defensible daily evidence moat.,data/snapshot_collection_plan.csv,collect_source_labeled_snapshot
+snapshot_target,vast / A100 PCIe / eu-west,medium,Priority collection target for building the defensible daily evidence moat.,data/snapshot_collection_plan.csv,collect_source_labeled_snapshot
