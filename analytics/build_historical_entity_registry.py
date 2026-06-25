@@ -42,6 +42,13 @@ ROWS = [
     {"entity_id": "gpu_intel_max_1100", "entity_type": "gpu", "display_name": "Intel Data Center GPU Max 1100", "canonical_name": "Intel Data Center GPU Max 1100", "vendor": "Intel", "status": "active", "source_id": "intel_products", "notes": "Linked to Intel historical GPU registry."},
     {"entity_id": "gpu_intel_gaudi2", "entity_type": "gpu", "display_name": "Intel Gaudi2", "canonical_name": "Intel Gaudi2", "vendor": "Intel", "status": "active", "source_id": "intel_newsroom", "notes": "Linked to Intel historical GPU registry."},
     {"entity_id": "gpu_intel_gaudi3", "entity_type": "gpu", "display_name": "Intel Gaudi 3 AI Accelerator", "canonical_name": "Intel Gaudi 3 AI Accelerator", "vendor": "Intel", "status": "active", "source_id": "intel_newsroom", "notes": "Linked to Intel historical GPU registry."},
+
+    {"entity_id": "gpu_nvidia_tesla_k80", "entity_type": "gpu", "display_name": "NVIDIA Tesla K80", "canonical_name": "NVIDIA Tesla K80", "vendor": "NVIDIA", "status": "active", "source_id": "nvidia_products", "notes": "Linked to NVIDIA historical GPU registry."},
+    {"entity_id": "gpu_nvidia_v100", "entity_type": "gpu", "display_name": "NVIDIA Tesla V100", "canonical_name": "NVIDIA Tesla V100", "vendor": "NVIDIA", "status": "active", "source_id": "nvidia_products", "notes": "Linked to NVIDIA historical GPU registry."},
+    {"entity_id": "gpu_nvidia_a100", "entity_type": "gpu", "display_name": "NVIDIA A100", "canonical_name": "NVIDIA A100", "vendor": "NVIDIA", "status": "active", "source_id": "nvidia_products", "notes": "Linked to NVIDIA historical GPU registry."},
+    {"entity_id": "gpu_nvidia_h100", "entity_type": "gpu", "display_name": "NVIDIA H100", "canonical_name": "NVIDIA H100", "vendor": "NVIDIA", "status": "active", "source_id": "nvidia_products", "notes": "Linked to NVIDIA historical GPU registry."},
+    {"entity_id": "gpu_nvidia_b200", "entity_type": "gpu", "display_name": "NVIDIA B200", "canonical_name": "NVIDIA B200", "vendor": "NVIDIA", "status": "active", "source_id": "nvidia_products", "notes": "Linked to NVIDIA historical GPU registry."},
+
 ]
 
 

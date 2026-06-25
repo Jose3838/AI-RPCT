@@ -4,3 +4,8 @@ hw000002,gpu_amd_instinct_mi300x,AMD,AMD Instinct,CDNA3,ROCm,2023,active,amd_pro
 hw000003,gpu_intel_max_1100,Intel,Intel Data Center GPU Max,Ponte Vecchio / Xe-HPC,oneAPI,2023,active,intel_products
 hw000004,gpu_intel_gaudi2,Intel,Intel Gaudi,Gaudi2,SynapseAI,2022,active,intel_newsroom
 hw000005,gpu_intel_gaudi3,Intel,Intel Gaudi,Gaudi3,SynapseAI,2024,active,intel_newsroom
+hw000006,gpu_nvidia_tesla_k80,NVIDIA,Tesla,Kepler,CUDA,2014,active,nvidia_products
+hw000007,gpu_nvidia_v100,NVIDIA,Tesla,Volta,CUDA,2017,active,nvidia_products
+hw000008,gpu_nvidia_a100,NVIDIA,Data Center,Ampere,CUDA,2020,active,nvidia_products
+hw000009,gpu_nvidia_h100,NVIDIA,Data Center,Hopper,CUDA,2022,active,nvidia_products
+hw000010,gpu_nvidia_b200,NVIDIA,Data Center,Blackwell,CUDA,2024,active,nvidia_products

@@ -73,6 +73,65 @@ ROWS = [
         "status": "active",
         "source_id": "intel_newsroom",
     },
+{
+    "hardware_id": "hw000006",
+    "entity_id": "gpu_nvidia_tesla_k80",
+    "vendor": "NVIDIA",
+    "product_family": "Tesla",
+    "architecture": "Kepler",
+    "compute_api": "CUDA",
+    "launch_year": "2014",
+    "status": "active",
+    "source_id": "nvidia_products",
+},
+
+{
+    "hardware_id": "hw000007",
+    "entity_id": "gpu_nvidia_v100",
+    "vendor": "NVIDIA",
+    "product_family": "Tesla",
+    "architecture": "Volta",
+    "compute_api": "CUDA",
+    "launch_year": "2017",
+    "status": "active",
+    "source_id": "nvidia_products",
+},
+
+{
+    "hardware_id": "hw000008",
+    "entity_id": "gpu_nvidia_a100",
+    "vendor": "NVIDIA",
+    "product_family": "Data Center",
+    "architecture": "Ampere",
+    "compute_api": "CUDA",
+    "launch_year": "2020",
+    "status": "active",
+    "source_id": "nvidia_products",
+},
+
+{
+    "hardware_id": "hw000009",
+    "entity_id": "gpu_nvidia_h100",
+    "vendor": "NVIDIA",
+    "product_family": "Data Center",
+    "architecture": "Hopper",
+    "compute_api": "CUDA",
+    "launch_year": "2022",
+    "status": "active",
+    "source_id": "nvidia_products",
+},
+
+{
+    "hardware_id": "hw000010",
+    "entity_id": "gpu_nvidia_b200",
+    "vendor": "NVIDIA",
+    "product_family": "Data Center",
+    "architecture": "Blackwell",
+    "compute_api": "CUDA",
+    "launch_year": "2024",
+    "status": "active",
+    "source_id": "nvidia_products",
+},
 ]
 
 

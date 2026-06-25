@@ -20,3 +20,8 @@ gpu_amd_instinct_mi300x,gpu,AMD Instinct MI300X,AMD Instinct MI300X,AMD,active,a
 gpu_intel_max_1100,gpu,Intel Data Center GPU Max 1100,Intel Data Center GPU Max 1100,Intel,active,intel_products,Linked to Intel historical GPU registry.
 gpu_intel_gaudi2,gpu,Intel Gaudi2,Intel Gaudi2,Intel,active,intel_newsroom,Linked to Intel historical GPU registry.
 gpu_intel_gaudi3,gpu,Intel Gaudi 3 AI Accelerator,Intel Gaudi 3 AI Accelerator,Intel,active,intel_newsroom,Linked to Intel historical GPU registry.
+gpu_nvidia_tesla_k80,gpu,NVIDIA Tesla K80,NVIDIA Tesla K80,NVIDIA,active,nvidia_products,Linked to NVIDIA historical GPU registry.
+gpu_nvidia_v100,gpu,NVIDIA Tesla V100,NVIDIA Tesla V100,NVIDIA,active,nvidia_products,Linked to NVIDIA historical GPU registry.
+gpu_nvidia_a100,gpu,NVIDIA A100,NVIDIA A100,NVIDIA,active,nvidia_products,Linked to NVIDIA historical GPU registry.
+gpu_nvidia_h100,gpu,NVIDIA H100,NVIDIA H100,NVIDIA,active,nvidia_products,Linked to NVIDIA historical GPU registry.
+gpu_nvidia_b200,gpu,NVIDIA B200,NVIDIA B200,NVIDIA,active,nvidia_products,Linked to NVIDIA historical GPU registry.
