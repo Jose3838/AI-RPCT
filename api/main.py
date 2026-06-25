@@ -72,9 +72,8 @@ def pipeline():
 def registries():
     return load_csv("data/registry_metadata.csv")
 
-
 @app.get("/registry/{name}")
-def registry(name: str):
+def registry(name: str, key: str | None = None, value: str | None = None):
     path = registry_path(name)
 
     if not path.exists():
@@ -84,7 +83,28 @@ def registry(name: str):
         )
 
     with path.open(newline="", encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+        rows = list(csv.DictReader(f))
+
+    if key is None and value is None:
+        return rows
+
+    if key is None or value is None:
+        raise HTTPException(
+            status_code=400,
+            detail="Both key and value must be provided for filtering.",
+        )
+
+    if rows and key not in rows[0]:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unknown filter key: {key}",
+        )
+
+    return [
+        row
+        for row in rows
+        if row.get(key) == value
+    ]
 
 
 @app.get("/providers")
