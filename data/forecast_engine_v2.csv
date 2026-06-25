@@ -1,0 +1,149 @@
+model_name,provider,gpu,record_count,avg_price,price_trend,availability_trend,forecast_signal,confidence
+forecast_engine_v2,runpod,A100 PCIe,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,A100 SXM,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,A100 SXM 40GB,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,A40,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,B200,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,B300,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,B300 MIG 34GB,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,H100 NVL,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,H100 PCIe,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,H100 SXM,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,H200 NVL,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,H200 SXM,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,L4,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,L40,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,L40S,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,MI300X,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,NVIDIA GeForce GTX 1050,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,NVIDIA GeForce GTX 1050 Ti,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,PRO 6000 MIG 24GB,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,PRO 6000 MIG 48GB,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 2000 Ada,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 3070,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 3080,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 3080 Ti,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 3090,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 3090 Ti,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 4000 Ada,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 4000 Ada SFF,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 4070 Ti,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 4080,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 4080 SUPER,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 4090,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 5000 Ada,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 5080,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 5090,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX 6000 Ada,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX A2000,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX A4000,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX A4500,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX A5000,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX A6000,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX PRO 4000,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX PRO 4500,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX PRO 5000,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX PRO 6000,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX PRO 6000 MaxQ,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,RTX PRO 6000 WK,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,Tesla V100,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,V100 SXM2,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod,unknown,3,0.0,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,runpod_real,A100 PCIe,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,A100 SXM,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,A100 SXM 40GB,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,A40,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,B200,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,B300,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,B300 MIG 34GB,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,H100 NVL,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,H100 PCIe,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,H100 SXM,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,H200 NVL,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,H200 SXM,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,L4,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,L40,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,L40S,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,MI300X,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,NVIDIA GeForce GTX 1050,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,NVIDIA GeForce GTX 1050 Ti,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,PRO 6000 MIG 24GB,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,PRO 6000 MIG 48GB,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 2000 Ada,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 3070,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 3080,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 3080 Ti,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 3090,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 3090 Ti,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 4000 Ada,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 4000 Ada SFF,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 4070 Ti,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 4080,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 4080 SUPER,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 4090,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 5000 Ada,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 5080,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 5090,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX 6000 Ada,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX A2000,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX A4000,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX A4500,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX A5000,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX A6000,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX PRO 4000,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX PRO 4500,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX PRO 5000,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX PRO 6000,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX PRO 6000 MaxQ,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,RTX PRO 6000 WK,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,Tesla V100,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,V100 SXM2,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,runpod_real,unknown,2,0.0,0.0,0.0,stable_market_expected,52
+forecast_engine_v2,vast,A100 PCIE,3,1.0022,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,vast,A800 PCIE,3,0.6689,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,vast,B200,18,6.4987,0.2962,0.0,price_increase_likely,68
+forecast_engine_v2,vast,H100 NVL,6,3.3422,0.999,0.0,price_increase_likely,56
+forecast_engine_v2,vast,H100 SXM,15,7.6857,10.5871,0.0,price_increase_likely,65
+forecast_engine_v2,vast,H200,27,9.9557,19.584,0.0,price_increase_likely,77
+forecast_engine_v2,vast,H200 NVL,15,4.3861,1.4062,0.0,price_increase_likely,65
+forecast_engine_v2,vast,RTX 3090,12,0.2119,-0.5481,0.0,price_decrease_likely,62
+forecast_engine_v2,vast,RTX 4070S Ti,6,0.2037,0.957,0.0,price_increase_likely,56
+forecast_engine_v2,vast,RTX 4090,18,0.6322,0.3849,0.0,price_increase_likely,68
+forecast_engine_v2,vast,RTX 4090D,3,0.6022,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,vast,RTX 5060,3,0.0689,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,vast,RTX 5060 Ti,9,0.1689,0.3797,0.0,price_increase_likely,59
+forecast_engine_v2,vast,RTX 5070,6,0.1276,0.1471,0.0,price_increase_likely,56
+forecast_engine_v2,vast,RTX 5070 Ti,6,0.3026,0.9709,0.0,price_increase_likely,56
+forecast_engine_v2,vast,RTX 5080,3,0.2178,0.0,0.0,stable_market_expected,53
+forecast_engine_v2,vast,RTX 5090,42,1.4507,3.1525,0.0,price_increase_likely,92
+forecast_engine_v2,vast,RTX 6000Ada,9,1.2029,1.9791,0.0,price_increase_likely,59
+forecast_engine_v2,vast,RTX PRO 4000,9,0.4378,1.1391,0.0,price_increase_likely,59
+forecast_engine_v2,vast,RTX PRO 5000,9,1.0773,0.8392,0.0,price_increase_likely,59
+forecast_engine_v2,vast,RTX PRO 6000 S,36,3.3734,3.1472,0.0,price_increase_likely,86
+forecast_engine_v2,vast,RTX PRO 6000 WS,27,2.8551,8.14,0.0,price_increase_likely,77
+forecast_engine_v2,vast,Tesla V100,15,0.062,-0.8622,0.0,price_decrease_likely,65
+forecast_engine_v2,vast_real,A100 PCIE,1,1.0022,0.0,0.0,stable_market_expected,51
+forecast_engine_v2,vast_real,A800 PCIE,1,0.6689,0.0,0.0,stable_market_expected,51
+forecast_engine_v2,vast_real,B200,12,6.2827,1.5895,0.0,price_increase_likely,62
+forecast_engine_v2,vast_real,B300,1,15.0021,0.0,0.0,stable_market_expected,51
+forecast_engine_v2,vast_real,H100 NVL,4,3.2499,1.396,0.0,price_increase_likely,54
+forecast_engine_v2,vast_real,H100 SXM,11,7.5201,10.5871,0.0,price_increase_likely,61
+forecast_engine_v2,vast_real,H200,17,10.691,4.1577,0.0,price_increase_likely,67
+forecast_engine_v2,vast_real,H200 NVL,9,3.839,1.4062,0.0,price_increase_likely,59
+forecast_engine_v2,vast_real,RTX 3090,7,0.2183,-0.4959,0.0,price_decrease_likely,57
+forecast_engine_v2,vast_real,RTX 4070,1,0.0781,0.0,0.0,stable_market_expected,51
+forecast_engine_v2,vast_real,RTX 4070S Ti,4,0.2037,0.0,0.0,stable_market_expected,54
+forecast_engine_v2,vast_real,RTX 4090,14,0.596,1.0549,0.0,price_increase_likely,64
+forecast_engine_v2,vast_real,RTX 4090D,1,0.6022,0.0,0.0,stable_market_expected,51
+forecast_engine_v2,vast_real,RTX 5060,1,0.0689,0.0,0.0,stable_market_expected,51
+forecast_engine_v2,vast_real,RTX 5060 Ti,7,0.1516,0.3797,0.0,price_increase_likely,57
+forecast_engine_v2,vast_real,RTX 5070,4,0.1525,-0.4228,0.0,price_decrease_likely,54
+forecast_engine_v2,vast_real,RTX 5070 Ti,5,0.2427,1.9617,0.0,price_increase_likely,55
+forecast_engine_v2,vast_real,RTX 5080,3,0.2262,-0.1037,0.0,price_decrease_likely,53
+forecast_engine_v2,vast_real,RTX 5090,29,1.4821,2.7896,0.0,price_increase_likely,79
+forecast_engine_v2,vast_real,RTX 6000Ada,5,1.3359,0.0,0.0,stable_market_expected,55
+forecast_engine_v2,vast_real,RTX PRO 4000,4,0.4352,0.4125,0.0,price_increase_likely,54
+forecast_engine_v2,vast_real,RTX PRO 5000,5,1.0603,0.6724,0.0,price_increase_likely,55
+forecast_engine_v2,vast_real,RTX PRO 6000 S,26,3.4938,4.2198,0.0,price_increase_likely,76
+forecast_engine_v2,vast_real,RTX PRO 6000 WS,18,2.871,14.815,0.0,price_increase_likely,68
+forecast_engine_v2,vast_real,Tesla V100,10,0.062,-0.8622,0.0,price_decrease_likely,60
