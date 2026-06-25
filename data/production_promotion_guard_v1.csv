@@ -1,0 +1,2 @@
+guard,promotion_allowed,status,training_status,training_rows,trainable_labels,retraining_allowed,customer_preview_ready,paid_production_ready,blockers,next_action
+production_promotion_guard_v1,False,blocked_waiting_for_true_labels,not_ready,0,0,False,True,False,"leakage_audit_block, training_dataset_v3_not_ready, no_true_outcome_training_rows, no_trainable_true_labels, auto_retraining_not_allowed, paid_production_not_ready",Continue collecting forecasts until outcome windows mature and true labels resolve.
