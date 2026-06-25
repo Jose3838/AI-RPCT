@@ -1,0 +1,6 @@
+capacity_record_id,relationship_id,observation_date,capacity_status,availability_level,source_id
+cap000001,relprov000004,2024-01-15,available,high,coreweave_docs
+cap000002,relprov000005,2024-02-01,limited,medium,lambda_docs
+cap000003,relprov000001,2024-03-01,available,high,aws_docs
+cap000004,relprov000002,2024-03-15,available,high,azure_docs
+cap000005,relprov000003,2024-04-01,limited,medium,gcp_docs
