@@ -23,7 +23,8 @@ def test_web_dashboard_builder_runs():
 def test_web_dashboard_contains_core_sections():
     text = DASHBOARD.read_text(encoding="utf-8")
 
-    assert "AI-RPCT Dashboard" in text
-    assert "Pipeline Status" in text
-    assert "Datasets" in text
-    assert "Governance" in text
+    assert "AI-RPCT Web Console" in text
+    assert "Platform Modules Built" in text
+    assert "Registry Explorer" in text
+    assert "Governance Guardrails" in text
+    assert "API Endpoints" in text

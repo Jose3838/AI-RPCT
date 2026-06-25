@@ -114,7 +114,8 @@ provider_reliability_ranking,data/provider_reliability_ranking.csv,2
 public_beta_status,data/public_beta_status.csv,1
 public_usage_snapshot,data/public_usage_snapshot.csv,1
 real_provider_todo,data/real_provider_todo.csv,5
-registry_catalog_v2,data/registry_catalog_v2.csv,137
+registry_catalog_v2,data/registry_catalog_v2.csv,138
+registry_metadata,data/registry_metadata.csv,138
 rocm_timeline,data/rocm_timeline.csv,4
 rpct_scores,data/rpct_scores.csv,37
 runpod_live_report,data/runpod_live_report.csv,47
