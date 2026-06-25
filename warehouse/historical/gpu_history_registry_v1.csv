@@ -1,0 +1,10 @@
+release_date,vendor,architecture,gpu_generation,representative_gpu,market_role,source_status,trust_grade,registry_version,created_at
+2006-11-01,NVIDIA,Tesla,Tesla_family,GeForce 8800 GTX,consumer_foundation,verified_release_date,A,v1,2026-06-25T17:26:51.046721+00:00
+2008-06-01,NVIDIA,Tesla Compute,Tesla_compute_family,Tesla C1060,gpu_compute,verified_release_date,A,v1,2026-06-25T17:26:51.046721+00:00
+2012-03-01,NVIDIA,Kepler,Kepler_family,Tesla K20,datacenter,verified_release_date,A,v1,2026-06-25T17:26:51.046721+00:00
+2014-11-01,NVIDIA,Maxwell,Maxwell_family,Tesla M40,datacenter,verified_release_date,A,v1,2026-06-25T17:26:51.046721+00:00
+2016-04-01,NVIDIA,Pascal,Pascal_family,Tesla P100,datacenter,verified_release_date,A,v1,2026-06-25T17:26:51.046721+00:00
+2017-05-01,NVIDIA,Volta,Volta_family,Tesla V100,ai_training,verified_release_date,A,v1,2026-06-25T17:26:51.046721+00:00
+2020-05-01,NVIDIA,Ampere,Ampere_family,A100,ai_training,verified_release_date,A,v1,2026-06-25T17:26:51.046721+00:00
+2022-03-01,NVIDIA,Hopper,Hopper_family,H100,foundation_models,verified_release_date,A,v1,2026-06-25T17:26:51.046721+00:00
+2024-03-01,NVIDIA,Blackwell,Blackwell_family,B200,next_generation_ai,verified_release_date,A,v1,2026-06-25T17:26:51.046721+00:00
