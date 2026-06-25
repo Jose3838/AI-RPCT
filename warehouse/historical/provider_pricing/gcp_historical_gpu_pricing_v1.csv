@@ -1,0 +1,5 @@
+date,provider,provider_family,gpu_family,gpu,instance,price_per_hour,region,price_basis,source,trust_grade,collector_version,created_at
+2017-01-01,Google Cloud,hyperscaler_family,K80_family,K80,k80,0,global,placeholder,Google Cloud historical collector,B,v1,2026-06-25T13:26:27.570565+00:00
+2018-01-01,Google Cloud,hyperscaler_family,V100_family,V100,v100,0,global,placeholder,Google Cloud historical collector,B,v1,2026-06-25T13:26:27.570565+00:00
+2021-01-01,Google Cloud,hyperscaler_family,A100_family,A100,a2,0,global,placeholder,Google Cloud historical collector,B,v1,2026-06-25T13:26:27.570565+00:00
+2023-01-01,Google Cloud,hyperscaler_family,H100_family,H100,a3,0,global,placeholder,Google Cloud historical collector,B,v1,2026-06-25T13:26:27.570565+00:00
