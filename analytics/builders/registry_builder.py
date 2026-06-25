@@ -14,15 +14,18 @@ def write_registry(
     *,
     rows: list[dict[str, str]],
     columns: list[str],
-    data_filename: str,
-    warehouse_parts: list[str],
+    registry_name: str,
+    warehouse_group: str,
     label: str,
 ) -> None:
-    data_path = ROOT / "data" / data_filename
+    data_path = ROOT / "data" / f"{registry_name}.csv"
 
-    warehouse_path = ROOT / "warehouse"
-    for part in warehouse_parts:
-        warehouse_path = warehouse_path / part
+    warehouse_path = (
+        ROOT
+        / "warehouse"
+        / warehouse_group
+        / f"{registry_name}.csv"
+    )
 
     write_registry_csv(
         columns=columns,

@@ -43,16 +43,12 @@ ROWS = [
     },
 ]
 
-
 def main():
     write_registry(
         rows=ROWS,
         columns=COLUMNS,
-        data_filename="feature_store.csv",
-        warehouse_parts=[
-            "feature_store",
-            "feature_store.csv",
-        ],
+        registry_name="feature_store",
+        warehouse_group="feature_store",
         label="feature records",
     )
 

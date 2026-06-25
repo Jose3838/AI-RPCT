@@ -17,13 +17,19 @@ def test_write_registry_creates_data_and_warehouse_files(tmp_path, monkeypatch):
     registry_builder.write_registry(
         rows=rows,
         columns=columns,
-        data_filename="sample_registry.csv",
-        warehouse_parts=["metadata", "sample_registry.csv"],
+        registry_name="sample_registry",
+        warehouse_group="metadata",
         label="sample records",
     )
 
     data_path = tmp_path / "data" / "sample_registry.csv"
-    warehouse_path = tmp_path / "warehouse" / "metadata" / "sample_registry.csv"
+
+    warehouse_path = (
+        tmp_path
+        / "warehouse"
+        / "metadata"
+        / "sample_registry.csv"
+    )
 
     assert data_path.exists()
     assert warehouse_path.exists()

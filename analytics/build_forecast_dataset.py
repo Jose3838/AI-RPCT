@@ -49,14 +49,10 @@ def main():
     write_registry(
         rows=build_rows(),
         columns=COLUMNS,
-        data_filename="forecast_dataset.csv",
-        warehouse_parts=[
-            "forecast",
-            "forecast_dataset.csv",
-        ],
+        registry_name="forecast_dataset",
+        warehouse_group="forecast",
         label="forecast dataset records",
     )
-
 
 if __name__ == "__main__":
     main()
