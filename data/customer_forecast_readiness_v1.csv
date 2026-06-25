@@ -1,0 +1,2 @@
+selected_model,production_status,customer_preview_ready,paid_production_ready,product_maturity,allowed_claim,blocked_claim
+forecast_engine_v8,watch,True,False,pilot,Early directional forecast preview based on historical and live infrastructure signals.,Do not claim validated predictive AI or guaranteed forecasting performance.
