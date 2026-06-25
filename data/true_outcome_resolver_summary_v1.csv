@@ -1,0 +1,2 @@
+input_labels,matured_windows,resolved_labels,trainable_labels,status,next_action
+444,0,0,0,waiting_for_mature_windows,Continue collecting observations until windows mature.
