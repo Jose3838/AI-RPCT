@@ -1,0 +1,2 @@
+dataset_id,dataset_name,schema_version,owner,first_release,latest_update,row_count,verification_status,source_type,governance_status
+amd_historical_gpu_registry,AMD Historical GPU Registry,1,AI-RPCT,2026-06-25,2026-06-25,4,partial,official_mixed,compliant
