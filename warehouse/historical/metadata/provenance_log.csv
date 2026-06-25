@@ -1,3 +1,4 @@
 timestamp,source,category,output_file,row_count,trust_grade
 2026-06-25T10:57:40.539273+00:00,Market Events,market_events,warehouse/historical/market_events/market_events_market_events.csv,7,A
 2026-06-25T10:59:32.035783+00:00,Market Events,market_events,warehouse/historical/market_events/market_events_market_events.csv,7,A
+2026-06-25T11:01:45.795679+00:00,Cloud GPU Instances,provider_pricing,warehouse/historical/provider_pricing/cloud_gpu_instances_provider_pricing.csv,12,A
