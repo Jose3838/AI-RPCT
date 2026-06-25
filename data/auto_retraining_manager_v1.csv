@@ -1,0 +1,2 @@
+manager,min_trainable_labels,trainable_labels,training_rows,retraining_allowed,status,next_action
+auto_retraining_manager_v1,100,0,0,False,waiting_for_labels,Continue collecting forecasts and resolving matured outcomes.
