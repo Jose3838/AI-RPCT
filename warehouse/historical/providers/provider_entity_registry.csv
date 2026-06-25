@@ -1,0 +1,10 @@
+entity_id,provider_id,provider_name,provider_category,status,source_id
+provider_aws,prov000001,Amazon Web Services,Hyperscaler,active,aws_docs
+provider_azure,prov000002,Microsoft Azure,Hyperscaler,active,azure_docs
+provider_google_cloud,prov000003,Google Cloud,Hyperscaler,active,gcp_docs
+provider_coreweave,prov000004,CoreWeave,GPU Cloud,active,coreweave_docs
+provider_lambda,prov000005,Lambda,GPU Cloud,active,lambda_docs
+provider_crusoe,prov000006,Crusoe,GPU Cloud,active,crusoe_docs
+provider_nebius,prov000007,Nebius,GPU Cloud,active,nebius_docs
+provider_runpod,prov000008,RunPod,GPU Cloud,active,runpod_docs
+provider_vast,prov000009,Vast.ai,GPU Marketplace,active,vast_docs
