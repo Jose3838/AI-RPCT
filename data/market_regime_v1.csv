@@ -1,0 +1,149 @@
+provider,gpu,market_regime,confidence,records,avg_price
+runpod,A100 PCIe,tight_market,60,3,0.0
+runpod,A100 SXM,tight_market,60,3,0.0
+runpod,A100 SXM 40GB,tight_market,60,3,0.0
+runpod,A40,tight_market,60,3,0.0
+runpod,B200,tight_market,60,3,0.0
+runpod,B300,tight_market,60,3,0.0
+runpod,B300 MIG 34GB,tight_market,60,3,0.0
+runpod,H100 NVL,tight_market,60,3,0.0
+runpod,H100 PCIe,tight_market,60,3,0.0
+runpod,H100 SXM,tight_market,60,3,0.0
+runpod,H200 NVL,tight_market,60,3,0.0
+runpod,H200 SXM,tight_market,60,3,0.0
+runpod,L4,tight_market,60,3,0.0
+runpod,L40,tight_market,60,3,0.0
+runpod,L40S,tight_market,60,3,0.0
+runpod,MI300X,tight_market,60,3,0.0
+runpod,NVIDIA GeForce GTX 1050,tight_market,60,3,0.0
+runpod,NVIDIA GeForce GTX 1050 Ti,tight_market,60,3,0.0
+runpod,PRO 6000 MIG 24GB,tight_market,60,3,0.0
+runpod,PRO 6000 MIG 48GB,tight_market,60,3,0.0
+runpod,RTX 2000 Ada,tight_market,60,3,0.0
+runpod,RTX 3070,tight_market,60,3,0.0
+runpod,RTX 3080,tight_market,60,3,0.0
+runpod,RTX 3080 Ti,tight_market,60,3,0.0
+runpod,RTX 3090,tight_market,60,3,0.0
+runpod,RTX 3090 Ti,tight_market,60,3,0.0
+runpod,RTX 4000 Ada,tight_market,60,3,0.0
+runpod,RTX 4000 Ada SFF,tight_market,60,3,0.0
+runpod,RTX 4070 Ti,tight_market,60,3,0.0
+runpod,RTX 4080,tight_market,60,3,0.0
+runpod,RTX 4080 SUPER,tight_market,60,3,0.0
+runpod,RTX 4090,tight_market,60,3,0.0
+runpod,RTX 5000 Ada,tight_market,60,3,0.0
+runpod,RTX 5080,tight_market,60,3,0.0
+runpod,RTX 5090,tight_market,60,3,0.0
+runpod,RTX 6000 Ada,tight_market,60,3,0.0
+runpod,RTX A2000,tight_market,60,3,0.0
+runpod,RTX A4000,tight_market,60,3,0.0
+runpod,RTX A4500,tight_market,60,3,0.0
+runpod,RTX A5000,tight_market,60,3,0.0
+runpod,RTX A6000,tight_market,60,3,0.0
+runpod,RTX PRO 4000,tight_market,60,3,0.0
+runpod,RTX PRO 4500,tight_market,60,3,0.0
+runpod,RTX PRO 5000,tight_market,60,3,0.0
+runpod,RTX PRO 6000,tight_market,60,3,0.0
+runpod,RTX PRO 6000 MaxQ,tight_market,60,3,0.0
+runpod,RTX PRO 6000 WK,tight_market,60,3,0.0
+runpod,Tesla V100,tight_market,60,3,0.0
+runpod,V100 SXM2,tight_market,60,3,0.0
+runpod,unknown,tight_market,60,3,0.0
+runpod_real,A100 PCIe,tight_market,60,2,0.0
+runpod_real,A100 SXM,tight_market,60,2,0.0
+runpod_real,A100 SXM 40GB,tight_market,60,2,0.0
+runpod_real,A40,tight_market,60,2,0.0
+runpod_real,B200,tight_market,60,2,0.0
+runpod_real,B300,tight_market,60,2,0.0
+runpod_real,B300 MIG 34GB,tight_market,60,2,0.0
+runpod_real,H100 NVL,tight_market,60,2,0.0
+runpod_real,H100 PCIe,tight_market,60,2,0.0
+runpod_real,H100 SXM,tight_market,60,2,0.0
+runpod_real,H200 NVL,tight_market,60,2,0.0
+runpod_real,H200 SXM,tight_market,60,2,0.0
+runpod_real,L4,tight_market,60,2,0.0
+runpod_real,L40,tight_market,60,2,0.0
+runpod_real,L40S,tight_market,60,2,0.0
+runpod_real,MI300X,tight_market,60,2,0.0
+runpod_real,NVIDIA GeForce GTX 1050,tight_market,60,2,0.0
+runpod_real,NVIDIA GeForce GTX 1050 Ti,tight_market,60,2,0.0
+runpod_real,PRO 6000 MIG 24GB,tight_market,60,2,0.0
+runpod_real,PRO 6000 MIG 48GB,tight_market,60,2,0.0
+runpod_real,RTX 2000 Ada,tight_market,60,2,0.0
+runpod_real,RTX 3070,tight_market,60,2,0.0
+runpod_real,RTX 3080,tight_market,60,2,0.0
+runpod_real,RTX 3080 Ti,tight_market,60,2,0.0
+runpod_real,RTX 3090,tight_market,60,2,0.0
+runpod_real,RTX 3090 Ti,tight_market,60,2,0.0
+runpod_real,RTX 4000 Ada,tight_market,60,2,0.0
+runpod_real,RTX 4000 Ada SFF,tight_market,60,2,0.0
+runpod_real,RTX 4070 Ti,tight_market,60,2,0.0
+runpod_real,RTX 4080,tight_market,60,2,0.0
+runpod_real,RTX 4080 SUPER,tight_market,60,2,0.0
+runpod_real,RTX 4090,tight_market,60,2,0.0
+runpod_real,RTX 5000 Ada,tight_market,60,2,0.0
+runpod_real,RTX 5080,tight_market,60,2,0.0
+runpod_real,RTX 5090,tight_market,60,2,0.0
+runpod_real,RTX 6000 Ada,tight_market,60,2,0.0
+runpod_real,RTX A2000,tight_market,60,2,0.0
+runpod_real,RTX A4000,tight_market,60,2,0.0
+runpod_real,RTX A4500,tight_market,60,2,0.0
+runpod_real,RTX A5000,tight_market,60,2,0.0
+runpod_real,RTX A6000,tight_market,60,2,0.0
+runpod_real,RTX PRO 4000,tight_market,60,2,0.0
+runpod_real,RTX PRO 4500,tight_market,60,2,0.0
+runpod_real,RTX PRO 5000,tight_market,60,2,0.0
+runpod_real,RTX PRO 6000,tight_market,60,2,0.0
+runpod_real,RTX PRO 6000 MaxQ,tight_market,60,2,0.0
+runpod_real,RTX PRO 6000 WK,tight_market,60,2,0.0
+runpod_real,Tesla V100,tight_market,60,2,0.0
+runpod_real,V100 SXM2,tight_market,60,2,0.0
+runpod_real,unknown,tight_market,60,2,0.0
+vast,A100 PCIE,tight_market,60,3,1.0022
+vast,A800 PCIE,tight_market,60,3,0.6689
+vast,B200,tight_market,60,18,6.4987
+vast,H100 NVL,capacity_crunch,60,6,3.3422
+vast,H100 SXM,tight_market,60,15,7.6857
+vast,H200,volatile_market,70,27,9.9557
+vast,H200 NVL,tight_market,60,15,4.3861
+vast,RTX 3090,tight_market,60,12,0.2119
+vast,RTX 4070S Ti,tight_market,60,6,0.2037
+vast,RTX 4090,tight_market,60,18,0.6322
+vast,RTX 4090D,tight_market,60,3,0.6022
+vast,RTX 5060,tight_market,60,3,0.0689
+vast,RTX 5060 Ti,tight_market,60,9,0.1689
+vast,RTX 5070,tight_market,60,6,0.1276
+vast,RTX 5070 Ti,tight_market,60,6,0.3026
+vast,RTX 5080,tight_market,60,3,0.2178
+vast,RTX 5090,volatile_market,70,42,1.4507
+vast,RTX 6000Ada,capacity_crunch,60,9,1.2029
+vast,RTX PRO 4000,tight_market,60,9,0.4378
+vast,RTX PRO 5000,capacity_crunch,60,9,1.0773
+vast,RTX PRO 6000 S,volatile_market,70,36,3.3734
+vast,RTX PRO 6000 WS,volatile_market,70,27,2.8551
+vast,Tesla V100,tight_market,60,15,0.062
+vast_real,A100 PCIE,tight_market,60,1,1.0022
+vast_real,A800 PCIE,tight_market,60,1,0.6689
+vast_real,B200,tight_market,60,12,6.2827
+vast_real,B300,tight_market,60,1,15.0021
+vast_real,H100 NVL,capacity_crunch,60,4,3.2499
+vast_real,H100 SXM,tight_market,60,11,7.5201
+vast_real,H200,tight_market,60,17,10.691
+vast_real,H200 NVL,capacity_crunch,60,9,3.839
+vast_real,RTX 3090,tight_market,60,7,0.2183
+vast_real,RTX 4070,tight_market,60,1,0.0781
+vast_real,RTX 4070S Ti,tight_market,60,4,0.2037
+vast_real,RTX 4090,tight_market,60,14,0.596
+vast_real,RTX 4090D,tight_market,60,1,0.6022
+vast_real,RTX 5060,tight_market,60,1,0.0689
+vast_real,RTX 5060 Ti,tight_market,60,7,0.1516
+vast_real,RTX 5070,tight_market,60,4,0.1525
+vast_real,RTX 5070 Ti,tight_market,60,5,0.2427
+vast_real,RTX 5080,tight_market,60,3,0.2262
+vast_real,RTX 5090,volatile_market,70,29,1.4821
+vast_real,RTX 6000Ada,capacity_crunch,60,5,1.3359
+vast_real,RTX PRO 4000,tight_market,60,4,0.4352
+vast_real,RTX PRO 5000,capacity_crunch,60,5,1.0603
+vast_real,RTX PRO 6000 S,volatile_market,70,26,3.4938
+vast_real,RTX PRO 6000 WS,tight_market,60,18,2.871
+vast_real,Tesla V100,tight_market,60,10,0.062
