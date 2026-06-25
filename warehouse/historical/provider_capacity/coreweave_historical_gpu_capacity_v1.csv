@@ -1,0 +1,5 @@
+date,provider,provider_family,gpu_family,gpu,capacity_signal,region,source_basis,source,trust_grade,collector_version,created_at
+2019-01-01,CoreWeave,specialized_gpu_cloud_family,V100_family,V100,early_gpu_cloud,us,historical_structure_placeholder,CoreWeave historical collector,C,v1,2026-06-25T13:27:39.456298+00:00
+2021-01-01,CoreWeave,specialized_gpu_cloud_family,A100_family,A100,ai_training_capacity,us,historical_structure_placeholder,CoreWeave historical collector,C,v1,2026-06-25T13:27:39.456298+00:00
+2023-01-01,CoreWeave,specialized_gpu_cloud_family,H100_family,H100,high_demand_training_capacity,us,historical_structure_placeholder,CoreWeave historical collector,C,v1,2026-06-25T13:27:39.456298+00:00
+2024-01-01,CoreWeave,specialized_gpu_cloud_family,H200_family,H200,next_generation_capacity,us,historical_structure_placeholder,CoreWeave historical collector,C,v1,2026-06-25T13:27:39.456298+00:00
