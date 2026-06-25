@@ -1,0 +1,133 @@
+:root {
+  --bg: #07111f;
+  --panel: #0f1c2e;
+  --text: #eef5ff;
+  --muted: #9fb2cc;
+  --accent: #46e0a8;
+  --border: rgba(255,255,255,0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  border-right: 1px solid var(--border);
+  background: #081427;
+  padding: 28px 20px;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 28px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+nav a,
+.section-list a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid transparent;
+}
+
+nav a:hover,
+.section-list a:hover {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.content {
+  padding: 38px;
+}
+
+.hero {
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.035));
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  padding: 38px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+h1 {
+  font-size: 48px;
+  margin: 10px 0 16px;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card,
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card span {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.section-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .grid,
+  .section-list {
+    grid-template-columns: 1fr;
+  }
+}

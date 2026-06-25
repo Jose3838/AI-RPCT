@@ -32,5 +32,6 @@ steps:
   - build_analytics_dashboard
 
   - build_web_dashboard
+  - build_web_console
 
   - validate_all_registries
