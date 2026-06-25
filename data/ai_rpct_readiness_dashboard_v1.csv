@@ -1,0 +1,2 @@
+platform,platform_stage,customer_demo_allowed,paid_production_allowed,production_promotion_allowed,ml_retraining_allowed,training_dataset_status,resolved_true_labels,trainable_true_labels,next_milestone
+AI-RPCT,pilot,True,False,False,False,not_ready,0,0,Collect mature true outcome labels
