@@ -1,0 +1,4 @@
+model_name,rows,avg_confidence,learning_enabled,model_type,rank,role,selection_policy,production_ready
+learning_baseline_model_v1,148,100.0,True,historical_outcome_frequency_baseline,1,champion,learning_first_confidence_second_coverage_third,True
+forecast_engine_v5,148,86.25,True,learning_baseline_hybrid,2,challenger,learning_first_confidence_second_coverage_third,False
+forecast_engine_v4,148,72.51,False,multi_factor_rule_engine,3,challenger,learning_first_confidence_second_coverage_third,False
