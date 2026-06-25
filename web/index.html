@@ -2,92 +2,346 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>AI-RPCT Dashboard</title>
+  <title>AI-RPCT</title>
   <style>
+    :root {
+      --bg: #07111f;
+      --panel: #0f1c2e;
+      --panel2: #13243a;
+      --text: #eef5ff;
+      --muted: #9fb2cc;
+      --accent: #46e0a8;
+      --accent2: #7aa8ff;
+      --danger: #ff6b6b;
+      --border: rgba(255,255,255,0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background: #f7f7f7;
-      color: #222;
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(70,224,168,0.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(122,168,255,0.18), transparent 28%),
+        var(--bg);
+      color: var(--text);
     }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 36px 24px 60px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 54px;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .pill {
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.04);
+      font-size: 14px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-card, .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.035));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.28);
+    }
+
+    .hero-card {
+      padding: 44px;
+    }
+
     h1 {
-      margin-bottom: 0;
+      font-size: 54px;
+      line-height: 1.02;
+      margin: 0 0 22px;
+      letter-spacing: -1.5px;
     }
+
     .subtitle {
-      color: #666;
-      margin-top: 4px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+      max-width: 760px;
+      margin: 0;
     }
-    .card {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 20px;
-      margin-top: 24px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 30px;
+      flex-wrap: wrap;
     }
+
+    .button {
+      display: inline-block;
+      padding: 13px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      color: #06111d;
+      background: var(--accent);
+      font-weight: 800;
+    }
+
+    .button.secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+    }
+
+    .status-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .status-label {
+      color: var(--muted);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .status {
+      margin-top: 14px;
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--accent);
+    }
+
+    .generated {
+      color: var(--muted);
+      font-size: 13px;
+      word-break: break-all;
+      margin-top: 28px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .metric {
+      padding: 24px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .metric .num {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--accent2);
+      margin-bottom: 6px;
+    }
+
+    .metric .label {
+      color: var(--muted);
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+
+    .panel {
+      padding: 28px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 24px;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 14px;
+    }
+
+    th, td {
+      padding: 14px 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      color: var(--text);
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    code {
+      color: #cfe0ff;
+      background: rgba(255,255,255,0.06);
+      padding: 3px 6px;
+      border-radius: 6px;
+    }
+
+    .badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .badge.ok {
+      background: rgba(70,224,168,0.14);
+      color: var(--accent);
+    }
+
+    .badge.bad {
+      background: rgba(255,107,107,0.14);
+      color: var(--danger);
+    }
+
+    .governance {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
       margin-top: 12px;
     }
-    th, td {
-      border-bottom: 1px solid #eee;
-      text-align: left;
-      padding: 10px;
+
+    .rule {
+      padding: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      color: var(--muted);
     }
-    th {
-      background: #fafafa;
+
+    footer {
+      margin-top: 34px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
     }
-    .ok {
-      color: #0a7f28;
-      font-weight: bold;
-    }
-    .governance {
-      font-size: 0.95rem;
-      color: #444;
+
+    @media (max-width: 860px) {
+      .hero, .grid, .governance {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>AI-RPCT Dashboard</h1>
-  <p class="subtitle">Generated UTC: 2026-06-25T23:05:31.522573+00:00</p>
+  <main class="page">
+    <nav class="nav">
+      <div class="brand">AI-RPCT</div>
+      <div class="pill">Governed AI Infrastructure Intelligence</div>
+    </nav>
 
-  <div class="card">
-    <h2>Pipeline Status</h2>
-    <p class="ok">SUCCESS</p>
-  </div>
+    <section class="hero">
+      <div class="hero-card">
+        <h1>AI Resource Prediction & Capacity Tracker</h1>
+        <p class="subtitle">
+          A governed data platform for tracking AI infrastructure, accelerator supply,
+          provider relationships, capacity signals, forecast outputs, and explainability —
+          without synthetic labels, invented prices, or unsupported performance claims.
+        </p>
 
-  <div class="card">
-    <h2>Datasets</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Dataset</th>
-          <th>Path</th>
-          <th>Rows</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Feature Store</td><td>data/feature_store.csv</td><td>2</td><td>OK</td></tr>
-<tr><td>Forecast Dataset</td><td>data/forecast_dataset.csv</td><td>2</td><td>OK</td></tr>
-<tr><td>Forecast Output</td><td>data/forecast_engine_v1_output.csv</td><td>2</td><td>OK</td></tr>
-<tr><td>Forecast Explanations</td><td>data/forecast_explanations.csv</td><td>2</td><td>OK</td></tr>
-<tr><td>Registry Metadata</td><td>data/registry_metadata.csv</td><td>138</td><td>OK</td></tr>
-<tr><td>Pipeline Health</td><td>data/pipeline_health_summary.csv</td><td>4</td><td>OK</td></tr>
-<tr><td>Data Quality Metrics</td><td>data/data_quality_metrics.csv</td><td>4</td><td>OK</td></tr>
-      </tbody>
-    </table>
-  </div>
+        <div class="hero-actions">
+          <a class="button" href="#datasets">View Datasets</a>
+          <a class="button secondary" href="#governance">Governance</a>
+        </div>
+      </div>
 
-  <div class="card governance">
-    <h2>Governance</h2>
-    <ul>
-      <li>No ML training from feature-only datasets.</li>
-      <li>No accuracy claims without true future outcome labels.</li>
-      <li>No paid production promotion from prototype forecast outputs.</li>
-      <li>No invented pricing or synthetic benchmark claims.</li>
-    </ul>
-  </div>
+      <div class="status-card hero-card">
+        <div>
+          <div class="status-label">Pipeline Status</div>
+          <div class="status">SUCCESS</div>
+        </div>
+        <div class="generated">
+          Generated UTC:<br>2026-06-25T23:11:50.888558+00:00
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="metric">
+        <div class="num">7</div>
+        <div class="label">Tracked datasets</div>
+      </div>
+      <div class="metric">
+        <div class="num">154</div>
+        <div class="label">Rows across dashboard datasets</div>
+      </div>
+      <div class="metric">
+        <div class="num">0</div>
+        <div class="label">ML production promotions</div>
+      </div>
+    </section>
+
+    <section class="section panel" id="datasets">
+      <h2>Dataset Overview</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Dataset</th>
+            <th>Path</th>
+            <th>Rows</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Feature Store</td><td><code>data/feature_store.csv</code></td><td>2</td><td><span class='badge ok'>OK</span></td></tr>
+<tr><td>Forecast Dataset</td><td><code>data/forecast_dataset.csv</code></td><td>2</td><td><span class='badge ok'>OK</span></td></tr>
+<tr><td>Forecast Output</td><td><code>data/forecast_engine_v1_output.csv</code></td><td>2</td><td><span class='badge ok'>OK</span></td></tr>
+<tr><td>Forecast Explanations</td><td><code>data/forecast_explanations.csv</code></td><td>2</td><td><span class='badge ok'>OK</span></td></tr>
+<tr><td>Registry Metadata</td><td><code>data/registry_metadata.csv</code></td><td>138</td><td><span class='badge ok'>OK</span></td></tr>
+<tr><td>Pipeline Health</td><td><code>data/pipeline_health_summary.csv</code></td><td>4</td><td><span class='badge ok'>OK</span></td></tr>
+<tr><td>Data Quality Metrics</td><td><code>data/data_quality_metrics.csv</code></td><td>4</td><td><span class='badge ok'>OK</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section panel" id="governance">
+      <h2>Governance Guardrails</h2>
+      <div class="governance">
+        <div class="rule">No ML training without true future outcome labels.</div>
+        <div class="rule">No accuracy claims without verified outcome evaluation.</div>
+        <div class="rule">No invented pricing, capacity, or benchmark data.</div>
+        <div class="rule">No paid production promotion from prototype forecast outputs.</div>
+      </div>
+    </section>
+
+    <footer>
+      AI-RPCT Platform Dashboard · Static HTML v2
+    </footer>
+  </main>
 </body>
 </html>
