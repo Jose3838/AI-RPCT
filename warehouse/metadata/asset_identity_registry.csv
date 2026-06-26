@@ -1,0 +1,7 @@
+asset_id,asset_name,category
+ASSET-0001,decision_summary,decision
+ASSET-0002,decision_history,decision
+ASSET-0003,executive_morning_brief,executive
+ASSET-0004,forecast_engine_v1_output,forecast
+ASSET-0005,feature_store,feature_store
+ASSET-0006,provider_entity_registry,registry
