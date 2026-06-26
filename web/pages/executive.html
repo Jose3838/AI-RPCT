@@ -13,16 +13,15 @@
             <h1>Executive Terminal</h1>
             <p>
                 A live executive view of AI-RPCT decisions, forecast status,
-                registry coverage, and platform health.
+                registry coverage, platform health, and decision history.
             </p>
         </section>
 
         <section class="executive-summary">
             <h2>Morning Brief</h2>
-            <p>
-                AI-RPCT is monitoring infrastructure signals and generating
-                decision recommendations from governed platform data.
-            </p>
+            <div id="summary-card">
+                Loading executive summary...
+            </div>
         </section>
 
         <section class="executive-grid">
@@ -48,6 +47,13 @@
         </section>
 
         <section class="executive-summary">
+            <h2>Executive Decision Timeline</h2>
+            <div id="timeline-card">
+                Loading decision timeline...
+            </div>
+        </section>
+
+        <section class="executive-summary">
             <h2>Strategic Interpretation</h2>
             <p>
                 This terminal is the first executive-facing surface for AI-RPCT.
@@ -55,7 +61,7 @@
                 capacity planning, provider risk, forecast confidence, and market outlook.
             </p>
             <p class="executive-footer-note">
-                Live data is provided through the AI-RPCT FastAPI service.
+                Live data is provided through the AI-RPCT FastAPI and Copilot services.
             </p>
         </section>
     </main>

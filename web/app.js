@@ -87,7 +87,6 @@ async function loadLegacyDashboard() {
 async function loadCopilotDecision() {
     try {
         const data = await apiGet("/copilot/decision");
-
         const card = document.getElementById("decision-card");
 
         if (!card) return;
@@ -111,7 +110,6 @@ async function loadCopilotDecision() {
 async function loadCopilotStatus() {
     try {
         const status = await apiGet("/copilot/status");
-
         const card = document.getElementById("health-card");
 
         if (!card) return;
@@ -130,7 +128,6 @@ async function loadCopilotStatus() {
 async function loadCopilotSummary() {
     try {
         const summary = await apiGet("/copilot/summary");
-
         const card = document.getElementById("summary-card");
 
         if (!card) return;
@@ -150,10 +147,51 @@ async function loadCopilotSummary() {
     }
 }
 
+async function loadCopilotTimeline() {
+    try {
+        const data = await apiGet("/copilot/timeline");
+        const card = document.getElementById("timeline-card");
+
+        if (!card) return;
+
+        if (data.status) {
+            card.innerHTML = `<p>${data.status}</p>`;
+            return;
+        }
+
+        const rows = data.timeline.slice().reverse();
+
+        card.innerHTML = `
+            <p><strong>Total decisions:</strong> ${data.count}</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Generated</th>
+                            <th>Recommendation</th>
+                            <th>Confidence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rows.map(row => `
+                            <tr>
+                                <td>${row.generated_at}</td>
+                                <td>${row.recommendation}</td>
+                                <td>${row.confidence}</td>
+                            </tr>
+                        `).join("")}
+                    </tbody>
+                </table>
+            </div>
+        `;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 async function loadForecastStatus() {
     try {
         const forecast = await apiGet("/forecast");
-
         const card = document.getElementById("forecast-card");
 
         if (!card) return;
@@ -170,7 +208,6 @@ async function loadForecastStatus() {
 async function loadRegistryStatus() {
     try {
         const registries = await apiGet("/registries");
-
         const card = document.getElementById("registry-card");
 
         if (!card) return;
@@ -188,12 +225,12 @@ loadLegacyDashboard();
 loadCopilotDecision();
 loadCopilotStatus();
 loadCopilotSummary();
+loadCopilotTimeline();
 loadForecastStatus();
 loadRegistryStatus();
 
 if (document.getElementById("aiIndex")) {
     setInterval(loadLegacyDashboard, 60000);
 }
-
 
 console.log("AI-RPCT Web Console loaded");
