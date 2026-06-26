@@ -6,7 +6,13 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 
-from copilot.service import get_decision, get_status, get_summary, get_why
+from copilot.service import (
+    get_decision,
+    get_recommendation,
+    get_status,
+    get_summary,
+    get_why,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -193,3 +199,7 @@ def copilot_decision():
 def copilot_summary():
     return get_summary()
 
+
+@app.get("/copilot/recommendation")
+def copilot_recommendation():
+    return get_recommendation()

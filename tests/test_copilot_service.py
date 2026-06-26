@@ -1,6 +1,7 @@
 from copilot.service import (
     get_context,
     get_decision,
+    get_recommendation,
     get_status,
     get_summary,
     get_why,
@@ -49,3 +50,13 @@ def test_get_context():
     assert "pipeline" in result
     assert "decision" in result
     assert "confidence" in result
+
+
+def test_get_recommendation():
+    result = get_recommendation()
+
+    assert isinstance(result, dict)
+    assert "recommendation_score" in result or "status" in result
+
+    if "recommendation_score" in result:
+        assert 0 <= result["recommendation_score"] <= 100
