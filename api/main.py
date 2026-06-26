@@ -6,6 +6,8 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 
+from copilot.service import get_decision, get_status, get_why
+
 ROOT = Path(__file__).resolve().parents[1]
 
 app = FastAPI(
@@ -79,6 +81,7 @@ def pipeline():
 def registries():
     return load_csv("data/registry_metadata.csv")
 
+
 @app.get("/registry/{name}")
 def registry(
     name: str,
@@ -134,6 +137,7 @@ def registry(
 
     return rows
 
+
 @app.get("/providers")
 def providers():
     return load_csv("data/provider_entity_registry.csv")
@@ -169,34 +173,17 @@ def latest_decision():
 
     return rows[0]
 
+
 @app.get("/copilot/why")
 def copilot_why():
-    decision = load_csv("data/decision_summary.csv")
-    explanations = load_csv("data/decision_explanations.csv")
+    return get_why()
 
-    if not decision:
-        return {
-            "status": "no decision available"
-        }
 
-    latest = decision[0]
+@app.get("/copilot/status")
+def copilot_status():
+    return get_status()
 
-    reasons = []
 
-    if explanations:
-        exp = explanations[0]
-
-        for key in [
-            "reason_1",
-            "reason_2",
-            "reason_3",
-            "reason_4",
-        ]:
-            if exp.get(key):
-                reasons.append(exp[key])
-
-    return {
-        "decision": latest["recommendation"],
-        "confidence": latest["confidence"],
-        "reasons": reasons,
-    }
+@app.get("/copilot/decision")
+def copilot_decision():
+    return get_decision()

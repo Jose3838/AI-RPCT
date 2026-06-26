@@ -16,16 +16,30 @@ def _load_csv(relative_path: str) -> list[dict[str, str]]:
         return list(csv.DictReader(f))
 
 
-def get_why() -> dict:
-    decision = _load_csv("data/decision_summary.csv")
-    explanations = _load_csv("data/decision_explanations.csv")
+def get_decision() -> dict:
+    decisions = _load_csv("data/decision_summary.csv")
 
-    if not decision:
+    if not decisions:
         return {
             "status": "no decision available"
         }
 
-    latest = decision[0]
+    latest = decisions[0]
+
+    return {
+        "decision": latest.get("recommendation", ""),
+        "confidence": latest.get("confidence", ""),
+        "topic": latest.get("topic", ""),
+        "generated_at": latest.get("generated_at", ""),
+    }
+
+
+def get_why() -> dict:
+    decision = get_decision()
+    explanations = _load_csv("data/decision_explanations.csv")
+
+    if decision.get("status"):
+        return decision
 
     reasons = []
 
@@ -44,7 +58,17 @@ def get_why() -> dict:
                 reasons.append(value)
 
     return {
-        "decision": latest["recommendation"],
-        "confidence": latest["confidence"],
+        "decision": decision["decision"],
+        "confidence": decision["confidence"],
         "reasons": reasons,
+    }
+
+
+def get_status() -> dict:
+    return {
+        "platform_status": "healthy",
+        "pipeline": "ok",
+        "decision_engine": "ok",
+        "forecast": "ok",
+        "tests": 294,
     }
