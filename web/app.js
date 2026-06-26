@@ -84,16 +84,21 @@ async function loadLegacyDashboard() {
     }
 }
 
-async function loadDecision() {
+async function loadCopilotDecision() {
     try {
-        const data = await apiGet("/decision/latest");
+        const data = await apiGet("/copilot/decision");
 
         const card = document.getElementById("decision-card");
 
         if (!card) return;
 
+        if (data.status) {
+            card.innerHTML = `<h3>${data.status}</h3>`;
+            return;
+        }
+
         card.innerHTML = `
-            <h3>${data.recommendation}</h3>
+            <h3>${data.decision}</h3>
             <p><strong>Topic:</strong> ${data.topic}</p>
             <p><strong>Confidence:</strong> ${data.confidence}</p>
             <p><strong>Generated:</strong><br>${data.generated_at}</p>
@@ -103,26 +108,43 @@ async function loadDecision() {
     }
 }
 
-async function loadPlatformHealth() {
+async function loadCopilotStatus() {
     try {
-        const health = await apiGet("/health");
+        const status = await apiGet("/copilot/status");
 
         const card = document.getElementById("health-card");
 
         if (!card) return;
 
-        if (health.status === "ok") {
-            card.innerHTML = `
-                <h3>🟢 Platform Healthy</h3>
-                <p>All required datasets are available.</p>
-            `;
-        } else {
-            card.innerHTML = `
-                <h3>🟡 Platform Degraded</h3>
-                <p>Missing datasets:</p>
-                <pre>${health.missing.join("\n")}</pre>
-            `;
+        card.innerHTML = `
+            <h3>🟢 ${status.platform_status}</h3>
+            <p><strong>Pipeline:</strong> ${status.pipeline}</p>
+            <p><strong>Decision Engine:</strong> ${status.decision_engine}</p>
+            <p><strong>Forecast:</strong> ${status.forecast}</p>
+        `;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function loadCopilotSummary() {
+    try {
+        const summary = await apiGet("/copilot/summary");
+
+        const card = document.getElementById("summary-card");
+
+        if (!card) return;
+
+        if (summary.status) {
+            card.innerHTML = `<p>${summary.status}</p>`;
+            return;
         }
+
+        card.innerHTML = `
+            <p>${summary.summary ?? "No summary available."}</p>
+            <p><strong>Market:</strong> ${summary.market_status ?? ""}</p>
+            <p><strong>Capacity Risk:</strong> ${summary.capacity_risk ?? ""}</p>
+        `;
     } catch (err) {
         console.error(err);
     }
@@ -163,13 +185,15 @@ async function loadRegistryStatus() {
 }
 
 loadLegacyDashboard();
-loadDecision();
-loadPlatformHealth();
+loadCopilotDecision();
+loadCopilotStatus();
+loadCopilotSummary();
 loadForecastStatus();
 loadRegistryStatus();
 
 if (document.getElementById("aiIndex")) {
     setInterval(loadLegacyDashboard, 60000);
 }
+
 
 console.log("AI-RPCT Web Console loaded");
