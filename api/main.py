@@ -168,3 +168,35 @@ def latest_decision():
         return {"status": "empty"}
 
     return rows[0]
+
+@app.get("/copilot/why")
+def copilot_why():
+    decision = load_csv("data/decision_summary.csv")
+    explanations = load_csv("data/decision_explanations.csv")
+
+    if not decision:
+        return {
+            "status": "no decision available"
+        }
+
+    latest = decision[0]
+
+    reasons = []
+
+    if explanations:
+        exp = explanations[0]
+
+        for key in [
+            "reason_1",
+            "reason_2",
+            "reason_3",
+            "reason_4",
+        ]:
+            if exp.get(key):
+                reasons.append(exp[key])
+
+    return {
+        "decision": latest["recommendation"],
+        "confidence": latest["confidence"],
+        "reasons": reasons,
+    }

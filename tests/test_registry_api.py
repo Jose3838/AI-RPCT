@@ -31,3 +31,15 @@ def test_forecast_endpoint():
 
     assert response.status_code == 200
     assert isinstance(response.json(), list)
+
+
+def test_copilot_why():
+    response = client.get("/copilot/why")
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert "decision" in data
+    assert "confidence" in data
+    assert "reasons" in data
