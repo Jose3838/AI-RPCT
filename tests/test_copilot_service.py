@@ -1,6 +1,7 @@
 from copilot.service import (
     get_context,
     get_decision,
+    get_decision_timeline,
     get_recommendation,
     get_status,
     get_summary,
@@ -63,3 +64,15 @@ def test_get_recommendation():
         assert result["priority"] in {"high", "medium", "low"}
         assert "priority_reason" in result
         assert result["priority_reason"]
+
+
+def test_get_decision_timeline():
+    result = get_decision_timeline()
+
+    assert isinstance(result, dict)
+    assert "timeline" in result or "status" in result
+
+    if "timeline" in result:
+        assert "count" in result
+        assert "returned" in result
+        assert isinstance(result["timeline"], list)

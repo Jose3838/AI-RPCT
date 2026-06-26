@@ -8,6 +8,7 @@ from fastapi.staticfiles import StaticFiles
 
 from copilot.service import (
     get_decision,
+    get_decision_timeline,
     get_recommendation,
     get_status,
     get_summary,
@@ -203,3 +204,8 @@ def copilot_summary():
 @app.get("/copilot/recommendation")
 def copilot_recommendation():
     return get_recommendation()
+
+
+@app.get("/copilot/timeline")
+def copilot_timeline():
+    return get_decision_timeline()
