@@ -1,4 +1,4 @@
-from copilot.service import get_decision, get_status, get_why
+from copilot.service import get_decision, get_status, get_summary, get_why
 
 
 def test_get_why():
@@ -26,3 +26,10 @@ def test_get_decision():
         assert "confidence" in result
         assert "topic" in result
         assert "generated_at" in result
+
+
+def test_get_summary():
+    result = get_summary()
+
+    assert isinstance(result, dict)
+    assert "summary" in result or "status" in result
