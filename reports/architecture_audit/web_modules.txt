@@ -1,0 +1,12 @@
+web/app.js
+web/assets/css/style.css
+web/assets/js/app.js
+web/index.html
+web/pages/analytics.html
+web/pages/api.html
+web/pages/dashboard.html
+web/pages/documentation.html
+web/pages/forecast.html
+web/pages/governance.html
+web/pages/infrastructure.html
+web/pages/registry.html

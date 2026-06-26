@@ -78,6 +78,7 @@ live_provider_status,4,metadata,active
 market_data,152,metadata,active
 market_data_moat_status,1,metadata,active
 market_regime,1,metadata,active
+module_registry,288,metadata,active
 monetization_readiness,1,metadata,active
 nvidia_historical_gpu_registry,5,metadata,active
 oneapi_timeline,4,metadata,active
@@ -114,7 +115,7 @@ provider_reliability_ranking,2,metadata,active
 public_beta_status,1,metadata,active
 public_usage_snapshot,1,metadata,active
 real_provider_todo,5,metadata,active
-registry_catalog_v2,138,metadata,active
+registry_catalog_v2,139,metadata,active
 registry_metadata,138,metadata,active
 rocm_timeline,4,metadata,active
 rpct_scores,37,metadata,active

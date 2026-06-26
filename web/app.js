@@ -1,50 +1,175 @@
-const API="https://ai-rpct-production.up.railway.app";
-let marketChart=null;
+const REMOTE_API = "https://ai-rpct-production.up.railway.app";
 
-async function get(path){
-  const res=await fetch(API+path);
-  return await res.json();
+let marketChart = null;
+
+async function get(path) {
+    const res = await fetch(REMOTE_API + path);
+    return await res.json();
 }
 
-function table(el, rows, cols){
-  if(!rows || rows.length===0){
-    el.innerHTML="<tr><td>No data</td></tr>";
-    return;
-  }
+async function apiGet(endpoint) {
+    const response = await fetch(endpoint);
 
-  el.innerHTML =
-    "<tr>" + cols.map(c=>`<th>${c}</th>`).join("") + "</tr>" +
-    rows.map(r =>
-      "<tr>" + cols.map(c=>`<td>${r[c]}</td>`).join("") + "</tr>"
-    ).join("");
-}
-
-async function load(){
-  const snap = await get("/dashboard-snapshot");
-
-  document.getElementById("aiIndex").innerText = snap.terminal.ai_infrastructure_index;
-  document.getElementById("gpuPrice").innerText = snap.terminal.gpu_price_index;
-  document.getElementById("riskScore").innerText = snap.risk.terminal_risk_score;
-  document.getElementById("gpuTrend").innerText = snap.terminal.gpu_price_trend;
-  document.getElementById("providerCount").innerText = snap.market_share.length;
-  document.getElementById("quality").innerText = snap.quality.live_data_quality_score + "%";
-
-  if(marketChart){ marketChart.destroy(); }
-
-  marketChart = new Chart(document.getElementById("marketShareChart"),{
-    type:"doughnut",
-    data:{
-      labels:snap.market_share.map(x=>x.provider),
-      datasets:[{data:snap.market_share.map(x=>x.market_share_pct)}]
+    if (!response.ok) {
+        throw new Error(`API Error: ${response.status}`);
     }
-  });
 
-  table(document.getElementById("providerHealth"), snap.provider_health, ["provider","status","rows","freshness_hours","health_score"]);
-  table(document.getElementById("gpuTable"), snap.gpu_rankings, ["gpu","offers","avg_price","min_price","max_price"]);
-
-  document.getElementById("refreshStatus").innerText =
-    "Live data refreshed: " + new Date().toLocaleTimeString();
+    return await response.json();
 }
 
-load();
-setInterval(load,60000);
+function table(el, rows, cols) {
+    if (!el) return;
+
+    if (!rows || rows.length === 0) {
+        el.innerHTML = "<tr><td>No data</td></tr>";
+        return;
+    }
+
+    el.innerHTML =
+        "<tr>" + cols.map(c => `<th>${c}</th>`).join("") + "</tr>" +
+        rows.map(r =>
+            "<tr>" + cols.map(c => `<td>${r[c] ?? ""}</td>`).join("") + "</tr>"
+        ).join("");
+}
+
+async function loadLegacyDashboard() {
+    const aiIndex = document.getElementById("aiIndex");
+
+    if (!aiIndex) return;
+
+    try {
+        const snap = await get("/dashboard-snapshot");
+
+        document.getElementById("aiIndex").innerText = snap.terminal.ai_infrastructure_index;
+        document.getElementById("gpuPrice").innerText = snap.terminal.gpu_price_index;
+        document.getElementById("riskScore").innerText = snap.risk.terminal_risk_score;
+        document.getElementById("gpuTrend").innerText = snap.terminal.gpu_price_trend;
+        document.getElementById("providerCount").innerText = snap.market_share.length;
+        document.getElementById("quality").innerText = snap.quality.live_data_quality_score + "%";
+
+        if (typeof Chart !== "undefined" && document.getElementById("marketShareChart")) {
+            if (marketChart) {
+                marketChart.destroy();
+            }
+
+            marketChart = new Chart(document.getElementById("marketShareChart"), {
+                type: "doughnut",
+                data: {
+                    labels: snap.market_share.map(x => x.provider),
+                    datasets: [{ data: snap.market_share.map(x => x.market_share_pct) }]
+                }
+            });
+        }
+
+        table(
+            document.getElementById("providerHealth"),
+            snap.provider_health,
+            ["provider", "status", "rows", "freshness_hours", "health_score"]
+        );
+
+        table(
+            document.getElementById("gpuTable"),
+            snap.gpu_rankings,
+            ["gpu", "offers", "avg_price", "min_price", "max_price"]
+        );
+
+        const refreshStatus = document.getElementById("refreshStatus");
+
+        if (refreshStatus) {
+            refreshStatus.innerText =
+                "Live data refreshed: " + new Date().toLocaleTimeString();
+        }
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function loadDecision() {
+    try {
+        const data = await apiGet("/decision/latest");
+
+        const card = document.getElementById("decision-card");
+
+        if (!card) return;
+
+        card.innerHTML = `
+            <h3>${data.recommendation}</h3>
+            <p><strong>Topic:</strong> ${data.topic}</p>
+            <p><strong>Confidence:</strong> ${data.confidence}</p>
+            <p><strong>Generated:</strong><br>${data.generated_at}</p>
+        `;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function loadPlatformHealth() {
+    try {
+        const health = await apiGet("/health");
+
+        const card = document.getElementById("health-card");
+
+        if (!card) return;
+
+        if (health.status === "ok") {
+            card.innerHTML = `
+                <h3>🟢 Platform Healthy</h3>
+                <p>All required datasets are available.</p>
+            `;
+        } else {
+            card.innerHTML = `
+                <h3>🟡 Platform Degraded</h3>
+                <p>Missing datasets:</p>
+                <pre>${health.missing.join("\n")}</pre>
+            `;
+        }
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function loadForecastStatus() {
+    try {
+        const forecast = await apiGet("/forecast");
+
+        const card = document.getElementById("forecast-card");
+
+        if (!card) return;
+
+        card.innerHTML = `
+            <h3>${forecast.length} Forecast Records</h3>
+            <p>Forecast engine operational.</p>
+        `;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+async function loadRegistryStatus() {
+    try {
+        const registries = await apiGet("/registries");
+
+        const card = document.getElementById("registry-card");
+
+        if (!card) return;
+
+        card.innerHTML = `
+            <h3>${registries.length} Registry Entries</h3>
+            <p>Registry metadata successfully loaded.</p>
+        `;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+loadLegacyDashboard();
+loadDecision();
+loadPlatformHealth();
+loadForecastStatus();
+loadRegistryStatus();
+
+if (document.getElementById("aiIndex")) {
+    setInterval(loadLegacyDashboard, 60000);
+}
+
+console.log("AI-RPCT Web Console loaded");

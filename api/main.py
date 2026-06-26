@@ -4,6 +4,7 @@ import csv
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -11,6 +12,12 @@ app = FastAPI(
     title="AI-RPCT Registry API",
     version="2.0",
     description="Governed registry API for AI-RPCT.",
+)
+
+app.mount(
+    "/web",
+    StaticFiles(directory=ROOT / "web", html=True),
+    name="web",
 )
 
 
@@ -145,3 +152,19 @@ def forecast():
 @app.get("/features")
 def features():
     return load_csv("data/feature_store.csv")
+
+
+@app.get("/decision/latest")
+def latest_decision():
+    path = ROOT / "data" / "decision_summary.csv"
+
+    if not path.exists():
+        return {"status": "no decision available"}
+
+    with path.open(newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+
+    if not rows:
+        return {"status": "empty"}
+
+    return rows[0]
