@@ -10,6 +10,7 @@ api_inventory_runtime,data/api_inventory_runtime.csv,18
 api_key_registry,data/api_key_registry.csv,3
 api_keys,data/api_keys.csv,3
 api_product_status,data/api_product_status.csv,1
+asset_registry,data/asset_registry.csv,6
 backtest_results,data/backtest_results.csv,37
 cloud_provider_registry_v2,data/cloud_provider_registry_v2.csv,9
 commercial_readiness,data/commercial_readiness.csv,1
@@ -21,14 +22,14 @@ customer_pipeline_summary,data/customer_pipeline_summary.csv,1
 customer_value,data/customer_value.csv,4
 customer_value_score,data/customer_value_score.csv,1
 dashboard_health,data/dashboard_health.csv,1
-data_asset_registry,data/data_asset_registry.csv,196
+data_asset_registry,data/data_asset_registry.csv,198
 data_freshness,data/data_freshness.csv,5
 data_lineage_registry,data/data_lineage_registry.csv,4
 data_moat_score,data/data_moat_score.csv,1
 data_quality,data/data_quality.csv,1
 data_quality_metrics,data/data_quality_metrics.csv,4
 data_source_status,data/data_source_status.csv,5
-decision_history,data/decision_history.csv,2
+decision_history,data/decision_history.csv,5
 decision_summary,data/decision_summary.csv,1
 executive_dashboard,data/executive_dashboard.csv,3
 executive_morning_brief,data/executive_morning_brief.csv,1
@@ -119,8 +120,8 @@ provider_reliability_ranking,data/provider_reliability_ranking.csv,2
 public_beta_status,data/public_beta_status.csv,1
 public_usage_snapshot,data/public_usage_snapshot.csv,1
 real_provider_todo,data/real_provider_todo.csv,5
-registry_catalog_v2,data/registry_catalog_v2.csv,142
-registry_metadata,data/registry_metadata.csv,142
+registry_catalog_v2,data/registry_catalog_v2.csv,143
+registry_metadata,data/registry_metadata.csv,143
 rocm_timeline,data/rocm_timeline.csv,4
 rpct_scores,data/rpct_scores.csv,37
 runpod_live_report,data/runpod_live_report.csv,47

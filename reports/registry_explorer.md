@@ -13,6 +13,7 @@
 | api_key_registry | 3 | metadata | active |
 | api_keys | 3 | metadata | active |
 | api_product_status | 1 | metadata | active |
+| asset_registry | 6 | metadata | active |
 | backtest_results | 37 | metadata | active |
 | cloud_provider_registry_v2 | 9 | metadata | active |
 | commercial_readiness | 1 | metadata | active |
@@ -24,14 +25,14 @@
 | customer_value | 4 | metadata | active |
 | customer_value_score | 1 | metadata | active |
 | dashboard_health | 1 | metadata | active |
-| data_asset_registry | 196 | metadata | active |
+| data_asset_registry | 198 | metadata | active |
 | data_freshness | 5 | metadata | active |
 | data_lineage_registry | 4 | metadata | active |
 | data_moat_score | 1 | metadata | active |
 | data_quality | 1 | metadata | active |
 | data_quality_metrics | 4 | metadata | active |
 | data_source_status | 5 | metadata | active |
-| decision_history | 2 | metadata | active |
+| decision_history | 5 | metadata | active |
 | decision_summary | 1 | metadata | active |
 | executive_dashboard | 3 | metadata | active |
 | executive_morning_brief | 1 | metadata | active |
@@ -122,8 +123,8 @@
 | public_beta_status | 1 | metadata | active |
 | public_usage_snapshot | 1 | metadata | active |
 | real_provider_todo | 5 | metadata | active |
-| registry_catalog_v2 | 143 | metadata | active |
-| registry_metadata | 142 | metadata | active |
+| registry_catalog_v2 | 144 | metadata | active |
+| registry_metadata | 143 | metadata | active |
 | rocm_timeline | 4 | metadata | active |
 | rpct_scores | 37 | metadata | active |
 | runpod_live_report | 47 | metadata | active |
