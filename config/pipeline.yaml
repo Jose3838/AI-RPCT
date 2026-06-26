@@ -18,6 +18,7 @@ steps:
   - build_executive_morning_brief
   - save_decision_history
   - build_asset_registry
+  - build_asset_lineage_registry
 
   - build_pipeline_run_registry
   - build_pipeline_health_summary

@@ -13,6 +13,7 @@ analytics/archive_raw_provider_data.py,platform,python,active
 analytics/backtest.py,platform,python,active
 analytics/build_amd_historical_gpu_registry.py,registry,python,active
 analytics/build_analytics_dashboard.py,registry,python,active
+analytics/build_asset_lineage_registry.py,registry,python,active
 analytics/build_asset_registry.py,registry,python,active
 analytics/build_cloud_provider_registry_v2.py,registry,python,active
 analytics/build_cuda_timeline.py,registry,python,active

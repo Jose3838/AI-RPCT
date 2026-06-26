@@ -10,6 +10,7 @@ api_inventory_runtime,data/api_inventory_runtime.csv,18
 api_key_registry,data/api_key_registry.csv,3
 api_keys,data/api_keys.csv,3
 api_product_status,data/api_product_status.csv,1
+asset_lineage_registry,data/asset_lineage_registry.csv,7
 asset_registry,data/asset_registry.csv,6
 backtest_results,data/backtest_results.csv,37
 cloud_provider_registry_v2,data/cloud_provider_registry_v2.csv,9
@@ -29,7 +30,7 @@ data_moat_score,data/data_moat_score.csv,1
 data_quality,data/data_quality.csv,1
 data_quality_metrics,data/data_quality_metrics.csv,4
 data_source_status,data/data_source_status.csv,5
-decision_history,data/decision_history.csv,7
+decision_history,data/decision_history.csv,9
 decision_summary,data/decision_summary.csv,1
 executive_dashboard,data/executive_dashboard.csv,3
 executive_morning_brief,data/executive_morning_brief.csv,1

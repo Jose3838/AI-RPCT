@@ -1,0 +1,8 @@
+source_asset,target_asset,relationship_type,layer
+feature_store,forecast_dataset,feeds,forecast
+forecast_dataset,forecast_engine_v1_output,feeds,forecast
+forecast_engine_v1_output,forecast_explanations,explains,forecast
+forecast_engine_v1_output,decision_summary,informs,decision
+decision_summary,executive_morning_brief,informs,executive
+decision_summary,decision_history,archives,history
+executive_morning_brief,asset_registry,documented_by,governance
