@@ -1,0 +1,3 @@
+evidence_id,decision_id,evidence_type,source_asset,description
+EV-0001,decision-001,forecast,forecast_engine_v1_output,Forecast confidence supports recommendation.
+EV-0002,decision-001,history,decision_history,Historical decision archive available.
