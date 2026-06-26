@@ -34,7 +34,7 @@ data/data_quality.csv,.csv,50,other
 data/data_quality_metrics.csv,.csv,166,other
 data/data_source_status.csv,.csv,196,other
 data/decision_explanations.csv,.csv,252,other
-data/decision_history.csv,.csv,5672,history
+data/decision_history.csv,.csv,5864,history
 data/decision_summary.csv,.csv,260,other
 data/evidence_registry.csv,.csv,252,registry
 data/executive_dashboard.csv,.csv,99,dashboard
@@ -151,9 +151,9 @@ data/user_feedback.csv,.csv,42,other
 data/vast_live_report.csv,.csv,6162,other
 data/warehouse_metrics.csv,.csv,50,other
 warehouse/__pycache__/historical_loader.cpython-312.pyc,.pyc,732,history
-warehouse/analytics/ai_rpct.duckdb,.duckdb,4730880,other
+warehouse/analytics/ai_rpct.duckdb,.duckdb,2371584,other
 warehouse/decision/decision_explanations.csv,.csv,252,other
-warehouse/decision/decision_history.csv,.csv,5672,history
+warehouse/decision/decision_history.csv,.csv,5864,history
 warehouse/decision/decision_summary.csv,.csv,260,other
 warehouse/decision/executive_morning_brief.csv,.csv,437,other
 warehouse/feature_store/feature_store.csv,.csv,272,other
