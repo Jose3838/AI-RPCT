@@ -22,14 +22,14 @@ customer_pipeline_summary,data/customer_pipeline_summary.csv,1
 customer_value,data/customer_value.csv,4
 customer_value_score,data/customer_value_score.csv,1
 dashboard_health,data/dashboard_health.csv,1
-data_asset_registry,data/data_asset_registry.csv,198
+data_asset_registry,data/data_asset_registry.csv,200
 data_freshness,data/data_freshness.csv,5
 data_lineage_registry,data/data_lineage_registry.csv,4
 data_moat_score,data/data_moat_score.csv,1
 data_quality,data/data_quality.csv,1
 data_quality_metrics,data/data_quality_metrics.csv,4
 data_source_status,data/data_source_status.csv,5
-decision_history,data/decision_history.csv,5
+decision_history,data/decision_history.csv,7
 decision_summary,data/decision_summary.csv,1
 executive_dashboard,data/executive_dashboard.csv,3
 executive_morning_brief,data/executive_morning_brief.csv,1
@@ -83,7 +83,7 @@ live_provider_status,data/live_provider_status.csv,4
 market_data,data/market_data.csv,152
 market_data_moat_status,data/market_data_moat_status.csv,1
 market_regime,data/market_regime.csv,1
-module_registry,data/module_registry.csv,297
+module_registry,data/module_registry.csv,298
 monetization_readiness,data/monetization_readiness.csv,1
 nvidia_historical_gpu_registry,data/nvidia_historical_gpu_registry.csv,5
 oneapi_timeline,data/oneapi_timeline.csv,4
@@ -120,8 +120,8 @@ provider_reliability_ranking,data/provider_reliability_ranking.csv,2
 public_beta_status,data/public_beta_status.csv,1
 public_usage_snapshot,data/public_usage_snapshot.csv,1
 real_provider_todo,data/real_provider_todo.csv,5
-registry_catalog_v2,data/registry_catalog_v2.csv,143
-registry_metadata,data/registry_metadata.csv,143
+registry_catalog_v2,data/registry_catalog_v2.csv,144
+registry_metadata,data/registry_metadata.csv,144
 rocm_timeline,data/rocm_timeline.csv,4
 rpct_scores,data/rpct_scores.csv,37
 runpod_live_report,data/runpod_live_report.csv,47

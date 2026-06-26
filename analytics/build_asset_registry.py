@@ -17,7 +17,6 @@ FIELDS = [
     "path",
 ]
 
-
 ASSETS = [
     ("decision_summary", "decision", "data/decision_summary.csv"),
     ("decision_history", "decision", "data/decision_history.csv"),
@@ -48,6 +47,7 @@ def main() -> None:
 
     print(f"Wrote {len(rows)} asset registry rows.")
     print(DATA / "asset_registry.csv")
+    print(ROOT / "warehouse" / "metadata" / "asset_registry.csv")
 
 
 if __name__ == "__main__":
