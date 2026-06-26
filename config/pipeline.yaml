@@ -21,6 +21,7 @@ steps:
 
   - build_registry_catalog_v2
   - build_registry_metadata
+  - build_module_registry
   - build_registry_explorer
 
   - build_dependency_graph
