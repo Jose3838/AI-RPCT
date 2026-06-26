@@ -144,7 +144,7 @@ data/user_feedback.csv,.csv,42,other
 data/vast_live_report.csv,.csv,6162,other
 data/warehouse_metrics.csv,.csv,50,other
 warehouse/__pycache__/historical_loader.cpython-312.pyc,.pyc,732,history
-warehouse/analytics/ai_rpct.duckdb,.duckdb,2371584,other
+warehouse/analytics/ai_rpct.duckdb,.duckdb,4730880,other
 warehouse/decision/decision_summary.csv,.csv,218,other
 warehouse/feature_store/feature_store.csv,.csv,272,other
 warehouse/forecast/forecast_dataset.csv,.csv,299,forecast

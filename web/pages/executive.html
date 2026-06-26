@@ -2,44 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI-RPCT Executive Dashboard</title>
+    <title>AI-RPCT Executive Terminal</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
+    <main class="executive-shell">
+        <section class="executive-header">
+            <div class="executive-status">AI Infrastructure Decision Intelligence</div>
+            <h1>Executive Terminal</h1>
+            <p>
+                A live executive view of AI-RPCT decisions, forecast status,
+                registry coverage, and platform health.
+            </p>
+        </section>
 
-<h1>Executive Dashboard</h1>
+        <section class="executive-summary">
+            <h2>Morning Brief</h2>
+            <p>
+                AI-RPCT is monitoring infrastructure signals and generating
+                decision recommendations from governed platform data.
+            </p>
+        </section>
 
-<div class="card">
-    <h2>Decision Summary</h2>
-    <div id="decision-card">
-        Loading...
-    </div>
-</div>
+        <section class="executive-grid">
+            <div class="executive-card">
+                <h2>Decision Summary</h2>
+                <div id="decision-card">Loading...</div>
+            </div>
 
-<div class="card">
-    <h2>Forecast Status</h2>
-    <div id="forecast-card">
-        Loading...
-    </div>
-</div>
+            <div class="executive-card">
+                <h2>Forecast Status</h2>
+                <div id="forecast-card">Loading...</div>
+            </div>
 
-<div class="card">
-    <h2>Registry Status</h2>
-    <div id="registry-card">
-        Loading...
-    </div>
-</div>
+            <div class="executive-card">
+                <h2>Registry Status</h2>
+                <div id="registry-card">Loading...</div>
+            </div>
 
-<div class="card">
-    <h2>Platform Health</h2>
-    <div id="health-card">
-        Loading...
-    </div>
-</div>
+            <div class="executive-card">
+                <h2>Platform Health</h2>
+                <div id="health-card">Loading...</div>
+            </div>
+        </section>
 
-<script src="../assets/js/api.js"></script>
-<script src="../app.js"></script>
+        <section class="executive-summary">
+            <h2>Strategic Interpretation</h2>
+            <p>
+                This terminal is the first executive-facing surface for AI-RPCT.
+                It will evolve into the central decision cockpit for procurement,
+                capacity planning, provider risk, forecast confidence, and market outlook.
+            </p>
+            <p class="executive-footer-note">
+                Live data is provided through the AI-RPCT FastAPI service.
+            </p>
+        </section>
+    </main>
 
+    <script src="../assets/js/api.js"></script>
+    <script src="../app.js"></script>
 </body>
 </html>
