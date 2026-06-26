@@ -21,6 +21,7 @@ analytics/build_data_quality_metrics.py,registry,python,active
 analytics/build_decision_summary.py,registry,python,active
 analytics/build_dependency_graph.py,registry,python,active
 analytics/build_duckdb_analytics_layer.py,registry,python,active
+analytics/build_executive_morning_brief.py,registry,python,active
 analytics/build_feature_store.py,registry,python,active
 analytics/build_forecast_dataset.py,registry,python,active
 analytics/build_forecast_explanations.py,registry,python,active
@@ -143,6 +144,7 @@ analytics/run_forecast_engine_v1.py,forecast,python,active
 analytics/run_pipeline.py,platform,python,active
 analytics/runpod_live_report.py,platform,python,active
 analytics/sales_readiness.py,platform,python,active
+analytics/save_decision_history.py,decision,python,active
 analytics/scarcity_watchlist.py,intelligence,python,active
 analytics/shortage_probability.py,platform,python,active
 analytics/startup_check.py,platform,python,active

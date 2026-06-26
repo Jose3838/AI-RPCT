@@ -15,6 +15,8 @@ steps:
   - build_forecast_explanations
   - build_forecast_run_summary
   - build_decision_summary
+  - build_executive_morning_brief
+  - save_decision_history
 
   - build_pipeline_run_registry
   - build_pipeline_health_summary
