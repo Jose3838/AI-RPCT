@@ -1,2 +1,2 @@
 summary_id,run_timestamp_utc,forecast_output_rows,governance_status,ml_training_allowed,production_promotion_allowed
-forecast_summary_000001,2026-06-26T15:16:18.884367+00:00,2,non_production_no_true_labels,false,false
+forecast_summary_000001,2026-06-26T15:20:04.875902+00:00,2,non_production_no_true_labels,false,false
