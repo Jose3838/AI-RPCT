@@ -1,4 +1,10 @@
-from copilot.service import get_decision, get_status, get_summary, get_why
+from copilot.service import (
+    get_context,
+    get_decision,
+    get_status,
+    get_summary,
+    get_why,
+)
 
 
 def test_get_why():
@@ -33,3 +39,13 @@ def test_get_summary():
 
     assert isinstance(result, dict)
     assert "summary" in result or "status" in result
+
+
+def test_get_context():
+    result = get_context()
+
+    assert isinstance(result, dict)
+    assert "platform_status" in result
+    assert "pipeline" in result
+    assert "decision" in result
+    assert "confidence" in result
