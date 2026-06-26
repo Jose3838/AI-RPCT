@@ -14,6 +14,8 @@ def test_decision_engine_builds_recommendation():
     assert decision.topic == "AI Infrastructure"
     assert decision.recommendation
     assert 0 <= decision.confidence <= 1
+    assert decision.rationale
+    assert "evidence" in decision.rationale.lower()
 
 
 def test_decision_summary_builder_runs():
