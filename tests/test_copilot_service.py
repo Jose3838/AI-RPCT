@@ -61,3 +61,5 @@ def test_get_recommendation():
     if "recommendation_score" in result:
         assert 0 <= result["recommendation_score"] <= 100
         assert result["priority"] in {"high", "medium", "low"}
+        assert "priority_reason" in result
+        assert result["priority_reason"]
