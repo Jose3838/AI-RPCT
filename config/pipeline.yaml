@@ -21,6 +21,7 @@ steps:
   - build_asset_lineage_registry
   - build_asset_identity_registry  
   - build_evidence_registry
+  - build_decision_explanations
 
   - build_pipeline_run_registry
   - build_pipeline_health_summary

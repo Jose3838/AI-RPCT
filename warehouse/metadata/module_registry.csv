@@ -21,6 +21,7 @@ analytics/build_cuda_timeline.py,registry,python,active
 analytics/build_data_asset_registry.py,registry,python,active
 analytics/build_data_lineage_registry.py,registry,python,active
 analytics/build_data_quality_metrics.py,registry,python,active
+analytics/build_decision_explanations.py,registry,python,active
 analytics/build_decision_summary.py,registry,python,active
 analytics/build_dependency_graph.py,registry,python,active
 analytics/build_duckdb_analytics_layer.py,registry,python,active

@@ -1,0 +1,2 @@
+decision_id,recommendation,confidence,reason_1,reason_2,reason_3,reason_4
+decision-001,Reserve Capacity,0.82,Forecast confidence is high.,Historical decisions support the recommendation.,Capacity risk remains elevated.,Market trend remains positive.

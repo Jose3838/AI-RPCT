@@ -17,3 +17,7 @@ generated_at,decision_id,topic,recommendation,confidence,rationale
 2026-06-26T14:57:33.125204+00:00,decision-001,AI Infrastructure,Monitor closely and prepare capacity action,0.82,Initial rule-based decision engine.
 2026-06-26T14:59:23.373578+00:00,decision-001,AI Infrastructure,Monitor closely and prepare capacity action,0.82,Initial rule-based decision engine.
 2026-06-26T14:59:29.122977+00:00,decision-001,AI Infrastructure,Monitor closely and prepare capacity action,0.82,Initial rule-based decision engine.
+2026-06-26T15:01:09.030506+00:00,decision-001,AI Infrastructure,Monitor closely and prepare capacity action,0.82,Initial rule-based decision engine.
+2026-06-26T15:01:12.517388+00:00,decision-001,AI Infrastructure,Monitor closely and prepare capacity action,0.82,Initial rule-based decision engine.
+2026-06-26T15:02:35.170976+00:00,decision-001,AI Infrastructure,Monitor closely and prepare capacity action,0.82,Initial rule-based decision engine.
+2026-06-26T15:02:39.851572+00:00,decision-001,AI Infrastructure,Monitor closely and prepare capacity action,0.82,Initial rule-based decision engine.
