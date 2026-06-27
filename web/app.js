@@ -17,6 +17,34 @@ async function apiGet(endpoint) {
     return await response.json();
 }
 
+function formatDate(value) {
+    if (!value) return "";
+
+    const date = new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+        return value;
+    }
+
+    return date.toLocaleString("de-DE", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+}
+
+function formatConfidence(value) {
+    const num = Number(value);
+
+    if (Number.isNaN(num)) {
+        return value ?? "";
+    }
+
+    return `${Math.round(num * 100)}%`;
+}
+
 function table(el, rows, cols) {
     if (!el) return;
 
@@ -99,8 +127,8 @@ async function loadCopilotDecision() {
         card.innerHTML = `
             <h3>${data.decision}</h3>
             <p><strong>Topic:</strong> ${data.topic}</p>
-            <p><strong>Confidence:</strong> ${data.confidence}</p>
-            <p><strong>Generated:</strong><br>${data.generated_at}</p>
+            <p><strong>Confidence:</strong> ${formatConfidence(data.confidence)}</p>
+            <p><strong>Generated:</strong><br>${formatDate(data.generated_at)}</p>
         `;
     } catch (err) {
         console.error(err);
@@ -175,9 +203,9 @@ async function loadCopilotTimeline() {
                     <tbody>
                         ${rows.map(row => `
                             <tr>
-                                <td>${row.generated_at}</td>
+                                <td>${formatDate(row.generated_at)}</td>
                                 <td>${row.recommendation}</td>
-                                <td>${row.confidence}</td>
+                                <td>${formatConfidence(row.confidence)}</td>
                             </tr>
                         `).join("")}
                     </tbody>
