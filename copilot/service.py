@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copilot.analytics import get_analytics
 from copilot.context import get_context
 from copilot.decision import get_decision
 from copilot.explain import get_why
@@ -9,6 +10,7 @@ from copilot.summary import get_summary
 from copilot.timeline import get_decision_timeline
 
 __all__ = [
+    "get_analytics",
     "get_context",
     "get_decision",
     "get_decision_timeline",

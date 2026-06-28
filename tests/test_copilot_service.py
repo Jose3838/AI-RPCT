@@ -1,4 +1,5 @@
 from copilot.service import (
+    get_analytics,
     get_context,
     get_decision,
     get_decision_timeline,
@@ -76,3 +77,16 @@ def test_get_decision_timeline():
         assert "count" in result
         assert "returned" in result
         assert isinstance(result["timeline"], list)
+
+
+def test_get_analytics():
+    result = get_analytics()
+
+    assert isinstance(result, dict)
+    assert "decision_count" in result or "status" in result
+
+    if "decision_count" in result:
+        assert result["decision_count"] >= 1
+        assert 0 <= result["average_confidence"] <= 1
+        assert 0 <= result["min_confidence"] <= 1
+        assert 0 <= result["max_confidence"] <= 1

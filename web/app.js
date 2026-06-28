@@ -134,6 +134,44 @@ async function loadCopilotDecision() {
         console.error(err);
     }
 }
+async function loadExecutiveKPIs() {
+    try {
+        const recommendation = await apiGet("/copilot/recommendation");
+        const timeline = await apiGet("/copilot/timeline");
+        const status = await apiGet("/copilot/status");
+
+        const card = document.getElementById("kpi-card");
+
+        if (!card) return;
+
+        card.innerHTML = `
+            <table>
+                <tr>
+                    <td><strong>Confidence</strong></td>
+                    <td>${Math.round(recommendation.confidence * 100)}%</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Priority</strong></td>
+                    <td>${recommendation.priority.toUpperCase()}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Timeline Entries</strong></td>
+                    <td>${timeline.count}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Platform</strong></td>
+                    <td>${status.platform_status}</td>
+                </tr>
+            </table>
+        `;
+
+    } catch (err) {
+        console.error(err);
+    }
+}
 
 async function loadCopilotStatus() {
     try {
@@ -253,6 +291,7 @@ loadLegacyDashboard();
 loadCopilotDecision();
 loadCopilotStatus();
 loadCopilotSummary();
+loadExecutiveKPIs();
 loadCopilotTimeline();
 loadForecastStatus();
 loadRegistryStatus();

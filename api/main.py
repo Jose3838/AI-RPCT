@@ -7,6 +7,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 
 from copilot.service import (
+    get_analytics,
     get_decision,
     get_decision_timeline,
     get_recommendation,
@@ -209,3 +210,8 @@ def copilot_recommendation():
 @app.get("/copilot/timeline")
 def copilot_timeline():
     return get_decision_timeline()
+
+
+@app.get("/copilot/analytics")
+def copilot_analytics():
+    return get_analytics()
