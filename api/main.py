@@ -15,6 +15,7 @@ from copilot.service import (
     get_status,
     get_summary,
     get_why,
+    get_forecast_intelligence,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -221,3 +222,8 @@ def copilot_analytics():
 @app.get("/copilot/decision-intelligence")
 def copilot_decision_intelligence():
     return get_decision_intelligence()
+
+
+@app.get("/copilot/forecast-intelligence")
+def copilot_forecast_intelligence():
+    return get_forecast_intelligence()

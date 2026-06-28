@@ -4,6 +4,7 @@ from copilot.service import (
     get_decision,
     get_decision_intelligence,
     get_decision_timeline,
+    get_forecast_intelligence,
     get_recommendation,
     get_status,
     get_summary,
@@ -90,6 +91,24 @@ def test_get_analytics():
         assert 0 <= result["average_confidence"] <= 1
         assert 0 <= result["min_confidence"] <= 1
         assert 0 <= result["max_confidence"] <= 1
+
+
+def test_get_forecast_intelligence():
+    result = get_forecast_intelligence()
+
+    assert isinstance(result, dict)
+    assert "summary" in result or "status" in result
+
+    if "summary" in result:
+        assert "metrics" in result
+        assert "trends" in result
+        assert "insights" in result
+
+        assert result["summary"]["forecast_count"] >= 1
+
+        assert isinstance(result["metrics"], dict)
+        assert isinstance(result["trends"], dict)
+        assert isinstance(result["insights"], list)
 
 
 def test_get_decision_intelligence():
