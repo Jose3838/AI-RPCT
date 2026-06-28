@@ -10,6 +10,7 @@ from copilot.service import (
     get_summary,
     get_why,
     get_provider_intelligence,
+    get_capacity_intelligence,
 )
 
 def test_get_why():
@@ -149,5 +150,27 @@ def test_get_provider_intelligence():
         assert "provider_categories" in result["metrics"]
         assert isinstance(result["metrics"]["provider_categories"], dict)
 
+        assert isinstance(result["trends"], dict)
+        assert isinstance(result["insights"], list)
+
+
+def test_get_capacity_intelligence():
+    result = get_capacity_intelligence()
+
+    assert isinstance(result, dict)
+    assert "summary" in result or "status" in result
+
+    if "summary" in result:
+        assert "metrics" in result
+        assert "trends" in result
+        assert "insights" in result
+
+        assert result["summary"]["capacity_records"] >= 1
+
+        assert "capacity_status" in result["metrics"]
+        assert "availability_levels" in result["metrics"]
+
+        assert isinstance(result["metrics"]["capacity_status"], dict)
+        assert isinstance(result["metrics"]["availability_levels"], dict)
         assert isinstance(result["trends"], dict)
         assert isinstance(result["insights"], list)
