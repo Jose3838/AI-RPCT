@@ -10,6 +10,7 @@ from copilot.summary import get_summary
 from copilot.timeline import get_decision_timeline
 from copilot.decision_intelligence import get_decision_intelligence
 from copilot.forecast_intelligence import get_forecast_intelligence
+from copilot.provider_intelligence import get_provider_intelligence
 
 __all__ = [
     "get_analytics",
@@ -22,4 +23,5 @@ __all__ = [
     "get_status",
     "get_summary",
     "get_why",
+    "get_provider_intelligence",
 ]
