@@ -134,6 +134,7 @@ async function loadCopilotDecision() {
         console.error(err);
     }
 }
+
 async function loadExecutiveKPIs() {
     try {
         const recommendation = await apiGet("/copilot/recommendation");
@@ -148,7 +149,7 @@ async function loadExecutiveKPIs() {
             <table>
                 <tr>
                     <td><strong>Confidence</strong></td>
-                    <td>${Math.round(recommendation.confidence * 100)}%</td>
+                    <td>${formatConfidence(recommendation.confidence)}</td>
                 </tr>
 
                 <tr>
@@ -167,7 +168,46 @@ async function loadExecutiveKPIs() {
                 </tr>
             </table>
         `;
+    } catch (err) {
+        console.error(err);
+    }
+}
 
+async function loadExecutiveAnalytics() {
+    try {
+        const analytics = await apiGet("/copilot/analytics");
+        const card = document.getElementById("analytics-card");
+
+        if (!card) return;
+
+        if (analytics.status) {
+            card.innerHTML = `<p>${analytics.status}</p>`;
+            return;
+        }
+
+        card.innerHTML = `
+            <table>
+                <tr>
+                    <td><strong>Decision Count</strong></td>
+                    <td>${analytics.decision_count}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Average Confidence</strong></td>
+                    <td>${formatConfidence(analytics.average_confidence)}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Max Confidence</strong></td>
+                    <td>${formatConfidence(analytics.max_confidence)}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Min Confidence</strong></td>
+                    <td>${formatConfidence(analytics.min_confidence)}</td>
+                </tr>
+            </table>
+        `;
     } catch (err) {
         console.error(err);
     }
@@ -292,6 +332,7 @@ loadCopilotDecision();
 loadCopilotStatus();
 loadCopilotSummary();
 loadExecutiveKPIs();
+loadExecutiveAnalytics();
 loadCopilotTimeline();
 loadForecastStatus();
 loadRegistryStatus();
