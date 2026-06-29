@@ -256,6 +256,56 @@ async function loadExecutiveIntelligence() {
     }
 }
 
+async function loadExecutiveRisk() {
+    try {
+        const risk = await apiGet("/copilot/risk-intelligence");
+        const card = document.getElementById("risk-card");
+
+        if (!card) return;
+
+        if (risk.status) {
+            card.innerHTML = `<p>${risk.status}</p>`;
+            return;
+        }
+
+        card.innerHTML = `
+            <table>
+                <tr>
+                    <td><strong>Risk Score</strong></td>
+                    <td>${risk.summary.risk_score}/100</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Risk Severity</strong></td>
+                    <td>${risk.summary.risk_severity}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Provider Risk</strong></td>
+                    <td>${risk.metrics.provider_risk}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Capacity Risk</strong></td>
+                    <td>${risk.metrics.capacity_risk}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Forecast Risk</strong></td>
+                    <td>${risk.metrics.forecast_risk}</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Recommendation</strong></td>
+                    <td>${risk.summary.recommendation}</td>
+                </tr>
+            </table>
+        `;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 async function loadCopilotStatus() {
     try {
         const status = await apiGet("/copilot/status");
@@ -377,6 +427,7 @@ loadCopilotSummary();
 loadExecutiveKPIs();
 loadExecutiveAnalytics();
 loadExecutiveIntelligence();
+loadExecutiveRisk();
 loadCopilotTimeline();
 loadForecastStatus();
 loadRegistryStatus();
