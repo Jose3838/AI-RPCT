@@ -43,3 +43,17 @@ def test_copilot_why():
     assert "decision" in data
     assert "confidence" in data
     assert "reasons" in data
+
+
+def test_copilot_executive_snapshot_post():
+    response = client.post("/copilot/executive-snapshot")
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["status"] == "executive snapshot completed"
+    assert "snapshot" in data
+    assert "snapshot_id" in data["snapshot"]
+    assert "risk_score" in data["snapshot"]
+    assert "risk_severity" in data["snapshot"]
