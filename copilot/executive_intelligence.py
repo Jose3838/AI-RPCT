@@ -8,6 +8,7 @@ from copilot.decision_intelligence import get_decision_intelligence
 from copilot.forecast_intelligence import get_forecast_intelligence
 from copilot.provider_intelligence import get_provider_intelligence
 from copilot.risk_intelligence import get_risk_intelligence
+from copilot.schemas import ExecutiveSummary
 from copilot.summary import get_summary
 
 
@@ -20,14 +21,16 @@ def get_executive_intelligence() -> dict:
     capacity = get_capacity_intelligence()
     risk = get_risk_intelligence()
 
+    executive_summary: ExecutiveSummary = {
+        "status": "executive intelligence available",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "overall_risk_score": risk["summary"]["risk_score"],
+        "overall_risk_severity": risk["summary"]["risk_severity"],
+        "overall_recommendation": risk["summary"]["recommendation"],
+    }
+
     return {
-        "summary": {
-            "status": "executive intelligence available",
-            "generated_at": datetime.now(timezone.utc).isoformat(),
-            "overall_risk_score": risk["summary"]["risk_score"],
-            "overall_risk_severity": risk["summary"]["risk_severity"],
-            "overall_recommendation": risk["summary"]["recommendation"],
-        },
+        "summary": executive_summary,
         "modules": {
             "summary": summary,
             "analytics": analytics,

@@ -10,3 +10,11 @@ class ExecutiveSnapshot(TypedDict):
     risk_severity: str
     recommendation: str
     source: str
+
+
+class ExecutiveSummary(TypedDict):
+    status: str
+    generated_at: str
+    overall_risk_score: int
+    overall_risk_severity: str
+    overall_recommendation: str
