@@ -12,9 +12,11 @@ def get_risk_intelligence() -> dict:
     capacity_records = len(capacity)
     forecast_records = len(forecasts)
 
+    provider_risk = "low" if provider_count >= 5 else "high"
+
     risk_score = 100
 
-    if provider_count < 5:
+    if provider_risk == "high":
         risk_score -= 25
 
     if capacity_records < 5:
@@ -25,25 +27,37 @@ def get_risk_intelligence() -> dict:
 
     risk_score = max(0, risk_score)
 
+    if risk_score >= 80:
+        risk_severity = "low"
+    elif risk_score >= 60:
+        risk_severity = "medium"
+    elif risk_score >= 40:
+        risk_severity = "high"
+    else:
+        risk_severity = "critical"
+
     insight = (
-        f"Current executive risk score: {risk_score}/100."
+        f"Current executive risk score: {risk_score}/100 "
+        f"({risk_severity} risk)."
     )
 
     return {
         "summary": {
             "status": "risk intelligence available",
             "risk_score": risk_score,
+            "risk_severity": risk_severity,
         },
         "metrics": {
             "provider_count": provider_count,
             "capacity_records": capacity_records,
             "forecast_records": forecast_records,
+            "provider_risk": provider_risk,
         },
         "trends": {},
         "insights": [
             {
                 "type": "risk",
-                "severity": "info",
+                "severity": risk_severity,
                 "message": insight,
             }
         ],

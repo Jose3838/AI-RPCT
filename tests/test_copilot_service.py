@@ -213,6 +213,7 @@ def test_get_risk_intelligence():
     assert result["metrics"]["provider_count"] >= 1
     assert result["metrics"]["capacity_records"] >= 1
     assert result["metrics"]["forecast_records"] >= 1
+    assert result["metrics"]["provider_risk"] in {"low", "high"}
 
     assert isinstance(result["trends"], dict)
     assert isinstance(result["insights"], list)
@@ -224,3 +225,16 @@ def test_get_risk_intelligence():
 
     assert "risk_score" in result["summary"]
     assert 0 <= result["summary"]["risk_score"] <= 100
+
+    assert "risk_severity" in result["summary"]
+    assert result["summary"]["risk_severity"] in {
+        "low",
+        "medium",
+        "high",
+        "critical",
+    }
+
+    assert (
+        result["insights"][0]["severity"]
+        == result["summary"]["risk_severity"]
+    )
