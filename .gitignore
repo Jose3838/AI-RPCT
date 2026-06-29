@@ -6,3 +6,22 @@ __pycache__/
 venv/
 
 logs/*.log
+
+# Runtime artifacts
+data/*.db
+data/pipeline_manifest.json
+data/forecast_accuracy.csv
+
+# Generated reports
+reports/report_*.txt
+reports/research_snapshot_*.md
+reports/daily_*_*.txt
+reports/executive_ai_infrastructure_memo_*.txt
+reports/investor_snapshot_*.txt
+reports/market_intelligence_snapshot_*.txt
+reports/weekly_infrastructure_report_*.txt
+
+# Warehouse runtime snapshots
+warehouse/live_provider_history/
+warehouse/raw_providers/
+warehouse/snapshots/
