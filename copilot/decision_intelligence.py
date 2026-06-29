@@ -39,6 +39,10 @@ def get_decision_intelligence() -> dict:
         },
         "trends": {},
         "insights": [
-            insight,
+            {
+                "type": "stability",
+                "severity": "info",
+                "message": insight,
+            }
         ],
     }

@@ -135,6 +135,10 @@ def test_get_decision_intelligence():
         assert isinstance(result["insights"], list)
         assert result["insights"]
 
+        assert "type" in result["insights"][0]
+        assert "severity" in result["insights"][0]
+        assert "message" in result["insights"][0]
+
 
 def test_get_provider_intelligence():
     result = get_provider_intelligence()
