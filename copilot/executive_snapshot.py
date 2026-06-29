@@ -1,10 +1,12 @@
 from __future__ import annotations
 
-from copilot.io import load_csv
+from copilot.executive_snapshot_repository import (
+    load_executive_snapshot_rows,
+)
 
 
 def get_executive_snapshots() -> dict:
-    rows = load_csv("data/executive_snapshot_registry.csv")
+    rows = load_executive_snapshot_rows()
 
     if not rows:
         return {
