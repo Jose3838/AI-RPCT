@@ -1,4 +1,4 @@
-from copilot.executive_snapshot_builder import build_executive_snapshot
+from copilot.executive.snapshot_builder import build_executive_snapshot
 from copilot.service import (
     get_analytics,
     get_capacity_intelligence,

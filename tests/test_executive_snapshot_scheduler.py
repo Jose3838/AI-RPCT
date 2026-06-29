@@ -1,4 +1,4 @@
-from copilot import executive_snapshot_scheduler
+from copilot.executive import snapshot_scheduler
 
 
 def test_run_executive_snapshot(monkeypatch):
@@ -12,12 +12,12 @@ def test_run_executive_snapshot(monkeypatch):
     }
 
     monkeypatch.setattr(
-        executive_snapshot_scheduler,
+        snapshot_scheduler,
         "write_executive_snapshot",
         lambda: expected_snapshot,
     )
 
-    result = executive_snapshot_scheduler.run_executive_snapshot()
+    result = snapshot_scheduler.run_executive_snapshot()
 
     assert result["status"] == "executive snapshot completed"
     assert result["snapshot"] == expected_snapshot
