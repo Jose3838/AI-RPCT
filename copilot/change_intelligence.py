@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-from copilot.executive_snapshot import get_executive_snapshots
-
+from copilot.executive.snapshot import (
+    get_executive_snapshots,
+)
 
 def get_change_intelligence() -> dict:
     snapshots = get_executive_snapshots()

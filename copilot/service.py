@@ -17,10 +17,14 @@ from copilot.forecast_intelligence import get_forecast_intelligence
 from copilot.provider_intelligence import get_provider_intelligence
 from copilot.capacity_intelligence import get_capacity_intelligence
 from copilot.risk_intelligence import get_risk_intelligence
-from copilot.executive_intelligence import get_executive_intelligence
+from copilot.executive.intelligence import get_executive_intelligence
 from copilot.change_intelligence import get_change_intelligence
-from copilot.executive_snapshot import get_executive_snapshots
-from copilot.executive_recommendation import get_executive_recommendation
+from copilot.executive.snapshot import (
+    get_executive_snapshots,
+)
+from copilot.executive.recommendation import (
+    get_executive_recommendation,
+)
 from copilot.executive_decision_center import (
     get_executive_decision_center,
 )
