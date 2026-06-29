@@ -213,6 +213,49 @@ async function loadExecutiveAnalytics() {
     }
 }
 
+async function loadExecutiveIntelligence() {
+    try {
+        const [
+            decision,
+            forecast,
+            provider,
+            capacity,
+        ] = await Promise.all([
+            apiGet("/copilot/decision-intelligence"),
+            apiGet("/copilot/forecast-intelligence"),
+            apiGet("/copilot/provider-intelligence"),
+            apiGet("/copilot/capacity-intelligence"),
+        ]);
+
+        const card = document.getElementById("intelligence-card");
+
+        if (!card) return;
+
+        card.innerHTML = `
+            <table>
+                <tr>
+                    <td><strong>Decision Intelligence</strong></td>
+                    <td>${decision.summary?.status ?? decision.status ?? "Unavailable"}</td>
+                </tr>
+                <tr>
+                    <td><strong>Forecast Intelligence</strong></td>
+                    <td>${forecast.summary?.status ?? forecast.status ?? "Unavailable"}</td>
+                </tr>
+                <tr>
+                    <td><strong>Provider Intelligence</strong></td>
+                    <td>${provider.summary?.status ?? provider.status ?? "Unavailable"}</td>
+                </tr>
+                <tr>
+                    <td><strong>Capacity Intelligence</strong></td>
+                    <td>${capacity.summary?.status ?? capacity.status ?? "Unavailable"}</td>
+                </tr>
+            </table>
+        `;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 async function loadCopilotStatus() {
     try {
         const status = await apiGet("/copilot/status");
@@ -333,6 +376,7 @@ loadCopilotStatus();
 loadCopilotSummary();
 loadExecutiveKPIs();
 loadExecutiveAnalytics();
+loadExecutiveIntelligence();
 loadCopilotTimeline();
 loadForecastStatus();
 loadRegistryStatus();
