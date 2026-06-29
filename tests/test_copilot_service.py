@@ -214,6 +214,7 @@ def test_get_risk_intelligence():
     assert result["metrics"]["capacity_records"] >= 1
     assert result["metrics"]["forecast_records"] >= 1
     assert result["metrics"]["provider_risk"] in {"low", "high"}
+    assert result["metrics"]["capacity_risk"] in {"low", "high"}
 
     assert isinstance(result["trends"], dict)
     assert isinstance(result["insights"], list)

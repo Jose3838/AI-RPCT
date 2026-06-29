@@ -13,13 +13,14 @@ def get_risk_intelligence() -> dict:
     forecast_records = len(forecasts)
 
     provider_risk = "low" if provider_count >= 5 else "high"
+    capacity_risk = "low" if capacity_records >= 5 else "high"
 
     risk_score = 100
 
     if provider_risk == "high":
         risk_score -= 25
 
-    if capacity_records < 5:
+    if capacity_risk == "high":
         risk_score -= 20
 
     if forecast_records < 5:
@@ -52,6 +53,7 @@ def get_risk_intelligence() -> dict:
             "capacity_records": capacity_records,
             "forecast_records": forecast_records,
             "provider_risk": provider_risk,
+            "capacity_risk": capacity_risk,
         },
         "trends": {},
         "insights": [
