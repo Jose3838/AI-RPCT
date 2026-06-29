@@ -51,6 +51,36 @@ def get_change_intelligence() -> dict:
     current_score = int(current["risk_score"])
     delta = current_score - previous_score
 
+    changes = [
+        {
+            "metric": "risk_score",
+            "previous": previous_score,
+            "current": current_score,
+            "delta": delta,
+            "severity": "info",
+        }
+    ]
+
+    if previous["risk_severity"] != current["risk_severity"]:
+        changes.append(
+            {
+                "metric": "risk_severity",
+                "previous": previous["risk_severity"],
+                "current": current["risk_severity"],
+                "severity": "info",
+            }
+        )
+
+    if previous["recommendation"] != current["recommendation"]:
+        changes.append(
+            {
+                "metric": "recommendation",
+                "previous": previous["recommendation"],
+                "current": current["recommendation"],
+                "severity": "info",
+            }
+        )
+
     return {
         "summary": {
             "status": "change intelligence available",
@@ -60,15 +90,7 @@ def get_change_intelligence() -> dict:
             "risk_score": current_score,
             "risk_severity": current["risk_severity"],
         },
-        "changes": [
-            {
-                "metric": "risk_score",
-                "previous": previous_score,
-                "current": current_score,
-                "delta": delta,
-                "severity": "info",
-            }
-        ],
+        "changes": changes,
         "insights": [
             {
                 "type": "change",

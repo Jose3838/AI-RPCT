@@ -1,2 +1,2 @@
 brief_id,generated_at,market_status,capacity_risk,procurement_recommendation,forecast_status,platform_health,summary
-brief-001,2026-06-29T12:30:36.318737+00:00,stable,watch,Monitor closely and prepare capacity action,operational,healthy,AI-RPCT recommends: Monitor closely and prepare capacity action. Decision confidence is 0.82. Forecast status is operational. Platform health is healthy. Capacity risk is currently marked as watch.
+brief-001,2026-06-29T12:35:38.301893+00:00,stable,watch,Monitor closely and prepare capacity action,operational,healthy,AI-RPCT recommends: Monitor closely and prepare capacity action. Decision confidence is 0.82. Forecast status is operational. Platform health is healthy. Capacity risk is currently marked as watch.
