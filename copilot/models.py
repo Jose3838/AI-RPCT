@@ -24,3 +24,13 @@ class ExecutiveRecommendationModel(BaseModel):
     action: str
     reason: str
     owner: str
+
+
+class ExecutiveRecommendationSummaryModel(BaseModel):
+    status: str
+    priority: str
+
+
+class ExecutiveRecommendationResponseModel(BaseModel):
+    summary: ExecutiveRecommendationSummaryModel
+    recommendation: ExecutiveRecommendationModel
