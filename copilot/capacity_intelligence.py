@@ -26,6 +26,10 @@ def get_capacity_intelligence() -> dict:
                 availability_levels.get(level, 0) + 1
             )
 
+    insight = (
+        "Historical capacity records are available for executive planning."
+    )
+
     return {
         "summary": {
             "status": "capacity intelligence available",
@@ -36,5 +40,11 @@ def get_capacity_intelligence() -> dict:
             "availability_levels": availability_levels,
         },
         "trends": {},
-        "insights": [],
+        "insights": [
+            {
+                "type": "capacity",
+                "severity": "info",
+                "message": insight,
+            }
+        ],
     }

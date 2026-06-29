@@ -1,17 +1,18 @@
 from copilot.service import (
     get_analytics,
+    get_capacity_intelligence,
     get_context,
     get_decision,
     get_decision_intelligence,
     get_decision_timeline,
     get_forecast_intelligence,
+    get_provider_intelligence,
     get_recommendation,
     get_status,
     get_summary,
     get_why,
-    get_provider_intelligence,
-    get_capacity_intelligence,
 )
+
 
 def test_get_why():
     result = get_why()
@@ -130,7 +131,6 @@ def test_get_decision_intelligence():
         assert "insights" in result
 
         assert result["summary"]["decision_count"] >= 1
-        
         assert "latest_decision" in result["summary"]
 
         assert "recommendation_count" in result["metrics"]
@@ -138,8 +138,8 @@ def test_get_decision_intelligence():
 
         assert isinstance(result["trends"], dict)
         assert isinstance(result["insights"], list)
-        assert result["insights"]
 
+        assert result["insights"]
         assert "type" in result["insights"][0]
         assert "severity" in result["insights"][0]
         assert "message" in result["insights"][0]
@@ -191,3 +191,8 @@ def test_get_capacity_intelligence():
         assert isinstance(result["metrics"]["availability_levels"], dict)
         assert isinstance(result["trends"], dict)
         assert isinstance(result["insights"], list)
+
+        assert result["insights"]
+        assert "type" in result["insights"][0]
+        assert "severity" in result["insights"][0]
+        assert "message" in result["insights"][0]
