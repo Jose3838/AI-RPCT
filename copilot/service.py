@@ -13,6 +13,7 @@ from copilot.forecast_intelligence import get_forecast_intelligence
 from copilot.provider_intelligence import get_provider_intelligence
 from copilot.capacity_intelligence import get_capacity_intelligence
 from copilot.risk_intelligence import get_risk_intelligence
+from copilot.executive_intelligence import get_executive_intelligence
 
 __all__ = [
     "get_analytics",
@@ -28,4 +29,5 @@ __all__ = [
     "get_provider_intelligence",
     "get_capacity_intelligence",
     "get_risk_intelligence",
+    "get_executive_intelligence",
 ]

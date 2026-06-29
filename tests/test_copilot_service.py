@@ -12,6 +12,7 @@ from copilot.service import (
     get_summary,
     get_why,
     get_risk_intelligence,
+    get_executive_intelligence,
 )
 
 
@@ -242,3 +243,28 @@ def test_get_risk_intelligence():
         result["insights"][0]["severity"]
         == result["summary"]["risk_severity"]
     )
+
+def test_get_executive_intelligence():
+    result = get_executive_intelligence()
+
+    assert isinstance(result, dict)
+
+    assert "summary" in result
+    assert "modules" in result
+
+    assert (
+        result["summary"]["status"]
+        == "executive intelligence available"
+    )
+
+    modules = result["modules"]
+
+    assert "summary" in modules
+    assert "analytics" in modules
+    assert "decision_intelligence" in modules
+    assert "forecast_intelligence" in modules
+    assert "provider_intelligence" in modules
+    assert "capacity_intelligence" in modules
+    assert "risk_intelligence" in modules
+
+    assert isinstance(modules, dict)
