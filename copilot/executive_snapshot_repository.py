@@ -1,9 +1,23 @@
 from __future__ import annotations
 
-from copilot.io import load_csv
+from pathlib import Path
 
+from copilot.io import load_csv
+from history.history_writer import append_row
+
+
+ROOT = Path(__file__).resolve().parents[1]
 
 SNAPSHOT_REGISTRY_PATH = "data/executive_snapshot_registry.csv"
+
+FIELDS = [
+    "snapshot_id",
+    "generated_at",
+    "risk_score",
+    "risk_severity",
+    "recommendation",
+    "source",
+]
 
 
 def load_executive_snapshot_rows() -> list[dict[str, str]]:
@@ -17,3 +31,11 @@ def get_latest_executive_snapshot() -> dict[str, str] | None:
         return None
 
     return rows[-1]
+
+
+def save_executive_snapshot(snapshot: dict) -> None:
+    append_row(
+        ROOT / "data" / "executive_snapshot_registry.csv",
+        FIELDS,
+        snapshot,
+    )

@@ -1,5 +1,6 @@
 import csv
 
+from copilot import executive_snapshot_repository
 from copilot import executive_snapshot_writer
 
 
@@ -7,7 +8,7 @@ def test_write_executive_snapshot_writes_registry_row(tmp_path, monkeypatch):
     output = tmp_path / "data" / "executive_snapshot_registry.csv"
 
     monkeypatch.setattr(
-        executive_snapshot_writer,
+        executive_snapshot_repository,
         "ROOT",
         tmp_path,
     )
