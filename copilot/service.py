@@ -20,6 +20,7 @@ from copilot.risk_intelligence import get_risk_intelligence
 from copilot.executive_intelligence import get_executive_intelligence
 from copilot.change_intelligence import get_change_intelligence
 from copilot.executive_snapshot import get_executive_snapshots
+from copilot.executive_recommendation import get_executive_recommendation
 
 __all__ = [
     "get_analytics",
@@ -39,5 +40,6 @@ __all__ = [
     "get_change_intelligence",
     "get_executive_snapshots",
     "run_executive_snapshot",
+    "get_executive_recommendation",
 ]
 

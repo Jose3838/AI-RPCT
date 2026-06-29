@@ -57,3 +57,23 @@ def test_copilot_executive_snapshot_post():
     assert "snapshot_id" in data["snapshot"]
     assert "risk_score" in data["snapshot"]
     assert "risk_severity" in data["snapshot"]
+
+
+def test_copilot_executive_recommendation():
+    response = client.get("/copilot/executive-recommendation")
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["summary"]["status"] == (
+        "executive recommendation available"
+    )
+
+    assert "priority" in data["summary"]
+
+    recommendation = data["recommendation"]
+
+    assert "action" in recommendation
+    assert "reason" in recommendation
+    assert "owner" in recommendation

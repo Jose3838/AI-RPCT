@@ -23,6 +23,7 @@ from copilot.service import (
     get_change_intelligence,
     get_executive_snapshots,
     run_executive_snapshot,
+    get_executive_recommendation,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -269,3 +270,8 @@ def copilot_executive_snapshots():
 @app.post("/copilot/executive-snapshot")
 def copilot_run_executive_snapshot():
     return run_executive_snapshot()
+
+
+@app.get("/copilot/executive-recommendation")
+def copilot_executive_recommendation():
+    return get_executive_recommendation()
