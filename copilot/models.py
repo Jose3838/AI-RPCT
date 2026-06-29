@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any
+
 from pydantic import BaseModel
 
 
@@ -34,3 +36,13 @@ class ExecutiveRecommendationSummaryModel(BaseModel):
 class ExecutiveRecommendationResponseModel(BaseModel):
     summary: ExecutiveRecommendationSummaryModel
     recommendation: ExecutiveRecommendationModel
+
+
+class ExecutiveDecisionCenterResponseModel(BaseModel):
+    summary: ExecutiveSummaryModel
+    priority: str
+    risk: dict[str, Any]
+    recommendation: dict[str, Any]
+    changes: dict[str, Any]
+    snapshots: dict[str, Any]
+    executive_intelligence: dict[str, Any]

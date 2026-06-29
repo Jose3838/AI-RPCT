@@ -5,7 +5,10 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
-from copilot.models import ExecutiveRecommendationResponseModel
+from copilot.models import (
+    ExecutiveDecisionCenterResponseModel,
+    ExecutiveRecommendationResponseModel,
+)
 
 from copilot.service import (
     get_analytics,
@@ -282,6 +285,9 @@ def copilot_executive_recommendation():
     return get_executive_recommendation()
 
 
-@app.get("/copilot/executive-decision-center")
+@app.get(
+    "/copilot/executive-decision-center",
+    response_model=ExecutiveDecisionCenterResponseModel,
+)
 def copilot_executive_decision_center():
     return get_executive_decision_center()
