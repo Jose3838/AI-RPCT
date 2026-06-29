@@ -3,9 +3,10 @@ from __future__ import annotations
 from datetime import datetime, timezone
 
 from copilot.executive_intelligence import get_executive_intelligence
+from copilot.schemas import ExecutiveSnapshot
 
 
-def build_executive_snapshot() -> dict:
+def build_executive_snapshot() -> ExecutiveSnapshot:
     executive = get_executive_intelligence()
     summary = executive["summary"]
 
