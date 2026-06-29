@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+from copilot.executive_snapshot_scheduler import (
+    run_executive_snapshot,
+)
+
 from copilot.analytics import get_analytics
 from copilot.context import get_context
 from copilot.decision import get_decision
@@ -34,5 +38,6 @@ __all__ = [
     "get_executive_intelligence",
     "get_change_intelligence",
     "get_executive_snapshots",
+    "run_executive_snapshot",
 ]
 

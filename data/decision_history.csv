@@ -78,3 +78,4 @@ generated_at,decision_id,topic,recommendation,confidence,rationale
 2026-06-29T12:30:36.130576+00:00,decision-001,AI Infrastructure,Monitor closely and prepare capacity action,0.82,Recommendation is based on 4 evidence sources. Calculated confidence is 0.82.
 2026-06-29T12:35:38.116582+00:00,decision-001,AI Infrastructure,Monitor closely and prepare capacity action,0.82,Recommendation is based on 4 evidence sources. Calculated confidence is 0.82.
 2026-06-29T12:39:15.849113+00:00,decision-001,AI Infrastructure,Monitor closely and prepare capacity action,0.82,Recommendation is based on 4 evidence sources. Calculated confidence is 0.82.
+2026-06-29T12:43:18.172290+00:00,decision-001,AI Infrastructure,Monitor closely and prepare capacity action,0.82,Recommendation is based on 4 evidence sources. Calculated confidence is 0.82.
