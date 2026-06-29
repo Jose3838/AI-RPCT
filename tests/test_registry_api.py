@@ -95,3 +95,10 @@ def test_copilot_executive_decision_center():
     assert "changes" in data
     assert "snapshots" in data
     assert "executive_intelligence" in data
+
+    assert "kpis" in data
+
+    assert "snapshot_count" in data["kpis"]
+    assert "change_events" in data["kpis"]
+    assert "risk_score" in data["kpis"]
+    assert "priority" in data["kpis"]

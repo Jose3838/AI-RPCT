@@ -67,9 +67,17 @@ class RiskIntelligenceResponseModel(BaseModel):
     insights: list[RiskInsightModel]
 
 
+class ExecutiveDecisionCenterKPIModel(BaseModel):
+    snapshot_count: int
+    change_events: int
+    risk_score: int
+    priority: str
+
+
 class ExecutiveDecisionCenterResponseModel(BaseModel):
     summary: ExecutiveSummaryModel
     priority: str
+    kpis: ExecutiveDecisionCenterKPIModel
     risk: RiskIntelligenceResponseModel
     recommendation: dict[str, Any]
     changes: dict[str, Any]

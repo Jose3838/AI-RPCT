@@ -4,6 +4,7 @@ from copilot.executive.snapshot import (
     get_executive_snapshots,
 )
 
+
 def get_change_intelligence() -> dict:
     snapshots = get_executive_snapshots()
 
@@ -12,6 +13,7 @@ def get_change_intelligence() -> dict:
             "summary": {
                 "status": "change intelligence unavailable",
                 "baseline": "no executive snapshots available",
+                "snapshot_count": 0,
             },
             "metrics": {},
             "changes": [],
@@ -19,14 +21,16 @@ def get_change_intelligence() -> dict:
         }
 
     rows = snapshots["snapshots"]
+    snapshot_count = len(rows)
 
-    if len(rows) < 2:
+    if snapshot_count < 2:
         latest = rows[-1]
 
         return {
             "summary": {
                 "status": "change intelligence available",
                 "baseline": "single executive snapshot",
+                "snapshot_count": snapshot_count,
             },
             "metrics": {
                 "risk_score": int(latest["risk_score"]),
@@ -86,6 +90,7 @@ def get_change_intelligence() -> dict:
         "summary": {
             "status": "change intelligence available",
             "baseline": "latest two executive snapshots",
+            "snapshot_count": snapshot_count,
         },
         "metrics": {
             "risk_score": current_score,
@@ -98,7 +103,8 @@ def get_change_intelligence() -> dict:
                 "severity": "info",
                 "message": (
                     f"Risk score changed by {delta} points "
-                    "between the latest two executive snapshots."
+                    f"between the latest two of {snapshot_count} "
+                    "executive snapshots."
                 ),
             }
         ],

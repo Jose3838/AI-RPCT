@@ -292,6 +292,8 @@ def test_get_change_intelligence():
     )
 
     assert "baseline" in result["summary"]
+    assert "snapshot_count" in result["summary"]
+    assert result["summary"]["snapshot_count"] >= 0
 
     if result["metrics"]:
         assert "risk_score" in result["metrics"]

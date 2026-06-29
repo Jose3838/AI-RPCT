@@ -36,6 +36,16 @@ def get_executive_decision_center() -> dict:
     return {
         "summary": summary,
         "priority": recommendation["summary"]["priority"],
+        "kpis": {
+            "snapshot_count": (
+                snapshots["summary"]["snapshot_count"]
+                if "summary" in snapshots
+                else 0
+            ),
+            "change_events": len(changes["changes"]),
+            "risk_score": risk["summary"]["risk_score"],
+            "priority": recommendation["summary"]["priority"],
+        },
         "risk": risk,
         "recommendation": recommendation,
         "changes": changes,
