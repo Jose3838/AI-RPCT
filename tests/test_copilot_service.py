@@ -1,22 +1,22 @@
+from copilot.executive_snapshot_builder import build_executive_snapshot
 from copilot.service import (
     get_analytics,
     get_capacity_intelligence,
+    get_change_intelligence,
     get_context,
     get_decision,
     get_decision_intelligence,
     get_decision_timeline,
+    get_executive_intelligence,
+    get_executive_snapshots,
     get_forecast_intelligence,
     get_provider_intelligence,
     get_recommendation,
+    get_risk_intelligence,
     get_status,
     get_summary,
     get_why,
-    get_risk_intelligence,
-    get_executive_intelligence,
-    get_change_intelligence,
-    get_executive_snapshots,
 )
-
 
 def test_get_why():
     result = get_why()
@@ -330,3 +330,25 @@ def test_get_executive_snapshots():
     assert "risk_score" in latest
     assert "risk_severity" in latest
     assert "recommendation" in latest
+
+def test_build_executive_snapshot():
+    snapshot = build_executive_snapshot()
+
+    assert isinstance(snapshot, dict)
+
+    assert "snapshot_id" in snapshot
+    assert "generated_at" in snapshot
+    assert "risk_score" in snapshot
+    assert "risk_severity" in snapshot
+    assert "recommendation" in snapshot
+    assert "source" in snapshot
+
+    assert snapshot["snapshot_id"].startswith("snapshot-")
+    assert 0 <= snapshot["risk_score"] <= 100
+    assert snapshot["risk_severity"] in {
+        "low",
+        "medium",
+        "high",
+        "critical",
+    }
+    assert snapshot["source"] == "executive_snapshot_builder"
