@@ -26,6 +26,10 @@ def get_provider_intelligence() -> dict:
 
         categories[category] = categories.get(category, 0) + 1
 
+    insight = (
+        "Active providers are distributed across multiple infrastructure categories."
+    )
+
     return {
         "summary": {
             "status": "provider intelligence available",
@@ -36,5 +40,11 @@ def get_provider_intelligence() -> dict:
             "provider_categories": categories,
         },
         "trends": {},
-        "insights": [],
+        "insights": [
+            {
+                "type": "provider",
+                "severity": "info",
+                "message": insight,
+            }
+        ],
     }
