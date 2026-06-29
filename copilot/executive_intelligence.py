@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from datetime import datetime, timezone
+
 from copilot.analytics import get_analytics
 from copilot.capacity_intelligence import get_capacity_intelligence
 from copilot.decision_intelligence import get_decision_intelligence
@@ -21,6 +23,10 @@ def get_executive_intelligence() -> dict:
     return {
         "summary": {
             "status": "executive intelligence available",
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "overall_risk_score": risk["summary"]["risk_score"],
+            "overall_risk_severity": risk["summary"]["risk_severity"],
+            "overall_recommendation": risk["summary"]["recommendation"],
         },
         "modules": {
             "summary": summary,

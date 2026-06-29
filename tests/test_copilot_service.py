@@ -268,3 +268,8 @@ def test_get_executive_intelligence():
     assert "risk_intelligence" in modules
 
     assert isinstance(modules, dict)
+
+    assert "generated_at" in result["summary"]
+    assert "overall_risk_score" in result["summary"]
+    assert "overall_risk_severity" in result["summary"]
+    assert "overall_recommendation" in result["summary"]
