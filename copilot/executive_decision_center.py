@@ -7,6 +7,7 @@ from copilot.executive_intelligence import get_executive_intelligence
 from copilot.executive_recommendation import get_executive_recommendation
 from copilot.executive_snapshot import get_executive_snapshots
 from copilot.risk_intelligence import get_risk_intelligence
+from copilot.schemas import ExecutiveSummary
 
 
 def get_executive_decision_center() -> dict:
@@ -16,14 +17,19 @@ def get_executive_decision_center() -> dict:
     snapshots = get_executive_snapshots()
     executive = get_executive_intelligence()
 
+    summary: ExecutiveSummary = {
+        "status": "executive decision center available",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "overall_risk_score": risk["summary"]["risk_score"],
+        "overall_risk_severity": risk["summary"]["risk_severity"],
+        "overall_recommendation": (
+            recommendation["recommendation"]["action"]
+        ),
+    }
+
     return {
-        "summary": {
-            "status": "executive decision center available",
-            "generated_at": datetime.now(timezone.utc).isoformat(),
-            "overall_risk_score": risk["summary"]["risk_score"],
-            "overall_risk_severity": risk["summary"]["risk_severity"],
-            "priority": recommendation["summary"]["priority"],
-        },
+        "summary": summary,
+        "priority": recommendation["summary"]["priority"],
         "risk": risk,
         "recommendation": recommendation,
         "changes": changes,
