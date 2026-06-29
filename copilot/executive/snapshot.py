@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from copilot.executive_snapshot_repository import (
+from copilot.executive.snapshot_repository import (
     load_executive_snapshot_rows,
 )
 

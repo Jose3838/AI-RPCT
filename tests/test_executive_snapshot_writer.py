@@ -1,19 +1,19 @@
 import csv
 
-from copilot import executive_snapshot_repository
-from copilot import executive_snapshot_writer
+from copilot.executive import snapshot_repository
+from copilot.executive import snapshot_writer
 
 
 def test_write_executive_snapshot_writes_registry_row(tmp_path, monkeypatch):
     output = tmp_path / "data" / "executive_snapshot_registry.csv"
 
     monkeypatch.setattr(
-        executive_snapshot_repository,
+        snapshot_repository,
         "ROOT",
         tmp_path,
     )
 
-    snapshot = executive_snapshot_writer.write_executive_snapshot()
+    snapshot = snapshot_writer.write_executive_snapshot()
 
     assert output.exists()
 

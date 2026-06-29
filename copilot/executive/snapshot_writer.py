@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from copilot.executive_snapshot_builder import (
+from copilot.executive.snapshot_builder import (
     build_executive_snapshot,
 )
-from copilot.executive_snapshot_repository import (
+from copilot.executive.snapshot_repository import (
     save_executive_snapshot,
 )
 

@@ -1,4 +1,4 @@
-from copilot.executive_snapshot_repository import (
+from copilot.executive.snapshot_repository import (
     get_latest_executive_snapshot,
     load_executive_snapshot_rows,
 )

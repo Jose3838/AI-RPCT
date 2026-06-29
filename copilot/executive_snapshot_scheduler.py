@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from copilot.executive_snapshot_writer import (
+from copilot.executive.snapshot_writer import (
     write_executive_snapshot,
 )
 
