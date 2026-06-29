@@ -31,12 +31,16 @@ def get_risk_intelligence() -> dict:
 
     if risk_score >= 80:
         risk_severity = "low"
+        recommendation = "Continue monitoring current infrastructure."
     elif risk_score >= 60:
         risk_severity = "medium"
+        recommendation = "Review infrastructure risks regularly."
     elif risk_score >= 40:
         risk_severity = "high"
+        recommendation = "Investigate provider and capacity risks."
     else:
         risk_severity = "critical"
+        recommendation = "Immediate executive review recommended."
 
     insight = (
         f"Current executive risk score: {risk_score}/100 "
@@ -48,6 +52,7 @@ def get_risk_intelligence() -> dict:
             "status": "risk intelligence available",
             "risk_score": risk_score,
             "risk_severity": risk_severity,
+            "recommendation": recommendation,
         },
         "metrics": {
             "provider_count": provider_count,

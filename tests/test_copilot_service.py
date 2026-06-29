@@ -229,6 +229,8 @@ def test_get_risk_intelligence():
     assert 0 <= result["summary"]["risk_score"] <= 100
 
     assert "risk_severity" in result["summary"]
+    assert "recommendation" in result["summary"]
+    assert result["summary"]["recommendation"]
     assert result["summary"]["risk_severity"] in {
         "low",
         "medium",
