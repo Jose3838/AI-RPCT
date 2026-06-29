@@ -11,6 +11,10 @@ def get_forecast_intelligence() -> dict:
             "status": "no forecast intelligence available"
         }
 
+    insight = (
+        "Forecast data is available for executive planning."
+    )
+
     return {
         "summary": {
             "status": "forecast intelligence available",
@@ -18,5 +22,11 @@ def get_forecast_intelligence() -> dict:
         },
         "metrics": {},
         "trends": {},
-        "insights": [],
+        "insights": [
+            {
+                "type": "forecast",
+                "severity": "info",
+                "message": insight,
+            }
+        ],
     }
