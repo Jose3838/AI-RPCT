@@ -12,9 +12,27 @@ def get_risk_intelligence() -> dict:
     capacity_records = len(capacity)
     forecast_records = len(forecasts)
 
+    risk_score = 100
+
+    if provider_count < 5:
+        risk_score -= 25
+
+    if capacity_records < 5:
+        risk_score -= 20
+
+    if forecast_records < 5:
+        risk_score -= 20
+
+    risk_score = max(0, risk_score)
+
+    insight = (
+        f"Current executive risk score: {risk_score}/100."
+    )
+
     return {
         "summary": {
             "status": "risk intelligence available",
+            "risk_score": risk_score,
         },
         "metrics": {
             "provider_count": provider_count,
@@ -26,11 +44,7 @@ def get_risk_intelligence() -> dict:
             {
                 "type": "risk",
                 "severity": "info",
-                "message": (
-                    "Risk intelligence initialized. "
-                    "Executive risk scoring will build on provider, "
-                    "capacity and forecast datasets."
-                ),
+                "message": insight,
             }
         ],
     }

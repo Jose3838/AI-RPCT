@@ -221,3 +221,6 @@ def test_get_risk_intelligence():
     assert "type" in result["insights"][0]
     assert "severity" in result["insights"][0]
     assert "message" in result["insights"][0]
+
+    assert "risk_score" in result["summary"]
+    assert 0 <= result["summary"]["risk_score"] <= 100
