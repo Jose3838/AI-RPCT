@@ -8,6 +8,7 @@ from fastapi.staticfiles import StaticFiles
 from copilot.models import (
     ExecutiveDecisionCenterResponseModel,
     ExecutiveRecommendationResponseModel,
+    RiskIntelligenceResponseModel,
 )
 
 from copilot.service import (
@@ -252,7 +253,10 @@ def copilot_capacity_intelligence():
     return get_capacity_intelligence()
 
 
-@app.get("/copilot/risk-intelligence")
+@app.get(
+    "/copilot/risk-intelligence",
+    response_model=RiskIntelligenceResponseModel,
+)
 def copilot_risk_intelligence():
     return get_risk_intelligence()
 

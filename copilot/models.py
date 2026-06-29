@@ -38,10 +38,39 @@ class ExecutiveRecommendationResponseModel(BaseModel):
     recommendation: ExecutiveRecommendationModel
 
 
+class RiskSummaryModel(BaseModel):
+    status: str
+    risk_score: int
+    risk_severity: str
+    recommendation: str
+
+
+class RiskMetricsModel(BaseModel):
+    provider_count: int
+    capacity_records: int
+    forecast_records: int
+    provider_risk: str
+    capacity_risk: str
+    forecast_risk: str
+
+
+class RiskInsightModel(BaseModel):
+    type: str
+    severity: str
+    message: str
+
+
+class RiskIntelligenceResponseModel(BaseModel):
+    summary: RiskSummaryModel
+    metrics: RiskMetricsModel
+    trends: dict[str, Any]
+    insights: list[RiskInsightModel]
+
+
 class ExecutiveDecisionCenterResponseModel(BaseModel):
     summary: ExecutiveSummaryModel
     priority: str
-    risk: dict[str, Any]
+    risk: RiskIntelligenceResponseModel
     recommendation: dict[str, Any]
     changes: dict[str, Any]
     snapshots: dict[str, Any]
