@@ -35,6 +35,11 @@ def get_executive_decision_center() -> dict:
 
     return {
         "summary": summary,
+        "metadata": {
+            "version": "1.0",
+            "module": "executive",
+            "generated_by": "AI-RPCT Copilot",
+        },
         "priority": recommendation["summary"]["priority"],
         "kpis": {
             "snapshot_count": (

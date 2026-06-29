@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 from dataclasses import dataclass
+
 
 @dataclass
 class ProviderSnapshot:
@@ -8,3 +11,4 @@ class ProviderSnapshot:
     avg_price: float
     market_share_pct: float
     health_score: float
+    source: str = "provider_connector"

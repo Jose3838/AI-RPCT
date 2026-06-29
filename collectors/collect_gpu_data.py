@@ -1,28 +1,24 @@
-import pandas as pd
-from pathlib import Path
+from __future__ import annotations
+
 from datetime import datetime
+from pathlib import Path
 
-from collectors.providers.manual import ManualProvider
-from collectors.providers.runpod import RunPodProvider
-from collectors.providers.vast import VastProvider
-from collectors.providers.lambda_labs import LambdaLabsProvider
-from collectors.providers.coreweave import CoreWeaveProvider
+import pandas as pd
 
+from collectors.providers.live_registry import get_configured_providers
+from collectors.providers.loader import load_provider
 from integrations.provider_schema import validate_provider_rows
-
-providers = [
-    ManualProvider(),
-    RunPodProvider(),
-    VastProvider(),
-    LambdaLabsProvider(),
-    CoreWeaveProvider()
-]
+from collectors.providers.normalizer import normalize_provider_rows
 
 rows = []
 
-for provider in providers:
+for provider_config in get_configured_providers():
+    provider = load_provider(provider_config)
+
     try:
         provider_rows = provider.fetch()
+        provider_rows = normalize_provider_rows(provider_rows)
+
         errors = validate_provider_rows(provider_rows)
 
         if errors:
@@ -49,6 +45,16 @@ if Path(file_path).exists():
     final_data = pd.concat([old_data, new_data], ignore_index=True)
 else:
     final_data = new_data
+
+final_data["price_per_hour"] = pd.to_numeric(
+    final_data["price_per_hour"],
+    errors="coerce",
+).fillna(0.0)
+
+final_data["availability"] = pd.to_numeric(
+    final_data["availability"],
+    errors="coerce",
+).fillna(0).astype(int)
 
 final_data.to_csv(file_path, index=False)
 

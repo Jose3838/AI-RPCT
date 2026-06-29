@@ -1,19 +1,34 @@
+from __future__ import annotations
+
 import pandas as pd
 
-try:
-    forecast = pd.read_csv("data/forecast.csv")
-    actual = pd.read_csv("data/rpct_scores.csv")
 
-    accuracy = 0.75
+forecast = pd.read_csv("data/forecast_engine_v1_output.csv")
+actual = pd.read_csv("data/rpct_scores.csv")
 
-    pd.DataFrame([
-        {"accuracy": accuracy}
-    ]).to_csv(
-        "data/forecast_accuracy.csv",
-        index=False
-    )
+has_forecasts = len(forecast) > 0
+has_actuals = len(actual) > 0
 
-    print("Forecast accuracy:", accuracy)
+pd.DataFrame(
+    [
+        {
+            "status": "not_applicable",
+            "accuracy": "",
+            "forecast_records": len(forecast),
+            "actual_records": len(actual),
+            "reason": (
+                "Forecast engine v1 is rule-based and has no true labels. "
+                "No production accuracy claim is made."
+            ),
+            "forecast_source": "data/forecast_engine_v1_output.csv",
+            "actual_source": "data/rpct_scores.csv",
+            "has_forecasts": has_forecasts,
+            "has_actuals": has_actuals,
+        }
+    ]
+).to_csv(
+    "data/forecast_accuracy.csv",
+    index=False,
+)
 
-except Exception as e:
-    print(e)
+print("Forecast accuracy: not applicable")

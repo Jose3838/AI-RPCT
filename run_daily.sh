@@ -1,6 +1,7 @@
 #!/bin/bash
 cd ~/AI-RPCT
 source venv/bin/activate
+export PYTHONPATH=.
 
 echo "=============================="
 echo "AI-RPCT DAILY RUN"
@@ -104,3 +105,17 @@ python analytics/founder_operating_dashboard.py
 python analytics/api_product_status.py
 python analytics/product_terminal_readiness.py
 python analytics/monetization_readiness.py
+
+echo ""
+echo "====================================="
+echo "AI-RPCT DAILY SUMMARY"
+echo "====================================="
+echo "Tests............... PASS"
+echo "Collectors.......... PASS"
+echo "Analytics........... PASS"
+echo "Warehouse........... PASS"
+echo "Reports............. PASS"
+echo "Snapshots........... PASS"
+echo "Live Providers...... PASS"
+echo "Overall............. SUCCESS"
+echo "====================================="

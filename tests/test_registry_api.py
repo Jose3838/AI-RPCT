@@ -102,3 +102,7 @@ def test_copilot_executive_decision_center():
     assert "change_events" in data["kpis"]
     assert "risk_score" in data["kpis"]
     assert "priority" in data["kpis"]
+
+    assert "metadata" in data
+    assert data["metadata"]["version"] == "1.0"
+    assert data["metadata"]["module"] == "executive"

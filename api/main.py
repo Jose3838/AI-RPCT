@@ -6,9 +6,22 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from copilot.models import (
+    CopilotStatusResponseModel,
     ExecutiveDecisionCenterResponseModel,
     ExecutiveRecommendationResponseModel,
     RiskIntelligenceResponseModel,
+    CopilotSummaryResponseModel,
+    CopilotRecommendationResponseModel,
+    CopilotDecisionResponseModel,
+    CopilotTimelineResponseModel,
+    CopilotAnalyticsResponseModel,
+    DecisionIntelligenceResponseModel,
+    ForecastIntelligenceResponseModel,
+    ProviderIntelligenceResponseModel,
+    CapacityIntelligenceResponseModel,
+    ExecutiveIntelligenceResponseModel,
+    ChangeIntelligenceResponseModel,
+    ExecutiveSnapshotsResponseModel,
 )
 
 from copilot.service import (
@@ -203,52 +216,82 @@ def copilot_why():
     return get_why()
 
 
-@app.get("/copilot/status")
+@app.get(
+    "/copilot/status",
+    response_model=CopilotStatusResponseModel,
+)
 def copilot_status():
     return get_status()
 
 
-@app.get("/copilot/decision")
+@app.get(
+    "/copilot/decision",
+    response_model=CopilotDecisionResponseModel,
+)
 def copilot_decision():
     return get_decision()
 
 
-@app.get("/copilot/summary")
+@app.get(
+    "/copilot/summary",
+    response_model=CopilotSummaryResponseModel,
+)
 def copilot_summary():
     return get_summary()
 
 
-@app.get("/copilot/recommendation")
+@app.get(
+    "/copilot/recommendation",
+    response_model=CopilotRecommendationResponseModel,
+)
 def copilot_recommendation():
     return get_recommendation()
 
 
-@app.get("/copilot/timeline")
+@app.get(
+    "/copilot/timeline",
+    response_model=CopilotTimelineResponseModel,
+)
 def copilot_timeline():
     return get_decision_timeline()
 
 
-@app.get("/copilot/analytics")
+@app.get(
+    "/copilot/analytics",
+    response_model=CopilotAnalyticsResponseModel,
+)
 def copilot_analytics():
     return get_analytics()
 
 
-@app.get("/copilot/decision-intelligence")
+@app.get(
+    "/copilot/decision-intelligence",
+    response_model=DecisionIntelligenceResponseModel,
+)
 def copilot_decision_intelligence():
     return get_decision_intelligence()
 
 
-@app.get("/copilot/forecast-intelligence")
+@app.get(
+    "/copilot/forecast-intelligence",
+    response_model=ForecastIntelligenceResponseModel,
+)
 def copilot_forecast_intelligence():
     return get_forecast_intelligence()
 
 
-@app.get("/copilot/provider-intelligence")
+@app.get(
+    "/copilot/provider-intelligence",
+    response_model=ProviderIntelligenceResponseModel,
+)
 def copilot_provider_intelligence():
     return get_provider_intelligence()
 
 
-@app.get("/copilot/capacity-intelligence")
+@app.get(
+    "/copilot/capacity-intelligence",
+    response_model=CapacityIntelligenceResponseModel,
+)
 def copilot_capacity_intelligence():
     return get_capacity_intelligence()
 
@@ -261,17 +304,26 @@ def copilot_risk_intelligence():
     return get_risk_intelligence()
 
 
-@app.get("/copilot/executive-intelligence")
+@app.get(
+    "/copilot/executive-intelligence",
+    response_model=ExecutiveIntelligenceResponseModel,
+)
 def copilot_executive_intelligence():
     return get_executive_intelligence()
 
 
-@app.get("/copilot/change-intelligence")
+@app.get(
+    "/copilot/change-intelligence",
+    response_model=ChangeIntelligenceResponseModel,
+)
 def copilot_change_intelligence():
     return get_change_intelligence()
 
 
-@app.get("/copilot/executive-snapshots")
+@app.get(
+    "/copilot/executive-snapshots",
+    response_model=ExecutiveSnapshotsResponseModel,
+)
 def copilot_executive_snapshots():
     return get_executive_snapshots()
 
