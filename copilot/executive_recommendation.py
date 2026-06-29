@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from copilot.risk_intelligence import get_risk_intelligence
+from copilot.schemas import ExecutiveRecommendation
 
 
 def get_executive_recommendation() -> dict:
@@ -20,17 +21,19 @@ def get_executive_recommendation() -> dict:
         priority = "low"
         action = "Continue monitoring current infrastructure."
 
+    recommendation: ExecutiveRecommendation = {
+        "action": action,
+        "reason": (
+            f"Current executive risk severity is {risk_severity} "
+            f"with a risk score of {risk_score}/100."
+        ),
+        "owner": "Infrastructure",
+    }
+
     return {
         "summary": {
             "status": "executive recommendation available",
             "priority": priority,
         },
-        "recommendation": {
-            "action": action,
-            "reason": (
-                f"Current executive risk severity is {risk_severity} "
-                f"with a risk score of {risk_score}/100."
-            ),
-            "owner": "Infrastructure",
-        },
+        "recommendation": recommendation,
     }
