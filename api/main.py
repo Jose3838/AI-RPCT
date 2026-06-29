@@ -20,6 +20,7 @@ from copilot.service import (
     get_capacity_intelligence,
     get_risk_intelligence,
     get_executive_intelligence,
+    get_change_intelligence,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -251,3 +252,8 @@ def copilot_risk_intelligence():
 @app.get("/copilot/executive-intelligence")
 def copilot_executive_intelligence():
     return get_executive_intelligence()
+
+
+@app.get("/copilot/change-intelligence")
+def copilot_change_intelligence():
+    return get_change_intelligence()

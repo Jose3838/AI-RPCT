@@ -13,6 +13,7 @@ from copilot.service import (
     get_why,
     get_risk_intelligence,
     get_executive_intelligence,
+    get_change_intelligence,
 )
 
 
@@ -273,3 +274,31 @@ def test_get_executive_intelligence():
     assert "overall_risk_score" in result["summary"]
     assert "overall_risk_severity" in result["summary"]
     assert "overall_recommendation" in result["summary"]
+
+def test_get_change_intelligence():
+    result = get_change_intelligence()
+
+    assert isinstance(result, dict)
+
+    assert "summary" in result
+    assert "metrics" in result
+    assert "changes" in result
+    assert "insights" in result
+
+    assert (
+        result["summary"]["status"]
+        == "change intelligence available"
+    )
+
+    assert "baseline" in result["summary"]
+
+    assert "risk_score" in result["metrics"]
+    assert "risk_severity" in result["metrics"]
+
+    assert isinstance(result["changes"], list)
+    assert isinstance(result["insights"], list)
+
+    assert result["insights"]
+    assert "type" in result["insights"][0]
+    assert "severity" in result["insights"][0]
+    assert "message" in result["insights"][0]
