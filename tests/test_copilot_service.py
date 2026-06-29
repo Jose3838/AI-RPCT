@@ -125,6 +125,8 @@ def test_get_decision_intelligence():
         assert "insights" in result
 
         assert result["summary"]["decision_count"] >= 1
+        
+        assert "latest_decision" in result["summary"]
 
         assert "recommendation_count" in result["metrics"]
         assert "recommendation_consistency" in result["metrics"]

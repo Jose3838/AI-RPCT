@@ -17,10 +17,13 @@ def get_decision_intelligence() -> dict:
         if row.get("recommendation")
     }
 
+    latest_decision = rows[-1]
+
     return {
         "summary": {
             "status": "decision intelligence available",
             "decision_count": len(rows),
+            "latest_decision": latest_decision.get("generated_at"),
         },
         "metrics": {
             "recommendation_count": len(recommendations),
