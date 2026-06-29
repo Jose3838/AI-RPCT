@@ -5,6 +5,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
+from copilot.models import ExecutiveRecommendationModel
 
 from copilot.service import (
     get_analytics,
@@ -275,7 +276,13 @@ def copilot_run_executive_snapshot():
 
 @app.get("/copilot/executive-recommendation")
 def copilot_executive_recommendation():
-    return get_executive_recommendation()
+    data = get_executive_recommendation()
+
+    data["recommendation"] = ExecutiveRecommendationModel(
+        **data["recommendation"]
+    )
+
+    return data
 
 
 @app.get("/copilot/executive-decision-center")
