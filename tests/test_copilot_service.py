@@ -11,6 +11,7 @@ from copilot.service import (
     get_status,
     get_summary,
     get_why,
+    get_risk_intelligence,
 )
 
 
@@ -196,3 +197,27 @@ def test_get_capacity_intelligence():
         assert "type" in result["insights"][0]
         assert "severity" in result["insights"][0]
         assert "message" in result["insights"][0]
+
+
+def test_get_risk_intelligence():
+    result = get_risk_intelligence()
+
+    assert isinstance(result, dict)
+    assert "summary" in result
+    assert "metrics" in result
+    assert "trends" in result
+    assert "insights" in result
+
+    assert result["summary"]["status"] == "risk intelligence available"
+
+    assert result["metrics"]["provider_count"] >= 1
+    assert result["metrics"]["capacity_records"] >= 1
+    assert result["metrics"]["forecast_records"] >= 1
+
+    assert isinstance(result["trends"], dict)
+    assert isinstance(result["insights"], list)
+    assert result["insights"]
+
+    assert "type" in result["insights"][0]
+    assert "severity" in result["insights"][0]
+    assert "message" in result["insights"][0]
