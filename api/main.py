@@ -21,6 +21,7 @@ from copilot.service import (
     get_risk_intelligence,
     get_executive_intelligence,
     get_change_intelligence,
+    get_executive_snapshots,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -257,3 +258,8 @@ def copilot_executive_intelligence():
 @app.get("/copilot/change-intelligence")
 def copilot_change_intelligence():
     return get_change_intelligence()
+
+
+@app.get("/copilot/executive-snapshots")
+def copilot_executive_snapshots():
+    return get_executive_snapshots()

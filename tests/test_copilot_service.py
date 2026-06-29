@@ -14,6 +14,7 @@ from copilot.service import (
     get_risk_intelligence,
     get_executive_intelligence,
     get_change_intelligence,
+    get_executive_snapshots,
 )
 
 
@@ -302,3 +303,30 @@ def test_get_change_intelligence():
     assert "type" in result["insights"][0]
     assert "severity" in result["insights"][0]
     assert "message" in result["insights"][0]
+
+def test_get_executive_snapshots():
+    result = get_executive_snapshots()
+
+    assert isinstance(result, dict)
+
+    assert "summary" in result
+    assert "snapshots" in result
+
+    assert (
+        result["summary"]["status"]
+        == "executive snapshots available"
+    )
+
+    assert result["summary"]["snapshot_count"] >= 1
+    assert "latest_snapshot" in result["summary"]
+
+    assert isinstance(result["snapshots"], list)
+    assert result["snapshots"]
+
+    latest = result["summary"]["latest_snapshot"]
+
+    assert "snapshot_id" in latest
+    assert "generated_at" in latest
+    assert "risk_score" in latest
+    assert "risk_severity" in latest
+    assert "recommendation" in latest
