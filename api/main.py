@@ -24,6 +24,7 @@ from copilot.service import (
     get_executive_snapshots,
     run_executive_snapshot,
     get_executive_recommendation,
+    get_executive_decision_center,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -275,3 +276,8 @@ def copilot_run_executive_snapshot():
 @app.get("/copilot/executive-recommendation")
 def copilot_executive_recommendation():
     return get_executive_recommendation()
+
+
+@app.get("/copilot/executive-decision-center")
+def copilot_executive_decision_center():
+    return get_executive_decision_center()

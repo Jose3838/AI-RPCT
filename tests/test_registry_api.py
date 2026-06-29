@@ -77,3 +77,21 @@ def test_copilot_executive_recommendation():
     assert "action" in recommendation
     assert "reason" in recommendation
     assert "owner" in recommendation
+
+
+def test_copilot_executive_decision_center():
+    response = client.get("/copilot/executive-decision-center")
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["summary"]["status"] == (
+        "executive decision center available"
+    )
+
+    assert "risk" in data
+    assert "recommendation" in data
+    assert "changes" in data
+    assert "snapshots" in data
+    assert "executive_intelligence" in data

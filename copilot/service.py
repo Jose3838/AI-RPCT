@@ -21,6 +21,9 @@ from copilot.executive_intelligence import get_executive_intelligence
 from copilot.change_intelligence import get_change_intelligence
 from copilot.executive_snapshot import get_executive_snapshots
 from copilot.executive_recommendation import get_executive_recommendation
+from copilot.executive_decision_center import (
+    get_executive_decision_center,
+)
 
 __all__ = [
     "get_analytics",
@@ -41,5 +44,6 @@ __all__ = [
     "get_executive_snapshots",
     "run_executive_snapshot",
     "get_executive_recommendation",
+    "get_executive_decision_center",
 ]
 
