@@ -4,7 +4,7 @@ from pathlib import Path
 
 from copilot.io import load_csv
 from history.history_writer import append_row
-
+from copilot.schemas import ExecutiveSnapshot
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -20,11 +20,11 @@ FIELDS = [
 ]
 
 
-def load_executive_snapshot_rows() -> list[dict[str, str]]:
+def load_executive_snapshot_rows() -> list[ExecutiveSnapshot]:
     return load_csv(SNAPSHOT_REGISTRY_PATH)
 
 
-def get_latest_executive_snapshot() -> dict[str, str] | None:
+def get_latest_executive_snapshot() -> ExecutiveSnapshot | None:
     rows = load_executive_snapshot_rows()
 
     if not rows:
@@ -33,7 +33,9 @@ def get_latest_executive_snapshot() -> dict[str, str] | None:
     return rows[-1]
 
 
-def save_executive_snapshot(snapshot: dict) -> None:
+def save_executive_snapshot(
+    snapshot: ExecutiveSnapshot,
+) -> None:
     append_row(
         ROOT / "data" / "executive_snapshot_registry.csv",
         FIELDS,
