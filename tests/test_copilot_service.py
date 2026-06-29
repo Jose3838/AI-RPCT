@@ -133,6 +133,7 @@ def test_get_decision_intelligence():
 
         assert isinstance(result["trends"], dict)
         assert isinstance(result["insights"], list)
+        assert result["insights"]
 
 
 def test_get_provider_intelligence():

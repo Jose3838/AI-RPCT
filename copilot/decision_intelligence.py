@@ -19,6 +19,14 @@ def get_decision_intelligence() -> dict:
 
     latest_decision = rows[-1]
 
+    insight = (
+        "Recommendations have remained stable across the "
+        "recorded decision history."
+        if len(recommendations) == 1
+        else
+        "Recommendation changes detected in decision history."
+    )
+
     return {
         "summary": {
             "status": "decision intelligence available",
@@ -30,5 +38,7 @@ def get_decision_intelligence() -> dict:
             "recommendation_consistency": len(recommendations) == 1,
         },
         "trends": {},
-        "insights": [],
+        "insights": [
+            insight,
+        ],
     }
