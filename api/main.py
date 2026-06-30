@@ -424,3 +424,27 @@ def provider_rankings():
 @app.get("/provider-marketshare")
 def provider_marketshare():
     return load_csv("data/provider_marketshare.csv")
+
+
+@app.get("/registry-info/{name}")
+def registry_info(name: str):
+    path = registry_path(name)
+
+    if not path.exists():
+        raise HTTPException(
+            status_code=404,
+            detail=f"Registry not found: {name}",
+        )
+
+    with path.open(newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+
+    columns = list(rows[0].keys()) if rows else []
+
+    return {
+        "registry_name": name,
+        "rows": len(rows),
+        "columns": len(columns),
+        "column_names": columns,
+        "status": "active",
+    }

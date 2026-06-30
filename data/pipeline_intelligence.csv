@@ -1,0 +1,2 @@
+pipeline_health,status,success_rate,passed,total,total_duration,slowest_step,slowest_duration
+100.0,SUCCESS,100.0,14,14,7.33,collectors/collect_gpu_data.py,2.66

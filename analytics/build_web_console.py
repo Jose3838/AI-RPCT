@@ -223,29 +223,49 @@ def write_dashboard_page() -> None:
 
 
 def write_registry_page() -> None:
-    rows = load_csv(DATA / "registry_metadata.csv")
+    html = """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Registry Explorer · AI-RPCT</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">AI-RPCT</div>
+    <nav>
+      <a href="../index.html">Home</a>
+      """ + page_navigation() + """
+    </nav>
+  </aside>
 
-    body = f"""
-<section class="grid">
-  {metric_card("Registry Metadata", f"{len(rows)} rows")}
-  {metric_card("Source", "data/registry_metadata.csv")}
-  {metric_card("Status", "Active")}
-  {metric_card("Mode", "Generated")}
-</section>
+  <main class="content">
+    <section class="hero">
+      <p class="eyebrow">AI-RPCT Registry Layer</p>
+      <h1>Registry Explorer</h1>
+      <p id="registryStatus">Loading registries...</p>
+    </section>
 
-<section class="panel">
-  <h2>Registry Metadata Table</h2>
-  {render_table(rows, limit=60)}
-</section>
+    <section class="panel">
+      <h2>Registry List</h2>
+      <div class="table-wrap">
+        <table>
+          <tbody id="registryRows">
+            <tr><td>Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../assets/js/platform.js"></script>
+  <script src="../assets/js/registry.js"></script>
+</body>
+</html>
 """
-    (PAGES / "registry.html").write_text(
-        page_shell(
-            "Registry Explorer",
-            "Browse generated AI-RPCT registries, row counts, warehouse groups, and status.",
-            body,
-        ),
-        encoding="utf-8",
-    )
+    (PAGES / "registry.html").write_text(html, encoding="utf-8")
 
 def write_infrastructure_page() -> None:
     providers = load_csv(DATA / "provider_entity_registry.csv")
@@ -305,190 +325,22 @@ def write_default_page(slug: str, title: str, description: str) -> None:
 
 
 def write_assets() -> None:
-    CSS.write_text(
-        """
-:root {
-  --bg: #07111f;
-  --panel: #0f1c2e;
-  --text: #eef5ff;
-  --muted: #9fb2cc;
-  --accent: #46e0a8;
-  --border: rgba(255,255,255,0.12);
-}
+    """
+    Legacy no-op.
 
-* {
-  box-sizing: border-box;
-}
+    CSS and JavaScript assets are maintained manually under:
+    - web/assets/css/
+    - web/assets/js/
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  min-height: 100vh;
-}
-
-.sidebar {
-  border-right: 1px solid var(--border);
-  background: #081427;
-  padding: 28px 20px;
-}
-
-.brand {
-  font-size: 24px;
-  font-weight: 900;
-  margin-bottom: 28px;
-}
-
-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-nav a,
-.section-list a {
-  color: var(--muted);
-  text-decoration: none;
-  padding: 10px 12px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid transparent;
-}
-
-nav a:hover,
-.section-list a:hover {
-  color: var(--text);
-  border-color: var(--border);
-}
-
-.content {
-  padding: 38px;
-  overflow-x: hidden;
-}
-
-.hero {
-  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.035));
-  border: 1px solid var(--border);
-  border-radius: 26px;
-  padding: 38px;
-  margin-bottom: 24px;
-}
-
-.eyebrow {
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-h1 {
-  font-size: 48px;
-  margin: 10px 0 16px;
-}
-
-p {
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.card,
-.panel {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 22px;
-  margin-bottom: 24px;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.card span {
-  color: var(--accent);
-  font-weight: 800;
-  word-break: break-word;
-}
-
-.section-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  margin-top: 16px;
-}
-
-table {
-  width: 100%;
-  min-width: 760px;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  border-bottom: 1px solid var(--border);
-  padding: 11px 10px;
-  text-align: left;
-  vertical-align: top;
-  font-size: 14px;
-}
-
-th {
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: .7px;
-  font-size: 12px;
-}
-
-.muted {
-  color: var(--muted);
-}
-
-@media (max-width: 900px) {
-  body {
-    grid-template-columns: 1fr;
-  }
-
-  .grid,
-  .section-list {
-    grid-template-columns: 1fr;
-  }
-}
-""".strip()
-        + "\n",
-        encoding="utf-8",
-    )
-
-    JS.write_text(
-        'console.log("AI-RPCT Web Console loaded");\n',
-        encoding="utf-8",
-    )
+    The web console generator must only generate HTML pages.
+    Do not write style.css, app.js, or any JS/CSS asset here.
+    """
+    return
 
 
 def main() -> None:
-    WEB.mkdir(parents=True, exist_ok=True)
-    PAGES.mkdir(parents=True, exist_ok=True)
-    CSS.parent.mkdir(parents=True, exist_ok=True)
-    JS.parent.mkdir(parents=True, exist_ok=True)
-
-    write_assets()
+    # Assets are maintained manually. This generator only writes HTML pages.
+    # write_assets()
     write_index()
     write_dashboard_page()
     write_registry_page()

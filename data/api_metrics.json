@@ -1,8 +1,8 @@
 {
-  "rpct_score": 100.0,
+  "rpct_score": 90.0,
   "regime": "Critical",
-  "drivers": "NVDA above 200, BTC above 60k, AKT above 0.75, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained",
-  "forecast_score": 76.0,
+  "drivers": "BTC above 60k, H100 price above $2/hr, A100 price above $1/hr, H100 availability constrained, A100 availability constrained",
+  "forecast_score": 86.0,
   "outlook": "HIGH RISK",
-  "shortage_probability": 40.0
+  "shortage_probability": 80.0
 }

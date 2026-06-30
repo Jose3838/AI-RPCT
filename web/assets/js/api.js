@@ -15,22 +15,6 @@ const AiRpctApi = {
         return apiGet("/dashboard");
     },
 
-    getExecutiveDashboard() {
-        return apiGet("/dashboard/executive");
-    },
-
-    getIntelligenceHub() {
-        return apiGet("/copilot/intelligence-hub");
-    },
-
-    getPipelineHealth() {
-        return apiGet("/pipeline-health");
-    },
-
-    getPipelineHistory() {
-        return apiGet("/pipeline-history");
-    },
-
     getProviderRankings() {
         return apiGet("/provider-rankings");
     },
@@ -39,7 +23,19 @@ const AiRpctApi = {
         return apiGet("/provider-marketshare");
     },
 
+    getPipelineHistory() {
+        return apiGet("/pipeline-history");
+    },
+
     getRegistries(params = "") {
         return apiGet(`/registries${params}`);
+    },
+
+    getRegistry(name, params = "") {
+        return apiGet(`/registry/${name}${params}`);
+    },
+
+    getRegistryInfo(name) {
+        return apiGet(`/registry-info/${name}`);
     }
 };
