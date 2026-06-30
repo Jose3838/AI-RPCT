@@ -6,8 +6,15 @@ const AiRpctCharts = {
             return;
         }
 
+        if (!items || items.length === 0) {
+            container.innerHTML = "<p>No chart data available.</p>";
+            return;
+        }
+
         const labelKey = options.labelKey || "label";
         const valueKey = options.valueKey || "value";
+        const showValue = options.showValue !== false;
+
         const maxValue = Math.max(
             ...items.map((item) => Number(item[valueKey] || 0)),
             1
@@ -22,7 +29,7 @@ const AiRpctCharts = {
                 <div class="chart-row">
                     <div class="chart-row-head">
                         <span>${label}</span>
-                        <strong>${value}</strong>
+                        ${showValue ? `<strong>${value}</strong>` : ""}
                     </div>
                     <div class="chart-track">
                         <div class="chart-fill" style="width:${width}%"></div>
@@ -36,6 +43,11 @@ const AiRpctCharts = {
         const container = document.getElementById(containerId);
 
         if (!container) {
+            return;
+        }
+
+        if (!items || items.length === 0) {
+            container.innerHTML = "<p>No chart data available.</p>";
             return;
         }
 
@@ -98,6 +110,47 @@ const AiRpctCharts = {
             <div class="health-ring">
                 <div class="health-value">${value}%</div>
             </div>
+        `;
+    },
+
+    renderConfidenceTrend(containerId, points) {
+        const container = document.getElementById(containerId);
+
+        if (!container) {
+            return;
+        }
+
+        if (!points || points.length === 0) {
+            container.innerHTML = "<p>No confidence trend available.</p>";
+            return;
+        }
+
+        const values = points.map((point) => Number(point.confidence));
+
+        const max = Math.max(...values);
+        const min = Math.min(...values);
+        const range = Math.max(max - min, 0.001);
+
+        const coords = values.map((value, index) => {
+            const x = (index / Math.max(values.length - 1, 1)) * 100;
+            const y = 100 - (((value - min) / range) * 100);
+
+            return `${x},${y}`;
+        }).join(" ");
+
+        container.innerHTML = `
+            <svg
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                style="width:100%; height:180px;"
+            >
+                <polyline
+                    fill="none"
+                    stroke="var(--accent)"
+                    stroke-width="2"
+                    points="${coords}"
+                />
+            </svg>
         `;
     },
 };

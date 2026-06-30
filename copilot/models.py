@@ -54,11 +54,25 @@ class CopilotTimelineResponseModel(BaseModel):
     timeline: list[CopilotTimelineEntryModel]
 
 
+class ConfidenceTrendPointModel(BaseModel):
+    generated_at: str | None
+    confidence: float
+
+
 class CopilotAnalyticsResponseModel(BaseModel):
     decision_count: int
     average_confidence: float
     max_confidence: float
     min_confidence: float
+
+    unique_recommendations: int | None = None
+    most_common_recommendation: str | None = None
+    latest_recommendation: str | None = None
+    decision_stability_score: float | None = None
+
+    confidence_trend: list[ConfidenceTrendPointModel] = []
+
+    recommendation_distribution: dict[str, int] = {}
 
 
 class CopilotInsightModel(BaseModel):
