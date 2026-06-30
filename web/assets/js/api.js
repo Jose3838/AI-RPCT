@@ -9,3 +9,35 @@ async function apiGet(endpoint) {
 
     return await response.json();
 }
+
+const AiRpctApi = {
+
+    getDashboard() {
+        return apiGet("/dashboard");
+    },
+
+    getExecutiveDashboard() {
+        return apiGet("/dashboard/executive");
+    },
+
+    getIntelligenceHub() {
+        return apiGet("/copilot/intelligence-hub");
+    },
+
+    getPipelineHealth() {
+        return apiGet("/pipeline-health");
+    },
+
+    getPipelineHistory() {
+        return apiGet("/pipeline-history");
+    },
+
+    getProviderRankings() {
+        return apiGet("/provider-rankings");
+    },
+
+    getProviderMarketShare() {
+        return apiGet("/provider-marketshare");
+    }
+
+};

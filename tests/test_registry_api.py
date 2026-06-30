@@ -124,3 +124,44 @@ def test_copilot_intelligence_hub_endpoint():
     assert "capacity" in data
     assert "change" in data
     assert "pipeline" in data
+
+
+def test_dashboard_endpoint():
+    response = client.get("/dashboard")
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["status"] == "dashboard available"
+    assert data["generated_by"] == "AI-RPCT Dashboard Service"
+    assert "dashboard" in data
+    assert data["dashboard"]["status"] == "executive dashboard available"
+    assert "kpis" in data["dashboard"]
+    assert "sections" in data["dashboard"]
+
+
+def test_dashboard_executive_endpoint():
+    response = client.get("/dashboard/executive")
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["status"] == "executive dashboard available"
+    assert "kpis" in data
+    assert "sections" in data
+
+
+def test_provider_rankings_endpoint():
+    response = client.get("/provider-rankings")
+
+    assert response.status_code == 200
+    assert isinstance(response.json(), list)
+
+
+def test_provider_marketshare_endpoint():
+    response = client.get("/provider-marketshare")
+
+    assert response.status_code == 200
+    assert isinstance(response.json(), list)

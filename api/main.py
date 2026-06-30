@@ -384,3 +384,13 @@ def dashboard_executive():
 @app.get("/dashboard")
 def dashboard():
     return get_dashboard()
+
+
+@app.get("/provider-rankings")
+def provider_rankings():
+    return load_csv("data/provider_rankings.csv")
+
+
+@app.get("/provider-marketshare")
+def provider_marketshare():
+    return load_csv("data/provider_marketshare.csv")

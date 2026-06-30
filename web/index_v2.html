@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI-RPCT · AI Infrastructure Intelligence</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">AI-RPCT</div>
+    <nav>
+      <a href="index.html">Current Console</a>
+      <a href="index_v2.html">Landing V2</a>
+      <a href="pages/dashboard.html">Executive Dashboard</a>
+      <a href="pages/registry.html">Registry Explorer</a>
+      <a href="pages/forecast.html">Forecast Center</a>
+      <a href="pages/analytics.html">Analytics</a>
+      <a href="pages/api.html">API Explorer</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <section class="hero">
+      <p class="eyebrow">AI Infrastructure Intelligence Platform</p>
+      <h1>Real-time GPU market intelligence for executive infrastructure decisions.</h1>
+      <p>
+        AI-RPCT monitors live GPU supply, provider health, pricing pressure,
+        scarcity signals, forecast risk, and pipeline reliability in one governed
+        intelligence layer.
+      </p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <strong>Pipeline Health</strong>
+        <span id="pipelineHealth">—</span>
+      </div>
+      <div class="card">
+        <strong>Risk Severity</strong>
+        <span id="riskSeverity">—</span>
+      </div>
+      <div class="card">
+        <strong>Forecast Status</strong>
+        <span id="forecastStatus">—</span>
+      </div>
+      <div class="card">
+        <strong>Providers</strong>
+        <span id="providerCount">—</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Executive Command Center</h2>
+      <p>
+        A single operating view for AI infrastructure pressure, GPU availability,
+        provider concentration, forecast signals, and platform reliability.
+      </p>
+      <p>
+        <a href="pages/dashboard.html">Launch Executive Dashboard →</a>
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>Platform Capabilities</h2>
+      <div class="section-list">
+        <a href="pages/dashboard.html">Executive Dashboard</a>
+        <a href="pages/forecast.html">Forecast Center</a>
+        <a href="pages/analytics.html">Analytics Layer</a>
+        <a href="pages/registry.html">Registry Explorer</a>
+        <a href="pages/api.html">API Explorer</a>
+        <a href="pages/governance.html">Governance</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>System Status</h2>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><td>Pipeline Status</td><td id="pipelineStatus">—</td></tr>
+            <tr><td>Success Rate</td><td id="successRate">—</td></tr>
+            <tr><td>Passed Steps</td><td id="passedSteps">—</td></tr>
+            <tr><td>Total Steps</td><td id="totalSteps">—</td></tr>
+            <tr><td>Slowest Step</td><td id="slowestStep">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="muted" id="lastUpdated">Loading live platform status…</p>
+  </main>
+
+  <script>
+    const setText = (id, value, fallback = "—") => {
+      const element = document.getElementById(id);
+      if (!element) return;
+      element.textContent =
+        value === undefined || value === null || value === "" ? fallback : value;
+    };
+
+    async function loadLanding() {
+      try {
+        const response = await fetch("/dashboard/executive");
+        const data = await response.json();
+
+        const kpis = data.kpis || {};
+        const pipeline = data.sections?.pipeline || {};
+
+        setText("pipelineHealth", `${kpis.pipeline_health || 0}%`);
+        setText("riskSeverity", kpis.risk_severity);
+        setText("forecastStatus", kpis.forecast_status);
+        setText("providerCount", kpis.provider_count);
+
+        setText("pipelineStatus", kpis.pipeline_status);
+        setText("successRate", `${kpis.pipeline_success_rate || 0}%`);
+        setText("passedSteps", pipeline.passed);
+        setText("totalSteps", pipeline.total);
+        setText("slowestStep", pipeline.slowest_step);
+
+        setText("lastUpdated", `Live API connected · ${new Date().toLocaleString()}`);
+      } catch (error) {
+        setText("lastUpdated", "Live API unavailable. Start uvicorn api.main:app --reload");
+        console.error(error);
+      }
+    }
+
+    loadLanding();
+    setInterval(loadLanding, 30000);
+  </script>
+</body>
+</html>
