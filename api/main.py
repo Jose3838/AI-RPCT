@@ -347,3 +347,21 @@ def copilot_executive_recommendation():
 )
 def copilot_executive_decision_center():
     return get_executive_decision_center()
+
+
+@app.get("/pipeline-health")
+def pipeline_health():
+    rows = load_csv("data/pipeline_intelligence.csv")
+
+    if not rows:
+        return {
+            "status": "pipeline health unavailable",
+            "pipeline_health": 0,
+        }
+
+    return rows[0]
+
+
+@app.get("/pipeline-history")
+def pipeline_history():
+    return load_csv("data/pipeline_history.csv")
