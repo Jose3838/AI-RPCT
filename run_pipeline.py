@@ -21,6 +21,8 @@ PIPELINE = [
     ("analytics", "analytics/market_regime.py"),
     ("analytics", "analytics/predictor.py"),
     ("forecast", "analytics/forecast_accuracy.py"),
+    ("pipeline", "analytics/pipeline_intelligence.py"),
+    ("pipeline", "analytics/pipeline_history.py"),
 ]
 
 
