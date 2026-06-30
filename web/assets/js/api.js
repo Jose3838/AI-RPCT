@@ -11,7 +11,6 @@ async function apiGet(endpoint) {
 }
 
 const AiRpctApi = {
-
     getDashboard() {
         return apiGet("/dashboard");
     },
@@ -38,6 +37,9 @@ const AiRpctApi = {
 
     getProviderMarketShare() {
         return apiGet("/provider-marketshare");
-    }
+    },
 
+    getRegistries(params = "") {
+        return apiGet(`/registries${params}`);
+    }
 };

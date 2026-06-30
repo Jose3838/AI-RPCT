@@ -119,8 +119,38 @@ def pipeline():
 
 
 @app.get("/registries")
-def registries():
-    return load_csv("data/registry_metadata.csv")
+def registries(
+    search: str | None = None,
+    sort: str | None = None,
+    limit: int | None = None,
+    offset: int = 0,
+):
+    rows = load_csv("data/registry_metadata.csv")
+
+    if search:
+        needle = search.lower()
+        rows = [
+            row
+            for row in rows
+            if any(needle in str(value).lower() for value in row.values())
+        ]
+
+    if sort:
+        if rows and sort not in rows[0]:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Unknown sort key: {sort}",
+            )
+
+        rows = sorted(rows, key=lambda row: row.get(sort, ""))
+
+    if offset:
+        rows = rows[offset:]
+
+    if limit is not None:
+        rows = rows[:limit]
+
+    return rows
 
 
 @app.get("/registry/{name}")
