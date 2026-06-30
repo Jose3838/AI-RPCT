@@ -45,6 +45,10 @@ from copilot.service import (
     get_executive_decision_center,
 )
 
+from copilot.intelligence_hub import get_intelligence_hub
+from copilot.dashboard_executive import get_executive_dashboard
+from copilot.dashboard_service import get_dashboard
+
 ROOT = Path(__file__).resolve().parents[1]
 
 app = FastAPI(
@@ -365,3 +369,18 @@ def pipeline_health():
 @app.get("/pipeline-history")
 def pipeline_history():
     return load_csv("data/pipeline_history.csv")
+
+
+@app.get("/copilot/intelligence-hub")
+def copilot_intelligence_hub():
+    return get_intelligence_hub()
+
+
+@app.get("/dashboard/executive")
+def dashboard_executive():
+    return get_executive_dashboard()
+
+
+@app.get("/dashboard")
+def dashboard():
+    return get_dashboard()

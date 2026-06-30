@@ -106,3 +106,21 @@ def test_copilot_executive_decision_center():
     assert "metadata" in data
     assert data["metadata"]["version"] == "1.0"
     assert data["metadata"]["module"] == "executive"
+
+
+def test_copilot_intelligence_hub_endpoint():
+    response = client.get("/copilot/intelligence-hub")
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["status"] == "intelligence hub available"
+    assert "executive" in data
+    assert "risk" in data
+    assert "forecast" in data
+    assert "decision" in data
+    assert "provider" in data
+    assert "capacity" in data
+    assert "change" in data
+    assert "pipeline" in data
