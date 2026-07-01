@@ -10,6 +10,7 @@ from copilot.executive.facade_builder import (
     build_changes,
     build_snapshot_summary,
     build_strategic_signals,
+    build_summary_block,
     build_trend,
 )
 from copilot.executive.insights import get_executive_insights
@@ -36,6 +37,8 @@ def get_executive_facade() -> dict:
     forecast_rows = load_csv("data/forecast_engine_v1_output.csv")
     registry_rows = load_csv("data/data_asset_registry.csv")
 
+    summary_block = build_summary_block(decision_center)
+
     strategic_signals = build_strategic_signals(
         risk=risk,
         forecast=decision_center.get("forecast", {}),
@@ -50,11 +53,7 @@ def get_executive_facade() -> dict:
 
     return {
         "status": "executive facade available",
-        "summary": decision_center.get("summary", {}),
-        "metadata": decision_center.get("metadata", {}),
-        "priority": decision_center.get("priority"),
-        "executive_health": decision_center.get("executive_health", {}),
-        "kpis": decision_center.get("kpis", {}),
+        **summary_block,
         "analytics": analytics,
         "decision": decision,
         "platform_status": status,

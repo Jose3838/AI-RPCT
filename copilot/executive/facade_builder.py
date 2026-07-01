@@ -74,6 +74,16 @@ def build_strategic_signals(
     return signals
 
 
+def build_summary_block(decision_center: dict) -> dict:
+    return {
+        "summary": decision_center.get("summary", {}),
+        "metadata": decision_center.get("metadata", {}),
+        "priority": decision_center.get("priority"),
+        "executive_health": decision_center.get("executive_health", {}),
+        "kpis": decision_center.get("kpis", {}),
+    }
+
+
 def build_changes(changes: dict) -> dict:
     return {
         "summary": changes.get("summary", {}),
