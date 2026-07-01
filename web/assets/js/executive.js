@@ -499,6 +499,50 @@ async function loadExecutiveAlerts() {
     `).join("");
 }
 
+async function loadExecutiveInsights() {
+    const data = await executiveApiGet("/copilot/executive-insights");
+    const card = document.getElementById("insights-card");
+
+    if (!card) return;
+
+    const summary = data.summary ?? {};
+    const insights = data.insights ?? [];
+
+    card.innerHTML = `
+        <div class="analytics-grid">
+            <div class="analytics-kpi">
+                <div class="analytics-label">Average Confidence</div>
+                <div class="analytics-value">
+                    ${executiveFormatConfidence(summary.average_confidence)}
+                </div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Latest Risk</div>
+                <div class="analytics-value">
+                    ${summary.latest_risk_score ?? "-"}
+                </div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Risk Delta</div>
+                <div class="analytics-value">
+                    ${summary.risk_delta ?? "-"}
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        ${insights.map(item => `
+            <p>
+                <strong>${item.type}</strong><br>
+                ${item.message}
+            </p>
+        `).join("")}
+    `;
+}
+
 async function loadExecutiveIntelligence() {
     const [
         decision,
@@ -850,6 +894,7 @@ async function loadExecutiveDashboard() {
             loadExecutiveAnalytics(),
             loadExecutiveTrend(),
             loadExecutiveAlerts(),
+            loadExecutiveInsights(),
             loadExecutiveIntelligence(),
             loadExecutiveRisk(),
             loadExecutiveTimeline(),
