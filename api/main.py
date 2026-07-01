@@ -38,6 +38,7 @@ from copilot.service import (
     get_capacity_intelligence,
     get_risk_intelligence,
     get_executive_intelligence,
+    get_executive_insights,
     get_change_intelligence,
     get_executive_snapshots,
     run_executive_snapshot,
@@ -387,6 +388,11 @@ def copilot_executive_decision_center():
 @app.get("/copilot/executive-trend")
 def copilot_executive_trend():
     return get_executive_trend()
+
+
+@app.get("/copilot/executive-insights")
+def copilot_executive_insights():
+    return get_executive_insights()
 
 
 @app.get("/pipeline-health")

@@ -10,6 +10,7 @@ from copilot.executive.decision_center import (
     get_executive_decision_center,
 )
 from copilot.executive.intelligence import get_executive_intelligence
+from copilot.executive.insights import get_executive_insights
 from copilot.executive.recommendation import get_executive_recommendation
 from copilot.executive.snapshot import get_executive_snapshots
 from copilot.executive.snapshot_scheduler import run_executive_snapshot
@@ -33,6 +34,7 @@ __all__ = [
     "get_decision_timeline",
     "get_executive_decision_center",
     "get_executive_intelligence",
+    "get_executive_insights",
     "get_executive_recommendation",
     "get_executive_snapshots",
     "get_executive_trend",
