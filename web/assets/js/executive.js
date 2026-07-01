@@ -119,6 +119,39 @@ async function loadExecutiveDecision() {
     `;
 }
 
+async function loadDecisionExplainability() {
+    const card = document.getElementById("decision-explain-card");
+    if (!card) return;
+
+    const decision = executiveFacade.decision_center ?? {};
+
+    const drivers = decision.decision_drivers ?? [];
+    const recommendation = decision.summary?.recommendation ?? "-";
+    const confidence = executiveFormatConfidence(
+        decision.summary?.confidence
+    );
+
+    card.innerHTML = `
+        <h3>${recommendation}</h3>
+
+        <p>
+            <strong>Decision Confidence:</strong>
+            ${confidence}
+        </p>
+
+        <hr>
+
+        <ul>
+            ${drivers.map(driver => `
+                <li>
+                    <strong>${driver.label}</strong><br>
+                    ${driver.message}
+                </li>
+            `).join("")}
+        </ul>
+    `;
+}
+
 async function loadExecutiveStatus() {
     const status = executiveFacade?.platform_status ?? {};
     const card = document.getElementById("health-card");
@@ -1102,6 +1135,7 @@ async function loadExecutiveDashboard() {
 
         await Promise.all([
             loadExecutiveDecisionCenter(),
+            loadDecisionExplainability(),
             loadExecutivePriorityBanner(),
             loadExecutiveStatusRibbon(),
             loadExecutiveHealth(),
