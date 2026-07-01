@@ -604,6 +604,44 @@ async function loadExecutivePriorityBanner() {
     `;
 }
 
+async function loadExecutiveStatusRibbon() {
+    const card = document.getElementById("status-ribbon-card");
+    if (!card) return;
+
+    const health = executiveFacade.executive_health ?? {};
+    const summary = executiveFacade.summary ?? {};
+    const insights = executiveFacade.insights?.summary ?? {};
+
+    card.innerHTML = `
+        <div class="analytics-grid">
+            <div class="analytics-kpi">
+                <div class="analytics-label">Platform</div>
+                <div class="analytics-value">${health.platform_status ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Priority</div>
+                <div class="analytics-value">${executiveFacade.priority ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Risk</div>
+                <div class="analytics-value">${summary.overall_risk_score ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Snapshots</div>
+                <div class="analytics-value">${insights.snapshot_count ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Last Update</div>
+                <div class="analytics-value">${executiveFormatDate(summary.generated_at)}</div>
+            </div>
+        </div>
+    `;
+}
+
 async function loadExecutiveInsights() {
     const data = executiveFacade?.insights;
     const card = document.getElementById("insights-card");
@@ -996,6 +1034,7 @@ async function loadExecutiveDashboard() {
         await Promise.all([
             loadExecutiveDecisionCenter(),
             loadExecutivePriorityBanner(),
+            loadExecutiveStatusRibbon(),
             loadExecutiveHealth(),
             loadExecutiveScorecard(),
             loadExecutiveDecision(),
