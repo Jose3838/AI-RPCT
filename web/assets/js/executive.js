@@ -683,68 +683,58 @@ async function loadExecutiveRegistryStatus() {
 }
 
 async function loadExecutiveDecisionCenter() {
-    const [
-        recommendation,
-        risk,
-        forecast,
-        status,
-    ] = await Promise.all([
-        executiveApiGet("/copilot/recommendation"),
-        executiveApiGet("/copilot/risk-intelligence"),
-        executiveApiGet("/copilot/forecast-intelligence"),
-        executiveApiGet("/copilot/status"),
-    ]);
+    const center = await executiveApiGet("/copilot/executive-decision-center");
 
     const card = document.getElementById("decision-center-card");
 
     if (!card) return;
 
-    const riskScore = risk.summary?.risk_score ?? "-";
-    const riskSeverity = risk.summary?.risk_severity ?? "-";
-    const watchCount = forecast.summary?.watch_count ?? 0;
-
-    const nextStep = watchCount > 0
-        ? "Review capacity planning and monitor providers with active forecast watch signals."
-        : "Continue monitoring. No immediate forecast escalation is indicated.";
+    const health = center.executive_health || {};
+    const kpis = center.kpis || {};
 
     card.innerHTML = `
         <div class="analytics-grid">
             <div class="analytics-kpi">
-                <div class="analytics-label">Platform</div>
-                <div class="analytics-value">${status.platform_status ?? "-"}</div>
+                <div class="analytics-label">Executive Health</div>
+                <div class="analytics-value">${health.score ?? "-"}</div>
             </div>
 
             <div class="analytics-kpi">
-                <div class="analytics-label">Priority</div>
-                <div class="analytics-value">${recommendation.priority ?? "-"}</div>
-            </div>
-
-            <div class="analytics-kpi">
-                <div class="analytics-label">Risk</div>
-                <div class="analytics-value">${riskScore}</div>
+                <div class="analytics-label">Risk Score</div>
+                <div class="analytics-value">${kpis.risk_score ?? "-"}</div>
             </div>
 
             <div class="analytics-kpi">
                 <div class="analytics-label">Forecast Watch</div>
-                <div class="analytics-value">${watchCount}</div>
+                <div class="analytics-value">${kpis.forecast_watch_count ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Priority</div>
+                <div class="analytics-value">${center.priority ?? "-"}</div>
             </div>
         </div>
 
         <hr>
 
         <p>
-            <strong>Current Decision</strong><br>
-            ${recommendation.decision ?? "-"}
+            <strong>Overall Recommendation</strong><br>
+            ${center.summary?.overall_recommendation ?? "-"}
         </p>
 
         <p>
-            <strong>Risk Severity</strong><br>
-            ${riskSeverity}
+            <strong>Executive Action</strong><br>
+            ${health.action ?? "-"}
         </p>
 
         <p>
-            <strong>Recommended Next Step</strong><br>
-            ${nextStep}
+            <strong>Platform Status</strong><br>
+            ${health.platform_status ?? "-"}
+        </p>
+
+        <p>
+            <strong>Decision Center Version</strong><br>
+            ${center.metadata?.version ?? "-"}
         </p>
     `;
 }
