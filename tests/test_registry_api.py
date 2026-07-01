@@ -104,7 +104,7 @@ def test_copilot_executive_decision_center():
     assert "priority" in data["kpis"]
 
     assert "metadata" in data
-    assert data["metadata"]["version"] == "1.0"
+    assert data["metadata"]["version"] == "2.0"
     assert data["metadata"]["module"] == "executive"
 
 
