@@ -478,6 +478,27 @@ async function loadExecutiveTrend() {
     }
 }
 
+async function loadExecutiveAlerts() {
+    const data = await executiveApiGet("/copilot/change-intelligence");
+    const card = document.getElementById("alert-card");
+
+    if (!card) return;
+
+    const alerts = data.alerts ?? [];
+
+    if (alerts.length === 0) {
+        card.innerHTML = "<p>No executive alerts.</p>";
+        return;
+    }
+
+    card.innerHTML = alerts.map(alert => `
+        <div style="margin-bottom:16px;padding:12px;border-left:6px solid #3b82f6;background:#f8fafc;">
+            <strong>${alert.severity.toUpperCase()}</strong><br>
+            ${alert.message}
+        </div>
+    `).join("");
+}
+
 async function loadExecutiveIntelligence() {
     const [
         decision,
@@ -828,6 +849,7 @@ async function loadExecutiveDashboard() {
             loadExecutiveKPIs(),
             loadExecutiveAnalytics(),
             loadExecutiveTrend(),
+            loadExecutiveAlerts(),
             loadExecutiveIntelligence(),
             loadExecutiveRisk(),
             loadExecutiveTimeline(),
