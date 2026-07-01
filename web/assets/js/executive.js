@@ -644,9 +644,77 @@ async function loadExecutiveRegistryStatus() {
     `;
 }
 
+async function loadExecutiveDecisionCenter() {
+    const [
+        recommendation,
+        risk,
+        forecast,
+        status,
+    ] = await Promise.all([
+        executiveApiGet("/copilot/recommendation"),
+        executiveApiGet("/copilot/risk-intelligence"),
+        executiveApiGet("/copilot/forecast-intelligence"),
+        executiveApiGet("/copilot/status"),
+    ]);
+
+    const card = document.getElementById("decision-center-card");
+
+    if (!card) return;
+
+    const riskScore = risk.summary?.risk_score ?? "-";
+    const riskSeverity = risk.summary?.risk_severity ?? "-";
+    const watchCount = forecast.summary?.watch_count ?? 0;
+
+    const nextStep = watchCount > 0
+        ? "Review capacity planning and monitor providers with active forecast watch signals."
+        : "Continue monitoring. No immediate forecast escalation is indicated.";
+
+    card.innerHTML = `
+        <div class="analytics-grid">
+            <div class="analytics-kpi">
+                <div class="analytics-label">Platform</div>
+                <div class="analytics-value">${status.platform_status ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Priority</div>
+                <div class="analytics-value">${recommendation.priority ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Risk</div>
+                <div class="analytics-value">${riskScore}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Forecast Watch</div>
+                <div class="analytics-value">${watchCount}</div>
+            </div>
+        </div>
+
+        <hr>
+
+        <p>
+            <strong>Current Decision</strong><br>
+            ${recommendation.decision ?? "-"}
+        </p>
+
+        <p>
+            <strong>Risk Severity</strong><br>
+            ${riskSeverity}
+        </p>
+
+        <p>
+            <strong>Recommended Next Step</strong><br>
+            ${nextStep}
+        </p>
+    `;
+}
+
 async function loadExecutiveDashboard() {
     try {
         await Promise.all([
+            loadExecutiveDecisionCenter(),
             loadExecutiveDecision(),
             loadExecutiveStatus(),
             loadExecutiveSummary(),
