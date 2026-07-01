@@ -6,6 +6,11 @@ from copilot.decision import get_decision
 from copilot.executive.decision_center import (
     get_executive_decision_center,
 )
+from copilot.executive.facade_builder import (
+    build_changes,
+    build_snapshot_summary,
+    build_trend,
+)
 from copilot.executive.insights import get_executive_insights
 from copilot.executive.trend import get_executive_trend
 from copilot.io import load_csv
@@ -111,7 +116,9 @@ def get_executive_facade() -> dict:
     )
 
     snapshots = decision_center.get("snapshots", {})
-    snapshot_summary = snapshots.get("summary", {})
+    snapshot_summary = build_snapshot_summary(
+        snapshots.get("summary", {})
+    )
 
     return {
         "status": "executive facade available",
@@ -127,23 +134,14 @@ def get_executive_facade() -> dict:
         "alerts": changes.get("alerts", []),
         "strategic_signals": strategic_signals,
         "insights": insights,
-        "changes": {
-            "summary": changes.get("summary", {}),
-            "metrics": changes.get("metrics", {}),
-            "changes": changes.get("changes", []),
-            "insights": changes.get("insights", []),
-        },
-        "trend": {
-            "summary": trend.get("summary", {}),
-            "trends": trend.get("trends", {}),
-            "insights": trend.get("insights", []),
-        },
+        "changes": build_changes(changes),
+        "trend": build_trend(trend),
         "risk": risk,
         "forecast": decision_center.get("forecast", {}),
         "recommendation": decision_center.get("recommendation", {}),
         "timeline": timeline,
         "forecast_rows": forecast_rows,
         "registry_rows": registry_rows,
-        "latest_snapshot": snapshot_summary.get("latest_snapshot"),
-        "snapshot_count": snapshot_summary.get("snapshot_count", 0),
+        "latest_snapshot": snapshot_summary["latest_snapshot"],
+        "snapshot_count": snapshot_summary["snapshot_count"],
     }
