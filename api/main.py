@@ -43,6 +43,7 @@ from copilot.service import (
     run_executive_snapshot,
     get_executive_recommendation,
     get_executive_decision_center,
+    get_executive_trend,
 )
 
 from copilot.intelligence_hub import get_intelligence_hub
@@ -381,6 +382,11 @@ def copilot_executive_recommendation():
 )
 def copilot_executive_decision_center():
     return get_executive_decision_center()
+
+
+@app.get("/copilot/executive-trend")
+def copilot_executive_trend():
+    return get_executive_trend()
 
 
 @app.get("/pipeline-health")

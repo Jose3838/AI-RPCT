@@ -13,6 +13,7 @@ from copilot.executive.intelligence import get_executive_intelligence
 from copilot.executive.recommendation import get_executive_recommendation
 from copilot.executive.snapshot import get_executive_snapshots
 from copilot.executive.snapshot_scheduler import run_executive_snapshot
+from copilot.executive.trend import get_executive_trend
 from copilot.explain import get_why
 from copilot.forecast_intelligence import get_forecast_intelligence
 from copilot.provider_intelligence import get_provider_intelligence
@@ -34,6 +35,7 @@ __all__ = [
     "get_executive_intelligence",
     "get_executive_recommendation",
     "get_executive_snapshots",
+    "get_executive_trend",
     "get_forecast_intelligence",
     "get_provider_intelligence",
     "get_recommendation",
