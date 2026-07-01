@@ -8,6 +8,13 @@ async function executiveApiGet(endpoint) {
     return await response.json();
 }
 
+let executiveFacade = null;
+
+async function loadExecutiveFacade() {
+    executiveFacade = await executiveApiGet("/copilot/executive-facade");
+    return executiveFacade;
+}
+
 function executiveFormatDate(value) {
     if (!value) return "";
 
@@ -400,7 +407,8 @@ async function loadExecutiveAnalytics() {
 }
 
 async function loadExecutiveTrend() {
-    const trend = await executiveApiGet("/copilot/executive-trend");
+    const trend = executiveFacade?.trend
+        ?? await executiveApiGet("/copilot/executive-trend");
     const card = document.getElementById("trend-card");
 
     if (!card) return;
@@ -479,7 +487,8 @@ async function loadExecutiveTrend() {
 }
 
 async function loadExecutiveAlerts() {
-    const data = await executiveApiGet("/copilot/change-intelligence");
+    const data = executiveFacade?.changes
+        ?? await executiveApiGet("/copilot/change-intelligence");
     const card = document.getElementById("alert-card");
 
     if (!card) return;
@@ -500,7 +509,8 @@ async function loadExecutiveAlerts() {
 }
 
 async function loadExecutiveInsights() {
-    const data = await executiveApiGet("/copilot/executive-insights");
+    const data = executiveFacade?.insights
+        ?? await executiveApiGet("/copilot/executive-insights");
     const card = document.getElementById("insights-card");
 
     if (!card) return;
@@ -544,17 +554,17 @@ async function loadExecutiveInsights() {
 }
 
 async function loadExecutiveIntelligence() {
-    const [
-        decision,
-        forecast,
-        provider,
-        capacity,
-    ] = await Promise.all([
-        executiveApiGet("/copilot/decision-intelligence"),
-        executiveApiGet("/copilot/forecast-intelligence"),
-        executiveApiGet("/copilot/provider-intelligence"),
-        executiveApiGet("/copilot/capacity-intelligence"),
-    ]);
+    const decision = executiveFacade?.decision_center?.executive_intelligence?.modules?.decision_intelligence
+        ?? await executiveApiGet("/copilot/decision-intelligence");
+
+    const forecast = executiveFacade?.decision_center?.forecast
+        ?? await executiveApiGet("/copilot/forecast-intelligence");
+
+    const provider = executiveFacade?.decision_center?.executive_intelligence?.modules?.provider_intelligence
+        ?? await executiveApiGet("/copilot/provider-intelligence");
+
+    const capacity = executiveFacade?.decision_center?.executive_intelligence?.modules?.capacity_intelligence
+        ?? await executiveApiGet("/copilot/capacity-intelligence");
 
     const card = document.getElementById("intelligence-card");
 
@@ -686,7 +696,8 @@ async function loadExecutiveIntelligence() {
 }
 
 async function loadExecutiveRisk() {
-    const risk = await executiveApiGet("/copilot/risk-intelligence");
+    const risk = executiveFacade?.risk
+        ?? await executiveApiGet("/copilot/risk-intelligence");
     const card = document.getElementById("risk-card");
 
     if (!card) return;
@@ -827,7 +838,8 @@ async function loadExecutiveRegistryStatus() {
 }
 
 async function loadExecutiveDecisionCenter() {
-    const center = await executiveApiGet("/copilot/executive-decision-center");
+    const center = executiveFacade?.decision_center
+        ?? await executiveApiGet("/copilot/executive-decision-center");
 
     const card = document.getElementById("decision-center-card");
 
@@ -885,6 +897,8 @@ async function loadExecutiveDecisionCenter() {
 
 async function loadExecutiveDashboard() {
     try {
+        await loadExecutiveFacade();
+
         await Promise.all([
             loadExecutiveDecisionCenter(),
             loadExecutiveDecision(),
