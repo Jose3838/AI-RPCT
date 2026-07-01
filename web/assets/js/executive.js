@@ -83,7 +83,7 @@ function executiveForecastInterpretation(forecast) {
 }
 
 async function loadExecutiveDecision() {
-    const data = await executiveApiGet("/copilot/decision");
+    const data = executiveFacade?.decision ?? {};
     const card = document.getElementById("decision-card");
 
     if (!card) return;
@@ -102,7 +102,7 @@ async function loadExecutiveDecision() {
 }
 
 async function loadExecutiveStatus() {
-    const status = await executiveApiGet("/copilot/status");
+    const status = executiveFacade?.platform_status ?? {};
     const card = document.getElementById("health-card");
 
     if (!card) return;
@@ -116,7 +116,7 @@ async function loadExecutiveStatus() {
 }
 
 async function loadExecutiveSummary() {
-    const summary = await executiveApiGet("/copilot/summary");
+    const summary = executiveFacade?.morning_summary ?? {};
     const card = document.getElementById("summary-card");
 
     if (!card) return;
@@ -250,19 +250,13 @@ function renderExecutivePriorityMatrix(status, risk, forecast, recommendation) {
 }
 
 async function loadExecutiveKPIs() {
-    const [
-        recommendation,
-        timeline,
-        status,
-        risk,
-        forecast,
-    ] = await Promise.all([
-        executiveApiGet("/copilot/recommendation"),
-        executiveApiGet("/copilot/timeline"),
-        executiveApiGet("/copilot/status"),
-        executiveApiGet("/copilot/risk-intelligence"),
-        executiveApiGet("/copilot/forecast-intelligence"),
-    ]);
+    const recommendation = executiveFacade?.recommendation ?? {};
+    const timeline = executiveFacade?.changes ?? {};
+    const status = {
+        platform_status: executiveFacade?.executive_health?.platform_status,
+    };
+    const risk = executiveFacade?.risk ?? {};
+    const forecast = executiveFacade?.forecast ?? {};
 
     const card = document.getElementById("kpi-card");
 
@@ -327,7 +321,7 @@ async function loadExecutiveKPIs() {
 }
 
 async function loadExecutiveAnalytics() {
-    const analytics = await executiveApiGet("/copilot/analytics");
+    const analytics = executiveFacade?.analytics ?? {};
     const card = document.getElementById("analytics-card");
 
     if (!card) return;
@@ -407,8 +401,7 @@ async function loadExecutiveAnalytics() {
 }
 
 async function loadExecutiveTrend() {
-    const trend = executiveFacade?.trend
-        ?? await executiveApiGet("/copilot/executive-trend");
+    const trend = executiveFacade?.trend;
     const card = document.getElementById("trend-card");
 
     if (!card) return;
@@ -487,8 +480,9 @@ async function loadExecutiveTrend() {
 }
 
 async function loadExecutiveAlerts() {
-    const data = executiveFacade?.changes
-        ?? await executiveApiGet("/copilot/change-intelligence");
+    const data = {
+        alerts: executiveFacade?.alerts ?? [],
+    };
     const card = document.getElementById("alert-card");
 
     if (!card) return;
@@ -509,8 +503,7 @@ async function loadExecutiveAlerts() {
 }
 
 async function loadExecutiveInsights() {
-    const data = executiveFacade?.insights
-        ?? await executiveApiGet("/copilot/executive-insights");
+    const data = executiveFacade?.insights;
     const card = document.getElementById("insights-card");
 
     if (!card) return;
@@ -554,17 +547,12 @@ async function loadExecutiveInsights() {
 }
 
 async function loadExecutiveIntelligence() {
-    const decision = executiveFacade?.decision_center?.executive_intelligence?.modules?.decision_intelligence
-        ?? await executiveApiGet("/copilot/decision-intelligence");
+    const modules = executiveFacade?.executive_intelligence?.modules ?? {};
 
-    const forecast = executiveFacade?.decision_center?.forecast
-        ?? await executiveApiGet("/copilot/forecast-intelligence");
-
-    const provider = executiveFacade?.decision_center?.executive_intelligence?.modules?.provider_intelligence
-        ?? await executiveApiGet("/copilot/provider-intelligence");
-
-    const capacity = executiveFacade?.decision_center?.executive_intelligence?.modules?.capacity_intelligence
-        ?? await executiveApiGet("/copilot/capacity-intelligence");
+    const decision = modules.decision_intelligence ?? {};
+    const forecast = executiveFacade?.forecast ?? {};
+    const provider = modules.provider_intelligence ?? {};
+    const capacity = modules.capacity_intelligence ?? {};
 
     const card = document.getElementById("intelligence-card");
 
@@ -696,8 +684,7 @@ async function loadExecutiveIntelligence() {
 }
 
 async function loadExecutiveRisk() {
-    const risk = executiveFacade?.risk
-        ?? await executiveApiGet("/copilot/risk-intelligence");
+    const risk = executiveFacade?.risk;
     const card = document.getElementById("risk-card");
 
     if (!card) return;
@@ -838,8 +825,13 @@ async function loadExecutiveRegistryStatus() {
 }
 
 async function loadExecutiveDecisionCenter() {
-    const center = executiveFacade?.decision_center
-        ?? await executiveApiGet("/copilot/executive-decision-center");
+    const center = {
+        summary: executiveFacade?.summary,
+        metadata: executiveFacade?.metadata,
+        priority: executiveFacade?.priority,
+        executive_health: executiveFacade?.executive_health,
+        kpis: executiveFacade?.kpis,
+    };
 
     const card = document.getElementById("decision-center-card");
 
