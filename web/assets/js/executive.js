@@ -43,6 +43,24 @@ function executiveFormatConfidence(value) {
     return `${Math.round(num * 100)}%`;
 }
 
+function executiveTrendBadge(delta) {
+    const num = Number(delta);
+
+    if (Number.isNaN(num)) {
+        return "■ Stable";
+    }
+
+    if (num > 0) {
+        return "▲ Increasing";
+    }
+
+    if (num < 0) {
+        return "▼ Improving";
+    }
+
+    return "■ Stable";
+}
+
 function executiveForecastInterpretation(forecast) {
     const summary = forecast.summary || {};
     const watchCount = Number(summary.watch_count || 0);
@@ -209,7 +227,7 @@ function renderExecutivePriorityMatrix(status, risk, forecast, recommendation) {
                     <div class="analytics-label">Platform</div>
                     <div class="analytics-value">${status.platform_status ?? "-"}</div>
                 </div>
-
+            <div
                 <div class="analytics-kpi">
                     <div class="analytics-label">Forecast</div>
                     <div class="analytics-value">${watchCount}</div>
@@ -626,7 +644,9 @@ async function loadExecutiveStatusRibbon() {
 
             <div class="analytics-kpi">
                 <div class="analytics-label">Risk</div>
-                <div class="analytics-value">${summary.overall_risk_score ?? "-"}</div>
+                <div class="analytics-value">
+                    ${summary.overall_risk_score ?? "-"}<br>
+                    <small>${executiveTrendBadge(insights.risk_delta)}</small>
             </div>
 
             <div class="analytics-kpi">
