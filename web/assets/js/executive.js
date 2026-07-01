@@ -243,6 +243,23 @@ async function loadExecutiveIntelligence() {
 
         <hr>
 
+        <div style="margin-top:30px;">
+            <h3>Forecast Class Distribution</h3>
+            <div id="forecast-class-chart"></div>
+        </div>
+
+        <div style="margin-top:30px;">
+            <h3>Rule-Based Signals</h3>
+            <div id="forecast-signal-chart"></div>
+        </div>
+
+        <div style="margin-top:30px;">
+            <h3>Governance Status</h3>
+            <div id="forecast-governance-chart"></div>
+        </div>
+
+        <hr>
+
         <table>
             <tr>
                 <td><strong>Decision Intelligence</strong></td>
@@ -275,6 +292,51 @@ async function loadExecutiveIntelligence() {
             </tr>
         </table>
     `;
+
+    if (window.AiRpctCharts && forecast.metrics?.forecast_classes) {
+        const forecastClassItems = Object.entries(
+            forecast.metrics.forecast_classes
+        ).map(([label, value]) => ({
+            label,
+            value,
+        }));
+
+        AiRpctCharts.renderBar("forecast-class-chart", forecastClassItems, {
+            labelKey: "label",
+            valueKey: "value",
+            showValue: true,
+        });
+    }
+
+    if (window.AiRpctCharts && forecast.metrics?.rule_based_signals) {
+        const signalItems = Object.entries(
+            forecast.metrics.rule_based_signals
+        ).map(([label, value]) => ({
+            label,
+            value,
+        }));
+
+        AiRpctCharts.renderBar("forecast-signal-chart", signalItems, {
+            labelKey: "label",
+            valueKey: "value",
+            showValue: true,
+        });
+    }
+
+    if (window.AiRpctCharts && forecast.metrics?.governance_statuses) {
+        const governanceItems = Object.entries(
+            forecast.metrics.governance_statuses
+        ).map(([label, value]) => ({
+            label,
+            value,
+        }));
+
+        AiRpctCharts.renderBar("forecast-governance-chart", governanceItems, {
+            labelKey: "label",
+            valueKey: "value",
+            showValue: true,
+        });
+    }
 }
 
 async function loadExecutiveRisk() {
