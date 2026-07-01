@@ -188,6 +188,12 @@ class CapacityIntelligenceResponseModel(BaseModel):
 class ForecastIntelligenceSummaryModel(BaseModel):
     status: str
     forecast_count: int
+    provider_count: int | None = None
+    entity_count: int | None = None
+    watch_count: int | None = None
+    monitor_count: int | None = None
+    latest_forecast_class: str | None = None
+    latest_signal: str | None = None
 
 
 class ForecastIntelligenceResponseModel(BaseModel):
