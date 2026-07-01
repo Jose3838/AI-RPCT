@@ -516,6 +516,32 @@ async function loadStrategicSignals() {
     `).join("");
 }
 
+async function loadExecutiveHealth() {
+    const card = document.getElementById("executive-health-card");
+    if (!card) return;
+
+    const health = executiveFacade.executive_health ?? {};
+
+    card.innerHTML = `
+        <div class="analytics-grid">
+            <div class="analytics-kpi">
+                <div class="analytics-label">Health Score</div>
+                <div class="analytics-value">${health.score ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Status</div>
+                <div class="analytics-value">${health.status ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Trend</div>
+                <div class="analytics-value">${health.trend ?? "-"}</div>
+            </div>
+        </div>
+    `;
+}
+
 async function loadExecutiveInsights() {
     const data = executiveFacade?.insights;
     const card = document.getElementById("insights-card");
@@ -907,6 +933,7 @@ async function loadExecutiveDashboard() {
 
         await Promise.all([
             loadExecutiveDecisionCenter(),
+            loadExecutiveHealth(),
             loadExecutiveDecision(),
             loadExecutiveStatus(),
             loadExecutiveSummary(),
