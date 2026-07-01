@@ -934,10 +934,59 @@ async function loadExecutiveTimeline() {
     }
 
     const rows = data.timeline.slice().reverse();
+    const latest = rows[0];
+    const previous = rows[1];
+
+    const confidenceDelta =
+        latest && previous
+            ? (
+                Number(latest.confidence) - 
+                Number(previous.confidence)
+            ).toFixed(2)
+            : "-";
+
+    const recommendationChanged =
+        latest && previous
+            ? latest.recommendation !== previous.recommendation
+            : false;    
 
     card.innerHTML = `
-        <p><strong>Total decisions:</strong> ${data.count}</p>
-        <div class="table-wrap">
+         card.innerHTML = `
+             <div class="analytics-grid">
+
+                 <div class="analytics-kpi">
+                     <div class="analytics-label">Latest Decision</div>
+                     <div class="analytics-value">
+                         ${latest?.recommendation ?? "-"}
+                     </div>
+                 </div>
+
+             <div class="analytics-kpi">
+                 <div class="analytics-label">Confidence Δ</div>
+                 <div class="analytics-value">
+                     ${confidenceDelta}
+                 </div>
+             </div>
+
+             <div class="analytics-kpi">
+                 <div class="analytics-label">Recommendation</div>
+                 <div class="analytics-value">
+                     ${recommendationChanged ? "Changed" : "Stable"}
+                 </div>
+             </div>
+
+             <div class="analytics-kpi">
+                 <div class="analytics-label">Total Decisions</div>
+                 <div class="analytics-value">
+                     ${data.count}
+                 </div>
+             </div>
+
+           </div>
+
+           <hr>
+
+           <div class="table-wrap">
             <table>
                 <thead>
                     <tr>
