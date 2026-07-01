@@ -152,6 +152,45 @@ async function loadDecisionExplainability() {
     `;
 }
 
+async function loadExecutiveActionCenter() {
+    const card = document.getElementById("action-center-card");
+
+    if (!card) return;
+
+    const decision = executiveFacade.decision_center ?? {};
+    const risk = executiveFacade.risk ?? {};
+    const changes = executiveFacade.changes ?? {};
+    const insights = executiveFacade.insights ?? {};
+
+    const actions = [];
+
+    if ((risk.summary?.risk_score ?? 0) >= 80) {
+        actions.push({
+            priority: "🔴 Immediate",
+            text: "Review provider capacity and current procurement risks."
+        });
+    }
+
+    if ((changes.changes ?? []).length > 0) {
+        actions.push({
+            priority: "🟡 Today",
+            text: "Validate recent executive changes before approving new decisions."
+        });
+    }
+
+    actions.push({
+        priority: "🟢 This Week",
+        text: "Review executive insights and refresh snapshot baseline."
+    });
+
+    card.innerHTML = actions.map(action => `
+        <div style="margin-bottom:16px;padding:12px;border-left:6px solid #2563eb;background:#f8fafc;">
+            <strong>${action.priority}</strong><br>
+            ${action.text}
+        </div>
+    `).join("");
+}
+
 async function loadExecutiveStatus() {
     const status = executiveFacade?.platform_status ?? {};
     const card = document.getElementById("health-card");
@@ -1136,6 +1175,7 @@ async function loadExecutiveDashboard() {
         await Promise.all([
             loadExecutiveDecisionCenter(),
             loadDecisionExplainability(),
+            loadExecutiveActionCenter(),
             loadExecutivePriorityBanner(),
             loadExecutiveStatusRibbon(),
             loadExecutiveHealth(),
