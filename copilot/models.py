@@ -241,6 +241,7 @@ class RiskSummaryModel(BaseModel):
     risk_score: int
     risk_severity: str
     recommendation: str
+    risk_explanation: str | None = None
 
 
 class RiskMetricsModel(BaseModel):
@@ -250,6 +251,15 @@ class RiskMetricsModel(BaseModel):
     provider_risk: str
     capacity_risk: str
     forecast_risk: str
+    provider_risk_score: int | None = None
+    capacity_risk_score: int | None = None
+    forecast_risk_score: int | None = None
+
+
+class RiskDriverModel(BaseModel):
+    area: str
+    severity: str
+    message: str
 
 
 class RiskInsightModel(BaseModel):
@@ -262,6 +272,7 @@ class RiskIntelligenceResponseModel(BaseModel):
     summary: RiskSummaryModel
     metrics: RiskMetricsModel
     trends: dict[str, Any]
+    risk_drivers: list[RiskDriverModel] = []
     insights: list[RiskInsightModel]
 
 
