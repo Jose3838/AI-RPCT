@@ -502,6 +502,20 @@ async function loadExecutiveAlerts() {
     `).join("");
 }
 
+async function loadStrategicSignals() {
+    const card = document.getElementById("strategic-signals-card");
+    if (!card) return;
+
+    const signals = executiveFacade.strategic_signals ?? [];
+
+    card.innerHTML = signals.map(signal => `
+        <div class="signal ${signal.severity}">
+            <strong>${signal.label}</strong>
+            <p>${signal.message}</p>
+        </div>
+    `).join("");
+}
+
 async function loadExecutiveInsights() {
     const data = executiveFacade?.insights;
     const card = document.getElementById("insights-card");
@@ -900,6 +914,7 @@ async function loadExecutiveDashboard() {
             loadExecutiveAnalytics(),
             loadExecutiveTrend(),
             loadExecutiveAlerts(),
+            loadStrategicSignals(),
             loadExecutiveInsights(),
             loadExecutiveIntelligence(),
             loadExecutiveRisk(),

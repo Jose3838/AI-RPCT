@@ -13,6 +13,75 @@ from copilot.status import get_status
 from copilot.summary import get_summary
 
 
+def _build_strategic_signals(
+    risk: dict,
+    forecast: dict,
+    analytics: dict,
+    executive_health: dict,
+) -> list[dict]:
+    signals = []
+
+    risk_score = risk.get("summary", {}).get("risk_score", 0)
+    forecast_watch_count = forecast.get("summary", {}).get("watch_count", 0)
+    stability_score = analytics.get("decision_stability_score")
+    health_score = executive_health.get("score", 0)
+
+    if health_score >= 90:
+        signals.append(
+            {
+                "type": "platform",
+                "severity": "positive",
+                "label": "Stable Platform",
+                "message": "Executive health is strong and platform status is stable.",
+            }
+        )
+
+    if risk_score >= 80:
+        signals.append(
+            {
+                "type": "risk",
+                "severity": "info",
+                "label": "Risk Under Control",
+                "message": f"Executive risk score is currently {risk_score}/100.",
+            }
+        )
+
+    if forecast_watch_count > 0:
+        signals.append(
+            {
+                "type": "forecast",
+                "severity": "warning",
+                "label": "Capacity Watch",
+                "message": (
+                    f"{forecast_watch_count} forecast signal(s) require "
+                    "capacity monitoring."
+                ),
+            }
+        )
+
+    if stability_score == 1:
+        signals.append(
+            {
+                "type": "decision",
+                "severity": "positive",
+                "label": "Decision Stability",
+                "message": "Executive recommendations are stable across history.",
+            }
+        )
+
+    if not signals:
+        signals.append(
+            {
+                "type": "platform",
+                "severity": "info",
+                "label": "No Strategic Signals",
+                "message": "No elevated strategic signals detected.",
+            }
+        )
+
+    return signals
+
+
 def get_executive_facade() -> dict:
     decision_center = get_executive_decision_center()
     trend = get_executive_trend()
@@ -23,6 +92,12 @@ def get_executive_facade() -> dict:
     decision = get_decision()
     status = get_status()
     summary = get_summary()
+    strategic_signals = _build_strategic_signals(
+        risk=risk,
+        forecast=decision_center.get("forecast", {}),
+        analytics=analytics,
+        executive_health=decision_center.get("executive_health", {}),
+    )
 
     snapshots = decision_center.get("snapshots", {})
     snapshot_summary = snapshots.get("summary", {})
@@ -36,6 +111,7 @@ def get_executive_facade() -> dict:
         "kpis": decision_center.get("kpis", {}),
         "analytics": analytics,
         "alerts": changes.get("alerts", []),
+        "strategic_signals": strategic_signals,
         "insights": insights,
         "changes": {
             "summary": changes.get("summary", {}),
