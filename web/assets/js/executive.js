@@ -542,6 +542,41 @@ async function loadExecutiveHealth() {
     `;
 }
 
+async function loadExecutiveScorecard() {
+    const card = document.getElementById("scorecard-card");
+    if (!card) return;
+
+    const health = executiveFacade.executive_health ?? {};
+    const decision = executiveFacade.decision_center ?? {};
+    const insights = executiveFacade.insights?.summary ?? {};
+
+    card.innerHTML = `
+        <div class="analytics-grid">
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Health</div>
+                <div class="analytics-value">${health.score ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Risk</div>
+                <div class="analytics-value">${decision.summary?.overall_risk_score ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Snapshots</div>
+                <div class="analytics-value">${insights.snapshot_count ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Confidence</div>
+                <div class="analytics-value">${insights.average_confidence ?? "-"}</div>
+            </div>
+
+        </div>
+    `;
+}
+
 async function loadExecutiveInsights() {
     const data = executiveFacade?.insights;
     const card = document.getElementById("insights-card");
@@ -934,6 +969,7 @@ async function loadExecutiveDashboard() {
         await Promise.all([
             loadExecutiveDecisionCenter(),
             loadExecutiveHealth(),
+            loadExecutiveScorecard(),
             loadExecutiveDecision(),
             loadExecutiveStatus(),
             loadExecutiveSummary(),
