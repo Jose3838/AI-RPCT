@@ -577,6 +577,33 @@ async function loadExecutiveScorecard() {
     `;
 }
 
+async function loadExecutivePriorityBanner() {
+    const card = document.getElementById("priority-banner-card");
+    if (!card) return;
+
+    const decision = executiveFacade.decision_center ?? {};
+
+    card.innerHTML = `
+        <div class="analytics-grid">
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Priority</div>
+                <div class="analytics-value">
+                    ${decision.priority ?? "-"}
+                </div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Recommendation</div>
+                <div class="analytics-value">
+                    ${decision.summary?.overall_recommendation ?? "-"}
+                </div>
+            </div>
+
+        </div>
+    `;
+}
+
 async function loadExecutiveInsights() {
     const data = executiveFacade?.insights;
     const card = document.getElementById("insights-card");
@@ -968,6 +995,7 @@ async function loadExecutiveDashboard() {
 
         await Promise.all([
             loadExecutiveDecisionCenter(),
+            loadExecutivePriorityBanner(),
             loadExecutiveHealth(),
             loadExecutiveScorecard(),
             loadExecutiveDecision(),
