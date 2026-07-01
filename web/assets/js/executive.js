@@ -36,6 +36,45 @@ function executiveFormatConfidence(value) {
     return `${Math.round(num * 100)}%`;
 }
 
+function executiveForecastInterpretation(forecast) {
+    const summary = forecast.summary || {};
+    const watchCount = Number(summary.watch_count || 0);
+    const monitorCount = Number(summary.monitor_count || 0);
+    const providerCount = Number(summary.provider_count || 0);
+    const entityCount = Number(summary.entity_count || 0);
+    const latestClass = summary.latest_forecast_class || "-";
+    const latestSignal = summary.latest_signal || "-";
+
+    if (watchCount > 0) {
+        return `
+            <p>
+                <strong>Executive Interpretation:</strong>
+                Forecast intelligence currently shows ${watchCount} watch signal(s)
+                across ${providerCount} provider(s) and ${entityCount} entity/entities.
+                Latest forecast class is <strong>${latestClass}</strong> with signal
+                <strong>${latestSignal}</strong>.
+            </p>
+            <p>
+                Recommended executive action: monitor capacity-sensitive providers
+                and keep procurement readiness active.
+            </p>
+        `;
+    }
+
+    return `
+        <p>
+            <strong>Executive Interpretation:</strong>
+            Forecast intelligence currently shows ${monitorCount} monitor-only signal(s)
+            across ${providerCount} provider(s) and ${entityCount} entity/entities.
+            Latest forecast class is <strong>${latestClass}</strong>.
+        </p>
+        <p>
+            Recommended executive action: continue monitoring. No immediate escalation
+            is indicated by the current forecast layer.
+        </p>
+    `;
+}
+
 async function loadExecutiveDecision() {
     const data = await executiveApiGet("/copilot/decision");
     const card = document.getElementById("decision-card");
@@ -257,6 +296,10 @@ async function loadExecutiveIntelligence() {
             <h3>Governance Status</h3>
             <div id="forecast-governance-chart"></div>
         </div>
+
+        <hr>
+
+        ${executiveForecastInterpretation(forecast)}
 
         <hr>
 
