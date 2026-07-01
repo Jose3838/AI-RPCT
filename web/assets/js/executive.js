@@ -126,17 +126,162 @@ async function loadExecutiveSummary() {
     `;
 }
 
+function calculateExecutiveHealthScore(recommendation, status, risk, forecast) {
+    let score = 100;
+
+    const confidence = Number(recommendation.confidence || 0);
+    const riskScore = Number(risk.summary?.risk_score || 0);
+    const watchCount = Number(forecast.summary?.watch_count || 0);
+
+    if (confidence < 0.8) {
+        score -= 10;
+    }
+
+    if (riskScore >= 70) {
+        score -= 20;
+    } else if (riskScore >= 40) {
+        score -= 10;
+    }
+
+    if (watchCount > 0) {
+        score -= 10;
+    }
+
+    if (
+        status.platform_status &&
+        status.platform_status.toLowerCase() !== "healthy"
+    ) {
+        score -= 10;
+    }
+
+    return Math.max(score, 0);
+}
+
+function describeExecutiveHealth(score) {
+    if (score >= 90) {
+        return {
+            label: "Excellent",
+            action: "System operating normally. Continue monitoring executive signals.",
+        };
+    }
+
+    if (score >= 75) {
+        return {
+            label: "Good",
+            action: "Platform is stable. Monitor forecast watch signals and risk movement.",
+        };
+    }
+
+    if (score >= 50) {
+        return {
+            label: "Attention",
+            action: "Executive attention recommended. Review risk, forecast watch signals, and capacity exposure.",
+        };
+    }
+
+    return {
+        label: "Critical",
+        action: "Immediate executive review recommended. Risk and forecast signals require escalation.",
+    };
+}
+
+function renderExecutivePriorityMatrix(status, risk, forecast, recommendation) {
+    const watchCount = Number(forecast.summary?.watch_count || 0);
+    const riskScore = risk.summary?.risk_score ?? "-";
+
+    const forecastMessage = watchCount > 0
+        ? `${watchCount} watch signal(s) require monitoring`
+        : "No watch signal currently active";
+
+    return `
+        <div style="margin-top:30px;">
+            <h3>Executive Priority Matrix</h3>
+
+            <div class="analytics-grid">
+                <div class="analytics-kpi">
+                    <div class="analytics-label">Platform</div>
+                    <div class="analytics-value">${status.platform_status ?? "-"}</div>
+                </div>
+
+                <div class="analytics-kpi">
+                    <div class="analytics-label">Forecast</div>
+                    <div class="analytics-value">${watchCount}</div>
+                </div>
+
+                <div class="analytics-kpi">
+                    <div class="analytics-label">Risk</div>
+                    <div class="analytics-value">${riskScore}</div>
+                </div>
+
+                <div class="analytics-kpi">
+                    <div class="analytics-label">Priority</div>
+                    <div class="analytics-value">${recommendation.priority ?? "-"}</div>
+                </div>
+            </div>
+
+            <p>
+                <strong>Platform Status</strong><br>
+                ${status.platform_status ?? "-"}
+            </p>
+
+            <p>
+                <strong>Forecast</strong><br>
+                ${forecastMessage}
+            </p>
+
+            <p>
+                <strong>Risk</strong><br>
+                Current risk score: ${riskScore}
+            </p>
+
+            <p>
+                <strong>Recommendation</strong><br>
+                ${recommendation.priority_reason ?? recommendation.decision ?? "-"}
+            </p>
+        </div>
+    `;
+}
+
 async function loadExecutiveKPIs() {
-    const recommendation = await executiveApiGet("/copilot/recommendation");
-    const timeline = await executiveApiGet("/copilot/timeline");
-    const status = await executiveApiGet("/copilot/status");
+    const [
+        recommendation,
+        timeline,
+        status,
+        risk,
+        forecast,
+    ] = await Promise.all([
+        executiveApiGet("/copilot/recommendation"),
+        executiveApiGet("/copilot/timeline"),
+        executiveApiGet("/copilot/status"),
+        executiveApiGet("/copilot/risk-intelligence"),
+        executiveApiGet("/copilot/forecast-intelligence"),
+    ]);
 
     const card = document.getElementById("kpi-card");
 
     if (!card) return;
 
+    const healthScore = calculateExecutiveHealthScore(
+        recommendation,
+        status,
+        risk,
+        forecast
+    );
+
+    const health = describeExecutiveHealth(healthScore);
+
     card.innerHTML = `
         <div class="analytics-grid">
+            <div class="analytics-kpi">
+                <div class="analytics-label">Executive Health</div>
+                <div class="analytics-value">${healthScore}%</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Health Status</div>
+                <div class="analytics-value">${health.label}</div>
+            </div>
+
             <div class="analytics-kpi">
                 <div class="analytics-label">Confidence</div>
                 <div class="analytics-value">${executiveFormatConfidence(recommendation.confidence)}</div>
@@ -148,15 +293,29 @@ async function loadExecutiveKPIs() {
             </div>
 
             <div class="analytics-kpi">
-                <div class="analytics-label">Timeline</div>
-                <div class="analytics-value">${timeline.count ?? 0}</div>
+                <div class="analytics-label">Risk Score</div>
+                <div class="analytics-value">${risk.summary?.risk_score ?? "-"}</div>
             </div>
 
             <div class="analytics-kpi">
-                <div class="analytics-label">Platform</div>
-                <div class="analytics-value">${status.platform_status ?? "-"}</div>
+                <div class="analytics-label">Forecast Watch</div>
+                <div class="analytics-value">${forecast.summary?.watch_count ?? 0}</div>
             </div>
         </div>
+
+        <hr>
+
+        <p>
+            <strong>Executive Action</strong><br>
+            ${health.action}
+        </p>
+
+        ${renderExecutivePriorityMatrix(
+            status,
+            risk,
+            forecast,
+            recommendation
+        )}
     `;
 }
 
