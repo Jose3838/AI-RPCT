@@ -551,35 +551,73 @@ async function loadExecutiveRisk() {
         card.innerHTML = `<p>${risk.status}</p>`;
         return;
     }
-
     card.innerHTML = `
-        <table>
-            <tr>
-                <td><strong>Risk Score</strong></td>
-                <td>${risk.summary.risk_score}/100</td>
-            </tr>
-            <tr>
-                <td><strong>Risk Severity</strong></td>
-                <td>${risk.summary.risk_severity}</td>
-            </tr>
-            <tr>
-                <td><strong>Provider Risk</strong></td>
-                <td>${risk.metrics.provider_risk}</td>
-            </tr>
-            <tr>
-                <td><strong>Capacity Risk</strong></td>
-                <td>${risk.metrics.capacity_risk}</td>
-            </tr>
-            <tr>
-                <td><strong>Forecast Risk</strong></td>
-                <td>${risk.metrics.forecast_risk}</td>
-            </tr>
-            <tr>
-                <td><strong>Recommendation</strong></td>
-                <td>${risk.summary.recommendation}</td>
-            </tr>
-        </table>
-    `;
+    <div class="analytics-grid">
+
+        <div class="analytics-kpi">
+            <div class="analytics-label">Risk Score</div>
+            <div class="analytics-value">
+                ${risk.summary.risk_score}/100
+            </div>
+        </div>
+
+        <div class="analytics-kpi">
+            <div class="analytics-label">Severity</div>
+            <div class="analytics-value">
+                ${risk.summary.risk_severity}
+            </div>
+        </div>
+
+        <div class="analytics-kpi">
+            <div class="analytics-label">Provider Score</div>
+            <div class="analytics-value">
+                ${risk.metrics.provider_risk_score ?? "-"}
+            </div>
+        </div>
+
+        <div class="analytics-kpi">
+            <div class="analytics-label">Capacity Score</div>
+            <div class="analytics-value">
+                ${risk.metrics.capacity_risk_score ?? "-"}
+            </div>
+        </div>
+
+        <div class="analytics-kpi">
+            <div class="analytics-label">Forecast Score</div>
+            <div class="analytics-value">
+                ${risk.metrics.forecast_risk_score ?? "-"}
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <p>
+        <strong>Recommendation</strong><br>
+        ${risk.summary.recommendation}
+    </p>
+
+    <p>
+        <strong>Risk Explanation</strong><br>
+        ${risk.summary.risk_explanation ?? "-"}
+    </p>
+
+    <h3>Risk Drivers</h3>
+
+    <ul>
+        ${(risk.risk_drivers ?? [])
+            .map(driver => `
+                <li>
+                    <strong>${driver.area}</strong>
+                    (${driver.severity}) —
+                    ${driver.message}
+                </li>
+            `)
+            .join("")}
+    </ul>
+`;
+
 }
 
 async function loadExecutiveTimeline() {
