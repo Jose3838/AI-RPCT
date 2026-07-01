@@ -1,16 +1,18 @@
 from __future__ import annotations
 
+from copilot.analytics import get_analytics
 from copilot.change_intelligence import get_change_intelligence
+from copilot.decision import get_decision
 from copilot.executive.decision_center import (
     get_executive_decision_center,
 )
 from copilot.executive.insights import get_executive_insights
 from copilot.executive.trend import get_executive_trend
+from copilot.io import load_csv
 from copilot.risk_intelligence import get_risk_intelligence
-from copilot.analytics import get_analytics
-from copilot.decision import get_decision
 from copilot.status import get_status
 from copilot.summary import get_summary
+from copilot.timeline import get_decision_timeline
 
 
 def _build_strategic_signals(
@@ -32,7 +34,9 @@ def _build_strategic_signals(
                 "type": "platform",
                 "severity": "positive",
                 "label": "Stable Platform",
-                "message": "Executive health is strong and platform status is stable.",
+                "message": (
+                    "Executive health is strong and platform status is stable."
+                ),
             }
         )
 
@@ -65,7 +69,9 @@ def _build_strategic_signals(
                 "type": "decision",
                 "severity": "positive",
                 "label": "Decision Stability",
-                "message": "Executive recommendations are stable across history.",
+                "message": (
+                    "Executive recommendations are stable across history."
+                ),
             }
         )
 
@@ -89,9 +95,14 @@ def get_executive_facade() -> dict:
     changes = get_change_intelligence()
     risk = get_risk_intelligence()
     analytics = get_analytics()
+    timeline = get_decision_timeline()
     decision = get_decision()
     status = get_status()
     summary = get_summary()
+
+    forecast_rows = load_csv("data/forecast_engine_v1_output.csv")
+    registry_rows = load_csv("data/data_asset_registry.csv")
+
     strategic_signals = _build_strategic_signals(
         risk=risk,
         forecast=decision_center.get("forecast", {}),
@@ -110,6 +121,9 @@ def get_executive_facade() -> dict:
         "executive_health": decision_center.get("executive_health", {}),
         "kpis": decision_center.get("kpis", {}),
         "analytics": analytics,
+        "decision": decision,
+        "platform_status": status,
+        "morning_summary": summary,
         "alerts": changes.get("alerts", []),
         "strategic_signals": strategic_signals,
         "insights": insights,
@@ -127,6 +141,9 @@ def get_executive_facade() -> dict:
         "risk": risk,
         "forecast": decision_center.get("forecast", {}),
         "recommendation": decision_center.get("recommendation", {}),
+        "timeline": timeline,
+        "forecast_rows": forecast_rows,
+        "registry_rows": registry_rows,
         "latest_snapshot": snapshot_summary.get("latest_snapshot"),
         "snapshot_count": snapshot_summary.get("snapshot_count", 0),
     }

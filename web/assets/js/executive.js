@@ -995,7 +995,7 @@ async function loadExecutiveRisk() {
 }
 
 async function loadExecutiveTimeline() {
-    const data = await executiveApiGet("/copilot/timeline");
+    const data = executiveFacade?.timeline ?? {};
     const card = document.getElementById("timeline-card");
 
     if (!card) return;
@@ -1082,7 +1082,7 @@ async function loadExecutiveTimeline() {
 }
 
 async function loadExecutiveForecastStatus() {
-    const forecast = await executiveApiGet("/forecast");
+    const forecast = executiveFacade?.forecast_rows ?? [];
     const card = document.getElementById("forecast-card");
 
     if (!card) return;
@@ -1094,7 +1094,7 @@ async function loadExecutiveForecastStatus() {
 }
 
 async function loadExecutiveRegistryStatus() {
-    const registries = await executiveApiGet("/registries");
+    const registries = executiveFacade?.registry_rows ?? [];
     const card = document.getElementById("registry-card");
 
     if (!card) return;
