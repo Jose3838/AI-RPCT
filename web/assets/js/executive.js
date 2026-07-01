@@ -399,6 +399,85 @@ async function loadExecutiveAnalytics() {
     }
 }
 
+async function loadExecutiveTrend() {
+    const trend = await executiveApiGet("/copilot/executive-trend");
+    const card = document.getElementById("trend-card");
+
+    if (!card) return;
+
+    if (trend.status) {
+        card.innerHTML = `<p>${trend.status}</p>`;
+        return;
+    }
+
+    const confidenceHistory = trend.trends?.confidence_history ?? [];
+    const riskHistory = trend.trends?.risk_history ?? [];
+
+    const latestConfidence = trend.summary?.latest_confidence;
+    const latestRiskScore = trend.summary?.latest_risk_score;
+    const forecastWatchCount = trend.summary?.forecast_watch_count ?? 0;
+
+    card.innerHTML = `
+        <div class="analytics-grid">
+            <div class="analytics-kpi">
+                <div class="analytics-label">Decision Points</div>
+                <div class="analytics-value">${trend.summary?.decision_points ?? 0}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Risk Points</div>
+                <div class="analytics-value">${trend.summary?.risk_points ?? 0}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Latest Confidence</div>
+                <div class="analytics-value">${executiveFormatConfidence(latestConfidence)}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Latest Risk</div>
+                <div class="analytics-value">${latestRiskScore ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Forecast Watch</div>
+                <div class="analytics-value">${forecastWatchCount}</div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div style="margin-top:30px;">
+            <h3>Executive Confidence Trend</h3>
+            <div id="executive-confidence-trend-chart"></div>
+        </div>
+
+        <div style="margin-top:30px;">
+            <h3>Executive Risk Trend</h3>
+            <div id="executive-risk-trend-chart"></div>
+        </div>
+    `;
+
+    if (window.AiRpctCharts && confidenceHistory.length > 0) {
+        AiRpctCharts.renderConfidenceTrend(
+            "executive-confidence-trend-chart",
+            confidenceHistory
+        );
+    }
+
+    if (window.AiRpctCharts && riskHistory.length > 0) {
+        const normalizedRiskHistory = riskHistory.map((point) => ({
+            generated_at: point.generated_at,
+            confidence: Number(point.risk_score || 0) / 100,
+        }));
+
+        AiRpctCharts.renderConfidenceTrend(
+            "executive-risk-trend-chart",
+            normalizedRiskHistory
+        );
+    }
+}
+
 async function loadExecutiveIntelligence() {
     const [
         decision,
@@ -748,6 +827,7 @@ async function loadExecutiveDashboard() {
             loadExecutiveSummary(),
             loadExecutiveKPIs(),
             loadExecutiveAnalytics(),
+            loadExecutiveTrend(),
             loadExecutiveIntelligence(),
             loadExecutiveRisk(),
             loadExecutiveTimeline(),

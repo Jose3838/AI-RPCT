@@ -5,6 +5,75 @@ from copilot.executive.snapshot import (
 )
 
 
+def _build_alerts(
+    current_score: int,
+    delta: int | None,
+    snapshot_count: int,
+) -> list[dict]:
+    alerts = []
+
+    if current_score >= 80:
+        alerts.append(
+            {
+                "type": "risk",
+                "severity": "critical",
+                "message": (
+                    f"Executive risk score is elevated at "
+                    f"{current_score}/100."
+                ),
+            }
+        )
+    elif current_score >= 60:
+        alerts.append(
+            {
+                "type": "risk",
+                "severity": "warning",
+                "message": (
+                    f"Executive risk score requires monitoring at "
+                    f"{current_score}/100."
+                ),
+            }
+        )
+
+    if delta is not None and delta > 0:
+        alerts.append(
+            {
+                "type": "trend",
+                "severity": "warning",
+                "message": (
+                    f"Risk score increased by {delta} point(s) "
+                    "since the previous executive snapshot."
+                ),
+            }
+        )
+
+    if delta == 0:
+        alerts.append(
+            {
+                "type": "trend",
+                "severity": "info",
+                "message": (
+                    "Risk score is stable compared with the previous "
+                    "executive snapshot."
+                ),
+            }
+        )
+
+    if snapshot_count >= 2:
+        alerts.append(
+            {
+                "type": "history",
+                "severity": "info",
+                "message": (
+                    f"Executive change intelligence is based on "
+                    f"{snapshot_count} snapshots."
+                ),
+            }
+        )
+
+    return alerts
+
+
 def get_change_intelligence() -> dict:
     snapshots = get_executive_snapshots()
 
@@ -17,6 +86,7 @@ def get_change_intelligence() -> dict:
             },
             "metrics": {},
             "changes": [],
+            "alerts": [],
             "insights": [],
         }
 
@@ -25,6 +95,7 @@ def get_change_intelligence() -> dict:
 
     if snapshot_count < 2:
         latest = rows[-1]
+        current_score = int(latest["risk_score"])
 
         return {
             "summary": {
@@ -33,10 +104,15 @@ def get_change_intelligence() -> dict:
                 "snapshot_count": snapshot_count,
             },
             "metrics": {
-                "risk_score": int(latest["risk_score"]),
+                "risk_score": current_score,
                 "risk_severity": latest["risk_severity"],
             },
             "changes": [],
+            "alerts": _build_alerts(
+                current_score=current_score,
+                delta=None,
+                snapshot_count=snapshot_count,
+            ),
             "insights": [
                 {
                     "type": "change",
@@ -97,6 +173,11 @@ def get_change_intelligence() -> dict:
             "risk_severity": current["risk_severity"],
         },
         "changes": changes,
+        "alerts": _build_alerts(
+            current_score=current_score,
+            delta=delta,
+            snapshot_count=snapshot_count,
+        ),
         "insights": [
             {
                 "type": "change",

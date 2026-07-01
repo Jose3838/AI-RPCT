@@ -148,6 +148,7 @@ class ChangeIntelligenceResponseModel(BaseModel):
     summary: ChangeIntelligenceSummaryModel
     metrics: ChangeIntelligenceMetricsModel
     changes: list[ChangeEventModel]
+    alerts: list[CopilotInsightModel] = []
     insights: list[CopilotInsightModel]
 
 
