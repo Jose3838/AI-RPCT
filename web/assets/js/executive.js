@@ -219,19 +219,56 @@ async function loadExecutiveIntelligence() {
     if (!card) return;
 
     card.innerHTML = `
+        <div class="analytics-grid">
+            <div class="analytics-kpi">
+                <div class="analytics-label">Forecast Records</div>
+                <div class="analytics-value">${forecast.summary?.forecast_count ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Providers</div>
+                <div class="analytics-value">${forecast.summary?.provider_count ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Watch Signals</div>
+                <div class="analytics-value">${forecast.summary?.watch_count ?? "-"}</div>
+            </div>
+
+            <div class="analytics-kpi">
+                <div class="analytics-label">Monitor Signals</div>
+                <div class="analytics-value">${forecast.summary?.monitor_count ?? "-"}</div>
+            </div>
+        </div>
+
+        <hr>
+
         <table>
             <tr>
                 <td><strong>Decision Intelligence</strong></td>
                 <td>${decision.summary?.status ?? decision.status ?? "Unavailable"}</td>
             </tr>
+
             <tr>
                 <td><strong>Forecast Intelligence</strong></td>
                 <td>${forecast.summary?.status ?? forecast.status ?? "Unavailable"}</td>
             </tr>
+
+            <tr>
+                <td><strong>Latest Forecast Class</strong></td>
+                <td>${forecast.summary?.latest_forecast_class ?? "-"}</td>
+            </tr>
+
+            <tr>
+                <td><strong>Latest Signal</strong></td>
+                <td>${forecast.summary?.latest_signal ?? "-"}</td>
+            </tr>
+
             <tr>
                 <td><strong>Provider Intelligence</strong></td>
                 <td>${provider.summary?.status ?? provider.status ?? "Unavailable"}</td>
             </tr>
+
             <tr>
                 <td><strong>Capacity Intelligence</strong></td>
                 <td>${capacity.summary?.status ?? capacity.status ?? "Unavailable"}</td>
