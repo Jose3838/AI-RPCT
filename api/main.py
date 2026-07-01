@@ -44,6 +44,7 @@ from copilot.service import (
     run_executive_snapshot,
     get_executive_recommendation,
     get_executive_decision_center,
+    get_executive_facade,
     get_executive_trend,
 )
 
@@ -393,6 +394,11 @@ def copilot_executive_trend():
 @app.get("/copilot/executive-insights")
 def copilot_executive_insights():
     return get_executive_insights()
+
+
+@app.get("/copilot/executive-facade")
+def copilot_executive_facade():
+    return get_executive_facade()
 
 
 @app.get("/pipeline-health")

@@ -9,6 +9,7 @@ from copilot.decision_intelligence import get_decision_intelligence
 from copilot.executive.decision_center import (
     get_executive_decision_center,
 )
+from copilot.executive.facade import get_executive_facade
 from copilot.executive.intelligence import get_executive_intelligence
 from copilot.executive.insights import get_executive_insights
 from copilot.executive.recommendation import get_executive_recommendation
@@ -33,6 +34,7 @@ __all__ = [
     "get_decision_intelligence",
     "get_decision_timeline",
     "get_executive_decision_center",
+    "get_executive_facade",
     "get_executive_intelligence",
     "get_executive_insights",
     "get_executive_recommendation",
