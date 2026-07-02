@@ -16,6 +16,7 @@ def get_historical_intelligence() -> dict:
     gpu_price_history = load_csv("data/gpu_price_history.csv")
     live_gpu_price_history = load_csv("data/live_gpu_price_history.csv")
     cloud_gpu_price_history = load_csv("data/cloud_gpu_price_history.csv")
+    supply_chain_events = load_csv("data/supply_chain_event_registry.csv")
 
     launch_years = []
 
@@ -50,6 +51,7 @@ def get_historical_intelligence() -> dict:
             "gpu_price_history_records": len(gpu_price_history),
             "live_gpu_price_history_records": len(live_gpu_price_history),
             "cloud_gpu_price_history_records": len(cloud_gpu_price_history),
+            "supply_chain_event_records": len(supply_chain_events),
         },
         "amd": amd,
         "intel": intel,
@@ -63,4 +65,5 @@ def get_historical_intelligence() -> dict:
         "gpu_price_history": gpu_price_history,
         "live_gpu_price_history": live_gpu_price_history,
         "cloud_gpu_price_history": cloud_gpu_price_history,
+        "supply_chain_events": supply_chain_events,
     }
