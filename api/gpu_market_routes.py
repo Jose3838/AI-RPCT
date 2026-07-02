@@ -1,6 +1,14 @@
+import math
+
 from fastapi import APIRouter
 
 router = APIRouter()
+
+
+def _json_safe(value):
+    if isinstance(value, float) and math.isnan(value):
+        return None
+    return value
 
 
 @router.get("/ai-index")
@@ -32,9 +40,11 @@ def ai_index_history():
 @router.get("/index-history")
 def index_history():
     import pandas as pd
-    return pd.read_csv(
-        "data/index_history.csv"
-    ).to_dict(orient="records")
+    records = pd.read_csv("data/index_history.csv").to_dict(orient="records")
+    return [
+        {key: _json_safe(value) for key, value in row.items()}
+        for row in records
+    ]
 
 
 @router.get("/gpu-price-index")

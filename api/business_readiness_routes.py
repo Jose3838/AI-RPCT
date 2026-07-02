@@ -1,12 +1,24 @@
+import math
+
 from fastapi import APIRouter, Header
 import pandas as pd
 from pathlib import Path
 
 
+def _json_safe(value):
+    if isinstance(value, float) and math.isnan(value):
+        return None
+    return value
+
+
 def read_csv(path):
     if not Path(path).exists():
         return []
-    return pd.read_csv(path).to_dict(orient="records")
+    records = pd.read_csv(path).to_dict(orient="records")
+    return [
+        {key: _json_safe(value) for key, value in row.items()}
+        for row in records
+    ]
 
 router = APIRouter()
 
