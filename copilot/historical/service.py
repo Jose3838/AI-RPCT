@@ -15,9 +15,29 @@ def get_historical_intelligence() -> dict:
     gpu_price_history = load_csv("data/gpu_price_history.csv")
     live_gpu_price_history = load_csv("data/live_gpu_price_history.csv")
 
+    launch_years = []
+
+    for rows in (amd, intel, nvidia):
+        for row in rows:
+            year = row.get("launch_year")
+            if year and year.isdigit():
+                launch_years.append(int(year))
+
+    market_start_year = min(launch_years) if launch_years else None
+    market_latest_year = max(launch_years) if launch_years else None
+
+    years_covered = (
+        market_latest_year - market_start_year + 1
+        if market_start_year and market_latest_year
+        else 0
+    )
+
     return {
         "summary": {
             "vendors": 3,
+            "market_start_year": market_start_year,
+            "market_latest_year": market_latest_year,
+            "years_covered": years_covered,
             "gpu_records": len(amd) + len(intel) + len(nvidia),
             "pricing_records": len(pricing),
             "capacity_records": len(capacity),
