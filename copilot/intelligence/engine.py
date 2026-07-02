@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+from copilot.intelligence.actions import get_actions
 from copilot.intelligence.capacity import get_capacity_layer
 from copilot.intelligence.causal import get_causal_analysis
+from copilot.intelligence.decision import get_decision_score
 from copilot.intelligence.forecast import get_forecast_layer
 from copilot.intelligence.historical import get_historical_layer
 from copilot.intelligence.impact import get_impact_analysis
@@ -13,53 +15,67 @@ from copilot.intelligence.simulation import simulate
 
 
 def get_unified_intelligence() -> dict:
-    return {
-        "historical": get_historical_layer(),
-        "forecast": get_forecast_layer(),
-        "capacity": get_capacity_layer(),
-        "risk": get_risk_layer(),
-        "pricing": get_pricing_layer(),
-        "market": get_market_layer(),
-        "impact": get_impact_analysis(),
-        "causal": get_causal_analysis(),
-        "scenario_example": run_scenario(
-            variable="pricing",
-            change=10,
-        ),
-        "simulation": simulate(),
-        "actions": {
-            "summary": {
-                "status": "actions available",
-            }
-        },
-        "advisor": {
-            "summary": {
-                "status": "advisor available",
-            }
-        },
-        "strategy": {
-            "summary": {
-                "status": "strategy available",
-            }
-        },
-        "goals": {
-            "summary": {
-                "status": "goals available",
-            }
-        },
-        "execution": {
-            "summary": {
-                "status": "execution available",
-            }
-        },
-        "runtime": {
-            "summary": {
-                "status": "runtime available",
-            }
-        },
-        "state": {
-            "summary": {
-                "status": "state available",
-            }
-        },
+    historical = get_historical_layer()
+    forecast = get_forecast_layer()
+    capacity = get_capacity_layer()
+    risk = get_risk_layer()
+    pricing = get_pricing_layer()
+    market = get_market_layer()
+    impact = get_impact_analysis()
+    causal = get_causal_analysis()
+    scenario = run_scenario(
+        variable="pricing",
+        change=10,
+    )
+    simulation = simulate()
+
+    intelligence = {
+        "historical": historical,
+        "forecast": forecast,
+        "capacity": capacity,
+        "risk": risk,
+        "pricing": pricing,
+        "market": market,
+        "impact": impact,
+        "causal": causal,
+        "scenario_example": scenario,
+        "simulation": simulation,
     }
+
+    decision = get_decision_score(intelligence)
+    actions = get_actions(decision)
+
+    intelligence["decision"] = decision
+    intelligence["actions"] = actions
+    intelligence["advisor"] = {
+        "summary": {
+            "status": "advisor available",
+        }
+    }
+    intelligence["strategy"] = {
+        "summary": {
+            "status": "strategy available",
+        }
+    }
+    intelligence["goals"] = {
+        "summary": {
+            "status": "goals available",
+        }
+    }
+    intelligence["execution"] = {
+        "summary": {
+            "status": "execution available",
+        }
+    }
+    intelligence["runtime"] = {
+        "summary": {
+            "status": "runtime available",
+        }
+    }
+    intelligence["state"] = {
+        "summary": {
+            "status": "state available",
+        }
+    }
+
+    return intelligence
