@@ -7,6 +7,7 @@ from copilot.intelligence.decision import get_decision_score
 from copilot.intelligence.forecast import get_forecast_layer
 from copilot.intelligence.historical import get_historical_layer
 from copilot.intelligence.impact import get_impact_analysis
+from copilot.intelligence.knowledge import get_knowledge
 from copilot.intelligence.market import get_market_layer
 from copilot.intelligence.pricing import get_pricing_layer
 from copilot.intelligence.risk import get_risk_layer
@@ -43,10 +44,9 @@ def get_unified_intelligence() -> dict:
     }
 
     decision = get_decision_score(intelligence)
-    actions = get_actions(decision)
 
     intelligence["decision"] = decision
-    intelligence["actions"] = actions
+    intelligence["actions"] = get_actions(decision)
     intelligence["advisor"] = {
         "summary": {
             "status": "advisor available",
@@ -77,5 +77,6 @@ def get_unified_intelligence() -> dict:
             "status": "state available",
         }
     }
+    intelligence["knowledge"] = get_knowledge()
 
     return intelligence
