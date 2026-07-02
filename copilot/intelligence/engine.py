@@ -57,4 +57,9 @@ def get_unified_intelligence() -> dict:
                 "status": "runtime available",
             }
         },
+        "state": {
+            "summary": {
+                "status": "state available",
+            }
+        },
     }
