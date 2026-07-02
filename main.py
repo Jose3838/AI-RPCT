@@ -8,6 +8,8 @@ from api.organization_routes import router as organization_router
 from api.forecast_routes import router as forecast_router
 from api.provider_routes import router as provider_router
 from api.live_data_routes import router as live_data_router
+from api.market_routes import router as market_router
+from api.enterprise_routes import router as enterprise_router
 
 app = FastAPI(
     title="AI-RPCT",
@@ -21,6 +23,8 @@ app.include_router(organization_router)
 app.include_router(forecast_router)
 app.include_router(provider_router)
 app.include_router(live_data_router)
+app.include_router(market_router)
+app.include_router(enterprise_router)
 
 app.mount("/web", StaticFiles(directory="web", html=True), name="web")
 
@@ -32,17 +36,6 @@ def root():
         "version": "63.0",
         "terminal": "/web"
     }
-
-from market_strength_index import calculate_market_strength_index
-
-@app.get("/market-strength-index")
-def market_strength_index():
-    provider_scores = [
-        85.3,
-        84.2
-    ]
-
-    return calculate_market_strength_index(provider_scores)
 
 from executive_intelligence_summary import build_executive_intelligence_summary
 
@@ -61,87 +54,11 @@ def executive_intelligence_summary():
         market_strength
     )
 
-from daily_market_snapshot import save_market_snapshot
-
-@app.post("/save-market-snapshot")
-def save_market_snapshot_endpoint():
-
-    coverage = 33.33
-    market_strength = 84.75
-    avg_activation_score = 84.75
-
-    return save_market_snapshot(
-        coverage,
-        market_strength,
-        avg_activation_score
-    )
-
-from data_layer.market_strength_pipeline import build_dynamic_market_strength_index
-
-@app.get("/market-strength-index-v2")
-def market_strength_index_v2():
-    return build_dynamic_market_strength_index()
-
 from data_layer.executive_intelligence_pipeline import build_dynamic_executive_intelligence_summary
 
 @app.get("/executive-intelligence-summary-v2")
 def executive_intelligence_summary_v2():
     return build_dynamic_executive_intelligence_summary()
-
-from data_layer.dynamic_snapshot_pipeline import save_dynamic_market_snapshot
-
-@app.post("/save-market-snapshot-v2")
-def save_market_snapshot_v2():
-    return save_dynamic_market_snapshot()
-
-from data_layer.trend_engine import build_market_trend_summary
-
-@app.get("/market-trend-summary")
-def market_trend_summary():
-    return build_market_trend_summary()
-
-from weekly_infrastructure_report import build_weekly_infrastructure_report
-
-@app.get("/weekly-infrastructure-report")
-def weekly_infrastructure_report():
-    return build_weekly_infrastructure_report()
-
-from enterprise_report_index import build_enterprise_report_index
-
-@app.get("/enterprise-report-index")
-def enterprise_report_index():
-    return build_enterprise_report_index()
-
-from sales_enterprise_bundle import build_sales_enterprise_bundle
-
-@app.get("/sales-enterprise-bundle")
-def sales_enterprise_bundle():
-    return build_sales_enterprise_bundle()
-
-from enterprise_access import require_enterprise
-from sales_enterprise_bundle import build_sales_enterprise_bundle
-
-@app.get("/enterprise-sales-demo")
-def enterprise_sales_demo(api_key: str):
-    access = require_enterprise(api_key)
-
-    if not access["allowed"]:
-        return {
-            "status": "blocked",
-            **access
-        }
-
-    return {
-        "status": "ok",
-        "access": access,
-        "bundle": build_sales_enterprise_bundle()
-    }
-
-from coverage_milestone_report import build_coverage_milestone_report
-
-@app.get("/coverage-milestone-report")
-def coverage_milestone_report():
-    return build_coverage_milestone_report()
 
 from usage_tracking import track_usage
 
@@ -189,34 +106,6 @@ from data_trust_index import build_data_trust_index
 @app.get("/data-trust-index")
 def data_trust_index():
     return build_data_trust_index()
-
-from enterprise_intelligence_bundle_v2 import build_enterprise_intelligence_bundle_v2
-
-@app.get("/enterprise-intelligence-bundle-v2")
-def enterprise_intelligence_bundle_v2():
-    return build_enterprise_intelligence_bundle_v2()
-
-from dynamic_entitlements import require_plan as require_dynamic_plan
-from enterprise_intelligence_bundle_v2 import build_enterprise_intelligence_bundle_v2
-
-@app.get("/enterprise-intelligence-bundle-v2-gated")
-def enterprise_intelligence_bundle_v2_gated(api_key: str):
-    access = require_dynamic_plan(
-        api_key,
-        ["enterprise"]
-    )
-
-    if not access["allowed"]:
-        return {
-            "status": "blocked",
-            **access
-        }
-
-    return {
-        "status": "ok",
-        "access": access,
-        "bundle": build_enterprise_intelligence_bundle_v2()
-    }
 
 from automated_snapshot_runner import run_daily_snapshot
 
@@ -267,12 +156,6 @@ from historical_intelligence_engine import build_historical_intelligence
 @app.get("/historical-intelligence")
 def historical_intelligence():
     return build_historical_intelligence()
-
-from enterprise_decision_engine import build_enterprise_decision_engine
-
-@app.get("/enterprise-decision-engine")
-def enterprise_decision_engine():
-    return build_enterprise_decision_engine()
 
 from intelligence_registry import build_intelligence_registry
 
