@@ -52,6 +52,7 @@ from copilot.intelligence_hub import get_intelligence_hub
 from copilot.intelligence.pipeline import run_pipeline
 from copilot.dashboard_executive import get_executive_dashboard
 from copilot.dashboard_service import get_dashboard
+from copilot.intelligence.workflow import run_workflow
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -433,6 +434,11 @@ def copilot_intelligence_hub():
 @app.get("/copilot/intelligence-pipeline")
 def copilot_intelligence_pipeline():
     return run_pipeline()
+
+
+@app.get("/copilot/intelligence-workflow")
+def copilot_intelligence_workflow():
+    return run_workflow()
 
 
 @app.get("/dashboard/executive")
