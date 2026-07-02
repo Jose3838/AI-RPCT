@@ -27,4 +27,9 @@ def get_unified_intelligence() -> dict:
             change=10,
         ),
         "simulation": simulate(),
+        "actions": {
+            "summary": {
+                "status": "actions available",
+            }
+        },
     }
