@@ -1,5 +1,32 @@
 # AI-RPCT Intelligence Architecture v1.0
 
+## Deployment Status (2026-07-02)
+
+The deployed app (`main.py` + `api/*_routes.py`, ~227 routes) still calls the
+root-level `analytics/`-style modules directly for almost everything — it
+does not yet route through `copilot/`. `copilot/` (74 modules, own test
+suite) has been built out over the past ~week but was never wired into the
+deployed app until now.
+
+First wiring: `api/copilot_pilot_routes.py` adds `/infrastructure-risk-signal-v2`
+and `/executive-risk-dashboard-v2`, calling `copilot.service.get_risk_intelligence()`
+/ `get_executive_intelligence()`. Purely additive — the original
+`/infrastructure-risk-signal` and `/executive-risk-dashboard` are untouched.
+
+**Migration approach: strangler fig, not a big-bang rewrite.**
+- New intelligence features (starting with Phase 4.5, Historical Market
+  Intelligence) should be built in `copilot/` per the Target Architecture
+  below, not as new root-level `analytics/`-style modules wired into
+  `main.py` directly.
+- Existing overlapping domains (risk, executive, forecast, provider,
+  capacity, decision, change — the ones `copilot/service.py` already
+  covers) migrate opportunistically as `-v2` routes when touched anyway,
+  following the pilot's pattern — not as a dedicated migration sprint.
+- `copilot/` does not yet cover GPU pricing, billing, organizations, or
+  most of the ~130 routes that used to live in `api/routes.py` — those
+  stay on the deployed app's existing modules until/unless someone builds
+  the equivalent `copilot/` domain.
+
 ## Purpose
 
 AI-RPCT is evolving from a collection of analytics modules into a unified Decision Intelligence Platform for AI Infrastructure.
