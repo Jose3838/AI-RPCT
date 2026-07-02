@@ -79,17 +79,6 @@ def investor_dashboard():
 
     return pd.read_csv(path).to_dict(orient="records")
 
-@router.get("/investor-dashboard")
-def investor_dashboard():
-    import pandas as pd
-    from pathlib import Path
-
-    path = Path("data/investor_dashboard.csv")
-    if not path.exists():
-        return {"error": "investor dashboard data not found"}
-
-    return pd.read_csv(path).to_dict(orient="records")
-
 @router.get("/marketshare")
 def marketshare():
     import pandas as pd
@@ -129,11 +118,6 @@ def usage():
 def admin_summary():
     import pandas as pd
     return pd.read_csv("data/admin_summary.csv").to_dict(orient="records")
-
-@router.get("/usage")
-def usage():
-    import pandas as pd
-    return pd.read_csv("data/usage_metrics.csv").to_dict(orient="records")
 
 @router.get("/pricing")
 def pricing():

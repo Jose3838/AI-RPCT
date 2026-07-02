@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from api.routes import router
 from api.auth_routes import router as auth_router
 from api.billing_routes import router as billing_router
+from api.organization_routes import router as organization_router
 
 app = FastAPI(
     title="AI-RPCT",
@@ -13,6 +14,7 @@ app = FastAPI(
 app.include_router(router)
 app.include_router(auth_router)
 app.include_router(billing_router)
+app.include_router(organization_router)
 
 app.mount("/web", StaticFiles(directory="web", html=True), name="web")
 
@@ -288,48 +290,6 @@ def usage_analytics_v2():
         "usage": get_usage_analytics()
     }
 
-from organizations import create_organization, list_organizations
-
-@app.post("/create-organization")
-def create_organization_endpoint(
-    name: str,
-    plan: str,
-    api_key: str
-):
-    return create_organization(
-        name,
-        plan,
-        api_key
-    )
-
-
-@app.get("/organizations")
-def organizations_endpoint():
-    return {
-        "status": "ok",
-        "organizations": list_organizations()
-    }
-
-from api_key_management import create_api_key, list_api_keys
-
-@app.post("/create-api-key")
-def create_api_key_endpoint(
-    organization_id: int,
-    plan: str
-):
-    return create_api_key(
-        organization_id,
-        plan
-    )
-
-
-@app.get("/api-keys")
-def api_keys_endpoint():
-    return {
-        "status": "ok",
-        "api_keys": list_api_keys()
-    }
-
 from dynamic_entitlements import get_plan_for_api_key, require_plan
 
 @app.get("/entitlement-check-v2")
@@ -534,14 +494,6 @@ from forecast_accuracy_engine import (
 def forecast_accuracy():
     return build_forecast_accuracy()
 
-from forecast_accuracy_engine import (
-    build_forecast_accuracy
-)
-
-@app.get("/forecast-accuracy")
-def forecast_accuracy():
-    return build_forecast_accuracy()
-
 from forecast_validation_engine import (
     build_forecast_validation
 )
@@ -629,12 +581,6 @@ from data_moat_dashboard import (
 @app.get("/data-moat-dashboard")
 def data_moat_dashboard():
     return build_data_moat_dashboard()
-
-from forecast_weight_optimization import build_forecast_weight_optimization
-
-@app.get("/forecast-weight-optimization")
-def forecast_weight_optimization():
-    return build_forecast_weight_optimization()
 
 from forecast_weight_optimization import build_forecast_weight_optimization
 
