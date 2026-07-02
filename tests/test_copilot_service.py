@@ -202,6 +202,25 @@ def test_get_capacity_intelligence():
         assert "message" in result["insights"][0]
 
 
+def test_capacity_intelligence_gives_a_real_pressure_based_recommendation():
+    # Sprint 6: capacity advisor logic now builds on the real, currently-
+    # computed capacity_pressure_index (not a fabricated demand forecast -
+    # the underlying price/capacity history is too short for that).
+    result = get_capacity_intelligence()
+
+    valid_statuses = {
+        "critical_pressure", "high_pressure", "moderate_pressure", "low_pressure",
+    }
+    assert result["summary"]["pressure_status"] in valid_statuses
+    assert isinstance(result["summary"]["capacity_pressure_index"], (int, float))
+    assert result["summary"]["recommendation"]
+
+    assert "scarcity_index" in result["metrics"]
+    assert "market_strength_index" in result["metrics"]
+
+    assert str(result["summary"]["capacity_pressure_index"]) in result["insights"][0]["message"]
+
+
 def test_get_risk_intelligence():
     result = get_risk_intelligence()
 

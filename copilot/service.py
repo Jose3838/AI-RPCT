@@ -19,6 +19,7 @@ from copilot.executive.trend import get_executive_trend
 from copilot.explain import get_why
 from copilot.forecast_intelligence import get_forecast_intelligence
 from copilot.historical.service import get_historical_intelligence
+from copilot.procurement_optimizer import get_procurement_optimizer
 from copilot.provider_intelligence import get_provider_intelligence
 from copilot.recommendation import get_recommendation
 from copilot.risk_intelligence import get_risk_intelligence
@@ -43,6 +44,7 @@ __all__ = [
     "get_executive_trend",
     "get_forecast_intelligence",
     "get_historical_intelligence",
+    "get_procurement_optimizer",
     "get_provider_intelligence",
     "get_recommendation",
     "get_risk_intelligence",
