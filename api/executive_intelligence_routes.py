@@ -45,8 +45,8 @@ def executive_risk_dashboard():
     return build_executive_risk_dashboard()
 
 
-@router.get("/investor-snapshot")
-def investor_snapshot():
+@router.get("/investor-snapshot-v2")
+def investor_snapshot_v2():
     return build_investor_snapshot()
 
 

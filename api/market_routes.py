@@ -49,6 +49,6 @@ def market_trend_summary():
     return build_market_trend_summary()
 
 
-@router.get("/weekly-infrastructure-report")
-def weekly_infrastructure_report():
+@router.get("/weekly-infrastructure-report-v2")
+def weekly_infrastructure_report_v2():
     return build_weekly_infrastructure_report()
