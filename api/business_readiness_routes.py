@@ -202,6 +202,12 @@ def cron_health():
     return pd.read_csv("data/cron_health.csv").to_dict(orient="records")
 
 
+@router.get("/scheduler-status")
+def scheduler_status():
+    from scheduler import get_scheduler_status
+    return get_scheduler_status()
+
+
 @router.get("/public-beta-status")
 def public_beta_status():
     import pandas as pd

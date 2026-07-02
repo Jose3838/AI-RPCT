@@ -1,5 +1,9 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+
+from scheduler import start_scheduler, stop_scheduler
 
 from api.auth_routes import router as auth_router
 from api.billing_routes import router as billing_router
@@ -20,9 +24,17 @@ from api.forecast_admin_routes import router as forecast_admin_router
 from api.business_readiness_routes import router as business_readiness_router
 from api.copilot_pilot_routes import router as copilot_pilot_router
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    start_scheduler()
+    yield
+    stop_scheduler()
+
+
 app = FastAPI(
     title="AI-RPCT",
-    version="63.0"
+    version="63.0",
+    lifespan=lifespan
 )
 
 app.include_router(auth_router)
