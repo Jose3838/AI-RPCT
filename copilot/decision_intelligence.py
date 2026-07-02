@@ -1,14 +1,17 @@
 from __future__ import annotations
 
+from copilot.intelligence.engine import get_unified_intelligence
 from copilot.io import load_csv
 
 
 def get_decision_intelligence() -> dict:
     rows = load_csv("data/decision_history.csv")
+    unified = get_unified_intelligence()
 
     if not rows:
         return {
-            "status": "no decision intelligence available"
+            "status": "no decision intelligence available",
+            "unified_intelligence": unified,
         }
 
     recommendations = {
@@ -45,4 +48,5 @@ def get_decision_intelligence() -> dict:
                 "message": insight,
             }
         ],
+        "unified_intelligence": unified,
     }
