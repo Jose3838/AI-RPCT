@@ -46,6 +46,7 @@ from copilot.service import (
     get_executive_decision_center,
     get_executive_facade,
     get_executive_trend,
+    get_historical_intelligence,
 )
 
 from copilot.intelligence_hub import get_intelligence_hub
@@ -399,6 +400,11 @@ def copilot_executive_insights():
 @app.get("/copilot/executive-facade")
 def copilot_executive_facade():
     return get_executive_facade()
+
+
+@app.get("/copilot/historical")
+def copilot_historical():
+    return get_historical_intelligence()
 
 
 @app.get("/pipeline-health")
