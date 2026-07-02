@@ -5,6 +5,7 @@ from api.routes import router
 from api.auth_routes import router as auth_router
 from api.billing_routes import router as billing_router
 from api.organization_routes import router as organization_router
+from api.forecast_routes import router as forecast_router
 
 app = FastAPI(
     title="AI-RPCT",
@@ -15,6 +16,7 @@ app.include_router(router)
 app.include_router(auth_router)
 app.include_router(billing_router)
 app.include_router(organization_router)
+app.include_router(forecast_router)
 
 app.mount("/web", StaticFiles(directory="web", html=True), name="web")
 
@@ -368,12 +370,6 @@ from trend_intelligence import build_trend_intelligence
 def trend_intelligence():
     return build_trend_intelligence()
 
-from forecast_engine_v2 import build_forecast_engine_v2
-
-@app.get("/forecast-engine-v2")
-def forecast_engine_v2():
-    return build_forecast_engine_v2()
-
 from gpu_scarcity_index import build_gpu_scarcity_index
 
 @app.get("/gpu-scarcity-index")
@@ -438,12 +434,6 @@ from historical_intelligence_v2 import (
 def historical_intelligence_v2():
     return build_historical_intelligence_v2()
 
-from forecast_engine_v3 import build_forecast_engine_v3
-
-@app.get("/forecast-engine-v3")
-def forecast_engine_v3():
-    return build_forecast_engine_v3()
-
 from gpu_scarcity_history import (
     save_gpu_scarcity_snapshot,
     load_gpu_scarcity_history
@@ -468,39 +458,6 @@ from historical_intelligence_score import (
 @app.get("/historical-intelligence-score")
 def historical_intelligence_score():
     return build_historical_intelligence_score()
-
-from forecast_history import (
-    save_forecast_snapshot,
-    load_forecast_history
-)
-
-@app.post("/save-forecast-snapshot")
-def save_forecast_snapshot_endpoint():
-    return save_forecast_snapshot()
-
-
-@app.get("/forecast-history")
-def forecast_history_endpoint():
-    return {
-        "status": "ok",
-        "history": load_forecast_history()
-    }
-
-from forecast_accuracy_engine import (
-    build_forecast_accuracy
-)
-
-@app.get("/forecast-accuracy")
-def forecast_accuracy():
-    return build_forecast_accuracy()
-
-from forecast_validation_engine import (
-    build_forecast_validation
-)
-
-@app.get("/forecast-validation")
-def forecast_validation():
-    return build_forecast_validation()
 
 from capacity_pressure_history import (
     save_capacity_pressure_snapshot,
@@ -536,12 +493,6 @@ def risk_signal_history_endpoint():
         "history": load_risk_signal_history()
     }
 
-from forecast_accuracy_v2 import build_forecast_accuracy_v2
-
-@app.get("/forecast-accuracy-v2")
-def forecast_accuracy_v2():
-    return build_forecast_accuracy_v2()
-
 from intelligence_quality_dashboard import build_intelligence_quality_dashboard
 
 @app.get("/intelligence-quality-dashboard")
@@ -556,18 +507,6 @@ from prediction_research_dashboard import (
 def prediction_research_dashboard():
     return build_prediction_research_dashboard()
 
-from forecast_error_tracking import build_forecast_error_tracking
-
-@app.get("/forecast-error-tracking")
-def forecast_error_tracking():
-    return build_forecast_error_tracking()
-
-from forecast_model_improvement_plan import build_forecast_model_improvement_plan
-
-@app.get("/forecast-model-improvement-plan")
-def forecast_model_improvement_plan():
-    return build_forecast_model_improvement_plan()
-
 from automated_intelligence_snapshot_v2 import run_intelligence_snapshot_v2
 
 @app.post("/run-intelligence-snapshot-v2")
@@ -581,18 +520,6 @@ from data_moat_dashboard import (
 @app.get("/data-moat-dashboard")
 def data_moat_dashboard():
     return build_data_moat_dashboard()
-
-from forecast_weight_optimization import build_forecast_weight_optimization
-
-@app.get("/forecast-weight-optimization")
-def forecast_weight_optimization():
-    return build_forecast_weight_optimization()
-
-from forecast_engine_v31 import build_forecast_engine_v31
-
-@app.get("/forecast-engine-v31")
-def forecast_engine_v31():
-    return build_forecast_engine_v31()
 
 from intelligence_performance_dashboard import (
     build_intelligence_performance_dashboard
