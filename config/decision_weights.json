@@ -1,0 +1,14 @@
+{
+  "investment_score": {
+    "historical": 0.15,
+    "risk": 0.25,
+    "forecast": 0.2,
+    "pricing": 0.2,
+    "capacity": 0.1,
+    "market": 0.1
+  },
+  "thresholds": {
+    "buy_now": 80,
+    "monitor": 60
+  }
+}

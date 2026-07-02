@@ -1,6 +1,36 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 from copilot.intelligence.engine import get_unified_intelligence
+
+ROOT = Path(__file__).resolve().parents[2]
+
+DEFAULT_CONFIG = {
+    "investment_score": {
+        "historical": 0.15,
+        "risk": 0.25,
+        "forecast": 0.20,
+        "pricing": 0.20,
+        "capacity": 0.10,
+        "market": 0.10,
+    },
+    "thresholds": {
+        "buy_now": 80,
+        "monitor": 60,
+    },
+}
+
+
+def _load_decision_config() -> dict:
+    path = ROOT / "config" / "decision_weights.json"
+
+    if not path.exists():
+        return DEFAULT_CONFIG
+
+    with path.open(encoding="utf-8") as f:
+        return json.load(f)
 
 
 def _clamp_score(value: int) -> int:
@@ -111,11 +141,14 @@ def _score_from_market(market_summary: dict) -> int:
     return 45
 
 
-def _recommendation_from_score(score: int) -> str:
-    if score >= 80:
+def _recommendation_from_score(score: int, thresholds: dict) -> str:
+    buy_now = int(thresholds.get("buy_now", 80))
+    monitor = int(thresholds.get("monitor", 60))
+
+    if score >= buy_now:
         return "buy_now"
 
-    if score >= 60:
+    if score >= monitor:
         return "monitor"
 
     return "wait"
@@ -123,6 +156,9 @@ def _recommendation_from_score(score: int) -> str:
 
 def get_decision_score() -> dict:
     intelligence = get_unified_intelligence()
+    config = _load_decision_config()
+    weights = config["investment_score"]
+    thresholds = config["thresholds"]
 
     historical_score = _score_from_historical(
         intelligence["historical"].get("summary", {})
@@ -144,15 +180,18 @@ def get_decision_score() -> dict:
     )
 
     investment_score = round(
-        (historical_score * 0.15)
-        + (risk_score * 0.25)
-        + (forecast_score * 0.20)
-        + (pricing_score * 0.20)
-        + (capacity_score * 0.10)
-        + (market_score * 0.10)
+        (historical_score * weights.get("historical", 0))
+        + (risk_score * weights.get("risk", 0))
+        + (forecast_score * weights.get("forecast", 0))
+        + (pricing_score * weights.get("pricing", 0))
+        + (capacity_score * weights.get("capacity", 0))
+        + (market_score * weights.get("market", 0))
     )
 
-    recommendation = _recommendation_from_score(investment_score)
+    recommendation = _recommendation_from_score(
+        investment_score,
+        thresholds,
+    )
 
     return {
         "summary": {
@@ -168,12 +207,6 @@ def get_decision_score() -> dict:
             "capacity_score": capacity_score,
             "market_score": market_score,
         },
-        "weights": {
-            "historical": 0.15,
-            "risk": 0.25,
-            "forecast": 0.20,
-            "pricing": 0.20,
-            "capacity": 0.10,
-            "market": 0.10,
-        },
+        "weights": weights,
+        "thresholds": thresholds,
     }
