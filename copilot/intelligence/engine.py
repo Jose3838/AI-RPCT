@@ -7,6 +7,7 @@ from copilot.intelligence.market import get_market_layer
 from copilot.intelligence.pricing import get_pricing_layer
 from copilot.intelligence.risk import get_risk_layer
 from copilot.intelligence.impact import get_impact_analysis
+from copilot.intelligence.causal import get_causal_analysis
 
 
 def get_unified_intelligence() -> dict:
@@ -25,4 +26,5 @@ def get_unified_intelligence() -> dict:
         "pricing": get_pricing_layer(),
         "market": get_market_layer(),
         "impact": get_impact_analysis(),
+        "causal": get_causal_analysis(),
     }
