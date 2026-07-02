@@ -24,8 +24,8 @@ def build_market_history_summary():
     return {
         "status": "ok",
         "records": len(rows),
-        "first_date": first["date"],
-        "latest_date": latest["date"],
+        "first_date": first["timestamp"],
+        "latest_date": latest["timestamp"],
         "coverage_change": round(
             float(latest["coverage"]) - float(first["coverage"]),
             2
