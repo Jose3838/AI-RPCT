@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from copilot.decision import get_decision
+from copilot.intelligence.engine import get_unified_intelligence
 
 
 def priority_from_score(score: int) -> str:
@@ -25,6 +26,7 @@ def priority_reason_from_score(score: int) -> str:
 
 def get_recommendation() -> dict:
     decision = get_decision()
+    intelligence = get_unified_intelligence()
 
     if decision.get("status"):
         return decision
@@ -35,6 +37,7 @@ def get_recommendation() -> dict:
         confidence = 0.0
 
     score = round(confidence * 100)
+
     priority = priority_from_score(score)
     priority_reason = priority_reason_from_score(score)
 
@@ -46,4 +49,14 @@ def get_recommendation() -> dict:
         "priority_reason": priority_reason,
         "topic": decision["topic"],
         "generated_at": decision["generated_at"],
+
+        # Foundation for Recommendation Engine v2
+        "intelligence": {
+            "historical": intelligence["historical"]["summary"],
+            "forecast": intelligence["forecast"].get("summary", {}),
+            "capacity": intelligence["capacity"].get("summary", {}),
+            "risk": intelligence["risk"].get("summary", {}),
+            "pricing": intelligence["pricing"].get("summary", {}),
+            "market": intelligence["market"].get("summary", {}),
+        },
     }
