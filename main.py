@@ -3,6 +3,7 @@ from fastapi.staticfiles import StaticFiles
 
 from api.routes import router
 from api.auth_routes import router as auth_router
+from api.billing_routes import router as billing_router
 
 app = FastAPI(
     title="AI-RPCT",
@@ -11,6 +12,7 @@ app = FastAPI(
 
 app.include_router(router)
 app.include_router(auth_router)
+app.include_router(billing_router)
 
 app.mount("/web", StaticFiles(directory="web", html=True), name="web")
 
@@ -286,30 +288,6 @@ def usage_analytics_v2():
         "usage": get_usage_analytics()
     }
 
-from billing_engine import build_billing_summary
-
-@app.get("/billing-summary")
-def billing_summary():
-    return {
-        "status": "ok",
-        "billing": build_billing_summary()
-    }
-
-from invoice_generator import generate_invoices
-
-@app.get("/invoice-summary")
-def invoice_summary():
-    return {
-        "status": "ok",
-        "invoices": generate_invoices()
-    }
-
-from revenue_dashboard import build_revenue_dashboard
-
-@app.get("/revenue-dashboard")
-def revenue_dashboard():
-    return build_revenue_dashboard()
-
 from organizations import create_organization, list_organizations
 
 @app.post("/create-organization")
@@ -331,18 +309,6 @@ def organizations_endpoint():
         "status": "ok",
         "organizations": list_organizations()
     }
-
-from organization_revenue_dashboard import build_organization_revenue_dashboard
-
-@app.get("/organization-revenue-dashboard")
-def organization_revenue_dashboard():
-    return build_organization_revenue_dashboard()
-
-from organization_usage_dashboard import build_organization_usage_dashboard
-
-@app.get("/organization-usage-dashboard")
-def organization_usage_dashboard():
-    return build_organization_usage_dashboard()
 
 from api_key_management import create_api_key, list_api_keys
 
