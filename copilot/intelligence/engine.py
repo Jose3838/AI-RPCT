@@ -32,4 +32,10 @@ def get_unified_intelligence() -> dict:
                 "status": "actions available",
             }
         },
+        "advisor": {
+            "summary": {
+                "status": "advisor available",
+            }
+        },
     }
+
