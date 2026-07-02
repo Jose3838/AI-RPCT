@@ -18,6 +18,7 @@ from api.provider_status_routes import router as provider_status_router
 from api.terminal_dashboard_routes import router as terminal_dashboard_router
 from api.forecast_admin_routes import router as forecast_admin_router
 from api.business_readiness_routes import router as business_readiness_router
+from api.copilot_pilot_routes import router as copilot_pilot_router
 
 app = FastAPI(
     title="AI-RPCT",
@@ -41,6 +42,7 @@ app.include_router(provider_status_router)
 app.include_router(terminal_dashboard_router)
 app.include_router(forecast_admin_router)
 app.include_router(business_readiness_router)
+app.include_router(copilot_pilot_router)
 
 app.mount("/web", StaticFiles(directory="web", html=True), name="web")
 
