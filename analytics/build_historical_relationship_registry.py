@@ -106,6 +106,42 @@ ROWS = [
         "status": "active",
         "notes": "",
     },
+    {
+        "relationship_id": "rel000011",
+        "source_entity_id": "gpu_nvidia_tesla_k80",
+        "relationship_type": "priced_by",
+        "target_entity_id": "vendor_nvidia",
+        "source_id": "market_reporting_estimate",
+        "status": "active",
+        "notes": "Links to a pricing observation in historical_pricing_registry.csv.",
+    },
+    {
+        "relationship_id": "rel000012",
+        "source_entity_id": "gpu_nvidia_v100",
+        "relationship_type": "priced_by",
+        "target_entity_id": "vendor_nvidia",
+        "source_id": "market_reporting_estimate",
+        "status": "active",
+        "notes": "Links to a pricing observation in historical_pricing_registry.csv.",
+    },
+    {
+        "relationship_id": "rel000013",
+        "source_entity_id": "gpu_nvidia_a100",
+        "relationship_type": "priced_by",
+        "target_entity_id": "vendor_nvidia",
+        "source_id": "market_reporting_estimate",
+        "status": "active",
+        "notes": "Links to a pricing observation in historical_pricing_registry.csv.",
+    },
+    {
+        "relationship_id": "rel000014",
+        "source_entity_id": "gpu_nvidia_h100",
+        "relationship_type": "priced_by",
+        "target_entity_id": "vendor_nvidia",
+        "source_id": "market_reporting_estimate",
+        "status": "active",
+        "notes": "Links to a pricing observation in historical_pricing_registry.csv.",
+    },
 ]
 
 

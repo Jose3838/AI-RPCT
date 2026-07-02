@@ -224,6 +224,18 @@ ROWS = [
         "status": "active",
         "notes": "Official Google Cloud documentation.",
     },
+    {
+        "source_id": "market_reporting_estimate",
+        "organization": "AI-RPCT",
+        "source_name": "Aggregated Public Market Reporting (Estimate)",
+        "source_type": "secondary",
+        "base_url": "https://www.techpowerup.com/gpu-specs/",
+        "coverage": "Non-official price figures synthesized from widely-repeated public reporting (tech press, analyst coverage, GPU spec aggregators) where no vendor list price exists. Not a single citable document per price point.",
+        "verification_level": "low",
+        "last_verified": "2026-07-02",
+        "status": "active",
+        "notes": "Deliberately lower-confidence than official sources above. Used only where a specific official list price is not public (typical for enterprise-only AI accelerators sold via negotiated/OEM deals). Do not treat as authoritative for procurement decisions without independent verification.",
+    },
 ]
 
 

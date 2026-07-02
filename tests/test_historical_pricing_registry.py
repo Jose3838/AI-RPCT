@@ -49,5 +49,26 @@ def test_required_columns_even_when_empty():
         assert REQUIRED_COLUMNS.issubset(reader.fieldnames)
 
 
-def test_pricing_registry_is_empty_by_design_v1():
-    assert len(load_rows(CSV_PATH)) == 0
+def test_pricing_registry_v2_has_nvidia_anchor_points():
+    # v1 shipped intentionally empty (no verifiable price data yet).
+    # v2 adds a small number of NVIDIA data-center GPU price points where
+    # public reporting gives a reasonable (if not officially confirmed)
+    # anchor. AMD Instinct and Intel Gaudi/Data Center GPU Max are
+    # deliberately still absent — no credible public list price exists
+    # for those (enterprise-only, OEM-negotiated pricing) and this
+    # registry does not fabricate figures it can't reasonably back.
+    rows = load_rows(CSV_PATH)
+    assert len(rows) == 4
+
+    for row in rows:
+        assert row["verification_status"] == "partial"
+        assert row["source_id"] == "market_reporting_estimate"
+        assert float(row["price_amount"]) > 0
+
+
+def test_pricing_registry_does_not_fabricate_amd_or_intel_prices():
+    rows = load_rows(CSV_PATH)
+    priced_gpu_ids = {row["relationship_id"] for row in rows}
+    # rel000011-014 are the NVIDIA priced_by relationships added alongside
+    # this registry; nothing else should be priced yet.
+    assert priced_gpu_ids == {"rel000011", "rel000012", "rel000013", "rel000014"}

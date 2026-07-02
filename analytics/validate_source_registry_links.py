@@ -10,6 +10,7 @@ REGISTRIES = [
     ROOT / "data" / "intel_historical_gpu_registry.csv",
     ROOT / "data" / "historical_entity_registry.csv",
     ROOT / "data" / "historical_relationship_registry.csv",
+    ROOT / "data" / "historical_pricing_registry.csv",
 ]
 
 with SOURCE_REGISTRY.open(newline="", encoding="utf-8") as f:

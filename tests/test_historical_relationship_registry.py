@@ -63,6 +63,7 @@ def test_relationship_types_are_governed():
         "member_of_family",
         "provided_by",
         "available_in_region",
+        "priced_by",
     }
     for row in load_rows(CSV_PATH):
         assert row["relationship_type"] in allowed

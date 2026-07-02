@@ -9,3 +9,7 @@ rel000007,gpu_intel_gaudi2,uses_compute_api,api_synapseai,intel_newsroom,active,
 rel000008,gpu_intel_gaudi3,uses_compute_api,api_synapseai,intel_newsroom,active,
 rel000009,gpu_amd_instinct_mi100,member_of_family,family_amd_instinct,amd_products,active,
 rel000010,gpu_intel_max_1100,member_of_family,family_intel_data_center_gpu_max,intel_products,active,
+rel000011,gpu_nvidia_tesla_k80,priced_by,vendor_nvidia,market_reporting_estimate,active,Links to a pricing observation in historical_pricing_registry.csv.
+rel000012,gpu_nvidia_v100,priced_by,vendor_nvidia,market_reporting_estimate,active,Links to a pricing observation in historical_pricing_registry.csv.
+rel000013,gpu_nvidia_a100,priced_by,vendor_nvidia,market_reporting_estimate,active,Links to a pricing observation in historical_pricing_registry.csv.
+rel000014,gpu_nvidia_h100,priced_by,vendor_nvidia,market_reporting_estimate,active,Links to a pricing observation in historical_pricing_registry.csv.
