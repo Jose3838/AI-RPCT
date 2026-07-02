@@ -13,7 +13,7 @@ def load_market_snapshots():
 
             for row in reader:
                 rows.append({
-                    "date": row["date"],
+                    "date": row["timestamp"],
                     "coverage": float(row["coverage"]),
                     "market_strength": float(row["market_strength"]),
                     "avg_activation_score": float(row["avg_activation_score"])
