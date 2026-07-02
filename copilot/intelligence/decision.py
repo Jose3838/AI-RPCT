@@ -3,8 +3,6 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from copilot.intelligence.engine import get_unified_intelligence
-
 ROOT = Path(__file__).resolve().parents[2]
 
 DEFAULT_CONFIG = {
@@ -154,8 +152,12 @@ def _recommendation_from_score(score: int, thresholds: dict) -> str:
     return "wait"
 
 
-def get_decision_score() -> dict:
-    intelligence = get_unified_intelligence()
+def get_decision_score(intelligence: dict | None = None) -> dict:
+    if intelligence is None:
+        from copilot.intelligence.engine import get_unified_intelligence
+
+        intelligence = get_unified_intelligence()
+
     config = _load_decision_config()
     weights = config["investment_score"]
     thresholds = config["thresholds"]
