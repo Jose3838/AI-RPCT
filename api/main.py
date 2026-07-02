@@ -48,8 +48,8 @@ from copilot.service import (
     get_executive_trend,
     get_historical_intelligence,
 )
-
 from copilot.intelligence_hub import get_intelligence_hub
+from copilot.intelligence.pipeline import run_pipeline
 from copilot.dashboard_executive import get_executive_dashboard
 from copilot.dashboard_service import get_dashboard
 
@@ -428,6 +428,11 @@ def pipeline_history():
 @app.get("/copilot/intelligence-hub")
 def copilot_intelligence_hub():
     return get_intelligence_hub()
+
+
+@app.get("/copilot/intelligence-pipeline")
+def copilot_intelligence_pipeline():
+    return run_pipeline()
 
 
 @app.get("/dashboard/executive")
