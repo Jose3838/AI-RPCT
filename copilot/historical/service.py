@@ -8,6 +8,7 @@ def get_historical_intelligence() -> dict:
     intel = load_csv("data/intel_historical_gpu_registry.csv")
     nvidia = load_csv("data/nvidia_historical_gpu_registry.csv")
     pricing = load_csv("data/historical_pricing_registry.csv")
+    performance = load_csv("data/historical_performance_registry.csv")
     capacity = load_csv("data/historical_capacity_registry.csv")
     entities = load_csv("data/historical_entity_registry.csv")
     relationships = load_csv("data/historical_relationship_registry.csv")
@@ -40,6 +41,7 @@ def get_historical_intelligence() -> dict:
             "years_covered": years_covered,
             "gpu_records": len(amd) + len(intel) + len(nvidia),
             "pricing_records": len(pricing),
+            "performance_records": len(performance),
             "capacity_records": len(capacity),
             "entity_records": len(entities),
             "relationship_records": len(relationships),
@@ -51,6 +53,7 @@ def get_historical_intelligence() -> dict:
         "intel": intel,
         "nvidia": nvidia,
         "pricing": pricing,
+        "performance": performance,
         "capacity": capacity,
         "entities": entities,
         "relationships": relationships,
