@@ -2,11 +2,13 @@ from __future__ import annotations
 
 from copilot.intelligence.engine import get_unified_intelligence
 from copilot.intelligence.lab import get_intelligence_lab
+from copilot.intelligence.memory import get_memory_summary
 
 
 def get_intelligence_orchestrator() -> dict:
     unified = get_unified_intelligence()
     lab = get_intelligence_lab()
+    memory = get_memory_summary()
 
     return {
         "summary": {
@@ -24,4 +26,5 @@ def get_intelligence_orchestrator() -> dict:
             "simulation": unified["simulation"].get("summary", {}),
         },
         "lab": lab["summary"],
+        "memory": memory["summary"],
     }
