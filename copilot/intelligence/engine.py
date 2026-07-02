@@ -52,4 +52,9 @@ def get_unified_intelligence() -> dict:
                 "status": "execution available",
             }
         },
+        "runtime": {
+            "summary": {
+                "status": "runtime available",
+            }
+        },
     }
