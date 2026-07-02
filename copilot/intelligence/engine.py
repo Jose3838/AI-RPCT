@@ -37,5 +37,9 @@ def get_unified_intelligence() -> dict:
                 "status": "advisor available",
             }
         },
+        "strategy": {
+            "summary": {
+                "status": "strategy available",
+            }
+        },
     }
-
