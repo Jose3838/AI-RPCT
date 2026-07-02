@@ -54,6 +54,7 @@ from copilot.dashboard_executive import get_executive_dashboard
 from copilot.dashboard_service import get_dashboard
 from copilot.intelligence.workflow import run_workflow
 from copilot.intelligence.cycle import run_cycle
+from copilot.intelligence.api import get_intelligence_api
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -445,6 +446,11 @@ def copilot_intelligence_workflow():
 @app.get("/copilot/intelligence-cycle")
 def copilot_intelligence_cycle():
     return run_cycle()
+
+
+@app.get("/copilot/intelligence")
+def copilot_intelligence():
+    return get_intelligence_api()
 
 
 @app.get("/dashboard/executive")
