@@ -7,6 +7,7 @@ from api.billing_routes import router as billing_router
 from api.organization_routes import router as organization_router
 from api.forecast_routes import router as forecast_router
 from api.provider_routes import router as provider_router
+from api.live_data_routes import router as live_data_router
 
 app = FastAPI(
     title="AI-RPCT",
@@ -19,6 +20,7 @@ app.include_router(billing_router)
 app.include_router(organization_router)
 app.include_router(forecast_router)
 app.include_router(provider_router)
+app.include_router(live_data_router)
 
 app.mount("/web", StaticFiles(directory="web", html=True), name="web")
 
@@ -413,85 +415,3 @@ from executive_risk_dashboard import (
 def executive_risk_dashboard():
     return build_executive_risk_dashboard()
 
-from connector_health_dashboard import build_connector_health_dashboard
-
-@app.get("/connector-health-dashboard")
-def connector_health_dashboard():
-    return build_connector_health_dashboard()
-
-from live_data_readiness_score import build_live_data_readiness_score
-
-@app.get("/live-data-readiness-score")
-def live_data_readiness_score():
-    return build_live_data_readiness_score()
-
-from connector_maturity_dashboard import (
-    build_connector_maturity_dashboard
-)
-
-@app.get("/connector-maturity-dashboard")
-def connector_maturity_dashboard():
-    return build_connector_maturity_dashboard()
-
-from connector_coverage_score import build_connector_coverage_score
-
-@app.get("/connector-coverage-score")
-def connector_coverage_score():
-    return build_connector_coverage_score()
-
-from live_data_migration_plan import build_live_data_migration_plan
-
-@app.get("/live-data-migration-plan")
-def live_data_migration_plan():
-    return build_live_data_migration_plan()
-
-from live_data_migration_dashboard import build_live_data_migration_dashboard
-
-@app.get("/live-data-migration-dashboard")
-def live_data_migration_dashboard():
-    return build_live_data_migration_dashboard()
-
-from live_data_quality_v2 import build_live_data_quality_v2
-
-@app.get("/live-data-quality-v2")
-def live_data_quality_v2():
-    return build_live_data_quality_v2()
-
-from connector_portfolio_score import (
-    build_connector_portfolio_score
-)
-
-@app.get("/connector-portfolio-score")
-def connector_portfolio_score():
-    return build_connector_portfolio_score()
-
-from historical_live_data_coverage import (
-    build_historical_live_data_coverage
-)
-
-@app.get("/historical-live-data-coverage")
-def historical_live_data_coverage():
-    return build_historical_live_data_coverage()
-
-from live_data_snapshot_auditor import build_live_data_snapshot_audit
-
-@app.get("/live-data-snapshot-audit")
-def live_data_snapshot_audit():
-    return build_live_data_snapshot_audit()
-
-from live_data_audit_history import (
-    save_live_data_audit_snapshot,
-    load_live_data_audit_history
-)
-
-@app.post("/save-live-data-audit-snapshot")
-def save_live_data_audit_snapshot_endpoint():
-    return save_live_data_audit_snapshot()
-
-
-@app.get("/live-data-audit-history")
-def live_data_audit_history_endpoint():
-    return {
-        "status": "ok",
-        "history": load_live_data_audit_history()
-    }
