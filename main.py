@@ -6,6 +6,7 @@ from api.auth_routes import router as auth_router
 from api.billing_routes import router as billing_router
 from api.organization_routes import router as organization_router
 from api.forecast_routes import router as forecast_router
+from api.provider_routes import router as provider_router
 
 app = FastAPI(
     title="AI-RPCT",
@@ -17,6 +18,7 @@ app.include_router(auth_router)
 app.include_router(billing_router)
 app.include_router(organization_router)
 app.include_router(forecast_router)
+app.include_router(provider_router)
 
 app.mount("/web", StaticFiles(directory="web", html=True), name="web")
 
@@ -27,85 +29,6 @@ def root():
         "status": "online",
         "version": "63.0",
         "terminal": "/web"
-    }
-
-import csv
-
-@app.get("/history-provider-activation")
-def history_provider_activation():
-    history = []
-
-    try:
-        with open("provider_activation_score_history.csv", "r") as file:
-            reader = csv.DictReader(file)
-
-            for row in reader:
-                history.append({
-                    "timestamp": row["timestamp"],
-                    "provider": row["provider"],
-                    "activation_score": float(row["activation_score"])
-                })
-
-    except FileNotFoundError:
-        return {
-            "status": "missing_history_file",
-            "history": []
-        }
-
-    return {
-        "status": "ok",
-        "records": len(history),
-        "history": history
-    }
-
-from provider_coverage_engine_v3 import get_provider_coverage_v3
-
-@app.get("/provider-coverage-v3")
-def provider_coverage_v3():
-    return get_provider_coverage_v3()
-
-from provider_activation_score import (
-    calculate_provider_activation_score
-)
-
-@app.get("/provider-activation-score")
-def provider_activation_score():
-
-    providers = [
-        {
-            "provider": "vast",
-            "price_score": 88,
-            "capacity_score": 79,
-            "health_score": 95,
-            "momentum_score": 74
-        },
-        {
-            "provider": "runpod",
-            "price_score": 84,
-            "capacity_score": 82,
-            "health_score": 92,
-            "momentum_score": 76
-        }
-    ]
-
-    results = []
-
-    for provider in providers:
-
-        score = calculate_provider_activation_score(
-            provider["price_score"],
-            provider["capacity_score"],
-            provider["health_score"],
-            provider["momentum_score"]
-        )
-
-        results.append({
-            "provider": provider["provider"],
-            **score
-        })
-
-    return {
-        "providers": results
     }
 
 from market_strength_index import calculate_market_strength_index
@@ -150,40 +73,6 @@ def save_market_snapshot_endpoint():
         market_strength,
         avg_activation_score
     )
-
-from provider_expansion_tracker import save_provider_expansion
-
-@app.post("/save-provider-expansion")
-def save_provider_expansion_endpoint():
-
-    live_providers = 2
-    total_providers = 6
-    coverage_percentage = 33.33
-
-    return save_provider_expansion(
-        live_providers,
-        total_providers,
-        coverage_percentage
-    )
-
-from data_layer.provider_data_pipeline import build_provider_dataset
-
-@app.get("/unified-provider-data")
-def unified_provider_data():
-    return {
-        "status": "ok",
-        "records": build_provider_dataset()
-    }
-
-from data_layer.provider_scoring_pipeline import build_dynamic_provider_activation_scores
-
-@app.get("/provider-activation-score-v2")
-def provider_activation_score_v2():
-    return {
-        "status": "ok",
-        "version": "v2",
-        "providers": build_dynamic_provider_activation_scores()
-    }
 
 from data_layer.market_strength_pipeline import build_dynamic_market_strength_index
 
@@ -246,23 +135,6 @@ def enterprise_sales_demo(api_key: str):
         "bundle": build_sales_enterprise_bundle()
     }
 
-from providers.connectors.collector import (
-    collect_provider_data
-)
-
-@app.get("/provider-collector")
-def provider_collector():
-    return {
-        "status": "ok",
-        "providers": collect_provider_data()
-    }
-
-from provider_expansion_tracker import save_provider_expansion as save_provider_expansion_dynamic
-
-@app.post("/save-provider-expansion-v2")
-def save_provider_expansion_v2():
-    return save_provider_expansion_dynamic()
-
 from coverage_milestone_report import build_coverage_milestone_report
 
 @app.get("/coverage-milestone-report")
@@ -309,14 +181,6 @@ def enterprise_check_v2(api_key: str):
         api_key,
         ["enterprise"]
     )
-
-from provider_freshness import build_provider_freshness_report
-from providers.connectors.collector import collect_provider_data as collect_provider_data_for_freshness
-
-@app.get("/provider-freshness")
-def provider_freshness():
-    providers = collect_provider_data_for_freshness()
-    return build_provider_freshness_report(providers)
 
 from data_trust_index import build_data_trust_index
 
@@ -401,18 +265,6 @@ from historical_intelligence_engine import build_historical_intelligence
 @app.get("/historical-intelligence")
 def historical_intelligence():
     return build_historical_intelligence()
-
-from provider_ranking_engine import build_provider_ranking
-
-@app.get("/provider-ranking")
-def provider_ranking():
-    return build_provider_ranking()
-
-from provider_recommendation_engine import build_provider_recommendations
-
-@app.get("/provider-recommendations")
-def provider_recommendations():
-    return build_provider_recommendations()
 
 from enterprise_decision_engine import build_enterprise_decision_engine
 
@@ -553,14 +405,6 @@ from investor_snapshot import build_investor_snapshot
 def investor_snapshot():
     return build_investor_snapshot()
 
-from provider_concentration_risk import (
-    build_provider_concentration_risk
-)
-
-@app.get("/provider-concentration-risk")
-def provider_concentration_risk():
-    return build_provider_concentration_risk()
-
 from executive_risk_dashboard import (
     build_executive_risk_dashboard
 )
@@ -580,12 +424,6 @@ from live_data_readiness_score import build_live_data_readiness_score
 @app.get("/live-data-readiness-score")
 def live_data_readiness_score():
     return build_live_data_readiness_score()
-
-from provider_api_key_readiness import build_provider_api_key_readiness
-
-@app.get("/provider-api-key-readiness")
-def provider_api_key_readiness():
-    return build_provider_api_key_readiness()
 
 from connector_maturity_dashboard import (
     build_connector_maturity_dashboard
