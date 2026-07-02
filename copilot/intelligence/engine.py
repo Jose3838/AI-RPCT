@@ -42,4 +42,9 @@ def get_unified_intelligence() -> dict:
                 "status": "strategy available",
             }
         },
+        "goals": {
+            "summary": {
+                "status": "goals available",
+            }
+        },
     }
