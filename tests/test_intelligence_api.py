@@ -15,6 +15,7 @@ def test_unified_intelligence_api():
     assert data["status"] == "ok"
 
     assert "decision" in data
+    assert "planner" in data
     assert "graph" in data
     assert "cycle" in data
     assert "intelligence" in data
